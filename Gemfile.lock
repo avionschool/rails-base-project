@@ -219,6 +219,9 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 0.90.0, < 2.0)
+    rubocop-rspec (2.1.0)
+      rubocop (~> 1.0)
+      rubocop-ast (>= 1.1.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.4)
     sass-rails (6.0.0)
@@ -293,6 +296,7 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.4)
   rspec-rails
   rubocop-rails
+  rubocop-rspec
   sass-rails (>= 6)
   shoulda-matchers
   spring

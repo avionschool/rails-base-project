@@ -35,5 +35,6 @@ group :test do
   gem 'shoulda-matchers'
   gem 'vcr'
   gem 'webmock'
-  gem 'rubocop-rails'
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 end

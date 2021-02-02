@@ -1,0 +1,54 @@
+require: 
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.7
+  Exclude:
+    - "Gemfile"
+    - "bin/**/*"
+    - "config/**/*"
+    - "db/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - "spec/rails_helper.rb"
+    - "spec/spec_helper.rb"
+    - "node_modules/**/*"
+
+Layout/LineLength:
+  Enabled: false
+
+Layout/HashAlignment:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "config/**/*"
+    - "spec/**/*"
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Rails/ApplicationController:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
