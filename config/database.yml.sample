@@ -4,7 +4,7 @@ default: &default
   port: 5432
   adapter: postgresql
   username: <%= ENV.fetch("DATABASE_USERNAME") { 'realm' } %>
-  password: <%= ENV.fetch("DATABASE_PASSWORD") { 'utongnimacmac } %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") { 'utongnimacmac' } %>
 
 development: 
   <<: *default
