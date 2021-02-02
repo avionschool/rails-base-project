@@ -31,9 +31,9 @@ jobs:
     - name: Setup Database
       run: |
         cp config/database.yml.sample config/database.yml
+        yarn install --check-files
         bundle exec rake db:create
         bundle exec rake db:schema:load
-        yarn install --check-files
       env:
         DATABASE_HOST: 127.0.0.1
         DATABASE_USERNAME: 'postgres'
