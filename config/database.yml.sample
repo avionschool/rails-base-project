@@ -1,0 +1,19 @@
+default: &default
+  host: <%= ENV.fetch("DATABASE_HOST") { 'localhost' } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  port: 5432
+  adapter: postgresql
+  username: <%= ENV.fetch("DATABASE_USERNAME") { 'realm' } %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") { 'utongnimacmac } %>
+
+development: 
+  <<: *default
+  database: iex_project_development
+
+test:
+  <<: *default
+  database: iex_project_test
+
+production:
+  <<: *default
+  detabase: iex_project_production
