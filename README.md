@@ -1,24 +1,44 @@
-# README
+## IEX Example Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Visit it @ []
 
-Things you may want to cover:
+#### Version
 
-* Ruby version
+```
+  Ruby 2.7.2
+  Rails 6.0.3.4
+	NodeJS 12.18.3
+	Yarn 1.22.4
+```
 
-* System dependencies
+#### Installation
 
-* Configuration
+```
+  $ git clone git@github.com:avionschool/iex-app.git
+  $ cd iex-app
+```
 
-* Database creation
+#### Setup
 
-* Database initialization
+```
+  $ bundle install
+  $ rake db:setup
+```
 
-* How to run the test suite
+#### Starting the application
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+  $ rails server
+```
 
-* Deployment instructions
+#### How to run the test suite
 
-* ...
+```
+  $ rspec
+```
+
+#### How to run the Ruby Linter
+
+```
+	$ rubocop
+```
