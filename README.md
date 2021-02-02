@@ -40,5 +40,5 @@ Visit it @ []
 #### How to run the Ruby Linter
 
 ```
-	$ rubocop
+  $ rubocop
 ```
