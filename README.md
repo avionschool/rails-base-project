@@ -19,7 +19,7 @@ Fork this repo:
 
 Then, clone your forked repo to your machine
 ```
-  $ git git@github.com:<username>/rails-base-project.git <name of your app>
+  $ git clone git@github.com:<username>/rails-base-project.git <name of your app>
   $ cd <name of your app>
 ```
 
