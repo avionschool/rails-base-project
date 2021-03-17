@@ -1,6 +1,7 @@
-## IEX Example Application
+# Hi there 👋
 
-Visit it @ []
+This repo serves as the main repo for our Rails Projects. 
+
 
 #### Version
 
@@ -13,9 +14,13 @@ Visit it @ []
 
 #### Installation
 
+Fork this repo:
+![image](https://user-images.githubusercontent.com/9253881/111437757-6c527f00-873e-11eb-8d0a-862e4158f4ab.png)
+
+Then, clone your forked repo to your machine
 ```
-  $ git clone git@github.com:avionschool/iex-app.git
-  $ cd iex-app
+  $ git clone git@github.com:<username>/rails-base-project.git <name of your app>
+  $ cd <name of your app>
 ```
 
 #### Setup
