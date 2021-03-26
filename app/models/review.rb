@@ -2,6 +2,6 @@ class Review < ApplicationRecord
   has_one_attached :avatar
   validates :title, presence: true
   validates :rating, presence: true,
-                    numericality: { greater_than: 0, less_than_or_equal_to: 5}
+                    numericality: { greater_than: 0, less_than_or_equal_to: 5 }
   validates :body, presence: true
 end
