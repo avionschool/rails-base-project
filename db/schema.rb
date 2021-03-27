@@ -92,6 +92,12 @@ ActiveRecord::Schema.define(version: 2021_03_26_220049) do
     t.integer "contact_number"
     t.index ["email"], name: "index_suppliers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_suppliers_on_reset_password_token", unique: true
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
