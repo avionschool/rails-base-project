@@ -5,15 +5,12 @@ default: &default
   adapter: postgresql
   username: <%= ENV.fetch("DATABASE_USERNAME") { '' } %>
   password: <%= ENV.fetch("DATABASE_PASSWORD") { '' } %>
-
 development: 
   <<: *default
   database: rails_project_development
-
 test:
   <<: *default
   database: rails_project_test
-
 production:
   <<: *default
   detabase: rails_project_production
