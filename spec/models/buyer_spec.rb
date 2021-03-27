@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 RSpec.describe Buyer, type: :model do
   context 'with validation tests' do
 
@@ -26,7 +25,7 @@ RSpec.describe Buyer, type: :model do
     end
 
     it '5. ensures contact number field is a minimum of 10' do
-      buyer.contact_number = '123'    
+      buyer.contact_number = '123' 
       expect(buyer).not_to be_valid
     end
   end
