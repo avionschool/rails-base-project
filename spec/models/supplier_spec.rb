@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.describe Supplier, type: :model do
   context 'with validation tests' do
-
     let(:supplier) { build(:supplier) }
 
     it '1. ensures first name presence' do
