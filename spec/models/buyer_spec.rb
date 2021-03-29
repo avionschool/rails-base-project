@@ -29,4 +29,9 @@ RSpec.describe Buyer, type: :model do
       expect(buyer).not_to be_valid
     end
   end
+  
+  describe 'database associations' do
+    it { is_expected.to have_many(:services).through(:buyer_services) }
+    it { is_expected.to have_many(:reviews) }
+  end
 end
