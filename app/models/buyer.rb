@@ -8,8 +8,8 @@ class Buyer < ApplicationRecord
   validates :last_name, presence: true
   validates :contact_number, presence: true, numericality: { only_integer: true }, length: { minimum: 10 }
 
-  has_many :buyer_services
-  has_many :services, :through => :buyer_services
+  has_many :buyer_services, dependent: :destroy
+  has_many :services, through: :buyer_services
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 end
