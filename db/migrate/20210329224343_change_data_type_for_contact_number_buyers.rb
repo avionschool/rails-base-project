@@ -1,0 +1,12 @@
+class ChangeDataTypeForContactNumberBuyers < ActiveRecord::Migration[6.0]
+  def self.up
+    change_table :buyers do |t|
+      t.change :contact_number, :string
+    end
+  end
+  def self.down
+    change_table :buyers do |t|
+      t.change :contact_number, :integer
+    end
+  end
+end
