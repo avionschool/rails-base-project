@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_03_29_122301) do
-=======
 ActiveRecord::Schema.define(version: 2021_03_29_225033) do
->>>>>>> added landing page assets
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,13 +84,10 @@ ActiveRecord::Schema.define(version: 2021_03_29_225033) do
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
     t.bigint "service_id"
     t.bigint "buyer_id"
     t.index ["buyer_id"], name: "index_reviews_on_buyer_id"
     t.index ["service_id"], name: "index_reviews_on_service_id"
-=======
->>>>>>> added landing page assets
   end
 
   create_table "services", force: :cascade do |t|
@@ -103,13 +96,10 @@ ActiveRecord::Schema.define(version: 2021_03_29_225033) do
     t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
     t.string "location"
     t.bigint "supplier_id"
     t.string "category"
     t.index ["supplier_id"], name: "index_services_on_supplier_id"
-=======
->>>>>>> added landing page assets
   end
 
   create_table "suppliers", force: :cascade do |t|
@@ -129,12 +119,9 @@ ActiveRecord::Schema.define(version: 2021_03_29_225033) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-<<<<<<< HEAD
   add_foreign_key "buyer_services", "buyers"
   add_foreign_key "buyer_services", "suppliers"
   add_foreign_key "reviews", "buyers"
   add_foreign_key "reviews", "services"
   add_foreign_key "services", "suppliers"
-=======
->>>>>>> added landing page assets
 end

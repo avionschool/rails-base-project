@@ -65,12 +65,8 @@ RSpec.configure do |config|
   #for factory bot
   config.include FactoryBot::Syntax::Methods
 
-<<<<<<< HEAD
-  Shoulda::Matchers.configure do |config|
-=======
    #for shoulda
    Shoulda::Matchers.configure do |config|
->>>>>>> added landing page assets
     config.integrate do |with|
       with.test_framework :rspec
       with.library :rails
