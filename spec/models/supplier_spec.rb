@@ -33,4 +33,8 @@ RSpec.describe Supplier, type: :model do
       expect(supplier).not_to be_valid
     end
   end
+
+  describe 'database associations' do
+    it { is_expected.to have_many(:services) }
+  end
 end
