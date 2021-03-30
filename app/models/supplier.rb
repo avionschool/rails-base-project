@@ -6,7 +6,7 @@ class Supplier < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :contact_number, presence: true, length: { minimum: 10 }
+  validates :contact_number, presence: true,numericality: { only_integer: true }, length: { minimum: 10 }
   validates :company_name, presence: true
 
   has_many :services, dependent: :destroy
