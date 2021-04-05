@@ -11,11 +11,11 @@ class Supplier < ApplicationRecord
 
   has_many :services, dependent: :destroy
 
-  def active_for_authentication? 
-    super && approved? 
-  end 
-  
-  def inactive_message 
+  def active_for_authentication?
+    super && approved?
+  end
+
+  def inactive_message
     approved? ? super : :not_approved
   end
 end

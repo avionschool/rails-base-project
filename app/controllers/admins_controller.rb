@@ -14,10 +14,10 @@ class AdminsController < ApplicationController
     @supplier = Supplier.find(params[:id])
     @supplier.approved = true
     if @supplier.save
-      flash[:notice] = "Supplier is approved"
+      flash[:notice] = 'Supplier is approved'
       redirect_to admins_path
     else
-      flash[:alert] = "Supplier approve failure"
+      flash[:alert] = 'Supplier approve failure'
     end
   end
 end
