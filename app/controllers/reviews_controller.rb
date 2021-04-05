@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.create(review_params)
     @review.service_id = params[:service_id]
-    @review.buyer_id = params[current_buyer.id]
+    @review.buyer_id = current_buyer.id
     if @review.save
       flash[:notice] = 'Your review has been posted.'
       redirect_to_index
