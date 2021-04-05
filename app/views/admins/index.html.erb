@@ -1,0 +1,59 @@
+<%= link_to 'Suppliers for approval',  pending_supplier_signup_admin_path %>
+<h1>Suppliers</h1>
+<table>
+<thead>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Company</th>
+    <th scope="col">Contact Number</th>
+  </tr>
+</thead>
+<% @suppliers.each do |supplier| %>
+  <tbody>
+    <tr>
+      <td scope="row"></td>
+      <td><%= supplier.first_name %></td>
+      <td><%= supplier.last_name %></td>
+      <td><%= supplier.email %></td>
+      <td><%= supplier.company_name %></td>
+      <td><%= supplier.contact_number %></td>
+    </tr>
+  </tbody>
+<% end %>
+</table>
+
+<h1>Buyers</h1>
+<table>
+<thead>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Contact Number</th>
+  </tr>
+</thead>
+<% @buyers.each do |buyer| %>
+  <tbody>
+    <tr>
+      <td scope="row"></td>
+      <td><%= buyer.first_name %></td>
+      <td><%= buyer.last_name %></td>
+      <td><%= buyer.email %></td>
+      <td><%= buyer.contact_number %></td>
+    </tr>
+  </tbody>
+<% end %>
+</table>
+
+
+<%= link_to 'Logout',  destroy_admin_session_path, method: :delete %>
+
+
+
+
+
+

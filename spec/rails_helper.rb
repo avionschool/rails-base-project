@@ -65,7 +65,7 @@ RSpec.configure do |config|
 
   #for factory bot
   config.include FactoryBot::Syntax::Methods
-
+  config.include Warden::Test::Helpers
    #for shoulda
   Shoulda::Matchers.configure do |config|
     config.integrate do |with|
