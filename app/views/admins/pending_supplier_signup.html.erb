@@ -1,0 +1,27 @@
+
+<h1>Suppliers for Approval:</h1>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th>For Approval</th>
+      </tr>
+    </thead>
+    <% @suppliers.each do |supplier| %>
+      <tbody>
+        <tr>
+          <td scope="row"></td>
+          <td><%= supplier.first_name.capitalize %></td>
+          <td><%= supplier.last_name.capitalize %></td>
+          <td><%= supplier.email %></td>
+          <td><%= link_to "Approve", approve_supplier_admin_path(supplier), method: :put, data: { confirm: 'Are you sure you want to approve this supplier?' } %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+<br>
+<%= link_to "Go Back", admins_path %>
+</body>
