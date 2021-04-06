@@ -7,5 +7,6 @@ FactoryBot.define do
     password_confirmation { '123456' }
     contact_number { '09291234567' }
     company_name { 'PayMongo' }
+    approved { true }
   end
 end

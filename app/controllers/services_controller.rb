@@ -1,6 +1,5 @@
 class ServicesController < ApplicationController
 
-
   def index
     @services = Service.all
   end
@@ -14,10 +13,11 @@ class ServicesController < ApplicationController
   end
 
   def create
-    @service = Service.new(service_params)
+    @supplier = Supplier.find(params[:id])
+    @service = @supplier.services.create(service_params)
     if @service.save
       flash[:notice] = 'You have successfully published your service'
-      redirect_to @service
+      redirect_to @supplier
     else
       flash.now[:alert] = @service.errors.full_messages
       render :new
@@ -28,7 +28,7 @@ class ServicesController < ApplicationController
   end
 
   def update
-    @service = Service.find(params[:id])
+    set_service
     if @service.update(service_params)
       flash[:notice] = 'Your service has been updated!'
       redirect_to_index
