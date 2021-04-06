@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Services", type: :request do
+RSpec.describe 'Services', type: :request do
   let(:supplier) { create(:supplier) }
   let(:service) { create(:service) }
 
@@ -49,5 +49,4 @@ RSpec.describe "Services", type: :request do
       expect(response).to have_http_status(:no_content)
     end
   end
-
 end

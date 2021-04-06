@@ -1,5 +1,4 @@
 class ServicesController < ApplicationController
-
   def index
     @services = Service.all
   end
@@ -25,6 +24,13 @@ class ServicesController < ApplicationController
   end
 
   def edit
+    @service = Service.find(params[:id])
+    if service_owned_by_supplier?
+      @service = Service.find(params[:supplier_id])
+    else
+      flash[:alert] = "You cannot edit someone else's review."
+      render :index
+    end
   end
 
   def update
@@ -49,6 +55,7 @@ class ServicesController < ApplicationController
   end
 
   private
+
   def set_service
     @service = Service.find(params[:id])
   end
