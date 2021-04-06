@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Update this service</h1>
+  
+  <%= form_with method: :put, scope: :service, url: edit_service_path, local:true do |form| %>
+    <%= form.text_field :name %>
+    <%= form.text_field :price %>
+    <%= form.text_field :category %>
+    <%= form.text_field :location %>
+    <%= form.submit %>
+  <% end %>
+
+</div>
+<div>
+  <%= link_to "Go back", root_path %>
+</div>
