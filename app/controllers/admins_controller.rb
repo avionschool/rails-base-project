@@ -14,6 +14,7 @@ class AdminsController < ApplicationController
     @supplier = Supplier.find(params[:id])
     @supplier.approved = true
     if @supplier.save
+      SupplierMailer.new_supplier_approved(@supplier).deliver
       flash[:notice] = 'Supplier is approved'
       redirect_to admins_path
     else
