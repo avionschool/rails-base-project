@@ -39,7 +39,7 @@ RSpec.describe 'Services', type: :request do
   describe 'POST /services#create' do
     it 'works! service was created' do
       post supplier_services_path(service), params: { service: { name: 'Beautiful wedding photos', price: 1500, category: 'Photography', location: 'Cubao' } }
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:found)
     end
   end
 

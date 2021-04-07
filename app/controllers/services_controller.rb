@@ -1,4 +1,6 @@
 class ServicesController < ApplicationController
+  before_action :set_supplier
+
   def index
     @services = Service.all
   end
@@ -12,11 +14,11 @@ class ServicesController < ApplicationController
   end
 
   def create
-    @supplier = Supplier.find(params[:id])
-    @service = @supplier.services.create(service_params)
+    @service = Service.create(service_params)
+    @service.supplier_id = current_supplier.id
     if @service.save
       flash[:notice] = 'You have successfully published your service'
-      redirect_to @supplier
+      redirect_to @service
     else
       flash.now[:alert] = @service.errors.full_messages
       render :new
@@ -58,6 +60,10 @@ class ServicesController < ApplicationController
 
   def set_service
     @service = Service.find(params[:id])
+  end
+
+  def set_supplier
+    @supplier = current_supplier
   end
 
   def redirect_to_index
