@@ -14,7 +14,7 @@ class Supplier < ApplicationRecord
   after_create :send_supplier_email
 
   def send_supplier_email
-    SupplierMailer.new_supplier_waiting_for_approval(self).deliver
+    SupplierMailer.new_supplier_waiting_for_approval(self).deliver_later
   end
 
   def active_for_authentication?
