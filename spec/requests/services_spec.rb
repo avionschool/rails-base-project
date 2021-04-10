@@ -46,7 +46,7 @@ RSpec.describe 'Services', type: :request do
   describe 'DELETE /services#destroy' do
     it 'works! service was deleted' do
       delete service_path(service)
-      expect(response).to redirect_to supplier_services_path(supplier_id: supplier.id)
+      expect(response).to have_http_status(:no_content)
     end
   end
 end
