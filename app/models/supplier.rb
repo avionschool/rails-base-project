@@ -11,6 +11,12 @@ class Supplier < ApplicationRecord
 
   has_many :services, dependent: :destroy
 
+  after_create :send_supplier_email
+
+  def send_supplier_email
+    SupplierMailer.new_supplier_waiting_for_approval(self).deliver_later
+  end
+
   def active_for_authentication?
     super && approved?
   end
