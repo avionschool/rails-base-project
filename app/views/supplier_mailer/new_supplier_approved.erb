@@ -1,0 +1,5 @@
+<p>Hello, <%= @supplier.first_name %>!</p>
+<p>===============================================</p>
+<p>Your email, <%= @supplier.email %> has been approved by the admin!</p>
+
+<p>You can now access your account through this <%= link_to 'link', new_supplier_session_url %>.</p>
