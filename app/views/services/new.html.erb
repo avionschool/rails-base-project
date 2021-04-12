@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Want to publish a new service?</h1>
+  <%
+=begin%>
+ <%= render partial: 'form', locals: { service: @service } %> 
+<%
+=end%>
+  <%= form_with method: :post, scope: :service, url: new_supplier_service_path, local:true do |form| %>
+    <%= form.text_field :name %>
+    <%= form.text_field :price %>
+    <%= form.text_field :category %>
+    <%= form.text_field :location %>
+    <%= form.submit %>
+  <% end %>
+</div>
+<div>
+  <%= link_to "Go back", root_path %>
+</div>
