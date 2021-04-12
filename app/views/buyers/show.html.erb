@@ -1,3 +1,7 @@
 <h1>HELLO, <%=@buyer.first_name %> <%=@buyer.last_name %></h1>
 
+<h1> Categories </h1>
+<% @categories.each do |category| %>
+    <%= link_to category, category_filter_path(category: category) %>
+<% end %>
 <%= link_to 'Logout',  destroy_buyer_session_path, method: :delete %>

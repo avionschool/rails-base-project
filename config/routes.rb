@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
   end
   
+  get ':category' => 'buyers#filter', as: 'category_filter'
   get 'admins/pending/supplier' => 'admins#pending_supplier_signup', as: 'pending_supplier_signup_admin'
   put 'admins/:id/approve_supplier' => 'admins#approve_supplier_signup', as: 'approve_supplier_admin'
 end

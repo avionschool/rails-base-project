@@ -17,6 +17,13 @@ RSpec.describe 'Reviews', type: :request do
     end
   end
 
+  describe 'GET /reviews#show' do
+    it 'works! show path was reached' do
+      get review_path(review)
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
   describe 'GET /reviews#edit' do
     it 'works! edit path was reached' do
       get edit_review_path(review)

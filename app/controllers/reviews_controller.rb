@@ -4,6 +4,10 @@ class ReviewsController < ApplicationController
     @reviews = @service.reviews.all
   end
 
+  def show
+    @review = Review.find(params[:id])
+  end
+
   def edit
     @review = Review.find(params[:id])
     if review_owned_by_buyer?
