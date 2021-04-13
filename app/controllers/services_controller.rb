@@ -19,7 +19,7 @@ class ServicesController < ApplicationController
     @service.supplier_id = current_supplier.id
     if @service.save
       flash[:notice] = 'You have successfully published your service'
-      redirect_to @service
+      redirect_to @supplier
     else
       flash.now[:alert] = @service.errors.full_messages
       render :new
