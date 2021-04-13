@@ -26,9 +26,9 @@ class ServicesController < ApplicationController
   end
 
   def edit
-    @service = Service.find(params[:id])
+    @service = Service.find(params[:service_id])
     if service_owned_by_supplier?
-      @service = Service.find(params[:supplier_id])
+      @service = Service.find(params[:service_id])
     else
       flash[:alert] = "You cannot edit someone else's review."
       render :index
@@ -39,7 +39,7 @@ class ServicesController < ApplicationController
     set_service
     if @service.update(service_params)
       flash[:notice] = 'Your service has been updated!'
-      redirect_to_index
+      redirect_to @supplier
     else
       flash[:alert] = @service.errors.full_messages
       render :index
@@ -75,6 +75,6 @@ class ServicesController < ApplicationController
   end
 
   def service_params
-    params.require(:service).permit(:name, :price, :category, :supplier_id)
+    params.require(:service).permit(:name, :price, :category, :location, :supplier_id)
   end
 end
