@@ -23,10 +23,6 @@
     <%= form.text_field :location %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
   
   <%= form.submit %>
 <% end %>
@@ -41,6 +37,7 @@
     <th scope="col">Price</th>
     <th scope="col">Category</th>
     <th scope="col">Location</th>
+    <th scope="col">Service Id</th>
   </tr>
 </thead>
 <% @services.each do |service| %>
@@ -51,6 +48,8 @@
       <td><%= service.price %></td>
       <td><%= service.category %></td>
       <td><%= service.location %></td>
+      <td><%= service.id %></td>
+      <td><%= link_to "Edit service", edit_service_path(service_id: service.id) %></td>
     </tr>
   </tbody>
 <% end %>
