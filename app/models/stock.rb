@@ -1,0 +1,3 @@
+class Stock < ApplicationRecord
+    
+end

@@ -8,12 +8,21 @@ default: &default
 
 development: 
   <<: *default
-  database: rails_project_development
+  database: stocktrading_app_development
+  username: postgres
+  password: '1234'
+  host: localhost
+  port: 5432
 
 test:
   <<: *default
-  database: rails_project_test
+  database: stocktrading_app_test
+  username: postgres
+  password: '1234'
+  host: localhost
+  port: 5432
+
 
 production:
   <<: *default
-  detabase: rails_project_production
+  detabase: stocktrading_app_production
