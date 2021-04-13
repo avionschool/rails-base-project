@@ -24,7 +24,7 @@ RSpec.describe 'Services', type: :request do
 
   describe 'GET /services#edit' do
     it 'works! edit path was reached' do
-      get edit_service_path(service)
+      get edit_service_path(id: supplier.id, service_id: service.id)
       expect(response).to have_http_status(:ok)
     end
   end
@@ -32,7 +32,7 @@ RSpec.describe 'Services', type: :request do
   describe 'PUT /services#update' do
     it 'works! service was updated' do
       put service_path(service), params: { service: { name: 'Beautiful wedding photos', price: 1500, category: 'Photography', location: 'Cubao' } }
-      expect(response).to redirect_to supplier_services_path(supplier_id: service.supplier_id)
+      expect(response).to redirect_to supplier_path(supplier)
     end
   end
 
