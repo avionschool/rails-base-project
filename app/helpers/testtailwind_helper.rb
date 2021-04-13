@@ -1,0 +1,2 @@
+module TesttailwindHelper
+end
