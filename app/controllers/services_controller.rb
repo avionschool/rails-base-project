@@ -6,7 +6,8 @@ class ServicesController < ApplicationController
   end
 
   def show
-    set_service
+    @service = Service.find(params[:service_id])
+    @reviews = @service.reviews
   end
 
   def new

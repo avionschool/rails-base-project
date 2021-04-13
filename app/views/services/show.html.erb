@@ -1,3 +1,35 @@
 <h5><%= @service.name %></h5>
 <h5><%= @service.price %></h5>
 <h5><%= @service.category %></h5>
+<h5><%= @service.supplier.first_name %><%= @service.supplier.last_name %></h5>
+<h5><%= @service.supplier.contact_number %></h5>
+<h5><%= link_to @service.supplier.company_name, @supplier %></h5>
+
+
+<h3>Reviews</h3>
+<table>
+<thead>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">Title</th>
+    <th scope="col">Body</th>
+    <th scope="col">Rating</th>
+    <th scope="col">Buyer Name</th>
+  </tr>
+</thead>
+<% @reviews.each do |review| %>
+  <tbody>
+    <tr>
+      <td scope="row"></td>
+      <td><%= review.title %></td>
+      <td><%= review.body %></td>
+      <td><%= review.rating %></td>
+      <td><%= review.buyer.first_name %></td>
+    </tr>
+  </tbody>
+<% end %>
+</table>
+
+<div>
+  <%= link_to "Go back", @supplier %>
+</div>
