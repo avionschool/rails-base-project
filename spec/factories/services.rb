@@ -3,7 +3,7 @@ FactoryBot.define do
     name { 'Jonels brief' }
     price { 15_000 }
     location { 'Manila' }
-    category { 'Mens Clothing' }
+    category { "Men's clothing" }
     association :supplier
   end
 end

@@ -31,15 +31,15 @@ RSpec.describe 'Services', type: :request do
 
   describe 'PUT /services#update' do
     it 'works! service was updated' do
-      put service_path(service), params: { service: { name: 'Beautiful wedding photos', price: 1500, category: 'Photography', location: 'Cubao' } }
+      put service_path(service), params: { service: { name: 'Beautiful wedding photos', price: 1500, category: 'Photographers', location: 'Cubao' } }
       expect(response).to redirect_to supplier_path(supplier)
     end
   end
 
   describe 'POST /services#create' do
     it 'works! service was created' do
-      post supplier_services_path(service), params: { service: { name: 'Beautiful wedding photos', price: 1500, category: 'Photography', location: 'Cubao' } }
-      expect(response).to redirect_to service_path(service.id + 1)
+      post supplier_services_path(service), params: { service: { name: 'Beautiful wedding photos', price: 1500, category: 'Photographers', location: 'Cubao' } }
+      expect(response).to redirect_to supplier_path(supplier)
     end
   end
 
