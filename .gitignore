@@ -41,6 +41,3 @@ yarn-debug.log*
 .yarn-integrity
 
 config/database.yml
-
-# Ignore IEX API
-config/local_env.yml
