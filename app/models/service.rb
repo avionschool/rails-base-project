@@ -27,7 +27,7 @@ class Service < ApplicationRecord
   has_many :buyers, through: :buyer_services
   has_many :reviews, dependent: :destroy
 
-  def downcase_fields
-    self.category.downcase
-  end
+  # def downcase_fields
+  #   self.category.downcase
+  # end
 end
