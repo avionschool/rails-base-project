@@ -1,0 +1,111 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
+     
+    <div class="flex justify-center h-auto items-center mt-5">
+    <div class='flex max-w-sm w-full h-150 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
+    
+    <h3 class="text-2xl font-bold mb-4">Sign Up</h3>
+    <!-- This is the input component -->
+     <div class="relative h-10 input-component mb-5">
+            <%= f.label :role_id,"Sign up as a:" ,class:"fw-bold"%> <br />
+            <%# <%= f.text_field :topic_id, class:"form-control" %>
+             <select name="role_id" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker pl-2 px-2 py-2 pr-8 rounded"> 
+                <% @roles = Role.all %>
+                <%= @roles.each do |role| %>
+                    
+                    <option value="<%= role.id %>"><%= role.role_name %></option>
+                   
+                <% end %>
+            </select>   
+      </div>
+
+    <!-- This is the input component -->
+    <div class="relative h-10 input-component mb-5 mt-4">
+    <%= f.text_field :firstname,class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm"%>
+    <%= f.label :firstname,class: "absolute left-2 transition-all bg-white px-1"%>
+    </div>
+
+     <!-- This is the input component -->
+    <div class="relative h-10 input-component mb-5">
+    <%= f.text_field :lastname,class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm"%>
+    <%= f.label :lastname,class: "absolute left-2 transition-all bg-white px-1"%>
+    </div>
+
+    <!-- This is the input component -->
+    <div class="relative h-10 input-component mb-3">
+      
+    <%= f.email_field :email, autocomplete: "email",class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
+    <%= f.label :email, class:"absolute left-2 transition-all bg-white px-1"%>
+    </div>
+
+     <!-- This is the input component -->
+    <div class="relative h-10 input-component empty">
+    <%= f.password_field :password, autocomplete: "new-password",class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
+    <%= f.label :password, class: "absolute left-2 transition-all bg-white px-1"%>
+   
+    </div>
+    <div class="relative h-10 mt-2 input-component empty">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
+    <%= f.label :password_confirmation,class: "absolute left-2 transition-all bg-white px-1" %>
+     <% if @minimum_password_length %>
+    <em class="text-sm mx-auto">(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    </div>
+
+    <br>
+    <div class="mt-2 text-center">
+    <%= f.submit "Sign up", class:"bg-green-500 p-2 rounded text-gray-50" %>
+    <br>
+    <span>Already have an Account ?</span>
+    <%= render "users/shared/links" %>
+    
+  </div>
+
+    </div>
+</div>
+
+  
+<% end %>
+
+
+
+
+
+
+<style>
+label {
+  top: 0%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: rgba(37, 99, 235, 1);
+}
+.empty input:not(:focus) + label {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+}
+input:not(:focus) + label {
+  color: rgba(70, 70, 70, 1);
+}
+input {
+  border-width: 1px;
+}
+input:focus {
+  outline: none;
+  border-color: rgba(37, 99, 235, 1);
+}
+</style>
+<script>
+    document.getElementById('email').focus()
+    const allInputs = document.querySelectorAll('input');
+    for(const input of allInputs) {
+        input.addEventListener('input', () => {
+            const val = input.value
+            if(!val) {
+                input.parentElement.classList.add('empty')
+            } else {
+                input.parentElement.classList.remove('empty')
+            }
+        })
+    }
+</script>

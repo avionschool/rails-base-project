@@ -9,10 +9,33 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application',media: 'all','data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag asset_path('peddler_icon.png') %>
-
+    <script src="https://kit.fontawesome.com/e27963bb72.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body class="bg-gray-100">
+    <%= render 'partials/navbar' %>
+    <% if notice %>
+    <%= render 'partials/notice' %>
+    
+    <% elsif alert  %>
+    <%= render 'partials/alert' %>
+     
+    <% end  %>   
+        <br />
     <%= yield %>
   </body>
 </html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+	integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous">
+	</script>
+
+<script>
+$(".closealertbutton").click(function (e) {
+    // $('.alertbox')[0].hide()
+    // e.preventDefault();
+    pid = $(this).parent().parent().hide(500)
+    console.log(pid)
+    // $(".alertbox", this).hide()
+})
+</script>
