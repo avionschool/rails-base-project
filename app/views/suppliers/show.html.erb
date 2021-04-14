@@ -16,24 +16,7 @@
   
   <div class="form-group">
     <%= form.label :category %>
-    <%= form.select :category, [
-      'Churches', 
-      'Reception venues', 
-      'Hotels',
-      'Performers',
-      'Hosts',
-      'Photographers',
-      'Videographers',
-      "Men's clothing",
-      "Women's clothing",
-      'Vehicles',
-      'Rings',
-      'Florists',
-      'Lights and sounds',
-      'Catering',
-      'Loot bags'
-      ]
-    %>
+    <%= form.select :category, Service::VALID_CATEGORIES %>
   </div>
   
   <div class="form-group">
@@ -72,8 +55,6 @@
   </tbody>
 <% end %>
 </table>
-
-
 
 
 <%= link_to 'Logout',  destroy_supplier_session_path, method: :delete %>
