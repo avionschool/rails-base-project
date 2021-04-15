@@ -1,26 +1,18 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
      
-    <div class="flex justify-center h-auto items-center mt-5">
+    <div class="flex justify-center h-auto items-center mt-2 mb-3">
     <div class='flex max-w-sm w-full h-150 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
     
     <h3 class="text-2xl font-bold mb-4">Sign Up</h3>
     <!-- This is the input component -->
-     <div class="relative h-10 input-component mb-5">
-            <%= f.label :role_id,"Sign up as a:" ,class:"fw-bold"%> <br />
-            <%# <%= f.text_field :topic_id, class:"form-control" %>
-             <select name="role_id" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker pl-2 px-2 py-2 pr-8 rounded"> 
-                <% @roles = Role.all %>
-                <%= @roles.each do |role| %>
-                    
-                    <option value="<%= role.id %>"><%= role.role_name %></option>
-                   
-                <% end %>
-            </select>   
-      </div>
-
+    <div class="relative h-12 input-component mb-10 p-3 text-right">
+            <%= f.label :role_id,"Sign Up As A : " ,class:"font-semibold"%> <br />
+            <%= f.select :role_id, [["Buyer", 1], ["Broker", 2]]%>
+    </div>
+     
     <!-- This is the input component -->
-    <div class="relative h-10 input-component mb-5 mt-4">
+    <div class="relative h-10 input-component mb-5 mt-5">
     <%= f.text_field :firstname,class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm"%>
     <%= f.label :firstname,class: "absolute left-2 transition-all bg-white px-1"%>
     </div>
@@ -73,6 +65,11 @@
 
 
 <style>
+select{
+  border: 1px solid black;
+  padding : 5px;
+  border-radius: 5px;
+}
 label {
   top: 0%;
   transform: translateY(-50%);

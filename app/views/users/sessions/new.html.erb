@@ -1,16 +1,23 @@
-<h2>Log in</h2>
+
+ <div class="flex justify-center h-auto items-center mt-5">
+    <div class='flex max-w-sm w-full h-150 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
+    
+    <h3 class="text-2xl font-bold mb-4">Log in</h3>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  
+       
+    <!-- This is the input component -->
+  <div class="relative h-10 input-component mb-5 mt-4">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
+    <%= f.label :email,class: "absolute left-2 transition-all bg-white px-1" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  
+    <div class="relative h-10 input-component mb-2 mt-4">
+    <%= f.password_field :password, autocomplete: "current-password",class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
+    <%= f.label :password, class: "absolute left-2 transition-all bg-white px-1" %>
   </div>
-
+  
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
@@ -18,9 +25,53 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="text-center">
+    <%= f.submit "Log in", class:"p-2 rounded-lg cursor-pointer text-gray-50 bg-green-500"%>
   </div>
 <% end %>
 
+<section class="text-center mt-2">
 <%= render "users/shared/links" %>
+
+</section>
+
+  </div>
+</div>
+
+<style>
+label {
+  top: 0%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: rgba(37, 99, 235, 1);
+}
+.empty input:not(:focus) + label {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+}
+input:not(:focus) + label {
+  color: rgba(70, 70, 70, 1);
+}
+input {
+  border-width: 1px;
+}
+input:focus {
+  outline: none;
+  border-color: rgba(37, 99, 235, 1);
+}
+</style>
+<script>
+    document.getElementById('email').focus()
+    const allInputs = document.querySelectorAll('input');
+    for(const input of allInputs) {
+        input.addEventListener('input', () => {
+            const val = input.value
+            if(!val) {
+                input.parentElement.classList.add('empty')
+            } else {
+                input.parentElement.classList.remove('empty')
+            }
+        })
+    }
+</script>

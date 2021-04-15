@@ -17,7 +17,16 @@ class Users::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-
+  def after_sign_in_path_for(resource)
+    if current_user.role_id == 1 
+     buyers_path  
+    elsif current_user.role_id == 2
+     brokers_path
+    else
+     super(resource)
+    end
+   
+    end
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.

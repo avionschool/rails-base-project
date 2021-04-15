@@ -1,43 +1,80 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+     <div class="flex justify-center h-auto items-center mt-5">
+    <div class='flex max-w-sm w-full text-start h-150 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
+    <h1 class="mb-2 font-semibold"> <%= Role.find(current_user.role_id).role_name %> <%= resource_name.to_s.humanize %> Account Details</h1>
+    
+      <!-- This is the input component -->
+    <div class="relative h-10 input-component mb-5 mt-4">
+    <%= f.label :email, class:"font-semibold" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"Email", class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
+    </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
+    <!-- This is the input component -->
+    <div class="relative h-10 input-component mb-5 mt-4">
+    <%= f.label :password, class:"font-semibold" %><i>(Optional)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password",placeholder:"Password", class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
+     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
-  </div>
+    </div>
+    <br>
+  <!-- This is the input component -->
+    <div class="relative h-10 input-component mb-5 mt-4">
+    <%= f.label :password_confirmation, class:"font-semibold" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"Password Confirmation", class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
+     <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+    </div>
+    <br>
+  <!-- This is the input component -->
+    <div class="relative h-10 input-component mb-5 mt-4">
+    <%= f.label :current_password, class:"font-semibold" %><i>(Enter current password to confirm changes)</i><br />
+    <%=  f.password_field :current_password, autocomplete: "current-password",placeholder:"Current Password", class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
+    </div>
+    <br>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <div class="actions mt-2 text-center"> 
+    <%= link_to "Back", :back,class:"p-2 rounded-lg text-gray-100 bg-blue-500 " %>
+    <%= f.submit "Update", class:"p-2 rounded-lg text-gray-100 bg-green-500 " %>
+   
   </div>
 <% end %>
+<div class="p-3 mt-2 h-auto w-full text-gray-50 bg-red-400 text-center font-semibold ">Danger Zone</div>
+<h3 class="text-center">Once you delete your account, there is no going back. Please be certain.</h3>
 
-<h3>Cancel my account</h3>
+ <div class="actions mt-2 text-center">
+    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"p-2 rounded-lg text-gray-100 bg-red-400 " %>
+  </div>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+
+</div>
+</div>
+
+<style>
+
+.empty input:not(:focus) + label {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+}
+input:not(:focus) + label {
+  color: rgba(70, 70, 70, 1);
+}
+input {
+  border-width: 1px;
+}
+input:focus {
+  outline: none;
+  border-color: rgba(37, 99, 235, 1);
+}
+</style>
