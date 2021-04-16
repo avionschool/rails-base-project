@@ -14,10 +14,10 @@ class User < ApplicationRecord
     validates :email, uniqueness: true
     validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP, message:"Valid emails only!" }
 
-    def buy(a)
-
+    def buy_stock(stock,volume)
+      # Validate
     end
-    def sell(a)
+    def sell_stock(stock,volume)
     
     end
 end
