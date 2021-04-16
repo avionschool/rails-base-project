@@ -1,9 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
     def create
       build_resource(sign_up_params)
-      if resource == @broker || resource == @buyer
-        resource.admin_id = Admin.first.id  
-      end
+      resource.admin_id = Admin.first.id  
 
       resource.save
       yield resource if block_given?
