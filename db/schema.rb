@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_111847) do
+ActiveRecord::Schema.define(version: 2021_04_16_143502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_111847) do
   create_table "buyers_stocks", id: false, force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "stock_id"
+    t.integer "volume"
     t.index ["user_id", "stock_id"], name: "index_buyers_stocks_on_user_id_and_stock_id", unique: true
   end
 
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_111847) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "volume"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -40,12 +42,12 @@ ActiveRecord::Schema.define(version: 2021_04_16_111847) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.decimal "price"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "username", null: false
     t.string "email", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -53,8 +55,11 @@ ActiveRecord::Schema.define(version: 2021_04_16_111847) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.bigint "role_id"
+    t.decimal "cash", default: "0.0"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
 end

@@ -3,8 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-    has_and_belongs_to_many :role, foreign_key: "role_id"
-    has_and_belongs_to_many :stock, join_table: "buyers_stocks", foreign_key: "stock_id"
+
+
+    belongs_to :role
+    has_and_belongs_to_many :stocks, join_table: "buyers_stocks", foreign_key: "stocks_id"
 
     #validates :username, presence: true
     validates :encrypted_password, presence: true
@@ -15,9 +17,9 @@ class User < ApplicationRecord
     validates :email, presence: true, format: {with: URI::MailTo::EMAIL_REGEXP, message:"Valid emails only!" }
 
     def buy_stock(stock,volume)
-      # Validate
+      # Validate if user.role =  buyer/broker(?)
     end
     def sell_stock(stock,volume)
-    
+      # Validate if user.role = broker/buyer(?)
     end
 end
