@@ -41,3 +41,6 @@ yarn-debug.log*
 .yarn-integrity
 
 config/database.yml
+
+# Ignore Seed File
+db/seeds.rb
