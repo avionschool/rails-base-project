@@ -13,7 +13,18 @@
   </head>
 
   <body class="bg-gray-100">
-    <%= render 'partials/navbar' %>
+    <% unless signed_in? %>
+      <%= render 'partials/navbar' %>
+    <% end %>
+
+    <% if signed_in? %>
+      <% if current_user %>
+          <%= render 'partials/navbar' %>
+      <% else %>
+          <%= render 'partials/adminnav' %>
+    <% end %>
+      
+    <% end %>
     <% if notice %>
     <%= render 'partials/notice' %>
     
