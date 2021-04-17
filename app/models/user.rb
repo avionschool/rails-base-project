@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   belongs_to :role
   has_many :stocks
-  has_many :transactions
+  has_many :transactions, through: :stocks
 
   validates :username, presence:true
 end

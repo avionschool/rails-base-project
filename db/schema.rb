@@ -17,28 +17,35 @@ ActiveRecord::Schema.define(version: 2021_04_17_035137) do
 
   create_table "roles", force: :cascade do |t|
     t.string "role_name"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["role_name"], name: "index_roles_on_role_name", unique: true
   end
 
   create_table "stocks", force: :cascade do |t|
     t.string "name"
     t.integer "total_price"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_stocks_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.integer "stock_id"
     t.integer "price"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "stock_id"
+    t.bigint "user_id"
+    t.index ["stock_id"], name: "index_transactions_on_stock_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "username", default: "", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "role_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -52,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_035137) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
 end
