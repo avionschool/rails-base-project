@@ -17,3 +17,14 @@
         s.save!
     end
 end
+
+#Initialize Roles
+
+Role.create(name: "Buyer")
+Role.create(name: "Broker")
+Role.create(name: "Admin")
+
+#Intialize Admin Account/s
+
+User.create(role_id: 3, email: 'ddcmendoza@gmail.com', password: "123456") #Dave
+#User.create(role_id: 3, email: '') #Alex
