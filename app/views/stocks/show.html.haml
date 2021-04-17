@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @stock.name
+%p
+  %b Total price:
+  = @stock.total_price
+%p
+  %b User:
+  = @stock.user_id
+
+= link_to 'Edit', edit_stock_path(@stock)
+\|
+= link_to 'Back', stocks_path
