@@ -1,7 +1,8 @@
 class Stock < ApplicationRecord
-    validates :total_price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+    validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
+    validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
     belongs_to :user
-    has_many :transactions
+    has_many :transactions, dependent: :nullify
 
 end
