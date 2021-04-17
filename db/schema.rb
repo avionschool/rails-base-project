@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_121850) do
+ActiveRecord::Schema.define(version: 2021_04_17_031831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_121850) do
     t.datetime "locked_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "account_type", default: "admin"
   end
 
   create_table "brokers", force: :cascade do |t|
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_121850) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "admin_id"
+    t.string "account_type", default: "broker"
     t.index ["admin_id"], name: "index_brokers_on_admin_id"
     t.index ["email"], name: "index_brokers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_brokers_on_reset_password_token", unique: true
@@ -53,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_121850) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "admin_id"
+    t.string "account_type", default: "buyer"
     t.index ["admin_id"], name: "index_buyers_on_admin_id"
     t.index ["email"], name: "index_buyers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
