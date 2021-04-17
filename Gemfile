@@ -17,6 +17,7 @@ gem 'devise'
 gem 'hamlit-rails'
 gem 'nokogiri'
 gem 'iex-ruby-client'
+gem 'dotenv-rails'
 
 
 group :development, :test do
