@@ -41,3 +41,7 @@ yarn-debug.log*
 .yarn-integrity
 
 config/database.yml
+
+
+# Initializer
+config/initializers/iex_client.rb

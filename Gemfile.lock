@@ -83,6 +83,17 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
+    faraday (1.4.0)
+      faraday-excon (~> 1.0)
+      faraday-net_http (~> 1.0)
+      faraday-net_http_persistent (~> 1.0)
+      multipart-post (>= 1.2, < 3)
+      ruby2_keywords (>= 0.0.4)
+    faraday-excon (1.1.0)
+    faraday-net_http (1.0.1)
+    faraday-net_http_persistent (1.1.0)
+    faraday_middleware (1.0.0)
+      faraday (~> 1.0)
     ffi (1.15.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -96,8 +107,14 @@ GEM
       hamlit (>= 1.2.0)
       railties (>= 4.0.1)
     hashdiff (1.0.1)
+    hashie (4.1.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    iex-ruby-client (1.4.0)
+      faraday (>= 0.17)
+      faraday_middleware
+      hashie
+      money_helper
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     listen (3.5.1)
@@ -112,7 +129,13 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.0)
     minitest (5.14.4)
+    money (6.14.1)
+      i18n (>= 0.6.4, <= 2)
+    money_helper (1.0.2)
+      activesupport
+      money (~> 6.5)
     msgpack (1.4.2)
+    multipart-post (2.1.1)
     nio4r (2.5.7)
     nokogiri (1.11.3-x86_64-darwin)
       racc (~> 1.4)
@@ -204,6 +227,7 @@ GEM
       rubocop (~> 1.0)
       rubocop-ast (>= 1.1.0)
     ruby-progressbar (1.11.0)
+    ruby2_keywords (0.0.4)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -269,6 +293,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   hamlit-rails
+  iex-ruby-client
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg
@@ -292,4 +317,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.2.11
+   2.2.16
