@@ -8,7 +8,7 @@ require 'rspec/rails'
 require 'shoulda/matchers'
 require 'factory_bot_rails'
 
-Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require |f| }
+#Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require |f| }
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -24,13 +24,13 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
 
-  config.before(:suite) do
-    DatabaseRewinder.clean_all
-  end
+  # config.before(:suite) do
+  #   DatabaseRewinder.clean_all
+  # end
 
-  config.after(:each) do
-    DatabaseRewinder.clean
-  end
+  # config.after(:each) do
+  #   DatabaseRewinder.clean
+  # end
 end
 
 Shoulda::Matchers.configure do |config|
