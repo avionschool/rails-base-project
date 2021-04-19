@@ -24,7 +24,8 @@ ActiveRecord::Schema.define(version: 2021_04_17_174838) do
 
   create_table "stocks", force: :cascade do |t|
     t.string "name"
-    t.integer "total_price"
+    t.decimal "amount"
+    t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
@@ -32,7 +33,9 @@ ActiveRecord::Schema.define(version: 2021_04_17_174838) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.integer "price"
+    t.decimal "price"
+    t.decimal "total_amount"
+    t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "stock_id"
