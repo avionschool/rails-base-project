@@ -1,17 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsProject</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Stock App!">
+    <meta name="author" content="E&M - Devs">
+    <title>Stock App!</title>
+
+    <%= favicon_link_tag asset_path('') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render "layouts/nav" %>
+    <%= render "layouts/notifications" %>
+
+    <div class="cover-container mt-5 d-flex w-100 h-100 p-3 mx-auto flex-column">
     <%= yield %>
+    </div>
+
+  <script>
+  // For Navbar
+    $(window).scroll(function () {
+      if ($(document).scrollTop() > 50) {
+        $(".nav1").addClass("affix");
+      } else {
+        $(".nav1").removeClass("affix");
+      }
+    });
+
+    $(".navTrigger").click(function () {
+      $(this).toggleClass("active");
+      $("#mainListDiv").toggleClass("show_list");
+      $("#mainListDiv").fadeIn();
+    });
+  </script>
   </body>
 </html>

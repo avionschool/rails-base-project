@@ -1,0 +1,20 @@
+@import '~bootstrap/scss/bootstrap';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: black;
+  color: #bc6ff1;
+  background: #00072b;
+  background-blend-mode: overlay;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+.cover-container {
+  max-width: 65em;
+}
