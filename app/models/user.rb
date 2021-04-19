@@ -19,5 +19,5 @@ class User < ApplicationRecord
     end
     def sell_stock(stock,volume)
     
-    end
+    end 
 end
