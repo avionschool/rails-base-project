@@ -26,9 +26,9 @@ class RegistrationsController < Devise::RegistrationsController
 
     def after_sign_in_path_for(resource)
       if resource.account_type == "buyer"
-        buyer_path	  
+        buyer_index_path	  
       elsif resource.account_type == "broker"
-        broker_path	
+        broker_index_path	
       end
     end
   end
