@@ -3,4 +3,8 @@ class BrokerController < ApplicationController
 
   def index
   end
+
+  def portfolio
+    @added_stocks = current_broker.stocks
+  end
 end
