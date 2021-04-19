@@ -10,13 +10,13 @@ class Broker < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
-  def stock_already_added?(ticker_symbol)
-    stock = Stock.check_db(ticker_symbol)
+  def stock_already_added?(ticker_symbol, broker_id)
+    stock = Stock.check_db(ticker_symbol, broker_id)
     return false unless stock
-    stocks.where(id: stock.id).exists?
+    stocks.where(id: stock.id, added_by: broker_id).exists?
   end
 
-  def can_add_stock?(ticker_symbol)
-    !stock_already_added?(ticker_symbol)
+  def can_add_stock?(ticker_symbol, broker_id)
+    !stock_already_added?(ticker_symbol, broker_id)
   end
 end
