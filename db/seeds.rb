@@ -5,3 +5,26 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+#Intialize all available stock codes
+
+@client = IEX::Api::Client.new
+@symbols = @client.ref_data_symbols
+
+@symbols.each do |x|
+    if Stock.find_by(code: x.symbol) == nil
+        s = Stock.new(name: x.name, code: x.symbol, volume: 0)
+        s.save!
+    end
+end
+
+#Initialize Roles
+
+Role.create(name: "Buyer")
+Role.create(name: "Broker")
+Role.create(name: "Admin")
+
+#Intialize Admin Account/s
+
+User.create(role_id: Role.find_by_name('Admin'), email: 'ddcmendoza@gmail.com', password: "123456") #Dave
+#User.create(role_id: Role.find_by_name('Admin'), email: 'kidong044@gmail.com') #Alex

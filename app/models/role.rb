@@ -1,3 +1,5 @@
 class Role < ApplicationRecord
-    has_and_belongs_to_many :user, foreign_key: "user_id"
+    TYPES = ['Buyer','Broker','Admin'].freeze
+    validates :name, inclusion: {in: TYPES}
+    has_many :users
 end
