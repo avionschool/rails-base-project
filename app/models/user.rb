@@ -17,7 +17,9 @@ class User < ApplicationRecord
     def buy_stock(stock,volume)
       # Validate
     end
+    
     def sell_stock(stock,volume)
     
     end 
+
 end
