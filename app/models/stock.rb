@@ -7,4 +7,9 @@ class Stock < ApplicationRecord
     def self.exists?(code)
         !!self.find_by(code: code)
     end
+
+    def check_total
+        self.volume = BuyersStock.total_stock(self)
+        self.save
+    end
 end

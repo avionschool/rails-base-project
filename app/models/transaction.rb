@@ -2,6 +2,7 @@ class Transaction < ApplicationRecord
     TYPES =  ['Buy','Sell'].freeze
     belongs_to :user
     belongs_to :stock
+    before_save :check_stock_total
 
     validates :transaction_type, inclusion: {in: TYPES}
     validates :volume, numericality: {greater_than_or_equal_to: 0}
@@ -33,6 +34,10 @@ class Transaction < ApplicationRecord
                 "Something went wrong!"
             end
         end
+    end
+    
+    def check_stock_total
+        self.stock.check_total
     end
 
 end
