@@ -2,6 +2,7 @@ class BrokerStocksController < ApplicationController
   
   def create
     stock = Stock.new_search(params[:ticker])
+    stock.added_by = current_broker.id
     if stock.blank?
       stock = Stock.new_search(params[:ticker])
       stock.save
