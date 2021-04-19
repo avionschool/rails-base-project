@@ -9,10 +9,6 @@
   box-sizing: border-box;
 }
 
-.nav1 li a {
-  font-size: 20px;
-}
-
 .nav1 div.logo {
   float: left;
   width: auto;
@@ -86,8 +82,7 @@
   .nav1 div.main_list ul li a {
     text-align: right;
     width: 100%;
-    // font-size: 0.9rem;
-    font-size: 16px;
+    font-size: 1.5rem;
   }
 }
 

@@ -9,58 +9,15 @@
         <li><%= link_to "Buyer", new_buyer_session_path %></li>
         <li><%= link_to "Broker", new_broker_session_path %></li>
         <li><%= link_to "Admin", new_admin_session_path %></li>
+        <% if buyer_signed_in? %>
         <li><%= link_to "Sign out (Buyer)", destroy_buyer_session_path, method: :delete %></li>
+        <% end %>
+        <% if broker_signed_in? %>
         <li><%= link_to "Sign out (Broker)", destroy_broker_session_path, method: :delete %></li>
+        <% end %>
+        <% if admin_signed_in? %>
         <li><%= link_to "Sign out (Admin)", destroy_admin_session_path, method: :delete %></li>
-        <!-- ICONS -->
-        <li class="menu_search_icons">
-          <a><i class="fas fa-search fa-lg"></i></a>
-        </li>
-        <li class="menu_account_icons">
-          <a
-            id="navbarDropdownMenuLink-4"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <i class="fas fa-user-circle fa-lg"></i
-          ></a>
-          <div
-            class="dropdown-menu dropdown-menu-right dropdown-info"
-            aria-labelledby="navbarDropdownMenuLink-4"
-          >
-            <a
-              class="dropdown-item login_modal"
-              data-toggle="modal"
-              data-target="#modalLoginForm"
-              >Login</a
-            >
-            <a
-              class="dropdown-item signup_modal"
-              data-toggle="modal"
-              data-target="#modalSignupForm"
-              >Sign Up</a
-            >
-          </div>
-        </li>
-        <!-- ICONS TO WORDS -->
-        <li class="menu_search_words">
-          <a>Search</a>
-        </li>
-        <li class="menu_account_words">
-          <a
-            data-toggle="modal"
-            data-target="#modalLoginForm"
-            >Sign-up</a
-          >
-        </li>
-        <li class="menu_login_words">
-          <a
-            data-toggle="modal"
-            data-target="#modalSignupForm"
-            >Login</a
-          >
-        </li>
+        <% end %>
       </ul>
     </div>
     <span class="navTrigger">

@@ -21,10 +21,12 @@
   </head>
 
   <body>
+    <div class="text-center">
+    <%= render 'layouts/messages' %>
+    </div>
     <%= render "layouts/nav" %>
-    <%= render "layouts/notifications" %>
 
-    <div class="cover-container mt-5 d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <%= yield %>
     </div>
 
