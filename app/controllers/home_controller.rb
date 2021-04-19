@@ -4,13 +4,18 @@ class HomeController < ApplicationController
       @client = IEX::Api::Client.new()
       ticker = params[:ticker_input]
   
-      if not ticker.nil? and ticker.strip.empty? 
+      if not ticker.nil? and ticker.strip.empty?
         @nothing = "No `Ticker` entered. Please try again."
+
       elsif ticker
-        @quote = @client.quote(ticker)
-  
-        if !@quote
-          @error = "Stock symbol does not exist."
+
+        if ticker.match(/\s/)
+          @nothing = "Ticker symbol shoud not contain spaces."
+        else
+          @quote = @client.quote(ticker)
+          if !@quote
+            @error = "Stock symbol does not exist."
+          end
         end
       end
   

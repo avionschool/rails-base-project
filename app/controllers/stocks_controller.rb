@@ -1,9 +1,15 @@
 class StocksController < ApplicationController
+  before_action :authenticate_user! # Devise variable
+  before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :set_stock, only: %i[ show edit update destroy ]
 
   # GET /stocks or /stocks.json
   def index
-    @stocks = Stock.all
+    if current_user.role == "admin"
+      @stocks = Stock.all
+    else
+      @stocks = current_user.stocks.all
+    end
   end
 
   # GET /stocks/1 or /stocks/1.json
@@ -11,9 +17,9 @@ class StocksController < ApplicationController
   end
 
   # GET /stocks/new
-  def new
-    @stock = Stock.new
-  end
+  # def new
+  #   @stock = Stock.new
+  # end
 
   # GET /stocks/1/edit
   def edit
@@ -60,6 +66,11 @@ class StocksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_stock
       @stock = Stock.find(params[:id])
+    end
+
+    def correct_user
+      @stocks = current_user.stocks.find_by(id: params[:id])
+      redirect_to stocks_path, notice: "Not Authorized to edit this stock" if @stocks.nil?
     end
 
     # Only allow a list of trusted parameters through.

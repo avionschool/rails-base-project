@@ -2408,6 +2408,11 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
+dailychart@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/dailychart/-/dailychart-1.3.1.tgz#9c1a94d0d2c2305e6183a24f24b7098f5dcd1cb9"
+  integrity sha512-/5sIwJ5BG2LGdhaDmZn6qOtHlJr1TIQ3Ov4TFD2Kvy61FecRKCK9bugl9uoLiIFiMvEV3Er2B6MJcZ2+HkxAIA==
+
 dashdash@^1.12.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/dashdash/-/dashdash-1.14.1.tgz#853cfa0f7cbe2fed5de20326b8dd581035f6e2f0"
