@@ -19,6 +19,21 @@
           <% end %>
 
           <div class="field form-group mb-4">
+            <%= f.label :username %><br />
+            <%= f.text_field :username %>
+          </div>
+
+          <div class="field form-group mb-4">
+            <%= f.label :first_name %><br />
+            <%= f.text_field :first_name %>
+          </div>
+
+          <div class="field form-group mb-4">
+            <%= f.label :last_name %><br />
+            <%= f.text_field :last_name %>
+          </div>
+
+          <div class="field form-group mb-4">
             <label for="user_password">New Password</label>
             <%# f.label :password %>
             <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
@@ -56,6 +71,4 @@
         <%= link_to "Back", :back %>
       </div>
     </div>
-
-  </div>
 </div>

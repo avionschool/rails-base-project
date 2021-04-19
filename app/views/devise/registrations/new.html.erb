@@ -13,6 +13,27 @@
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'w-100 mb-3 form-control' %>
           </div>
 
+          <%# should be dropdown %>
+          <div class="field form-group">
+            <%= f.label :role_id, "Role id:" %><br />
+            <%= f.text_field :role_id, class: 'w-100 mb-3 form-control' %>
+          </div>
+
+          <div class="field form-group">
+            <%= f.label :username %><br />
+            <%= f.text_field :username, class: 'w-100 mb-3 form-control' %>
+          </div>
+
+          <div class="field form-group">
+            <%= f.label :first_name %><br />
+            <%= f.text_field :first_name, class: 'w-100 mb-3 form-control' %>
+          </div>
+
+          <div class="field form-group">
+            <%= f.label :last_name %><br />
+            <%= f.text_field :last_name, class: 'w-100 mb-3 form-control' %>
+          </div>
+
           <div class="field form-group">
             <%= f.label :password %>
             <% if @minimum_password_length %>
@@ -28,7 +49,7 @@
 
           <div class="actions d-flex justify-content-between">
             <%= f.submit "Sign up as Buyer", class: 'btn btn-success mb-4 shadow rounded mt-3' %>
-            <%= f.submit "Sign up as Broker", class: 'btn btn-primary mb-4 shadow rounded mt-3' %>
+            <%= f.submit "Sign up", class: 'btn btn-primary mb-4 shadow rounded mt-3' %>
           </div>
         <% end %>
         

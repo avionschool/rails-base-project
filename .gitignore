@@ -45,3 +45,5 @@ config/database.yml
 
 # Initializer
 config/initializers/iex_client.rb
+# Ignore storage for smtp credentials
+/config/initializers/smtp_env_vars.rb

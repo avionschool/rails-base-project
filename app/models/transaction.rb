@@ -1,9 +1,9 @@
 class Transaction < ApplicationRecord
-    validates :total_amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
-    validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0 }
-    validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 } 
+    validates :total_amount, presence: true, numericality: { greater_than_or_equal_to: 0.01 }
+    validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0.01 }
+    validates :price, presence: true, numericality: { greater_than_or_equal_to: 0.01 } 
     # validates :user_id, presence: false, allow_nil: true
-
+   
     belongs_to :stock
     # belongs_to :user, optional: true # SELL: broker or seller like IEX
     
