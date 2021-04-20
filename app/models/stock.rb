@@ -25,4 +25,16 @@ class Stock < ApplicationRecord
         find_by(ticker: ticker_symbol, added_by: broker_id)
     end
     
+    # NOT WORKING YET
+    # def self.stock_logo(ticker_symbol)
+    #     client = IEX::Api::Client.new(
+    #         publishable_token: ENV["IEX_PUBLISHABLE_KEY"],
+    #         secret_token: ENV["IEX_SECRET_KEY"],
+    #         # publishable_token: Rails.application.credentials.iex_client[:publishable_access_key],
+    #         # secret_token: Rails.application.credentials.iex_client[:secret_access_key],
+    #         endpoint: 'https://sandbox.iexapis.com/v1'
+    #       )
+    #     logo = client.logo(ticker_symbol)
+    #     return logo.url
+    # end
 end
