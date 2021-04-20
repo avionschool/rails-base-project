@@ -1,0 +1,9 @@
+<div>
+    <% if @quote %>
+        <%= @quote.symbol%><br>
+        <%= @quote.company_name%><br>
+        $<%= @quote.latest_price%><br>
+        <%= @quote.change_percent_s %><br>
+        <%= @quote.change%><br>
+    <% end %>
+</div>

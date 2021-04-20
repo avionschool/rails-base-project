@@ -7,7 +7,8 @@ class User < ApplicationRecord
 
   belongs_to :role
   has_many :stocks, dependent: :nullify
+  has_many :markets, dependent: :destroy
   
-  has_many :sale, class_name: "Transaction", foreign_key: "seller_id"
-  has_many :purchases, class_name: "Transaction", foreign_key: "buyer_id"
+  has_many :sale, class_name: "Transaction", foreign_key: "seller_id", dependent: :nullify
+  has_many :purchases, class_name: "Transaction", foreign_key: "buyer_id", dependent: :nullify
 end

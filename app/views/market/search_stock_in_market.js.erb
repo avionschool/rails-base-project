@@ -1,0 +1,2 @@
+console.log("connected")
+$("#stock-searched").html("<%= escape_javascript(render(partial: 'quote', locals: {quote: @quote}))%>")
