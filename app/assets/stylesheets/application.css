@@ -134,7 +134,7 @@
   .container-right {
     display: flex !important;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
   }
   
   .container-right {
@@ -308,9 +308,9 @@
   
   .start-now-two {
     background-color: var(--logo_color);
-    color: rgb(48, 48, 48);
+    color: white;
     border-radius: 5px;
-    border: 3px solid rgb(48, 48, 48);
+    border: 3px solid #5944be;
     padding-left: 30px;
     padding-top: 10px;
     padding-bottom: 10px;
