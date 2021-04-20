@@ -16,7 +16,7 @@
           <%# should be dropdown %>
           <div class="field form-group">
             <%= f.label :role_id, "I wanna be a " %><br />
-            <%= f.select(:role_id, options_for_select([['admin', 1], ['buyer', 2],['broker',3]]), {}, {class: 'w-100 mb-3 form-control'}) %>
+            <%= f.select(:role_id, options_for_select([['buyer', 2],['broker',3]]), {}, {class: 'w-100 mb-3 form-control'}) %>
           </div>
 
           <div class="field form-group">
