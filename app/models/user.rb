@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   belongs_to :role
   has_and_belongs_to_many :stocks, join_table: "buyers_stocks"
-  has_many :transactions
+  has_many :transactions, dependent: :destroy
 
   validates :encrypted_password, presence: true
   validates :email, presence: true
@@ -92,12 +92,12 @@ class User < ApplicationRecord
     buyer_stock = BuyersStock.find_entry(self.id, stock.id)
     seller_stock = BuyersStock.find_entry(other_party.id, stock.id)
     # Actual Process transaction
-    if trans.transaction_type == "Sell" && self.cash > price * volume
+    if trans.transaction_type == "Sell" && self.cash >= price * volume
       self.cash = self.cash - (price * volume)
       other_party.cash = other_party.cash + (price * volume)
       buyer_stock.volume = buyer_stock.volume + volume
       seller_stock.alloted_volume = seller_stock.alloted_volume - volume
-    elsif trans.transaction_type == "Buy" && buyer_stock.volume > volume
+    elsif trans.transaction_type == "Buy" && buyer_stock.volume >= volume
       self.cash = self.cash + (price * volume)
       other_party.alloted_cash = other_party.alloted_cash - (price * volume)
       buyer_stock.volume = buyer_stock.volume - volume
