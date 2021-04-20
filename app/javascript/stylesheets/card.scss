@@ -1,0 +1,24 @@
+.neumorphic {
+    color: #5ab9ea;
+    width: 100%;
+    padding: 15px 30px;
+    border-radius: 20px;
+    transition: all 0.5s ease;
+    outline: none;
+    background: #131419;
+    text-align: center;
+    box-shadow:  -5px -5px 10px rgba(255, 255, 255, 0.10),
+                5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.neumorphic:hover{
+    color: #5ab9ea;
+    width: 100%;
+    padding: 15px 30px;
+    border-radius: 20px;
+    transition: all 0.5s ease;
+    background: #131419;
+    text-align: center;
+    box-shadow:  inset -5px -5px 10px rgba(255, 255, 255, 0.10),
+                inset 5px 5px 15px rgba(0, 0, 0, 0.5);
+}

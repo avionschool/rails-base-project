@@ -17,6 +17,8 @@ import 'bootstrap'
 import 'jquery'
 import '../stylesheets/application'
 import '../stylesheets/navbar'
+import '../stylesheets/form'
+import '../stylesheets/card'
 // import '../stylesheets/normalize'
 
 // document.addEventListener('turbolinks:load', () => {
