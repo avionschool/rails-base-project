@@ -48,8 +48,8 @@
           </div>
 
           <div class="actions d-flex justify-content-between">
-            <%= f.submit "Sign up as Buyer", class: 'btn btn-success mb-4 shadow rounded mt-3' %>
-            <%= f.submit "Sign up", class: 'btn btn-primary mb-4 shadow rounded mt-3' %>
+            <%# f.submit "Sign up as Buyer", class: 'btn btn-success mb-4 shadow rounded mt-3' %>
+            <%= f.button "Sign up", class: 'btn btn-primary mb-4 shadow rounded mt-3', data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Signing up..."}  %>
           </div>
         <% end %>
         

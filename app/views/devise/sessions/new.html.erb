@@ -24,7 +24,7 @@
         <% end %>
 
         <div class="actions">
-          <%= f.submit "Log in", class: 'btn btn-primary mb-4 shadow rounded mt-3 form-control' %>
+          <%= f.button "Log in", class: 'btn btn-primary mb-4 shadow rounded mt-3 form-control', data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Logging in..."}  %>
         </div>
       <% end %>
       <p class='mb-0 text-muted'>New to StockApp? Register <%= link_to "here", new_user_registration_path %>.</p>

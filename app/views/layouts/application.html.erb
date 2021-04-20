@@ -9,20 +9,28 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
     <%# <script src='https://unpkg.com/dailychart/dist/dailychart.min.js'></script> %>
   </head>
-
   <body class="position-relative">
-    <%= render "home/navbar" %>
-    <div class="container">
+    <div class="loader hidden">
+      <%# <img src="spinner-bean.gif" alt="Loading..." /> %>
+      <%# image_tag "spinner-bean.gif" %>
+    </div>
+    <%= render partial: "home/navbar" %>
+    <div class="container" id="pages-container">
       <br>
       <%= render "home/flash" %>
 
       <%= yield %>
     </div>
   </body>
-  <%= javascript_pack_tag 'dailychartsrun.js' %>
+  <%= javascript_pack_tag 'dailychartsrun.js' , 'data-turbolinks-track': 'reload' %>
 </html>

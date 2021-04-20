@@ -34,7 +34,7 @@ class MarketController < ApplicationController
           redirect_to(market_path, alert: @error) and return
         
         respond_to  do |format|
-            format.html { redirect_to market_path, notice: "success." }
+            # format.html { redirect_to market_path, notice: "success." }
             format.js
         end
     end

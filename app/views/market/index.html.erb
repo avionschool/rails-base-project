@@ -1,13 +1,14 @@
 <h1>Market</h1>
 
-<%= form_tag search_stock_in_market_path, :method => 'POST', remote: true do%>
+<%= form_with url: search_stock_in_market_path, method: :post, remote: true do | f |%>
     <%# text_field_tag "ticker_input", nil, placeholder: "Enter Ticker Symbol" %>
     <%# submit_tag "Search" %>
     <div class="input-group mb-3">
-        <%= text_field_tag "ticker_input", nil,
+        <%= f.text_field "ticker_input",
              placeholder: "Enter Ticker Symbol", type: "text",
              class:"form-control"%>
-        <%= submit_tag "Search", class: "btn btn-outline-primary", id: "button-addon2" %>
+        <%= f.button "Search", class: "btn btn-outline-primary", id: "button-addon2",
+            data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Searching..."} %>
     </div>
 <% end %>
 

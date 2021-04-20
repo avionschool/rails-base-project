@@ -1,7 +1,7 @@
-console.log("connected")
+<%# console.log("connected") %>
 $("#stock-searched").html("<%= escape_javascript(render(partial: 'quote', locals: {quote: @quote}))%>")
 
-var Dailychart = require('dailychart');
+<%# var Dailychart = require('dailychart');
 width = document.getElementById("market").clientWidth;
 
 if (width) {
@@ -24,4 +24,4 @@ if (width) {
       lineWidth: 1.5,
       width:width
   });
-}
+} %>
