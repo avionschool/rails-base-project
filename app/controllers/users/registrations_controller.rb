@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    render 'test'
+    render :create
   end
 
   # POST /resource
