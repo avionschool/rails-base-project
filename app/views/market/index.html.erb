@@ -1,8 +1,14 @@
 <h1>Market</h1>
 
 <%= form_tag search_stock_in_market_path, :method => 'POST', remote: true do%>
-    <%= text_field_tag "ticker_input", nil, placeholder: "Enter Ticker Symbol" %>
-    <%= submit_tag "Search" %>
+    <%# text_field_tag "ticker_input", nil, placeholder: "Enter Ticker Symbol" %>
+    <%# submit_tag "Search" %>
+    <div class="input-group mb-3">
+        <%= text_field_tag "ticker_input", nil,
+             placeholder: "Enter Ticker Symbol", type: "text",
+             class:"form-control"%>
+        <%= submit_tag "Search", class: "btn btn-outline-primary", id: "button-addon2" %>
+    </div>
 <% end %>
 
 <br>

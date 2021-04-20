@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   # HOME PAGE
   root "home#index" # Set home/index as root
   get "about", to: "home#about"
-  post "/" => "home#index"
 
   # MARKET
   get '/market', to: "market#index"
