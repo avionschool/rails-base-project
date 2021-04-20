@@ -305,6 +305,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.1)
   rspec-rails
+  rubocop (~> 1.12)
   rubocop-rails
   rubocop-rspec
   sass-rails (>= 6)
@@ -322,4 +323,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.2.11
+   2.2.15

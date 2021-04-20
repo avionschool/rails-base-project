@@ -26,5 +26,6 @@ Role.create(name: "Admin")
 
 #Intialize Admin Account/s
 
-User.create(role_id: Role.find_by_name('Admin').id, email: 'ddcmendoza@gmail.com', password: "123456") #Dave
-#User.create(role_id: 3, email: '') #Alex
+
+User.create(role_id: Role.find_by_name('Admin'), email: 'ddcmendoza@gmail.com', password: "123456") #Dave
+User.create(role_id: Role.find_by_name('Admin'), email: 'kidong044@gmail.com'. password: '123456') #Alex

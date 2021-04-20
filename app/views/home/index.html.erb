@@ -1,0 +1,37 @@
+<section class="container container-content mt-6 mr-6 ml-6">
+  <div class="columns">
+    <div class="column is-6 container-left mt-6">
+      <%= image_tag("undraw_Stock_prices_re_js33.svg", :alt => "rss feed") %>
+    </div>
+
+    <div
+      id="home-index-right"
+      class="column mt-6 is-6 container-right is-flex is-justify-content-center is-align-items-flex-start"
+    >
+      <h1 class="is-size-1 has-text-weight-bold home-title">Tradr</h1>
+      <p class="is-size-4 mb-6 mt-2 home-text">
+        Earn big on the stock market.<br />
+        Every day the news brings changes to the <br />
+        price of giant corporation’s shares.</br>
+        Use it to make profit!
+      </p>
+
+      <% if user_signed_in? %>
+        <p>
+          <%= link_to journals_path, class: 'button start-now' do%>
+            START NOW
+          <% end %>
+        </p>
+      <% else %>
+        <p>
+          <%= link_to  new_user_registration_path, class: 'button start-now' do%>
+            Start Now!
+          <% end %>
+        </p>
+      <% end %>
+
+      
+    </div>
+  </div>
+</section>
+
