@@ -17,6 +17,13 @@
   </div>
 
   <div class="field">
+    <div class="control">
+      <%= f.label :role , class:"label has-text-black" %>
+      <%= f.select :role_id, Role.all.collect{|r| [r.name, r.id]}, {include_blank: false}, class:"select is-multiple" %>
+    </div>
+  </div>
+
+  <div class="field">
   <div class="control">
     <%= f.label :password, class:"label has-text-black" do %>
     Password

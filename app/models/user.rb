@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   before_save :uniq_stocks?
 
-  belongs_to :role
+  belongs_to :role, optional: true
   has_and_belongs_to_many :stocks, join_table: "buyers_stocks"
   has_many :transactions, dependent: :destroy
 
