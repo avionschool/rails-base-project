@@ -1,193 +1,4 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
- :root {
-    --color_one: #352e51;
-    --color_two: #21c58e;
-    --color_three: #fbfbfb;
-    --color_four: #34b6e3;
-    --color_five: #e14846;
-    --nav_bar: #000000;
-    --logo_color: #5944be;
-    --new_color: #121319;
-    --start-now-color: #d1df56;
-  }
-  
-  html {
-    background-color: var(--color_three);
-    font-family: "Poppins", sans-serif;
-    /* background: url("/assets/wavebg.svg") no-repeat bottom center; */
-    height: 100%;
-    width: 100%;
-    
-  }
-  
-  ::-moz-selection { /* Code for Firefox */
-    color: white;
-    background:#352e51;
-  }
-  
-  
-  ::selection{
-    color: white;
-    background:#352e51;
-  }
-  @keyframes fadein {
-    0% { opacity: 0; }
-    20% { opacity: 1; }
-    100% { opacity: 0; }
-  }
-  
-  .notification{
-    animation: fadein 7s;
-    animation-delay: 0s;
-    animation-fill-mode: forwards;
-  }
-  
-  
-  .margin-index{
-    margin-top: 200px;
-  }
-  
-  .tile-color {
-    color: var(--color_four);
-  }
-  
-  .card_title {
-    color: var(--nav_bar);
-  }
-  
-  .info-box {
-    background-color: var(--color_four);
-  }
-  
-  .box-bg {
-    background-color: var(--new_color);
-  }
-  
-  .logo {
-    color: #5944be;
-  }
-  
-  
-  .home-title {
-    color: var(--nav_bar);
-  }
-  
-  .navbar {
-    background-color: #fbfbfb;
-  }
-  
-  .button{
-    background: none;
-    border: none;
-  }
-  
-  .home-text {
-    color: var(--nav_bar);
-  }
-  /* .card-bg{
-      background-color: var(--nav_bar);
-  } */
-  
-  .login {
-    background-color: #19c78b;
-  }
-  
-  .task{
-    color: var(--logo_color);
-  }
-  
-  .go{
-    color: #02cd68;
-  }
-  
-  
-  .nav_icon {
-    color: var(--nav_bar);
-  }
-  
-  .newjournal-svg {
-    width: 200px;
-  }
-  
-  .container-left img,
-  .container-right form,
-  .container-right .container-errors {
-    width: 75%;
-    height: auto;
-  }
-  
-  .container-left,
-  .container-right {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .container-right {
-    flex-direction: column;
-  }
-  
-  @media screen and (min-width: 769px), print {
-    .column.is-6,
-    .column.is-6-tablet {
-      flex: none;
-      width: 50%;
-    }
-  }
-  
-  .columns {
-    margin-left: -0.75rem;
-    margin-right: -0.75rem;
-    margin-top: 100px;
-  }
-  
-  
-  
-  .tiles {
-    margin-bottom: 25px;
-  }
-  
-  .footer__wave {
-    display: block;
-    width: 100%;
-    height: 100px;
-    max-height: 100px;
-    margin: 0;
-    bottom: 0;
-    position: fixed;
-    left: 0px;
-    float: left;
-  }
-  
-  .navbar-burger{
-    color: white;
-  }
-  
-  .navbar-burger:hover{
-    color: white;
-  }
-  
-  progress{
-    border-radius: 0px;
-  }
-
-  
-
-  .box {
+.box {
     background-color: #36393e;
     transition: all 0.2s ease-in-out;
     box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.1);
@@ -240,23 +51,23 @@
   }
   
   a.navbar-hover {
-    background: linear-gradient(to right, #fbfbfb 50%, #32d05d 50%);
-    text-decoration: none;
-    background-position: 0;
-    background-size: 200%;
-    transition: all 0.2s ease;
-    color: black;
-    border-radius: 2px;
-  }
-  
-  a.navbar-hover-signout {
-    background: linear-gradient(to right, #fbfbfb 50%, #ff5252 50%);
+    background: linear-gradient(to right, #2c2f34 50%, #93c33c 50%);
     text-decoration: none;
     background-position: 0;
     background-size: 200%;
     transition: all 0.2s ease;
     color: white;
-    border-radius: 2px;
+    border-radius: 5px;
+  }
+  
+  a.navbar-hover-signout {
+    background: linear-gradient(to right, #2c2f34 50%, #ff5252 50%);
+    text-decoration: none;
+    background-position: 0;
+    background-size: 200%;
+    transition: all 0.2s ease;
+    color: white;
+    border-radius: 5px;
   }
   
   a.navbar-hover-signout:hover {
@@ -271,7 +82,7 @@
     border-radius: 4px;
   }
   
-  /* // a.navbar-item-logo {
+  // a.navbar-item-logo {
   //   transition: all 0.3s ease-in-out;
   // }
   
@@ -279,10 +90,10 @@
   //   //   box-shadow: 0 20px 15px -15px rgba(0, 0, 0, 0.5);
   //   transform: translateY(-0.2em);
   // }
-   */
+  
   a.navbar-hover:hover {
     background-position: -100%;
-    color: white;
+    color: black;
   }
   
   .margin_none {
@@ -291,7 +102,7 @@
   
   .start-now {
     background-color: var(--logo_color);
-    color: white;
+    color: rgb(48, 48, 48);
   
     border-radius: 5px;
     padding-left: 35px;
@@ -303,7 +114,7 @@
   }
   
   .start-now:hover {
-    color: #36393e;
+    color: #efefef;
   }
   
   .start-now-two {
@@ -360,7 +171,7 @@
   }
   
   .navbar {
-    box-shadow: 0 10px 15px -15px rgba(0, 0, 0, 0.233);
+    box-shadow: 0 10px 15px -15px rgba(0, 0, 0, 0.5);
   }
   
   .tile-container {
@@ -376,7 +187,7 @@
     margin-bottom: 100px;
   }
   
-  /* // @media screen and (max-width: 1023px){
+  // @media screen and (max-width: 1023px){
   
   // .navbar-menu {
   //     background-color: white;
@@ -384,7 +195,7 @@
   //     padding: 0.5rem 0;
   // }
   
-  // } */
+  // }
   
   @media only screen and (max-width: 768px) {
     .tile-container {

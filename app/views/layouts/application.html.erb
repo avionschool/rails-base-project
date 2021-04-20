@@ -4,17 +4,25 @@
     <title>Stock Trading App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
+    <%= javascript_pack_tag "application", 'data-turbolinks-track': "reload" %>
+    <%= stylesheet_pack_tag "application", media: "all" %>
+    
   </head>
 
   <body>
 
+      <%= render "shared/navbar" %>
        <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+       <p class="alert"><%= alert %></p>  
 
     <%= yield %>
+    <%= javascript_pack_tag "index" %>
   </body>
 </html>
