@@ -1,8 +1,16 @@
-<div class="container">
+<div class="container text-center">
   <div class="row">
-      <div class="col-lg-6 col-sm-12 mb-5">
-        <h1>Home</h1>
-        <h3><%= link_to "Broker Index", broker_index_path %></h3>
+      <div class="col-lg-6 col-sm-12">
+        <h1 class="text-success">Buyer</h1>
+        <%= image_tag ('buyer.svg'), style: "width: 80%" %>
+        <%= link_to "Sign in as Buyer", new_buyer_session_path, class: "btn btn-lg btn-success" %>
+        <%= link_to "Sign up as Buyer", new_buyer_registration_path, class: "btn btn-lg btn-success" %>
+      </div>
+      <div class="col-lg-6 col-sm-12">
+        <h1>Broker</h1>
+        <%= image_tag ('broker.svg'), style: "width: 80%" %>
+        <%= link_to "Sign in as Broker", new_broker_session_path, class: "btn btn-lg btn-primary" %>
+        <%= link_to "Sign up as Broker", new_broker_registration_path, class: "btn btn-lg btn-primary" %>
       </div>
   </div>
 </div>

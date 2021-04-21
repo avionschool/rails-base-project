@@ -3,6 +3,7 @@ class Broker < ApplicationRecord
   has_many :stocks, through: :broker_stocks
   belongs_to :admin
   validates :email, presence: true
+  validates :password, presence: true, length: { minimum: 6 }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

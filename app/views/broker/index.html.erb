@@ -1,13 +1,15 @@
-<div class="container">
+<div class="container mt-2">
   <div class="row">
-      <div class="col-lg-6 col-sm-12 mb-5">
-        <h1>Broker Landing Page</h1>
+      <div class="col-lg-6 col-sm-12 mb-5 p-5">
+        <div class="mb-5">
+        <h1>Broker</h1>
+        <%= current_broker.email %>
+        </div>
         <h3>Search Stock</h3>
         <%= form_tag search_stock_path, remote: true, method: :get, :class => "form-signin" do %>
         <%= text_field_tag :stock, params[:stock], placeholder: 'Enter Stock Ticker...', class: "form-control" %>
         <%= button_tag "Submit", type: :submit, id: "stock-search", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Searching..."}, class: "btn btn-lg btn-outline-primary btn-block mt-3"%>
         <% end %>
-        <h3><%= link_to "Broker Portfolio", broker_portfolio_path %></h3>
       </div>
       <div class="col-lg-6 col-sm-12">
         <div id='search_result'>

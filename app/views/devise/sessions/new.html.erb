@@ -1,19 +1,32 @@
-<div class="container">
-  <div class="row">
-      <div class="col-lg-6 col-sm-12 mb-5">
-       
+
+      <% if current_page?(new_admin_session_path) %>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-sm-12 mb-5">
+        <%= image_tag ('admin.svg') %>
+      <% elsif current_page?(new_buyer_session_path) %>
+      <div class="container text-success">
+        <div class="row">
+          <div class="col-lg-6 col-sm-12 mb-5">
+        <%= image_tag ('buyer.svg') %>
+      <% elsif current_page?(new_broker_session_path) %>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-sm-12 mb-5">
+        <%= image_tag ('broker.svg') %>
+      <% end %>
       </div>
-      <div class="col-lg-6 col-sm-12">
-        <h2>Log in as <%= resource_name.capitalize %></h2>
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="col-lg-6 col-sm-12 p-5">
+        <h2>Sign in as <%= resource_name.capitalize %></h2>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-signin" ) do |f| %>
         <div class="field">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
 
         <div class="field">
         <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "current-password" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
         </div>
 
         <% if devise_mapping.rememberable? %>
@@ -24,11 +37,16 @@
         <% end %>
 
         <div class="actions">
-        <%= f.submit "Log in" %>
+        <% if current_page?(new_buyer_session_path) %>
+        <%= f.button "Sign in", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i>"}, class: "btn btn-lg btn-success btn-block mt-3" %>
+        <% else %>
+        <%= f.button "Sign in", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i>"}, class: "btn btn-lg btn-primary btn-block mt-3" %>
+        <% end %>
         </div>
         <% end %>
 
         <%= render "devise/shared/links" %>
+        <%= link_to "Log in as Admin", new_admin_session_path, class: "text-secondary" %>
       </div>
   </div>
 </div>

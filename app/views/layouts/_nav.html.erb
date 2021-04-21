@@ -9,13 +9,15 @@
         <% if buyer_signed_in? %>
         <li><%= link_to "Sign out (Buyer)", destroy_buyer_session_path, method: :delete %></li>
         <% elsif broker_signed_in? %>
+        <li><%= link_to "Portfolio", broker_portfolio_path %></li>
+        <li><%= link_to "Transactions", broker_index_path %></li>
+        <li><%= link_to "Account" %></li>
         <li><%= link_to "Sign out (Broker)", destroy_broker_session_path, method: :delete %></li>
         <% elsif admin_signed_in? %>
         <li><%= link_to "Sign out (Admin)", destroy_admin_session_path, method: :delete %></li>
         <% else %>
         <li><%= link_to "Buyer", new_buyer_session_path %></li>
         <li><%= link_to "Broker", new_broker_session_path %></li>
-        <li><%= link_to "Admin", new_admin_session_path %></li>
         <% end %>
       </ul>
     </div>
