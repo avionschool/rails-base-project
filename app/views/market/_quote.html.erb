@@ -66,12 +66,18 @@
             <div class="d-flex justify-content-between align-items-center">
                 <a href='<%= @website_link%>' class="link-info" target="_blank">Website</a>
                 <%# f.button "Add to watchlist", class: 'btn btn-primary mb-4 shadow rounded mt-3', data: {disable_with: "<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> Adding to Watchlist..."}  %>
-                <button class="btn btn-primary">Add to Watchlist</button>
+                
+                <%= form_with url: add_stock_to_market_path, method: :post, remote: true do |f| %>
+                    <%= f.hidden_field :name %>
+                    <%= hidden_field_tag :name, @quote.symbol  %>
+                    <%= f.button "Add to Watchlist", class: 'btn btn-primary', data: {disable_with: "<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> Adding..."}  %>
+                <% end %>
+    
             </div>
         </div>
     </div>
 <% else %>
-    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+    <%# <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
         <span class="visually-hidden">Loading...</span>
-    </div>
+    </div> %>
 <% end %>

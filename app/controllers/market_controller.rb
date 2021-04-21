@@ -1,10 +1,12 @@
 class MarketController < ApplicationController
     before_action :authenticate_user!
+    # before_action :market_params, only: [:add_stock_to_market]
 
     def index
         # SELECT "stocks".* FROM "stocks" INNER JOIN "users" ON "users"."id" = "stocks"."user_id" INNER JOIN "roles" ON "roles"."id" = "users"."role_id" WHERE (role_name = 'broker') LIMIT $1 
         # @markets = Market.joins(user: :role).where("role_name = 'broker'").limit(10)
-        
+        @markets = current_user.markets.all
+        redirect_to market_path, notice: "Not Authorized User" if @markets.nil?
     end
 
     def search_stock_in_market
@@ -42,18 +44,31 @@ class MarketController < ApplicationController
     end
 
     def add_stock_to_market
-        market = Market.new(market_params)
+      # puts current_user.id
+      @market = Market.new({name: params[:name], user_id: current_user.id})
 
-        respond_to do |format|
-            if market.save
-              redirect_to market_path, notice: "Stock was successfully created."
-              #   format.json { render :show, status: :created, location: @stock }
-            else
-              redirect_to market_path, alert: :unprocessable_entity 
-              # format.html { render :new, status: :unprocessable_entity }
-              # format.json { render json: @stock.errors, status: :unprocessable_entity }
-            end
-        end
+      respond_to do |format|
+          if @market.save
+            redirect_to(market_path, notice: "Stock in Market was successfully added.") and return
+            # redirect_to market_path, notice: "Stock was successfully created."
+            #   format.json { render :show, status: :created, location: @stock }
+          else
+            
+            redirect_to(market_path, alert: :unprocessable_entity) and return 
+            # format.html { render :new, status: :unprocessable_entity }
+            # format.json { render json: @stock.errors, status: :unprocessable_entity }
+          end
+      end
+    end
+    
+    def delete_stock_from_market
+      @market = Market.find(params[:id])
+      @market.destroy
+
+      respond_to do |format|
+        format.html { redirect_to market_url, notice: "Stock in Market was successfully deleted." }
+        format.json { head :no_content }
+      end
     end
 
     private
