@@ -9,19 +9,10 @@ default: &default
 development: 
   <<: *default
   database: stocktrading_app_development
-  username: postgres
-  password: '1234'
-  host: localhost
-  port: 5432
 
 test:
   <<: *default
   database: stocktrading_app_test
-  username: postgres
-  password: '1234'
-  host: localhost
-  port: 5432
-
 
 production:
   <<: *default
