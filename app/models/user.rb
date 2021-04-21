@@ -24,8 +24,9 @@ class User < ApplicationRecord
   scope :admins, -> { where(role: Role.find_by(name: "Admin")) }
 
   # Put to Controller?
-  def buy_stock(stock, volume, price)
-    # Post a Buy Order on the APP
+   def buy_stock(stock, volume, price)
+    # Post a Buy Order on the APP if Buyer
+    # If Broker, buy stock from IEX to sell to the APP market
     if !(self.transaction_arg_check("buy", stock))
       p "Cannot proceed with transaction!"
       false
@@ -38,10 +39,24 @@ class User < ApplicationRecord
 
     transaction = Transaction.new(stock_id: Stock.find_by_code(stock).id, user_id: self.id, volume: volume, price: price, transaction_type: "Buy")
 
-    self.alloted_cash = price * volume
-    self.cash = self.cash - self.alloted_cash
+    if self.role.id == Role.find_by_name('Broker').id
+      transaction.fulfilled = true
+      self.cash = self.cash - price*volume
+      self.stocks << Stock.find_by_code(stock)
+    elsif self.role.id == Role.find_by_name('Buyer').id
+      self.alloted_cash = self.alloted_cash + price * volume
+      self.cash = self.cash - price*volume
+    end
+
 
     if transaction.save and self.save
+      if self.role.id == Role.find_by_name('Broker').id
+        bs = BuyersStock.find_entry(self.id, Stock.find_by_code(stock).id)
+        if bs.update(volume: bs.volume + volume)
+          p "Successfully added #{stock} to portfolio"
+          true
+        end
+      end
       p "Buy Order posted successfully."
       true
     else
@@ -63,8 +78,8 @@ class User < ApplicationRecord
       false
     end
 
-    buyer_stock.alloted_volume = volume
-    buyer_stock.volume = buyer_stock.volume - buyer_stock.alloted_volume
+    buyer_stock.alloted_volume = buyer_stock.alloted_volume + volume
+    buyer_stock.volume = buyer_stock.volume - volume
 
     transaction = Transaction.new(stock: Stock.find_by_code(stock), user: self, volume: volume, price: price, transaction_type: "Sell")
 
