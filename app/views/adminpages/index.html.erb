@@ -1,0 +1,41 @@
+<div class="container">
+
+<div class="w-full ml-10 p-5  rounded-md shadow-lg">
+<h1 class="text-xl font-medium">Pending Broker Accounts</h1> <br>
+
+<div class="flex justify-center">
+
+<% if @pendings.any? %>
+  
+ <table class="table-auto">
+    <thead>
+        <tr >
+            <th class="border-2">ID</th>
+            <th class="border-2">Email</th>
+            <th class="border-2 p-3">Registered At</th>
+            <th class="border-2">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @pendings.each do |pending| %>
+        <tr>
+            <td class="p-5 border-2"><%= pending.id %></td>
+            <td class="p-5 border-2"><%= pending.email %></td>
+            <td class="text-center border-2"><%= pending.created_at.to_date %></td>
+            <td><%= link_to 'Confirm Account', admins_confirm_path(pending.id), data: { confirm: "Confirm account for email: '#{pending.email}'?" }, class:"p-2 bg-green-500 text-gray-50 rounded-md"%></td>
+        </tr>
+
+        <% end %>
+    
+    </tbody>
+    </table>
+    <% else %>
+
+    <h1><%= "No Pending Broker Account at the moment..." %></h1>
+<% end %>
+
+
+</div>
+   
+</div>
+</div>

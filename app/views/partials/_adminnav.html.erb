@@ -4,7 +4,7 @@
     
     <div class="p-4 flex flex-row items-center justify-between">
       
-      <%= link_to(root_path,class:"text-lg font-semibold tracking-wide text-gray-50 rounded-lg focus:outline-none focus:shadow-outline") do %>
+      <%= link_to(admins_index_path,class:"text-lg font-semibold tracking-wide text-gray-50 rounded-lg focus:outline-none focus:shadow-outline") do %>
                 <%= image_tag('peddler_icon.png', :class=>"w-10 inline pb-1") %>
                 <%= "Peddler" %>
                 <% end %> 
@@ -20,21 +20,34 @@
 
     <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
      <% if admin_signed_in? %>  
-       <%= link_to(admins_path,class:"px-4 py-2 mt-2 text-sm font-semibold text-gray-100 bg-indigo-500 rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-blue-200  focus:outline-none focus:shadow-outline") do %>
-                <%= 'Im an Admin Betch' %>
+      <%= link_to(admins_user_path,class:"px-4 py-2 mt-2 mr-5 text-sm font-semibold text-gray-900 bg-blue-200 rounded-sm md:mt-0 hover:text-gray-500 focus:text-gray-900 hover:bg-blue-200  focus:outline-none focus:shadow-outline") do %>
+                <%= 'Users' %>
                 <% end %>
+
+      <%= link_to(admins_index_path,class:"px-4 py-2 mt-2 mr-5 text-sm font-semibold text-gray-900 bg-blue-200 rounded-sm md:mt-0 hover:text-gray-500 focus:text-gray-900 hover:bg-blue-200  focus:outline-none focus:shadow-outline") do %>
+                <%= 'Pending Accounts' %>
+                <% end %>
+
+      <%= link_to(new_adminpage_path,class:"px-4 py-2 mt-2 mr-5 text-sm font-semibold text-gray-900 bg-blue-200 rounded-sm md:mt-0 hover:text-gray-500 focus:text-gray-900 hover:bg-blue-200  focus:outline-none focus:shadow-outline") do %>
+                <%= 'Add User' %>
+                <% end %>
+
       <%= link_to(destroy_admin_session_path,data: { confirm: "Are you sure you want to sign out ?" }, method: :delete,class:"px-4 py-2 mt-2 text-sm font-semibold text-gray-100 bg-red-500 rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-blue-200  focus:outline-none focus:shadow-outline") do %>
                 <%= 'Sign out' %>
                 <% end %>
+
      <% else %>
+
        <%= link_to(new_admin_registration_path,class:"px-4 py-2 mt-2 text-sm font-semibold text-gray-600 bg-yellow-300 rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-blue-200  focus:outline-none focus:shadow-outline") do %>
                <i class="far fa-user"></i>
                 <%= 'Sign Up' %>
                 <% end %>
+
       <%= link_to(new_admin_session_path,class:"px-4 py-2 mt-2 ml-3 text-sm font-semibold text-gray-50 bg-green-500 rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-blue-200  focus:outline-none focus:shadow-outline") do %>
                 <i class="fas fa-user"></i>
                 <%= "Login" %>
                 <% end %>  
+
      <% end %>
              
 

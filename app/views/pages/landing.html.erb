@@ -1,2 +1,11 @@
-<h1>Welcome <%= current_user.firstname %></h1>
+
+
+<h1>Welcome 
+<% if user_signed_in? %>
+  <%= current_user.firstname %>
+  <% else %>
+  <%= "Admin !" %>
+<% end %>
+
+</h1>
 

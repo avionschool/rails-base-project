@@ -19,7 +19,7 @@ class Admins::SessionsController < Devise::SessionsController
   # end
    def after_sign_in_path_for(resource)
 
-     admins_path  
+    admins_index_path
     
     end
   # protected

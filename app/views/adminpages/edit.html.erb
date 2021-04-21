@@ -1,0 +1,31 @@
+<%= form_with url: admins_update_path do |f|%>
+
+
+<div class="flex justify-center h-auto items-center mt-2 mb-3">
+    <div class='flex max-w-sm w-full h-150 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
+        
+        <div class="relative h-12 input-component mb-10 p-3 text-left">
+            <h1>Edit User Details for email: <%= @user.email %> </h1>
+        </div>
+
+        <%= f.hidden_field :role_id, :value => @user.role_id %>
+        
+        <!-- This is the input component -->
+        <div class="relative h-10 input-component mb-5">
+            <%= f.text_field :firstname,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "First Name", :value=>@user.firstname%>
+        </div>
+
+        <div class="relative h-10 input-component mb-5">
+            <%= f.text_field :lastname,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "Last Name",:value=>@user.lastname%>
+        </div>
+
+        <div class="relative h-10 input-component mb-5">
+            <%= f.text_field :email,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "Email",:value=>@user.email%>
+        </div>
+        <div class="text-center">
+            <%= f.submit "Add", class:"p-2 rounded-md bg-green-500 text-gray-50" %>
+        </div>
+
+    </div>
+</div>
+<% end %>

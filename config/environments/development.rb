@@ -5,10 +5,10 @@ Rails.application.configure do
     port: 587,
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "peddlerpassreset@gmail.com",
-    password:"Ped123456"
+    user_name: "peddler.email00@gmail.com",
+    password:"ped123456"
   }
-
+  
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   
   config.action_mailer.raise_delivery_errors = true

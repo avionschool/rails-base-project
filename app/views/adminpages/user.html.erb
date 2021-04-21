@@ -1,0 +1,56 @@
+<div class="container">
+
+<div class="w-full ml-10 p-5  rounded-md shadow-lg">
+<h1 class="text-xl font-medium">Registered User Accounts</h1> <br>
+
+
+
+<div class="flex justify-center">
+<table class="table-auto">
+    <thead>
+        <tr >
+            <th class="border-2">ID</th>
+            <th class="border-2">Role</th>
+            <th class="border-2">Email</th>
+            <th class="border-2 p-3">Registered At</th>
+            <th class="border-2 p-3">Action</th>
+       
+        </tr>
+    </thead>
+    <tbody>
+
+        <% @users.each do |user| %>
+        <tr>
+            <td class="p-5 border-2"><%= user.id %></td>
+            <td class="p-5 border-2"><%= Role.find(user.role_id).role_name %></td>
+            <td class="p-5 border-2"><%= user.email %></td>
+            <td class="p-5 border-2"><%= user.created_at.to_date %></td>
+              <td><%= link_to 'Edit Account', admins_edit_path(user.id), class:"p-2 bg-green-500 text-gray-50 rounded-md"%></td>
+        </tr>
+ <% end %>
+       
+    </tbody>
+</table>
+
+
+
+</div>
+
+</div>
+
+</div>
+
+   
+    
+  
+
+
+ 
+ 
+
+
+
+
+   
+
+
