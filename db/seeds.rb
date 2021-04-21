@@ -22,7 +22,7 @@ end
 
 Role.create(name: "Buyer")
 Role.create(name: "Broker")
-Role.create(name: "Admin")
+# Role.create(name: "Admin")
 
 #Intialize Admin Account/s
 
