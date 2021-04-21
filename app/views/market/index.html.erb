@@ -1,23 +1,35 @@
-<h1>Market</h1>
-
-<%= form_with url: search_stock_in_market_path, method: :post, remote: true do | f |%>
-    <%# text_field_tag "ticker_input", nil, placeholder: "Enter Ticker Symbol" %>
-    <%# submit_tag "Search" %>
-    <div class="input-group mb-3">
-        <%= f.text_field "ticker_input",
-             placeholder: "Enter Ticker Symbol", type: "text",
-             class:"form-control"%>
-        <%= f.button "Search", class: "btn btn-outline-primary", id: "button-addon2",
-            data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Searching..."} %>
+<div class="px-5 mb-4 bg-light market-container">
+    <div class= "container">
+        <h1 class="display-5 fw-bold">Market</h1>
+        <%= form_with url: search_stock_in_market_path, method: :post, remote: true do | f |%>
+            <%# text_field_tag "ticker_input", nil, placeholder: "Enter Ticker Symbol" %>
+            <%# submit_tag "Search" %>
+            <div class="input-group mb-3">
+                <%= f.text_field "ticker_input",
+                    placeholder: "Enter Ticker Symbol", type: "text",
+                    class:"form-control"%>
+                <%= f.button "Search", class: "btn btn-outline-primary", id: "button-addon2",
+                    data: {disable_with: "<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> Searching..."} %>
+            </div>
+        <% end %>
     </div>
-<% end %>
+</div>
 
 <br>
 
-<div id ="stock-searched">
-    <%# render "market/qoute" %>
+<div class="container">
+    <div id ="stock-searched" class="d-flex justify-content-center row">
+        <%= render partial: "market/quote" %>
+    </div>
 </div>
 
+
+<div class= "pt-5 container">
+    <h2 class="fw-bold text-center">Watch List</h2>
+    <p class="text-muted text-center pt-5">Nothing to show. Add new stocks by searchng first the company stocks you want to buy.</p>
+
+</div>
+   
 <% if @markets %>
     <% @markets.each do |market| %>
         <% @client = IEX::Api::Client.new() %>

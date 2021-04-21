@@ -1,42 +1,77 @@
-<div>
-    <% if @quote %>
-        <%# @quote.symbol%>
-        <%# @quote.company_name%>
-        <%# @quote.latest_price%>
-        <%# @quote.change_percent_s %>
-        <%# @quote.change%>
-        <% @data= @client.chart(@quote.symbol, '1d', chart_interval: ) %>
-        <% @data = @data.map { |data| data.average}%>
-        <% @min = @data.min %>
-        <% @length = @data.length() %>
-        <% @data = @data.join(",")%>
-        <%# @data.inspect %>
 
-        <div class="card" id="stock-searched-card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title"><%= @quote.symbol %></h5>
-                <h6 class="card-subtitle mb-2 text-muted"><%= @quote.company_name %></h6>
-                <p class="card-text">
-                    $<%= @quote.latest_price%><br>
-                    <%= @quote.change_percent_s %><br>
-                    <%= @quote.change%><br>
-                </p>
-                <div class="" id="market">
-                    <%# <div id="chart-fill"
-                        data-dailychart-values="12.94,13.0,12.98,13.02,13.0,13.0,12.95,12.85,13.04,13.13"
-                        data-dailychart-close="13.08"
-                        data-dailychart-length="78">
-                    </div> %>
-                    <div class="chart-fill" id="chart-fill-positive"
-                        data-dailychart-close='<%= @min %>' data-dailychart-length='<%= @length %>'
-                        data-dailychart-values='<%= @data %>'>
-                    </div>
+<% @client = IEX::Api::Client.new()%>
+<% @paidClient = IEX::Api::Client.new(
+        publishable_token: ENV['publishable_token'],
+        secret_token: ENV['secret_token'],
+        endpoint: ENV['endpoint']
+)%>
+<%# @quote = @client.quote("MSFT")%>
+
+
+<% if @quote %>
+    <%# @quote.symbol%>
+    <%# @quote.company_name%>
+    <%# @quote.latest_price%>
+    <%# @quote.change_percent_s %>
+    <%# @quote.change%>
+    <% @data= @client.chart(@quote.symbol, '1d', chart_interval: 5 ) %>
+    <% @data = @data.map { |data| data.average}%>
+    <% @min = @data.min %>
+    <% @length = @data.length() %>
+    <% @data = @data.join(",")%>
+    <% @cname = @quote.company_name.split(/\s|\./)[0]%>
+    <% @image_url = "https://logo.clearbit.com/"+@cname+".com" %>
+    <% info =  @paidClient.company(@quote.symbol) %>
+    <% @description =  info.description %>
+    <% @website_link =  info.website %>
+    <% change = @quote.change%>
+    <% if change.negative?() %>
+    <%  chart_fill = "chart-fill-negative"%>
+    <% else %>
+    <%  chart_fill = "chart-fill-positive" %>
+    <% end %>
+    <%# @data.inspect %>
+
+    <div class="card rounded-3 border-0 shadow-lg p-3 m-0 mb-5 bg-body rounded col-lg-6" id="stock-searched-card" >
+        <div class="card-body">
+            <div class="row d-flex justify-content-start mb-4">
+                <div class="col-3">
+                    <img src='<%= @image_url %>' class="img-fluid border rounded-3 col company-logo-searched" alt="company_logo">
+                </div>
+                <div class="col-5 ps-3">
+                    <h3 ><%= @quote.symbol %></h3>
+                    <h6 class=" mb-2 text-muted"><%= @quote.company_name %></h6>
+                </div>
+                <div class="col-4 ps-3">
+                    
+                    <h3 class="text-end">$<%= @quote.latest_price%></h3>
+                    <h6 class="<%= change.negative?() ? "text-danger" : "text-success"%> text-end">
+                        <i class="<%= change.negative?() ? 'bi bi-caret-down-fill' : 'bi bi-caret-up-fill'%>"></i>
+                        <%= @quote.change_percent_s %></h6>
+                    <h6 class="<%= change.negative?() ? "text-danger" : "text-success"%> text-end">
+                        <i class="<%= change.negative?() ? 'bi bi-caret-down-fill' : 'bi bi-caret-up-fill'%>"></i>
+                        <%= @quote.change %></h6>
+                    
                 </div>
             </div>
+            <div class="mb-4" id="market">
+                <div class="chart-fill overflow-hidden" id='<%= chart_fill %>'
+                    data-dailychart-close='<%= @min %>' data-dailychart-length='<%= @length %>'
+                    data-dailychart-values='<%= @data %>'>
+                </div>
+            </div>
+            <div class="card-text mb-4">
+                <%= @description %>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <a href='<%= @website_link%>' class="link-info" target="_blank">Website</a>
+                <%# f.button "Add to watchlist", class: 'btn btn-primary mb-4 shadow rounded mt-3', data: {disable_with: "<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> Adding to Watchlist..."}  %>
+                <button class="btn btn-primary">Add to Watchlist</button>
+            </div>
         </div>
-    <% else %>
-        <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    <% end %>
-</div>
+    </div>
+<% else %>
+    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+<% end %>

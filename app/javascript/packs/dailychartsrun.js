@@ -1,12 +1,6 @@
 console.log("i am connected")
 
-// const loading = () => {
-//   const loader = document.querySelector(".loader");
-//   loader.className += " hidden"; // class "loader hidden"
-// }
-// // document.getElementById("pages-container")
-// window.addEventListener("load", loading());
-// window.removeEventListener("mousemove", loading());
+// document.getElementById("stocked-searched").onload( drawFunction())
 
 var Dailychart = require('dailychart');
 Dailychart.create('#chart', { lineWidth: 2 });
@@ -71,11 +65,3 @@ const drawFunction = () => {
 };
 
 
-//   var myImg = document.getElementById("sky");
-//         var currWidth = myImg.clientWidth;
-
-// width = document.getElementById("market").clientWidth;
-// charts = document.querySelectorAll(".chart-fill")
-// charts.forEach(chart => {
-//     chart.style.width = width;
-// });

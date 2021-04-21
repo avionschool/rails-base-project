@@ -1,6 +1,16 @@
 // Place all the styles related to the market controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.market-container {
+  padding-top: 10vh;
+  padding-bottom: 5vh;
+}
+
+.company-logo-searched{
+  width:150px;
+  height:auto;
+}
 .chart-fill {
-    height: 100px;
+    height: 70px;
   }

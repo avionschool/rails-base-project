@@ -3,14 +3,16 @@ class MarketController < ApplicationController
 
     def index
         # SELECT "stocks".* FROM "stocks" INNER JOIN "users" ON "users"."id" = "stocks"."user_id" INNER JOIN "roles" ON "roles"."id" = "users"."role_id" WHERE (role_name = 'broker') LIMIT $1 
-        @markets = Market.joins(user: :role).where("role_name = 'broker'").limit(10)
+        # @markets = Market.joins(user: :role).where("role_name = 'broker'").limit(10)
         
-       
     end
 
     def search_stock_in_market
-        @client = IEX::Api::Client.new()
+        
+        
         ticker = params[:ticker_input]
+       
+        @client = IEX::Api::Client.new()
     
         if not ticker.nil? and ticker.strip.empty?
           @nothing = "No `Ticker` entered. Please try again."

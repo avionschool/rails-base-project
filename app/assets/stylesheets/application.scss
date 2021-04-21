@@ -1,5 +1,11 @@
 @import "market";
 
+body {
+    min-height: 100vh;
+}
+
+//  Spinner between pages
+
 .loader {
     position: fixed;
     z-index: 99;
