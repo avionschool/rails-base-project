@@ -2,6 +2,12 @@ class ApplicationController < ActionController::Base
   before_action :update_allowed_parameters, if: :devise_controller?
   # before_action :authenticate_user!
 
+  add_flash_types :success, :info, :warning, :danger
+
+  def after_sign_in_path_for(_resource)
+    dashboard_path
+  end
+
   protected
 
   def update_allowed_parameters
@@ -9,6 +15,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:first_name, :last_name, :email, :password, :current_password) }
   end
 end
+
 #     require 'iex-ruby-client'
 #     Use for IEX
 #     @client = IEX::Api::Client.new(

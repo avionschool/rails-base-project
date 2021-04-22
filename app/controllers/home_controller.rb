@@ -6,6 +6,14 @@ class HomeController < ApplicationController
   # def index
   #     require 'iex-ruby-client'
 
+
+  def show
+    render :show
+  end
+
+  # def index
+  #     require 'iex-ruby-client'
+
   #     @client = IEX::Api::Client.new(
   #         publishable_token: "#{ENV['IEX_API_PUBLISHABLE_TOKEN']}",
   #         secret_token: "#{ENV['IEX_API_SECRET_TOKEN']}",

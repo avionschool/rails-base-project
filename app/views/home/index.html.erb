@@ -18,8 +18,8 @@
 
       <% if user_signed_in? %>
         <p>
-          <%= link_to :root, class: 'button start-now' do%>
-            START NOW
+          <%= link_to dashboard_path, class: 'button start-now' do%>
+            Start Now!
           <% end %>
         </p>
       <% else %>

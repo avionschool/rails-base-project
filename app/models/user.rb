@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable
   has_and_belongs_to_many :role, foreign_key: 'role_id'
-
   before_save :uniq_stocks?
 
   belongs_to :role, optional: true
@@ -24,6 +23,7 @@ class User < ApplicationRecord
 
   # Put to Controller?
   def buy_stock(stock, volume, price)
+
     # Post a Buy Order on the APP if Buyer
     # If Broker, buy stock from IEX to sell to the APP market
     unless transaction_arg_check('buy', stock)
@@ -67,6 +67,7 @@ class User < ApplicationRecord
     # Post a Sell Order on the APP
     unless transaction_arg_check('sell', stock)
       logger.info 'Cannot proceed with transaction!'
+
       false
     end
     # Check available stock in portfolio
