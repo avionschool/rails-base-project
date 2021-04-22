@@ -6,7 +6,6 @@ class HomeController < ApplicationController
   # def index
   #     require 'iex-ruby-client'
 
-
   def show
     render :show
   end
