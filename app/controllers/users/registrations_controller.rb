@@ -1,19 +1,21 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-   before_action :configure_sign_up_params, only: [:create]
-   before_action :configure_account_update_params, only: [:update]
+  # before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    super
-  end
 
   # POST /resource
   def create
-    super
-    # build_resource(sign_up_params)
-    # @user = resource
+    build_resource(sign_up_params)
+    logger.info resource
+    @user = resource
+    if @user.role == Role.find_by(name: 'Buyer')
+      super
+    elsif @user.role == Role.find_by(name: 'Broker')
+      
+    end
   end
 
   # GET /resource/edit
