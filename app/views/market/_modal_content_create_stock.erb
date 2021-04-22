@@ -1,0 +1,35 @@
+<div class="modal-header border-0">
+  <h5 class="modal-title" id="exampleModalLabel">Buy Stocks</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<%= form_with scope: :stock, url: stocks_path, method: :post, remote: true do | f |%>
+  <div class="modal-body">
+    <p class="">
+      <%= @market_quote.symbol %> <br>
+      <%= @market_quote.company_name %><br>
+      $<%= @market_quote.latest_price%><br>
+      <%= @market_quote.change_percent_s%><br>
+      <%= @market_quote.change%><br>
+    </p>
+    <div class="form-group">
+      <div class="text-center">
+        <label for="quantity_stocks_path" class="mb-3">Quantity: <span id="rangeval">1</span></label>
+      </div>
+      <%= f.range_field :quantity, :min=>1, :max=>5, value: 1,
+        :class=>"form-range px-5", :id=>"quantity_stocks_path",
+        onInput:"$('#rangeval').html($(this).val())"%>
+
+      <%= f.hidden_field :name, value: @market_quote.symbol %>
+      <%# <%= hidden_field_tag :name, @market_quote.symbol%>
+
+      <%# f.hidden_field :latest_price, value: @market_quote.latest_price  %>
+      <%= hidden_field_tag :latest_price, @market_quote.latest_price %>
+
+    </div>
+  </div>
+  <div class="modal-footer border-0">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <%= f.button "Checkout", class: "btn btn-primary",
+      data: {disable_with: "<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> Processing..."} %>
+  </div>
+<% end %>

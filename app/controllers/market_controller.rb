@@ -9,6 +9,25 @@ class MarketController < ApplicationController
         redirect_to market_path, notice: "Not Authorized User" if @markets.nil?
     end
 
+    # POST
+    def show_stock_in_modal
+      puts ""
+      puts "show_stock_in_modal : " + params[:market_id]
+      puts ""
+      market = Market.find(params[:market_id])
+      @client = IEX::Api::Client.new()
+      @market_quote = @client.quote(market.name)
+
+      puts ""
+      puts @market_quote
+      puts ""
+
+      respond_to  do |format|
+        format.js
+      end
+    end
+
+    # POST
     def search_stock_in_market
         
         
@@ -37,12 +56,16 @@ class MarketController < ApplicationController
           @error = "Stock symbol does not exist."
           redirect_to(market_path, alert: @error) and return
         
+
+        puts @quote
+
         respond_to  do |format|
             # format.html { redirect_to market_path, notice: "success." }
             format.js
         end
     end
 
+    # POST
     def add_stock_to_market
       # puts current_user.id
       @market = Market.new({name: params[:name], user_id: current_user.id})

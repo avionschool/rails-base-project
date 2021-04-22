@@ -15,20 +15,25 @@
     <%# @quote.change_percent_s %>
     <%# @quote.change%>
     <% @data= @client.chart(@quote.symbol, '1d', chart_interval: 5 ) %>
-    <% @data = @data.map { |data| data.average}%>
-    <% @min = @data.min %>
-    <% @length = @data.length() %>
-    <% @data = @data.join(",")%>
+    <% if @data%>
+        <% @data = @data.map { |data| data.average}%>
+        <% @data = @data.compact%>
+        <% minimum = @data.min %>
+        <% length = @data.length() %>
+        <% @data = @data.join(",")%>
+    <% end %>
+
     <% @cname = @quote.company_name.split(/\s|\./)[0]%>
     <% @image_url = "https://logo.clearbit.com/"+@cname+".com" %>
     <% info =  @paidClient.company(@quote.symbol) %>
     <% @description =  info.description %>
     <% @website_link =  info.website %>
     <% change = @quote.change%>
+
     <% if change.negative?() %>
-    <%  chart_fill = "chart-fill-negative"%>
+        <%  chart_fill = "chart-fill-negative"%>
     <% else %>
-    <%  chart_fill = "chart-fill-positive" %>
+        <%  chart_fill = "chart-fill-positive" %>
     <% end %>
     <%# @data.inspect %>
 
@@ -54,12 +59,14 @@
                     
                 </div>
             </div>
-            <div class="mb-4" id="market">
-                <div class="chart-fill overflow-hidden" id='<%= chart_fill %>'
-                    data-dailychart-close='<%= @min %>' data-dailychart-length='<%= @length %>'
-                    data-dailychart-values='<%= @data %>'>
+            <% if @data %>
+                <div class="mb-4" id="market">
+                    <div class="chart-fill overflow-hidden" id='<%= chart_fill %>'
+                        data-dailychart-close='<%= minimum %>' data-dailychart-length='<%= length %>'
+                        data-dailychart-values='<%= @data %>'>
+                    </div>
                 </div>
-            </div>
+            <% end %>
             <div class="card-text mb-4">
                 <%= @description %>
             </div>
