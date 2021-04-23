@@ -50,11 +50,15 @@
     100% { opacity: 0; }
   }
   
+  
+
   .notification{
     animation: fadein 7s;
     animation-delay: 0s;
     animation-fill-mode: forwards;
   }
+
+
   
   
   .margin-index{
@@ -174,11 +178,11 @@
   }
   
   .navbar-burger{
-    color: white;
+    color: black;
   }
   
   .navbar-burger:hover{
-    color: white;
+    color: black;
   }
   
   progress{
