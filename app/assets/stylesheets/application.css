@@ -318,6 +318,12 @@
     transition: background-color 0.2s ease, color 0.2s ease;
   }
   
+  .start-now-two:hover{
+    color: whitesmoke;
+    background-color: #02cd68;
+    border: 3px solid #02cd68;
+  }
+
   .start-now-three {
     background-color: var(--color_five);
     color: rgb(48, 48, 48);
@@ -508,3 +514,7 @@
     width: 100%;
   }
   
+  .shared-links{
+    margin-bottom: 0px;
+    margin-top: 20px;
+  }

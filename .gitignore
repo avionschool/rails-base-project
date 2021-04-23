@@ -45,3 +45,5 @@ config/token.rb
 .vscode/launch.json
 .solargraph.yml
 .vscode/settings.json
+
+.env

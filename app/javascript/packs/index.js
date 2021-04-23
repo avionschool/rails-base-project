@@ -9,3 +9,13 @@ $(document).ready(function() {
   
     });
   });
+
+  function hideNotice() {
+    setInterval(function() {
+      document.querySelector('.notification').style.display = "none";
+    }, 6000);
+  
+    
+  }
+  
+  hideNotice();

@@ -20,6 +20,8 @@ gem 'devise'
 gem 'hamlit-rails'
 gem 'iex-ruby-client'
 
+gem 'dotenv-rails'
+
 gem 'jquery-rails'
 
 group :development, :test do
