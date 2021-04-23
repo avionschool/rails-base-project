@@ -18,15 +18,37 @@
 
   <body>
     <% if user_signed_in? %>
-
-      <% else %>
-      <%= render "shared/navbar" %>
+        <%= render "shared/navbar" %> 
+    <% else %>
+        <%= render "shared/navbar" %>
 
     <% end %>
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>  
 
-    <%= yield %>
+
+    <div class="container">
+      <% flash.each do |name, msg| %>
+      <% unless msg == "Signed in successfully." || "Signed out successfully." || "Invalid Email or password." %>
+        
+        <div class="notification is-<%= name %> has-text-centered mt-3">
+        <span class="is-size-5 has-text-weight-bold has-text-centered"><%= msg %></span>
+      </div>
+      <% end %>
+        <% if msg == "Signed in successfully." || "Signed out successfully." && msg != "Invalid Email or password." %>
+          <div class="notification is-success has-text-centered mt-3">
+        <span class="is-size-5 has-text-weight-bold has-text-centered"><%= msg %></span>
+      </div>
+        <% end %>
+        <% if msg == "Invalid Email or password." %>
+          <div class="notification is-danger has-text-centered mt-3">
+        <span class="is-size-5 has-text-weight-bold has-text-centered"><%= msg %></span>
+      </div>
+        <% end %>
+        
+    
+      
+      <% end %>
+      <%= yield %>
+    </div>
     <%= javascript_pack_tag "index" %>
   </body>
 </html>

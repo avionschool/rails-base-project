@@ -43,7 +43,6 @@ RSpec.describe User, type: :model do
 
     it 'buy_stock should buy stock properly' do
       expect(described_class.find_by(email: 'buyer@gmail.com').buy_stock('TEST', 10, 1)).to be true
-      byebug
     end
 
     it 'buy_stock should not buy stock when not enough cash' do
