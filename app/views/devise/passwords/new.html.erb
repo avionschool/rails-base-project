@@ -1,4 +1,4 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
 <section class="container container-content mt-6 mr-6 ml-6">
@@ -26,3 +26,4 @@
 </div>
   </section>
 <% end %>
+
