@@ -35,9 +35,9 @@
       <% else %>
 
     <% end %> 
+    <%= yield %>
 <%
 =end%>
-    <%= yield %>
 
     <% if user_signed_in? %>
         <%= render "shared/navbar" %> 

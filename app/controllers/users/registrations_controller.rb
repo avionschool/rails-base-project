@@ -11,11 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     @user = resource
-    @user.confirmed_at = DateTime.now unless @user.role == Role.find_by(name: 'Broker')
-    logger.info @user
+    @user.confirmed_at = Time.now.utc unless @user.role.name == 'Broker'
+    @user.skip_confirmation_notification! #@user.send_confirmation_instructions when approved by admin
     @user.save
     if @user.persisted?
-      logger.info 'persisted'
       if @user.active_for_authentication?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
@@ -24,7 +23,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
       end
     else
-      logger.info 'not persisted'
       clean_up_passwords resource
       set_minimum_password_length
       respond_with resource
