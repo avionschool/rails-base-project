@@ -3,6 +3,8 @@ class HomeController < ApplicationController
     #     Redirect to Landing Page
     render :index
   end
+  # def index
+  #     require 'iex-ruby-client'
 
   def show
     render :show
