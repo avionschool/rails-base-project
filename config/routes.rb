@@ -19,8 +19,11 @@ Rails.application.routes.draw do
 
   # MARKET
   get '/market', to: "market#index"
-  # post '/market' => "market#index"
   post 'show_stock_in_modal' => "market#show_stock_in_modal"
   post 'search_stock_in_market' => "market#search_stock_in_market"
   post "add_stock_to_market" => "market#add_stock_to_market"
+
+  # MARKET_STOCKS
+  # Contains routes for updating stocks and transactions from the marketpage
+  resources :market_stocks, only: [:create, :destroy]
 end

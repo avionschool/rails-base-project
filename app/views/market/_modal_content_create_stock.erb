@@ -2,7 +2,7 @@
   <h5 class="modal-title" id="exampleModalLabel">Buy Stocks</h5>
   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
-<%= form_with scope: :stock, url: stocks_path, method: :post, remote: true do | f |%>
+<%= form_with scope: :stock, url: market_stocks_path, method: :post, remote: true do | f |%>
   <div class="modal-body">
     <p class="">
       <%= @market_quote.symbol %> <br>

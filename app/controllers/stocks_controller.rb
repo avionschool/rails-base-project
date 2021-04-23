@@ -1,7 +1,7 @@
 class StocksController < ApplicationController
   before_action :authenticate_user! # Devise variable
-  before_action :correct_user, only: [ :destroy ]
-  before_action :set_stock, only: [ :destroy ]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :set_stock, only: %i[ show edit update destroy ]
 
   # GET /stocks or /stocks.json
   def index
@@ -12,28 +12,45 @@ class StocksController < ApplicationController
     end
   end
 
+  # GET /stocks/1 or /stocks/1.json
+  def show
+  end
+
+  # GET /stocks/new
+  # def new
+  #   @stock = Stock.new
+  # end
+
+  # GET /stocks/1/edit
+  def edit
+  end
+
   # POST /stocks or /stocks.json
-  # if not existing create else update
   def create
     @stock = Stock.new(stock_params)
-    puts ""
-    puts @stock.inspect
-    puts params[:latest_price]
-    puts ""
-    @stock.user_id = current_user.id
-    @stock.amount = @stock.quantity.to_f * params[:latest_price].to_f
-    puts ""
-    puts @stock.inspect
-    puts ""
-    # respond_to do |format|
-    #   if @stock.save
-    #     format.html { redirect_to @stock, notice: "Stock was successfully created." }
-    #     format.json { render :show, status: :created, location: @stock }
-    #   else
-    #     format.html { render :new, status: :unprocessable_entity }
-    #     format.json { render json: @stock.errors, status: :unprocessable_entity }
-    #   end
-    # end
+
+    respond_to do |format|
+      if @stock.save
+        format.html { redirect_to @stock, notice: "Stock was successfully created." }
+        format.json { render :show, status: :created, location: @stock }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @stock.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /stocks/1 or /stocks/1.json
+  def update
+    respond_to do |format|
+      if @stock.update(stock_params)
+        format.html { redirect_to @stock, notice: "Stock was successfully updated." }
+        format.json { render :show, status: :ok, location: @stock }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @stock.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # DELETE /stocks/1 or /stocks/1.json
@@ -58,6 +75,6 @@ class StocksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def stock_params
-      params.require(:stock).permit(:name, :quantity)
+      params.require(:stock).permit(:name, :total_price, :user_id)
     end
 end

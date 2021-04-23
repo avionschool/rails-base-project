@@ -11,16 +11,9 @@ class MarketController < ApplicationController
 
     # POST
     def show_stock_in_modal
-      puts ""
-      puts "show_stock_in_modal : " + params[:market_id]
-      puts ""
       market = Market.find(params[:market_id])
       @client = IEX::Api::Client.new()
       @market_quote = @client.quote(market.name)
-
-      puts ""
-      puts @market_quote
-      puts ""
 
       respond_to  do |format|
         format.js
@@ -55,9 +48,6 @@ class MarketController < ApplicationController
         rescue IEX::Errors::SymbolNotFoundError => e
           @error = "Stock symbol does not exist."
           redirect_to(market_path, alert: @error) and return
-        
-
-        puts @quote
 
         respond_to  do |format|
             # format.html { redirect_to market_path, notice: "success." }
