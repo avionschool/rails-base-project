@@ -17,15 +17,23 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
+      <%= render "shared/navbar" %>
+       <div class='columns is-centered mt-1'>
+        <p class="notification is-primary has-text-centered is-overlay column is-half is-centered"><%= notice %></p>
+       </div>
+       <div class='columns is-centered mt-1'>
+       <% if alert%>
+        <p class="notification is-warning has-text-centered is-overlay column is-half is-centered"><%= alert %></p>  
+       </div>
+    <%
+=begin%>
+ <% if user_signed_in? %>
 
       <% else %>
-      <%= render "shared/navbar" %>
 
-    <% end %>
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>  
-
+    <% end %> 
+<%
+=end%>
     <%= yield %>
     <%= javascript_pack_tag "index" %>
   </body>

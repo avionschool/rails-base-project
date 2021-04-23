@@ -3,7 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable
-  has_and_belongs_to_many :role, foreign_key: 'role_id'
   before_save :uniq_stocks?
 
   belongs_to :role, optional: true
@@ -154,7 +153,7 @@ class User < ApplicationRecord
   end
 
   def check_cash(price, volume)
-    false unless cash >= price * volume
+    return false unless cash >= price * volume
   end
 
   # Ensure that an instance will be valid to save records on buyers_stocks table
@@ -166,5 +165,9 @@ class User < ApplicationRecord
     # Validate if user.role =  buyer/broker(?)
     # Check valid stock symbol?
     return true if %w[buy sell].include?(type) && !(!Stock.exists?(stock) || role == Role.find_by(name: 'Admin'))
+  end
+
+  def confirmation_required?
+    role == Role.find_by(name: 'Broker')
   end
 end

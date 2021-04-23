@@ -34,6 +34,8 @@ RSpec.describe User, type: :model do
     before do
       Stock.create(name: 'TEST STOCK', code: 'TEST', volume: 0)
       Role.create(name: 'Buyer')
+      Role.create(name: 'Broker')
+      Role.create(name: 'Admin')
       described_class.create(email: 'buyer@gmail.com', password: '123456', role_id: Role.find_by(name: 'Buyer').id)
       described_class.create(email: 'seller@gmail.com', password: '123456', role_id: Role.find_by(name: 'Buyer').id)
       described_class.find_by(email: 'buyer@gmail.com').update(cash: 5000)
