@@ -19,10 +19,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Setup Ruby
-      uses: actions/setup-ruby@v1
+    - name: Setup Ruby      
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.7.2
+        ruby-version: 3.0.0
+        bundler-cache: true
 
     - name: Install dependencies
       run: |
