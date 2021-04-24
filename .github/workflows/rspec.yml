@@ -46,4 +46,4 @@ jobs:
         DATABASE_HOST: 127.0.0.1
         DATABASE_USERNAME: 'postgres'
         DATABASE_PASSWORD: 'test'
-        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+        RAILS_MASTER_KEY: 493fd338f716da1f985a5bfd748d88be
