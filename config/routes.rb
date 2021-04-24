@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :stocks
-  resources :transactions
+  
+  resources :stocks, only: [:index, :destroy]
+  resources :transactions, only: [:index]
 
   # rename devise routes
   devise_for :users,
@@ -24,6 +25,6 @@ Rails.application.routes.draw do
   post "add_stock_to_market" => "market#add_stock_to_market"
 
   # MARKET_STOCKS
-  # Contains routes for updating stocks and transactions from the marketpage
+  # Contains routes for updating stocks and transactions from the marketpage - For Brokers
   resources :market_stocks, only: [:create, :destroy]
 end

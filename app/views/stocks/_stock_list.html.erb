@@ -1,0 +1,24 @@
+
+<table class="table caption-top">
+  <%# <caption>List of users</caption> %>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Company</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Amount</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stocks.each_with_index do |stock, index| %>
+      <tr>
+        <th scope="row text-muted"><%= index + 1 %></th>
+        <td><%= stock.name %></td>
+        <td><%= stock.quantity %></td>
+        <td><%= stock.amount %></td>
+        <td> Buy | History </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,28 @@
+
+<table class="table caption-top">
+  <%# <caption>List of users</caption> %>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Company</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price/Unit</th>
+      <th scope="col">Total Amount</th>
+      <th scope="col">Seller</th>
+      <th scope="col">Buyer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.each_with_index do |transaction, index| %>
+      <tr>
+        <th scope="row text-muted"><%= index + 1 %></th>
+        <td><%= transaction.stock_id %></td>
+        <td><%= transaction.quantity %></td>
+        <td><%= transaction.price %></td>
+        <td><%= transaction.total_amount %></td>
+        <td><%= transaction.seller_id %></td>
+        <td><%= transaction.buyer_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="pt-5">
+    <h1 class="text-center">Transactions</h1>
+  </div>
+  <div id ="stock-searched" class="d-flex justify-content-center row">
+    <% if @transactions %>
+      <%= render partial: "transactions/transaction_list" %>
+    <% else %>
+      <p class="text-muted text-center pt-5">No activities yet.</p>
+    <% end %>
+  </div>
+</div>

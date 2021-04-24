@@ -1,31 +1,12 @@
-<h1>Listing stocks</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Amount</th>
-      <th>Quantity</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-   <% @stocks.each do |stock| %>
-      <tr>
-        <td><%= stock.name %></td>
-        <td><%= stock.amount %></td>
-        <td><%= stock.quantity %></td>
-        <td><%= stock.user_id %></td>
-        <td><%= link_to 'Show', stock %></td>
-        <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
-        <td><%= link_to 'Destroy', stock, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-      </tr>
+<div class="container">
+  <div class="border-bottom">
+    <h1 class="text-center pt-5">My Portfolio</h1>
+  </div>
+  <div id ="stock-searched" class="d-flex justify-content-center row">
+    <% if @stocks %>
+      <%= render partial: "stocks/stock_list" %>
+    <% else %>
+      <p class="text-muted text-center pt-5">Nothing to show. Go to Market and search for stocks.</p>
     <% end %>
-  </tbody>
-</table>
-<br>
-
-<%= link_to 'New Stock', new_stock_path %>
+  </div>
+</div>
