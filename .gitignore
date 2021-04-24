@@ -8,7 +8,7 @@
 /.bundle
 
 #Ignore env
-/.env
+.env
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -51,3 +51,6 @@ config/database.yml
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore application configuration
+/config/application.yml

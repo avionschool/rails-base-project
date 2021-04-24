@@ -5,14 +5,21 @@ Rails.application.configure do
     port: 587,
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "peddler.email00@gmail.com",
-    password:"ped123456"
+    user_name: ENV['GMAIL_USERNAME'],
+    password: ENV['GMAIL_PASSWORD']
   }
-  
+
+  IEX::Api.configure do |config|
+  config.publishable_token = ENV["IEX_SB_SK"] # defaults to ENV['IEX_API_PUBLISHABLE_TOKEN']
+  config.secret_token = ENV["IEX_SB_PK"] # defaults to ENV['IEX_API_SECRET_TOKEN']
+  config.endpoint = 'https://sandbox.iexapis.com/v1 ' # use 'https://sandbox.iexapis.com/v1' for Sandbox
+  end
+
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  
-  config.action_mailer.raise_delivery_errors = true
+    
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+ 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.

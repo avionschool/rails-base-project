@@ -27,7 +27,6 @@ class AdminpagesController < ApplicationController
 
   def update
     @users = User.find_by_id(params[:id])
-    byebug
   end
 
   def confirm 
@@ -51,6 +50,6 @@ class AdminpagesController < ApplicationController
     params.permit(:role_id, :firstname, :lastname, :email, :password)
 
   end
-
+    
 
 end

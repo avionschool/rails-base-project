@@ -1,1 +1,43 @@
-<h1>Buyers Portfolio</h1>
+<div class="container">
+
+<div class="w-full ml-10 p-5  rounded-md shadow-lg">
+<h1 class="text-xl font-medium">Your Current Investments</h1> <br>
+
+<div class="flex justify-center">
+<% if BuyerStock.where(user_id: current_user.id).any? %>
+  <table class="table-auto">
+    <thead>
+        <tr >
+            <th class="p-3 border-2">Company Name</th>
+            <th class="p-3 border-2">Symbol</th>
+            <th class="p-3 border-2">Quantity</th>
+            <th class="p-3 border-2">Price</th>
+            <th class="p-3 border-2">Total Price</th>
+        </tr>
+    </thead>
+    <tbody>
+         <% @stocks.each do |stock| %>
+            
+        <tr>
+          
+            <td class="p-5 border-2"><%= stock.company %></td>
+            <td class="p-5 border-2"><%= stock.ticker %></td>
+            <td class="p-5 border-2"><%= stock.quantity %></td>
+            <td class="p-5 border-2"><%= "$" %><%= stock.price%></td>
+            <td class="p-5 border-2"><%= "$" %><%= stock.total_price%></td>
+           
+        </tr>  
+
+        <% end %>
+    
+    </tbody>
+    </table>
+<% else %>
+    <p>You currently have no existing Investments.</p>
+<% end %>
+     
+
+</div>
+   
+</div>
+</div>

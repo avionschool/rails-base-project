@@ -1,0 +1,48 @@
+<div class="container">
+
+<div class="w-full ml-10 p-5  rounded-md shadow-lg">
+<h1 class="text-xl font-medium">Transactions</h1> <br>
+
+
+<div class="flex justify-center">
+<% if Transaction.where(broker_id: current_user.id).any? %>
+  <table class="table-auto">
+    <thead>
+        <tr > 
+
+            <th class="p-3 border-2">Buyer Name</th>
+            <th class="p-3 border-2">Broker Name</th>
+            <th class="p-3 border-2">Symbol</th>
+            <th class="p-3 border-2">Quantity</th>
+            <th class="p-3 border-2">Price</th>
+            <th class="p-3 border-2">Total Price</th>
+            <th class="p-3 border-2">Transaction Date</th>
+
+        </tr>
+    </thead>
+    <tbody>
+         <% @transactions.each do |transaction| %>
+        <tr>
+            <td class="p-5 border-2 text-center"><%= User.find(transaction.user_id).firstname.capitalize%> <%= User.find(transaction.user_id).lastname.capitalize %></td>
+            <td class="p-5 border-2 text-center"><%= User.find(transaction.broker_id).firstname.capitalize%> <%= User.find(transaction.broker_id).lastname.capitalize %></td>
+            <td class="p-5 border-2 text-center"><%= transaction.ticker %></td>
+            <td class="p-5 border-2 text-center"><%= transaction.quantity %></td>
+            <td class="p-5 border-2 text-center"><%= "$" %><%= transaction.price %></td>
+            <td class="p-5 border-2 text-center"><%= "$" %><%= transaction.total_price%></td>
+            <td class="p-5 border-2 text-center"><%= "$" %><%= transaction.created_at.to_date%></td>
+        </tr>  
+
+        <% end %>
+    
+    </tbody>
+    </table>
+
+    <% else %>
+    <p>There are no related transactions with your account at the moment...</p>
+<% end %>
+     
+
+</div>
+   
+</div>
+</div>

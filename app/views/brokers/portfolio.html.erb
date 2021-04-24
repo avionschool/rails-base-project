@@ -1,1 +1,37 @@
-<h1>Brokers Portfolio</h1>
+<div class="container">
+
+<div class="w-full ml-10 p-5  rounded-md shadow-lg">
+<h1 class="text-xl font-medium">Your Broker Portfolio</h1> <br>
+
+<div class="flex justify-center">
+
+     <table class="table-auto">
+    <thead>
+        <tr >
+            <th class="p-3 border-2">Company Name</th>
+            <th class="p-3 border-2">Symbol</th>
+            <th class="p-3 border-2">Price</th>
+
+    
+        </tr>
+    </thead>
+    <tbody>
+         <% @stocks.each do |stock| %>
+        
+        <tr>
+          
+            <td class="p-5 border-2"><%= stock.company %></td>
+            <td class="p-5 border-2"><%= stock.ticker %></td>
+            <td class="p-5 border-2"><%= "$" %><%= stock.price%></td>
+           
+        </tr>  
+
+        <% end %>
+    
+    </tbody>
+    </table>
+
+</div>
+   
+</div>
+</div>

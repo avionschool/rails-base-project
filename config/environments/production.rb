@@ -5,8 +5,8 @@ Rails.application.configure do
     port: 587,
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "peddler.email00@gmail.com",
-    password:"ped123456"
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"]
   }
 
   # config.action_mailer.default_url_options = { :host => 'yourhostsite.herokuapp.com' }

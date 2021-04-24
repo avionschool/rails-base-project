@@ -1,0 +1,23 @@
+ <% @mostactive.each_with_index do |active,index| %>
+        
+        <tr>
+            <td class="p-5 border-2"><%= @mostactive[index].company_name %></td>
+            <td class="p-5 border-2"><%= @mostactive[index].symbol %></td>
+            <td class="p-5 border-2"><%= "$" %><%= @mostactive[index].latest_price%></td>
+            <td class="p-5 border-2"><%= @mostactive[index].latest_time %></td>
+            <%= link_to "Add stock", brokers_create_path({company:@mostactive[index].company_name, ticker: @mostactive[index].symbol, price: @mostactive[index].latest_price}), method: :post %>
+        </tr>  
+
+        <% end %>
+    
+=====
+
+      <tr>
+
+            <td class="p-5 border-2"><%= "Apple" %></td>
+            <td class="p-5 border-2"><%= "AAPL" %></td>
+            <td class="p-5 border-2"><%= 10 %></td>
+            <td class="p-5 border-2"><%= "11:10am" %></td>
+            <td class="p-5 border-2"><%= link_to "Add stock", brokers_create_path({company: "Apple", ticker: "AAPL", price: 16.10}), method: :post %></td>
+            
+       </tr>

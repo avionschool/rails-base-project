@@ -9,5 +9,8 @@ class User < ApplicationRecord
 
   has_one :role 
 
+  has_many :transactions,dependent: :destroy_async
+  has_many :buyer_stocks,dependent: :destroy_async
+  has_many :broker_stocks,dependent: :destroy_async
 
 end

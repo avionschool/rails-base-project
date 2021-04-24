@@ -1,2 +1,38 @@
-<h1>Buyers#index</h1>
-<p>Find me in app/views/buyers/index.html.erb</p>
+<div class="container">
+
+<div class="w-full ml-10 p-5  rounded-md shadow-lg">
+<h1 class="text-xl font-medium">Stocks for Sale</h1> <br>
+
+<div class="flex justify-center">
+
+     <table class="table-auto">
+    <thead>
+        <tr >
+            <th class="p-2 border-2">Broker Name</th>
+            <th class="p-2 border-2">Symbol</th>
+            <th class="p-2 border-2">Company</th>
+            <th class="p-2 border-2">Selling Price</th>
+            <th class="p-2 border-2">Action</th>
+        
+        </tr>
+    </thead>
+    <tbody>
+         <% @forsale.each_with_index do |sellitem| %>
+        
+        <tr>
+            <td class="p-5 border-2"><%= User.find(sellitem.user_id).firstname%> <%= User.find(sellitem.user_id).lastname%> </td> 
+            <td class="p-5 border-2"><%= sellitem.ticker %></td>
+            <td class="p-5 border-2"><%= sellitem.company %></td>
+            <td class="p-5 border-2"><%= "$" %><%= sellitem.price %></td>
+            <td class="p-5 border-2"><%= link_to "Buy Stock",buyers_new_path(sellitem.id) ,class: "p-2 bg-green-500 text-gray-50 rounded-md",data: {disable_with: "Loading..."} %></td> 
+        </tr>  
+
+        <% end %>
+    
+    </tbody>
+    </table>
+
+</div>
+   
+</div>
+</div>
