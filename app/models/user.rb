@@ -19,7 +19,7 @@ class User < ApplicationRecord
   scope :brokers, -> { where(role: Role.find_by(name: 'Broker')) }
   scope :buyers, -> { where(role: Role.find_by(name: 'Buyer')) }
   scope :admins, -> { where(role: Role.find_by(name: 'Admin')) }
-  scope :unconfirmed, -> {find_by(confirmed_at: nil)}
+  scope :unconfirmed, -> { find_by(confirmed_at: nil) }
 
   # Put to Controller?
   def buy_stock(stock, volume, price)
@@ -37,7 +37,7 @@ class User < ApplicationRecord
     when Role.find_by(name: 'Broker')
       transaction.fulfilled = true
       self.cash = cash - price * volume
-      stocks << Stock.find_by(code: stock) 
+      stocks << Stock.find_by(code: stock)
     when Role.find_by(name: 'Buyer')
       self.alloted_cash = alloted_cash + price * volume
       self.cash = cash - price * volume

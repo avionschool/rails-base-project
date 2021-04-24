@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     @user = resource
     @user.confirmed_at = Time.now.utc unless @user.role.name == 'Broker'
-    @user.skip_confirmation_notification! #@user.send_confirmation_instructions when approved by admin
+    @user.skip_confirmation_notification! # @user.send_confirmation_instructions when approved by admin
     @user.save
     if @user.persisted?
       if @user.active_for_authentication?
