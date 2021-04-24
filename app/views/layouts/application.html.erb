@@ -17,28 +17,6 @@
   </head>
 
   <body>
-        <%
-=begin%>
- <div class='columns is-centered mt-1'>
-        <p class="notification is-primary has-text-centered is-overlay column is-half is-centered"><%= notice %></p>
-       </div>
-       <div class='columns is-centered mt-1'>
-       <% if alert%>
-        <p class="notification is-warning has-text-centered is-overlay column is-half is-centered"><%= alert %></p>  
-       </div> 
-<%
-=end%>
-    <%
-=begin%>
- <% if user_signed_in? %>
-
-      <% else %>
-
-    <% end %> 
-    <%= yield %>
-<%
-=end%>
-
     <% if user_signed_in? %>
         <%= render "shared/navbar" %> 
     <% else %>
@@ -51,19 +29,27 @@
       <% flash.each do |name, msg| %>
       <% unless msg == "Signed in successfully." || "Signed out successfully." || "Invalid Email or password." %>
         
-        <div class="notification is-<%= name %> has-text-centered mt-3">
-        <span class="is-size-5 has-text-weight-bold has-text-centered is-half"><%= msg %></span>
+      <div class="columns is-centered notif mt-1">
+        <div class="column is-half notification is-<%= name %> has-text-centered mt-1">
+        <span class="is-size-5 has-text-weight-bold has-text-centered"><%= msg %></span>
+      </div>
       </div>
       <% end %>
         <% if msg == "Signed in successfully." || "Signed out successfully." && msg != "Invalid Email or password." %>
-          <div class="notification is-success has-text-centered mt-3">
-        <span class="is-size-5 has-text-weight-bold has-text-centered is-half"><%= msg %></span>
+        <div class="columns is-centered notif mt-1">
+
+          <div class="column is-half notification is-success has-text-centered mt-1">
+        <span class="is-size-5 has-text-weight-bold has-text-centered"><%= msg %></span>
       </div>
+        </div>
         <% end %>
         <% if msg == "Invalid Email or password." %>
-          <div class="notification is-danger has-text-centered mt-3">
-        <span class="is-size-5 has-text-weight-bold has-text-centered is-half"><%= msg %></span>
+        <div class="columns is-centered notif mt-1">
+
+          <div class="column is-half notification is-danger has-text-centered mt-1">
+        <span class="is-size-5 has-text-weight-bold has-text-centered"><%= msg %></span>
       </div>
+        </div>
         <% end %>
         
     
@@ -71,7 +57,6 @@
       <% end %>
       <%= yield %>
     </div>
-
     <%= javascript_pack_tag "index" %>
   </body>
 </html>
