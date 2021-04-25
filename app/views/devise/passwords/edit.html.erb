@@ -1,0 +1,45 @@
+
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+
+
+<section class="container container-content mt-6 mr-6 ml-6">
+<div class="columns">
+
+  <div class="column is-6 container-left">
+    <%= image_tag("forgot-password-animate.svg", :alt => "rss feed") %>
+  </div>
+  
+  <div class="column is-6 container-right">
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="field">
+  <div class="control">
+    <%= f.label :password, class:"label has-text-black" do %>
+    Password
+    <em class="has-text-weight-light has-text-black">(Minimum of 6 characters)</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password", class:"input" %>
+  </div>
+  </div>
+
+  <div class="field">
+  <div class="control">
+    <%= f.label :password_confirmation, class:"label has-text-black" do %>
+    Confirm Password
+    <% end %>
+    
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input" %>
+  </div>
+  </div>
+  <div class="actions">
+    
+    <%= f.button :submit, class: 'button start-now-two', value: 'Login' do%>
+      Change Password
+    <% end %>
+  </div>
+  <div class="shared-links">
+  </div>
+</div>
+</div>
+  </section>
+<% end %>

@@ -4,6 +4,9 @@ class HomeController < ApplicationController
     render :index
   end
 
+  # def index
+  #     require 'iex-ruby-client'
+
   def show
     @portfolio = BuyersStock.where(user_id: current_user.id)
     render :show
