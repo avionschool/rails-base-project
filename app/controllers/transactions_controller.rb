@@ -9,12 +9,12 @@ class TransactionsController < ApplicationController
     render :new
   end
 
-  def create 
+  def create
     case params[:transaction_type]
     when 'Buy'
-        current_user.buy_stock(Stock.find(params[:stock_id]).code, params[:volume], params[:price])
+      current_user.buy_stock(Stock.find(params[:stock_id]).code, params[:volume], params[:price])
     when 'Sell'
-        current_user.sell_stock(Stock.find(params[:stock_id]).code, params[:volume], params[:price])
+      current_user.sell_stock(Stock.find(params[:stock_id]).code, params[:volume], params[:price])
     end
   end
 

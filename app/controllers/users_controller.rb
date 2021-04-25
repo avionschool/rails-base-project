@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def edit; end
 
-  def get_unconfirmed
+  def unconfirmed
     @users = User.unconfirmed
   end
 
