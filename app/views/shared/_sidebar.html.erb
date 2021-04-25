@@ -1,0 +1,25 @@
+<div class="l-navbar" id="navbar">
+    <nav class="nav">
+        <div>
+            <div class="nav__brand">
+                <i class='bx bx-menu nav__toggle is-size-5 has-text-weight-bold' id="nav-toggle" ></i>
+                <a href="#" class="nav__logo has-text-weight-bold">Tradr</a>
+            </div>
+            <div class="nav__list">
+                <a href="#" class="nav__link active">
+                    <i class='bx bxs-dashboard is-size-5' ></i>
+                    <span class="nav__name has-text-weight-bold">Dashboard</span>
+                </a>
+                <a href="#" class="nav__link">
+                    <i class='bx bxs-dollar-circle is-size-5' ></i>
+                    <span class="nav__name has-text-weight-bold">Buy Stocks</span>
+                </a>
+            </div>
+        </div>
+
+        <%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to sign-out?' }, class:"nav__link__out" do %>
+            <i class='bx bx-log-out is-size-5'></i>
+            <span class="nav__name has-text-weight-bold">Log-out</span>
+        <% end %>
+    </nav>
+</div>
