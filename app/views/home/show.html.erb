@@ -1,60 +1,62 @@
 <div class="dashboard margin-left-none">
-    <div class="columns mt-0">
-        <div class="column is-full">
-            <span class="is-size-4 has-text-weight-light">Welcome to </span>
-            <span class="is-size-4 has-text-weight-bold green">Tradr Platform!</span>
-            <br>
-            <span class="has-text-grey-light has-text-weight-light is-size-5">Good Day, <%= !!current_user.name ? current_user.name : ''%></span>
-            
-        </div>
+  <div class="columns mt-0">
+    <div class="column is-full">
+      <span class="is-size-4 has-text-weight-light">Welcome to </span>
+      <span class="is-size-4 has-text-weight-bold green">Tradr Platform!</span>
+      <br>
+      <span class="has-text-grey-light has-text-weight-light is-size-5">Good Day, <%= !!current_user.name ? current_user.name : ''%></span>
     </div>
-    <div class="columns mt-0">
-        <div class="column is-two-thirds">
-            <span class="has-text-weight-bold title is-4">Your Portfolio</span> 
-            
-                     <% @portfolio.each do |x| %>
-            <div class="tiles mt-4">
-                <div class="tile">
-                    <h1><%= x[:name] %> [<%= x[:code] %>]</h1>
+  </div>
+  <div class="columns mt-0">
+    <div class="column is-two-thirds">
+      <span class="has-text-weight-bold title is-4">Your Portfolio</span>
+      <% @portfolio.each do |x| %>
+        <div class="tiles mt-4">
+          <div class="tile">
+            <h1><%= x[:name] %> [<%= x[:code] %>]</h1>
+          </div>
+          <p>Volume: <%= x[:volume] %></p>
+          <p>Price: <%= x[:price] %> </p>
+          <p>Value: <%= x[:volume] * x[:price] %>
+           <div>
+                <%= link_to transactions_new_path(:transaction_type => "Buy", :stock_id => x[:stock_id]), class: 'button is-primary mr-2 mt-1 has-text-weight-medium' do%>
+                  <i class='bx bx-archive-in mr-1' ></i> Buy
+                <% end %>
+                <%= link_to transactions_new_path(:transaction_type => "Sell", :stock_id => x[:stock_id]), class: 'button is-danger mr-2 mt-1 has-text-weight-medium' do%>
+                  <i class='bx bx-archive-out mr-1' ></i> Sell
+                <% end %>
+           </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="column">
+        <span class="has-text-weight-bold title is-4">Trending Stocks</span>
+        <div class="tiles mt-4">
+          <div class="tile">
+            <table class="table is-borderless">
+              <thead>
+                <div>
+                  <tr class="tiles has-background-grey-lighter">
+                    <th class="has-text-centered is-size-6">Name</th>
+                    <th class="has-text-centered is-size-6">Price/unit</th>
+                    <th class="has-text-centered is-size-6">Return</th>
+                  </tr>
                 </div>
-                    <p>Volume: <%= x[:volume] %></p>
-                    <p>Price: <%= x[:price] %> </p>
-                    <p>Value: <%= x[:volume] * x[:price] %>
-            </div>
-                    <% end %> 
-        </div>
-
-        <div class="column">
-            <span class="has-text-weight-bold title is-4">Trending Stocks</span> 
-            <div class="tiles mt-4">
-                <div class="tile">
-                    <table class="table is-borderless">
-                        <thead>
-                            <div>
-                                <tr class="tiles has-background-grey-lighter">
-                                    <th class="has-text-centered is-size-6">Name</th>
-                                    <th class="has-text-centered is-size-6">Price/unit</th>
-                                    <th class="has-text-centered is-size-6">Return</th>
-        
-                                </tr>
-                            </div>
-
-                        </thead>
-                        <tbody>
-                        <% @top10.each do |x| %>
-                        <tr>
-                            <td><%= x.company_name %></td>
-                            <td>$ <%= x.latest_price %></td>
-                            <td> <%= x.change_percent_s %></td>
-
-                        </tr>
-                        <%end%>
-                        </tbody>
-                    </table>
-                    <!-- <% @portfolio.each do |x| %>
+              </thead>
+              <tbody>
+                <% @top10.each do |x| %>
+                  <tr>
+                    <td><%= x.company_name %></td>
+                    <td>$ <%= x.latest_price %></td>
+                    <td> <%= x.change_percent_s %></td>
+                  </tr>
+                <%end%>
+              </tbody>
+            </table>
+            <!-- <% @portfolio.each do |x| %>
                     <% end %> -->
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
