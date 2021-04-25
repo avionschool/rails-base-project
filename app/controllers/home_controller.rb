@@ -12,7 +12,7 @@ class HomeController < ApplicationController
     @client = IEX::Api::Client.new
     @portfolio = BuyersStock.where(user_id: current_user.id).collect {|x| {:stock_id => x.stock_id,:name => Stock.find(x.stock_id).name, :volume => x.volume, :price => @client.quote(Stock.find(x.stock_id).code).latest_price, :code => Stock.find(x.stock_id).code}}
     @top10 = @client.stock_market_list(:mostactive)
-    logger.info @top10
+
     render :show
   end
 
