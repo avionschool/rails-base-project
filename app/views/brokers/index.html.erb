@@ -5,7 +5,7 @@
 
 <div class="flex justify-center">
 <% @mostactive = @client.stock_market_list(:mostactive) %>
-
+<% @key = @client.key_stats('MSFT') %>
      <table class="table-auto">
     <thead>
         <tr >

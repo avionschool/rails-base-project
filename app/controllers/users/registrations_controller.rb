@@ -13,24 +13,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
 
     if resource.role_id == 2
-    resource.skip_confirmation_notification!
-    UserNotifierMailer.send_pending_email(resource).deliver
-    end 
-    
+      resource.skip_confirmation_notification!
+      UserNotifierMailer.send_pending_email(resource).deliver
+    end
+
     resource.save
     yield resource if block_given?
     if resource.persisted?
-      
+
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
         respond_with resource, location: after_sign_up_path_for(resource)
       else
-        if resource.role_id == 2
-          set_flash_message! :notice, :brokers
-        else
-           set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
-        end
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!
         respond_with resource, location: after_inactive_sign_up_path_for(resource)
       end
@@ -39,13 +35,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       set_minimum_password_length
       respond_with resource
     end
-    
   end
 
   def skip_confirmation_notification!
-
     @skip_confirmation_notification = true
-    
   end
 
   # GET /resource/edit
@@ -85,20 +78,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-   def after_sign_up_path_for(resource)
-   if current_user.role_id == 1 
-    buyers_path  
-   elsif current_user.role_id == 2
-    brokers_path
-   else
-    super(resource)
-   end
-   end
+  def after_sign_up_path_for(resource)
+    case current_user.role_id
+    when 1
+      buyers_path
+    when 2
+      brokers_path
+    else
+      super(resource)
+    end
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
-  # end  
-
-
+  # end
 end

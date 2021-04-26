@@ -17,11 +17,9 @@ class Admins::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-   def after_sign_in_path_for(resource)
-
+  def after_sign_in_path_for(_resource)
     admins_index_path
-    
-    end
+  end
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.

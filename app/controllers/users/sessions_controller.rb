@@ -18,15 +18,15 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
   def after_sign_in_path_for(resource)
-    if current_user.role_id == 1 
-     buyers_path  
-    elsif current_user.role_id == 2
-     brokers_path
+    case current_user.role_id
+    when 1
+      buyers_path
+    when 2
+      brokers_path
     else
-     super(resource)
+      super(resource)
     end
-   
-    end
+  end
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.

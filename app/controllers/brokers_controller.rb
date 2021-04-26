@@ -1,11 +1,10 @@
 class BrokersController < ApplicationController
   def index
     @client = IEX::Api::Client.new(
-      publishable_token:  ENV['IEX_SB_PK'], #ENV['IEX_P_PK'] for production
-      secret_token:  'secret_token', 
-      endpoint: 'https://sandbox.iexapis.com/v1'   #'https://sandbox.iexapis.com/v1' for sandbox
-    )
-    
+      publishable_token:  ENV['IEX_SB_PK'], # ENV['IEX_P_PK'] for production
+      secret_token:  'secret_token',
+      endpoint: 'https://sandbox.iexapis.com/v1'   # 'https://sandbox.iexapis.com/v1' for sandbox
+    )                                              # 'https://cloud.iexapis.com/v1' for production
   end
 
   def new
@@ -17,29 +16,22 @@ class BrokersController < ApplicationController
     if BrokerStock.exists?(ticker: params[:ticker])
       redirect_to brokers_path, alert: 'Error Adding to portfolio, Stock Already Exists...'
     else
-      @stock = BrokerStock.create(brokers_params)  
+      @stock = BrokerStock.create(brokers_params)
 
-      if  @stock.save
+      if @stock.save
         redirect_to brokers_path, notice: ' Successfully Added Stock to Portfolio'
       else
         redirect_to brokers_path, notice: 'Error Adding Stock to Portfolio'
       end
-      
+
     end
-
-  
   end
 
-  def edit
-  end
+  def edit; end
 
-  
+  def update; end
 
-  def update
-  end
-
-  def show
-  end
+  def show; end
 
   def portfolio
     @stocks = BrokerStock.where(user_id: current_user.id)
@@ -50,11 +42,6 @@ class BrokersController < ApplicationController
   end
 
   def brokers_params
-    
     params.permit(:user_id, :ticker, :company, :price)
-
-
   end
-
-
 end
