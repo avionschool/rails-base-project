@@ -1,6 +1,6 @@
 
- <div class="flex justify-center h-auto items-center mt-5">
-    <div class='flex max-w-sm w-full h-150 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
+ <div class="flex justify-center h-auto items-center mt-10">
+    <div class='flex max-w-sm w-full h-150 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-10'>
     
     <h3 class="text-2xl font-bold mb-4">Log in</h3>
 
@@ -8,18 +8,20 @@
   
        
     <!-- This is the input component -->
-  <div class="relative h-10 input-component mb-5 mt-4">
+  <div class="h-10 input-component mb-10 mt-4">
+  <%= f.label :email,class: "transition-all bg-white px-1" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
-    <%= f.label :email,class: "absolute left-2 transition-all bg-white px-1" %>
+    
   </div>
   
-    <div class="relative h-10 input-component mb-2 mt-4">
+    <div class="h-10 input-component mb-7 mt-4">
+    <%= f.label :password, class: "transition-all bg-white px-1" %>
     <%= f.password_field :password, autocomplete: "current-password",class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
-    <%= f.label :password, class: "absolute left-2 transition-all bg-white px-1" %>
+    
   </div>
   
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="field mb-3">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
@@ -40,17 +42,8 @@
 </div>
 
 <style>
-label {
-  top: 0%;
-  transform: translateY(-50%);
-  font-size: 11px;
-  color: rgba(37, 99, 235, 1);
-}
-.empty input:not(:focus) + label {
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 14px;
-}
+
+
 input:not(:focus) + label {
   color: rgba(70, 70, 70, 1);
 }

@@ -1,6 +1,7 @@
 class BuyersController < ApplicationController
   def index
     @forsale = BrokerStock.all
+  
   end
 
   def create

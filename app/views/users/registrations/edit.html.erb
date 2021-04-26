@@ -1,12 +1,12 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
-     <div class="flex justify-center h-auto items-center mt-5">
+     <div class="flex justify-center h-auto items-center mt-10">
     <div class='flex max-w-sm w-full text-start h-150 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
-    <h1 class="mb-2 font-semibold"> <%= Role.find(current_user.role_id).role_name %> <%= resource_name.to_s.humanize %> Account Details</h1>
+    <h1 class="mb-2 font-bold"> <%= Role.find(current_user.role_id).role_name %> <%= resource_name.to_s.humanize %> Account Details</h1>
     
       <!-- This is the input component -->
-    <div class="relative h-10 input-component mb-5 mt-4">
+    <div class="h-10 input-component mb-5 mt-4">
     <%= f.label :email, class:"font-semibold" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"Email", class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
     </div>
@@ -16,7 +16,7 @@
   <% end %>
 
     <!-- This is the input component -->
-    <div class="relative h-10 input-component mb-5 mt-4">
+    <div class="h-10 input-component mb-5 mt-4">
     <%= f.label :password, class:"font-semibold" %><i>(Optional)</i><br />
     <%= f.password_field :password, autocomplete: "new-password",placeholder:"Password", class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
      <% if @minimum_password_length %>
@@ -26,7 +26,7 @@
     </div>
     <br>
   <!-- This is the input component -->
-    <div class="relative h-10 input-component mb-5 mt-4">
+    <div class=" h-10 input-component mb-5 mt-4">
     <%= f.label :password_confirmation, class:"font-semibold" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"Password Confirmation", class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
      <% if @minimum_password_length %>
@@ -36,7 +36,7 @@
     </div>
     <br>
   <!-- This is the input component -->
-    <div class="relative h-10 input-component mb-5 mt-4">
+    <div class=" h-10 input-component mb-5 mt-4">
     <%= f.label :current_password, class:"font-semibold" %><i>(Enter current password to confirm changes)</i><br />
     <%=  f.password_field :current_password, autocomplete: "current-password",placeholder:"Current Password", class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
     </div>
