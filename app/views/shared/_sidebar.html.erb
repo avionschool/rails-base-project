@@ -6,10 +6,10 @@
                 <a href="#" class="nav__logo has-text-weight-bold">Tradr</a>
             </div>
             <div class="nav__list">
-                <a href="#" class="nav__link active">
+                <%= link_to dashboard_path, class:"nav__link active" do%>
                     <i class='bx bxs-dashboard is-size-5' ></i>
                     <span class="nav__name has-text-weight-bold">Dashboard</span>
-                </a>
+                <% end %>
                 <a href="#" class="nav__link">
                     <i class='bx bxs-dollar-circle is-size-5' ></i>
                     <span class="nav__name has-text-weight-bold">Buy Stocks</span>

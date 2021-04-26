@@ -147,6 +147,26 @@ html {
   margin-left: 16%;
 }
 
+.max-tile{
+  max-height: 70vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  
+}
+
+.max-tile:hover{
+  overflow: scroll;
+}
+
+.max-tile::-webkit-scrollbar {
+  width: 4px;
+}
+
+
+.max-tile::-webkit-scrollbar-thumb {
+  background-color: #21c58e;
+  border-radius: 50px;       
+}
 
 .tiles{
   border-radius: 15px;

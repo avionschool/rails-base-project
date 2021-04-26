@@ -4,14 +4,15 @@
       <span class="is-size-4 has-text-weight-light">Welcome to </span>
       <span class="is-size-4 has-text-weight-bold green">Tradr Platform!</span>
       <br>
-      <span class="has-text-grey-light has-text-weight-light is-size-5">Good Day, <%= !!current_user.name ? current_user.name : ''%></span>
+      <span class="has-text-grey-light has-text-weight-light is-size-5">Good Day, <%= !!current_user.name ? current_user.name : current_user.email %></span>
     </div>
   </div>
   <div class="columns mt-0">
     <div class="column is-two-thirds">
-      <span class="has-text-weight-bold title is-4">Your Portfolio</span>
+      <span class="has-text-weight-bold title is-4 mb-2">Your Portfolio</span>
+      <div class="column max-tile">
       <% @portfolio.each do |x| %>
-        <div class="tiles mt-4">
+        <div class="tiles mt-4 max-tile">
           <div class="tile">
             <h1><%= x[:name] %> [<%= x[:code] %>]</h1>
           </div>
@@ -29,9 +30,10 @@
           </div>
         <% end %>
       </div>
+      </div>
       <div class="column">
         <span class="has-text-weight-bold title is-4">Trending Stocks</span>
-        <div class="tiles mt-4">
+        <div class="tiles mt-4 max-tile">
           <div class="tile">
             <table class="table is-borderless">
               <thead>
