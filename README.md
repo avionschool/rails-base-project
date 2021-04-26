@@ -1,28 +1,16 @@
 # Hi there 👋
 
-This repo serves as the main repo for our Rails Projects. 
+This repo serves as the repo for Alex and Dave's Stock trading project under Avion School.
 
 
 #### Version
 
 ```
   Ruby 3.0.0
-  Rails 6.0.3.4
-  NodeJS 12.18.3
-  Yarn 1.22.4
+  Rails 6.1
+  NodeJS 14.16.0
+  Yarn 1.22.5
 ```
-
-#### Installation
-
-Fork this repo:
-![image](https://user-images.githubusercontent.com/9253881/111437757-6c527f00-873e-11eb-8d0a-862e4158f4ab.png)
-
-Then, clone your forked repo to your machine
-```
-  $ git clone git@github.com:<username>/rails-base-project.git <name of your app>
-  $ cd <name of your app>
-```
-
 #### Setup
 
 ```
@@ -56,3 +44,9 @@ Then, clone your forked repo to your machine
 
 
 
+#### Tradr App
+
+![alt text](https://gyazo.com/6e092c113a392b001d38180a4e56fda0 "Landing Page")
+![alt text](https://gyazo.com/6c36c5b1e09013e843a0e398fa45c185 "Sign-up Page")
+![alt text](https://gyazo.com/6227844586530a0cfa35e3bd146a328c "Sign-in Page")
+![alt text](https://gyazo.com/6126e383b67386c4fdf7d944bae23f48 "Dashboard")
