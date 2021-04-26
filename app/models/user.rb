@@ -42,21 +42,22 @@ class User < ApplicationRecord
       self.alloted_cash = alloted_cash + price * volume
       self.cash = cash - price * volume
     end
-
-    if save
-      transaction.save
-      if role.id == Role.find_by(name: 'Broker').id
-        bs = BuyersStock.find_entry(id, Stock.find_by(code: stock).id)
-        if bs.update(volume: bs.volume + volume)
-          logger.info "Successfully added #{stock} to portfolio"
-          true
+    ActiveRecord::Base.transaction do
+      if save
+        transaction.save
+        if role.id == Role.find_by(name: 'Broker').id
+          bs = BuyersStock.find_entry(id, Stock.find_by(code: stock).id)
+          if bs.update(volume: bs.volume + volume)
+            logger.info "Successfully added #{stock} to portfolio"
+            true
+          end
         end
+        logger.info 'Buy Order posted successfully.'
+        true
+      else
+        logger.info 'Something went wrong.'
+        false
       end
-      logger.info 'Buy Order posted successfully.'
-      true
-    else
-      logger.info 'Something went wrong.'
-      false
     end
   end
 
@@ -78,13 +79,14 @@ class User < ApplicationRecord
     buyer_stock.volume = buyer_stock.volume - volume
 
     transaction = Transaction.new(stock: Stock.find_by(code: stock), user: self, volume: volume, price: price, transaction_type: 'Sell')
-
-    if transaction.save && buyer_stock.save
-      logger.info 'Sell Order posted successfully.'
-      true
-    else
-      logger.info 'Something went wrong.'
-      false
+    ActiveRecord::Base.transaction do
+      if transaction.save && buyer_stock.save
+        logger.info 'Sell Order posted successfully.'
+        true
+      else
+        logger.info 'Something went wrong.'
+        false
+      end
     end
   end
 
@@ -107,16 +109,18 @@ class User < ApplicationRecord
     # Set fulfilled original transaction
     trans.fulfilled = true
     # Save and check if there is an error in updating the involved models (buyer,seller, and respective user-stock relationship)
-    if save
-      buyer_stock.save
-      trans.user.save
-      seller_stock.save
-      trans.save
-      logger.info 'Successful Transaction'
-      true
-    else
-      logger.info 'Something went wrong'
-      false
+    ActiveRecord::Base.transaction do
+      if save
+        buyer_stock.save
+        trans.user.save
+        seller_stock.save
+        trans.save
+        logger.info 'Successful Transaction'
+        true
+      else
+        logger.info 'Something went wrong'
+        false
+      end
     end
   end
 

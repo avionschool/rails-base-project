@@ -19,20 +19,24 @@ class Transaction < ApplicationRecord
       # Return alloted_cash to cash
       user.alloted_cash = user.alloted_cash - price * volume
       user.cash = user.cash + price * volume
-      if user.save
-        destroy
-      else
-        'Something went wrong!'
+      ActiveRecord::Base.transaction do
+        if user.save
+          destroy
+        else
+          'Something went wrong!'
+        end
       end
 
     when 'Sell'
       bs = BuyersStock.find_entry(user.id, stock.id)
       bs.alloted_volume = bs.alloted_volume - volume
       bs.volume = bs.volume + volume
-      if bs.save
-        destroy
-      else
-        'Something went wrong!'
+      ActiveRecord::Base.transaction do
+        if bs.save
+          destroy
+        else
+          'Something went wrong!'
+        end
       end
     end
   end
