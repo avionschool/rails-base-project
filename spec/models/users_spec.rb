@@ -4,8 +4,8 @@ RSpec.describe User, type: :model do
   describe 'validations' do
     # Email Validations
     before do
-      described_class.create(email: 'test@gmail.com', password: '123456')
       Role.create(name: 'Buyer')
+      described_class.create(email: 'test@gmail.com', password: '123456', role_id: Role.find_by(name: 'Buyer').id)
     end
 
     it { expect(described_class.new).to validate_presence_of :email }
