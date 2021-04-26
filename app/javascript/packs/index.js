@@ -7,6 +7,15 @@ $(document).ready(function () {
   });
 });
 
+/*===== LINK ACTIVE  =====*/
+const linkColor = document.querySelectorAll(".nav__link");
+function colorLink() {
+  linkColor.forEach((l) => l.classList.remove("active"));
+  this.classList.add("active");
+}
+
+linkColor.forEach((l) => l.addEventListener("click", colorLink));
+
 function hideNotice() {
   setInterval(function () {
     document.querySelector(".notification").style.display = "none";
@@ -50,13 +59,6 @@ const showMenu = (toggleId, navbarId, bodyId) => {
 };
 showMenu("nav-toggle", "navbar", "body-pd");
 
-/*===== LINK ACTIVE  =====*/
-const linkColor = document.querySelectorAll(".nav__link");
-function colorLink() {
-  linkColor.forEach((l) => l.classList.remove("active"));
-  this.classList.add("active");
-}
-linkColor.forEach((l) => l.addEventListener("click", colorLink));
 
 
 
