@@ -20,7 +20,6 @@ class HomeController < ApplicationController
       }
     end
     @top10 = Stock.most_active
-    logger.info @top10
     render :show
   end
 

@@ -43,7 +43,8 @@ class User < ApplicationRecord
       self.cash = cash - price * volume
     end
     ActiveRecord::Base.transaction do
-      if save
+      if self.cash > 0
+        save
         transaction.save
         if role.id == Role.find_by(name: 'Broker').id
           bs = BuyersStock.find_entry(id, Stock.find_by(code: stock).id)
