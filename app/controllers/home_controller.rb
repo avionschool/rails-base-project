@@ -17,6 +17,7 @@ class HomeController < ApplicationController
       }
     end
     @top10 = Stock.most_active
-    render :show
+    logger.info current_user.admin?
+    current_user.admin? ? (redirect_to admin_path) : (render :show)
   end
 end

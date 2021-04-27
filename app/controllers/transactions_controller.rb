@@ -1,9 +1,9 @@
 class TransactionsController < ApplicationController
   def index
-    @transactions = Transaction.all
-    @listings = Transaction.available_listings
-    @sells = Transaction.sell_listings
-    @buys = Transaction.buy_listings
+    @transactions = Transaction.all.where.not(user_id: current_user.id)
+    @listings = Transaction.available_listings.where.not(user_id: current_user.id)
+    @sells = Transaction.sell_listings.where.not(user_id: current_user.id)
+    @buys = Transaction.buy_listings.where.not(user_id: current_user.id)
     @top10 = Stock.most_active
     render :index
   end

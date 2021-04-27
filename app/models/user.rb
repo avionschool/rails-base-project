@@ -21,6 +21,10 @@ class User < ApplicationRecord
   scope :admins, -> { where(role: Role.find_by(name: 'Admin')) }
   scope :unconfirmed, -> { find_by(confirmed_at: nil) }
 
+  def admin?
+    role_id == Role.find_by(name: 'Admin').id
+  end
+
   # Put to Controller?
   def buy_stock(stock, volume, price)
     # Post a Buy Order on the APP if Buyer

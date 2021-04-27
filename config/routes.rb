@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   # get "/users/sign_up" => "registrations#create"
   get "/dashboard" => 'home#show'
+  get "/admin" => 'users#index', as: 'admin'
   get "/marketplace" => 'transactions#index'
   get "/transactions/new" => 'transactions#new'
 end
