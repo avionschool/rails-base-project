@@ -1,4 +1,4 @@
-require: 
+require:
   - rubocop-rails
   - rubocop-rspec
 
@@ -29,6 +29,10 @@ Metrics/BlockLength:
   Exclude:
     - "config/**/*"
     - "spec/**/*"
+
+RSpec/ExampleLength:
+  Enabled: false
+  Max: 20
 
 Metrics/MethodLength:
   Enabled: false
