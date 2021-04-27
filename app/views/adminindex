@@ -37,8 +37,74 @@
 
 
 
+<div class="w-full p-5 rounded-md shadow-lg grid justify-items-stretch mt-10 ">
 
+<div>
+  <div class="inline"><%= image_tag("transactions.png",class:"object-contain xs:w-auto sm:w-1/4 md:w-1/5  inline",alt:"Transactions Image ") %></div>
+  <div class="inline"><h1 class="inline ml-10 text-xl font-bold">Transactions History</h1></div>
+</div>
 
+	<div class="container flex items-center justify-center justify-self-center mt-5">    
+		
+        <% if @transactions.any? %>
+        <table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
+			<thead class="text-white">
+            <% @transactions.each do %>
+				    <tr class="bg-blue-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-3 sm:mb-0">               
+                    <th class="p-3 text-left">Buyer Name</th>
+                    <th class="p-3 text-left">Broker Name</th>
+                    <th class="p-3 text-left">Symbol</th>
+                    <th class="p-3 text-left">Quantity</th>
+                    <th class="p-3 text-left">Price</th>
+                    <th class="p-3 text-left">Total Price</th>
+                    <th class="p-3 text-left">Transaction Date</th>
+				    </tr>
+            <% end %>
+			</thead>
+			<tbody class="flex-1 sm:flex-none">
+            <% @transactions.each do |transaction| %>
+                <tr class="flex flex-col flex-no wrap sm:table-row mb-3 sm:mb-0">
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= User.find(transaction.user_id).firstname.capitalize%> <%= User.find(transaction.user_id).lastname.capitalize %></td>
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= User.find(transaction.broker_id).firstname.capitalize%> <%= User.find(transaction.broker_id).lastname.capitalize %></td>
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= transaction.ticker %></td>
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= transaction.quantity %></td>
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= "$" %><%= transaction.price %></td>
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= "$" %><%= transaction.total_price%></td>
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= transaction.created_at.to_date%></td>
+                </tr>  
+             <% end %>
+			</tbody>
+		</table>
+        <% else %>
+            <p>There are no related transactions with your account at the moment...</p>
+        <% end %>
+	</div>
+</div>
+
+<style>
+  html,
+  body {
+    height: 100%;
+  }
+
+  @media (min-width: 640px) {
+    table {
+      display: inline-table !important;
+    }
+
+    thead tr:not(:first-child) {
+      display: none;
+    }
+  }
+
+  td:not(:last-child) {
+    border-bottom: 0;
+  }
+
+  th:not(:last-child) {
+    border-bottom: 2px solid rgba(0, 0, 0, .1);
+  }
+</style>
 
 
 

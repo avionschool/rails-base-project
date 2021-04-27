@@ -2,7 +2,7 @@
   <%= render "users/shared/error_messages", resource: resource %>
 
      <div class="flex justify-center h-auto items-center mt-10">
-    <div class='flex max-w-sm w-full text-start h-150 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
+    <div class='p-10 flex max-w-sm w-full text-start h-150 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col '>
     <h1 class="mb-2 font-bold"> <%= Role.find(current_user.role_id).role_name %> <%= resource_name.to_s.humanize %> Account Details</h1>
     
       <!-- This is the input component -->
@@ -37,22 +37,23 @@
     <br>
   <!-- This is the input component -->
     <div class=" h-10 input-component mb-5 mt-4">
-    <%= f.label :current_password, class:"font-semibold" %><i>(Enter current password to confirm changes)</i><br />
+    <%= f.label :current_password, class:"font-semibold" %><br />
     <%=  f.password_field :current_password, autocomplete: "current-password",placeholder:"Current Password", class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
+    <i>(Enter current password to confirm changes)</i>
     </div>
     <br>
 
   <div class="actions mt-2 text-center"> 
-    <%= link_to "Back", :back,class:"p-2 rounded-lg text-gray-100 bg-blue-500 " %>
-    <%= f.submit "Update", class:"p-2 rounded-lg text-gray-100 bg-green-500 " %>
+    <%= link_to "Back", :back,class:"p-2 rounded-lg text-gray-100 bg-blue-500 cursor-pointer" %>
+    <%= f.submit "Update", class:"p-2 rounded-lg text-gray-100 bg-green-500 cursor-pointer" %>
    
   </div>
 <% end %>
-<div class="p-3 mt-2 h-auto w-full text-gray-50 bg-red-400 text-center font-semibold ">Danger Zone</div>
+<div class="p-3 mt-2 h-auto w-full text-gray-50 bg-red-600 text-center font-semibold">Danger Zone</div>
 <h3 class="text-center">Once you delete your account, there is no going back. Please be certain.</h3>
 
  <div class="actions mt-2 text-center">
-    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"p-2 rounded-lg text-gray-100 bg-red-400 " %>
+    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"p-3 rounded-lg text-gray-50 bg-red-500 cursor-pointer " %>
   </div>
 
 

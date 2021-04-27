@@ -20,6 +20,7 @@ gem 'figaro'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'selenium-webdriver'
 end
 
 group :development do
@@ -38,4 +39,5 @@ group :test do
   gem 'webmock'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'capybara'
 end

@@ -14,34 +14,34 @@
      
     <!-- This is the input component -->
     <div class="h-10 input-component mb-10 mt-5">
-    <%= f.label :firstname,class: " transition-all bg-white px-1"%>
+    <%= f.label :firstname,class: "px-1 transition-all bg-white font-semibold "%>
     <%= f.text_field :firstname,class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm"%>
     
     </div>
 
      <!-- This is the input component -->
     <div class="h-10 input-component mb-10">
-    <%= f.label :lastname,class: "transition-all bg-white px-1"%>
+    <%= f.label :lastname,class: "px-1 transition-all bg-white font-semibold"%>
     <%= f.text_field :lastname,class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm"%>
     
     </div>
 
     <!-- This is the input component -->
     <div class="h-10 input-component mb-10">
-    <%= f.label :email, class:"transition-all bg-white px-1"%>
+    <%= f.label :email, class:"px-1 transition-all bg-white font-semibold "%>
     <%= f.email_field :email, autocomplete: "email",class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
 
     </div>
 
      <!-- This is the input component -->
     <div class="h-10 input-component empty mb-5">
-    <%= f.label :password, class: "transition-all bg-white px-1"%>
+    <%= f.label :password, class: "px-1 transition-all bg-white font-semibold"%>
     <%= f.password_field :password, autocomplete: "new-password",class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
     
    
     </div>
     <div class="h-10 mt-2 input-component empty mb-10">
-    <%= f.label :password_confirmation,class: "transition-all bg-white px-1" %>
+    <%= f.label :password_confirmation,class: "px-1 transition-all bg-white font-semibold" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
     
      <% if @minimum_password_length %>
@@ -75,7 +75,6 @@ select{
   padding : 5px;
   border-radius: 5px;
 }
-
 .empty input:not(:focus) + label {
   top: 50%;
   transform: translateY(-50%);

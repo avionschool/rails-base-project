@@ -1,42 +1,65 @@
-<div class="container mt-10 p-5">
+<div class="w-full p-5 rounded-md shadow-lg grid justify-items-stretch mt-10 ">
 
-<div class="w-full ml-10 p-5  rounded-md shadow-lg">
-<h1 class="text-xl font-medium">Your Buyer Portfolio</h1> <br>
+<div>
+  <div class="inline"><%= image_tag("portfolio.png",class:"object-contain xs:w-auto sm:w-1/4 md:w-1/5  inline",alt:"Portfolio Image ") %></div>
+  <div class="inline"><h1 class="inline ml-10 text-xl font-bold">Your Buyer Portfolio</h1></div>
+</div>
 
-<div class="flex justify-center">
-
-<% if BuyerStock.where(user_id: current_user.id).any? %>
-  <table class="table-auto">
-    <thead>
-        <tr >
-            <th class="p-3 border-2">Company Name</th>
-            <th class="p-3 border-2">Symbol</th>
-            <th class="p-3 border-2">Quantity</th>
-            <th class="p-3 border-2">Price</th>
-            <th class="p-3 border-2">Total Price</th>
-        </tr>
-    </thead>
-    <tbody>
-         <% @stocks.each do |stock| %>
-        <tr>
-          
-            <td class="p-5 border-2"><%= stock.company %></td>
-            <td class="p-5 border-2"><%= stock.ticker %></td>
-            <td class="p-5 border-2"><%= stock.quantity %></td>
-            <td class="p-5 border-2"><%= "$" %><%= stock.price%></td>
-            <td class="p-5 border-2"><%= "$" %><%= stock.total_price%></td>
-        </tr>  
-
+	<div class="container flex items-center justify-center justify-self-center mt-5">    
+		
+        <% if @stocks.any? %>
+        <table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
+			<thead class="text-white">
+            <% @stocks.each do %>
+				    <tr class="bg-blue-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-3 sm:mb-0">               
+                        <th class="p-3 text-left">Company Name</th>
+                        <th class="p-3 text-left">Symbol</th>
+                        <th class="p-3 text-left">Quantity</th>
+                        <th class="p-3 text-left">Price</th>
+                        <th class="p-3 text-left">Total Price</th>
+				    </tr>
+            <% end %>
+			</thead>
+			<tbody class="flex-1 sm:flex-none">
+            <% @stocks.each do |stock| %>
+                <tr class="flex flex-col flex-no wrap sm:table-row mb-3 sm:mb-0">
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= stock.company %></td>
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= stock.ticker %></td>
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= stock.quantity %></td>
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= "$" %><%= stock.price%></td>
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= "$" %><%= stock.total_price%></td>
+                </tr>  
+             <% end %>
+			</tbody>
+		</table>
+        <% else %>
+            <p>You currently have no existing Investments.</p>
         <% end %>
-    
-    </tbody>
-    </table>
-<% else %>
-    <p>You currently have no existing Investments.</p>
-<% end %>
-     
+	</div>
+</div>
 
-</div>
-   
-</div>
-</div>
+<style>
+  html,
+  body {
+    height: 100%;
+  }
+
+  @media (min-width: 640px) {
+    table {
+      display: inline-table !important;
+    }
+
+    thead tr:not(:first-child) {
+      display: none;
+    }
+  }
+
+  td:not(:last-child) {
+    border-bottom: 0;
+  }
+
+  th:not(:last-child) {
+    border-bottom: 2px solid rgba(0, 0, 0, .1);
+  }
+</style>
+
