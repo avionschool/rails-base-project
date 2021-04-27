@@ -11,6 +11,13 @@
 <form class="new_user">
   <div class="field">
   <div class="control">
+    <%= f.label :name, "Username", class:"label has-text-black" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "username", class:"input" %>
+  </div>
+  </div>
+
+  <div class="field">
+  <div class="control">
     <%= f.label :email, class:"label has-text-black" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input" %>
   </div>
