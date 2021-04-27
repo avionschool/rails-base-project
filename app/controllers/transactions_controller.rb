@@ -8,7 +8,10 @@ class TransactionsController < ApplicationController
     render :index
   end
 
-  def show; end
+  def show
+    @transactions = Transaction.where(user_id: current_user.id)
+    render :show
+  end
 
   def new
     render :new
