@@ -1,0 +1,23 @@
+<div>
+    <%= search_form_for @q do |f|%>
+    
+    <%= f.search_field :code_or_name_cont %>
+    <%= f.submit%>
+    
+    <%end%>
+</div>
+
+<div>
+ <table class="table is-bordered is-striped">
+ <tr>
+ <th>Name</th>
+ <th>Code</th>
+ </tr>
+ <% @stock_q.each do |x| %>
+ <tr>
+    <td><%= x.name%></td>
+    <td><%= x.code%></td>
+ </tr>
+ <%end%>
+</table>
+</div>
