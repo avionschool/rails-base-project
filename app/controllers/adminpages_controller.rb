@@ -39,6 +39,10 @@ class AdminpagesController < ApplicationController
 
   def destroy; end
 
+
+  def transactions
+    @transactions = Transaction.all
+  end
   private
 
   def users_params

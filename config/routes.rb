@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get 'brokers/portfolio'=> 'brokers#portfolio', as: "brokers_portfolio"
   get 'brokers/transactions'=> 'brokers#transactions', as: "brokers_transaction"
   get 'buyers/transactions'=> 'buyers#transactions', as: "buyers_transaction"
- 
+  get '/adminpages/transactions'=> 'adminpages#transactions', as: "adminpages_transaction"
+
+
   get '/buyers/:id/new', to: 'buyers#new', as: 'buyers_new'
   post '/buyers/create' => 'buyers#create', as: 'create_buyers'
 

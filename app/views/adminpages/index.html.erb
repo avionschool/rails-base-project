@@ -1,41 +1,70 @@
-<div class="container">
+<div class="w-full p-5 rounded-md shadow-lg grid justify-items-stretch mt-10 ">
 
-<div class="w-full ml-10 p-5  rounded-md shadow-lg">
-<h1 class="text-xl font-medium">Pending Broker Accounts</h1> <br>
+<div>
+  <div class="inline"><h1 class="inline ml-10 text-xl font-bold">Pending Broker Accounts</h1></div>
+</div>
 
-<div class="flex justify-center">
+	<div class="container flex items-center justify-center justify-self-center mt-5">    
+		
+        <% if @pendings.any? %> 
+        <table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
+			<thead class="text-white">
+            <% @pendings.each do %>
+				    <tr class="bg-blue-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-3 sm:mb-0">               
+                        <th class="p-3 text-left">ID</th>
+                        <th class="p-3 text-left">Email</th>
+                        <th class="p-3 text-left">Registered At</th>
+                        <th class="p-3 text-left">Action</th>
+				    </tr>   
+                        
+                        
+            <% end %>
+			</thead>
+			<tbody class="flex-1 sm:flex-none">
+              <% @pendings.each do |pending| %>
+            <tr class="flex flex-col flex-no wrap sm:table-row mb-3 sm:mb-0">
+             <td class="border-grey-light border hover:bg-gray-100 p-3"><%= pending.id %></td>
+            <td class="border-grey-light border hover:bg-gray-100 p-3"><%= pending.email %></td>
+            <td class="border-grey-light border hover:bg-gray-100 p-3"><%= pending.created_at.to_date %></td>
+            <td class="border-grey-light border hover:bg-gray-100 p-3"><%= link_to 'Confirm Account', admins_confirm_path(pending.id), data: { confirm: "Confirm account for email: '#{pending.email}'?" }, class:"p-2 bg-green-500 text-gray-50 rounded-md "%></td>
+            </tr>  
 
-<% if @pendings.any? %>
-  
- <table class="table-auto">
-    <thead>
-        <tr >
-            <th class="border-2">ID</th>
-            <th class="border-2">Email</th>
-            <th class="border-2 p-3">Registered At</th>
-            <th class="border-2">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @pendings.each do |pending| %>
-        <tr>
-            <td class="p-5 border-2"><%= pending.id %></td>
-            <td class="p-5 border-2"><%= pending.email %></td>
-            <td class="text-center border-2"><%= pending.created_at.to_date %></td>
-            <td class="p-5 border-2"><%= link_to 'Confirm Account', admins_confirm_path(pending.id), data: { confirm: "Confirm account for email: '#{pending.email}'?" }, class:"p-2 bg-green-500 text-gray-50 rounded-md "%></td>
-        </tr>
-
+            
+            
+             <% end %>
+			</tbody>
+		</table>
+        <% else %>
+             <h1><%= "No Pending Broker Account at the moment..." %></h1>
         <% end %>
-    
-    </tbody>
-    </table>
-    <% else %>
-
-    <h1><%= "No Pending Broker Account at the moment..." %></h1>
-<% end %>
-
-
+	</div>
 </div>
-   
-</div>
-</div>
+
+<style>
+  html,
+  body {
+    height: 100%;
+  }
+
+  @media (min-width: 640px) {
+    table {
+      display: inline-table !important;
+    }
+
+    thead tr:not(:first-child) {
+      display: none;
+    }
+  }
+
+  td:not(:last-child) {
+    border-bottom: 0;
+  }
+
+  th:not(:last-child) {
+    border-bottom: 2px solid rgba(0, 0, 0, .1);
+  }
+</style>
+
+
+
+

@@ -20,18 +20,19 @@
 
     <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
      <% if admin_signed_in? %>  
-      <%= link_to(admins_user_path,class:"px-4 py-2 mt-2 mr-5 text-sm font-semibold text-gray-900 bg-blue-200 rounded-sm md:mt-0 hover:text-gray-500 focus:text-gray-900 hover:bg-blue-200  focus:outline-none focus:shadow-outline") do %>
-                <%= 'Users' %>
-                <% end %>
-
-      <%= link_to(admins_index_path,class:"px-4 py-2 mt-2 mr-5 text-sm font-semibold text-gray-900 bg-blue-200 rounded-sm md:mt-0 hover:text-gray-500 focus:text-gray-900 hover:bg-blue-200  focus:outline-none focus:shadow-outline") do %>
+    
+      <%= link_to(admins_index_path,class:"px-4 py-2 mt-2 mr-1 text-sm font-semibold text-left rounded-sm text-gray-50 md:w-auto md:inline md:mt-0 hover:text-gray-900 focus:text-gray-50 focus:outline-none focus:shadow-outline") do %>
                 <%= 'Pending Accounts' %>
-                <% end %>
-
-      <%= link_to(new_adminpage_path,class:"px-4 py-2 mt-2 mr-5 text-sm font-semibold text-gray-900 bg-blue-200 rounded-sm md:mt-0 hover:text-gray-500 focus:text-gray-900 hover:bg-blue-200  focus:outline-none focus:shadow-outline") do %>
+                <% end %>  
+      <%= link_to(new_adminpage_path,class:"px-4 py-2 mt-2 text-sm font-semibold text-left rounded-sm text-gray-50 md:w-auto md:inline md:mt-0 hover:text-gray-900 focus:text-gray-50 focus:outline-none focus:shadow-outline") do %>
                 <%= 'Add User' %>
                 <% end %>
-
+      <%= link_to(admins_user_path,class:"px-4 py-2 mt-2 mr-1 text-sm font-semibold text-left rounded-sm text-gray-50 md:w-auto md:inline md:mt-0 hover:text-gray-900 focus:text-gray-50 focus:outline-none focus:shadow-outline") do %>
+                <%= 'Users' %>
+                <% end %>
+      <%= link_to(adminpages_transaction_path,class:"px-4 py-2 mt-2 mr-10 text-sm font-semibold text-left rounded-sm text-gray-50 md:w-auto md:inline md:mt-0 hover:text-gray-900 focus:text-gray-50 focus:outline-none focus:shadow-outline") do %>
+                <%= 'User Transactions' %>
+                <% end %>
       <%= link_to(destroy_admin_session_path,data: { confirm: "Are you sure you want to sign out ?" }, method: :delete,class:"px-4 py-2 mt-2 text-sm font-semibold text-gray-100 bg-red-500 rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-blue-200  focus:outline-none focus:shadow-outline") do %>
                 <%= 'Sign out' %>
                 <% end %>
