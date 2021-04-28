@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get "/transactions/show" => 'transactions#show', as: 'transaction_logs'
   get "/transactions/new" => 'transactions#new'
   get "/stocks" => 'stocks#index', as: 'stocks'
+  get "/user/confirm" => 'users#confirm', as: 'confirm_user'
 end

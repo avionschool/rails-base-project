@@ -15,6 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.skip_confirmation_notification! # @user.send_confirmation_instructions when approved by admin
     @user.save
     if @user.persisted?
+      redirect_to :root unless @user.confirmed_at != nil
       if @user.active_for_authentication?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
