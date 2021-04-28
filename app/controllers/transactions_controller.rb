@@ -5,6 +5,7 @@ class TransactionsController < ApplicationController
     @sells = Transaction.sell_listings.where.not(user_id: current_user.id)
     @buys = Transaction.buy_listings.where.not(user_id: current_user.id)
     @top10 = Stock.most_active
+    @q = Stock.ransack(params[:q])
     render :index
   end
 

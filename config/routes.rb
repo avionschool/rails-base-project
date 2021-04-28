@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "/dashboard" => 'home#show'
   get "/admin" => 'users#index', as: 'admin'
   get "/marketplace" => 'transactions#index'
-  get "/transactions/new" => 'transactions#show', as: 'transaction_logs'
+  get "/transactions/show" => 'transactions#show', as: 'transaction_logs'
   get "/transactions/new" => 'transactions#new'
   get "/stocks" => 'stocks#index', as: 'stocks'
 end

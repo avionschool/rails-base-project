@@ -1,23 +1,26 @@
 <div>
-    <%= search_form_for @q do |f|%>
-    
-    <%= f.search_field :code_or_name_cont %>
-    <%= f.submit%>
-    
-    <%end%>
-</div>
-
-<div>
- <table class="table is-bordered is-striped">
- <tr>
- <th>Name</th>
- <th>Code</th>
- </tr>
- <% @stock_q.each do |x| %>
- <tr>
-    <td><%= x.name%></td>
-    <td><%= x.code%></td>
- </tr>
- <%end%>
-</table>
+  <div class="columns mt-0">
+    <div class="column is-full">
+      <span class="is-size-4 has-text-weight-bold green">Tradr Platform!</span>
+    </div>
+  </div>
+  <%= render 'shared/searchbar' %>
+  <div class="mt-2">
+    <table class="table is-bordered is-striped">
+      <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Buy</th>
+      </tr>
+      <% @stock_q.each do |x| %>
+        <tr>
+          <td><%= x.name%></td>
+          <td><%= x.code%></td>
+          <td><%= link_to transactions_new_path(:transaction_type => "Buy", :stock_id => x.id), class: 'button is-primary mr-2 mt-1 has-text-weight-medium' do%>
+                  <i class='bx bx-archive-in mr-1' ></i> Buy
+                <% end %></td>
+        </tr>
+      <%end%>
+    </table>
+  </div>
 </div>
