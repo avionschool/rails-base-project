@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
   def index
     @users = User.all
+    @unconfirmed = User.unconfirmed
   end
 
   def show; end
@@ -12,9 +13,6 @@ class UsersController < ApplicationController
 
   def edit; end
 
-  def unconfirmed
-    @users = User.unconfirmed
-  end
 
   def destroy; end
 

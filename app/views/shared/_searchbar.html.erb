@@ -1,0 +1,11 @@
+<div>
+    
+    <%= link_to 'Back', :back %>
+    <%= search_form_for @q do |f|%>
+    
+    <%= f.search_field :code_or_name_cont %>
+    <%= f.submit do %>
+    <i class='bx bx-archive-in'></i>
+    <%end%>
+    <%end%>
+</div>
