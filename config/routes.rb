@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get "/admin" => 'users#index', as: 'admin'
   get "/marketplace" => 'transactions#index'
   get "/transactions/new" => 'transactions#new'
+  get "/transactions" => 'transactions#show'
 end

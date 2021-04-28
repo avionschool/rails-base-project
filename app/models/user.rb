@@ -10,7 +10,6 @@ class User < ApplicationRecord
   has_many :transactions, dependent: :destroy
 
   validates :encrypted_password, presence: true
-  validates :name, presence: true
   validates :email, presence: true
   validates :email, uniqueness: true
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: 'Valid emails only!' }

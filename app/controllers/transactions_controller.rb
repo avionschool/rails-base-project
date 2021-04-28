@@ -8,7 +8,10 @@ class TransactionsController < ApplicationController
     render :index
   end
 
-  def show; end
+  def show
+    @top10 = Stock.most_active
+    render :show
+  end
 
   def new
     render :new
