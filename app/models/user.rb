@@ -19,7 +19,8 @@ class User < ApplicationRecord
   scope :brokers, -> { where(role: Role.find_by(name: 'Broker')) }
   scope :buyers, -> { where(role: Role.find_by(name: 'Buyer')) }
   scope :admins, -> { where(role: Role.find_by(name: 'Admin')) }
-  scope :unconfirmed, -> { find_by(confirmed_at: nil) }
+  scope :unconfirmed, -> { where(confirmed_at: nil) }
+  scope :confirmed, -> { where.not(confirmed_at: nil) }
 
   def admin?
     role_id == Role.find_by(name: 'Admin').id
