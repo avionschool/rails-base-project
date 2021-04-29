@@ -1,4 +1,6 @@
 class BuyerStock < ApplicationRecord
+  validates :user_id, :ticker, :company, :quantity, :price, presence: true
+
   belongs_to :user
 
   before_save :compute_total_price

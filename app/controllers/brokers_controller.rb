@@ -1,10 +1,10 @@
 class BrokersController < ApplicationController
   def index
     @client = IEX::Api::Client.new(
-      publishable_token:  ENV['IEX_SB_PK'], # ENV['IEX_P_PK'] for production
+      publishable_token:  ENV['IEX_P_PK'], # ENV['IEX_P_PK'] for production
       secret_token:  'secret_token',
-      endpoint: 'https://sandbox.iexapis.com/v1'   # 'https://sandbox.iexapis.com/v1' for sandbox
-    )                                              # 'https://cloud.iexapis.com/v1' for production
+      endpoint: 'https://cloud.iexapis.com/v1' # 'https://sandbox.iexapis.com/v1' for sandbox
+    ) # 'https://cloud.iexapis.com/v1' for production
   end
 
   def new
@@ -26,6 +26,18 @@ class BrokersController < ApplicationController
 
     end
   end
+
+  # def search
+  #   if params[:stock].present?
+  #     @stock = BrokerStock.search(params[:stock])
+  #     if @stock
+  #       byebug
+  #       flash[:notice] = "returned"
+  #     end
+  #   else
+  #     redirect_to brokers_path, alert: 'Blank Query'
+  #   end
+  # end
 
   def edit; end
 

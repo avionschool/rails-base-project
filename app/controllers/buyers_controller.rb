@@ -5,9 +5,10 @@ class BuyersController < ApplicationController
 
   def create
     if BuyerStock.where(user_id: current_user.id).exists?(ticker: params[:ticker])
-      redirect_to buyers_path, alert: 'Error Adding Stock to Portfolio, Stock Already Exists...'
-    else
 
+      redirect_to buyers_path, notice: 'Error Adding Stock, Stock already exists in Portfolio'
+
+    else
       @buy = BuyerStock.create(buyers_params)
       @record = Transaction.create(transactions_params)
 

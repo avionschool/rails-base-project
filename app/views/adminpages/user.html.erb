@@ -1,4 +1,4 @@
-<div class="w-full p-5 rounded-md shadow-lg grid justify-items-stretch mt-10 ">
+<div class="w-full p-5 rounded-md shadow-lg grid justify-items-stretch pt-10 " style="margin-top:70px;">
 
 <div>
   <div class="inline"><h1 class="inline ml-10 text-xl font-bold">Registered User Accounts</h1></div>
@@ -26,7 +26,7 @@
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= Role.find(user.role_id).role_name %></td>
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= user.email %></td>
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= user.created_at.to_date %></td>
-                <td class="border-grey-light border hover:bg-gray-100 p-3"><%= link_to 'Edit Account', admins_edit_path(user.id), class:"p-2 bg-green-500 text-gray-50 rounded-md"%></td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3"><%= link_to 'Edit Details', admins_edit_path(user.id), class:"p-2 bg-green-500 text-gray-50 rounded-md"%></td>
             </tr>  
              <% end %>
 			</tbody>

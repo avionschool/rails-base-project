@@ -1,10 +1,10 @@
 <%= form_with url: create_buyers_path, html: {class: "form-floating mb-3"} do |f|%>
 
 
-<div class="ml-10 mt-10 container w-full flex justify-center">
+<div class="ml-10 mt-10 container w-full flex justify-center" style="margin-top:70px;">
 
-    <div class="w-1/2 ml-10 p-5 text-center rounded-md shadow-lg ">
-        <h1 class="text-xl font-medium" >Buy stock</h1>
+    <div class="w-1/2 ml-10 p-3 text-center rounded-md shadow-lg ">
+        <h1 class="mb-5 text-xl font-medium" >Buy stock</h1>
 
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.hidden_field :broker_id, :value => @stock.user_id %>
@@ -28,18 +28,17 @@
 
         <p>
             <h1 class="mt-2 font-medium">Quantity</h1>
-            <%= f.number_field :quantity, min:1, value:1, :class => 'mb-4 w-10'%>
+            <%= f.number_field :quantity, min:1, value:1, :class => 'p-1 mb-4 w-20 border-2'%>
         </p>
-
 
         <p>
             <% if @existing %>
             <%= f.submit "Existing in Portfolio",:class => 'p-2 rounded-md bg-red-200 text-gray-50',disabled:true %>
             <% else %>
-            <%= f.submit "Add",:class => 'p-2 rounded-md bg-green-500 text-gray-50',data: {disable_with: "Buying..."}%>
+            <%= f.submit "Add",:class => 'cursor-pointer p-2 rounded-md bg-green-500 text-gray-50',data: {disable_with: "Buying..."}%>
             <% end %>
-            
         </p>
+
     </div>
 </div>
 

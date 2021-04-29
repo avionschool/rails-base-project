@@ -6,7 +6,9 @@
       
       <%= link_to(root_path,class:"text-lg font-semibold tracking-wide text-gray-50 rounded-lg focus:outline-none focus:shadow-outline") do %>
                 <%= image_tag('peddler_icon.png', :class=>"w-10 inline pb-1") %>
-                <%= "Peddler" %>
+                <%= "Peddler " %><% if user_signed_in? %>
+                  <%= current_user.role_id == 1 ? "| Buyer" : "| Broker" %>
+                <% end %>
                 <% end %> 
 
       <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">

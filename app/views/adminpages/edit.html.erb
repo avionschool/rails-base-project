@@ -1,29 +1,35 @@
-<%= form_with url: admins_update_path do |f|%>
 
 
-<div class="flex justify-center h-auto items-center mt-2 mb-3">
+<%= form_with url: admins_edit_path, method: :post do |f| %>
+
+<div class="flex justify-center h-auto items-center mb-3" style="margin-top:70px;">
     <div class='flex max-w-sm w-full h-150 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
-        
-        <div class="relative h-12 input-component mb-10 p-3 text-left">
-            <h1>Edit User Details for email: <%= @user.email %> </h1>
+        <%= f.hidden_field :id, :value => @user.id %>
+     
+        <div class=" h-12 input-component mb-10 p-3 text-left">
+            <h1 class="font-bold">Edit User Details for Account Email:  </h1>
+            <p><%= @user.email %></p>
         </div>
 
         <%= f.hidden_field :role_id, :value => @user.role_id %>
+        <%= f.hidden_field :password, :value => @user.password %>
         
         <!-- This is the input component -->
-        <div class="relative h-10 input-component mb-5">
-            <%= f.text_field :firstname,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "First Name", :value=>@user.firstname%>
+        <div class=" h-10 input-component mb-5">
+            <%= f.text_field :firstname,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "First Name", :value=>@user.firstname, :required=>true%>
         </div>
 
-        <div class="relative h-10 input-component mb-5">
-            <%= f.text_field :lastname,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "Last Name",:value=>@user.lastname%>
+        <div class=" h-10 input-component mb-5">
+            <%= f.text_field :lastname,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "Last Name",:value=>@user.lastname, :required=>true%>
         </div>
 
-        <div class="relative h-10 input-component mb-5">
-            <%= f.text_field :email,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "Email",:value=>@user.email%>
+        <div class=" h-10 input-component mb-5">
+            <%= f.text_field :email,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "Email",:value=>@user.email, :required=>true%>
         </div>
+
+        
         <div class="text-center">
-            <%= f.submit "Add", class:"p-2 rounded-md bg-green-500 text-gray-50" %>
+            <%= f.submit "Update", class:"p-2 rounded-md bg-green-500 text-gray-50 cursor-pointer" %>
         </div>
 
     </div>

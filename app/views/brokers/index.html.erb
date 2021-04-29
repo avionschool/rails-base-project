@@ -5,8 +5,13 @@
   <div class="inline"><h1 class="inline ml-10 text-xl font-bold">Most Active Stock Market List</h1></div>
 </div>
 
+<%#= form_tag search_stock_path, method: :get do %>
+        <%#= text_field_tag :stock, params[:stock], placeholder: "Enter Stock Ticker..." %>
+        <%#= button_tag "Submit", class: "btn btn-lg btn-primary btn-block mt-3"%>
+        <%# end %>
+
 	<div class="container flex items-center justify-center justify-self-center mt-5">    
-        
+ 
         <%# @mostactive = @client.stock_market_list(:mostactive) %>
         <%# @key = @client.key_stats('MSFT') %>
         <% @mostactive = [] %>

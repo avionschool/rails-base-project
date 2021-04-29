@@ -2,33 +2,34 @@
 <%= form_with url: admins_create_path, html: {class: "form-floating mb-3"} do |f|%>
 
  
-    <div class="flex justify-center h-auto items-center mt-2 mb-3">
+    <div class="flex justify-center h-auto items-center mb-3" style="margin-top:70px;">
     <div class='flex max-w-sm w-full h-150 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
         
-        <div class="relative h-12 input-component mb-10 p-3 text-left">
+        <div class=" h-12 input-component mb-10 p-3 text-left">
             <%= f.label :role_id,"Add User with Type : " ,class:"font-semibold"%> <br />
             <%= f.select :role_id, [["Buyer", 1], ["Broker", 2]]%>
         </div>
         
         <!-- This is the input component -->
-        <div class="relative h-10 input-component mb-5">
-            <%= f.text_field :firstname,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "First Name"%>
+        <div class=" h-10 input-component mb-5">
+            <%= f.text_field :firstname,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "First Name",:required=>true%>
         </div>
 
-        <div class="relative h-10 input-component mb-5">
-            <%= f.text_field :lastname,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "Last Name"%>
+        <div class=" h-10 input-component mb-5">
+            <%= f.text_field :lastname,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "Last Name",:required=>true%>
         </div>
 
-        <div class="relative h-10 input-component mb-5">
-            <%= f.text_field :email,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "Email"%>
+        <div class=" h-10 input-component mb-5">
+            <%= f.text_field :email,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "Email",:required=>true%>
         </div>
 
-        <div class="relative h-10 input-component mb-5">
-            <%= f.password_field :password,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "Password"%>
+        <div class=" h-10 input-component mb-10">
+            <%= f.password_field :password,class:"h-full w-full rounded-md border-gray-200 px-2 transition-all border-2 rounded-sm", placeholder: "Password",:required=>true%>
+            <i>6 characters minimum</i>
         </div>
 
         <div class="text-center">
-            <%= f.submit "Add", class:"p-2 rounded-md bg-green-500 text-gray-50" %>
+            <%= f.submit "Register", class:"cursor-pointer p-2 rounded-md bg-green-500 text-gray-50" %>
         </div>
 
     </div>
