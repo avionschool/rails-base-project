@@ -1,16 +1,26 @@
-<h2>Forgot your password?</h2>
+<div class="flex justify-center h-auto items-center mt-10">
+    <div class='flex max-w-sm w-full h-150 justify-center bg-white shadow-xl rounded-lg overflow-hidden mx-auto flex flex-col p-10'>
+    
+
+<h2 class="text-lg font-bold">Forgot your password?</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="field text mb-2">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"h-10 w-full border-2 px-2 transition-all border-blue rounded-sm mb-2"%>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <div class="actions text-center">
+    <%= f.submit "Send me reset password instructions",class:"p-2 bg-green-400 text-gray-50 rounded-md" %>
   </div>
 <% end %>
 
+
+<section class="text-center mt-2">
 <%= render "users/shared/links" %>
+</section>
+
+  </div>
+</div>

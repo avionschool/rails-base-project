@@ -6,6 +6,17 @@
     <h1 class="mb-2 font-bold"> <%= Role.find(current_user.role_id).role_name %> <%= resource_name.to_s.humanize %> Account Details</h1>
     
       <!-- This is the input component -->
+      <div class="h-10 input-component mb-5 mt-4">
+    <%= f.label :firstname, class:"font-semibold" %><br />
+    <%= f.text_field :firstname, autofocus: true,placeholder:"First Name", class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
+    </div>
+
+    <div class="h-10 input-component mb-5 mt-4">
+    <%= f.label :lastname, class:"font-semibold" %><br />
+    <%= f.text_field :lastname, autofocus: true,placeholder:"Last Name", class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>
+    </div>
+
+
     <div class="h-10 input-component mb-5 mt-4">
     <%= f.label :email, class:"font-semibold" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"Email", class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" %>

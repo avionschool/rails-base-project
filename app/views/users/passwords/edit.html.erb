@@ -1,25 +1,33 @@
-<h2>Change your password</h2>
+<div class="flex justify-center h-auto items-center mt-10">
+    <div class='flex max-w-sm w-full h-150 justify-center bg-white shadow-xl rounded-lg overflow-hidden mx-auto flex flex-col p-10'>
+
+<h2 class="text-lg font-bold">Change your password</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
+  <div class="field mb-2">
     <%= f.label :password, "New password" %><br />
+    
+    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class:"h-10 w-full border-2 px-2 transition-all border-blue rounded-sm mb-2" %>
+    <br>
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em><br />
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"h-10 w-full border-2 px-2 transition-all border-blue rounded-sm mb-2" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
+  <div class="actions text-center">
+    <%= f.submit "Change my password",class:"cursor-pointer p-2 bg-green-400 text-gray-50 rounded-md" %>
   </div>
 <% end %>
-
+<section class="text-center mt-2">
 <%= render "users/shared/links" %>
+</section>
+</div>
+</div>

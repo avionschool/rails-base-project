@@ -36,10 +36,10 @@
                     <td class="border-grey-light border hover:bg-gray-100 p-3"><%= @mostactive[index].symbol %></td>
                     <td class="border-grey-light border hover:bg-gray-100 p-3"><%= "$" %><%= @mostactive[index].latest_price%></td>
                     <td class="border-grey-light border hover:bg-gray-100 p-3"><%= @mostactive[index].latest_time %></td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= link_to "Buy Stock", create_brokers_path({user_id: current_user.id, ticker: @mostactive[index].symbol,company:@mostactive[index].company_name, price: @mostactive[index].latest_price}), method: :post,data: { confirm: "Add this stock to your Broker Portfolio ?" },class: "p-2 bg-green-500 text-gray-50 rounded-md" %></td> 
+                    <td class="border-grey-light border hover:bg-gray-100 p-3">
+                    <%= link_to "Buy Stock", create_brokers_path({user_id: current_user.id, ticker: @mostactive[index].symbol,company:@mostactive[index].company_name, price: @mostactive[index].latest_price}), method: :post,data: { confirm: "Add this stock to your Broker Portfolio ?" },class: "p-2 bg-green-500 text-gray-50 rounded-md" %></td> 
+                  
                 </tr>
-
-                    
              <% end %>
 			</tbody>
 		</table>

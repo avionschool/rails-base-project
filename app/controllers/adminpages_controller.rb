@@ -25,11 +25,15 @@ class AdminpagesController < ApplicationController
   end
 
   def update
-    @user = User.find_by(id: params[:id])
+    user = User.find_db(params[:id])
 
-    @user.update(users_update_params)
-
-    redirect_to admins_user_path, notice: ' Successfully Update User Details' if @user.save
+    user.update(firstname: params[:firstname], lastname: params[:lastname], email: params[:email])
+    user.skip_reconfirmation!
+    if user.save
+      redirect_to admins_user_path, notice: ' Successfully Update User Details'
+    else
+      redirect_to admins_user_path, alert: user.errors.full_messages.to_sentence
+    end
   end
 
   def confirm

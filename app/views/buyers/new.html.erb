@@ -32,11 +32,9 @@
         </p>
 
         <p>
-            <% if @existing %>
-            <%= f.submit "Existing in Portfolio",:class => 'p-2 rounded-md bg-red-200 text-gray-50',disabled:true %>
-            <% else %>
+
             <%= f.submit "Add",:class => 'cursor-pointer p-2 rounded-md bg-green-500 text-gray-50',data: {disable_with: "Buying..."}%>
-            <% end %>
+ 
         </p>
 
     </div>

@@ -6,5 +6,4 @@ RSpec.describe User, type: :model do
   it { expect(described_class.new).to validate_presence_of :firstname }
   it { expect(described_class.new).to validate_presence_of :lastname }
   it { expect(described_class.new).to validate_presence_of :email }
-  it { expect(described_class.new).to validate_presence_of :password }
 end
