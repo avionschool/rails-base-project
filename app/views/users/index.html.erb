@@ -20,7 +20,7 @@
           <p></p>
           <p> </p>
            <span>
-                <%= link_to confirm_user_path(:id => x.id), class: 'button is-primary mr-2 mt-1 has-text-weight-medium' do%>
+                <%= link_to confirm_user_path(:id => x.id), data: { confirm: 'Are you sure you want to confirm this user?' }, class: 'button is-primary mr-2 mt-1 has-text-weight-medium' do%>
                   <i class='bx bx-check-shield mr-1' ></i> Confirm User
                 <% end %>
            </span>
