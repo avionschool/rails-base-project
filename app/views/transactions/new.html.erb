@@ -24,7 +24,11 @@
               <div class="field">
                 <div class="control">
                   <%= f.label :price, class:"label has-text-black" %>
+                  <%if params[:from_search] && current_user.role == Role.find_by(name: 'Broker')%>
+                  <%= f.number_field :price, step: :any, autofocus: true, class:"input", disabled: true, value: params[:price] %>
+                  <%else%>
                   <%= f.number_field :price, step: :any, autofocus: true, class:"input", disabled: (!params[:from_portfolio] && !params[:from_search]), value: params[:price] %>
+                  <%end%>
                 </div>
               </div>
                   <%= f.hidden_field :id, value: params[:id]%>
