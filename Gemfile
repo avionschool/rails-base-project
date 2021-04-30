@@ -41,7 +41,8 @@ group :test do
   gem 'factory_bot_rails'
   gem 'shoulda-matchers'
   gem 'vcr'
-  gem 'webmock'
+  gem 'webmock' 
+  gem 'capybara'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
 end
