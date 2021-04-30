@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @unconfirmed = User.unconfirmed
+    render :index
   end
 
   def show; end
@@ -12,6 +13,11 @@ class UsersController < ApplicationController
   end
 
   def edit; end
+
+  def confirm
+    @user = User.find(params[:id])
+    @user.send_confirmation_instructions
+  end
 
   def destroy; end
 

@@ -10,6 +10,9 @@
     <div class="column is-two-thirds">
       <span class="has-text-weight-bold title is-4 mb-2">Marketplace </span>
       <%= render 'shared/searchbar'%>
+      <%= link_to 'Buy Orders', controller: "transactions", action: "index", type: 'buy' %>
+      <br>
+      <%= link_to 'Sell Orders', controller: "transactions", action: "index", type: 'sell' %>
       <div class="max-tile2">
         <% @listings.each do |x| %>
           <div class="tiles mt-4 max-tile">
@@ -21,15 +24,14 @@
             <p>Price: <%= number_to_currency(x.price) %> </p>
             <p>Total Price: <%= number_to_currency(x.volume * x.price) %> </p>
             <div>
-            <% if !current_user.admin?%>
-            <%= link_to transactions_new_path(:transaction_type => (x.transaction_type =='Buy' ? 'Sell' : 'Buy'), :stock_id => x[:stock_id]), class: (x.transaction_type =='Sell' ? 'button is-primary mr-2 mt-1 has-text-weight-medium' : 'button is-danger mr-2 mt-1 has-text-weight-medium' ) do%>
+              <% if !current_user.admin?%>
+                <%= link_to transactions_new_path(:transaction_type => (x.transaction_type =='Buy' ? 'Sell' : 'Buy'), :stock_id => x[:stock_id]), class: (x.transaction_type =='Sell' ? 'button is-primary mr-2 mt-1 has-text-weight-medium' : 'button is-danger mr-2 mt-1 has-text-weight-medium' ) do%>
                   <i class='bx bx-archive-<%= "#{x.transaction_type == 'Sell' ? 'in' : 'out'}"%> mr-1' ></i> <%= x.transaction_type == 'Buy'? 'Sell' : 'Buy'%>
                 <% end %>
-                <%end%>
+              <%end%>
             </div>
           </div>
         <% end %>
-        
       </div>
     </div>
     <%= render "shared/trending" %>

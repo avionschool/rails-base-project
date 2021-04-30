@@ -1,1 +1,55 @@
-<p>Admin Panel</p>
+<div class="dashboard margin-left-none">
+  <div class="columns mt-0">
+    <div class="column is-full">
+      <span class="is-size-4 has-text-weight-light">Welcome to </span>
+      <span class="is-size-4 has-text-weight-bold green">Tradr Admin Panel</span>
+      <br>
+      <span class="has-text-grey-light has-text-weight-light is-size-5">Good Day, <%= !!current_user.name ? current_user.name : current_user.email %></span>
+    </div>
+  </div>
+  <div class="columns mt-0">
+    <div class="column is-two-thirds">
+      <span class="has-text-weight-bold title is-4 mb-2">Pending User Confirmation</span>
+      <div class="max-tile">
+      <% @unconfirmed.each do |x| %>
+        <div class="tiles mt-3 is-one-half">
+          <div class="tile">
+            <h1><%= x.name != nil ? x.name : x.email %></h1>
+          </div>
+          <p></p>
+          <p></p>
+          <p> </p>
+           <span>
+                <%= link_to confirm_user_path(:id => x.id), data: { confirm: 'Are you sure you want to confirm this user?' }, class: 'button is-primary mr-2 mt-1 has-text-weight-medium' do%>
+                  <i class='bx bx-check-shield mr-1' ></i> Confirm User
+                <% end %>
+           </span>
+          </div>
+        <% end %>
+      </div>
+      </div>
+
+    <div class="column">
+      <span class="has-text-weight-bold title is-4 mb-2">Users</span>
+      <div class="max-tile">
+      <% @users.each do |x| %>
+        <div class="tiles mt-3 is-one-half max-tile">
+          <div class="tile">
+            <h1>
+            <%= x.name != nil ? x.name : x.email %>
+            <% if x.confirmed? %>
+            <i class='bx bx-check-shield mr-1' style="color: green"></i> 
+            <%end%>
+            </h1>
+          </div>
+            <p>Cash: <%= number_to_currency(x.cash)%></p>
+            <p></p>
+            <p></p>
+          </div>
+        <% end %>
+      </div>
+      </div>
+    </div>
+
+    </div>
+  </div>

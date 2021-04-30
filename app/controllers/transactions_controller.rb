@@ -1,17 +1,18 @@
 class TransactionsController < ApplicationController
   def index
-    @transactions = Transaction.all.where.not(user_id: current_user.id)
-    @listings = Transaction.available_listings.where.not(user_id: current_user.id)
-    @sells = Transaction.sell_listings.where.not(user_id: current_user.id)
-    @buys = Transaction.buy_listings.where.not(user_id: current_user.id)
+    @listings = Transaction.available_listings.where.not(user_id: current_user.id).order('created_at desc')
+    @listings = Transaction.sell_listings.where.not(user_id: current_user.id) if params[:type] == 'sell'
+    @listings = Transaction.buy_listings.where.not(user_id: current_user.id) if params[:type] == 'buy'
     @top10 = Stock.most_active
+    @ql = @listings.ransack(params[:ql])
     @q = Stock.ransack(params[:q])
     render :index
+    logger.info params
   end
 
   def show
     @top10 = Stock.most_active
-    @transactions = Transaction.where(user_id: current_user.id)
+    current_user.admin? ? (@transactions = Transaction.all.order('created_at desc')) : (@transactions = Transaction.where(user_id: current_user.id))
     render :show
   end
 
@@ -39,6 +40,6 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:volume, :user_id, :stock_id, :price, :fulfilled, :transaction_type)
+    params.require(:transaction).permit(:volume, :user_id, :stock_id, :price, :fulfilled, :transaction_type, :type)
   end
 end
