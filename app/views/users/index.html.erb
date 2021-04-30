@@ -10,7 +10,7 @@
   <div class="columns mt-0">
     <div class="column is-two-thirds">
       <span class="has-text-weight-bold title is-4 mb-2">Pending User Confirmation</span>
-      <div >
+      <div class="max-tile">
       <% @unconfirmed.each do |x| %>
         <div class="tiles mt-3 is-one-half">
           <div class="tile">
@@ -29,12 +29,11 @@
       </div>
       </div>
 
-    </div>
-    <div class="column is-two-thirds">
+    <div class="column">
       <span class="has-text-weight-bold title is-4 mb-2">Users</span>
-      <div >
+      <div class="max-tile">
       <% @users.each do |x| %>
-        <div class="tiles mt-3 is-one-half">
+        <div class="tiles mt-3 is-one-half max-tile">
           <div class="tile">
             <h1>
             <%= x.name != nil ? x.name : x.email %>
@@ -50,6 +49,7 @@
         <% end %>
       </div>
       </div>
+    </div>
 
     </div>
   </div>
