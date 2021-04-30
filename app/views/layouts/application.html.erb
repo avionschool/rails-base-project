@@ -37,7 +37,7 @@
             </div>
           <% end %>
             
-          <% if msg != "Signed in successfully." or "Signed out successfully." or "Invalid Email or password." %>
+          <% if name != 'notice' %>
             <div class="columns is-centered notif mt-1">
               <div class="column is-half notification is-<%= name.to_s %> has-text-centered mt-1">
                 <span class="is-size-5 has-text-weight-bold has-text-centered"><%= msg %></span>
