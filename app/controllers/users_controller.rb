@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :confirm]
+  before_action :set_user, only: %i[show update confirm]
   def index
     redirect_to dashboard_path unless current_user.admin?
     @users = User.all.order('role_id desc')
