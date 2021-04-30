@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+  before_action :set_transaction, only: :update
   def index
     @listings = Transaction.available_listings.where.not(user_id: current_user.id).order('created_at desc')
     @listings = Transaction.sell_listings.where.not(user_id: current_user.id) if params[:type] == 'sell'
@@ -7,12 +8,11 @@ class TransactionsController < ApplicationController
     @ql = @listings.ransack(params[:ql])
     @q = Stock.ransack(params[:q])
     render :index
-    logger.info params
   end
 
   def show
     @top10 = Stock.most_active
-    current_user.admin? ? (@transactions = Transaction.all.order('created_at desc')) : (@transactions = Transaction.where(user_id: current_user.id))
+    current_user.admin? ? (@transactions = Transaction.all.order('created_at desc')) : (@transactions = Transaction.where(user_id: current_user.id).order('created_at desc'))
     render :show
   end
 
@@ -23,14 +23,26 @@ class TransactionsController < ApplicationController
   def create
     case params[:transaction_type]
     when 'Buy'
-      current_user.buy_stock(Stock.find(params[:stock_id]).code, params[:volume], params[:price])
+      if current_user.buy_stock(Stock.find(params[:stock_id]).code, params[:volume].to_i, params[:price].to_f)
+        redirect_to dashboard_path, notice: 'Successfully posted Buy Order!'
+      else
+        redirect_to dashboard_path, danger: 'Something went wrong.'
+      end
     when 'Sell'
-      current_user.sell_stock(Stock.find(params[:stock_id]).code, params[:volume], params[:price])
+      if current_user.sell_stock(Stock.find(params[:stock_id]).code, params[:volume].to_i, params[:price].to_f)
+        redirect_to dashboard_path, notice: 'Successfully posted Sell Order!'
+      else
+        redirect_to dashboard_path, danger: 'Something went wrong.'
+      end
     end
   end
 
   def update
-    current_user.process_transaction(@transaction, params[:volume])
+    if current_user.process_transaction(@transaction, params[:volume].to_i)
+      redirect_to marketplace_path, notice: 'Successfully processed transaction'
+    else
+      redirect_to marketplace_path, danger: 'Something went wrong.'
+    end
   end
 
   private

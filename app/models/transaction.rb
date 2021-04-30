@@ -44,4 +44,12 @@ class Transaction < ApplicationRecord
   def check_stock_total
     stock.check_total
   end
+
+  def opposite_type
+    if transaction_type == 'Buy'
+      'Sell'
+    else
+      'Buy'
+    end
+  end
 end
