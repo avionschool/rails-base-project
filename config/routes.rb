@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   get "/admin" => 'users#index', as: 'admin'
   get "/user/confirm" => 'users#confirm', as: 'confirm_user'
   post "/user/create" => 'users#create', as: 'create_user'
-  patch "/user/update/:id" => 'users#update', as: 'update_user'
+  get "/user/new" => 'users#new', as: 'new_user'
+  get "/user/:id" => 'users#show', as: 'show_user'
+  patch "/user/:id" => 'users#update', as: 'update_user'
 end

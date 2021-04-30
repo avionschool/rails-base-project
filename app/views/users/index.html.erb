@@ -31,10 +31,21 @@
 
     <div class="column">
       <span class="has-text-weight-bold title is-4 mb-2">Users</span>
+      <span><%=link_to new_user_path do%>
+      <i class='bx bx-add-to-queue'></i>
+      <%end%></span>
       <div class="max-tile">
       <% @users.each do |x| %>
+      <%= link_to show_user_path(x.id) do%>
         <div class="tiles mt-3 is-one-half max-tile">
           <div class="tile">
+            <% if Role.find(x.role_id).name == 'Admin'%>
+            <p class='tag is-primary mr-1'><%= Role.find(x.role_id).name %></p>
+            <% elsif Role.find(x.role_id).name == 'Buyer'%>
+            <p class='tag is-info mr-1'><%= Role.find(x.role_id).name %></p>
+            <%else%>
+            <p class='tag is-link mr-1'><%= Role.find(x.role_id).name %></p>
+            <%end%>
             <h1>
             <%= x.name != nil ? x.name : x.email %>
             <% if x.confirmed? %>
@@ -43,9 +54,8 @@
             </h1>
           </div>
             <p>Cash: <%= number_to_currency(x.cash)%></p>
-            <p></p>
-            <p></p>
           </div>
+          <%end%>
         <% end %>
       </div>
       </div>
