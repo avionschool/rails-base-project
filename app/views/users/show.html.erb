@@ -1,0 +1,64 @@
+<div class="column is-full">
+      <span class="is-size-4 has-text-weight-bold green">Edit User</span>
+      
+    </div>
+
+<%= form_for @user, url: update_user_path do |f| %>
+  <section class="container container-content mt-6 mr-6 ml-6">
+<div class="columns">
+
+<div class="column container-right">
+  <%= render "users/shared/error_messages", resource: @user %>
+<form class="new_user">
+  <div class="field">
+  <div class="control"></div>
+    <%= f.label :name, "Name", class:"label has-text-black" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "Name", class:"input" %>
+  </div>
+  <div class="field">
+  <div class="control">
+    <%= f.label :email, class:"label has-text-black" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input" , disabled: true%>
+  </div>
+  </div>
+<% unless User.find(params[:id]).admin?%>
+  <div class="field">
+  <div class="control">
+    <%= f.label :cash, class:"label has-text-black" %>
+    <%= f.number_field :cash, autofocus: true, class:"input" %>
+  </div>
+  </div>
+  <%end%>
+
+  <div class="field">
+    <div class="control">
+      <%= f.label :role , class:"label has-text-black" %>
+      <%= f.select :role_id, Role.where.not(id: Role.find_by_name('Admin').id).collect{|r|  [r.name, r.id]}, {include_blank: false}, class:"select is-multiple" , disabled: true %>
+    </div>
+  </div>
+
+  
+
+  <div class="field">
+  <div class="control">
+    <%= f.label :password, class:"label has-text-black" do %>
+    Password
+    <em class="has-text-weight-light has-text-black">(Minimum of 6 characters)</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password", class:"input" %>
+  </div>
+  </div>
+
+
+  <div class="actions">
+    <%= f.button :submit, class: 'button is-primary start-now-two', value: 'Sign up' do%>
+      Edit
+    <% end %>
+  </div>
+  </div>
+
+</form>
+</div>
+</div>
+  </section>
+<% end %>

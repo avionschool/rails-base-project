@@ -163,7 +163,28 @@ html {
 }
 
 
+.max-tile2{
+  max-height: 60vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  
+}
+
+.max-tile2:hover{
+  overflow: scroll;
+}
+
+.max-tile2::-webkit-scrollbar {
+  width: 4px;
+}
+
+
 .max-tile::-webkit-scrollbar-thumb {
+  background-color: #21c58e;
+  border-radius: 50px;       
+}
+
+.max-tile2::-webkit-scrollbar-thumb {
   background-color: #21c58e;
   border-radius: 50px;       
 }
@@ -538,6 +559,36 @@ a.navbar-hover:hover {
   color: whitesmoke;
   background-color: #02cd68;
   border: 3px solid #02cd68;
+}
+
+.button-normal {
+  background-color: var(--logo_color);
+  color: white;
+  border-radius: 5px;
+  border: 3px solid #5944be;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.button-normal:hover {
+  color: whitesmoke;
+  background-color: #02cd68;
+  border: 3px solid #02cd68;
+}
+
+.thin{
+  max-height: 70%;
+}
+
+.radius{
+  border-radius: 15px 0px 0px 15px;
+}
+
+.radius2{
+  border-radius: 0px 15px 15px 0px;
 }
 
 .start-now-three {

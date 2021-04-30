@@ -1,0 +1,47 @@
+<div class="dashboard margin-left-none">
+  <div class="columns mt-0">
+    <div class="column is-full">
+      <span class="is-size-4 has-text-weight-light">Welcome to </span>
+      <span class="is-size-4 has-text-weight-bold green">Tradr Platform!</span>
+      <br>
+      <span class="has-text-grey-light has-text-weight-light is-size-5">Good Day, <%= !!current_user.name ? current_user.name : current_user.email %></span>
+    </div>
+  </div>
+  <div class="columns mt-0">
+    <div class="column is-two-thirds">
+      <span class="has-text-weight-bold title is-4 mb-2">Transaction History</span>
+      
+
+        <div class="tiles mt-4 max-tile">
+          <table class="table is-hoverable is-striped is-centered ml-6 is-bordered">
+            <thead>
+                <tr>
+                <th>Stock Code</th>
+                <th>Type</th>
+                <th>Date Posted</th>
+                <th>Fulfilled</th>
+                <th>Price</th>
+                <th>Volume</th>
+                <th>Total Value</th>
+                </tr>
+            </thead>
+            <tbody>
+           <% @transactions.each do |x|%>
+                <tr>
+                <th><%= Stock.find(x.stock_id).code %></th>
+                <td>
+                  <%= x.transaction_type %>
+                </td>
+                <td><%= x.created_at.getlocal.strftime("%m/%d/%Y %I:%M%p %z %Z") %></td>
+                <td><%= x.fulfilled %></td>
+                <td><%= number_to_currency x.price %></td>
+                <td><%= x.volume %></td>
+                <td><%= number_to_currency x.price * x.volume %></td>
+                </tr>
+                <%end%>
+            </tbody>
+            </table>
+      </div>
+    </div>
+        <%= render "shared/trending" %>
+  </div>

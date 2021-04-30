@@ -1,0 +1,39 @@
+<div class="dashboard margin-left-none">
+  <div class="columns mt-0">
+    <div class="column is-full">
+      <span class="is-size-4 has-text-weight-bold green">Tradr Platform!</span>
+      <br>
+      <span class="has-text-grey-light has-text-weight-light is-size-5">Good Day, <%= !!current_user.name ? current_user.name : current_user.email %></span>
+    </div>
+  </div>
+  <div class="columns mt-0">
+    <div class="column is-two-thirds">
+      <span class="has-text-weight-bold title is-4 mb-2">Marketplace </span>
+      <%= render 'shared/searchbar'%>
+      <%= link_to 'Buy Orders', controller: "transactions", action: "index", type: 'buy' %>
+      <br>
+      <%= link_to 'Sell Orders', controller: "transactions", action: "index", type: 'sell' %>
+      <div class="max-tile2">
+        <% @listings.each do |x| %>
+          <div class="tiles mt-4 max-tile">
+            <div class="tile">
+              <h1 class="has-text-weight-bold"><%= x.transaction_type %>ing [<%= Stock.find(x.stock_id).code %>]</h1>
+            </div>
+            <p>Stock Name: <%= Stock.find(x.stock_id).name %></p>
+            <p>Volume: <%= x.volume %></p>
+            <p>Price: <%= number_to_currency(x.price) %> </p>
+            <p>Total Price: <%= number_to_currency(x.volume * x.price) %> </p>
+            <div>
+              <% if !current_user.admin?%>
+                <%= link_to transactions_new_path(:transaction_type => (x.transaction_type =='Buy' ? 'Sell' : 'Buy'), :stock_id => x[:stock_id]), class: (x.transaction_type =='Sell' ? 'button is-primary mr-2 mt-1 has-text-weight-medium' : 'button is-danger mr-2 mt-1 has-text-weight-medium' ) do%>
+                  <i class='bx bx-archive-<%= "#{x.transaction_type == 'Sell' ? 'in' : 'out'}"%> mr-1' ></i> <%= x.transaction_type == 'Buy'? 'Sell' : 'Buy'%>
+                <% end %>
+              <%end%>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <%= render "shared/trending" %>
+  </div>
+</div>

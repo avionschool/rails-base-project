@@ -19,7 +19,12 @@ class User < ApplicationRecord
   scope :brokers, -> { where(role: Role.find_by(name: 'Broker')) }
   scope :buyers, -> { where(role: Role.find_by(name: 'Buyer')) }
   scope :admins, -> { where(role: Role.find_by(name: 'Admin')) }
-  scope :unconfirmed, -> { find_by(confirmed_at: nil) }
+  scope :unconfirmed, -> { where(confirmed_at: nil) }
+  scope :confirmed, -> { where.not(confirmed_at: nil) }
+
+  def admin?
+    role_id == Role.find_by(name: 'Admin').id
+  end
 
   # Put to Controller?
   def buy_stock(stock, volume, price)
@@ -43,7 +48,8 @@ class User < ApplicationRecord
       self.cash = cash - price * volume
     end
     ActiveRecord::Base.transaction do
-      if save
+      if cash.positive?
+        save
         transaction.save
         if role.id == Role.find_by(name: 'Broker').id
           bs = BuyersStock.find_entry(id, Stock.find_by(code: stock).id)
