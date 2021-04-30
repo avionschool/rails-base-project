@@ -25,7 +25,7 @@
                 <div class="control">
                   <%= f.label :price, class:"label has-text-black" %>
                   <%#REFACTOR THIS LATER%>
-                  <%if params[:from_search] && current_user.role == Role.find_by(name: 'Broker')%>
+                  <%if current_user.role == Role.find_by(name: 'Broker')%>
                     <%= f.number_field :price, step: :any, autofocus: true, class:"input", disabled: true, value: params[:price] %>
                     <%= f.hidden_field :price, value: params[:price]%>
                   <%elsif params[:from_search]%>
