@@ -43,6 +43,8 @@ group :test do
   gem 'vcr'
   gem 'webmock' 
   gem 'capybara'
+  gem 'launchy-rails'
+  gem 'selenium-webdriver'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
 end
