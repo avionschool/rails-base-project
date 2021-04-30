@@ -25,7 +25,7 @@
             <p>Total Price: <%= number_to_currency(x.volume * x.price) %> </p>
             <div>
               <% if !current_user.admin?%>
-                <%= link_to transactions_new_path(:transaction_type => (x.transaction_type =='Buy' ? 'Sell' : 'Buy'), :stock_id => x[:stock_id]), class: (x.transaction_type =='Sell' ? 'button is-primary mr-2 mt-1 has-text-weight-medium' : 'button is-danger mr-2 mt-1 has-text-weight-medium' ) do%>
+                <%= link_to transactions_new_path(:transaction_type => (x.transaction_type =='Buy' ? 'Sell' : 'Buy'), :stock_id => x.stock_id, :id => (x.id), :price => x.price), class: (x.transaction_type =='Sell' ? 'button is-primary mr-2 mt-1 has-text-weight-medium' : 'button is-danger mr-2 mt-1 has-text-weight-medium' ) do%>
                   <i class='bx bx-archive-<%= "#{x.transaction_type == 'Sell' ? 'in' : 'out'}"%> mr-1' ></i> <%= x.transaction_type == 'Buy'? 'Sell' : 'Buy'%>
                 <% end %>
               <%end%>

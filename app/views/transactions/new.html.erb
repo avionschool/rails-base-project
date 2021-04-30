@@ -1,4 +1,40 @@
-<h1><%= params[:transaction_type]%> </h1>
-<h2>Name: <%= Stock.find(params[:stock_id]).name%> </h2>
-<h2>Code: <%= Stock.find(params[:stock_id]).code%> </h2>
-<h2>Price: <%= number_to_currency Stock.find(params[:stock_id]).price%> </h2>
+<div class="column is-full">
+  <span class="is-size-4 has-text-weight-bold green"><%= params[:transaction_type] +"ing [#{Stock.find(params[:stock_id]).code}]" %> </span>
+  <div class="is-size-5 has-text-weight-bold purple">Avg Price: <%= number_to_currency Stock.find(params[:stock_id]).price %> </div>
+</div>
+<section class="container container-content mt-6 mr-6 ml-6">
+  <div class='columns'>
+    <div class="column container-right">
+    <% @decision = (params[:from_portfolio] || params[:from_search]) ? create_transaction_path : transactions_update_path %>
+      <%= form_with url: @decision, method: (params[:from_portfolio] || params[:from_search]) ? 'post' : 'patch' do |f| %>
+        <div class="field">
+          <div class="control">
+            <%= f.label :volume, class:"label has-text-black" do %>
+              <%if !params[:from_portfolio]%>
+                <p>Volume <i>(max: <%= !!params[:id] ? Transaction.find(params[:id]).volume : 'N/A' %>)</i>: </p>
+              <%else%>
+                <p> Volume <i>(max: <%= params[:transaction_type] == 'Sell' ? (params[:volume]) : 'N/A' %>)</i>: 
+                  <p>
+                  <%end%>
+                <%end%>
+                <%= f.number_field :volume, autofocus: true, class:"input"%>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <%= f.label :price, class:"label has-text-black" %>
+                <%= f.number_field :price, step: :any, autofocus: true, class:"input", disabled: (!params[:from_portfolio] && !params[:from_search]), value: params[:price] %>
+              </div>
+            </div>
+                <%= f.hidden_field :id, value: params[:id]%>
+                <%= f.hidden_field :transaction_type, value: params[:transaction_type]%>
+                <%= f.hidden_field :stock_id, value: params[:stock_id]%>
+
+            <div class="actions">
+              <%= f.button :submit, class: 'button is-primary start-now-two', value: 'Process' do%>
+                Process
+              <% end %>
+            </div>
+          <%end%>
+        </di>
+      </div>

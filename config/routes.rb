@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get "/transactions/show" => 'transactions#show', as: 'transaction_logs'
   get "/transactions/new" => 'transactions#new'
   get "/transactions" => 'transactions#show'
-  post "transactions/create" =>  'transactions#create', as: 'create_transaction'
+  post "/transactions/create" =>  'transactions#create', as: 'create_transaction'
+  patch "/transactions/update" => 'transactions#update'
   
   get "/stocks" => 'stocks#index', as: 'stocks'
   
