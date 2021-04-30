@@ -1,9 +1,10 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: :update
+  before_action :set_transaction, only: %i[update destroy]
   def index
     @listings = Transaction.available_listings.where.not(user_id: current_user.id).order('created_at desc')
-    @listings = Transaction.sell_listings.where.not(user_id: current_user.id) if params[:type] == 'sell'
-    @listings = Transaction.buy_listings.where.not(user_id: current_user.id) if params[:type] == 'buy'
+    @listings = Transaction.sell_listings.where.not(user_id: current_user.id).order('created_at desc') if params[:type] == 'sell'
+    @listings = Transaction.buy_listings.where.not(user_id: current_user.id).order('created_at desc') if params[:type] == 'buy'
+    @listings = Transaction.available_listings.where(user_id: current_user.id).order('created_at desc') if params[:type] == 'own'
     @top10 = Stock.most_active
     @ql = @listings.ransack(params[:ql])
     @q = Stock.ransack(params[:q])
@@ -42,6 +43,14 @@ class TransactionsController < ApplicationController
       redirect_to marketplace_path, notice: 'Successfully processed transaction'
     else
       redirect_to marketplace_path, danger: 'Something went wrong.'
+    end
+  end
+
+  def destroy
+    if @transaction.cancel_transaction
+      redirect_to marketplace_path, notice: 'Cancelled transaction successfully!'
+    else
+      redirect_to marketplace_path, danger: 'Something went wrong!'
     end
   end
 

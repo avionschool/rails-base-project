@@ -20,17 +20,21 @@
           <div class="tile">
             <h1><%= x[:name] %> [<%= x[:code] %>]</h1>
           </div>
-          <p>Volume: <%= x[:volume] %></p>
-          <p>Price: <%= number_to_currency(x[:price]) %> </p>
-          <p>Value: <%= number_to_currency(x[:volume] * x[:price]) %>
-           <div>
-                <%= link_to transactions_new_path(:transaction_type => "Buy", :stock_id => x[:stock_id], :from_portfolio => true), class: 'button is-primary mr-2 mt-1 has-text-weight-medium' do%>
-                  <i class='bx bx-archive-in mr-1' ></i> Buy
-                <% end %>
-                <%= link_to transactions_new_path(:transaction_type => "Sell", :stock_id => x[:stock_id], :from_portfolio => true, :volume => x[:volume]), class: 'button is-danger mr-2 mt-1 has-text-weight-medium' do%>
-                  <i class='bx bx-archive-out mr-1' ></i> Sell
-                <% end %>
-           </div>
+          <div class='is-flex is-flex-direction-row is-justify-content-space-between is-align-items-center'>
+            <div>
+              <p>Volume: <%= x[:volume] %></p>
+              <p>Price: <%= number_to_currency(x[:price]) %> </p>
+              <p>Value: <%= number_to_currency(x[:volume] * x[:price]) %>
+            </div>
+             <div class='is-flex is-flex-direction-column is-align-items-center'>
+                  <%= link_to transactions_new_path(:transaction_type => "Buy", :stock_id => x[:stock_id], :from_portfolio => true), class: 'button is-primary mr-2 mt-1 has-text-weight-medium' do%>
+                    <i class='bx bx-archive-in mr-1' ></i> Buy
+                  <% end %>
+                  <%= link_to transactions_new_path(:transaction_type => "Sell", :stock_id => x[:stock_id], :from_portfolio => true, :volume => x[:volume]), class: 'button is-danger mr-2 mt-1 has-text-weight-medium' do%>
+                    <i class='bx bx-archive-out mr-1' ></i> Sell
+                  <% end %>
+             </div>
+          </div>
           </div>
         <% end %>
       </div>
