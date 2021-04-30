@@ -27,7 +27,7 @@
               <p>Value: <%= number_to_currency(x[:volume] * x[:price]) %>
             </div>
              <div class='is-flex is-flex-direction-column is-align-items-center'>
-                  <%= link_to transactions_new_path(:transaction_type => "Buy", :stock_id => x[:stock_id], :from_portfolio => true), class: 'button is-primary mr-2 mt-1 has-text-weight-medium' do%>
+                  <%= link_to transactions_new_path(:transaction_type => "Buy", :stock_id => x[:stock_id], :from_portfolio => true, :price => Stock.find(x[:stock_id]).price), class: 'button is-primary mr-2 mt-1 has-text-weight-medium' do%>
                     <i class='bx bx-archive-in mr-1' ></i> Buy
                   <% end %>
                   <%= link_to transactions_new_path(:transaction_type => "Sell", :stock_id => x[:stock_id], :from_portfolio => true, :volume => x[:volume]), class: 'button is-danger mr-2 mt-1 has-text-weight-medium' do%>
