@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/marketplace" => 'transactions#index'
   get "/transactions/show" => 'transactions#show', as: 'transaction_logs'
   get "/transactions/new" => 'transactions#new'
+  get "/transactions" => 'transactions#show'
   get "/stocks" => 'stocks#index', as: 'stocks'
   get "/user/confirm" => 'users#confirm', as: 'confirm_user'
 end

@@ -1,11 +1,14 @@
-<div>
     
-    <%= link_to 'Back', :back %>
     <%= search_form_for @q do |f|%>
+<div class="field has-addons">  
     
-    <%= f.search_field :code_or_name_cont %>
-    <%= f.submit do %>
-    <i class='bx bx-archive-in'></i>
-    <%end%>
+    <div class="control">
+        <%= f.search_field :code_or_name_cont, class:"input thin radius mt-2" %>
+    </div>
+    <div class="control">
+        <%= f.button :submit, class:"button-normal button radius2 thin mt-2" do %>
+            <i class='bx bx-search-alt'></i>
+        <% end %>
+    </div>
     <%end%>
 </div>
