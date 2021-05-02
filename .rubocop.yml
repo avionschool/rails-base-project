@@ -13,6 +13,7 @@ AllCops:
     - "vendor/**/*"
     - "spec/rails_helper.rb"
     - "spec/spec_helper.rb"
+    - "spec/system/users/sessions/new_session_spec.rb"
     - "node_modules/**/*"
   NewCops: enable
 
@@ -53,3 +54,4 @@ Rails/ApplicationController:
 
 Rails/HasAndBelongsToMany:
   Enabled: false
+
