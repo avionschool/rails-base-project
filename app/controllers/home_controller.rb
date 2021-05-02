@@ -5,8 +5,7 @@ class HomeController < ApplicationController
   end
 
   def show
-    require 'iex-ruby-client'
-    @client = IEX::Api::Client.new
+    current_user.admin? ? (redirect_to admin_path) : (render :show)
     @portfolio = BuyersStock.where(user_id: current_user.id).collect do |x|
       {
         stock_id: x.stock_id,
@@ -17,6 +16,5 @@ class HomeController < ApplicationController
       }
     end
     @top10 = Stock.most_active
-    current_user.admin? ? (redirect_to admin_path) : (render :show)
   end
 end

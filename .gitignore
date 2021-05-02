@@ -47,3 +47,4 @@ config/token.rb
 .vscode/settings.json
 
 .env
+spec/examples.txt
