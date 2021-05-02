@@ -5,7 +5,7 @@
         <span class="has-text-weight-bold title is-4">Trending Stocks</span>
         <div class="max-tile mt-3">
       <% @top10.each do |x| %>
-
+      <%= link_to stocks_path(:q => {:code_or_name_cont => x.symbol}) do%>
         <div class="tiles mt-3 is-one-half max-tile">
           <div class="tile is-flex is-justify-content-space-between is-align-items-center">
             <p class='tag is-medium green-bg has-text-white has-text-weight-medium mr-1'><i class="fas fa-cubes mr-1"></i><%= x.company_name %>
@@ -18,7 +18,7 @@
             <p class='mt-3 is-flex is-align-items-center is-size-5 has-text-<%="#{ x.change_percent >= 0 ? 'success' : 'danger'}"%> '> <i class='bx bx-trending-<%= "#{ x.change_percent >= 0 ? 'up' : 'down' }"%> mr-2 is-size-4'></i> <%= x.change_percent_s %> </p>
           </div>
           </div>
-
+          <% end %>
         <% end %>
         </div>
       </div>
