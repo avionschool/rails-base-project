@@ -15,11 +15,20 @@
       <%#= stylesheet_pack_tag "application", media: "all" %>
     </head>
     <body>
+    <% if current_page?(root_path) %>
+      <%= render "shared/navbar"%>
+      <% else %>
       <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <%= render "shared/admin_sidebar" %>
+      <% else %>
         <%= render "shared/sidebar" %>
+      <% end %>
       <% else %>
         <%= render "shared/navbar" %>
       <% end %>
+    <% end %>
+
       <div class="container">
         <% flash.each do |name, msg| %>
           <% if msg == "Signed in successfully." || "Signed out successfully." && msg != "Invalid Email or password." && name !='danger' %>

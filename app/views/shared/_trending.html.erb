@@ -1,27 +1,24 @@
-<div class="column">
+
+
+
+      <div class="column">
         <span class="has-text-weight-bold title is-4">Trending Stocks</span>
-        <div class="tiles mt-4 max-tile">
-          <div class="tile">
-            <table class="table is-borderless">
-              <thead>
-                <div>
-                  <tr class="tiles has-background-grey-lighter">
-                    <th class="has-text-centered is-size-6">Name</th>
-                    <th class="has-text-centered is-size-6">Price/unit</th>
-                    <th class="has-text-centered is-size-6">Return</th>
-                  </tr>
-                </div>
-              </thead>
-              <tbody>
-                <% @top10.each do |x| %>
-                  <tr>
-                    <td><%= x.company_name %></td>
-                    <td><%=number_to_currency x.latest_price %></td>
-                    <td> <%= x.change_percent_s %></td>
-                  </tr>
-                <%end%>
-              </tbody>
-            </table>
+        <div class="max-tile mt-3">
+      <% @top10.each do |x| %>
+
+        <div class="tiles mt-3 is-one-half max-tile">
+          <div class="tile is-flex is-justify-content-space-between is-align-items-center">
+            <p class='tag is-medium green-bg has-text-white has-text-weight-medium mr-1'><i class="fas fa-cubes mr-1"></i><%= x.company_name %>
+
           </div>
+          <div class="is-flex is-justify-content-space-between is-align-items-center mt-2">
+            <h1>
+            <i class="fas fa-tags mr-1"></i> Price: <%=number_to_currency x.latest_price %>
+            </h1>
+            <p class="mt-3"> <i class="fas fa-exchange-alt mr-2"></i> Return: <%= x.change_percent_s %></p>
+          </div>
+          </div>
+
+        <% end %>
         </div>
       </div>

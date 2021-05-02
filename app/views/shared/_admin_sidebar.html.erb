@@ -6,42 +6,42 @@
         <a href="#" class="nav__logo has-text-weight-bold">Tradr</a>
       </div>
       <div class="nav__list">
-        <% if current_page?(dashboard_path) %>
-          <%= link_to dashboard_path, class:"nav__link active", id:"dashboard" do%>
+        <% if current_page?(admin_path) %>
+          <%= link_to dashboard_path, class: "nav__link active", id: "dashboard" do %>
             <i class='bx bxs-dashboard is-size-5' ></i>
             <span class="nav__name has-text-weight-bold">Dashboard</span>
           <% end %>
         <% else %>
-          <%= link_to dashboard_path, class:"nav__link ", id:"dashboard" do%>
+          <%= link_to dashboard_path, class: "nav__link ", id: "dashboard" do %>
             <i class='bx bxs-dashboard is-size-5' ></i>
             <span class="nav__name has-text-weight-bold">Dashboard</span>
           <% end %>
         <% end %>
         <% if current_page?(marketplace_path) %>
-          <%= link_to marketplace_path, class:"nav__link active", id:"marketplace" do%>
+          <%= link_to marketplace_path, class: "nav__link active", id: "marketplace" do %>
             <i class='bx bxs-shopping-bag is-size-5' ></i>
             <span class="nav__name has-text-weight-bold">Buy Stocks</span>
           <% end %>
         <% else %>
-          <%= link_to marketplace_path, class:"nav__link", id:"marketplace" do%>
+          <%= link_to marketplace_path, class: "nav__link", id: "marketplace" do %>
             <i class='bx bxs-shopping-bag is-size-5' ></i>
             <span class="nav__name has-text-weight-bold">Buy Stocks</span>
           <% end %>
         <% end %>
         <% if current_page?(transactions_path) %>
-          <%= link_to transactions_path, class:"nav__link active", id:"marketplace" do%>
+          <%= link_to transactions_path, class: "nav__link active", id: "marketplace" do %>
             <i class='bx bx-transfer is-size-5' ></i>
             <span class="nav__name has-text-weight-bold">Transactions</span>
           <% end %>
         <% else %>
-          <%= link_to transactions_path, class:"nav__link", id:"marketplace" do%>
+          <%= link_to transactions_path, class: "nav__link", id: "marketplace" do %>
             <i class='bx bx-transfer is-size-5' ></i>
             <span class="nav__name has-text-weight-bold">Transactions</span>
           <% end %>
         <% end %>
       </div>
     </div>
-    <%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to sign-out?' }, class:"nav__link__out" do %>
+    <%= link_to destroy_user_session_path, method: :delete, data: { confirm: "Are you sure you want to sign-out?" }, class: "nav__link__out" do %>
       <i class='bx bx-log-out is-size-5'></i>
       <span class="nav__name has-text-weight-bold">Log-out</span>
     <% end %>

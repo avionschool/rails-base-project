@@ -48,6 +48,11 @@ html {
   width: 100%;
 }
 
+a{
+  color: #000000;
+}
+
+
 .dashboard {
   position: relative;
   margin-left: 3rem;
@@ -55,8 +60,41 @@ html {
   transition: .5s;
 }
 
+.dashboard2 {
+  position: relative;
+  margin-left: 1rem;
+  padding: 1rem;
+  transition: .5s;
+}
+
 .green{
-  color: #01bf71;
+  color: #01bf71 !important; 
+}
+
+.green-bg{
+  background-color: #01bf71 !important;
+  
+}
+
+.green-border{
+  border: 1px solid #01bf71 !important;
+  border-color: #01bf71 !important;
+}
+
+.red-border{
+  border: 1px solid #e14846 !important;
+}
+
+.red{
+  color: #e14846 !important;
+}
+
+.purple-bg{
+  background-color: var(--logo_color) !important;
+}
+
+.dark-bg{
+  background-color: #162b5b !important;
 }
 
 .l-navbar{
@@ -147,6 +185,10 @@ html {
   margin-left: 16%;
 }
 
+.margin-left2{
+  margin-left: 3rem;
+}
+
 .max-tile{
   max-height: 70vh;
   overflow-y: hidden;
@@ -197,6 +239,10 @@ html {
 
 .margin-left-none{
   margin-left: 5rem;
+}
+
+.margin-left-none2{
+  margin-left: 3rem;
 }
 
 /*Add padding body*/
@@ -268,13 +314,14 @@ body::-webkit-scrollbar-thumb {
 ::-moz-selection {
   /* Code for Firefox */
   color: white;
-  background: #352e51;
+  background: #21c58e;
 }
 
 ::selection {
   color: white;
-  background: #352e51;
+  background: #21c58e;
 }
+
 @keyframes fadein {
   0% {
     opacity: 0;
@@ -321,7 +368,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .logo {
-  color: #5944be;
+  color: #384a53;
 }
 
 .home-title {
@@ -559,6 +606,42 @@ a.navbar-hover:hover {
   color: whitesmoke;
   background-color: #02cd68;
   border: 3px solid #02cd68;
+}
+
+.start-now-two-inverted {
+  background-color: #02cd68;
+  color: white;
+  border-radius: 5px;
+  border: 3px solid #02cd68;
+  padding-left: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 30px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.start-now-two-inverted:hover {
+  color: whitesmoke;
+  background-color: var(--logo_color);
+  border: 3px solid #5944be;
+}
+
+.start-now-inverted {
+  background-color: #02cd68;
+  color: white;
+  border-radius: 5px;
+  border: 3px solid #02cd68;
+  padding-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 30px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.start-now-inverted:hover {
+  color: whitesmoke;
+  background-color: var(--logo_color);
+  border: 3px solid #5944be;
 }
 
 .button-normal {

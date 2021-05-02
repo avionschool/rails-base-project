@@ -10,23 +10,47 @@
     <div class="column is-two-thirds">
       <span class="has-text-weight-bold title is-4 mb-2">Marketplace </span>
       <%= render 'shared/searchbar'%>
-      <%= link_to 'Buy Orders', controller: "transactions", action: "index", type: 'buy' %>
-      <br>
-      <%= link_to 'Sell Orders', controller: "transactions", action: "index", type: 'sell' %>
-      <br>
-      <%= link_to 'My Orders', controller: "transactions", action: "index", type: 'own' %>
+
+      <div class="dropdown">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+      <span>Orders</span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div class="dropdown-content">
+      <div class="dropdown-item">
+        <%= link_to 'Buy Orders', controller: "transactions", action: "index", type: 'buy'  %>  
+      
+      </div>
+
+      <div class="dropdown-item">
+        <%= link_to 'Sell Orders', controller: "transactions", action: "index", type: 'sell'  %>  
+      
+      </div>
+      <div class="dropdown-item">
+        <%= link_to 'My Orders', controller: "transactions", action: "index", type: 'own'  %>  
+      
+      </div>
+     
+    </div>
+  </div>
+</div>
+
       <div class="max-tile2">
         <% @listings.each do |x| %>
           <div class="tiles mt-4 max-tile">
             <div class="tile">
-              <h1 class="has-text-weight-bold"><%= x.transaction_type %>ing [<%= Stock.find(x.stock_id).code %>]</h1>
+              <h1 class="has-text-weight-bold mb-2"><%= x.transaction_type %>ing [<%= Stock.find(x.stock_id).code %>]</h1>
             </div>
-            <div class='is-flex is-flex-direction-row is-justify-content-space-between'>
+            <div class='is-flex is-flex-direction-row is-justify-content-space-between is-align-items-center'>
               <div>
-                <p>Stock Name: <%= Stock.find(x.stock_id).name %></p>
-                <p>Volume: <%= x.volume %></p>
-                <p>Price: <%= number_to_currency(x.price) %> </p>
-                <p>Total Price: <%= number_to_currency(x.volume * x.price) %> </p>
+                <p> <i class="fas fa-cubes mr-1"></i>Stock Name: <%= Stock.find(x.stock_id).name %></p>
+                <p> <i class="fas fa-box-open mr-1"></i>Volume: <%= x.volume %> <i class="fas fa-tags ml-4 mr-1"></i>Price: <%= number_to_currency(x.price) %></p>
+                <p><i class="fas fa-award mr-1"></i>Total Price: <%= number_to_currency(x.volume * x.price) %> </p>
               </div>
               <div>
                 <% if !current_user.admin?%>
@@ -35,7 +59,7 @@
                       <i class='bx bxs-trash mr-1' ></i>  Cancel Order
                       <%end%>
                   <%else %>
-                    <%= link_to transactions_new_path(:transaction_type => (x.transaction_type =='Buy' ? 'Sell' : 'Buy'), :stock_id => x.stock_id, :id => (x.id), :price => x.price), class: (x.transaction_type =='Sell' ? 'button is-primary mr-2 mt-1 has-text-weight-medium' : 'button is-danger mr-2 mt-1 has-text-weight-medium' ) do%>
+                    <%= link_to transactions_new_path(:transaction_type => (x.transaction_type =='Buy' ? 'Sell' : 'Buy'), :stock_id => x.stock_id, :id => (x.id), :price => x.price), class: (x.transaction_type =='Sell' ? 'button is-success is-outlined green-border mr-2 mt-1 has-text-weight-medium' : 'button is-danger mr-2 mt-1 has-text-weight-medium' ) do%>
                       <i class='bx bx-archive-<%= "#{x.transaction_type == 'Sell' ? 'in' : 'out'}"%> mr-1' ></i> <%= x.transaction_type == 'Buy'? 'Sell' : 'Buy'%>
                     <%end%>
                   <% end %>

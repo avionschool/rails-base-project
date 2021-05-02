@@ -43,6 +43,24 @@ const toggler = document.getElementById("nav-toggle")
 
 toggler.addEventListener("click", margLeft)
 
+const margLeft2 = () => {
+  console.log("tae")
+  dashboard = document.querySelector(".dashboard2");
+
+
+  if (dashboard.classList.contains("margin-left-none2")) {
+    dashboard.classList.remove("margin-left-none2");
+    dashboard.classList.add("margin-left2");
+  } else {
+    dashboard.classList.remove("margin-left2")
+    dashboard.classList.add("margin-left-none2");
+  }
+}
+
+const toggler2 = document.getElementById("nav-toggle")
+
+toggler.addEventListener("click", margLeft2)
+
 /*===== EXPANDER MENU  =====*/
 const showMenu = (toggleId, navbarId, bodyId) => {
   const toggle = document.getElementById(toggleId),
@@ -61,4 +79,8 @@ showMenu("nav-toggle", "navbar", "body-pd");
 
 
 
-
+let dropdown = document.querySelector('.dropdown');
+dropdown.addEventListener('click', function(event) {
+    event.stopPropagation();
+    dropdown.classList.toggle('is-active');
+});

@@ -1,20 +1,21 @@
-<div class="column is-full">
-      <span class="is-size-4 has-text-weight-bold green">Create User</span>
-      
-    </div>
-
+<div class="dashboard2 margin-left-none2">
 <%= form_for @user, url: create_user_path do |f| %>
   <section class="container container-content mt-6 mr-6 ml-6">
-<div class="columns">
-
-<div class="column container-right">
-  <%= render "users/shared/error_messages", resource: @user %>
-<form class="new_user">
+  <h1 class="has-text-centered is-size-4 has-text-weight-bold green">New User</h1>
+    <div class="columns">
+      <div class="column is-6 container-left">
+        <%= image_tag("add-user-animate-2.svg", :alt => "rss feed") %>
+      </div>
+      <div class="column is-6 container-right" id="login_user">
+        <%= render "users/shared/error_messages", resource: @user %>
+        <form class="new_user">
   <div class="field">
-  <div class="control"></div>
+  <div class="control">
     <%= f.label :name, "Name", class:"label has-text-black" %>
     <%= f.text_field :name, autofocus: true, autocomplete: "Name", class:"input" %>
   </div>
+  </div>
+
   <div class="field">
   <div class="control">
     <%= f.label :email, class:"label has-text-black" %>
@@ -50,14 +51,13 @@
   </div>
 
   <div class="actions">
-    <%= f.button :submit, class: 'button is-primary start-now-two', value: 'Sign up' do%>
-      Sign-up
+    <%= f.button :submit, class: 'button start-now-two-inverted', value: 'Sign up' do%>
+      Add User
     <% end %>
   </div>
-  </div>
-
 </form>
-</div>
-</div>
+      </div>
+    </div>
   </section>
 <% end %>
+</div>
