@@ -42,7 +42,7 @@
                 <%= f.hidden_field :price, value: params[:price]%>
               <%end%>
               <div class="actions">
-                <%= f.button :submit, class: 'button is-primary start-now-two', value: 'Process' do%>
+                <%= f.button :submit, class: 'button is-primary start-now-two', value: 'Process', data: {disable_with: "Processing..."} do%>
                   Process
                 <% end %>
               </div>
