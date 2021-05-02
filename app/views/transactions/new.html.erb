@@ -10,15 +10,13 @@
         <%= image_tag("cash-payment-animate.svg", :alt => "rss feed") %>
       </div>
       <div class="column is-6 container-right" id="login_user">
-       
-        <form class="new_user">
     <% @decision = (params[:from_portfolio] || params[:from_search]) ? create_transaction_path : transactions_update_path %>
-        <%= form_with url: @decision, method: (params[:from_portfolio] || params[:from_search]) ? 'post' : 'patch' do |f| %>
+        <%= form_with url: @decision, method: (params[:from_portfolio] || params[:from_search]) ? 'post' : 'patch', class: 'new_user' do |f| %>
           <div class="field">
             <div class="control">
               <%= f.label :volume, class:"label has-text-black" do %>
                 <%if !params[:from_portfolio]%>
-                  <p>Volume <i>(max: <%= !!params[:id] ? Transaction.find(params[:id]).volume : 'N/A' %>)</i>: </p>
+                  <p>Volume <i>(max: <%= params[:id] ? Transaction.find(params[:id]).volume : 'N/A' %>)</i>: </p>
                 <%else%>
                   <p> Volume <i>(max: <%= params[:transaction_type] == 'Sell' ? (params[:volume]) : 'N/A' %>)</i>: 
                     <p>
@@ -41,7 +39,9 @@
                   <%end%>
                 </div>
               </div>
+              <% if params[:id]%>
               <%= f.hidden_field :id, value: params[:id]%>
+              <%end%>
               <%= f.hidden_field :transaction_type, value: params[:transaction_type]%>
               <%= f.hidden_field :stock_id, value: params[:stock_id]%>
               <% if (!params[:from_portfolio] && !params[:from_search]) %>
