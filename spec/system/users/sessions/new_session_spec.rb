@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Log the user in', type: :system do
+RSpec.describe 'Log the user in', type: :feature do
   before do
     Role.create(name: 'Buyer')
     Role.create(name: 'Admin')
