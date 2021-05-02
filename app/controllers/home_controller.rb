@@ -5,15 +5,13 @@ class HomeController < ApplicationController
   end
 
   def show
-    # require 'iex-ruby-client'
-    # @client = IEX::Api::Client.new
     @portfolio = BuyersStock.where(user_id: current_user.id).collect do |x|
       {
         stock_id: x.stock_id,
-          name: Stock.find(x.stock_id).name,
-          volume: x.volume,
-          price: Stock.find(x.stock_id).price,
-          code: Stock.find(x.stock_id).code
+        name: Stock.find(x.stock_id).name,
+        volume: x.volume,
+        price: Stock.find(x.stock_id).price,
+        code: Stock.find(x.stock_id).code
       }
     end
     @top10 = Stock.most_active

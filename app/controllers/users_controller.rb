@@ -13,7 +13,8 @@ class UsersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update(user_params.except(:role_id))
+        format.html { redirect_to '/', notice: 'Details updated successfully. You may need to log-in again with your new credentials.' } unless current_user
         format.html { redirect_to dashboard_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
