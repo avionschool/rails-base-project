@@ -6,7 +6,7 @@ class TransactionsController < ApplicationController
     @listings = Transaction.buy_listings.where.not(user_id: current_user.id).order('created_at desc') if params[:type] == 'buy'
     @listings = Transaction.available_listings.where(user_id: current_user.id).order('created_at desc') if params[:type] == 'own'
     @top10 = Stock.most_active
-    @ql = @listings.ransack(params[:ql])
+    # @ql = @listings.ransack(params[:ql])
     @q = Stock.ransack(params[:q])
     render :index
   end
