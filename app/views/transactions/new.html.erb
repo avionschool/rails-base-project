@@ -3,7 +3,7 @@
 
 <div class="dashboard2 margin-left-none2">
   <section class="container container-content mt-6 mr-6 ml-6">
-  <h1 class="has-text-centered is-size-4 has-text-weight-bold green"><%= params[:transaction_type] +"ing [#{Stock.find(params[:stock_id]).code}]" %></h1>
+  <h1 class="has-text-centered is-size-4 has-text-weight-bold green"><%= params[:transaction_type] +"ing" %><i class='fas fa-cubes ml-4'></i> <%= "[#{Stock.find(params[:stock_id]).code}]" %></h1>
   <div class="is-size-5 has-text-weight-bold purple has-text-centered mt-1">Avg Price: <%= number_to_currency Stock.find(params[:stock_id]).price %> </div>
     <div class="columns mt-5">
       <div class="column is-6 container-left">
@@ -48,7 +48,7 @@
                 <%= f.hidden_field :price, value: params[:price]%>
               <%end%>
               <div class="actions">
-                <%= f.button :submit, class: 'button is-primary start-now-two', value: 'Process', data: {disable_with: "Processing..."} do%>
+                <%= f.button :submit, class: 'button start-now-two-inverted', value: 'Process', data: {disable_with: "Processing..."} do%>
                   Process
                 <% end %>
               </div>

@@ -1,6 +1,7 @@
 <div class="dashboard margin-left-none">
   <div class="columns mt-0">
     <div class="column is-full">
+      <span class="is-size-4 has-text-weight-light">Welcome to </span>
       <span class="is-size-4 has-text-weight-bold green">Tradr Platform!</span>
       <br>
       <span class="has-text-grey-light has-text-weight-light is-size-5">Good Day, <%= !!current_user.name ? current_user.name : current_user.email %></span>
@@ -10,36 +11,29 @@
     <div class="column is-two-thirds">
       <span class="has-text-weight-bold title is-4 mb-2">Marketplace </span>
       <%= render 'shared/searchbar'%>
-
       <div class="dropdown">
-  <div class="dropdown-trigger">
-    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-      <span>Orders</span>
-      <span class="icon is-small">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-    </button>
-  </div>
-  <div class="dropdown-menu" id="dropdown-menu" role="menu">
-    <div class="dropdown-content">
-      <div class="dropdown-item">
-        <%= link_to 'Buy Orders', controller: "transactions", action: "index", type: 'buy'  %>  
-      
+        <div class="dropdown-trigger">
+          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span>Orders</span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <div class="dropdown-item">
+              <%= link_to 'Buy Orders', controller: "transactions", action: "index", type: 'buy'  %>
+            </div>
+            <div class="dropdown-item">
+              <%= link_to 'Sell Orders', controller: "transactions", action: "index", type: 'sell'  %>
+            </div>
+            <div class="dropdown-item">
+              <%= link_to 'My Orders', controller: "transactions", action: "index", type: 'own'  %>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="dropdown-item">
-        <%= link_to 'Sell Orders', controller: "transactions", action: "index", type: 'sell'  %>  
-      
-      </div>
-      <div class="dropdown-item">
-        <%= link_to 'My Orders', controller: "transactions", action: "index", type: 'own'  %>  
-      
-      </div>
-     
-    </div>
-  </div>
-</div>
-
       <div class="max-tile2">
         <% @listings.each do |x| %>
           <div class="tiles mt-4 max-tile">
@@ -55,9 +49,9 @@
               <div>
                 <% if !current_user.admin?%>
                   <% if current_user.id == x.user_id %>
-                  <%= link_to delete_transaction_path(x.id), class: 'button is-danger mr-2 mt-1 has-text-weight-medium' do%>
+                    <%= link_to delete_transaction_path(x.id), class: 'button is-danger mr-2 mt-1 has-text-weight-medium' do%>
                       <i class='bx bxs-trash mr-1' ></i>  Cancel Order
-                      <%end%>
+                    <%end%>
                   <%else %>
                     <%= link_to transactions_new_path(:transaction_type => (x.transaction_type =='Buy' ? 'Sell' : 'Buy'), :stock_id => x.stock_id, :id => (x.id), :price => x.price), class: (x.transaction_type =='Sell' ? 'button is-success is-outlined green-border mr-2 mt-1 has-text-weight-medium' : 'button is-outlined red-border is-danger mr-2 mt-1 has-text-weight-medium' ) do%>
                       <i class='bx bx-archive-<%= "#{x.transaction_type == 'Sell' ? 'in' : 'out'}"%> mr-1' ></i> <%= x.transaction_type == 'Buy'? 'Sell' : 'Buy'%>

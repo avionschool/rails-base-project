@@ -1,26 +1,34 @@
 <div class="dashboard margin-left-none">
-  <div class="columns mt-0">
-    <div class="column is-full">
+
+      <span class="is-size-4 has-text-weight-light">Welcome to </span>
       <span class="is-size-4 has-text-weight-bold green">Tradr Platform!</span>
+      <br>
+      <span class="has-text-grey-light has-text-weight-light is-size-5">Good Day, <%= !!current_user.name ? current_user.name : current_user.email %></span>
+
+  <div class="columns mt-5">
+    <div class="column is-half mt-5">
+    <span class="has-text-weight-bold title is-4 mb-2">Search Stocks </span>
+        <%= render 'shared/searchbar' %>
+        <div class="mt-2 max-tile">
+          <% @stock_q.each do |x| %>
+          <div class="tiles mt-4 max-tile">
+          <div class="tile is-flex is-flex-direction-row is-justify-content-space-between is-align-items-center">
+
+          <p> <i class="fas fa-cubes mr-1"></i> Name: <%= x.name %></p>
+          <p class="ml-4"> <i class="fas fa-qrcode mr-1"></i> : <%= x.code %></p>
+          <% unless current_user.admin? %>
+            
+          <%= link_to transactions_new_path(:transaction_type => "Buy", :stock_id => x.id, :from_search => true, :price => x.price), class: 'button is-success is-outlined green-border mr-2 mt-1 has-text-weight-medium' do%>
+                        <i class='bx bx-archive-in mr-1' ></i> Buy
+                      <% end %>
+          <% end %>
+          </div>
+          </div>
+          <% end %>
     </div>
   </div>
-  <%= render 'shared/searchbar' %>
-  <div class="mt-2 max-tile">
-    <table class="table is-bordered is-striped">
-      <tr>
-        <th>Name</th>
-        <th>Code</th>
-        <th>Buy</th>
-      </tr>
-      <% @stock_q.each do |x| %>
-        <tr>
-          <td><%= x.name%></td>
-          <td><%= x.code%></td>
-          <td><%= link_to transactions_new_path(:transaction_type => "Buy", :stock_id => x.id, :from_search => true, :price => x.price), class: 'button is-primary mr-2 mt-1 has-text-weight-medium' do%>
-                  <i class='bx bx-archive-in mr-1' ></i> Buy
-                <% end %></td>
-        </tr>
-      <%end%>
-    </table>
+    <div class="column container-left mt-5">
+    <%= image_tag("analyze-animate.svg", :alt => "rss feed") %>
+    </div>
   </div>
 </div>
