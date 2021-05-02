@@ -5,8 +5,8 @@ class HomeController < ApplicationController
   end
 
   def show
-    require 'iex-ruby-client'
-    @client = IEX::Api::Client.new
+    # require 'iex-ruby-client'
+    # @client = IEX::Api::Client.new
     @portfolio = BuyersStock.where(user_id: current_user.id).collect do |x|
       {
         stock_id: x.stock_id,
