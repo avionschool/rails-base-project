@@ -22,7 +22,6 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    p params[:transaction_type]
     case params[:transaction_type]
     when 'Buy'
       if current_user.buy_stock(Stock.find(params[:stock_id]).code, params[:volume].to_i, params[:price].to_f)
