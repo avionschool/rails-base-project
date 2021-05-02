@@ -12,7 +12,11 @@ class Stock < ApplicationRecord
   end
 
   def self.most_active
-    @client = IEX::Api::Client.new
+    @client = IEX::Api::Client.new(
+      publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'],
+      secret_token: ENV['IEX_API_SECRET_TOKEN'],
+      endpoint: 'https://cloud.iexapis.com/v1'
+    )
     Rails.cache.fetch('active_stocks', expires_in: 12.hours) do
       @client.stock_market_list(:mostactive)
     end
@@ -24,7 +28,11 @@ class Stock < ApplicationRecord
   end
 
   def price
-    @client = IEX::Api::Client.new
+    @client = IEX::Api::Client.new(
+      publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'],
+      secret_token: ENV['IEX_API_SECRET_TOKEN'],
+      endpoint: 'https://cloud.iexapis.com/v1'
+    )
     Rails.cache.fetch("#{cache_key_with_version}/price", expires_in: 12.hours) do
       @client.quote(code).latest_price
     end

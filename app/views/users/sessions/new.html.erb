@@ -1,45 +1,34 @@
-
-
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-
-<section class="container container-content mt-6 mr-6 ml-6">
-<div class="columns">
-
-  <div class="column is-6 container-left">
-    <%= image_tag("login-animate.svg", :alt => "rss feed") %>
-  </div>
-  
-  <div class="column is-6 container-right">
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :email, class:"label has-text-black" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"input"%>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, class:"label has-text-black" %>
-    <%= f.password_field :password, autocomplete: "current-password", class:"input" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me, class:"checkbox"%>
-      <%= f.label :remember_me, class:"checkbox has-text-black" %>
+  <section class="container container-content mt-6 mr-6 ml-6">
+    <div class="columns">
+      <div class="column is-6 container-left">
+        <%= image_tag("login-animate.svg", :alt => "rss feed") %>
+      </div>
+      <div class="column is-6 container-right" id="login_user">
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="field">
+          <%= f.label :email, class:"label has-text-black" %>
+          <%= f.email_field :email, id:"user_email", autofocus: true, autocomplete: "email" , class:"input"%>
+        </div>
+        <div class="field">
+          <%= f.label :password, class:"label has-text-black" %>
+          <%= f.password_field :password, id:"user_password", autocomplete: "current-password", class:"input" %>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me, class:"checkbox"%>
+            <%= f.label :remember_me, class:"checkbox has-text-black" %>
+          </div>
+        <% end %>
+        <div class="actions">
+          <%= f.button :submit, class: 'button start-now-two', value: 'Login' do%>
+            Log-in
+          <% end %>
+        </div>
+        <div class="shared-links">
+          <%= render "users/shared/links" %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    
-    <%= f.button :submit, class: 'button start-now-two', value: 'Login' do%>
-      Log-in
-    <% end %>
-  </div>
-  <div class="shared-links">
-<%= render "users/shared/links" %>
-  </div>
-</div>
-</div>
   </section>
 <% end %>

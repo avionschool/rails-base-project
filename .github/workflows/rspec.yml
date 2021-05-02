@@ -47,3 +47,5 @@ jobs:
         DATABASE_USERNAME: 'postgres'
         DATABASE_PASSWORD: 'test'
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+        IEX_API_PUBLISHABLE_TOKEN: ${{secrets.IEX_API_PUBLISHABLE_TOKEN}}
+        IEX_API_SECRET_TOKEN: ${{secrets.IEX_API_SECRET_TOKEN}}
