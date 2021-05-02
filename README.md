@@ -46,7 +46,11 @@ This repo serves as the repo for Alex and Dave's Stock trading project under Avi
 
 #### Tradr App
 
-![alt text](https://i.gyazo.com/6e092c113a392b001d38180a4e56fda0.png "Landing Page")
-![alt text](https://i.gyazo.com/6c36c5b1e09013e843a0e398fa45c185.png "Sign-up Page")
-![alt text](https://i.gyazo.com/6227844586530a0cfa35e3bd146a328c.png "Sign-in Page")
-![alt text](https://i.gyazo.com/6126e383b67386c4fdf7d944bae23f48.png "Dashboard")
+![alt text](https://i.gyazo.com/b5b8d2a1d080b83ecdcb0cf2ede8b781.png "Landing Page")
+![alt text](https://i.gyazo.com/08b6b666699ca68b2f33ede96709b506.png "Sign-up Page")
+![alt text](https://i.gyazo.com/1be57feb44138c8c519f11b4086364b7.png "Sign-in Page")
+![alt text](https://i.gyazo.com/3b1f2410ab5d880534a51a603514910a.png "Dashboard")
+![alt text](https://i.gyazo.com/53f320218aca1de8682fff68f4fce5e7.png "Marketplace")
+![alt text](https://i.gyazo.com/59dfb94e6c99d607283b83dedbe8d4c8.png "Transactions")
+![alt text](https://i.gyazo.com/e8b6c81e165536cb4463dde039a47e0f.png "Search")
+![alt text](https://i.gyazo.com/c6d24062c6a1b590aa0b3e543716107b.png "Buy")
