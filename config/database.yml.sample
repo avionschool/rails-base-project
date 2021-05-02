@@ -16,4 +16,4 @@ test:
 
 production:
   <<: *default
-  detabase: stocktrading_app_production
+  database: stocktrading_app_production

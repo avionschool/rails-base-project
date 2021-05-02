@@ -16,7 +16,7 @@
         <tr>
           <td><%= x.name%></td>
           <td><%= x.code%></td>
-          <td><%= link_to transactions_new_path(:transaction_type => "Buy", :stock_id => x.id), class: 'button is-primary mr-2 mt-1 has-text-weight-medium' do%>
+          <td><%= link_to transactions_new_path(:transaction_type => "Buy", :stock_id => x.id, :from_search => true, :price => x.price), class: 'button is-primary mr-2 mt-1 has-text-weight-medium' do%>
                   <i class='bx bx-archive-in mr-1' ></i> Buy
                 <% end %></td>
         </tr>

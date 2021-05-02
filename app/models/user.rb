@@ -42,7 +42,7 @@ class User < ApplicationRecord
     when Role.find_by(name: 'Broker')
       transaction.fulfilled = true
       self.cash = cash - price * volume
-      stocks << Stock.find_by(code: stock)
+      stocks << Stock.find_by(code: stock) unless BuyersStock.exists?(id, Stock.find_by(code: stock).id)
     when Role.find_by(name: 'Buyer')
       self.alloted_cash = alloted_cash + price * volume
       self.cash = cash - price * volume
@@ -53,10 +53,9 @@ class User < ApplicationRecord
         transaction.save
         if role.id == Role.find_by(name: 'Broker').id
           bs = BuyersStock.find_entry(id, Stock.find_by(code: stock).id)
-          if bs.update(volume: bs.volume + volume)
-            logger.info "Successfully added #{stock} to portfolio"
-            true
-          end
+          bs.update(volume: bs.volume + volume)
+          logger.info "Successfully added #{stock} to portfolio"
+          true
         end
         logger.info 'Buy Order posted successfully.'
         true
@@ -78,7 +77,7 @@ class User < ApplicationRecord
     buyer_stock = BuyersStock.find_entry(id, Stock.find_by(code: stock).id)
     if buyer_stock.volume < volume
       logger.info 'Not enough stocks to sell.'
-      false
+      return false
     end
 
     buyer_stock.alloted_volume = buyer_stock.alloted_volume + volume
@@ -101,9 +100,9 @@ class User < ApplicationRecord
     # Fetch Portfolio of involved parties (buyer and seller)
     buyer_stock = BuyersStock.find_entry(id, trans.stock.id)
     seller_stock = BuyersStock.find_entry(trans.user.id, trans.stock.id)
-    oddlot?(volume, trans.volume) unless volume == trans.volume
+    oddlot?(volume, trans) unless volume == trans.volume
     # Check if User-Stock relation already exist, create it it does not yet exists
-    stocks << trans.stock # unless BuyersStock.exists?(id, trans.stock.id)
+    stocks << trans.stock unless BuyersStock.exists?(id, trans.stock.id)
     # Actual Process transaction
     case trans.transaction_type
     when 'Sell'
@@ -121,6 +120,7 @@ class User < ApplicationRecord
         trans.user.save
         seller_stock.save
         trans.save
+        Transaction.create(user_id: id, stock_id: trans.stock_id, volume: volume, transaction_type: trans.opposite_type, fulfilled: true, price: trans.price)
         logger.info 'Successful Transaction'
         true
       else
@@ -134,8 +134,8 @@ class User < ApplicationRecord
 
   def process_sell(volume, trans, buyer_stock, seller_stock)
     false unless check_cash(trans.price, volume)
-    self.cash = cash - (price * volume)
-    trans.user.cash = trans.user.cash + (price * volume)
+    self.cash = cash - (trans.price * volume)
+    trans.user.cash = trans.user.cash + (trans.price * volume)
     buyer_stock.volume = buyer_stock.volume + volume
     seller_stock.alloted_volume = seller_stock.alloted_volume - volume
   end
@@ -151,15 +151,15 @@ class User < ApplicationRecord
     seller_stock.volume = seller_stock.volume + volume
   end
 
-  def oddlot?(volume, vol)
+  def oddlot?(volume, trans)
     # Check if volume inputted is processable (i.e. meets the order)
-    if volume > vol
+    if volume > trans.volume
       logger.info 'Invalid volume amount'
       false
-    elsif volume < vol
+    elsif volume < trans.volume
       # Create oddlot if volume is not the same as the listed volumes
-      vol = volume
-      Transaction.create(user: other_party, stock: stock, price: price, volume: vol - volume, transaction_type: trans.transaction_type)
+      Transaction.create(user_id: trans.user_id, stock_id: trans.stock_id, price: trans.price, volume: trans.volume - volume, transaction_type: trans.transaction_type)
+      trans.volume = volume
     end
   end
 

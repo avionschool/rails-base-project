@@ -9,8 +9,8 @@ class Transaction < ApplicationRecord
   validates :price, numericality: { greater_than_or_equal_to: 0 }
 
   scope :available_listings, -> { where(fulfilled: false) }
-  scope :sell_listings, -> { available_listings.where("type = 'Sell'") }
-  scope :buy_listings, -> { available_listings.where("type = 'Buy'") }
+  scope :sell_listings, -> { available_listings.where("transaction_type = 'Sell'") }
+  scope :buy_listings, -> { available_listings.where("transaction_type = 'Buy'") }
 
   def cancel_transaction
     # Behavior: return alloted_cash/alloted_volume to user => destroy transaction
@@ -43,5 +43,13 @@ class Transaction < ApplicationRecord
 
   def check_stock_total
     stock.check_total
+  end
+
+  def opposite_type
+    if transaction_type == 'Buy'
+      'Sell'
+    else
+      'Buy'
+    end
   end
 end

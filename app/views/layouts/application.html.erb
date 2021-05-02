@@ -12,7 +12,7 @@
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
       <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
       <%= javascript_pack_tag "application", 'data-turbolinks-track': "reload" %>
-      <%= stylesheet_pack_tag "application", media: "all" %>
+      <%#= stylesheet_pack_tag "application", media: "all" %>
     </head>
     <body>
       <% if user_signed_in? %>
@@ -22,14 +22,7 @@
       <% end %>
       <div class="container">
         <% flash.each do |name, msg| %>
-          <% unless msg == "Signed in successfully." || "Signed out successfully." || "Invalid Email or password." %>
-            <div class="columns is-centered notif mt-1">
-              <div class="column is-half notification is-<%= name %> has-text-centered mt-1">
-                <span class="is-size-5 has-text-weight-bold has-text-centered"><%= msg %></span>
-              </div>
-            </div>
-          <% end %>
-          <% if msg == "Signed in successfully." || "Signed out successfully." && msg != "Invalid Email or password." %>
+          <% if msg == "Signed in successfully." || "Signed out successfully." && msg != "Invalid Email or password." && name !='danger' %>
             <div class="columns is-centered notif mt-1">
               <div class="column is-half notification is-success has-text-centered mt-1">
                 <span class="is-size-5 has-text-weight-bold has-text-centered"><%= msg %></span>
@@ -39,6 +32,14 @@
           <% if msg == "Invalid Email or password." %>
             <div class="columns is-centered notif mt-1">
               <div class="column is-half notification is-danger has-text-centered mt-1">
+                <span class="is-size-5 has-text-weight-bold has-text-centered"><%= msg %></span>
+              </div>
+            </div>
+          <% end %>
+            
+          <% if name != 'notice' %>
+            <div class="columns is-centered notif mt-1">
+              <div class="column is-half notification is-<%= name.to_s %> has-text-centered mt-1">
                 <span class="is-size-5 has-text-weight-bold has-text-centered"><%= msg %></span>
               </div>
             </div>
