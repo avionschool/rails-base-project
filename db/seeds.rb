@@ -9,10 +9,10 @@
 #Intialize all available stock codes
 
 @client = IEX::Api::Client.new
-@symbols = @client.ref_data_symbols
+@symbols = @client.ref_data_symbols.select {|x| x.name.length < 40}
 
 @symbols.each do |x|
-    if Stock.find_by(code: x.symbol) == nil
+    if Stock.find_by(code: x.symbol) 
         s = Stock.new(name: x.name, code: x.symbol, volume: 0)
         s.save!
     end
