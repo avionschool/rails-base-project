@@ -94,7 +94,6 @@ class User < ApplicationRecord
   # Usage: Example we have a Buy Transaction t, and a User u who wants to fulfill the order we can just call u.process_transaction(t) to fulfill the Buy Order or u.process_transaction(t, volume) to only fulfill up to certain amount. Similar to a Sell Order.
   def process_transaction(trans, volume = trans.volume)
     # Fetch Portfolio of involved parties (buyer and seller)
-    return false if volume.negative?
 
     oddlot?(volume, trans) unless volume == trans.volume
     # Check if User-Stock relation already exist, create it it does not yet exists
@@ -158,6 +157,8 @@ class User < ApplicationRecord
       # Create oddlot if volume is not the same as the listed volumes
       Transaction.create(user_id: trans.user_id, stock_id: trans.stock_id, price: trans.price, volume: trans.volume - volume, transaction_type: trans.transaction_type)
       trans.volume = volume
+    else
+      false
     end
   end
 
