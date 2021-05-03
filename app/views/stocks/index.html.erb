@@ -3,10 +3,11 @@
   <span class="is-size-4 has-text-weight-bold green">Tradr Platform!</span>
   <br>
   <span class="has-text-grey-light has-text-weight-light is-size-5">Good Day, <%= !!current_user.name ? current_user.name : current_user.email %></span>
-  <div class="columns mt-5">
-    <div class="column is-half mt-5">
+  <div class="columns mt-3">
+    <div class="column is-half mt-3">
       <span class="has-text-weight-bold title is-4 mb-2">Search Stocks </span>
       <%= render 'shared/searchbar' %>
+      <br>
       <%= paginate @stock_q, window: 1, outer_window: 1%>
       <span></span>
       <div class="mt-2 max-tile">
