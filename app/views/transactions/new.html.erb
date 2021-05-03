@@ -15,7 +15,7 @@
                 <%if !params[:from_portfolio]%>
                   <p>Volume <i>(max: <%= params[:id] ? Transaction.find(params[:id]).volume : 'N/A' %>)</i>: </p>
                 <%else%>
-                  <p> Volume <i>(max: <%= params[:transaction_type] == 'Sell' ? (params[:volume]) : 'N/A' %>)</i>: 
+                  <p> Volume <i>(max: <%= params[:transaction_type] == 'Sell' ? ([params[:volume], BuyersStock.volume_of(current_user.id, params[:stock_id])].min) : 'N/A' %>)</i>: 
                     <p>
                     <%end%>
                   <%end%>

@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   end
 
   def show
-    @portfolio = BuyersStock.where(user_id: current_user.id).collect do |x|
+    @portfolio = BuyersStock.where(user_id: current_user.id).where("volume > 0").collect do |x|
       {
         stock_id: x.stock_id,
         name: Stock.find(x.stock_id).name,

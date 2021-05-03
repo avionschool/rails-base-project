@@ -32,7 +32,7 @@
                 <td>
                   <%= x.transaction_type %>
                 </td>
-                <td><%= x.created_at.getlocal.strftime("%m/%d/%Y %I:%M%p %z %Z") %></td>
+                <td><%= x.created_at.strftime("%m/%d/%Y %I:%M%p %z %Z") %></td>
                 <td><%= x.fulfilled %></td>
                 <td><%= number_to_currency x.price %></td>
                 <td><%= x.volume %></td>
