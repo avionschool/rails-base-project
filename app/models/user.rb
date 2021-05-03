@@ -30,7 +30,7 @@ class User < ApplicationRecord
   def buy_stock(stock, volume, price)
     # Post a Buy Order on the APP if Buyer
     # If Broker, buy stock from IEX to sell to the APP market
-    unless transaction_arg_check('buy', stock, volume, price)
+    unless transaction_arg_check('Buy', stock, volume, price)
       logger.info 'Cannot proceed with transaction!'
       return false
     end
@@ -67,7 +67,7 @@ class User < ApplicationRecord
 
   def sell_stock(stock, volume, price)
     # Post a Sell Order on the APP
-    unless transaction_arg_check('sell', stock, volume, price)
+    unless transaction_arg_check('Sell', stock, volume, price)
       logger.info 'Cannot proceed with transaction!'
       false
     end
@@ -94,19 +94,14 @@ class User < ApplicationRecord
   # Usage: Example we have a Buy Transaction t, and a User u who wants to fulfill the order we can just call u.process_transaction(t) to fulfill the Buy Order or u.process_transaction(t, volume) to only fulfill up to certain amount. Similar to a Sell Order.
   def process_transaction(trans, volume = trans.volume)
     # Fetch Portfolio of involved parties (buyer and seller)
+    return false if !transaction_arg_check(trans.transaction_type, trans.stock.code, volume, trans.price) || !oddlot?(volume, trans)
 
-    oddlot?(volume, trans) unless volume == trans.volume
     # Check if User-Stock relation already exist, create it it does not yet exists
     stocks << trans.stock unless BuyersStock.exists?(id, trans.stock.id)
     seller_stock = BuyersStock.exists?(trans.user.id, trans.stock.id) ? BuyersStock.find_entry(id, trans.stock.id) : BuyersStock.create(user_id: trans.user.id, stock_id: trans.stock.id, volume: 0, alloted_volume: 0)
     buyer_stock = BuyersStock.find_entry(id, trans.stock.id)
     # Actual Process transaction
-    case trans.transaction_type
-    when 'Sell'
-      process_sell(volume, trans, buyer_stock, seller_stock)
-    when 'Buy'
-      process_buy(volume, trans, buyer_stock, seller_stock)
-    end
+    return false unless process(volume, trans, buyer_stock, seller_stock)
 
     # Set fulfilled original transaction
     trans.fulfilled = true
@@ -129,23 +124,25 @@ class User < ApplicationRecord
 
   private
 
-  def process_sell(volume, trans, buyer_stock, seller_stock)
-    false unless check_cash(trans.price, volume)
-    self.cash = cash - (trans.price * volume)
-    trans.user.cash = trans.user.cash + (trans.price * volume)
-    buyer_stock.volume = buyer_stock.volume + volume
-    seller_stock.alloted_volume = seller_stock.alloted_volume - volume
-  end
-
-  def process_buy(volume, trans, buyer_stock, seller_stock)
-    if buyer_stock.volume < volume
-      logger.info 'Not enough stock'
-      false
+  def process(volume, trans, buyer_stock, seller_stock)
+    case trans.transaction_type
+    when 'Sell'
+      return false unless check_cash(trans.price, volume)
+      self.cash = cash - (trans.price * volume)
+      trans.user.cash = trans.user.cash + (trans.price * volume)
+      buyer_stock.volume = buyer_stock.volume + volume
+      seller_stock.alloted_volume = seller_stock.alloted_volume - volume
+    when 'Buy'
+      if buyer_stock.volume < volume
+        logger.info 'Not enough stock'
+        return false
+      end
+      self.cash = cash + (trans.price * volume)
+      trans.user.alloted_cash = trans.user.alloted_cash - (trans.price * volume)
+      buyer_stock.volume = buyer_stock.volume - volume
+      seller_stock.volume = seller_stock.volume + volume
     end
-    self.cash = cash + (trans.price * volume)
-    trans.user.alloted_cash = trans.user.alloted_cash - (trans.price * volume)
-    buyer_stock.volume = buyer_stock.volume - volume
-    seller_stock.volume = seller_stock.volume + volume
+    true
   end
 
   def oddlot?(volume, trans)
@@ -157,13 +154,16 @@ class User < ApplicationRecord
       # Create oddlot if volume is not the same as the listed volumes
       Transaction.create(user_id: trans.user_id, stock_id: trans.stock_id, price: trans.price, volume: trans.volume - volume, transaction_type: trans.transaction_type)
       trans.volume = volume
-    else
-      false
+      true
+    elsif volume == trans.volume
+      true
     end
   end
 
   def check_cash(price, volume)
-    return false unless cash >= price * volume
+    return false unless cash >= (price * volume)
+
+    true
   end
 
   # Ensure that an instance will be valid to save records on buyers_stocks table
@@ -172,10 +172,8 @@ class User < ApplicationRecord
   end
 
   def transaction_arg_check(type, stock, volume, price)
-    # Validate if user.role =  buyer/broker(?)
-    # Check valid stock symbol?
     return false if volume.negative? || price.negative?
-    return true if %w[buy sell].include?(type) && !(!Stock.exists?(stock) || role == Role.find_by(name: 'Admin'))
+    return true if %w[Buy Sell].include?(type) && !(!Stock.exists?(stock) || role == Role.find_by(name: 'Admin'))
   end
 
   def confirmation_required?
