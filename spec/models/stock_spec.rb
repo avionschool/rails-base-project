@@ -28,14 +28,4 @@ RSpec.describe Stock, type: :model do
       expect(described_class.exists?('ZYXI')).to be false
     end
   end
-
-  describe 'check_total method' do
-    before do
-      @a = described_class.create(code: 'AAPL', name: 'Apple Inc', volume: 6)
-    end
-
-    it 'returns total volume' do
-      expect(@a.check_total).to eq(true)
-    end
-  end
 end
