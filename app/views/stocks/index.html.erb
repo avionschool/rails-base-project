@@ -14,7 +14,7 @@
           <div class="tiles mt-4 max-tile">
           <div class="tile is-flex is-flex-direction-row is-justify-content-space-between is-align-items-center">
 
-          <p> <i class="fas fa-cubes mr-1"></i> Name: <%= x.name %></p>
+          <p> <i class="fas fa-cubes mr-1"></i><%= x.name %></p>
           <p class="ml-4"> <i class="fas fa-qrcode mr-1"></i> : <%= x.code %></p>
           <% unless current_user.admin? %>
             

@@ -42,7 +42,7 @@
             </div>
             <div class='is-flex is-flex-direction-row is-justify-content-space-between is-align-items-center'>
               <div>
-                <p> <i class="fas fa-cubes mr-1"></i>Stock Name: <%= Stock.find(x.stock_id).name %></p>
+                <p> <i class="fas fa-cubes mr-1"></i><%= Stock.find(x.stock_id).name %></p>
                 <p> <i class="fas fa-box-open mr-1"></i>Volume: <%= x.volume %> <i class="fas fa-tags ml-4 mr-1"></i>Price: <%= number_to_currency(x.price) %></p>
                 <p><i class="fas fa-award mr-1"></i>Total Price: <%= number_to_currency(x.volume * x.price) %> </p>
               </div>
