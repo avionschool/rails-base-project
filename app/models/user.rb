@@ -128,6 +128,7 @@ class User < ApplicationRecord
     case trans.transaction_type
     when 'Sell'
       return false unless check_cash(trans.price, volume)
+
       self.cash = cash - (trans.price * volume)
       trans.user.cash = trans.user.cash + (trans.price * volume)
       buyer_stock.volume = buyer_stock.volume + volume
