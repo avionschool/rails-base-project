@@ -5,6 +5,7 @@ ruby '3.0.0'
 #new commit
 gem 'rails', '~> 6.1'
 gem 'pg'
+gem 'kaminari'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
