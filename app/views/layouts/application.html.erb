@@ -12,23 +12,23 @@
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
       <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
       <%= javascript_pack_tag "application", 'data-turbolinks-track': "reload" %>
+      <%= favicon_link_tag asset_path('favicon.ico')%>
       <%#= stylesheet_pack_tag "application", media: "all" %>
     </head>
     <body>
-    <% if current_page?(root_path) %>
-      <%= render "shared/navbar"%>
+      <% if current_page?(root_path) %>
+        <%= render "shared/navbar"%>
       <% else %>
-      <% if user_signed_in? %>
-      <% if current_user.admin? %>
-        <%= render "shared/admin_sidebar" %>
-      <% else %>
-        <%= render "shared/sidebar" %>
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+            <%= render "shared/admin_sidebar" %>
+          <% else %>
+            <%= render "shared/sidebar" %>
+          <% end %>
+        <% else %>
+          <%= render "shared/navbar" %>
+        <% end %>
       <% end %>
-      <% else %>
-        <%= render "shared/navbar" %>
-      <% end %>
-    <% end %>
-
       <div class="container">
         <% flash.each do |name, msg| %>
           <% if msg == "Signed in successfully." || "Signed out successfully." && msg != "Invalid Email or password." && name !='danger' %>
@@ -45,7 +45,6 @@
               </div>
             </div>
           <% end %>
-            
           <% if name != 'notice' %>
             <div class="columns is-centered notif mt-1">
               <div class="column is-half notification is-<%= name.to_s %> has-text-centered mt-1">
