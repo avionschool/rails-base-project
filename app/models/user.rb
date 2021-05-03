@@ -54,10 +54,10 @@ class User < ApplicationRecord
           bs = BuyersStock.find_entry(id, Stock.find_by(code: stock).id)
           bs.update(volume: bs.volume + volume)
           logger.info "Successfully added #{stock} to portfolio"
-          true
+          return true
         end
         logger.info 'Buy Order posted successfully.'
-        true
+        return true
       end
     else
       logger.info 'Something went wrong.'
@@ -69,21 +69,20 @@ class User < ApplicationRecord
     # Post a Sell Order on the APP
     unless transaction_arg_check('Sell', stock, volume, price)
       logger.info 'Cannot proceed with transaction!'
-      false
+      return false
     end
     # Check available stock in portfolio
     buyer_stock = BuyersStock.find_entry(id, Stock.find_by(code: stock).id)
 
-    buyer_stock.alloted_volume = buyer_stock.alloted_volume + volume
-    buyer_stock.volume = buyer_stock.volume - volume
-
     transaction = Transaction.new(stock: Stock.find_by(code: stock), user: self, volume: volume, price: price, transaction_type: 'Sell')
     if buyer_stock.volume >= volume
       ActiveRecord::Base.transaction do
+        buyer_stock.alloted_volume = buyer_stock.alloted_volume + volume
+        buyer_stock.volume = buyer_stock.volume - volume
         transaction.save
         buyer_stock.save
         logger.info 'Sell Order posted successfully.'
-        true
+        return true
       end
     else
       logger.info 'Something went wrong.'
@@ -114,7 +113,7 @@ class User < ApplicationRecord
         trans.save
         Transaction.create(user_id: id, stock_id: trans.stock_id, volume: volume, transaction_type: trans.opposite_type, fulfilled: true, price: trans.price)
         logger.info 'Successful Transaction'
-        true
+        return true
       end
     else
       logger.info 'Something went wrong'
