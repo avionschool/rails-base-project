@@ -19,7 +19,7 @@
                     <p>
                     <%end%>
                   <%end%>
-                  <%= f.number_field :volume, autofocus: true, class:"input"%>
+                  <%= f.number_field :volume, autofocus: true, class:"input", min:"0", oninput:"validity.valid||(value='');"%>
                 </div>
               </div>
               <div class="field">

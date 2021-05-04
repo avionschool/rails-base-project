@@ -335,7 +335,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .notification {
-  animation: fadein 7s;
+  animation: fadein 10s;
   animation-delay: 0s;
   animation-fill-mode: forwards;
 }

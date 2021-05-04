@@ -16,14 +16,16 @@ function colorLink() {
 
 linkColor.forEach((l) => l.addEventListener("click", colorLink));
 
-function hideNotice() {
-  setInterval(function () {
-    document.querySelector(".notification").style.display = "none";
-    document.querySelector(".notif").style.display = "none";
-  }, 5000);
-}
+// function hideNotice() {
+//   setInterval(function () {
+//     document.querySelector(".notification").style.display = "none";
+//     document.querySelector(".notif").style.display = "none";
+//   }, 8000);
+// }
 
-hideNotice();
+// hideNotice();
+
+$(".notification" ).fadeOut(6000);
 
 const margLeft = () => {
   console.log("tae")
@@ -80,7 +82,9 @@ showMenu("nav-toggle", "navbar", "body-pd");
 
 
 let dropdown = document.querySelector('.dropdown');
-dropdown.addEventListener('click', function(event) {
+ const drop = (event) => {
     event.stopPropagation();
     dropdown.classList.toggle('is-active');
-});
+}
+
+dropdown.addEventListener('click', drop)
