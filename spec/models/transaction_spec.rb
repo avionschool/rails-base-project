@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Transaction, type: :model do
   describe 'validations' do
     before do
-      described_class.create(volume: 100, price: 1.5, fulfilled: false, transaction_type: 'Sell')
+      described_class.create(volume: 0, price: 1.5, fulfilled: false, transaction_type: 'Buy')
     end
 
     it { expect(described_class.new).to validate_inclusion_of(:transaction_type).in_array(%w[Buy Sell]) }
