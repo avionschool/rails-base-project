@@ -15,7 +15,7 @@
                 <%if !params[:from_portfolio]%>
                   <p>Volume <i>(max: <%= params[:id] ? Transaction.find(params[:id]).volume : 'N/A' %>)</i>: </p>
                 <%else%>
-                  <p> Volume <i>(max: <%= params[:transaction_type] == 'Sell' ? (params[:volume]) : 'N/A' %>)</i>: 
+                  <p> Volume <i>(max: <%= params[:transaction_type] == 'Sell' ? ([params[:volume].to_i, BuyersStock.volume_of(current_user.id, params[:stock_id]).to_i].min) : 'N/A' %>)</i>: 
                     <p>
                     <%end%>
                   <%end%>
@@ -26,7 +26,7 @@
                 <div class="control">
                   <%= f.label :price, class:"label has-text-black" %>
                   <%#REFACTOR THIS LATER%>
-                  <%if current_user.role == Role.find_by(name: 'Broker')%>
+                  <%if current_user.role == Role.find_by(name: 'Broker') && params[:transaction_type] == 'Buy'%>
                     <%= f.number_field :price, step: :any, autofocus: true, class:"input", disabled: true, value: params[:price] %>
                     <%= f.hidden_field :price, value: params[:price]%>
                   <%elsif params[:from_search]%>
