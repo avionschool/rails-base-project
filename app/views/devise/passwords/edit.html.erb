@@ -32,7 +32,7 @@
   </div>
   </div>
   <div class="actions">
-    
+    <%= f.hidden_field :reset_password_token, value: params[:reset_password_token] %>
     <%= f.button :submit, class: 'button start-now-two', value: 'Login' do%>
       Change Password
     <% end %>
