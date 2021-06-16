@@ -53,3 +53,6 @@ Rails/ApplicationController:
 
 Rails/HasAndBelongsToMany:
   Enabled: false
+
+Layout/EndOfLine:
+  EnforcedStyle: lf
