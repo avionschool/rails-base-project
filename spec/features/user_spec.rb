@@ -4,11 +4,12 @@ RSpec.describe 'Authenticates', type: :feature do
   describe 'Register a user' do
     it 'Register' do
       visit new_user_registration_path
-      fill_in 'first_name', with: 'Sample'
-      fill_in 'last_name', with: 'Sample'
+      page.all(:fillable_field, 'sample')
       fill_in 'email_address', with: 'Sample@email.com'
-      fill_in 'password', with: 'Password'
-      fill_in 'confirm_password', with: 'Password'
+      # fill_in 'first_name', with: 'Sample'
+      # fill_in 'last_name', with: 'Sample'
+      # fill_in 'password', with: 'Password'
+      # fill_in 'confirm_password', with: 'Password'
       click_on 'Sign Up'
       expect(page).to have_content('Confirmation link has been send to your email. Kindly open to activate your account.')
     end
