@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_135843) do
+ActiveRecord::Schema.define(version: 2021_06_16_131133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "broker_stocks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "stock_id", null: false
+    t.decimal "price"
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stock_id"], name: "index_broker_stocks_on_stock_id"
+    t.index ["user_id"], name: "index_broker_stocks_on_user_id"
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.string "symbol"
+    t.string "name"
+    t.decimal "current_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string "stock_code"
+    t.datetime "date_posted"
+    t.boolean "fulfilled"
+    t.decimal "price"
+    t.integer "volume"
+    t.decimal "total_value"
+    t.bigint "user_id", null: false
+    t.bigint "broker_stock_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["broker_stock_id"], name: "index_transactions_on_broker_stock_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,4 +63,8 @@ ActiveRecord::Schema.define(version: 2021_06_15_135843) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "broker_stocks", "stocks"
+  add_foreign_key "broker_stocks", "users"
+  add_foreign_key "transactions", "broker_stocks"
+  add_foreign_key "transactions", "users"
 end
