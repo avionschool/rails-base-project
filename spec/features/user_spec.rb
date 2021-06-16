@@ -1,6 +1,6 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# RSpec.describe 'Authenticates', type: :feature do
+ RSpec.describe 'Authenticates', type: :feature do
 #   describe 'Register a user' do
 #     it 'Register' do
 #       visit new_user_registration_path
@@ -40,4 +40,4 @@
 #       expect(page).to have_content('Invalid password.')
 #     end
 #   end
-# end
+end
