@@ -1,0 +1,30 @@
+## when pulling:
+1. switch to master
+2. git stash
+3. git pull origin master
+4. switch to branch
+5. git rebase master
+6. git stash pop
+
+## when pushing:
+1. *make sure you are in your working branch
+2. git add files to be pushed
+3. git commit
+4. git push origin <branch>
+5. go to github, make the pull request, MAKE SURE TO CHOOSE FORKED REPO
+
+
+
+## pag di maayos na namerge yung changes naming dalawa
+ex. conflict sa versions
+
+1. git add file
+2. git stash pop
+...
+
+
+## para tanggalin sa staged:
+1. git restore --staged <file>
+2. git restore <file>
+*check if wala na sa git status
+3. git status
