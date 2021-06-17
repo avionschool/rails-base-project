@@ -9,7 +9,7 @@
 ## when pushing:
 1. *make sure you are in your working branch
 2. git add files to be pushed
-3. git commit
+3. git commit   -
 4. git push origin <branch>
 5. go to github, make the pull request, MAKE SURE TO CHOOSE FORKED REPO
 
