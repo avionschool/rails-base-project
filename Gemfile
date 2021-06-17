@@ -17,6 +17,7 @@ gem 'devise'
 # gem 'hamlit-rails'
 gem 'rolify', '~> 6.0'
 gem "font-awesome-rails"
+gem 'iex-ruby-client', '~> 1.4', '>= 1.4.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

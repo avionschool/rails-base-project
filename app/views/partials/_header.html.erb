@@ -1,11 +1,30 @@
-<% if current_user %>
-    <%= link_to destroy_user_session_path, method: :delete do %>
-        Logout
-    <% end %>
-
-    <h1><%= current_user.first_name %></h1>
-    <h1><%= current_user.last_name %></h1>
-<% else %>
-    <%= link_to "login", new_user_session_path %> |
-    <%= link_to "register", new_user_registration_path %>
-<% end %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <%= link_to "Stock app", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% if broker_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Stocks", stocks_home_index_path, class: "nav-link" %>
+          </li>  
+          <li class="nav-item">
+            <%= link_to "Portfolio", portfolio_home_index_path, class: "nav-link" %>
+          </li>   
+          <li class="nav-item">
+            <%= button_to "Sign out", destroy_broker_session_path, protocol: 'https', method: :delete, class: "nav-link" %>
+          </li>
+        <% else %>  
+          <li class="nav-item">
+            <%= button_to "broker Sign in", new_broker_session_path, class: "nav-link" %>
+          </li>
+        <% end %>  
+      </ul>
+    </div>
+  </div>
+</nav>
