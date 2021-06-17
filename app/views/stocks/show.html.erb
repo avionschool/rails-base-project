@@ -1,0 +1,20 @@
+<h1 class="text-center"><%= @stock.company_name %></h1>
+<%= @test %>
+<br/>
+<br/>
+
+<%= @stock %>
+
+<br/>
+<br/>
+<br/>
+
+<h1>name: <%= @stock.company_name %></h1><br/>
+<h1>symbol: <%= @stock.symbol %></h1><br/>
+<h1>latest price: <%= number_to_currency(@stock.latest_price) %></h1><br/>
+<h1>change: <%= number_to_currency(@stock.change) %></h1><br/>
+<h1>change percent: <%= @stock.change_percent_s %></h1><br/>
+<h1>avg total volume: <%= @stock.avg_total_volume %></h1><br/>
+<h1>price as of: <%= @stock.latest_time %></h1><br/>
+
+<%= button_to "Add to portfolio", stocks_path(id: @stock.symbol), class: "btn btn-success", method: :post %>

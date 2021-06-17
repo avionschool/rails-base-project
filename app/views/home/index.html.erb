@@ -5,3 +5,8 @@
 
 <i class="fa fa-trash"></i>
 <i class="fa fa-ambulance"></i>
+
+<% if broker_signed_in? %>
+  <%= current_broker.first_name %><br/>
+  <%= current_broker.last_name %><br/>
+<% end %>

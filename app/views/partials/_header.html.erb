@@ -11,7 +11,7 @@
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Stocks", stocks_home_index_path, class: "nav-link" %>
+            <%= link_to "Stocks", stocks_path, class: "nav-link" %>
           </li>  
           <li class="nav-item">
             <%= link_to "Portfolio", portfolio_home_index_path, class: "nav-link" %>
@@ -20,6 +20,9 @@
             <%= button_to "Sign out", destroy_broker_session_path, protocol: 'https', method: :delete, class: "nav-link" %>
           </li>
         <% else %>  
+          <li class="nav-item">
+            <%= link_to "broker Sign up", new_broker_registration_path, class: "nav-link" %>
+          </li>
           <li class="nav-item">
             <%= button_to "broker Sign in", new_broker_session_path, class: "nav-link" %>
           </li>
