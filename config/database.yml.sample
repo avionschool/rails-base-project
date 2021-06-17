@@ -8,12 +8,12 @@ default: &default
 
 development: 
   <<: *default
-  database: rails_project_development
+  database: ror_stock_trading_development
 
 test:
   <<: *default
-  database: rails_project_test
+  database: ror_stock_trading_test
 
 production:
   <<: *default
-  detabase: rails_project_production
+  detabase: ror_stock_trading_production
