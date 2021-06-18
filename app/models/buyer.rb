@@ -1,3 +1,1 @@
-class Buyer < User
-
-end
+class Buyer < User; end

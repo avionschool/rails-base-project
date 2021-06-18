@@ -1,3 +1,1 @@
-class Broker < User
-
-end
+class Broker < User; end
