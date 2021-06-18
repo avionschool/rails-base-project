@@ -1,0 +1,2 @@
+class BuyersStock < ApplicationRecord
+end

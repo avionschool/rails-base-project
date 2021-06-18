@@ -1,0 +1,2 @@
+class BrokersStock < ApplicationRecord
+end
