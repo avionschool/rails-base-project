@@ -1,0 +1,2 @@
+class BrokersController < ApplicationController
+end
