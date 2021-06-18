@@ -10,14 +10,16 @@
     </tr>
   </thead>
   <tbody>
-    <% current_broker.stocks.each do |stock| %>
-      <tr>
-        <th scope="row"><%= current_broker.id %></th>
-        <td><%= stock.name %></td>
-        <td><%= stock.symbol %></td>
-        <td><%= stock.current_price %></td>
-        <td><%= button_to "remove stock", stock_path(stock), method: :delete %></td>
-      </tr>
+    <% if current_broker %>
+      <% current_broker.stocks.each do |stock| %>
+        <tr>
+          <th scope="row"><%= current_broker.id %></th>
+          <td><%= stock.name %></td>
+          <td><%= stock.symbol %></td>
+          <td><%= stock.current_price %></td>
+          <td><%= button_to "remove stock", stock_path(stock), method: :delete %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

@@ -19,6 +19,16 @@
           <li class="nav-item">
             <%= button_to "Sign out", destroy_broker_session_path, protocol: 'https', method: :delete, class: "nav-link" %>
           </li>
+        <% elsif buyer_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "Stocks", stocks_path, class: "nav-link" %>
+          </li> 
+          <li class="nav-item">
+            <%= link_to "Portfolio", portfolio_home_index_path, class: "nav-link" %>
+          </li>   
+          <li class="nav-item">
+            <%= button_to "Sign out", destroy_buyer_session_path, protocol: 'https', method: :delete, class: "nav-link" %>
+          </li>
         <% else %>  
           <li class="nav-item">
             <%= link_to "broker Sign up", new_broker_registration_path, class: "nav-link" %>
@@ -26,7 +36,13 @@
           <li class="nav-item">
             <%= button_to "broker Sign in", new_broker_session_path, class: "nav-link" %>
           </li>
-        <% end %>  
+          <li class="nav-item">
+            <%= link_to "buyer Sign up", new_buyer_registration_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= button_to "buyer Sign in", buyer_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
