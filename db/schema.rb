@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2021_06_17_140238) do
   enable_extension "plpgsql"
 
   create_table "broker_stocks", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "stock_id", null: false
+    t.bigint "user_id", null: false # buyer id
+    t.bigint "stock_id", null: false # stock symbol
     t.decimal "price"
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false

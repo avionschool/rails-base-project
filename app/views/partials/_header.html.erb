@@ -19,6 +19,9 @@
           <li class="nav-item">
             <%= button_to "Sign out", destroy_broker_session_path, protocol: 'https', method: :delete, class: "nav-link" %>
           </li>
+          <li>
+            broker
+          </li>
         <% elsif buyer_signed_in? %>
           <li class="nav-item">
             <%= link_to "Stocks", stocks_path, class: "nav-link" %>
@@ -28,6 +31,9 @@
           </li>   
           <li class="nav-item">
             <%= button_to "Sign out", destroy_buyer_session_path, protocol: 'https', method: :delete, class: "nav-link" %>
+          </li>
+          <li>
+            buyer
           </li>
         <% else %>  
           <li class="nav-item">
@@ -41,7 +47,7 @@
           </li>
           <li class="nav-item">
             <%= button_to "buyer Sign in", buyer_session_path, class: "nav-link" %>
-          </li>
+          </li>          
         <% end %>
       </ul>
     </div>

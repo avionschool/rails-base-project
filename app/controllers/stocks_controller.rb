@@ -5,6 +5,7 @@ class StocksController < ApplicationController
 
   def show
     @stock = @client.quote(params[:id].to_s)
+    @brokers = User.where(type: 'Broker')
   end
 
   def create
