@@ -1,0 +1,2 @@
+class Broker < User
+end

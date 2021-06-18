@@ -1,0 +1,25 @@
+<h1 class="text-center">Portfolio page mother fuckets!</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">broker #</th>
+      <th scope="col">name</th>
+      <th scope="col">symbol</th>
+      <th scope="col">latest price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if current_broker %>
+      <% current_broker.stocks.each do |stock| %>
+        <tr>
+          <th scope="row"><%= current_broker.id %></th>
+          <td><%= stock.name %></td>
+          <td><%= stock.symbol %></td>
+          <td><%= stock.current_price %></td>
+          <td><%= button_to "remove stock", stock_path(stock), method: :delete %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
