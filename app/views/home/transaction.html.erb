@@ -1,0 +1,13 @@
+<h1>Transactions</h1>
+
+<% @transactions.each do |transaction| %>
+  <p><%= transaction.stock_code %></p>
+  <p><%= transaction.company_name %></p>
+  <p><%= transaction.volume %></p>
+  <p><%= transaction.total_value %></p>
+  <p><%= transaction.stock_id %></p>
+  <p><%= transaction.broker_name %></p>
+  <p><%= transaction.broker_email %></p>
+  <p><%= transaction.id %></p>
+  <hr/>
+<% end %>

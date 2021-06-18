@@ -1,29 +1,53 @@
-<h1 class="text-center">Portfolio page mother fuckets!</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">broker #</th>
-      <th scope="col">name</th>
-      <th scope="col">symbol</th>
-      <th scope="col">latest price</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if current_broker %>
+<% if current_broker %>
+  <h1 class="text-center">Portfolio page for broker</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">broker #</th>
+        <th scope="col">name</th>
+        <th scope="col">symbol</th>
+        <th scope="col">latest price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>      
       <% current_broker.stocks.each do |stock| %>
         <tr>
           <th scope="row"><%= current_broker.id %></th>
           <td><%= stock.name %></td>
           <td><%= stock.symbol %></td>
           <td><%= stock.current_price %></td>
-          <td><%= button_to "remove stock", stock_path(stock), method: :delete %></td>
+          <td><%= button_to "sell stock", stock_path(stock), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
-    <% end %>
+    </tbody>
+  </table>
+<% end %>
 
-    <% if current_buyer %>
-      <p>buyer station</p>
-    <% end %>
-  </tbody>
-</table>
+<% if current_buyer %>
+  <h1 class="text-center">Portfolio page for buyer</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">broker #</th>
+        <th scope="col">price</th>
+        <th scope="col">quantity</th>
+        <th scope="col">symbol</th>
+        <th scope="col">broker</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>      
+      <% current_buyer.buyerStocks.each do |stock| %>
+        <tr>
+          <th scope="row"><%= current_buyer.id %></th>
+          <td><%= stock.price %></td>
+          <td><%= stock.quantity %></td>
+          <td><%= stock.stockSymbol %></td>
+          <td><%= stock.broker_email %></td>
+          <td><%= button_to "sell stock", stock_path(stock), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

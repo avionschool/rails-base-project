@@ -6,8 +6,10 @@ class StocksController < ApplicationController
   def show
     @stock = @client.quote(params[:id].to_s)
     @brokers = User.where(type: 'Broker')
+    @buyer_stock = BuyerStock.new
   end
 
+  # for broker
   def create
     @quote = @client.quote(params[:id].to_s)
     @portfolio = Stock.create(name: @quote.company_name.to_s, symbol: @quote.symbol.to_s, current_price: @quote.latest_price, user_id: current_broker.id)
@@ -15,12 +17,34 @@ class StocksController < ApplicationController
     redirect_to root_path if @portfolio.save
   end
 
-  def destroy
-    @stock = Stock.find(params[:id])
-    if @stock.destroy
-      redirect_to root_path
+  # for buyer
+  def add_stock
+    # @buyer_stock = BuyerStock.new(quantity: 100, price: 100, user_id: current_buyer.id, stockSymbol: params[:stock_symbol].to_s, broker_email: params[:broker_email].to_s)
+
+    @buyer_stock = BuyerStock.new(user_id: current_buyer.id, price: params[:price], quantity: params[:quantity], broker_email: params[:broker_email].to_s, stockSymbol: params[:stock_symbol].to_s)
+
+    if @buyer_stock.save
+      redirect_to root_path, notice: 'stock was successfully added'
     else
-      redirect_to portfolio_home_index_path
+      redirect_to stocks_path, notice: 'It is not fucking working'
+    end
+  end
+
+  def destroy
+    if current_broker
+      @stock = Stock.find(params[:id])
+      if @stock.destroy
+        redirect_to root_path, notice: 'has been removed'
+      else
+        redirect_to portfolio_home_index_path
+      end
+    else
+      @stock = BuyerStock.find(params[:id])
+      if @stock.destroy
+        redirect_to root_path, notice: 'has been removed'
+      else
+        redirect_to portfolio_home_index_path
+      end
     end
   end
 

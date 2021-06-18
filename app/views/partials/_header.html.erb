@@ -11,6 +11,9 @@
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
+            <%= link_to "Transactions", transaction_home_index_path, class: "nav-link" %>
+          </li> 
+          <li class="nav-item">
             <%= link_to "Stocks", stocks_path, class: "nav-link" %>
           </li>  
           <li class="nav-item">
@@ -25,6 +28,9 @@
         <% elsif buyer_signed_in? %>
           <li class="nav-item">
             <%= link_to "Stocks", stocks_path, class: "nav-link" %>
+          </li> 
+          <li class="nav-item">
+            <%= link_to "Transactions", transaction_home_index_path, class: "nav-link" %>
           </li> 
           <li class="nav-item">
             <%= link_to "Portfolio", portfolio_home_index_path, class: "nav-link" %>
