@@ -1,6 +1,5 @@
 class StocksController < ApplicationController
   before_action :fetch_api, only: %i[index show create]
-
   def index; end
 
   def show
@@ -20,10 +19,20 @@ class StocksController < ApplicationController
   # for buyer
   def add_stock
     # @buyer_stock = BuyerStock.new(quantity: 100, price: 100, user_id: current_buyer.id, stockSymbol: params[:stock_symbol].to_s, broker_email: params[:broker_email].to_s)
-
     @buyer_stock = BuyerStock.new(user_id: current_buyer.id, price: params[:price], quantity: params[:quantity], broker_email: params[:broker_email].to_s, stockSymbol: params[:stock_symbol].to_s)
-
     if @buyer_stock.save
+      @transaction = Transaction.new(
+        stock_code: params[:stock_symbol].to_s,
+        company_name: params[:company_name].to_s,
+        price: params[:price],
+        volume: params[:quantity],
+        total_value: params[:price].to_i * params[:quantity].to_i,
+        user_id: current_buyer.id,
+        stock_id: params[:stock_id],
+        broker_email: params[:broker_email].to_s,
+        broker_name: params[:broker_email].to_s
+      )
+      @transaction.save
       redirect_to root_path, notice: 'stock was successfully added'
     else
       redirect_to stocks_path, notice: 'It is not fucking working'
@@ -31,20 +40,11 @@ class StocksController < ApplicationController
   end
 
   def destroy
-    if current_broker
-      @stock = Stock.find(params[:id])
-      if @stock.destroy
-        redirect_to root_path, notice: 'has been removed'
-      else
-        redirect_to portfolio_home_index_path
-      end
+    @stock = Stock.find(params[:id])
+    if @stock.destroy
+      redirect_to root_path, notice: 'has been removed'
     else
-      @stock = BuyerStock.find(params[:id])
-      if @stock.destroy
-        redirect_to root_path, notice: 'has been removed'
-      else
-        redirect_to portfolio_home_index_path
-      end
+      redirect_to portfolio_home_index_path
     end
   end
 

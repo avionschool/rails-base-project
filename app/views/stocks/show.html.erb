@@ -48,6 +48,8 @@
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= broker.id %>">Launch static backdrop modal</button>
           <hr/>
 
+          <%= broker.stocks.where(symbol: @stock.symbol.to_s).first.id %>
+
           <!-- Modal -->
           <div class="modal fade" id="staticBackdrop<%= broker.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel<%= broker.id %>" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -58,13 +60,16 @@
                 </div>
                 <div class="modal-body">
                   <%= form_with url: add_stock_stocks_path, local: true do |form| %>
-                    <div class="mb-3">
+                    <div class="mb-3">                      
                       <%= form.number_field :quantity, class: "form-control" %>
                       <p>Current stock price: <%= @stock.latest_price %></p>
                       <!-- current_buyer -->
                       <%= form.hidden_field :price, :value => @stock.latest_price %>
                       <%= form.hidden_field :stock_symbol, :value => @stock.symbol.to_s %>
                       <%= form.hidden_field :broker_email, :value => broker.email %>
+                      <%= form.hidden_field :broker_name, :value => broker.first_name + ' ' + broker.last_name %>
+                      <%= form.hidden_field :stock_id, :value => broker.stocks.where(symbol: @stock.symbol.to_s).first.id %>
+                      <%= form.hidden_field :company_name, :value => @stock.company_name %>
                       <%= form.submit class: "btn btn-danger" %>
                     </div>
                   <% end %>

@@ -1,13 +1,21 @@
 <h1>Transactions</h1>
 
-<% @transactions.each do |transaction| %>
-  <p><%= transaction.stock_code %></p>
-  <p><%= transaction.company_name %></p>
-  <p><%= transaction.volume %></p>
-  <p><%= transaction.total_value %></p>
-  <p><%= transaction.stock_id %></p>
-  <p><%= transaction.broker_name %></p>
-  <p><%= transaction.broker_email %></p>
-  <p><%= transaction.id %></p>
-  <hr/>
-<% end %>
+<div class="row">
+  <div class="card-group">
+    <% @transactions.each do |transaction| %>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= transaction.company_name %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= transaction.stock_code %></h6>
+          <p>value: <%= transaction.volume %></p>
+          <p>total value: <%= transaction.total_value %></p>
+          <p>stock symbol: <%= transaction.stock_code %></p>
+          <p>broker name: <%= transaction.broker_name %></p>
+          <p>broker email: <%= transaction.broker_email %></p>
+          <p>transaction id: <%= transaction.id %></p>
+          <p>stock id: <%= transaction.stock_id %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
