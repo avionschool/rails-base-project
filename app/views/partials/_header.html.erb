@@ -41,7 +41,14 @@
           <li>
             buyer
           </li>
-        <% else %>  
+        <% elsif admin_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "Portfolio", portfolio_home_index_path, class: "nav-link" %>
+          </li>   
+          <li class="nav-item">
+            <%= button_to "admin Sign out", destroy_admin_session_path , protocol: 'https', method: :delete, class: "nav-link" %>
+          </li>                   
+        <% else %>
           <li class="nav-item">
             <%= link_to "broker Sign up", new_broker_registration_path, class: "nav-link" %>
           </li>
@@ -53,7 +60,7 @@
           </li>
           <li class="nav-item">
             <%= button_to "buyer Sign in", buyer_session_path, class: "nav-link" %>
-          </li>          
+          </li>
         <% end %>
       </ul>
     </div>

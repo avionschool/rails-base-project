@@ -11,3 +11,32 @@
   <%= current_buyer.first_name %><br/>
   <%= current_buyer.last_name %><br/>
 <% end %>
+
+<% if admin_signed_in? %>
+  <p>admin dashboard page</p>
+  <h1><%= @hope %></h1>
+  <br/>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>buyer count: <%= @buyers.count %></h2>
+      <% @buyers.each do |buyer| %>
+        <p><%= buyer.email %></p>
+        <p><%= buyer.first_name %></p>
+        <p><%= buyer.last_name %></p>
+        <h3>Status: pending</h3>
+        <hr/>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <h2>broker count: <%= @brokers.count %></h2>
+      <% @brokers.each do |brokers| %>
+        <p><%= brokers.email %></p>
+        <p><%= brokers.first_name %></p>
+        <p><%= brokers.last_name %></p>
+        <h3>Status: pending</h3>
+        <hr/>
+      <% end %>
+    </div>
+  </div>
+  
+<% end %>

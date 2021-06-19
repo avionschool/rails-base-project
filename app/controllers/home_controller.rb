@@ -1,5 +1,9 @@
 class HomeController < ApplicationController
-  def index; end
+  def index
+    @hope = 'Hope is the anchor of the soul'
+    @brokers = User.where(type: 'Broker')
+    @buyers = User.where(type: 'Buyer')
+  end
 
   def portfolio; end
 
