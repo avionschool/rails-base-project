@@ -36,3 +36,10 @@ ex. conflict sa versions
 3. git reset --hard origin <gusto mong i-pull na branch>
     -make sure to commit the changes before reset
     -git stash is for this reason
+
+##cleaning up branches
+1. git branch -d localBranchName
+    // delete branch locally
+
+2. git push origin --delete remoteBranchName
+    // delete branch remotely
