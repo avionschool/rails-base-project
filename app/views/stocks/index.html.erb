@@ -10,18 +10,41 @@
   </button>
 </div>
 
+<br/>
+<br/>
+<br/>
+
 <!-- for broker -->
-<div class="card-group">
-  <% @client.stock_market_list(:mostactive).each do |stock| %>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><%= stock.symbol %></h5>    
-        <h5 class="card-title"><%= stock.company_name %></h5>
-        <h5 class="card-title"><%= stock.iex_last_updated_t %></h5>
-        <p class="card-text"><%= stock.latest_price %></p>
-        <a href="#" class="btn btn-primary"><%= stock.avg_total_volume %></a>
-        <%= link_to "show stock", stock_path(stock.symbol), class: "btn btn-danger" %>
+<% if current_broker %>
+  <div class="card-group">
+    <% @client.stock_market_list(:mostactive).each do |stock| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= stock.symbol %></h5>
+          <h5 class="card-title"><%= stock.company_name %></h5>
+          <h5 class="card-title"><%= stock.iex_last_updated_t %></h5>
+          <p class="card-text"><%= stock.latest_price %></p>
+          <a href="#" class="btn btn-primary"><%= stock.avg_total_volume %></a>
+          <%= link_to "show stock", stock_path(stock.symbol), class: "btn btn-danger" %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>
+
+<% if current_buyer %>
+  <div class="card-group">
+    <% @client.stock_market_list(:mostactive).each do |stock| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= stock.symbol %></h5>
+          <h5 class="card-title"><%= stock.company_name %></h5>
+          <h5 class="card-title"><%= stock.iex_last_updated_t %></h5>
+          <p class="card-text"><%= stock.latest_price %></p>
+          <p class="card-text"><%= stock.avg_total_volume %></p>
+          <%= link_to "show stock", stock_path(stock.symbol), class: "btn btn-danger" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

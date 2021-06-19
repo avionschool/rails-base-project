@@ -1,0 +1,22 @@
+<h1>Transactions</h1>
+
+<div class="row">
+  <div class="card-group">
+    <% @transactions.each do |transaction| %>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= transaction.company_name %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= transaction.stock_code %></h6>
+          <p>value: <%= transaction.volume %></p>
+          <p>total value: <%= transaction.total_value %></p>
+          <p>stock symbol: <%= transaction.stock_code %></p>
+          <p>broker name: <%= transaction.broker_name %></p>
+          <p>buyer id: <%= transaction.user_id %></p>
+          <p>broker id: <%= transaction.broker_id %></p>
+          <p>transaction id: <%= transaction.id %></p>
+          <p>stock id: <%= transaction.stock_id %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

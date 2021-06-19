@@ -1,20 +1,89 @@
 <h1 class="text-center"><%= @stock.company_name %></h1>
-<%= @test %>
-<br/>
-<br/>
-
-<%= @stock %>
 
 <br/>
 <br/>
 <br/>
 
-<h1>name: <%= @stock.company_name %></h1><br/>
-<h1>symbol: <%= @stock.symbol %></h1><br/>
-<h1>latest price: <%= number_to_currency(@stock.latest_price) %></h1><br/>
-<h1>change: <%= number_to_currency(@stock.change) %></h1><br/>
-<h1>change percent: <%= @stock.change_percent_s %></h1><br/>
-<h1>avg total volume: <%= @stock.avg_total_volume %></h1><br/>
-<h1>price as of: <%= @stock.latest_time %></h1><br/>
+<div class="row">
+  <div class="col-md-6">
+    <!-- for broker -->
+    <% if current_broker %>
+      <h1>name: <%= @stock.company_name %></h1><br/>
+      <h1>symbol: <%= @stock.symbol %></h1><br/>
+      <h1>latest price: <%= number_to_currency(@stock.latest_price) %></h1><br/>
+      <h1>change: <%= number_to_currency(@stock.change) %></h1><br/>
+      <h1>change percent: <%= @stock.change_percent_s %></h1><br/>
+      <h1>avg total volume: <%= @stock.avg_total_volume %></h1><br/>
+      <h1>price as of: <%= @stock.latest_time %></h1><br/>
 
-<%= button_to "Add to portfolio", stocks_path(id: @stock.symbol), class: "btn btn-success", method: :post %>
+      <%= button_to "Add to portfolio", stocks_path(id: @stock.symbol), class: "btn btn-success", method: :post %>
+    <% end %>
+
+    <!-- for buyer -->
+    <% if current_buyer %>
+      <p>buyer station show page</p>
+      <h1>name: <%= @stock.company_name %></h1><br/>
+      <h1>symbol: <%= @stock.symbol %></h1><br/>
+      <h1>latest price: <%= number_to_currency(@stock.latest_price) %></h1><br/>
+      <h1>change: <%= number_to_currency(@stock.change) %></h1><br/>
+      <h1>change percent: <%= @stock.change_percent_s %></h1><br/>
+      <h1>avg total volume: <%= @stock.avg_total_volume %></h1><br/>
+      <h1>price as of: <%= @stock.latest_time %></h1><br/>
+    <% end %>
+  </div>
+
+  <div class="col-md-6">
+    <% if current_buyer %>
+      <h1>Top brokers</h1>
+      <% @brokers.each do |broker| %>
+        <% if broker.stocks.where(symbol: @stock.symbol.to_s).any? %>        
+          <p><%= broker.stocks.where(symbol: @stock.symbol.to_s).any? %></p>
+          <p><%= broker.email %></p>
+          <p><%= broker.first_name %></p>
+          <p><%= broker.last_name %></p>
+          <p>number of stocks: <%= broker.stocks.count %></p>
+          <p>Clients: 20</p>
+          <p>total Brokered deal: $3,000,000,000</p>
+          <p>Rating: 100%</p>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= broker.id %>">buy stock</button>
+          <hr/>
+
+          <h1>broker id: <%= broker.id %></h1>
+
+          <%= broker.stocks.where(symbol: @stock.symbol.to_s).first.id %>
+
+          <!-- Modal -->
+          <div class="modal fade" id="staticBackdrop<%= broker.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel<%= broker.id %>" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel<%= broker.id %>">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <%= form_with url: add_stock_stocks_path, local: true do |form| %>
+                    <div class="mb-3">                      
+                      <%= form.number_field :quantity, class: "form-control" %>
+                      <p>Current stock price: <%= @stock.latest_price %></p>
+                      <!-- current_buyer -->
+                      <%= form.hidden_field :price, :value => @stock.latest_price %>
+                      <%= form.hidden_field :stock_symbol, :value => @stock.symbol.to_s %>
+                      <%= form.hidden_field :broker_id, :value => broker.id %>
+                      <%= form.hidden_field :broker_email, :value => broker.email %>
+                      <%= form.hidden_field :broker_name, :value => broker.first_name + ' ' + broker.last_name %>
+                      <%= form.hidden_field :stock_id, :value => broker.stocks.where(symbol: @stock.symbol.to_s).first.id %>
+                      <%= form.hidden_field :company_name, :value => @stock.company_name %>
+                      <%= form.submit class: "btn btn-danger" %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <p>No available brokers</p>
+        <% end %>
+      <% end %> <!-- end of loop -->
+    <% end %> <!--end of current buyer if condition -->
+  </div>
+</div>

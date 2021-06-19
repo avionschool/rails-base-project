@@ -5,4 +5,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :stocks, dependent: :destroy
+  has_many :buyer_stocks, dependent: :destroy
+  has_many :purchase_transactions, dependent: :nullify
 end
