@@ -43,3 +43,10 @@ ex. conflict sa versions
 
 2. git push origin --delete remoteBranchName
     // delete branch remotely
+
+##when cloning remote repo:
+1. create a config/database.yml file
+2. copy contents of config/database.yml.sample to config/database.yml
+3. create a master.key file by running:
+    EDITOR="vim --wait" rails credentials:edit
+4. get a copy of master.key and paste in your local master.key
