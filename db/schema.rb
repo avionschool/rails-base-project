@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_18_131212) do
+ActiveRecord::Schema.define(version: 2021_06_19_021221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,12 @@ ActiveRecord::Schema.define(version: 2021_06_18_131212) do
     t.decimal "price", precision: 10, scale: 2
   end
 
-  create_table "buyer_stocks", force: :cascade do |t|
+  create_table "buyers_stocks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "stock_id", null: false
+    t.string "name"
+    t.integer "quantity"
+    t.decimal "price", precision: 10, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -35,11 +40,10 @@ ActiveRecord::Schema.define(version: 2021_06_18_131212) do
   end
 
   create_table "stocks", force: :cascade do |t|
-    t.string "name"
-    t.float "price"
-    t.decimal "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "symbol"
+    t.string "companyname"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,6 +65,10 @@ ActiveRecord::Schema.define(version: 2021_06_18_131212) do
     t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "username"
+    t.boolean "approved"
+    t.boolean "confirmable"
+    t.string "type"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
