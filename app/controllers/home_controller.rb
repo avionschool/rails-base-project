@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   def portfolio; end
 
   def transaction
-    @transactions = current_buyer.transactions if current_buyer
-    @transactions = Transaction.where(broker_email: current_broker.email.to_s) if current_broker
+    @transactions = current_buyer.purchase_transactions if current_buyer
+    @transactions = PurchaseTransaction.where(broker_id: current_broker.id) if current_broker
   end
 end

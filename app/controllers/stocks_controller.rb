@@ -18,15 +18,15 @@ class StocksController < ApplicationController
   def add_stock
     @buyer_stock = BuyerStock.new(user_id: current_buyer.id, price: params[:price], quantity: params[:quantity], broker_email: params[:broker_email].to_s, stockSymbol: params[:stock_symbol].to_s)
     if @buyer_stock.save
-      @transaction = Transaction.new(
+      @transaction = PurchaseTransaction.new(
         stock_code: params[:stock_symbol],
         company_name: params[:company_name],
         price: params[:price],
         volume: params[:quantity],
         total_value: params[:price].to_i * params[:quantity].to_i,
         user_id: current_buyer.id,
+        broker_id: params[:broker_id],
         stock_id: params[:stock_id],
-        broker_email: params[:broker_email],
         broker_name: params[:broker_email]
       )
       @transaction.save

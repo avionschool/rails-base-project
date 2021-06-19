@@ -45,8 +45,10 @@
           <p>Clients: 20</p>
           <p>total Brokered deal: $3,000,000,000</p>
           <p>Rating: 100%</p>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= broker.id %>">Launch static backdrop modal</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= broker.id %>">buy stock</button>
           <hr/>
+
+          <h1>broker id: <%= broker.id %></h1>
 
           <%= broker.stocks.where(symbol: @stock.symbol.to_s).first.id %>
 
@@ -66,6 +68,7 @@
                       <!-- current_buyer -->
                       <%= form.hidden_field :price, :value => @stock.latest_price %>
                       <%= form.hidden_field :stock_symbol, :value => @stock.symbol.to_s %>
+                      <%= form.hidden_field :broker_id, :value => broker.id %>
                       <%= form.hidden_field :broker_email, :value => broker.email %>
                       <%= form.hidden_field :broker_name, :value => broker.first_name + ' ' + broker.last_name %>
                       <%= form.hidden_field :stock_id, :value => broker.stocks.where(symbol: @stock.symbol.to_s).first.id %>
