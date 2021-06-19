@@ -1,6 +1,7 @@
 require_relative '../custom_modules/.iex_token'
 
 class HomeController < ApplicationController
+  before_action :authenticate_user
   include IEXTokens
   def index
     @client = IEX::Api::Client.new(

@@ -5,3 +5,13 @@
 <p><%= @client.price('MSFT') %></p>
 <p><%= @symbols.class %></p>
 <p><%= @symbols.length %></p>
+
+
+
+<% if broker_signed_in? %>
+    <p>Get ready to offer your services</p>
+    <%= link_to 'Log out', destroy_broker_session_path, method: :delete %>
+<% elsif buyer_signed_in? %>
+    <p>What kind of service do you want?</p>
+    <%= link_to 'Log out', destroy_buyer_session_path, method: :delete %>
+<% end %>
