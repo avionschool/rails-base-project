@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Stock, type: :model do
-  let!(:stock) {described_class.new}
+  let!(:stock) { described_class.new }
 
   context 'with validations/stock should fail to save' do
     it 'is not valid without symbol' do
