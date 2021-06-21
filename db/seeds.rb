@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# User Types
+UserType.create([{ user_type: 'admin' }])
+UserType.create([{ user_type: 'broker' }])
+UserType.create([{ user_type: 'buyer' }])
