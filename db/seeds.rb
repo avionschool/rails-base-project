@@ -20,3 +20,4 @@ symbols.slice(0,20).each do |symbol|
 
     Stock.create(symbol: symbol.symbol, price: quote.latest_price, company_name: company.company_name)
 end
+
