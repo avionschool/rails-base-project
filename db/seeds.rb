@@ -7,6 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # User Types
-UserType.create([{ user_type: 'admin' }])
-UserType.create([{ user_type: 'broker' }])
-UserType.create([{ user_type: 'buyer' }])
+UserType.find_or_create_by( user_type: 'admin' )
+UserType.find_or_create_by( user_type: 'broker' )
+UserType.find_or_create_by( user_type: 'buyer' )
