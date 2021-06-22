@@ -74,4 +74,12 @@ ex. conflict sa versions
         'belongs_to :role'
 
 
-## manual vs link_to routing, BAKIT TO MAGKAIBA MA'AM???
+## manual vs link_to routing??
+
+## updating local repo (git pull)
+    *if working branch is not to be deleted, do 2 git pulls: 1 for master and 1 for working branch
+    1. go to master branch, run 'git pull'
+    2. go to working branch, run 'git pull origin <branchname>'
+
+## para bumilis rails
+    rails assets:clean && rails assets:precompile 
