@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  devise_group :user, contains: %i[buyer broker]
+  devise_group :user, contains: %i[buyer broker admin]
 
   protected
 
