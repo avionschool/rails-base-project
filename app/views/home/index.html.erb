@@ -14,10 +14,36 @@
     <p>Pokus lang tayo sa goal natin 👍</p> 
     <%= link_to  "Sign out", destroy_admin_session_path, method: :delete %>
 
+    <table>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Approved</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+                <% @users.each do |user| %>
+                <tr>
+                    <td><%= user.email %></td>
+                    <td><%= user.approved %></td>
+                    <td><%= user.type %></td>
+                    <td><%= link_to 'Show', buyer_path %></td>
+                    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+                    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+                    <% break %>  
+                <% end %>
+            
+        </tbody>
+    </table>
+
 <% else %>
     <%= link_to  "Sign up", new_user_registration_path %>
     <%= link_to  "Sign in", new_user_session_path %>
-    
+
 <% end %>
 
 

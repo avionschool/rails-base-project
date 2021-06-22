@@ -14,5 +14,7 @@ class HomeController < ApplicationController
     @symbols = @client.ref_data_symbols
 
     # @client = IEX::Api::Client.new
+
+    @users = User.all
   end
 end
