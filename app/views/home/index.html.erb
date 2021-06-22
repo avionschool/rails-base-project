@@ -1,7 +1,24 @@
+
+<% if buyer_signed_in? %>
+    <p>Welcome buyer!</p> 
+    <%= link_to  "Sign out", destroy_buyer_session_path, method: :delete %>
+<% elsif broker_signed_in? %>
+    <p>Welcome broker!</p>
+    <%= link_to  "Sign out", destroy_broker_session_path, method: :delete %>
+<% else %>
+    <%= link_to  "Sign up", new_user_registration_path %>
+    <%= link_to  "Sign in", new_user_session_path %>
+<% end %>
+
+
+
 <h1>Don't worry now my child, you are home.</h1>
+<p><%= current_user %></p>
+<p><%= current_user.type %></p>
+<br>
+    <p><%= @client.price('MSFT') %></p>
+    <p><%#= @symbols.class %></p>
+    <p><%#= @symbols.length %></p>
 
 
-
-<p><%= @client.price('MSFT') %></p>
-<p><%= @symbols.class %></p>
-<p><%= @symbols.length %></p>
+    

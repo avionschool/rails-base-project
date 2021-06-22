@@ -1,2 +1,2 @@
-class Buyer < ApplicationRecord
+class Buyer < User
 end

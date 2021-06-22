@@ -1,2 +1,2 @@
-class Broker < ApplicationRecord
+class Broker < User
 end

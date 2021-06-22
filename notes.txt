@@ -50,3 +50,28 @@ ex. conflict sa versions
 3. create a master.key file by running:
     EDITOR="vim --wait" rails credentials:edit
 4. get a copy of master.key and paste in your local master.key
+
+
+##intransitive assoc (simplest implementation of many to many)
+    ex. using models user and role, create a new table (not model) that joins user and role
+    1. create a migration file
+        'rails g migration create_join_table_<model1_model2> <model1> <model2>'
+    2. in user.rb and role.rb, add the following respectively:
+        'has_and_belongs_to_many :roles'
+        'has_and_belongs_to_many :user'
+
+##mono-transitive assoc (has_many_through)
+    -uses a model that holds two models that being related to each other
+    2. in user.rb and role.rb, add the following respectively:
+        'has_many :user_roles'
+        'has_many :roles, through: :user_roles'
+
+        'has_many :user_roles'
+        'has_many :users, through: :user_roles'
+
+        in the middle model user_role.rb:
+        'belongs_to :user'
+        'belongs_to :role'
+
+
+## manual vs link_to routing, BAKIT TO MAGKAIBA MA'AM???

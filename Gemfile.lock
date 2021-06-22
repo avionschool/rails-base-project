@@ -311,7 +311,7 @@ DEPENDENCIES
   byebug
   capybara
   database_rewinder
-  devise
+  devise (~> 4.8)
   dotenv-rails
   factory_bot_rails
   hamlit-rails
