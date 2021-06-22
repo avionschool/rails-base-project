@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :buyers, :brokers, :admins
-  resources :users
+  resources :buyers, :brokers, :admins, :users
 
   root 'home#index'
   
