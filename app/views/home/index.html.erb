@@ -6,7 +6,7 @@
       <tr>
         <td><%= broker.email %>
         <td><%= broker.approved %>
-        <td><%= redirect_to "Approve Broker", root_path %>
+        <td><%= button_to "Approve", approve_path(broker), method: :get %>
       </tr>
     <% end %>
   </table>

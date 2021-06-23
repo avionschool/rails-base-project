@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :buyers
   resources :brokers
   resources :buyers
-  
+  get '/approve/:id' => 'home#approve', as: 'approve'
   root 'home#index'
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
