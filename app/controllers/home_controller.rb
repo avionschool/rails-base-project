@@ -3,9 +3,15 @@ class HomeController < ApplicationController
 
   def index
     # if params[:approved] == "false"
-    @brokers = Broker.where(approved: false)
+    @brokers = Broker.unapproved_users
     # else
     #   @users = User.all
     # end
   end
+
+  def approve_user(user)
+    user.approved = true
+  end
+  helper_method :approve_user
+
 end

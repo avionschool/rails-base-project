@@ -2,10 +2,8 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :brokers
   devise_for :buyers
-  devise_scope :admin do
-    resources :brokers
-    resources :buyers
-  end
+  resources :brokers
+  resources :buyers
   
   root 'home#index'
 
