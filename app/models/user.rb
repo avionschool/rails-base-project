@@ -4,8 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         
   before_save :default_approved
+
+  
+
   def default_approved
     if self.type != 'Broker'
         self.approved ||= true
