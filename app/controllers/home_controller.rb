@@ -13,5 +13,4 @@ class HomeController < ApplicationController
     user.approved = true
   end
   helper_method :approve_user
-
 end
