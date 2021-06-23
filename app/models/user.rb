@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :transactions, dependent: :destroy
   has_many :buyer_stocks, through: :transactions, source: :broker_stock
   validates :first_name, presence: true
+  validates :last_name, presence: true
 end

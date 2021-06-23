@@ -24,7 +24,12 @@ RSpec.describe User, type: :model do
       expect(user.errors.to_h.keys).to include(:first_name)
     end
 
-    it 'ensures there is last name'
+    it 'ensures there is last name' do
+      user.last_name = nil
+      user.valid?
+
+      expect(user.errors.to_h.keys).to include(:last_name)
+    end
 
     it 'ensures there is email'
 
