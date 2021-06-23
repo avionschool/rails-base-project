@@ -8,10 +8,10 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <!--<div class="field">
-    <%#= f.label :type %><br />
-    <%#= f.select :type, ['buyer', 'broker']%>
-  </div>-->
+    <div class="field">
+        <%= f.label :username %><br />
+        <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+    </div>
 
   <div class="field">
     <%= f.label :password %>
@@ -33,11 +33,11 @@
 
 <%= link_to 'New Broker Sign Up', new_broker_registration_path %>
 <br>
-<%= link_to 'New Broker Sign In', new_broker_session_path %>
+<%= link_to 'Broker Sign In', new_broker_session_path %>
 <br>
 <%= link_to 'New Admin Sign Up', new_admin_registration_path %>
 <br>
-<%= link_to 'New Admin Sign In', new_admin_session_path %>
+<%= link_to 'Admin Sign In', new_admin_session_path %>
 <br>
 
 <%= render "devise/shared/links" %>
