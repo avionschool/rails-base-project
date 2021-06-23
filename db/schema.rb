@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_23_083140) do
+ActiveRecord::Schema.define(version: 2021_06_23_150415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "stocks", force: :cascade do |t|
+    t.string "ticker"
+    t.string "name"
+    t.decimal "last_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "transactionrecords", force: :cascade do |t|
+    t.decimal "stock_price"
+    t.integer "quantity"
+    t.decimal "total_price"
+    t.integer "transaction_type"
+    t.bigint "stock_id", null: false
+    t.bigint "broker_id", null: false
+    t.bigint "buyer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["broker_id"], name: "index_transactionrecords_on_broker_id"
+    t.index ["buyer_id"], name: "index_transactionrecords_on_buyer_id"
+    t.index ["stock_id"], name: "index_transactionrecords_on_stock_id"
+  end
+
+  create_table "user_stocks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "stock_id", null: false
+    t.decimal "average_price"
+    t.integer "total_shares"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stock_id"], name: "index_user_stocks_on_stock_id"
+    t.index ["user_id"], name: "index_user_stocks_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,4 +64,9 @@ ActiveRecord::Schema.define(version: 2021_06_23_083140) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "transactionrecords", "stocks"
+  add_foreign_key "transactionrecords", "users", column: "broker_id"
+  add_foreign_key "transactionrecords", "users", column: "buyer_id"
+  add_foreign_key "user_stocks", "stocks"
+  add_foreign_key "user_stocks", "users"
 end
