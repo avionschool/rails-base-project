@@ -19,8 +19,9 @@ RSpec.describe User, type: :model do
 
     it 'ensures there is first name' do
       user.first_name = nil
-      
-      expect(user).not_to be_valid
+      user.valid?
+
+      expect(user.errors.to_h.keys).to include(:first_name)
     end
 
     it 'ensures there is last name'
