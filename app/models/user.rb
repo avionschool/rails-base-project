@@ -6,14 +6,7 @@ class User < ApplicationRecord
 
   before_save :default_approved
 
-  
-
   def default_approved
-    if self.type != 'Broker'
-        self.approved ||= true
-    else
-        self.approved ||= false
-    end
+    self.approved ||= type != 'Broker'
   end
-
 end
