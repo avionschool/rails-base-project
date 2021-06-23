@@ -1,21 +1,51 @@
 
 <% if buyer_signed_in? %>
-    <p>Welcome buyer!</p> 
+    <p>Welcome <%= current_user.email %>! (<%= current_user.type %> account)</p>
+    <p>Pokus lang tayo sa goal natin 👍</p> 
     <%= link_to  "Sign out", destroy_buyer_session_path, method: :delete %>
+
 <% elsif broker_signed_in? %>
-    <p>Welcome broker!</p>
+    <p>Welcome <%= current_user.email %>!</p>
+    <p>Pokus lang tayo sa goal natin 👍</p> 
     <%= link_to  "Sign out", destroy_broker_session_path, method: :delete %>
+
+<% elsif admin_signed_in? %>
+    <p>Welcome <%= current_user.email %>!</p>
+    <p>Pokus lang tayo sa goal natin 👍</p> 
+    <%= link_to  "Sign out", destroy_admin_session_path, method: :delete %>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Approved</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+                <% @users.each do |user| %>
+                <tr>
+                    <td><%= user.email %></td>
+                    <td><%= user.approved %></td>
+                    <td><%= user.type %></td>
+                    <td><%= link_to 'Show', user %></td>
+                    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+                    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+                <% end %>
+            
+        </tbody>
+    </table>
+
 <% else %>
     <%= link_to  "Sign up", new_user_registration_path %>
     <%= link_to  "Sign in", new_user_session_path %>
+
 <% end %>
 
 
-
-<h1>Don't worry now my child, you are home.</h1>
-<p><%= current_user %></p>
-<p><%= current_user.type %></p>
-<br>
     <p><%= @client.price('MSFT') %></p>
     <p><%#= @symbols.class %></p>
     <p><%#= @symbols.length %></p>
