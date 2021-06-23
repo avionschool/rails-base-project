@@ -1,2 +1,20 @@
-<h1> Home#index </h1>
-<p> Find me in app/views/home/index.html.erb </p>
+<h1> Homepage </h1>
+
+<% if admin_signed_in? %>
+  <table>
+    <% @brokers.each do |broker| %>
+      <tr>
+        <td><%= broker.email %>
+        <td><%= broker.approved %>
+        <td><%= link_to "Edit", edit_broker_path(broker) %>
+      </tr>
+    <% end %>
+  </table>
+  <%= link_to 'Log out', destroy_admin_session_path, method: :delete %>
+<% elsif broker_signed_in? %>
+  <p>This is the broker portfolio page</p>
+  <%= link_to 'Log out', destroy_broker_session_path, method: :delete %>
+<% elsif  buyer_signed_in? %>
+  <p>This is the buyer portfolio page</p>
+  <%= link_to 'Log out', destroy_buyer_session_path, method: :delete %>
+<% end %>
