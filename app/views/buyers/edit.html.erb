@@ -1,0 +1,35 @@
+
+<div class='container'>
+    <%= form_with scope: :buyer, url: buyer_path, method: :put, local: true do |f| %>
+    <%# url attr is where the user is redirected once the form is submitted
+    url: use alias for value; you can view aliases by issuing the command:
+    rails routes outside rails console %>
+
+    <div>
+        <% if @buyer.errors.any? %>
+        <ul>
+            <% @buyer.errors.full_messages.each do |msg| %>
+                <li class="alert alert-danger" role="alert" ><%= msg %></li>
+            <% end %>
+        </ul>
+        <% end %>
+    </div>
+
+    <div>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+    </div>
+
+    <div>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+    </div>
+
+    <div>
+        <%= f.submit :Update %>
+    </div>
+
+    <% end %>
+</div>
+    
+  
