@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :stocks, through: :broker_stock
   has_many :transactions, dependent: :destroy
   has_many :buyer_stocks, through: :transactions, source: :broker_stock
+  validates :first_name, presence: true
 end

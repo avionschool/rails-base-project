@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let!(:user) { described_class.new }
-  let(:admin) { UserType.find_by(user_type: 'admin') }
-  let(:buyer) { UserType.find_by(user_type: 'buyer') }
-  let(:broker) { UserType.find_by(user_type: 'broker') }
+  let(:admin) { UserType.find_or_create_by(user_type: 'admin') }
+  let(:buyer) { UserType.find_or_create_by(user_type: 'buyer') }
+  let(:broker) { UserType.find_or_create_by(user_type: 'broker') }
 
   context 'when testing validation' do
     before do
@@ -17,7 +17,11 @@ RSpec.describe User, type: :model do
       user.verified = true
     end
 
-    it 'ensures there is first name'
+    it 'ensures there is first name' do
+      user.first_name = nil
+      
+      expect(user).not_to be_valid
+    end
 
     it 'ensures there is last name'
 
