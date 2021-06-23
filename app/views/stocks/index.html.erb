@@ -1,0 +1,13 @@
+<h1>Top 10 Stocks</h1>
+
+<ul>
+  <% @iex_client.each do |stock| %>
+    <li>
+      <div>Symbol: <%= stock.symbol %></div>
+      <div>Company Name: <%= stock.company_name %></div>
+      <div>Latest Price: <%= stock.latest_price %></div>
+    </li>
+
+    <br>
+  <% end %>
+</ul>
