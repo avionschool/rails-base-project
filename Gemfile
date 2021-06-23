@@ -37,3 +37,6 @@ group :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
 end
+
+# Added IEX API gem
+gem 'iex-ruby-client'
