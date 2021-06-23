@@ -5,12 +5,12 @@
     <%= link_to  "Sign out", destroy_buyer_session_path, method: :delete %>
 
 <% elsif broker_signed_in? %>
-    <p>Welcome <%= current_user.email %>!</p>
+    <p>Welcome <%= current_user.email %>! (<%= current_user.type %> account)</p>
     <p>Pokus lang tayo sa goal natin 👍</p> 
     <%= link_to  "Sign out", destroy_broker_session_path, method: :delete %>
 
 <% elsif admin_signed_in? %>
-    <p>Welcome <%= current_user.email %>!</p>
+    <p>Welcome <%= current_user.email %>! (<%= current_user.type %> account)</p>
     <p>Pokus lang tayo sa goal natin 👍</p> 
     <%= link_to  "Sign out", destroy_admin_session_path, method: :delete %>
 
