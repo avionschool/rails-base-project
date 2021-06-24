@@ -98,7 +98,11 @@ RSpec.describe User, type: :model do
       expect(user.errors.to_h.keys).to include(:verified)
     end
 
-    it 'should save properly'
+    it 'should save properly' do
+      user.save
+
+      expect(user).to be_valid
+    end
   end
 
   context 'when testing scopes' do
