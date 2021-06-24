@@ -91,4 +91,14 @@ RSpec.describe User, type: :model do
 
     it 'should only get admin'
   end
+
+  context 'when new user is a broker' do
+    it 'should set broker verified as false'
+  end
+
+  context 'when new user is a buyer or admin' do
+    it 'should set buyer verified as true'
+
+    it 'should set admin verified as true'
+  end
 end
