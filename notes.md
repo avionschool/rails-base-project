@@ -95,5 +95,11 @@
     4. call api key using Rails.application.credentials.api_secret_key
         Rails.application.credentials.api_secret_key returns "SECRETKEY"
         
-## Using custom css file
+## using custom css file
     app>javascript>stylesheets>application.scss
+
+
+### Problems:
+    > table names in db are: buyers_stocks and brokers_stocks
+    > model names are: buyer_stock and broker_stock
+    > do these model and table names correspond to each other??
