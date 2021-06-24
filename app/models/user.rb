@@ -33,6 +33,6 @@ class User < ApplicationRecord
 
     user_type = self.user_type.user_type
     self.verified = false if user_type == 'broker'
-    self.verified = true if user_type == 'buyer'
+    self.verified = true if %w[buyer admin].include?(user_type)
   end
 end

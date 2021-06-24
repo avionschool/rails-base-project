@@ -179,7 +179,12 @@ RSpec.describe User, type: :model do
         expect(user.verified).to eq(true)
       end
 
-      it 'sets admin verified as true'
+      it 'sets admin verified as true' do
+        user.user_type_id = admin.id
+        user.save
+
+        expect(user.verified).to eq(true)
+      end
     end
   end
 end
