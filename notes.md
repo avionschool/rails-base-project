@@ -94,3 +94,6 @@
     3. exit and save
     4. call api key using Rails.application.credentials.api_secret_key
         Rails.application.credentials.api_secret_key returns "SECRETKEY"
+        
+## Using custom css file
+    app>javascript>stylesheets>application.scss
