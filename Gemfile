@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
+# Added IEX API gem
+gem 'iex-ruby-client'
+
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'pg'
 gem 'puma', '~> 4.1'
@@ -37,6 +40,3 @@ group :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
 end
-
-# Added IEX API gem
-gem 'iex-ruby-client'
