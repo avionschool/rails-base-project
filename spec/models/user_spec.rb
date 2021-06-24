@@ -146,7 +146,9 @@ RSpec.describe User, type: :model do
       expect(described_class.brokers.size).to eq(1)
     end
 
-    it 'only gets admin'
+    it 'only gets admin' do
+      expect(described_class.admins.size).to eq(1)
+    end
   end
 
   context 'when new user is a broker' do

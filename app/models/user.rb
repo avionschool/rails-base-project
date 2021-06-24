@@ -21,4 +21,5 @@ class User < ApplicationRecord
   # Scopes
   scope :buyers, -> { where(user_type_id: UserType.find_by(user_type: 'buyer').id) }
   scope :brokers, -> { where(user_type_id: UserType.find_by(user_type: 'broker').id) }
+  scope :admins, -> { where(user_type_id: UserType.find_by(user_type: 'admin').id) }
 end
