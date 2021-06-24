@@ -15,4 +15,5 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
   validates :user_type_id, presence: true
   validates_associated :user_type
+  validates :verified, presence: true
 end

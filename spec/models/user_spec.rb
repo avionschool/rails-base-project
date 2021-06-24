@@ -91,7 +91,12 @@ RSpec.describe User, type: :model do
       expect(user.errors.to_h.keys).to include(:user_type)
     end
 
-    it 'ensures verified is not nil'
+    it 'ensures verified is not nil' do
+      user.verified = nil
+      user.valid?
+
+      expect(user.errors.to_h.keys).to include(:verified)
+    end
 
     it 'should save properly'
   end
