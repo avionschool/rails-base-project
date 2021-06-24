@@ -1,7 +1,7 @@
-require_relative '../custom_modules/.iex_token'
+# require_relative '../custom_modules/.iex_token'
 
 class HomeController < ApplicationController
-  include IEXTokens
+#  include IEXTokens
   before_action :authenticate_user!
 
   def index

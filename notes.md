@@ -85,3 +85,6 @@
 ## kill server if you lose the terminal tab
     sudo kill -9 $(lsof -i :3000 -t) OR
     Remove the file: C:/Sites/folder/Pids/Server.pids
+
+## Using custom css file
+    app>javascript>stylesheets>application.scss

@@ -1,4 +1,52 @@
-<h2>Log in</h2>
+<h1 class="flex justify-center text-white text-4xl">stonks</h1>
+<div class="relative min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-no-repeat bg-cover">
+	<div class="absolute opacity-60 inset-0 z-0"></div>
+	<div class="max-w-md w-full space-y-8 p-10 bg-black rounded-xl z-10">
+		<div class="text-center">
+			<h2 class="mt-6 text-3xl font-bold text-white">
+				Login to your account
+			</h2>
+		</div>
+		
+		<form class="mt-8 space-y-6" action="#" method="POST">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+    
+			<input type="hidden" name="remember" value="true">
+			<div class="relative">
+				<div class="absolute right-0 mt-4"><svg xmlns="http://www.w3.org/2000/svg"
+						class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+							d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+					</svg>
+        </div>
+				    <label class="text-sm font-bold text-white tracking-wide"><%= f.label :email %></label>            
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500",placeholder: "Enter email"  %>
+        </div>
+        <div class="mt-8 content-center">
+          <label class="text-sm font-bold text-white tracking-wide"><%= f.label :password %></label>
+          <%= f.password_field :password, autocomplete: "current-password", class: "w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500",type:"password", placeholder: "Enter password" %>
+        </div>
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <% if devise_mapping.rememberable? %>
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, class:"ml-2 block text-sm text-white" %>
+              <% end %>
+        </div>
+			</div>
+        <div>
+            <%= f.submit "Log in",type:"submit", class: "w-full flex justify-center bg-indigo-500 text-gray-100 p-4  rounded-full tracking-wide
+                font-semibold  focus:outline-none focus:shadow-outline hover:bg-indigo-600 shadow-lg cursor-pointer transition ease-in duration-300" %>
+        </div>
+        <p class="flex flex-col items-center justify-center text-center text-md text-gray-500">
+          <span>Don't have an account?</span>
+           
+        </p>
+      <% end %>
+		</form>
+	</div>
+</div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
