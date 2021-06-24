@@ -15,9 +15,3 @@ RSpec.describe Stock, type: :model do
     expect(stocks).not_to be_valid
   end
 end
-
-# describe 'list' do
-#   it 'returns active stocks from IEX Ruby Client' do
-#     expect(described_class.list).to be_an_instance_of(Array)
-#   end
-# end
