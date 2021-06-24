@@ -9,8 +9,9 @@ class HomeController < ApplicationController
     )
 
     @symbols = @client.ref_data_symbols
-
-    # @client = IEX::Api::Client.new
+    @most_active = @client.stock_market_list(:mostactive)
+    @gainers = @client.stock_market_list(:gainers)
+    @losers = @client.stock_market_list(:losers)
 
     @users = User.all
   end
