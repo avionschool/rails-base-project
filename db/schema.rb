@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_163913) do
+ActiveRecord::Schema.define(version: 2021_06_24_170719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "brokers_stocks", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "stock_id", null: false
+    t.string "stock_id", null: false
     t.string "companyname"
     t.integer "quantity"
     t.decimal "price", precision: 10, scale: 2
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_06_24_163913) do
 
   create_table "buyers_stocks", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "stock_id", null: false
+    t.string "stock_id", null: false
     t.string "companyname"
     t.integer "quantity"
     t.decimal "price", precision: 10, scale: 2
