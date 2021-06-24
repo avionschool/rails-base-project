@@ -57,6 +57,10 @@ RSpec.describe User, type: :model do
 
     it 'ensures there is password'
 
+    it 'ensures there is password confirmation'
+
+    it 'ensures password and password confirmation matches'
+
     it 'ensures there is user type id'
 
     it 'ensures verified is not nil'
