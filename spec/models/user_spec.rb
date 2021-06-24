@@ -84,6 +84,13 @@ RSpec.describe User, type: :model do
       expect(user.errors.to_h.keys).to include(:user_type_id)
     end
 
+    it 'ensures the user type of the user exists' do
+      user.user_type_id = 69420
+      user.valid?
+
+      expect(user.errors.to_h.keys).to include(:user_type)
+    end
+
     it 'ensures verified is not nil'
 
     it 'should save properly'
