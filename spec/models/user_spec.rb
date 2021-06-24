@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let!(:user) { described_class.new }
+  let(:user2) { described_class.new }
   let(:admin) { UserType.find_or_create_by(user_type: 'admin') }
   let(:buyer) { UserType.find_or_create_by(user_type: 'buyer') }
   let(:broker) { UserType.find_or_create_by(user_type: 'broker') }
@@ -15,6 +16,14 @@ RSpec.describe User, type: :model do
       user.last_name = 'Lastname'
       user.user_type_id = buyer.id
       user.verified = true
+
+      user2.email = 'test2@gmail.com'
+      user2.password = 'password'
+      user2.password_confirmation = 'password'
+      user2.first_name = 'Firstname2'
+      user2.last_name = 'Lastname2'
+      user2.user_type_id = buyer.id
+      user2.verified = true
     end
 
     it 'ensures there is first name' do
@@ -38,7 +47,13 @@ RSpec.describe User, type: :model do
       expect(user.errors.to_h.keys).to include(:email)
     end
 
-    it 'ensures email is unique'
+    it 'ensures email is unique' do
+      user.save
+      user2.email = user.email
+      user2.valid?
+
+      expect(user2.errors.to_h.keys).to include(:email)
+    end
 
     it 'ensures there is password'
 
