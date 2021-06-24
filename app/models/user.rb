@@ -11,9 +11,7 @@ class User < ApplicationRecord
     self.approved ||= type != 'Broker'
   end
 
-  
   def send_welcome_email
     WelcomeMailer.send_welcome_email(self).deliver
   end
-
 end
