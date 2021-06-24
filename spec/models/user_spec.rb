@@ -63,7 +63,12 @@ RSpec.describe User, type: :model do
       expect(user.errors.to_h.keys).to include(:password)
     end
 
-    it 'ensures there is password confirmation'
+    it 'ensures there is password confirmation' do
+      user.password_confirmation = nil
+      user.valid?
+
+      expect(user.errors.to_h.keys).to include(:password_confirmation)
+    end
 
     it 'ensures password and password confirmation matches'
 
