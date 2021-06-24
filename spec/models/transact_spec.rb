@@ -10,16 +10,6 @@ RSpec.describe Transact, type: :model do
                         price: 120.00)
   end
 
-  it 'is not valid without a broker_id' do
-    transacts.broker_id = nil
-    expect(transacts).not_to be_valid
-  end
-
-  it 'is not valid without a buyer_id' do
-    transacts.buyer_id = nil
-    expect(transacts).not_to be_valid
-  end
-
   it 'is not valid without a stock_id' do
     transacts.stock_id = nil
     expect(transacts).not_to be_valid
