@@ -70,7 +70,12 @@ RSpec.describe User, type: :model do
       expect(user.errors.to_h.keys).to include(:password_confirmation)
     end
 
-    it 'ensures password and password confirmation matches'
+    it 'ensures password and password confirmation matches' do
+      user.password_confirmation = 'wrong_password'
+      user.valid?
+
+      expect(user.errors.to_h.keys).to include(:password_confirmation)
+    end
 
     it 'ensures there is user type id'
 
