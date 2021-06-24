@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_170719) do
+ActiveRecord::Schema.define(version: 2021_06_24_175542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "brokers_stocks", force: :cascade do |t|
+  create_table "broker_stocks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "stock_id", null: false
     t.string "companyname"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_06_24_170719) do
     t.decimal "price", precision: 10, scale: 2
   end
 
-  create_table "buyers_stocks", force: :cascade do |t|
+  create_table "buyer_stocks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "stock_id", null: false
     t.string "companyname"
