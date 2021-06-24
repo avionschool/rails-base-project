@@ -77,7 +77,12 @@ RSpec.describe User, type: :model do
       expect(user.errors.to_h.keys).to include(:password_confirmation)
     end
 
-    it 'ensures there is user type id'
+    it 'ensures there is user type id' do
+      user.user_type_id = nil
+      user.valid?
+
+      expect(user.errors.to_h.keys).to include(:user_type_id)
+    end
 
     it 'ensures verified is not nil'
 
