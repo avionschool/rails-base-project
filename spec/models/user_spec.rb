@@ -85,7 +85,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'ensures the user type of the user exists' do
-      user.user_type_id = 69420
+      user.user_type_id = 69_420
       user.valid?
 
       expect(user.errors.to_h.keys).to include(:user_type)
