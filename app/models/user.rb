@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :stocks, through: :broker_stock
   has_many :transactions, dependent: :destroy
   has_many :buyer_stocks, through: :transactions, source: :broker_stock
+  # Validation
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
@@ -16,4 +17,6 @@ class User < ApplicationRecord
   validates :user_type_id, presence: true
   validates_associated :user_type
   validates :verified, presence: true
+  # Scopes
+  scope :buyers, -> { where(user_type_id: UserType.find_by(user_type: 'buyer').id) }
 end

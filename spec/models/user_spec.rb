@@ -138,20 +138,22 @@ RSpec.describe User, type: :model do
       buyer_user.save
     end
 
-    it 'should only get buyers'
+    it 'only gets buyers' do
+      expect(described_class.buyers.size).to eq(1)
+    end
 
-    it 'should only get brokers'
+    it 'only gets brokers'
 
-    it 'should only get admin'
+    it 'only gets admin'
   end
 
   context 'when new user is a broker' do
-    it 'should set broker verified as false'
+    it 'sets broker verified as false'
   end
 
   context 'when new user is a buyer or admin' do
-    it 'should set buyer verified as true'
+    it 'sets buyer verified as true'
 
-    it 'should set admin verified as true'
+    it 'sets admin verified as true'
   end
 end
