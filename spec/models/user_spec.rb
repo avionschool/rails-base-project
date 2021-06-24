@@ -31,7 +31,12 @@ RSpec.describe User, type: :model do
       expect(user.errors.to_h.keys).to include(:last_name)
     end
 
-    it 'ensures there is email'
+    it 'ensures there is email' do 
+      user.email = nil
+      user.valid?
+
+      expect(user.errors.to_h.keys).to include(:email)
+    end
 
     it 'ensures email is unique'
 
