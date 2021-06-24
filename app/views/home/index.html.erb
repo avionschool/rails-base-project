@@ -18,30 +18,36 @@
         <thead>
             <tr>
                 <th>Email</th>
-                <th>Approved</th>
                 <th>Type</th>
+                <th>Approved</th>
             </tr>
         </thead>
 
         <tbody>
-            
-                <% @users.each do |user| %>
-                <tr>
-                    <td><%= user.email %></td>
-                    <td><%= user.approved %></td>
-                    <td><%= user.type %></td>
-                    <td><%= link_to 'Show', user %></td>
-                    <% if user.type == 'Broker' %>
-                        <td><%= link_to 'Edit', edit_broker_path(user) %></td>
-                    <% elsif user.type == 'Buyer' %>
-                        <td><%= link_to 'Edit', edit_buyer_path(user) %></td>
-                    <% elsif user.type == 'Admin' %>
-                        <td></td>
+            <% @users.each do |user| %>
+            <tr>
+                <td><%= user.email %></td>
+                <td><%= user.type %></td>
+                <td><%= user.approved %></td>
+                <% if user.type == 'Broker' && user.approved == false %>
+                    <%= form_with model: user, method: :patch do |f| %>
+                        <%= f.hidden_field :approved, :value => true %>
+                        <td><%= f.submit 'Approve' %></td>
                     <% end %>
-                    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                </tr>
+                <% else %>
+                        <td></td>
                 <% end %>
-            
+                <td><%= link_to 'Show', user %></td>
+                <% if user.type == 'Broker' %>
+                    <td><%= link_to 'Edit', edit_broker_path(user) %></td>
+                <% elsif user.type == 'Buyer' %>
+                    <td><%= link_to 'Edit', edit_buyer_path(user) %></td>
+                <% elsif user.type == 'Admin' %>
+                    <td></td>
+                <% end %>
+                <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+            <% end %>
         </tbody>
     </table>
 
