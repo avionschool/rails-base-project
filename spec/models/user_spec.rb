@@ -151,13 +151,25 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context 'when new user is a broker' do
-    it 'sets broker verified as false'
-  end
+  context 'when testing verified default values' do
+    before do
+      user.email = 'test@gmail.com'
+      user.password = 'password'
+      user.password_confirmation = 'password'
+      user.first_name = 'Firstname'
+      user.last_name = 'Lastname'
+      user.user_type_id = nil
+      user.verified = nil
+    end
 
-  context 'when new user is a buyer or admin' do
-    it 'sets buyer verified as true'
+    context 'when new user is a broker' do
+      it 'sets broker verified as false'
+    end
 
-    it 'sets admin verified as true'
+    context 'when new user is a buyer or admin' do
+      it 'sets buyer verified as true'
+
+      it 'sets admin verified as true'
+    end
   end
 end
