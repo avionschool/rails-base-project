@@ -1,3 +1,5 @@
 class PagesController < ApplicationController
-  def home; end
+  def home
+    @stocks_list = Stock.most_active_stocks
+  end
 end
