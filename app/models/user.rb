@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  # Relations
   belongs_to :user_type
   has_many :broker_stocks, dependent: :destroy
   has_many :stocks, through: :broker_stock
@@ -16,7 +17,8 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
   validates :user_type_id, presence: true
   validates_associated :user_type
-  validates :verified, presence: true
+  validates :verified, inclusion: [true, false]
   # Scopes
   scope :buyers, -> { where(user_type_id: UserType.find_by(user_type: 'buyer').id) }
+  scope :brokers, -> { where(user_type_id: UserType.find_by(user_type: 'broker').id) }
 end

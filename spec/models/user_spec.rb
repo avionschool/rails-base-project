@@ -142,7 +142,9 @@ RSpec.describe User, type: :model do
       expect(described_class.buyers.size).to eq(1)
     end
 
-    it 'only gets brokers'
+    it 'only gets brokers' do
+      expect(described_class.brokers.size).to eq(1)
+    end
 
     it 'only gets admin'
   end
