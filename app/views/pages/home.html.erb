@@ -1,13 +1,20 @@
-<h1>Top 10 Stocks</h1>
+<h1 class="mb-5">Top 10 Stocks</h1>
 
-<ul>
-  <% @stocks_list.each do |stock| %>
-    <li>
-      <div>Symbol: <%= stock.symbol %></div>
-      <div>Company Name: <%= stock.company_name %></div>
-      <div>Latest Price: <%= stock.latest_price %></div>
-    </li>
-
-    <br>
-  <% end %>
-</ul>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Ticker</th>
+      <th scope="col">Company Name</th>
+      <th scope="col">Latest Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stocks_list.each do |stock| %>
+      <tr>
+        <td><%= stock.symbol %></td>
+        <td><%= stock.company_name %></td>
+        <td><%= stock.latest_price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
