@@ -172,7 +172,12 @@ RSpec.describe User, type: :model do
     end
 
     context 'when new user is a buyer or admin' do
-      it 'sets buyer verified as true'
+      it 'sets buyer verified as true' do
+        user.user_type_id = buyer.id
+        user.save
+
+        expect(user.verified).to eq(true)
+      end
 
       it 'sets admin verified as true'
     end
