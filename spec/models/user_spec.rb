@@ -163,7 +163,12 @@ RSpec.describe User, type: :model do
     end
 
     context 'when new user is a broker' do
-      it 'sets broker verified as false'
+      it 'sets broker verified as false' do
+        user.user_type_id = broker.id
+        user.save
+
+        expect(user.verified).to eq(false)
+      end
     end
 
     context 'when new user is a buyer or admin' do
