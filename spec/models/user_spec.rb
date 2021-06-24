@@ -98,7 +98,7 @@ RSpec.describe User, type: :model do
       expect(user.errors.to_h.keys).to include(:verified)
     end
 
-    it 'should save properly' do
+    it 'saves properly' do
       user.save
 
       expect(user).to be_valid
@@ -107,7 +107,7 @@ RSpec.describe User, type: :model do
 
   context 'when testing scopes' do
     before do
-      admin_user = User.new
+      admin_user = described_class.new
       admin_user.email = 'admin@gmail.com'
       admin_user.password = 'password'
       admin_user.password_confirmation = 'password'
@@ -117,7 +117,7 @@ RSpec.describe User, type: :model do
       admin_user.verified = true
       admin_user.save
 
-      broker_user = User.new
+      broker_user = described_class.new
       broker_user.email = 'broker@gmail.com'
       broker_user.password = 'password'
       broker_user.password_confirmation = 'password'
@@ -127,7 +127,7 @@ RSpec.describe User, type: :model do
       broker_user.verified = false
       broker_user.save
 
-      buyer_user = User.new
+      buyer_user = described_class.new
       buyer_user.email = 'buyer@gmail.com'
       buyer_user.password = 'password'
       buyer_user.password_confirmation = 'password'
