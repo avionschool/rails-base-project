@@ -106,6 +106,38 @@ RSpec.describe User, type: :model do
   end
 
   context 'when testing scopes' do
+    before do
+      admin_user = User.new
+      admin_user.email = 'admin@gmail.com'
+      admin_user.password = 'password'
+      admin_user.password_confirmation = 'password'
+      admin_user.first_name = 'Admin'
+      admin_user.last_name = 'Adminson'
+      admin_user.user_type_id = admin.id
+      admin_user.verified = true
+      admin_user.save
+
+      broker_user = User.new
+      broker_user.email = 'broker@gmail.com'
+      broker_user.password = 'password'
+      broker_user.password_confirmation = 'password'
+      broker_user.first_name = 'Broker'
+      broker_user.last_name = 'Brokerson'
+      broker_user.user_type_id = broker.id
+      broker_user.verified = false
+      broker_user.save
+
+      buyer_user = User.new
+      buyer_user.email = 'buyer@gmail.com'
+      buyer_user.password = 'password'
+      buyer_user.password_confirmation = 'password'
+      buyer_user.first_name = 'Buyer'
+      buyer_user.last_name = 'Buyerson'
+      buyer_user.user_type_id = buyer.id
+      buyer_user.verified = true
+      buyer_user.save
+    end
+
     it 'should only get buyers'
 
     it 'should only get brokers'
