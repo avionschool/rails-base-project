@@ -99,7 +99,11 @@
     app>javascript>stylesheets>application.scss
 
 
-### Problems:
-    > table names in db are: buyers_stocks and brokers_stocks
-    > model names are: buyer_stock and broker_stock
-    > do these model and table names correspond to each other??
+## how to update working branch from local master
+    OPTION 1:
+    1. switch to working branch: git checkout <branchname>
+    2. run: git rebase master
+
+    OPTION 2:
+    1. switch to working branch: git checkout <branchname>
+    2. run: git merge master
