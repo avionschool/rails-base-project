@@ -5,11 +5,13 @@ require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
-require 'shoulda/matchers'
-require 'factory_bot_rails'
+
+# require 'shoulda/matchers'
+# require 'factory_bot_rails'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
-Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require |f| }
+# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -35,9 +37,9 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
-  config.use_transactional_fixtures = false
-  config.infer_spec_type_from_file_location!
-  config.filter_rails_from_backtrace!
+  # config.use_transactional_fixtures = false
+  # config.infer_spec_type_from_file_location!
+  # config.filter_rails_from_backtrace!
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -47,16 +49,16 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
-  config.before(:suite) do
-    DatabaseRewinder.clean_all
-  end
+  # config.before(:suite) do
+  #   DatabaseRewinder.clean_all
+  # end
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
-  config.after(:each) do
-    DatabaseRewinder.clean
-  end
-end
+#   config.after(:each) do
+#     DatabaseRewinder.clean
+#   end
+# end
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
@@ -72,11 +74,11 @@ end
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
-  Shoulda::Matchers.configure do |config|
-    config.integrate do |with|
-      with.test_framework :rspec
-      with.library :rails
-    end
+# Shoulda::Matchers.configure do |config|
+#   config.integrate do |with|
+#     with.test_framework :rspec
+#     with.library :rails
+#   end
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
