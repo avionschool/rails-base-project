@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'BrokerStocksController', type: :request do
-  let!(:broker) { Broker.create(email: 'e@email.com', password: 'password', password_confirmation: 'password') }
+  let!(:broker) { Broker.create(email: 'e@email.com', approved: true, password: 'password', password_confirmation: 'password') }
 
   before do
     sign_in broker
