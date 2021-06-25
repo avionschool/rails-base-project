@@ -1,0 +1,21 @@
+<h1>Create new Admin</h1>
+
+<%= form_with scope: :admin, model: @admin, local: true do |f|%>
+<div>
+<%= f.label :email%>
+<%= f.email_field :email%>
+</div>
+
+<div>
+<%= f.label :password%>
+<%= f.password_field :password%>
+</div>
+
+<div>
+<%= f.label :password_confirmation%>
+<%= f.password_field :password_confirmation%>
+</div>
+<div>
+<%= f.submit%>
+</div>
+<%end%>

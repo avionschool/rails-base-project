@@ -1,0 +1,17 @@
+<%# if broker has signed in show broker_stocks %>
+<%# if buyer has signed in show available_stocks %>
+
+<% if broker_signed_in? %>
+  <% @broker_stocks.each do |stock| %>
+    <%= stock.symbol%>
+    <%= stock.price%>
+    <%= stock.company_name%>
+  <%end%>
+
+<% elsif buyer_signed_in? %>
+  <% @available_stocks.each do |stock| %>
+    <%= stock.symbol%>
+    <%= stock.price%>
+    <%= stock.company_name%>
+  <%end%>
+<%end%>

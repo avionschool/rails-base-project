@@ -10,8 +10,11 @@ Rails.application.routes.draw do
 
   # get "/sign_up" => "registrations#new"
   # post "/admins" => "registrations#create"
-  get "/admins/new" => "admins#new"
-  post "/admins" => "admins#create"
+  # get "/admins/new" => "admins#new"
+  # get "/admins" => "admins#index"
+  # post "/admins" => "admins#create"
+  resources :admins, only: %i[index new create]
+
   get "/admins/sign_in" => "admin_sessions#new"
   post "/admins/sign_in" => "admin_sessions#create"
   delete "/logout" => "admin_sessions#destroy"
@@ -19,4 +22,7 @@ Rails.application.routes.draw do
 
   get "/admins/new_broker" => "admins#new_broker"
   post "/admins/new_broker" => "admins#create_broker"
+
+  resources :broker_stocks
+  resources :buyer_stocks
 end
