@@ -1,0 +1,21 @@
+<h1>Sign Up</h1>
+
+<%= form_for @user do |f|%>  
+
+  <%= f.label :username %> <br>  
+  <%= f.text_field :username %> <br>  
+
+  <%= f.label :password %> <br>  
+  <%= f.password_field :password %> <br>
+
+  <%= f.label :email %> <br>  
+  <%= f.text_field :email %> <br>
+
+  <%= f.label :role %> <br>  
+  <%= f.select :role, ['Broker', 'Buyer'] %> <br>  
+
+  <%= f.hidden_field :status, value: "approved" %>
+  <%= f.hidden_field :money, value: 0 %>
+
+  <%= f.submit "Register" %>
+<%end%>

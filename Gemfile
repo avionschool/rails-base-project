@@ -14,7 +14,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'iex-ruby-client'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'devise'
+gem 'devise', '~> 4.8'
 gem 'hamlit-rails'
 
 group :development, :test do
@@ -29,6 +29,7 @@ group :development do
 end
 
 group :test do
+  gem 'capybara', '~> 2.7', '>= 2.7.1'
   gem 'rspec-rails'
   gem 'database_rewinder'
   gem 'factory_bot_rails'

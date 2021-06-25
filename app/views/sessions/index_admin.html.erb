@@ -1,0 +1,4 @@
+<h1>You have access to this page, <%= current_user.username %></h1>
+<h1>You are one of our <%= current_user.role %></h1>
+
+<%= link_to "Logout", logout_path %>
