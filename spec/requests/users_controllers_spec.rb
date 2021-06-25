@@ -1,20 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe "UsersControllers", type: :request do
-  describe "GET /users_controllers" do
-    it "goes to welcome page" do
+RSpec.describe 'UsersControllers', type: :request do
+  describe 'GET /users_controllers' do
+    it 'goes to welcome page' do
       get root_path
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
     end
 
-    it "goes to login page" do
+    it 'goes to login page' do
       get login_path
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
     end
 
-    it "goes to sign up page" do
+    it 'goes to sign up page' do
       get new_user_path
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
     end
   end
 end

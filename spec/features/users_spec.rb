@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Users", type: :feature do
+RSpec.feature 'Users', type: :feature do
   describe 'registration process buyer' do
     before { visit root_path }
     it 'succesfully creates a buyer account' do
@@ -85,7 +85,7 @@ RSpec.feature "Users", type: :feature do
     end 
   end
 
-  describe "login process broker with approved status" do
+  describe 'login process broker with approved status' do
     before do
       @user = User.create(username:'sample', email:'sample@gmail.com', password:'sample', role:'broker', status:'approved', money:0)
       visit login_path
@@ -135,7 +135,7 @@ RSpec.feature "Users", type: :feature do
       visit login_path
     end 
 
-    it "succesfully logs out from a buyer account" do
+    it 'succesfully logs out from a buyer account' do
       within 'body' do
         expect(page).to have_content 'Username'
         expect(page).to have_content 'Password'
