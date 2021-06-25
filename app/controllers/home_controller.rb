@@ -8,7 +8,7 @@ class HomeController < ApplicationController
       endpoint: 'https://sandbox.iexapis.com/v1'
     )
 
-    @symbols = @client.ref_data_symbols
+    # @symbols = @client.ref_data_symbols
     @most_active = @client.stock_market_list(:mostactive)
     @gainers = @client.stock_market_list(:gainers)
     @losers = @client.stock_market_list(:losers)

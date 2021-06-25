@@ -107,3 +107,6 @@
     OPTION 2:
     1. switch to working branch: git checkout <branchname>
     2. run: git merge master
+
+## how to run tailwind server
+    1. bin/webpack-dev-server
