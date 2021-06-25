@@ -1,46 +1,61 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let!(:user) { User.new }
+  let!(:user) { described_class.new }
 
-  context 'validations' do
+  context 'when checking validations' do
     it 'is not valid without username' do
-      expect(user).to_not be_valid
-      expect(user.errors).to be_present
-      expect(user.errors.to_h.keys).to include(:username)  
+      user.username = nil
+      expect(user).not_to be_valid
     end
+
     it 'is not valid without email' do
-      expect(user).to_not be_valid
-      expect(user.errors).to be_present
-      expect(user.errors.to_h.keys).to include(:email)  
+      user.email = nil
+      expect(user).not_to be_valid
     end
+
     it 'is not valid without password' do
-      expect(user).to_not be_valid
-      expect(user.errors).to be_present
-      expect(user.errors.to_h.keys).to include(:password)  
+      user.password = nil
+      expect(user).not_to be_valid
     end
+
     it 'is not valid without role' do
-      expect(user).to_not be_valid
-      expect(user.errors).to be_present
-      expect(user.errors.to_h.keys).to include(:role)  
+      user.role = nil
+      expect(user).not_to be_valid
     end
+
     it 'is valid if user has the role of buyer' do
+      user.username = 'test'
+      user.email = 'test@gmail.com'
+      user.password = 'test'
       user.role = 'buyer'
-      expect(user).to_not be_valid
-      expect(user.errors).to be_present
-      expect(user.errors.to_h.keys).to_not include(:role)  
+      expect(user).to be_valid
     end
+
     it 'is valid if user has the role of broker' do
+      user.username = 'test'
+      user.email = 'test@gmail.com'
+      user.password = 'test'
       user.role = 'broker'
-      expect(user).to_not be_valid
-      expect(user.errors).to be_present
-      expect(user.errors.to_h.keys).to_not include(:role)  
+      expect(user).to be_valid
     end
+
     it 'is valid if user has the role of admin' do
+      user.username = 'test'
+      user.email = 'test@gmail.com'
+      user.password = 'test'
       user.role = 'admin'
-      expect(user).to_not be_valid
-      expect(user.errors).to be_present
-      expect(user.errors.to_h.keys).to_not include(:role)  
+      expect(user).to be_valid
     end
+
+    # it 'is not valid if user has the role of any other than buyer, broker or admin' do
+    #   user.username = 'test'
+    #   user.email = 'test@gmail.com'
+    #   user.password = 'test'
+    #   user.role = 'test'
+    #   user.status = 'approved'
+    #   user.money = 0
+    #   expect(user).not_to be_valid
+    # end
   end
 end
