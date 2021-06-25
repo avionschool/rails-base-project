@@ -4,10 +4,95 @@
     <p>Pokus lang tayo sa goal natin 👍</p> 
     <%= link_to  "Sign out", destroy_buyer_session_path, method: :delete %>
 
-<% elsif broker_signed_in? %>
+<% elsif broker_signed_in? && current_user.approved? %>
     <p>Welcome <%= current_user.email %>! (<%= current_user.type %> account)</p>
     <p>Pokus lang tayo sa goal natin 👍</p> 
     <%= link_to  "Sign out", destroy_broker_session_path, method: :delete %>
+
+    <h3>Most Active</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Company</th>
+                <th>Price</th>
+                <th>Change Percent</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @most_active.each do |stock|%>
+            <tr>
+                <td><%= stock.symbol %></td>
+                <td><%= stock.company_name %></td>
+                <td><%= stock.iex_realtime_price %></td>
+                <td><%= stock.change_percent_s %></td>
+                <%= form_with model: BrokerStock.new, local: true do |f| %>
+                    <%= f.hidden_field :user_id, :value => current_user.id %>
+                    <%= f.hidden_field :stock_id, :value => stock.symbol %>
+                    <%= f.hidden_field :companyname, :value => stock.company_name %>
+                    <%= f.hidden_field :quantity, :value => nil %>
+                    <%= f.hidden_field :price, :value => stock.iex_realtime_price %>
+                    <td><%= f.submit 'Add to Portolio' %></td>
+                <% end %>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <h3>Gainers</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Company</th>
+                <th>Price</th>
+                <th>Change Percent</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @gainers.each do |stock|%>
+            <tr>
+                <td><%= stock.symbol %></td>
+                <td><%= stock.company_name %></td>
+                <td><%= stock.iex_realtime_price %></td>
+                <td><%= stock.change_percent_s %></td>
+            </tr>    
+            <% end %>
+
+        </tbody>
+    </table>
+
+    <h3>Losers</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Company</th>
+                <th>Price</th>
+                <th>Change Percent</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @losers.each do |stock|%>
+            <tr>
+                <td><%= stock.symbol %></td>
+                <td><%= stock.company_name %></td>
+                <td><%= stock.iex_realtime_price %></td>
+                <td><%= stock.change_percent_s %></td>
+            </tr>    
+            <% end %>
+
+        </tbody>
+    </table>
+
+<% elsif broker_signed_in? && !current_user.approved? %>
+    <p>Welcome <%= current_user.email %>! (<%= current_user.type %> account)</p>
+    <p>Pokus lang tayo sa goal natin 👍</p>
+    <p>Paapprove ka muna sa admin pre</p>  
+    <%= link_to  "Sign out", destroy_buyer_session_path, method: :delete %>    
 
 <% elsif admin_signed_in? %>
     <p>Welcome <%= current_user.email %>! (<%= current_user.type %> account)</p>
@@ -45,7 +130,7 @@
                 <% elsif user.type == 'Admin' %>
                     <td></td>
                 <% end %>
-                <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
             <% end %>
         </tbody>
