@@ -10,12 +10,12 @@
         <%#= link_to 'Stocks', buyer_stocks_path%>
         <%#= link_to "Buy Stocks", available_stocks_path%>
         <%= link_to "Sign Out", destroy_buyer_session_path, method: :delete%>
-      <%elsif admin_logged_in?%>
-        <%= link_to "Create Broker", admins_new_broker_path%>
-        <%= link_to "Create Admin", new_admin_path%>
-        <%= link_to "List", admins_path%>
-        <%= link_to "Logout", session_path(current_admin), method: :delete%>
-      <%end%>
+      <% end %>
+
+    <%elsif admin_logged_in?%>
+      <%= link_to "Create Admin", new_admin_path%>
+      <%= link_to "List", admins_path%>
+      <%= link_to "Logout", logout_path(current_admin), method: :delete%>
     <%end%>
   </div>
 </nav>
