@@ -29,6 +29,12 @@ Metrics/BlockLength:
   Exclude:
     - "config/**/*"
     - "spec/**/*"
+    - "Rakefile"
+    - "**/*.rake"
+    - "test/**/*.rb"
+
+RSpec/ExampleLength:
+  Max: 20
 
 Metrics/MethodLength:
   Enabled: false
