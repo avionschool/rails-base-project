@@ -1,0 +1,21 @@
+<h2>Admin Log in</h2>
+<%flash.each do |type, msg|%>
+<div><%= msg%></div>
+
+<%end%>
+<%= form_with url: admins_sign_in_path do |f| %>
+<div class="field">
+<%= f.label :email %><br />
+<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+</div>
+
+<div class="field">
+<%= f.label :password %><br />
+<%= f.password_field :password, autocomplete: "current-password" %>
+</div>
+
+
+<div class="actions">
+<%= f.submit "Log in" %>
+</div>
+<% end %> 
