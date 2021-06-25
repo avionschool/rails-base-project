@@ -1,0 +1,16 @@
+<nav class = 'nav-bar'>
+    <div class ="nav-bar-links">
+        <%if broker_signed_in? || buyer_signed_in?%>
+            <%= current_user.email%>
+            <%if broker_signed_in?%>
+                <%#= link_to "List Stock", new_broker_stock_path%>
+                <%#= link_to "Profile", broker_stocks_path%>
+                <%= link_to "Sign Out", destroy_broker_session_path, method: :delete%>
+            <% elsif buyer_signed_in?%>
+                <%#= link_to 'Stocks', buyer_stocks_path%>
+                <%#= link_to "Buy Stocks", available_stocks_path%>
+                <%= link_to "Sign Out", destroy_buyer_session_path, method: :delete%>
+            <%end%>
+        <%end%>
+    </div>
+</nav>
