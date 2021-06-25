@@ -27,6 +27,14 @@
                 <td><%= stock.company_name %></td>
                 <td><%= stock.iex_realtime_price %></td>
                 <td><%= stock.change_percent_s %></td>
+                <%= form_with model: BrokerStock.new, local: true do |f| %>
+                    <%= f.hidden_field :user_id, :value => current_user.id %>
+                    <%= f.hidden_field :stock_id, :value => stock.symbol %>
+                    <%= f.hidden_field :companyname, :value => stock.company_name %>
+                    <%= f.hidden_field :quantity, :value => nil %>
+                    <%= f.hidden_field :price, :value => stock.iex_realtime_price %>
+                    <td><%= f.submit 'Add to Portolio' %></td>
+                <% end %>
             </tr>
             <% end %>
         </tbody>
@@ -122,7 +130,7 @@
                 <% elsif user.type == 'Admin' %>
                     <td></td>
                 <% end %>
-                <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
             <% end %>
         </tbody>
