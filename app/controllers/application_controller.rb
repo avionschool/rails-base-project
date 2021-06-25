@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def require_admin
-    unless admin_signed_in?
-      flash[:error] = 'You are not an admin'
-      redirect_to root_path
-    end
+    return unless admin_signed_in?
+
+    flash[:error] = 'You are not an admin'
+    redirect_to root_path
   end
 
   protected
