@@ -1,7 +1,66 @@
-<h2>Sign up</h2>
 
+
+<section class="flex flex-col items-center h-screen md:flex-row">
+  <div class="container mx-auto">
+    <div class="flex justify-center px-2 py-6 ">
+      <div class="flex w-full rounded-lg xl:w-3/4 lg:w-11/12 lg:shadow-xl ">
+        <div class="relative hidden w-full h-auto bg-black bg-cover border-r rounded-l-lg lg:block lg:w-6/12">
+          <div class="relative z-10 m-12 text-left ">
+            <a class="flex items-center w-32 mb-4 font-medium text-white title-font md:mb-10">
+              <div class="w-2 h-2 p-2 mr-2 rounded-full bg-gradient-to-tr from-blue-300 to-blue-600">
+              </div>
+              <h2 class="font-bold tracking-tighter text-white text-4xl transition duration-500 ease-in-out transform hover:text-lightBlack-500 dark:text-lightBlue-400"> Stonks </h2>
+            </a>
+            <h2 class="mt-12 mb-2 text-2xl font-semibold tracking-tighter text-white sm:text-3xl title-font"> Create an account. </h2>
+            <div class="w-full mt-16 mb-8 text-base leading-relaxed text-white sm:md:w-3/3 lg:text-1xl "> All you have to do is choose the section you need, remove the one that you do not need for that project and paste the one you need in that moment. All the section have been given the same left/right padding. Because consistence is king. </div>
+          </div>
+        </div>
+        <div class="w-full px-8 py-24 bg-black rounded-lg border-blueGray-100 lg:w-8/12 lg:px-24 lg:py-4 lg:rounded-l-none s">
+          <div class="relative z-10 text-left ">
+          <% if new_buyer_registration_path %>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+            <form class="mt-6" action="#" method="POST">
+              <div>
+                <label class="block text-base font-medium leading-relaxed text-white"><%= f.label :username %></label>
+                <%= f.text_field :username, autofocus: true, autocomplete: "username",class:"w-full px-4 py-2 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-blueGray-500",placeholder: "Username" %>
+              </div>
+              <div class="mt-4">
+                <label class="block text-base font-medium leading-relaxed text-white"><%= f.label :email %></label>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"w-full px-4 py-2 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-blueGray-500",placeholder: "Email" %>
+              </div>
+              <div class="flex flex-wrap mt-4 mb-6 -mx-3">
+                <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
+                  <label class="text-base font-medium leading-relaxed text-white" for="password" minlength="6"><%= f.label :password %></label>
+                  <%= f.password_field :password, autocomplete: "new-password", class: "block w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-blueGray-500", placeholder:"Your Password" %>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                </div>
+                <div class="w-full px-3 md:w-1/2">
+                  <label class="text-base font-medium leading-relaxed text-white" for="confirm"><%= f.label :password_confirmation %><br /></label>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "block w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-blueGray-500", placeholder:"Confirm Password"  %>
+                </div>
+              </div>
+              <%= f.submit "Sign up",class:"block w-full px-4 py-3 mt-6 font-semibold text-black transition duration-500 ease-in-out transform rounded-lg bg-indigo-500 hover:from-black to-black focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 hover:to-black" %>
+            </form>
+            <% end %>
+
+          
+          <% end %>
+            <p class="mt-8 text-center text-white">Already have an account? <a href="#" class="font-semibold text-white hover:text-white">Sign In</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+        
+
+
+
+        
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -31,13 +90,12 @@
   </div>
 <% end %>
 
-<%= link_to 'New Broker Sign Up', new_broker_registration_path %>
-<br>
-<%= link_to 'Broker Sign In', new_broker_session_path %>
-<br>
-<%= link_to 'New Admin Sign Up', new_admin_registration_path %>
-<br>
+<%= link_to 'New Buyer Sign Up', new_buyer_registration_path %><br/>
+<%= link_to 'New Broker Sign Up', new_broker_registration_path %><br/>
+<%= link_to 'Broker Sign In', new_broker_session_path %><br/>
+<%= link_to 'New Admin Sign Up', new_admin_registration_path %><br/>
 <%= link_to 'Admin Sign In', new_admin_session_path %>
-<br>
 
 <%= render "devise/shared/links" %>
+
+
