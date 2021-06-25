@@ -47,6 +47,5 @@ config/database.yml
 
 # Ignore module for iex tokens
 app/custom_modules/.iex_token.rb
-
 /config/credentials/development.key
 /config/credentials/environment.key

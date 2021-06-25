@@ -86,5 +86,14 @@
     sudo kill -9 $(lsof -i :3000 -t) OR
     Remove the file: C:/Sites/folder/Pids/Server.pids
 
+
+## how to store api keys in rails:
+    1. run: EDITOR="vim --wait" rails credentials:edit --environment development
+    2. store api keys, for example:
+        api_secret_key = SECRETKEY
+    3. exit and save
+    4. call api key using Rails.application.credentials.api_secret_key
+        Rails.application.credentials.api_secret_key returns "SECRETKEY"
+        
 ## Using custom css file
     app>javascript>stylesheets>application.scss
