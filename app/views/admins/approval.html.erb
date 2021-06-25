@@ -1,0 +1,12 @@
+<h1>Registered Brokers pending approval</h1>
+
+<table>
+    <% @brokers.each do |broker| %>
+      <tr>
+        <td><%= broker.email %>
+        <td><%= broker.approved %>
+        <td><%= button_to "Approve", approve_path(broker), method: :get %>
+      </tr>
+    <% end %>
+  </table>
+<%= link_to 'Log out', destroy_admin_session_path, method: :delete %>

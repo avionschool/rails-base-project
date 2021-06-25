@@ -1,0 +1,16 @@
+<table>
+  <% @users.sort_by {|c| c["updated_at"]}.reverse.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.username %></td>
+      <% if user.type == 'Buyer' %>
+        <td><%= link_to 'Profile', buyer_path(user) %></td>
+      <% else %>
+        <td><%= link_to 'Profile', broker_path(user) %></td>
+      </tr>
+      <% end %>
+  <% end %>
+</table>
+<%= link_to 'Create Buyer', new_buyer_path %>
+<%= link_to 'Create Broker', new_broker_path %>
+<%= link_to 'Log out', destroy_admin_session_path, method: :delete %>

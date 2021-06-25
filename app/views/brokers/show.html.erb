@@ -1,0 +1,11 @@
+<h1>Broker Profile</h1>
+<table>
+  <tr>
+    <td><%= @broker.email %></td>
+    <td><%= @broker.username %></td>
+  </tr>
+</table>
+<%= link_to "Edit", edit_broker_path(@broker) %>
+<%= link_to "Delete Account", broker_path(@broker),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>

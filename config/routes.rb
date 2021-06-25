@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   devise_for :admins
+  get '/admins/approve/:id' => 'admins#approve', as: 'approve'
+  get '/admins/approvals' => 'admins#approval', as: 'admin_broker_approval'
+
   devise_for :brokers
-  devise_for :buyers
   resources :brokers
+
+  devise_for :buyers
   resources :buyers
-  get '/approve/:id' => 'home#approve', as: 'approve'
+
   root 'home#index'
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

@@ -1,20 +1,11 @@
-<h1> Homepage </h1>
-
-<% if admin_signed_in? %>
-  <table>
-    <% @brokers.each do |broker| %>
-      <tr>
-        <td><%= broker.email %>
-        <td><%= broker.approved %>
-        <td><%= button_to "Approve", approve_path(broker), method: :get %>
-      </tr>
-    <% end %>
-  </table>
-  <%= link_to 'Log out', destroy_admin_session_path, method: :delete %>
+<% if buyer_signed_in? %>
+  <p>This is the buyer portfolio page</p>
+  <%= link_to 'Log out', destroy_buyer_session_path, method: :delete %>
 <% elsif broker_signed_in? %>
   <p>This is the broker portfolio page</p>
   <%= link_to 'Log out', destroy_broker_session_path, method: :delete %>
-<% elsif  buyer_signed_in? %>
-  <p>This is the buyer portfolio page</p>
-  <%= link_to 'Log out', destroy_buyer_session_path, method: :delete %>
+<% elsif admin_signed_in? %>
+  <%= render 'adminCRUD' %>
+<% else %>
+  <p>This is the landing page</p>
 <% end %>

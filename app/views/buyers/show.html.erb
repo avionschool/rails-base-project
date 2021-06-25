@@ -1,0 +1,11 @@
+<h1>Buyer Profile</h1>
+<table>
+  <tr>
+    <td><%= @buyer.email %></td>
+    <td><%= @buyer.username %></td>
+  </tr>
+</table>
+<%= link_to "Edit", edit_buyer_path(@buyer) %>
+<%= link_to "Delete Account", buyer_path(@buyer),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
