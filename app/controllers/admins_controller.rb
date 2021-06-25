@@ -6,7 +6,9 @@ class AdminsController < ApplicationController
     @buyers = Buyer.all
   end
 
-  def new; end
+  def new
+    @admin = Admin.new
+  end
 
   def create
     @admin = Admin.new(admin_register_params)
@@ -22,5 +24,9 @@ class AdminsController < ApplicationController
 
   def redirect
     redirect_to admins_sign_in_path unless admin_logged_in?
+  end
+
+  def admin_register_params
+    params.require(:admin).permit(:email, :password, :password_confirmation)
   end
 end
