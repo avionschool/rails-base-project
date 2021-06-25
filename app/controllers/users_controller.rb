@@ -10,12 +10,12 @@ class UsersController < ApplicationController
 
     if @user.save 
       session[:user_id] = @user.id
-      if @user.role.downcase == "buyer"
+      if @user.role.downcase == 'buyer'
         redirect_to '/dashboard_buyer' 
-      elsif @user.role.downcase == "broker"
+      elsif @user.role.downcase == 'broker'
         @user.update(status:"pending")
         redirect_to root_path
-      elsif @user.role.downcase == "admin"
+      elsif @user.role.downcase == 'admin'
         redirect_to '/dashboard_admin' 
       end
     else

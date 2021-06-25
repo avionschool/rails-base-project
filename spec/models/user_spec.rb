@@ -25,19 +25,19 @@ RSpec.describe User, type: :model do
       expect(user.errors.to_h.keys).to include(:role)  
     end
     it 'is valid if user has the role of buyer' do
-      user.role = "buyer"
+      user.role = 'buyer'
       expect(user).to_not be_valid
       expect(user.errors).to be_present
       expect(user.errors.to_h.keys).to_not include(:role)  
     end
     it 'is valid if user has the role of broker' do
-      user.role = "broker"
+      user.role = 'broker'
       expect(user).to_not be_valid
       expect(user.errors).to be_present
       expect(user.errors.to_h.keys).to_not include(:role)  
     end
     it 'is valid if user has the role of admin' do
-      user.role = "admin"
+      user.role = 'admin'
       expect(user).to_not be_valid
       expect(user.errors).to be_present
       expect(user.errors.to_h.keys).to_not include(:role)  
