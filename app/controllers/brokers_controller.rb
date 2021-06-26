@@ -1,4 +1,6 @@
 class BrokersController < ApplicationController
+  def index; end
+
   def show
     @broker = Broker.find(params[:id])
   end

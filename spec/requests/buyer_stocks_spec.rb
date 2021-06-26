@@ -1,6 +1,6 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-RSpec.describe 'Brokers', type: :request do
+RSpec.describe 'BrokerStocksController', type: :request do
   let(:buyer) do
     Buyer.create(
       email: 'buyer@email.com',
@@ -10,8 +10,9 @@ RSpec.describe 'Brokers', type: :request do
     )
   end
 
-  it 'display index page of buyer' do
-    get buyers_path
+  it 'display all stocks bought by buyer' do
+    get broker_stocks_path
+    # get buyer_stocks_path
     expect(response.status).to be(200)
   end
 end

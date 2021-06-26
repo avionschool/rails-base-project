@@ -1,4 +1,6 @@
 class BrokerStocksController < ApplicationController
+  def index; end
+
   def create
     @broker_stock = BrokerStock.new(broker_stock_params)
 
