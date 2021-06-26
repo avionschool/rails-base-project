@@ -7,11 +7,26 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </body>
+    <div class="row">
+      <%if top_nav_bar?%>
+        <%=render 'layouts/top_navigation'%>
+      <%else%>
+        <div class="col-lg-3">
+          <%=render 'layouts/side_navigation'%>
+        </div>
+      <%end%>
+      <div class= "col-lg-<%=(top_nav_bar?) ?'-12 ':'-9 sidebar-active' %> ">
+        <div class="container">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+          <%= yield %>
+        </div>
+      </div>
+    </div>   
+    <%= javascript_pack_tag 'sidenav_js' %>
+  </body>  
 </html>

@@ -1,0 +1,46 @@
+<div class="sidebar active d-flex flex-column flex-shrink-0 p-3 bg-light ">
+    <div class="logo-icon-minimize d-flex flex-row">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 md-auto link-dark text-decoration-none">
+        <span class="fs-4 brand">stockjobber</span> 
+        </a>
+      <div class="icon me-2 ms-auto" id = "minimizeSideNav"><i class="fa fa-times 2x ms-auto"></i></div>
+    </div>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+      <%=link_to marketplace_path,{ :class => 'nav-link link-dark'}   do%>
+        <i class="fas fa-chart-line 2x icon"></i>Stock Market
+      <%end%>     
+      </li>
+      <li>
+        <%=link_to stock_search_path,{ :class => 'nav-link link-dark'}   do%>
+          <i class="fas fa-search-dollar icon"></i>Search Stock
+        <%end%>   
+      </li>
+      <li>
+        <%=link_to my_portfolio_path,{ :class => 'nav-link link-dark'}   do%>
+          <i class="fas fa-home icon"></i>My Portfolio
+        <%end%>   
+      </li>
+      <li>
+        <%=link_to transactions_path,{ :class => 'nav-link link-dark'}   do%>
+          <i class="far fa-list-alt icon"></i>Transactions
+        <%end%>   
+      </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>mdo</strong>
+      </a>
+      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><%= link_to('Sign out', destroy_user_session_path, method: :delete) %> </li>
+      </ul>
+    </div>
+  </div>
+
