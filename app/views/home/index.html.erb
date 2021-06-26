@@ -27,13 +27,18 @@
                 <td><%= stock.company_name %></td>
                 <td><%= stock.iex_realtime_price %></td>
                 <td><%= stock.change_percent_s %></td>
-                <%= form_with model: BrokerStock.new, local: true do |f| %>
-                    <%= f.hidden_field :user_id, :value => current_user.id %>
-                    <%= f.hidden_field :stock_id, :value => stock.symbol %>
-                    <%= f.hidden_field :companyname, :value => stock.company_name %>
-                    <%= f.hidden_field :quantity, :value => nil %>
-                    <%= f.hidden_field :price, :value => stock.iex_realtime_price %>
-                    <td><%= f.submit 'Add to Portolio' %></td>
+                <% if BrokerStock.all.where(user_id: current_user.id, stock_id: stock.symbol).count > 0 %>
+                    <% id = BrokerStock.find_by(user_id: current_user.id, stock_id: stock.symbol) %>
+                    <td><%= button_to 'Remove', broker_stock_path(id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% else %>
+                    <%= form_with model: BrokerStock.new, local: true do |f| %>
+                        <%= f.hidden_field :user_id, :value => current_user.id %>
+                        <%= f.hidden_field :stock_id, :value => stock.symbol %>
+                        <%= f.hidden_field :companyname, :value => stock.company_name %>
+                        <%= f.hidden_field :quantity, :value => nil %>
+                        <%= f.hidden_field :price, :value => stock.iex_realtime_price %>
+                        <td><%= f.submit 'Add to Portolio' %></td>
+                        <% end %>
                 <% end %>
             </tr>
             <% end %>
@@ -120,7 +125,10 @@
                         <td><%= f.submit 'Approve' %></td>
                     <% end %>
                 <% else %>
-                        <td></td>
+                    <%= form_with model: user, method: :patch do |f| %>
+                        <%= f.hidden_field :approved, :value => false %>
+                        <td><%= f.submit 'Unapprove' %></td>
+                    <% end %>
                 <% end %>
                 <td><%= link_to 'Show', user %></td>
                 <% if user.type == 'Broker' %>
