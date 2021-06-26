@@ -110,3 +110,8 @@
 
 ## how to run tailwind server
     1. bin/webpack-dev-server
+
+## how to undo git commit
+    1. git reset --soft HEAD~1
+    *to further undo git add
+        git reset
