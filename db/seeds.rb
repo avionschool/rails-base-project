@@ -14,7 +14,7 @@ client = IEX::Api::Client.new(
 )
 symbols = client.ref_data_symbols()
 
-symbols.slice(0,20).each do |symbol|
+symbols.shuffle.slice(0,20).each do |symbol|
     quote = client.quote(symbol.symbol)
     company = client.company(symbol.symbol)
 

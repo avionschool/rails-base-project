@@ -1,0 +1,7 @@
+<h1><%= @broker.email%></h1>
+<h2>Stocks</h2>
+<% @broker.broker_stocks.each do |broker_stock|%>
+    <p><%=broker_stock.symbol %>| <%=broker_stock.company_name %></p>
+<%end%>
+
+

@@ -1,0 +1,5 @@
+<%@brokers.each do |broker|%>
+    <div><%= broker.email%><%= link_to "Edit", edit_admin_broker_path(current_admin, broker)%></div>
+    <%= button_to "Approve", admin_broker_path(current_admin, broker), params: { broker:{ approved: true }}, method: :patch%>
+<%end%>
+

@@ -2,7 +2,7 @@ class AdminsController < ApplicationController
   before_action :redirect
   def index
     @admins = Admin.all
-    @brokers = Broker.all
+    @brokers = Broker.where(approved: true)
     @buyers = Buyer.all
   end
 
@@ -21,10 +21,6 @@ class AdminsController < ApplicationController
   end
 
   protected
-
-  def redirect
-    redirect_to admins_sign_in_path unless admin_logged_in?
-  end
 
   def admin_register_params
     params.require(:admin).permit(:email, :password, :password_confirmation)

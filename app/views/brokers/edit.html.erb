@@ -1,0 +1,26 @@
+<h1>Create Broker</h1>
+
+<%= form_with scope: :broker, url: admin_broker_path(current_admin, @broker), method: :patch do |f|%>
+<%flash.each do |type, msg|%>
+  <%= msg%>
+<%end%>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation,  autocomplete: "current-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :approved %><br />
+    <%= f.check_box :approved%>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<%end%>
+

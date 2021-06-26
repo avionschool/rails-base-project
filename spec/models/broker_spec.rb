@@ -16,12 +16,6 @@ RSpec.describe Broker, type: :model do
       expect(broker).not_to be_valid
     end
 
-    it 'ensures password_confirmation presence' do
-      broker.password_confirmation = nil
-
-      expect(broker).not_to be_valid
-    end
-
     it 'must successfully save' do
       expect(broker).to be_valid
     end
