@@ -12,6 +12,17 @@ class BrokerStocksController < ApplicationController
     end
   end
 
+  def update
+    @broker_stock = BrokerStock.find(params[:id])
+    redirect_to root_path, notice: 'Stock was updated successfully.' if @broker_stock.update(broker_stock_params)
+  end
+
+  def destroy
+    @broker_stock = BrokerStock.find(params[:id])
+    @broker_stock.destroy
+    redirect_to root_path, notice: 'Stock was removed from portfolio.'
+  end
+
   def broker_stock_params
     params.require(:broker_stock).permit(:user_id, :stock_id, :companyname, :quantity, :price)
   end
