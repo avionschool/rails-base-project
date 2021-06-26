@@ -9,9 +9,9 @@ RSpec.describe Stock, type: :model do
     expect(stocks).not_to be_valid
   end
 
-  it 'is not valid without a companyname' do
-    stocks.symbol = 'SC'
-    stocks.companyname = nil
-    expect(stocks).not_to be_valid
-  end
+  #   it 'is not valid without a companyname' do
+  #     stocks.symbol = 'SC'
+  #     stocks.companyname = nil
+  #     expect(stocks).not_to be_valid
+  #   end
 end
