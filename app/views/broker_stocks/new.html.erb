@@ -1,0 +1,23 @@
+<h1>Stocks</h1>
+<table>
+    <thead>
+        <th>Symbol</th>
+        <th>Company Name</th>
+        <th>Add Stock to Porfolio</th>
+    </thead>
+    <tbody>
+    <% @stocks.each do |stock|%>
+        <tr>
+            <td><%= stock.symbol%></td>
+            <td><%= stock.company_name%></td>
+            <td><%= stock.price%></td>
+            <%unless current_broker.broker_stocks.any?{|broker_stock| broker_stock.symbol == stock.symbol}%>
+                <td><%= button_to "Add", broker_stocks_path(current_broker), params: { broker_stock: { symbol: stock.symbol, company_name: stock.company_name }}, method: :post, local: true%></td>
+            <%else%>
+                <td>Added to Portfolio</td>
+            <%end%>
+        </tr>
+    <%end%>
+    </tbody>
+</table>
+
