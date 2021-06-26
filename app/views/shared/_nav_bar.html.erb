@@ -13,9 +13,12 @@
       <% end %>
 
     <%elsif admin_logged_in?%>
+      <%= link_to "All Users", admins_path%>
       <%= link_to "Create Admin", new_admin_path%>
-      <%= link_to "List", admins_path%>
+      <%= link_to "Create Broker", new_admin_broker_path(current_admin)%>
+      <%= link_to "Pending Brokers", admin_brokers_path(current_admin)%>
       <%= link_to "Logout", logout_path(current_admin), method: :delete%>
     <%end%>
   </div>
 </nav>
+
