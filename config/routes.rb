@@ -13,16 +13,19 @@ Rails.application.routes.draw do
   # get "/admins/new" => "admins#new"
   # get "/admins" => "admins#index"
   # post "/admins" => "admins#create"
-  resources :admins, only: %i[index new create]
+  resources :admins, only: %i[index new create] do 
+    resources :brokers
+  end
 
   get "/admins/sign_in" => "admin_sessions#new"
   post "/admins/sign_in" => "admin_sessions#create"
   delete "/logout" => "admin_sessions#destroy"
   get "/redirect" => "admin_sessions#redirect"
 
-  get "/admins/new_broker" => "admins#new_broker"
-  post "/admins/new_broker" => "admins#create_broker"
+  # get "/admins/new_broker" => "admins#new_broker"
+  # post "/admins/new_broker" => "admins#create_broker"
 
   resources :broker_stocks
   resources :buyer_stocks
 end
+
