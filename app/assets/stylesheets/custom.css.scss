@@ -1,4 +1,17 @@
 @import 'bootstrap/dist/css/bootstrap';
+@import "font-awesome";
+@import 'bootstrap/dist/css/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+$font-body: 'Hind', sans-serif;
+$font-heading:  'Montserrat', sans-serif;
+html{
+    font-size: 62.5%;
+}
+body{
+    font-family: $font-body;
+    font-size: 1.4rem;
+    overflow-x: hidden;
+}
 
 .sidebar{
     height: 100%;
@@ -11,4 +24,15 @@
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+}
+
+.icon {
+    font-size: 1.4rem !important;
+    margin-right: 1rem; 
+}
+.sidebar.active{
+    width: 280px !important;
+}
+.sidebar-active{
+    margin-left: 280px !important;
 }
