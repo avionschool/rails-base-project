@@ -9,6 +9,8 @@ class PagesController < ApplicationController
 
   def update_stocks
     stocks_list = Stock.most_active_stocks
+    return if stocks_list.nil?
+
     stocks_list.each do |stock_data|
       stock = Stock.find_or_create_by(ticker: stock_data.symbol) do |s|
         s.price = stock_data.latest_price
