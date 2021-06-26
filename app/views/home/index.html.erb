@@ -23,7 +23,7 @@
         <tbody>
             <% @most_active.each do |stock|%>
             <tr>
-                <td><%= stock.symbol %></td>
+                <td><%= link_to stock.symbol, stock_path(Stock.find_by(symbol: stock.symbol)) %></td>
                 <td><%= stock.company_name %></td>
                 <td><%= stock.iex_realtime_price %></td>
                 <td><%= stock.change_percent_s %></td>
@@ -63,6 +63,19 @@
                 <td><%= stock.company_name %></td>
                 <td><%= stock.iex_realtime_price %></td>
                 <td><%= stock.change_percent_s %></td>
+                <% if BrokerStock.all.where(user_id: current_user.id, stock_id: stock.symbol).count > 0 %>
+                    <% id = BrokerStock.find_by(user_id: current_user.id, stock_id: stock.symbol) %>
+                    <td><%= button_to 'Remove', broker_stock_path(id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% else %>
+                    <%= form_with model: BrokerStock.new, local: true do |f| %>
+                        <%= f.hidden_field :user_id, :value => current_user.id %>
+                        <%= f.hidden_field :stock_id, :value => stock.symbol %>
+                        <%= f.hidden_field :companyname, :value => stock.company_name %>
+                        <%= f.hidden_field :quantity, :value => nil %>
+                        <%= f.hidden_field :price, :value => stock.iex_realtime_price %>
+                        <td><%= f.submit 'Add to Portolio' %></td>
+                        <% end %>
+                <% end %>
             </tr>    
             <% end %>
 
@@ -87,6 +100,19 @@
                 <td><%= stock.company_name %></td>
                 <td><%= stock.iex_realtime_price %></td>
                 <td><%= stock.change_percent_s %></td>
+                <% if BrokerStock.all.where(user_id: current_user.id, stock_id: stock.symbol).count > 0 %>
+                    <% id = BrokerStock.find_by(user_id: current_user.id, stock_id: stock.symbol) %>
+                    <td><%= button_to 'Remove', broker_stock_path(id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% else %>
+                    <%= form_with model: BrokerStock.new, local: true do |f| %>
+                        <%= f.hidden_field :user_id, :value => current_user.id %>
+                        <%= f.hidden_field :stock_id, :value => stock.symbol %>
+                        <%= f.hidden_field :companyname, :value => stock.company_name %>
+                        <%= f.hidden_field :quantity, :value => nil %>
+                        <%= f.hidden_field :price, :value => stock.iex_realtime_price %>
+                        <td><%= f.submit 'Add to Portolio' %></td>
+                        <% end %>
+                <% end %>
             </tr>    
             <% end %>
 
