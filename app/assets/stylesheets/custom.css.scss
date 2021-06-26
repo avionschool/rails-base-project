@@ -9,7 +9,7 @@ html{
 }
 body{
     font-family: $font-body;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     overflow-x: hidden;
 }
 
@@ -25,7 +25,11 @@ body{
     transition: 0.5s;
     padding-top: 60px;
 }
-
+.brand{
+    font-weight: 700;
+    font-size: 2.5rem !important;
+    text-transform: uppercase;
+}
 .icon {
     font-size: 1.4rem !important;
     margin-right: 1rem; 
