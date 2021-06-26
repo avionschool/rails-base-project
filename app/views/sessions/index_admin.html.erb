@@ -2,3 +2,12 @@
 <h1>You are one of our <%= current_user.role %></h1>
 
 <%= link_to "Logout", logout_path %>
+
+<% @users.each do |t| %>
+  <%= t.username %>
+  <%= t.email %>
+
+  <%= link_to approve_path(:id => t.id), :class => "nodeco" do %>
+    <h4 class="task_name">APPROVE</h4>
+  <% end %>
+<% end %>

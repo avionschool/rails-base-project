@@ -47,7 +47,7 @@ class SessionsController < ApplicationController
 
   def index_admin
     if logged_in?
-      # code
+      @users = User.where(status:"pending").sort
     else
       redirect_to root_path
     end
@@ -74,5 +74,11 @@ class SessionsController < ApplicationController
   def out
     session[:user_id] = nil
     redirect_to root_path
+  end
+
+  def approve
+    user_id = params[:id]
+    User.find_by_id(user_id).update(status:"approved")
+    redirect_to  '/dashboard_admin'
   end
 end
