@@ -42,4 +42,3 @@ RSpec.describe 'BrokersControllers', type: :request do
     end
   end
 end
-

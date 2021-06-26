@@ -42,4 +42,3 @@ class BrokersController < ApplicationController
     params.require(:broker).permit(:email, :password, :approved)
   end
 end
-
