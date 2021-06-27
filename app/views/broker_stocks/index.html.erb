@@ -20,6 +20,8 @@
       <tr>
         <td><%= stock.symbol%></td>
         <td><%= stock.company_name%></td>
+        <td><%= stock.broker.email%></td>
+        <td><%= link_to 'Show', broker_stock_path(stock)%></td>
       </tr>
     <%end%>
   <%end%>

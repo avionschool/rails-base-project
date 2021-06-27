@@ -1,0 +1,8 @@
+<section>
+    <h1><%= @broker_stock.symbol%></h1>
+    <h2><%= @broker_stock.company_name%></h2>
+
+    <%if buyer_signed_in?%>
+        <%= button_to "Buy", buyer_stocks_path(current_buyer), params: { buyer_stock: { broker_stock_id: @broker_stock.id } }, method: :post, local: true%>
+    <%end%>
+</section>

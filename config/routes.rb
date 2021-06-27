@@ -27,5 +27,6 @@ Rails.application.routes.draw do
 
   resources :broker_stocks
   resources :buyer_stocks
+  resources :user_transactions, only: %i[index show]
 end
 
