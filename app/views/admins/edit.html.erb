@@ -7,11 +7,11 @@
   </div>
 
   <div class="w-full xl:w-1/2 p-8">
-    <%= form_with scope: :buyer, url: buyer_path, method: :put, local: true do |f| %>
+    <%= form_with scope: :admin, url: admin_path, method: :put, local: true do |f| %>
       <div class="mb-4 mt-3">
         <label for="name" class="mr-10 font-bold text-white"> <%= f.label :email %></label>
         <%= f.text_field :email, class:"text-md appearance-none rounded w-full py-2 px-3 text-gray-700 bg-gray-200 leading-tight focus:outline-none focus:shadow-outline h-10" ,placeholder: "Email" %>
-            <% @buyer.errors.full_messages.each do |msg| %>
+            <% @admin.errors.full_messages.each do |msg| %>
           <div class="text-white text-md pt-2"><%= msg %></div>
         <% end %>
       </div>

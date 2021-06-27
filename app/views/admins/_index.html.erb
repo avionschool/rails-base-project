@@ -1,0 +1,453 @@
+  <!--Regular Datatables CSS-->
+	 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+	 <!--Responsive Extension Datatables CSS-->
+	 
+	  <style>
+		/*Overrides for Tailwind CSS */
+		/*Form fields*/
+		.dataTables_wrapper select,
+		.dataTables_wrapper .dataTables_filter input {
+			color: #4a5568; 			/*text-gray-700*/
+			padding-left: 1rem; 		/*pl-4*/
+			padding-right: 1rem; 		/*pl-4*/
+			padding-top: .2rem; 		/*pl-2*/
+			padding-bottom: .2rem; 		/*pl-2*/
+			line-height: 1.25; 			/*leading-tight*/
+			border-width: 2px; 			/*border-2*/
+			border-radius: .25rem; 		
+			border-color: #edf2f7; 		/*border-gray-200*/
+			background-color: #edf2f7; 	/*bg-gray-200*/
+		}
+
+		/*Row Hover*/
+		table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
+			background-color: #ebf4ff;	/*bg-indigo-100*/
+		}
+		
+		/*Pagination Buttons*/
+		.dataTables_wrapper .dataTables_paginate .paginate_button		{
+			font-weight: 700;				/*font-bold*/
+			border-radius: .25rem;			/*rounded*/
+			border: 1px solid transparent;	/*border border-transparent*/
+		}
+		
+		/*Pagination Buttons - Current selected */
+		.dataTables_wrapper .dataTables_paginate .paginate_button.current	{
+			color: #fff !important;				/*text-white*/
+			box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06); 	/*shadow*/
+			font-weight: 700;					/*font-bold*/
+			border-radius: .25rem;				/*rounded*/
+			background: black !important;	
+			border: 1px solid transparent;		/*border border-transparent*/
+		}
+
+		/*Pagination Buttons - Hover */
+		.dataTables_wrapper .dataTables_paginate .paginate_button:hover		{
+			color: #fff !important;				/*text-white*/
+			box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);	 /*shadow*/
+			font-weight: 700;					/*font-bold*/
+			border-radius: .25rem;				/*rounded*/
+			background: black !important;		/*bg-indigo-500*/
+			border: 1px solid transparent;		/*border border-transparent*/
+		}
+		
+		/*Add padding to bottom border */
+		table.dataTable.no-footer {
+			border-bottom: 1px solid #e2e8f0;	/*border-b-1 border-gray-300*/
+			margin-top: 0.75em;
+			margin-bottom: 0.75em;
+		}
+		
+		/*Change colour of responsive icon*/
+		table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+			background-color: #667eea !important; /*bg-indigo-500*/
+		}
+	  </style>
+
+<div class="flex flex-row min-h-screen bg-gray-400 text-white">
+    <aside class="sidebar w-64 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-gray-900">
+      <div class="sidebar-header flex items-center justify-center py-4">
+        <div class="inline-flex">
+            <span class="leading-10 text-gray-100 text-4xl font-bold ml-1">stonks</span>
+        </div>
+      </div>
+    <section class= "flex flex-col h-5/6">
+      <div class="sidebar-content px-4 py-6">
+        <ul class="flex flex-col w-full">
+          <li class="my-px">
+            <a href="app/views/admins/_index.html.erb" class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-700 bg-gray-100">
+              <span class="flex items-center justify-center text-lg text-gray-400">
+                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                  <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+              </span>
+              <span class="ml-3">Dashboard</span>
+            </a>
+          </li>
+          <li class="my-px">
+            <a href="#" class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700">
+              <span class="flex items-center justify-center text-lg text-gray-400">
+                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                  <path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+                </svg>
+              </span>
+              <span class="ml-3">Portfolio</span>
+            </a>
+          </li>
+          <li class="my-px">
+            <a href="#" class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700">
+              <span class="flex items-center justify-center text-lg text-gray-400">
+                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                  <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                </svg>
+              </span>
+              <span class="ml-3">Transactions</span>
+            </a>
+          </li>
+          </ul>
+        </div>
+        <div class="sidebar-content flex flex-col justify-end px-4 py-6 h-96">
+          <ul>  
+          <li class="my-px">
+            <span><%= link_to 'Profile', edit_admin_registration_path, class:"flex flex-row items-center ml-3 h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700" %></span>
+            </a>
+          </li>
+          <li class="my-px">
+            <span><%= link_to 'Sign Out', destroy_admin_session_path, method: :delete, class:"flex flex-row items-center ml-3 h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700" %></span>
+          </li>
+          </ul>
+        </div>
+      </section>
+    </aside>
+    <main class="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
+      <header class="header bg-gray-900 shadow py-4 px-4">
+        <div class="header-content flex items-center flex-row">
+          <form action="#">
+            <div class="hidden md:flex relative">
+              <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-black">
+                <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <input id="search" type="text" name="search"class="text-sm sm:text-base text-black placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-300 w-full h-10 focus:outline-none focus:border-indigo-400" placeholder="Search..."/>
+            </div>
+          </form>
+          <div class="flex justify-center content-center justify-items-center ml-auto">
+            <p class="text-lg text-white font-bold pr-4 pt-1"><%= current_user.username %></p>
+            <a href class="flex flex-row items-center">
+            <img src="https://pbs.twimg.com/profile_images/378800000298815220/b567757616f720812125bfbac395ff54_normal.png" alt class="h-10 w-10 bg-gray-200 border rounded-full"/> 
+            </a>
+          </div>
+        </div>
+      </header>
+      <div class="main-content flex flex-col flex-grow p-4">
+        <div class="flex flex-col flex-grow rounded">
+        <div class="w-full mx-auto mt-2 rounded">
+            <!-- Tabs --> 
+            <ul id="tabs" class="inline-flex w-full px-1 pt-2 ">
+                <li class="px-4 py-2 -mb-px font-bold text-gray-800 border-b-2 border-gray-900 rounded-t opacity-30"><a id="default-tab" href="#first">All Users</a></li>
+                <li class="px-4 py-2 -mb-px font-bold text-gray-800 border-b-2 border-gray-900 rounded-t opacity-30"><a href="#second">Buyers</a></li>
+                <li class="px-4 py-2 -mb-px font-bold text-gray-800 border-b-2 border-gray-900 rounded-t opacity-30"><a href="#third">Brokers</a></li>
+                <li class="px-4 py-2 -mb-px font-bold text-gray-800 border-b-2 border-gray-900 rounded-t opacity-30"><a href="#fourth">Pending Brokers</a></li>
+                <li class="px-4 py-2 -mb-px font-bold text-gray-800 border-b-2 border-gray-900 rounded-t opacity-30"><a href="#fifth">Approved Brokers</a></li>
+            </ul>
+
+            <!-- Tab Contents -->
+            <div id="tab-contents">
+            <div id="first" class="p-4">
+              <table id="table" class="stripe hover w-full" style="width:100%; padding-top: 1em; padding-bottom: 1em;">
+                <thead>
+                  <tr>
+                    <th data-priority="1" class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Email</th>
+                    <th data-priority="2" class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Type</th>
+                    <th data-priority="3" class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Status</th>
+                    <th data-priority="4" class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Approve</th>
+                    <th data-priority="5" class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Actions</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @users.each do |user| %>
+                      <tr class="bg-gray-200 lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap lg:mb-0">
+                          <td class="w-full lg:w-auto p-1 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                          <%= user.email %>
+                          </td>
+                          <td class="w-full lg:w-auto p-1 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                              <%= user.type %>
+                          </td>
+                          <td class="w-full lg:w-auto p-1 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                              <%= user.approved %>
+                          </td>
+                          <td class="w-full lg:w-auto p-1 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                          <% if user.type == 'Broker' && user.approved == false %>
+                              <%= form_with model: user, method: :patch do |f| %>
+                                  <%= f.hidden_field :approved, :value => true %>
+                                  <%= f.submit 'Approve' %>
+                              <% end %>
+                          <% else %>
+                              <%= form_with model: user, method: :patch do |f| %>
+                                  <%= f.hidden_field :approved, :value => false %>
+                                  <%= f.submit 'Unapprove' %>
+                              <% end %>
+                          <% end %>
+                          </td>
+                          <td class="w-full lg:w-auto p-1 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                              <%= link_to 'Show', user %>
+                          <% if user.type == 'Broker' %>
+                          <%= link_to 'Edit', edit_broker_path(user) %>
+                          <% elsif user.type == 'Buyer' %>
+                          <%= link_to 'Edit', edit_buyer_path(user) %>
+                          <% elsif user.type == 'Admin' %>
+                          <%= link_to 'Edit', edit_admin_path(user) %>
+                          <% end %>
+                              <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+                          </td>
+                      </tr>
+                  <% end %>  
+                  </tbody>
+              </table>
+            </div>
+            <div id="second" class="hidden p-4">
+                <table class="w-full">
+                    <thead flex text-white w-full>
+                        <tr>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Email</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Type</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Status</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Approve</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="overflow-y-auto">
+                    <% @users.each do |user| %>
+                    <% if user.type == "Buyer" %>
+                        <tr class="bg-gray-200 lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap m-6 lg:mb-0">
+                            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                            <%= user.email %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                                <%= user.type %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                                <%= user.approved %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                            <% if user.type == 'Broker' && user.approved == false %>
+                                <%= form_with model: user, method: :patch do |f| %>
+                                    <%= f.hidden_field :approved, :value => true %>
+                                    <%= f.submit 'Approve' %>
+                                <% end %>
+                            <% else %>
+                                <%= form_with model: user, method: :patch do |f| %>
+                                    <%= f.hidden_field :approved, :value => false %>
+                                    <%= f.submit 'Unapprove' %>
+                                <% end %>
+                            <% end %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                                <%= link_to 'Show', user %>
+                                <%= link_to 'Edit', edit_buyer_path(user) %>
+                                <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </td>
+                        </tr>
+                    <% end %> 
+                    <% end %>  
+                    </tbody>
+                </table>
+            </div>
+            <div id="third" class="hidden p-4">
+                 <table class="w-full">
+                    <thead flex text-white w-full>
+                        <tr>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Email</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Type</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Status</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Approve</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="overflow-y-auto">
+                    <% @users.each do |user| %>
+                    <% if user.type == "Broker" %>
+                        <tr class="bg-gray-200 lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap m-6 lg:mb-0">
+                            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                            <%= user.email %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                                <%= user.type %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                                <%= user.approved %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                            <% if user.type == 'Broker' && user.approved == false %>
+                                <%= form_with model: user, method: :patch do |f| %>
+                                    <%= f.hidden_field :approved, :value => true %>
+                                    <%= f.submit 'Approve' %>
+                                <% end %>
+                            <% else %>
+                                <%= form_with model: user, method: :patch do |f| %>
+                                    <%= f.hidden_field :approved, :value => false %>
+                                    <%= f.submit 'Unapprove' %>
+                                <% end %>
+                            <% end %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                                <%= link_to 'Show', user %>
+                                <%= link_to 'Edit', edit_broker_path(user) %>
+                                <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </td>
+                        </tr>
+                    <% end %> 
+                    <% end %>  
+                    </tbody>
+                </table>
+            </div>
+            <div id="fourth" class="hidden p-4">
+               <table class="w-full">
+                    <thead flex text-white w-full>
+                        <tr>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Email</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Type</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Status</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Approve</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="overflow-y-auto">
+                    <% @users.each do |user| %>
+                    <% if user.type == 'Broker' && user.approved == false %>
+                        <tr class="bg-gray-200 lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap m-6 lg:mb-0">
+                            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                            <%= user.email %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                                <%= user.type %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                                <%= user.approved %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                            <% if user.type == 'Broker' && user.approved == false %>
+                                <%= form_with model: user, method: :patch do |f| %>
+                                    <%= f.hidden_field :approved, :value => true %>
+                                    <%= f.submit 'Approve' %>
+                                <% end %>
+                            <% else %>
+                                <%= form_with model: user, method: :patch do |f| %>
+                                    <%= f.hidden_field :approved, :value => false %>
+                                    <%= f.submit 'Unapprove' %>
+                                <% end %>
+                            <% end %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                                <%= link_to 'Show', user %>
+                                <%= link_to 'Edit', edit_broker_path(user) %>
+                                <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </td>
+                        </tr>
+                    <% end %> 
+                    <% end %>  
+                    </tbody>
+                </table>
+            </div>
+            <div id="fifth" class="hidden p-4">
+                 <table class="w-full">
+                    <thead flex text-white w-full>
+                        <tr>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Email</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Type</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Status</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Approve</th>
+                            <th class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="overflow-y-auto">
+                    <% @users.each do |user| %>
+                    <% if user.type == 'Broker' && user.approved == true %>
+                        <tr class="bg-gray-200 lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap m-6 lg:mb-0">
+                            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                            <%= user.email %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                                <%= user.type %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                                <%= user.approved %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                            <% if user.type == 'Broker' && user.approved == false %>
+                                <%= form_with model: user, method: :patch do |f| %>
+                                    <%= f.hidden_field :approved, :value => true %>
+                                    <%= f.submit 'Approve' %>
+                                <% end %>
+                            <% else %>
+                                <%= form_with model: user, method: :patch do |f| %>
+                                    <%= f.hidden_field :approved, :value => false %>
+                                    <%= f.submit 'Unapprove' %>
+                                <% end %>
+                            <% end %>
+                            </td>
+                            <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
+                                <%= link_to 'Show', user %>
+                                <%= link_to 'Edit', edit_broker_path(user) %>
+                                <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </td>
+                        </tr>
+                    <% end %> 
+                    <% end %>  
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+<script>
+
+let tabsContainer = document.querySelector("#tabs");
+let tabTogglers = tabsContainer.querySelectorAll("a");
+
+tabTogglers.forEach(function(toggler) {
+  toggler.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    let tabName = this.getAttribute("href");
+
+    let tabContents = document.querySelector("#tab-contents");
+
+    for (let i = 0; i < tabContents.children.length; i++) {
+
+      tabTogglers[i].parentElement.classList.remove("border-blue-400", "border-b",  "-mb-px", "opacity-100");  tabContents.children[i].classList.remove("hidden");
+      if ("#" + tabContents.children[i].id === tabName) {
+        continue;
+      }
+      tabContents.children[i].classList.add("hidden");
+
+    }
+    e.target.parentElement.classList.add("border-blue-400", "border-b-4", "-mb-px", "opacity-100");
+  });
+});
+
+document.getElementById("default-tab").click();
+</script>
+
+	<!-- jQuery -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<!--Datatables -->
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			
+			var table = $('#table').DataTable( {
+					responsive: true
+				} )
+				.columns.adjust()
+				.responsive.recalc();
+		} );
+	
+	</script>

@@ -1,4 +1,4 @@
-require 'rails_helper'
+# require 'rails_helper'
 
 RSpec.describe 'Brokers', type: :request do
   let(:buyer) do

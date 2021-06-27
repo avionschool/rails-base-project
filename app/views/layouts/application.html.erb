@@ -12,13 +12,20 @@
   </head>
 
   <body>
-    <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+
+  <% flash.each do |type, msg| %>
+  <% if type == "notice" %>
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative text-center" role="alert" id="flash">
+      <strong class="font-bold"><%= msg %></strong>            
+    </div>
+  <% else %>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative text-center" role="alert" id="flash">
+      <strong class="font-bold"><%= msg %></strong>           
+    </div>
+  <% end %> 
+<% end %>
     
     <%= yield %>
+    
   </body>
 </html>
