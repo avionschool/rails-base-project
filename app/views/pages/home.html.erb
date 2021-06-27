@@ -11,9 +11,9 @@
   <tbody>
     <% @stocks_list.each do |stock| %>
       <tr>
-        <td><%= stock.symbol %></td>
-        <td><%= stock.company_name %></td>
-        <td><%= stock.latest_price %></td>
+        <td><%= stock.ticker %></td>
+        <td><%= stock.stock %></td>
+        <td><%= stock.price %></td>
       </tr>
     <% end %>
   </tbody>
