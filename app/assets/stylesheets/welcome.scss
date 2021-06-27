@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.body-bg {
+  position: fixed;
+  top: 0vh;
+  left: 0vw;
+  background-color: #0B132B;
+  height: 100vh;
+  width: 100vw;
+  z-index: -50;
+}
+
+.loginbtn {
+  font-family: "Open Sans";
+  font-weight: 600;
+  color: #d2a517;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 2px solid #d2a517;
+  width: 5rem;
+  text-align: center;
+  transition: ease 0.5s;
+  position: fixed;
+  top: 3vh;
+  left: 78vw;
+  text-decoration: none;
+}
+
+.loginbtn:hover {
+  text-decoration: none;
+  background-color: #d2a517;
+  color: #ffeeca;
+}
+
+.signupbtn {
+  font-family: "Open Sans";
+  font-weight: 600;
+  color: #ffeeca;
+  font-size: 1rem;
+  padding: 0.5rem;
+  background-color: #F72C25;
+  border: 2px solid #F72C25;
+  width: 7.5rem;
+  text-align: center;
+  transition: ease 0.5s;
+  position: fixed;
+  top: 3vh;
+  left: 85vw;
+  text-decoration: none;
+}
+
+.signupbtn:hover {
+  text-decoration: none;
+  background-color: transparent;
+  color: #F72C25;
+}
