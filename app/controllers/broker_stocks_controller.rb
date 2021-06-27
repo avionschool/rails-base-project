@@ -1,15 +1,22 @@
 class BrokerStocksController < ApplicationController
-  before_action :authenticate_user!
-  before_action :authenticate_broker!, except: :index
+  # before_action :authenticate_user!
+  before_action :authenticate_broker!, except: %i[index show]
 
   def index
-    @broker_stocks = current_broker.broker_stocks.all
-    @available_stocks = BrokerStock.all
+    if broker_signed_in?
+      @broker_stocks = current_broker.broker_stocks.all
+    elsif buyer_signed_in?
+      @available_stocks = BrokerStock.all
+    end
   end
 
   def new
     @stocks = Stock.all
     @broker_stock = current_broker.broker_stocks.build
+  end
+
+  def show
+    @broker_stock = BrokerStock.find(params[:id])
   end
 
   def create
