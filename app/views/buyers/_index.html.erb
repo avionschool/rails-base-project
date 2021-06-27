@@ -1,0 +1,121 @@
+<div class="flex flex-row min-h-screen bg-gray-500 text-white">
+    <aside class="sidebar w-64 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-gray-900">
+      <div class="sidebar-header flex items-center justify-center py-4">
+        <div class="inline-flex">
+            <span class="leading-10 text-gray-100 text-2xl font-bold ml-1">stonks</span>
+        </div>
+      </div>
+    <section class= "flex flex-col h-5/6">
+      <div class="sidebar-content px-4 py-6">
+        <ul class="flex flex-col w-full">
+          <li class="my-px">
+            <a href="app/views/admins/_index.html.erb" class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-700 bg-gray-100">
+              <span class="flex items-center justify-center text-lg text-gray-400">
+                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                  <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+              </span>
+              <span class="ml-3">Dashboard</span>
+            </a>
+          </li>
+          <li class="my-px">
+            <a href="app/views/admins/portfolio.html.erb" class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700">
+              <span class="flex items-center justify-center text-lg text-gray-400">
+                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                  <path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+                </svg>
+              </span>
+              <span class="ml-3">Portfolio</span>
+            </a>
+          </li>
+          <li class="my-px">
+            <a href="#" class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700">
+              <span class="flex items-center justify-center text-lg text-gray-400">
+                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                  <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                </svg>
+              </span>
+              <span class="ml-3">Transactions</span>
+            </a>
+          </li>
+          </ul>
+        </div>
+        <div class="sidebar-content flex flex-col justify-end px-4 py-6 h-96">
+          <ul>  
+          <li class="my-px">
+            <span><%= link_to 'Profile', edit_buyer_registration_path, class:"flex flex-row items-center ml-3 h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700" %></span>
+            </a>
+          </li>
+          <li class="my-px">
+            <span><%= link_to 'Sign Out', destroy_buyer_session_path, method: :delete, class:"flex flex-row items-center ml-3 h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700" %></span>
+          </li>
+          </ul>
+        </div>
+      </section>
+    </aside>
+    <main class="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
+      <header class="header bg-gray-900 shadow py-4 px-4">
+        <div class="header-content flex items-center flex-row">
+          <form action="#">
+            <div class="hidden md:flex relative">
+              <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-black">
+                <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <input id="search" type="text" name="search"class="text-sm sm:text-base text-black placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-300 w-full h-10 focus:outline-none focus:border-indigo-400" placeholder="Search..."/>
+            </div>
+          </form>
+          <div class="flex justify-center content-center justify-items-center ml-auto">
+            <p class="text-lg text-white font-bold pr-4 pt-1"><%= current_user.username %></p>
+            <a href class="flex flex-row items-center">
+            <img src="https://pbs.twimg.com/profile_images/378800000298815220/b567757616f720812125bfbac395ff54_normal.png" alt class="h-10 w-10 bg-gray-200 border rounded-full"/> 
+            </a>
+          </div>
+        </div>
+      </header>
+      <div class="main-content flex flex-col flex-grow p-4">
+        <h1 class="font-bold text-2xl text-white">Dashboard</h1>
+
+        <div class="flex flex-col flex-grow bg-gray-500 rounded mt-4">
+            <p>Welcome <%= current_user.email %>! (<%= current_user.type %> account)</p>
+            <p>Pokus lang tayo sa goal natin 👍</p> 
+            
+        </div>
+      </div>
+      <footer class="footer px-4 py-6">
+        <div class="footer-content">
+          <p class="text-sm text-white text-center">© Stonks 2021. All rights reserved.</p>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+<script>
+
+let tabsContainer = document.querySelector("#tabs");
+let tabTogglers = tabsContainer.querySelectorAll("a");
+
+tabTogglers.forEach(function(toggler) {
+  toggler.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    let tabName = this.getAttribute("href");
+
+    let tabContents = document.querySelector("#tab-contents");
+
+    for (let i = 0; i < tabContents.children.length; i++) {
+
+      tabTogglers[i].parentElement.classList.remove("border-blue-400", "border-b",  "-mb-px", "opacity-100");  tabContents.children[i].classList.remove("hidden");
+      if ("#" + tabContents.children[i].id === tabName) {
+        continue;
+      }
+      tabContents.children[i].classList.add("hidden");
+
+    }
+    e.target.parentElement.classList.add("border-blue-400", "border-b-4", "-mb-px", "opacity-100");
+  });
+});
+
+document.getElementById("default-tab").click();
+</script>

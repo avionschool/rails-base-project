@@ -1,0 +1,4 @@
+    <p>Welcome <%= current_user.email %>! (<%= current_user.type %> account)</p>
+    <p>Pokus lang tayo sa goal natin 👍</p>
+    <p>Paapprove ka muna sa admin pre</p>  
+    <%= link_to  "Sign out", destroy_buyer_session_path, method: :delete %>    
