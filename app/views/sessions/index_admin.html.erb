@@ -1,4 +1,22 @@
-<h1>You have access to this page, <%= current_user.username %></h1>
-<h1>You are one of our <%= current_user.role %></h1>
+<head>
+  <%= stylesheet_link_tag "admin" %>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Indie+Flower&family=Raleway&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+  <h1>You have access to this page, <%= current_user.username %></h1>
+  <h1>You are one of our <%= current_user.role %></h1>
 
-<%= link_to "Logout", logout_path %>
+  <%= link_to "Logout", logout_path %>
+
+  <% @users.each do |t| %>
+    <div class="user_card">
+      <h4 class="user_text"><%= t.username %></h4>
+      <h4 class="user_text"><%= t.email %></h4>
+
+      <%= link_to approve_path(:id => t.id), :class => "" do %>
+        <h4 class="user_text">Approve</h4>
+      <% end %>
+    </div>
+  <% end %>
+</body>

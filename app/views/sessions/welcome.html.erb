@@ -1,8 +1,18 @@
-<h1>Welcome</h1>
-
-<% if logged_in? %>
-  <h1>You are Logged In, <%= current_user.username %></h1>
-<% end %>
-
-<%= link_to 'Login', '/login', method: :get %><br>
-<%= link_to 'Sign Up', '/users/new', method: :get %>
+<head>
+  <%= stylesheet_link_tag "welcome" %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <%= link_to 'Login','/login', :class => "loginbtn", method: :get %>
+  <br>
+  <%= link_to 'Sign Up', '/users/new', :class => "signupbtn", method: :get %>
+  <div class="body-bg"></div>
+</body>
