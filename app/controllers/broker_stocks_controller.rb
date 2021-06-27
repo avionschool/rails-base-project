@@ -1,4 +1,5 @@
 class BrokerStocksController < ApplicationController
+  before_action :authenticate_user!
   before_action :authenticate_broker!, except: :index
 
   def index
@@ -7,6 +8,7 @@ class BrokerStocksController < ApplicationController
   end
 
   def new
+    @stocks = Stock.all
     @broker_stock = current_broker.broker_stocks.build
   end
 
@@ -24,6 +26,6 @@ class BrokerStocksController < ApplicationController
   private
 
   def broker_stock_params
-    params.permit(:symbol, :price, :company_name)
+    params.require(:broker_stock).permit(:symbol, :company_name)
   end
 end
