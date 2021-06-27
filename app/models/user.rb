@@ -23,7 +23,7 @@ class User < ApplicationRecord
   scope :brokers, -> { where(user_type_id: UserType.find_by(user_type: 'broker').id) }
   scope :admins, -> { where(user_type_id: UserType.find_by(user_type: 'admin').id) }
   # Callbacks
-  after_validation :set_user_verification
+  before_validation :set_user_verification
   # Private Methods
 
   private
