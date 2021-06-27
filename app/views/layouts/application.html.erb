@@ -19,8 +19,8 @@
           <%=render 'layouts/side_navigation'%>
         </div>
       <%end%>
-      <div class= "col-lg-<%=(top_nav_bar?) ?'-12 ':'-9 sidebar-active' %> ">
-        <div class="container">
+      <div class= "col-lg-<%=(top_nav_bar?) ?'12 ':'9 sidebar-active' %> ">
+        <div class="container ms-5">
           <p class="notice"><%= notice %></p>
           <p class="alert"><%= alert %></p>
           <%= yield %>
@@ -30,3 +30,4 @@
     <%= javascript_pack_tag 'sidenav_js' %>
   </body>  
 </html>
+

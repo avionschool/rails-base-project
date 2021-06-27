@@ -1,0 +1,16 @@
+<tr>
+    <th scope="col"><%=stock.ticker%></th>
+    <th scope="col"><%=stock.name%></th>
+    <th scope="col"><%=stock.last_price%></th>
+    <th scope="col">
+        <%if current_user.stock_already_tracked?(stock.ticker)%>
+            <%=link_to user_stock_path(stock.userstock(current_user)), method: :delete, class:'btn btn-add-remove btn-tracked-remove' do%>
+                <span>Already Tracked</span>
+            <%end%>
+        <%else%>
+            <%=link_to 'Add to Portfolio', user_stocks_path(ticker: stock.ticker), class: "btn btn-xs btn-add-remove btn-success add-stock", method: :post, remote: true%>
+        <%end%>
+
+    </th>
+</tr>
+

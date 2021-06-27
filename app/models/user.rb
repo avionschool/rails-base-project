@@ -10,4 +10,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def stock_already_tracked?(ticker_symbol)
+    stock = Stock.check_db(ticker_symbol)
+    return false unless stock
+
+    stocks.exists?(id: stock.id)
+  end
 end

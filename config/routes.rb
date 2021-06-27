@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   get 'transactions', to:'user_stocks#transactions'
   get 'my_portfolio', to:'user_stocks#my_portfolio'
   get 'marketplace', to: 'stocks#index', as: 'marketplace'
+  resources :user_stocks, only: [:create, :destroy,:new]
+
 end
 
