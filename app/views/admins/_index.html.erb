@@ -65,7 +65,7 @@
 	  </style>
 
 <div class="flex flex-row min-h-screen bg-gray-400 text-white">
-    <aside class="sidebar w-64 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-gray-900">
+    <aside class="sidebar w-64  md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-gray-900">
       <div class="sidebar-header flex items-center justify-center py-4">
         <div class="inline-flex">
             <span class="leading-10 text-gray-100 text-4xl font-bold ml-1">stonks</span>
@@ -104,6 +104,14 @@
               <span class="ml-3">Transactions</span>
             </a>
           </li>
+          <li class="my-px">
+            <span><%= link_to '+  Add Broker', new_broker_registration_path, class:"flex flex-row items-center ml-3 h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700" %></span>
+            </a>
+          </li>
+          <li class="my-px">
+            <span><%= link_to '+  Add Buyer', new_buyer_registration_path, class:"flex flex-row items-center ml-3 h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700" %></span>
+            </a>
+          </li>
           </ul>
         </div>
         <div class="sidebar-content flex flex-col justify-end px-4 py-6 h-96">
@@ -140,9 +148,9 @@
           </div>
         </div>
       </header>
-      <div class="main-content flex flex-col flex-grow p-4">
+      <div class="main-content flex flex-col flex-grow p-2">
         <div class="flex flex-col flex-grow rounded">
-        <div class="w-full mx-auto mt-2 rounded">
+        <div class="w-full mx-auto  rounded">
             <!-- Tabs --> 
             <ul id="tabs" class="inline-flex w-full px-1 pt-2 ">
                 <li class="px-4 py-2 -mb-px font-bold text-gray-800 border-b-2 border-gray-900 rounded-t opacity-30"><a id="default-tab" href="#first">All Users</a></li>
@@ -155,7 +163,7 @@
             <!-- Tab Contents -->
             <div id="tab-contents">
             <div id="first" class="p-4">
-              <table id="table" class="stripe hover w-full" style="width:100%; padding-top: 1em; padding-bottom: 1em;">
+              <table id="table" class="stripe hover w-full" style="width:100%; height:100%; padding-top: 1em; padding-bottom: 1em;">
                 <thead>
                   <tr>
                     <th data-priority="1" class="p-3 font-bold uppercase bg-gray-900 text-white border border-gray-300 hidden lg:table-cell">Email</th>
@@ -182,12 +190,12 @@
                           <% if user.type == 'Broker' && user.approved == false %>
                               <%= form_with model: user, method: :patch do |f| %>
                                   <%= f.hidden_field :approved, :value => true %>
-                                  <%= f.submit 'Approve' %>
+                                  <%= f.submit 'Approve', class:"w-16 rounded text-xs text-center text-green-400 ring ring-green-400 p-1" %>
                               <% end %>
                           <% else %>
                               <%= form_with model: user, method: :patch do |f| %>
                                   <%= f.hidden_field :approved, :value => false %>
-                                  <%= f.submit 'Unapprove' %>
+                                  <%= f.submit 'Unapprove',class: "w-16 rounded text-xs text-center text-red-400 ring ring-red-400 p-1" %>
                               <% end %>
                           <% end %>
                           </td>
@@ -200,7 +208,7 @@
                           <% elsif user.type == 'Admin' %>
                           <%= link_to 'Edit', edit_admin_path(user) %>
                           <% end %>
-                              <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+
                           </td>
                       </tr>
                   <% end %>  
@@ -235,19 +243,18 @@
                             <% if user.type == 'Broker' && user.approved == false %>
                                 <%= form_with model: user, method: :patch do |f| %>
                                     <%= f.hidden_field :approved, :value => true %>
-                                    <%= f.submit 'Approve' %>
+                                    <%= f.submit 'Approve', class:"w-16 rounded text-xs text-center text-green-400 ring ring-green-400 p-1" %>
                                 <% end %>
                             <% else %>
                                 <%= form_with model: user, method: :patch do |f| %>
                                     <%= f.hidden_field :approved, :value => false %>
-                                    <%= f.submit 'Unapprove' %>
+                                    <%= f.submit 'Unapprove',class: "w-16 rounded text-xs text-center text-red-400 ring ring-red-400 p-1" %>
                                 <% end %>
                             <% end %>
                             </td>
                             <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
                                 <%= link_to 'Show', user %>
                                 <%= link_to 'Edit', edit_buyer_path(user) %>
-                                <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
                             </td>
                         </tr>
                     <% end %> 
@@ -283,19 +290,18 @@
                             <% if user.type == 'Broker' && user.approved == false %>
                                 <%= form_with model: user, method: :patch do |f| %>
                                     <%= f.hidden_field :approved, :value => true %>
-                                    <%= f.submit 'Approve' %>
+                                    <%= f.submit 'Approve', class:"w-16 rounded text-xs text-center text-green-400 ring ring-green-400 p-1" %>
                                 <% end %>
                             <% else %>
                                 <%= form_with model: user, method: :patch do |f| %>
                                     <%= f.hidden_field :approved, :value => false %>
-                                    <%= f.submit 'Unapprove' %>
+                                    <%= f.submit 'Unapprove',class: "w-16 rounded text-xs text-center text-red-400 ring ring-red-400 p-1" %>
                                 <% end %>
                             <% end %>
                             </td>
                             <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
                                 <%= link_to 'Show', user %>
                                 <%= link_to 'Edit', edit_broker_path(user) %>
-                                <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
                             </td>
                         </tr>
                     <% end %> 
@@ -331,19 +337,18 @@
                             <% if user.type == 'Broker' && user.approved == false %>
                                 <%= form_with model: user, method: :patch do |f| %>
                                     <%= f.hidden_field :approved, :value => true %>
-                                    <%= f.submit 'Approve' %>
+                                    <%= f.submit 'Approve', class:"w-16 rounded text-xs text-center text-green-400 ring ring-green-400 p-1" %>
                                 <% end %>
                             <% else %>
                                 <%= form_with model: user, method: :patch do |f| %>
                                     <%= f.hidden_field :approved, :value => false %>
-                                    <%= f.submit 'Unapprove' %>
+                                    <%= f.submit 'Unapprove',class: "w-16 rounded text-xs text-center text-red-400 ring ring-red-400 p-1" %>
                                 <% end %>
                             <% end %>
                             </td>
                             <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
                                 <%= link_to 'Show', user %>
                                 <%= link_to 'Edit', edit_broker_path(user) %>
-                                <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
                             </td>
                         </tr>
                     <% end %> 
@@ -379,19 +384,18 @@
                             <% if user.type == 'Broker' && user.approved == false %>
                                 <%= form_with model: user, method: :patch do |f| %>
                                     <%= f.hidden_field :approved, :value => true %>
-                                    <%= f.submit 'Approve' %>
+                                    <%= f.submit 'Approve', class:"w-16 rounded text-xs text-center text-green-400 ring ring-green-400 p-1" %>
                                 <% end %>
                             <% else %>
                                 <%= form_with model: user, method: :patch do |f| %>
                                     <%= f.hidden_field :approved, :value => false %>
-                                    <%= f.submit 'Unapprove' %>
+                                    <%= f.submit 'Unapprove',class: "w-16 rounded text-xs text-center text-red-400 ring ring-red-400 p-1" %>
                                 <% end %>
                             <% end %>
                             </td>
                             <td class="w-full lg:w-auto p-3 text-gray-800  border border-b text-center block lg:table-cell relative lg:static">
                                 <%= link_to 'Show', user %>
                                 <%= link_to 'Edit', edit_broker_path(user) %>
-                                <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
                             </td>
                         </tr>
                     <% end %> 
@@ -403,6 +407,11 @@
         </div>
         </div>
       </div>
+         <footer class="footer px-4">
+        <div class="footer-content">
+          <p class="text-sm font-medium text-black text-center">© Stonks 2021. All rights reserved.</p>
+        </div>
+      </footer>
     </main>
   </div>
 
@@ -451,3 +460,9 @@ document.getElementById("default-tab").click();
 		} );
 	
 	</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+ 
+  

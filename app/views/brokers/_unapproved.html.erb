@@ -1,4 +1,5 @@
     <p>Welcome <%= current_user.email %>! (<%= current_user.type %> account)</p>
     <p>Pokus lang tayo sa goal natin 👍</p>
     <p>Paapprove ka muna sa admin pre</p>  
-    <%= link_to  "Sign out", destroy_buyer_session_path, method: :delete %>    
+    <%= link_to  "Sign out", destroy_broker_session_path, method: :delete %>    
+    <%= link_to 'Profile', edit_broker_registration_path, class:"flex flex-row items-center ml-3 h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700" %></span>

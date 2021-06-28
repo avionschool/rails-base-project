@@ -1,0 +1,27 @@
+<h1> New Broker </h1>
+
+<%= form_for @broker, :url => {:action => "new_broker"} do |f| %>             
+         <%= render "devise/shared/error_messages", resource: resource %>
+              <div>
+                <label class="block text-base font-medium leading-relaxed text-white"><%= f.label :broker_username %></label>
+                <%= f.text_field :broker_username, autofocus: true, autocomplete: "username",class:"w-full px-4 py-2 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-blueGray-500",placeholder: "Username" %>
+              </div>
+              <div class="mt-4">
+                <label class="block text-base font-medium leading-relaxed text-white"><%= f.label :email %></label>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"w-full px-4 py-2 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-blueGray-500",placeholder: "Email" %>
+              </div>
+              <div class="flex flex-wrap mt-4 mb-6 -mx-3">
+                <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
+                  <label class="text-base font-medium leading-relaxed text-white" for="password" minlength="6"><%= f.label :password %></label>
+                  <%= f.password_field :password, autocomplete: "new-password", class: "block w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-blueGray-500", placeholder:"Your Password" %>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                </div>
+                <div class="w-full px-3 md:w-1/2">
+                  <label class="text-base font-medium leading-relaxed text-white" for="confirm"><%= f.label :password_confirmation %><br /></label>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "block w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform border-transparent rounded-lg bg-blueGray-100 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-blueGray-500", placeholder:"Confirm Password"  %>
+                </div>
+              </div>
+        <%= f.submit "Create",class:"block w-full px-4 py-3 mt-6 font-semibold text-black transition duration-500 ease-in-out transform rounded-lg bg-indigo-500 hover:from-black to-black focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 hover:to-black" %>
+<% end %>
