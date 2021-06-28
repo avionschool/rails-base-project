@@ -7,17 +7,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
       session[:user_id] = @user.id
-      case @user.role.downcase
-      when 'buyer'
-        redirect_to '/dashboard'
-      when 'admin'
-        redirect_to '/dashboard_admin'
-      end
+      redirect_to dashboard_path
     else
-      render :new
+      redirect_to '/users/new'
     end
   end
 
@@ -34,6 +28,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :username, :password, :role, :money, :buyer_role, :status, :first_name, :last_name)
+    params.require(:user).permit(:email, :username, :password, :role, :money, :broker_role, :status, :first_name, :last_name)
   end
 end
