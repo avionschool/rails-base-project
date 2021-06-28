@@ -3,8 +3,12 @@ class Stock < ApplicationRecord
   validates :ticker, presence: true
   validates :price, presence: true
   def self.new_lookup(ticker_symbol)
+<<<<<<< HEAD
     client = IEX::Api::Client.new(publishable_token: Rails.application.credentials.iex_client[:publish_access_key],
                                   secret_token: Rails.application.credentials.iex_client[:secret_access_key],
+=======
+    client = IEX::Api::Client.new(publishable_token: Rails.application.credentials.iex_client[:publish_access_key], secret_token: Rails.application.credentials.iex_client[:secret_access_key],
+>>>>>>> fixed errors in hiding api keys
                                   endpoint: 'https://sandbox.iexapis.com/v1')
     new(ticker: ticker_symbol, company: client.company(ticker_symbol).company_name, price: client.price(ticker_symbol))
   end
