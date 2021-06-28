@@ -6,14 +6,22 @@
       <th scope="col">Ticker</th>
       <th scope="col">Company Name</th>
       <th scope="col">Price</th>
+      <%if current_user.buyer?%>
+        <th scope="col">Broker</th>
+      <%end%>
       <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
-    <%=render @stocks%>
+    <%if current_user.broker?%>
+      <%=render @stocks%>
+    <%else%>
+      <%@stocks.each do |user_stock|%>
+        <%= render 'stocks/stock', stock: user_stock.stock, broker: user_stock.user, user_stock: user_stock%>
+      <%end%>
+    <%end%>
   </tbody>
 </table>
-
 <div class="flickr_pagination">
     <div class="page_info">
       <%= page_entries_info @stocks %>

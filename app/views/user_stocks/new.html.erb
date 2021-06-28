@@ -1,0 +1,38 @@
+<%=render 'shared/errors', obj: @user_stock%>
+<h1>Order's Entry</h1>
+
+<div class="row">
+    <div class="col-9">
+        <%= form_with scope: :user_stocks, url: order_stocks_path, local:true do |f|%>
+            <div class="form-group">
+                <%= f.label :broker %>
+                <%if @broker_stock%>
+                    <%= f.select :broker_id, @stock.users.broker.map{|broker| [broker.email, broker.id]}, class: 'form-control', selected: "#{@broker_stock&.user&.id}"%>    
+                <%else%>
+                    <%= f.select :broker_id, @stock.users.broker.map{|broker| [broker.email, broker.id]}, class: 'form-control'%>    
+                <%end%>
+            </div>
+
+            <div class="form-group">
+                 <%= f.label :stock %>
+                 <%= f.text_field :stock, autofocus: true, class: 'form-control', value:"#{@stock.name} (#{@stock.ticker})", :readonly => 'true' %>
+                 <%=f.hidden_field :ticker, :value => @stock.ticker%>
+            </div>
+            <div class="form-group">
+                <%= f.label :action %>
+                <%= f.select :type, [["Buy", "buy"], ["Sell", "sell"]], class: 'form-control', selected: "#{@type}" %>
+            </div>
+            <div class="form-group">
+                <%= f.label :quantity %>
+                <%= f.number_field :quantity, autofocus: true, class: 'form-control', min:"0" %>
+            </div>
+            <div class="form-group">
+                <%= f.label "Price" %>
+                <%= f.number_field :stock_price, autofocus: true, class: 'form-control', value:"#{@stock.last_price}", :readonly => 'true', step: 0.1%>
+            </div>
+            <div class="form-group">         
+                <%= f.submit 'Submit order', class: 'btn btn-primary' %>
+            </div>    
+        <% end %>
+    </div>
+</div>
