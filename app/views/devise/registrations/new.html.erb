@@ -1,29 +1,67 @@
-<h2>Sign up</h2>
+<section class="wrapper-body">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="wrapper-grid">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <article class="left">
+      <% if current_page?(new_buyer_registration_path) %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+        <div>
+          <h3>Already a member?</h3>
+          <p>If you are a member, <br> please log in.</p>
+        </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        <div class="login-btn__left">
+          <%= render "devise/shared/links" %>
+        </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+        <div class="become-a-broker__left">
+          <%= link_to 'Become a Broker', new_broker_registration_path, class:"become-a-broker__left-link-to"%>
+        </div>
 
-<%= render "devise/shared/links" %>
+      <% elsif current_page?(new_broker_registration_path) %>
+        <div>
+          <h3>Already a BROKER?</h3>
+          <p>If you are a broker, <br> please log in.</p>
+        </div>
+
+        <div class="login-btn__left">
+          <%= render "devise/shared/links" %>
+        </div>
+
+        <div class="become-a-broker__left">
+          <%= link_to 'Login as Buyer', buyer_session_path, class:"become-a-broker__left-link-to"%>
+        </div>
+
+      <% end %>
+
+    </article>
+
+    <article class="input-data right">
+      <h2>Sign up</h2>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field label-email">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", size:40, class:"input email" %>
+          <br />
+        </div>
+
+        <div class="field">
+          <% if @minimum_password_length %>
+          <%= f.label :password%><em class="em_6chars_min"> (<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", size:40, class:"input password" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation%><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", size:40, class:"input pconfirm" %>
+        </div>
+
+        <div>
+          <%= f.submit "Sign up", class:'btn' %>
+        </div>
+      <% end %>
+    </article>
+</section>
