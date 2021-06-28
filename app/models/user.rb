@@ -11,6 +11,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  after_create :welcome_send
+
+  def welcome_send
+    WelcomeMailer.welcome_send(self).deliver
+  end
+
   def stock_already_tracked?(ticker_symbol)
     stock = Stock.check_db(ticker_symbol)
     return false unless stock
