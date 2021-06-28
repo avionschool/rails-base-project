@@ -3,6 +3,7 @@ FactoryBot.define do
     username { 'user' }
     email { "#{username}@email.com" }
     password { 'secure123' }
+    approved { true }
 
     trait :admin do
       username { 'admin' }

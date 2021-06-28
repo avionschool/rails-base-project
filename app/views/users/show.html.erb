@@ -1,0 +1,6 @@
+<h1><%=@user.username%></h1>
+<h1><%=@user.email%></h1>
+<h1><%=@user.role%></h1>
+<h1>member since <%=@user.created_at%></h1>
+<%=link_to 'Edit', edit_user_path(@user), class: "btn btn-xs btn-primary"%>
+
