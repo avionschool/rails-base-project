@@ -1,23 +1,11 @@
-<h1> My Porfolio</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Ticker</th>
-      <th scope="col">Company Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%=render @stocks%>
-  </tbody>
-</table>
+<h1>My Portfolio</h1>
 
-<div class="flickr_pagination">
-    <div class="page_info">
-      <%= page_entries_info @stocks %>
-    </div>
-    <%= will_paginate @stocks, :container => false %>
-  </div>
-
-  
+<%if !@tracked_stocks.empty?%> 
+  <%if current_user.broker?%>
+    <%=render 'stocks/broker_list'%>
+  <%else%>
+    <%=render 'stocks/buyer_list'%>
+  <%end%>
+<%else%>
+  <h1>You Dont have Any Stocks Right now</h1>
+<%end%>
