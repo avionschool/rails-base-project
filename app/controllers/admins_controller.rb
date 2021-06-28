@@ -68,5 +68,4 @@ class AdminsController < ApplicationController
   def buyer_params
     params.require(:buyer).permit(:email, :username, :approved, :confirmable, :type)
   end
-
 end
