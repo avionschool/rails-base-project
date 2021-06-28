@@ -11,10 +11,22 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  after_create :welcome_send
+  before_create :approve_buyer
+  after_create :sign_up_proccess
 
-  def welcome_send
+  scope :pending_users, lambda {
+    where(approved: false)
+  }
+  scope :approved_users, lambda {
+    where(approved: true).where.not(role: 'admin')
+  }
+  def approve_buyer
+    self.approved = true if buyer?
+  end
+
+  def sign_up_proccess
     WelcomeMailer.welcome_send(self).deliver
+    AdminMailer.new_user_waiting_for_approval(email).deliver if broker?
   end
 
   def stock_already_tracked?(ticker_symbol)
@@ -26,5 +38,13 @@ class User < ApplicationRecord
 
   def total_net_cost
     user_stocks.sum('total_shares * average_price')
+  end
+
+  def active_for_authentication?
+    super && approved?
+  end
+
+  def inactive_message
+    approved? ? super : :not_approved
   end
 end
