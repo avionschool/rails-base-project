@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :user_stocks, dependent: :destroy
   has_many :stocks, through: :user_stocks, dependent: :nullify
   has_many :broker_transactionrecords, class_name: 'Transactionrecord', foreign_key: 'broker_id', inverse_of: :broker, dependent: :nullify
-  has_many :buyer_transactionrecords, class_name: 'Transactionrecord', foreign_key: 'buyer_id', inverse_of: :broker, dependent: :nullify
+  has_many :buyer_transactionrecords, class_name: 'Transactionrecord', foreign_key: 'buyer_id', inverse_of: :buyer, dependent: :nullify
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
