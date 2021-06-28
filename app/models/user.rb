@@ -6,9 +6,9 @@ class User < ApplicationRecord
   # Relations
   belongs_to :user_type
   has_many :broker_stocks, dependent: :destroy
-  has_many :stocks, through: :broker_stock
+  has_many :stocks, through: :broker_stocks
   has_many :transactions, dependent: :destroy
-  has_many :buyer_stocks, through: :transactions, source: :broker_stock
+  has_many :buyer_stocks, through: :transactions, source: :broker_stocks
   # Validation
   validates :first_name, presence: true
   validates :last_name, presence: true

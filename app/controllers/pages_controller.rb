@@ -1,30 +1,43 @@
 class PagesController < ApplicationController
-  before_action :update_stocks
   before_action :authenticate_user!
 
   def home
-    @stocks_list = Stock.all
+    @name = current_user.first_name
+  end
+
+  # Admin Only
+  def users
+    @buyers = User.buyers.all
+    @brokers = User.brokers.where(verified: true)
+    @users = User.all
+  end
+
+  def pending
+    @pending = User.brokers.where(verified: false)
+  end
+
+  def edit_pending
+    @user = User.find(params[:id])
+  end
+
+  def approve_pending
+    @user = User.find(params[:id])
+    @user.update(:user_params)
+  end
+
+  # Brokers and Buyers Only
+  def portfolio
+    case @user_type
+    when 'broker'
+      @portfolio = current_user.stocks
+    when 'buyer'
+      @portfolio = curent_user.buyer_stocks
+    end
   end
 
   private
 
-  def update_stocks
-    stocks_list = Stock.most_active_stocks
-    return if stocks_list.nil?
-
-    stocks_list.each do |stock_data|
-      stock = Stock.find_or_create_by(ticker: stock_data.symbol) do |s|
-        s.price = stock_data.latest_price
-        s.stock = stock_data.company_name
-      end
-      if stock.price != stock_data.latest_price
-        stock.price = stock_data.latest_price
-        stock.save
-      end
-    end
-  end
-
-  def stock_params
-    params.require(:stock).permit(:stock, :price, :ticker)
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :user_type_id)
   end
 end
