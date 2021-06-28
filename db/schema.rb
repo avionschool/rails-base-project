@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_25_050702) do
+ActiveRecord::Schema.define(version: 2021_06_28_012721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2021_06_25_050702) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "stock_id"
     t.integer "broker_id"
     t.string "company"
@@ -55,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_06_25_050702) do
     t.integer "quantity"
     t.string "ticker"
     t.datetime "created_at", precision: 6, null: false
+    t.integer "buyer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,6 +64,9 @@ ActiveRecord::Schema.define(version: 2021_06_25_050702) do
     t.string "password_digest"
     t.string "email"
     t.string "username"
+    t.string "broker_role"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

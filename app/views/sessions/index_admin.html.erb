@@ -1,22 +1,68 @@
 <head>
   <%= stylesheet_link_tag "admin" %>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Indie+Flower&family=Raleway&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet"> 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <h1>You have access to this page, <%= current_user.username %></h1>
-  <h1>You are one of our <%= current_user.role %></h1>
+  <%= link_to "Logout", logout_path, :class => "logoutbtn" %>
+  <div class="navbar_admin"></div>
 
-  <%= link_to "Logout", logout_path %>
+  <div class="body_layout">
+    <div class="admin_section">
+      <div class="pending_section">
+        <p class="user_text username bold">Pending Brokers</p>
+        <div class="user_card_pending">
+          <p class="user_text bold">Username</p>
+          <p class="user_text bold">Email</p>
+          <p class="user_text bold">Action</p>
+        </div>
+        <div class="scrollable">
+          <% @pending_users.each do |t| %>
+            <div class="user_card_pending">
+              <%= link_to users_details_path(:id => t.id), :class => "user_link" do %>
+                <h4 class="user_text username"><%= t.username %></h4>
+              <% end %>
+              
+              <h4 class="user_text"><%= t.email %></h4>
 
-  <% @users.each do |t| %>
-    <div class="user_card">
-      <h4 class="user_text"><%= t.username %></h4>
-      <h4 class="user_text"><%= t.email %></h4>
+              <%= link_to approve_path(:id => t.id), :class => "user_link" do %>
+                <h4 class="user_text approve">Approve</h4>
+              <% end %>
+            </div>
+          <% end %>
+        </div> 
+      </div>
 
-      <%= link_to approve_path(:id => t.id), :class => "" do %>
-        <h4 class="user_text">Approve</h4>
-      <% end %>
+      <div></div>
+
+      <div class="users_section">
+        <p class="user_text username bold">Users</p>
+        <div class="user_card_users">
+          <p class="user_text bold">Username</p>
+          <p class="user_text bold">Money</p>
+        </div>
+        <div class="scrollable">
+          <% @users.each do |t| %>
+            <div class="user_card_users">
+              <%= link_to users_details_path(:id => t.id), :class => "user_link" do %>
+                <h4 class="user_text username"><%= t.username %></h4>
+              <% end %>
+              
+              <h4 class="user_text"><%= ('%.2f' % t.money) %></h4>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
+  </div>
+
+  <%= image_tag("logotxt.png", :class => "logo") %>
+  <div class="body-bg"></div>
 </body>

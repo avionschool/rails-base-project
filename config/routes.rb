@@ -4,15 +4,13 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'welcome', to: 'sessions#welcome'
-  get 'dashboard_buyer', to: 'sessions#index_buyer'
-  get 'dashboard_broker', to: 'sessions#index_broker'
+  get 'dashboard', to: 'sessions#index'
   get 'dashboard_admin', to: 'sessions#index_admin'
   get 'logout', to: 'sessions#out'
 
   get 'approve', to: 'sessions#approve'
-
+  get '/users/details/:id' => 'users#details', as: 'users_details'
 
   resources :stocks
   get 'search-stock', to: 'stocks#search'
-
 end

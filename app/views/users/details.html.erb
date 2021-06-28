@@ -1,5 +1,5 @@
 <head>
-  <%= stylesheet_link_tag "welcome" %>
+  <%= stylesheet_link_tag "details" %>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,22 +11,22 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <%= link_to 'Login','/login', :class => "loginbtn", method: :get %>
-  <%= link_to 'Sign Up', '/users/new', :class => "signupbtn", method: :get %>
+  <%= link_to "Logout", logout_path, :class => "logoutbtn" %>
+  <div class="navbar_admin"></div>
 
-  <div class="intro">
-    <%= image_tag("intropic.png", :class => "intropic") %>
-    <h1 class="introtitle">
-      HOLD THE WORLD'S MARKETS IN YOUR HANDS WITH STOX.IO
-    </h1>
-  </div>
+  <div class="details">
+    <div class="user_down">
+      <h4 class="user_text"><%= @user.username %></h4>
 
-  <div class="addinfo">
-    <br>
-  </div>
+      <h4 class="user_text"><%= @user.first_name %> <%= @user.last_name %></h4>
+      
+      <h4 class="user_text"><%= @user.email %></h4>
+
+      <h4 class="user_text"><%= ('%.2f' % @user.money) %></h4>
+    </div>
   
+  </div>
+
   <%= image_tag("logotxt.png", :class => "logo") %>
   <div class="body-bg"></div>
-  <div id="navbar"></div>
-  <%= javascript_pack_tag 'navbar.js' %>
 </body>

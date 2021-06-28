@@ -12,16 +12,17 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       case @user.role.downcase
       when 'buyer'
-        redirect_to '/dashboard_buyer'
-      when 'broker'
-        @user.update(status: 'pending')
-        redirect_to root_path
+        redirect_to '/dashboard'
       when 'admin'
         redirect_to '/dashboard_admin'
       end
     else
       render :new
     end
+  end
+
+  def details
+    @user = User.find_by(id: params[:id])
   end
 
   private

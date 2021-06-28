@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
+  overflow-x: hidden;
+  scrollbar-color: #383d59 #0b132b;
+  scrollbar-width: thin;
 }
 
 .body-bg {
@@ -21,19 +24,20 @@
   font-size: 1rem;
   padding: 0.5rem;
   border: 2px solid #d2a517;
-  width: 5rem;
+  width: 6rem;
   text-align: center;
   transition: ease 0.5s;
   position: fixed;
-  top: 3vh;
-  left: 78vw;
+  top: 2.25vh;
+  left: 76vw;
   text-decoration: none;
+  z-index: 5;
 }
 
 .loginbtn:hover {
   text-decoration: none;
   background-color: #d2a517;
-  color: #ffeeca;
+  color: #0B132B;
 }
 
 .signupbtn {
@@ -48,13 +52,68 @@
   text-align: center;
   transition: ease 0.5s;
   position: fixed;
-  top: 3vh;
+  top: 2.25vh;
   left: 85vw;
   text-decoration: none;
+  z-index: 5;
 }
 
 .signupbtn:hover {
+  color: #ffeeca;
   text-decoration: none;
-  background-color: transparent;
-  color: #F72C25;
+  background-color: #88110d;
+  border-color: #88110d;
+}
+
+.logo {
+  position: fixed;
+  top: 3vh;
+  left: 2vw;
+  width: 8rem;
+  z-index: 5;
+}
+
+#navbar {
+  opacity: 0;
+  position: fixed;
+  top: -5vh;
+  left: 0vw;
+  background-color: #383d59;
+  height: 6.5rem;
+  width: 100vw;
+  z-index: 1;
+  transition: 0.5s ease;
+}
+
+.addinfo {
+  position: absolute;
+  top: 100vh;
+  left: 0vw;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffeeca;
+  z-index: -45;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.intropic {
+  margin-top: 3rem;
+  width: 70%;
+}
+
+.introtitle {
+  margin-top: 1rem;
+  font-family: "Oswald";
+  color: #d2a517;
+  height: 5rem;
+  text-align: center;
+  overflow-y: hidden;
 }

@@ -62,64 +62,13 @@
   color: #ffeeca;
 }
 
-.body_layout {
+.details {
+  margin-top: 8rem;
+  grid-template-columns: 20% 80%;
+}
+
+.user_down {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-}
-
-.scrollable {
-  overflow-y: scroll;
-  height: 55vh;
-}
-
-.admin_section {
-  margin-top: 15vh;
-  display: grid;
-  width: 90%;
-  grid-template-columns: 60% 10% 30%;
-}
-
-.user_card_pending {
-  display: grid;
-  grid-template-columns: 30% 50% 20%;
-  margin: 1rem;
-}
-
-.user_card_users {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  margin: 1rem;
-}
-
-.user_text {
-  font-size: 1rem;
-  margin: 1rem;
-  font-family: "Open Sans";
-  font-weight: 400;
-  overflow-y: hidden;
-  color: #eaeeff;
-  text-decoration: none;
-  transition: ease 0.5s;
-}
-
-.user_text:hover {
-  font-weight: bold;
-}
-
-.user_link, .user_link:hover {
-  text-decoration: none;
-}
-
-.username {
-  color: #d2a517;
-}
-
-.approve {
-  color: #007d57;
-  font-weight: bold;
-}
-
-.bold {
-  font-weight: 700;
 }
