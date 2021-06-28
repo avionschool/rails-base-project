@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :update_allowed_parameters, if: :devise_controller?
   before_action :user_types, if: :devise_controller?
+  before_action :find_user_type, if: :authenticate_user!
 
   protected
 
@@ -15,5 +16,9 @@ class ApplicationController < ActionController::Base
     @broker = UserType.find_by(user_type: 'broker')
     @buyer = UserType.find_by(user_type: 'buyer')
     @admin = UserType.find_by(user_type: 'admin')
+  end
+
+  def find_user_type
+    @user_type = current_user.user_type.user_type
   end
 end
