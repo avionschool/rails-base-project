@@ -17,9 +17,9 @@
   <%= f.label :last_name %> <br>  
   <%= f.text_field :last_name %> <br>
 
-  <%= f.hidden_field :role, value: 'Buyer' %>
-  <%= f.hidden_field :broker_role, value: 'Buyer' %>
-  <%= f.hidden_field :status, value: 'none' %>
+  <%= f.hidden_field :role, value: 'Admin' %>
+  <%= f.hidden_field :broker_role, value: 'Admin' %>
+  <%= f.hidden_field :status, value: 'approved' %>
   <%= f.hidden_field :money, value: 0 %>
 
   <%= f.submit 'Register' %>
