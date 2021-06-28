@@ -1,0 +1,21 @@
+<tr>
+    <th scope="col"><%=user.id%></th>
+    <th scope="col"><%=user.username%></th>
+    <th scope="col"><%=user.email%></th>
+    <%if user.approved%>
+        <th scope="col"><%=user.role%></th>
+    <%end%>
+    <th scope="col"><%=user.created_at%></th>
+    <%if user.approved%>
+     <th>
+        <%=link_to 'View', user_path(user), class: "btn btn-xs btn-success"%>
+        <%=link_to 'Edit', edit_user_path(user), class: "btn btn-xs btn-primary"%>
+    </th>
+    <%else%>
+    <th>
+        <%=link_to 'Approve', approve_pending_user_path(user), class: "btn btn-xs btn-success", method: :post%>
+        <%=link_to 'Reject', user_path(user), class: "btn btn-xs btn-danger", method: :delete, data: {confirm: "Are you sure you want to reject this broker? rejecting will delete user record from the database!"}%>
+    </th>
+    <%end%>
+</tr>
+
