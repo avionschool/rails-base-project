@@ -16,15 +16,29 @@
 
   <div class="details">
     <div class="user_down">
-      <h4 class="user_text"><%= @user.username %></h4>
+      <div class="detes">
+        <h4 class="user_text username bold">Username :</h4>
+        <h4 class="user_text"><%= @user.username %></h4>
+      </div>
 
-      <h4 class="user_text"><%= @user.first_name %> <%= @user.last_name %></h4>
+      <div class="detes">
+        <h4 class="user_text username bold">Name :</h4>
+        <h4 class="user_text"><%= @user.first_name %> <%= @user.last_name %></h4>
+      </div>
+
+      <div class="detes">
+        <h4 class="user_text username bold">Email :</h4>
+        <h4 class="user_text"><%= @user.email %></h4>
+      </div>
       
-      <h4 class="user_text"><%= @user.email %></h4>
-
-      <h4 class="user_text"><%= ('%.2f' % @user.money) %></h4>
+      <div class="detes">
+        <h4 class="user_text username bold">Money :</h4>
+        <h4 class="user_text"><%= ('%.2f' % @user.money) %> $</h4>
+      </div>
+      
     </div>
-  
+
+    <div class="test"></div>
   </div>
 
   <%= image_tag("logotxt.png", :class => "logo") %>

@@ -25,9 +25,15 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
+  def update
+    @user = User.find_by(id: params[:id])
+    @user.update(user_params)
+    redirect_to users_details_path(id: @user.id)
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:email, :username, :password, :role, :money, :status)
+    params.require(:user).permit(:email, :username, :password, :role, :money, :buyer_role, :status, :first_name, :last_name)
   end
 end

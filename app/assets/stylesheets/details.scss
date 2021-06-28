@@ -64,11 +64,26 @@
 
 .details {
   margin-top: 8rem;
-  grid-template-columns: 20% 80%;
+  display: grid;
+  grid-template-columns: 35% 65%;
 }
 
 .user_down {
+  margin-left: 1rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.detes {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.test {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
