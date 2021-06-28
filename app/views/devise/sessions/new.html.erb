@@ -1,34 +1,64 @@
-<h2>Log in</h2>
-<%flash.each do |type, msg|%>
-  <%= msg%>
-<%end%>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<section class="wrapper-body">
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <div class="wrapper-grid">
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+    <article class="left">
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+      <% if current_page?(buyer_session_path) %>
+        <div>
+          <h3>New here?</h3>
+          <p>Sign up now and be <br><span>a member!</span></p>
+        </div>
+
+        <div class="signup-btn__left">
+          <%= link_to 'Sign up', new_buyer_registration_path, class:"signup-btn__left__linkto"%>
+        </div>
+
+        <div class="become-a-broker__left">
+          <%= link_to 'Become a Broker', new_broker_registration_path, class:"become-a-broker__left-link-to"%>
+        </div>
+
+      <% elsif current_page?(broker_session_path) %>
+      
+        <div>
+          <h3>Welcome back!</h3>
+          <p>Enjoy your day today!</p>
+        </div>
+
+        <div class="login-as-buyer__left">
+          <%= link_to 'Login as Buyer', buyer_session_path, class:"login-as-buyer__left-link_to"%>
+        </div>
+
+      <% end %>
+
+    </article>
+
+    <article class="input-data right">
+      <h2>Log in</h2>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field label-email"">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password, class:"label-password"%><br />
+          <%= f.password_field :password, autocomplete: "current-password", class:"input password" %>
+          <br />
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="rememberme-cbox">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+
+        <div>
+          <%= f.submit "Log in", class:"btn" %>
+        </div>
+      <% end %>
+
+    </article>
   </div>
-<% end %>
-<%if current_page?(new_buyer_session_path)%>
-  <%= link_to 'Sign up', new_buyer_registration_path%><br>
-  <%= link_to 'Become a Broker', new_broker_registration_path%>
-<%elsif current_page?(new_broker_session_path)%>
-  <%= link_to 'Sign up as Broker', new_broker_registration_path%><br>
-  <%= link_to 'Login as Buyer', new_buyer_session_path%>
-<%end%>
-<%#= render "devise/shared/links" %>
+</section>

@@ -1,21 +1,28 @@
-<h2>Admin Log in</h2>
-<%flash.each do |type, msg|%>
-<div><%= msg%></div>
+<section class="admin-wrapper-body">
 
-<%end%>
-<%= form_with url: admins_sign_in_path do |f| %>
-<div class="field">
-<%= f.label :email %><br />
-<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-</div>
+  <div class="admin-wrapper-grid">
 
-<div class="field">
-<%= f.label :password %><br />
-<%= f.password_field :password, autocomplete: "current-password" %>
-</div>
+    <article class="admin-input-data">
 
+      <%= form_with url: admins_sign_in_path do |f| %>
+        <h2>Admin Log in</h2>
 
-<div class="actions">
-<%= f.submit "Log in" %>
-</div>
-<% end %> 
+        <div class="field admin-label-email">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"admin-input email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password, class:"label-password" %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class:"admin-input password" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Log in", class:"btn" %>
+        </div>
+
+      <% end %> 
+    </article>
+
+  </div>
+</section>

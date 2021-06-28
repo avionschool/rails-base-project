@@ -1,0 +1,174 @@
+@import 'base';
+
+.wrapper-body {
+  @include flexCenter(row);
+  justify-content: center;
+  height: 100vh;
+  font-family: mont;
+  color: var(--clr-dark);
+
+  .wrapper-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border-radius: 0.4rem;
+    background-color: var(--clr-light);
+    box-shadow: var(--bs);
+    overflow: hidden;
+    height: var(--h-form);
+    width: 50rem;
+
+    .left {
+      position: relative;
+      @include flexCenter(column);
+      text-align: center;
+      padding: var(--p-form);
+      background: var(--clr-dark);
+      color: var(--clr-light);
+
+      h3 {
+        font-size: var(--fs-h3);
+      }
+      p {
+        font-size: var(--fs-body);
+        margin-bottom: 3em;
+      }
+      .signup-btn__left,
+      .login-as-buyer__left,
+      .login-btn__left {
+        transition: transform 200ms ease-in-out;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        .signup-btn__left__linkto,
+        .login-btn__left__linkto {
+          padding: 0.5em 1.2em;
+          background-color: var(--clr-accent);
+          border-radius: 2rem;
+          color: var(--clr-dark);
+          box-shadow: var(--bs);
+          font-size: var(--fs-body);
+        }
+      }
+      .become-a-broker__left,
+      .login-as-buyer__left {
+        position: absolute;
+        bottom: 2rem;
+
+        .become-a-broker__left-link-to,
+        .login-as-buyer__left-link_to {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .input-data {
+      @include flexCenter(column);
+
+      .input {
+        padding: 0.4em 0.7em;
+        font-size: var(--fs-body);
+        outline: none;
+        border: none;
+        background: none;
+        border-bottom: 1px solid var(--clr-dark);
+        width: var(--input-w);
+        margin-bottom: 1.2em;
+      }
+
+      h2 {
+        font-size: var(--fs-h2);
+      }
+
+      label {
+        font-size: var(--fs-label);
+      }
+
+      .label-email {
+        margin-top: 0.725em;
+      }
+
+      .btn {
+        background-color: var(--clr-accent);
+        box-shadow: var(--bs);
+        color: var(--clr-dark);
+        cursor: pointer;
+        padding: 0.5em 1em;
+        outline: none;
+        border: none;
+        // border-radius: 0.2rem;
+        border-radius: 2rem;
+        margin-top: 1em;
+        transition: transform 200ms ease-in-out;
+        font-size: var(--fs-body);
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+
+// admin
+.admin-wrapper-body {
+  @include flexCenter(row);
+  justify-content: center;
+  height: 100vh;
+  font-family: mont;
+  color: var(--clr-dark);
+
+  .admin-wrapper-grid {
+    display: flex;
+    border-radius: 0.4rem;
+    background-color: var(--clr-light);
+    box-shadow: var(--bs);
+    height: var(--h-form);
+    padding: var(--p-form);
+
+    .admin-input-data {
+      @include flexCenter(column);
+
+      .admin-input {
+        padding: 0.4em 0.7em;
+        font-size: var(--fs-body);
+        outline: none;
+        border: none;
+        background: none;
+        border-bottom: 1px solid var(--clr-dark);
+        width: var(--input-w);
+        margin-bottom: 1.2em;
+      }
+      h2 {
+        font-size: var(--fs-h2);
+        text-align: center;
+      }
+
+      label {
+        font-size: var(--fs-label);
+      }
+      .admin-label-email {
+        margin-top: 0.725em;
+      }
+      .btn {
+        background-color: var(--clr-accent);
+        box-shadow: var(--bs);
+        color: var(--clr-dark);
+        cursor: pointer;
+        padding: 0.5em 1em;
+        outline: none;
+        border: none;
+        // border-radius: 0.2rem;
+        border-radius: 2rem;
+        margin-top: 1em;
+        transition: transform 200ms ease-in-out;
+        font-size: var(--fs-body);
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
