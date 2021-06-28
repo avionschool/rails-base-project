@@ -12,7 +12,21 @@
 </head>
 <body>
   <%= link_to 'Login','/login', :class => "loginbtn", method: :get %>
-  <br>
   <%= link_to 'Sign Up', '/users/new', :class => "signupbtn", method: :get %>
+
+  <div class="intro">
+    <%= image_tag("intropic.png", :class => "intropic") %>
+    <h1 class="introtitle">
+      HOLD THE WORLD'S MARKETS IN YOUR HANDS WITH STOX.IO
+    </h1>
+  </div>
+
+  <div class="addinfo">
+    <br>
+  </div>
+  
+  <%= image_tag("logotxt.png", :class => "logo") %>
   <div class="body-bg"></div>
+  <div id="navbar"></div>
+  <%= javascript_pack_tag 'navbar.js' %>
 </body>

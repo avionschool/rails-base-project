@@ -9,19 +9,9 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       case @user.role.downcase
       when 'buyer'
-        redirect_to '/dashboard_buyer'
-      when 'broker'
-        if @user.status == 'approved'
-          redirect_to '/dashboard_broker'
-        else
-          flash[:alert] = 'Account Not Yet Approved'
-          render :new
-        end
+        redirect_to '/dashboard'
       when 'admin'
         redirect_to '/dashboard_admin'
-      else
-        flash[:alert] = 'Invalid Username or Password'
-        render :new
       end
     else
       flash[:alert] = 'Invalid Username or Password'
@@ -29,7 +19,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def index_buyer
+  def index
     if logged_in?
       # code
     else
@@ -47,7 +37,9 @@ class SessionsController < ApplicationController
 
   def index_admin
     if logged_in?
-      @users = User.where(status: 'pending').sort
+      @pending_users = User.where(status: 'pending').sort
+      @users = User.where(role: 'Buyer').sort
+
     else
       redirect_to root_path
     end
@@ -61,9 +53,7 @@ class SessionsController < ApplicationController
     current_user.role
     case current_user.role.downcase
     when 'buyer'
-      redirect_to '/dashboard_buyer'
-    when 'broker'
-      redirect_to '/dashboard_broker' if current_user.status == 'approved'
+      redirect_to '/dashboard'
     when 'admin'
       redirect_to '/dashboard_admin'
     else
@@ -79,7 +69,7 @@ class SessionsController < ApplicationController
   def approve
     users = User.find_by(id: params[:id])
     PendingBrokerMailer.with(user: users).notify_user.deliver_now
-    users.update(status: 'approved')
+    users.update(status: 'approved', broker_role: 'Broker')
     redirect_to '/dashboard_admin'
   end
 end
