@@ -9,16 +9,20 @@ class UserStock < ApplicationRecord
   def user_buyer?
     self&.user&.buyer?
   end
+
   def market_value
-    '%.2f' % (self.total_shares * self.stock.last_price.to_f)
+    format('%.2f', (total_shares * stock.last_price.to_f))
   end
+
   def net_cost
-    '%.2f' % (self.total_shares * self.average_price.to_f)
-  end 
-  def gain_loss
-    '%.2f' % (self.market_value.to_f - self.net_cost.to_f)
+    format('%.2f', (total_shares * average_price.to_f))
   end
+
+  def gain_loss
+    format('%.2f', (market_value.to_f - net_cost.to_f))
+  end
+
   def percent_gain_loss
-    '%.2f' % ((self.gain_loss.to_f/self.net_cost.to_f)*100)
+    format('%.2f', ((gain_loss.to_f / net_cost.to_i) * 100))
   end
 end
