@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
 
-  def admin_home
-  end 
+  def admin_home; end
+
   def index
     @users = User.approved_users.paginate(page: params[:page], per_page: 10)
   end
@@ -54,7 +54,6 @@ class UsersController < ApplicationController
   end
 
   def approve_pending
-
     user = User.find(params[:id])
     if user.update(approved: true)
       flash[:notice] = 'You have Successfully approve the broker'
