@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'approve', to: 'sessions#approve'
   get '/users/details/:id' => 'users#details', as: 'users_details'
+  put '/users/update/:id' => 'users#update', as: 'users_update'
 
   resources :stocks
   get 'search-stock', to: 'stocks#search'

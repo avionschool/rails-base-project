@@ -36,9 +36,48 @@
         <h4 class="user_text"><%= ('%.2f' % @user.money) %> $</h4>
       </div>
       
+      <div class="updatemodal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+          Edit User Details
+        </button>
+      </div>
+      
     </div>
 
     <div class="test"></div>
+  </div>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">User Details</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <%= form_with scope: :user, method: :put, url: users_update_path(@user.id), local: true do |f| %>
+            <%= f.label :first_name %> <br>  
+            <%= f.text_field :first_name, value: @user.first_name %> <br>
+
+            <%= f.label :last_name %> <br>  
+            <%= f.text_field :last_name, value: @user.last_name %> <br>
+
+            <%= f.submit "Update User", :class => "savebtn_task" %>
+          <% end %>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
   </div>
 
   <%= image_tag("logotxt.png", :class => "logo") %>
