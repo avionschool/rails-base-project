@@ -25,6 +25,12 @@ class UsersController < ApplicationController
     redirect_to users_details_path(id: @user.id)
   end
 
+  def request_status
+    users = User.find_by(id: params[:id])
+    users.update(status: 'pending')
+    redirect_to '/dashboard'
+  end
+
   private
 
   def user_params
@@ -33,5 +39,9 @@ class UsersController < ApplicationController
 
   def update_params
     params.require(:user).permit(:first_name, :last_name)
+  end
+
+  def broker_params
+    params.require(:user).permit(:broker_role)
   end
 end
