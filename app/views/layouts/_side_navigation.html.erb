@@ -6,28 +6,53 @@
       <div class="icon me-2 ms-auto" id = "minimizeSideNav"><i class="fa fa-times 2x ms-auto"></i></div>
     </div>
     <hr>
+    <%if current_user.admin?%>
     <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-      <%=link_to marketplace_path,{ :class => 'nav-link link-dark'}   do%>
-        <i class="fas fa-chart-line 2x icon"></i>Stock Market
-      <%end%>     
-      </li>
-      <li>
-        <%=link_to stock_search_path,{ :class => 'nav-link link-dark'}   do%>
-          <i class="fas fa-search-dollar icon"></i>Search Stock
-        <%end%>   
-      </li>
-      <li>
-        <%=link_to my_portfolio_path,{ :class => 'nav-link link-dark'}   do%>
-          <i class="fas fa-home icon"></i>My Portfolio
-        <%end%>   
-      </li>
-      <li>
-        <%=link_to transactions_path,{ :class => 'nav-link link-dark'}   do%>
-          <i class="far fa-list-alt icon"></i>Transactions
-        <%end%>   
-      </li>
-    </ul>
+                 <li class="nav-item">
+            <%=link_to admin_home_path,{ :class => 'nav-link link-dark'}   do%>
+              <i class="fas fa-home icon"></i>Home
+            <%end%>   
+          </li>
+          <li class="nav-item">
+            <%=link_to users_path,{ :class => 'nav-link link-dark'}   do%>
+              <i class="fas fa-users"></i>Users
+            <%end%>   
+          </li>
+          <li class="nav-item">
+            <%=link_to transactions_path,{ :class => 'nav-link link-dark'}   do%>
+              <i class="far fa-list-alt icon"></i>Transactions
+            <%end%>   
+          </li>
+          <li class="nav-item">
+            <%=link_to pending_user_path,{ :class => 'nav-link link-dark'}   do%>
+              <i class="fas fa-bell"></i>Pending Users
+            <%end%>   
+          </li>
+      </ul>
+    <%else%>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+        <%=link_to marketplace_path,{ :class => 'nav-link link-dark'}   do%>
+          <i class="fas fa-chart-line 2x icon"></i>Stock Market
+        <%end%>     
+        </li>
+        <li>
+          <%=link_to stock_search_path,{ :class => 'nav-link link-dark'}   do%>
+            <i class="fas fa-search-dollar icon"></i>Search Stock
+          <%end%>   
+        </li>
+        <li>
+          <%=link_to my_portfolio_path,{ :class => 'nav-link link-dark'}   do%>
+            <i class="fas fa-home icon"></i>My Portfolio
+          <%end%>   
+        </li>
+        <li>
+          <%=link_to transactions_path,{ :class => 'nav-link link-dark'}   do%>
+            <i class="far fa-list-alt icon"></i>Transactions
+          <%end%>   
+        </li>
+      </ul>
+    <%end%>
     <hr>
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
