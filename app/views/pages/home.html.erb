@@ -1,6 +1,7 @@
 <%# Welcomes Users and shows them any notifications %>
 
 <% if current_user %>
+  <%= render "partials/navbar" %>
   <h1> Greetings <%= @user_type %> <%= @name %> </h1>
 <% else %>
   <%= render "partials/landing-page" %>
