@@ -1,31 +1,36 @@
-<table>
+<h2>Transactions</h2>
+
+<section class="table">
+  <table class="content-table">
     <thead>
-        <th>Buyer</th>
-        <th>Stock</th>
-        <th>Broker</th>
-        <th>Date</th>
+      <th>Buyer</th>
+      <th>Stock</th>
+      <th>Broker</th>
+      <th>Date</th>
     </thead>
+
     <tbody>
-    <%if buyer_signed_in?%>
-    <% @transactions.each do |transaction|%>
+      <%if buyer_signed_in?%>
+      <% @transactions.each do |transaction|%>
         <tr>
+          <td><%= transaction.buyer.email%></td>
+          <td><%= transaction.broker_stock.symbol%></td>
+          <td><%= transaction.broker_stock.broker.email%></td>
+          <td><%= transaction.created_at.strftime('%B %d, %Y')%></td>
+        </tr>
+      <%end%>
+      <%elsif broker_signed_in?%>
+        <% @broker_transactions.each do |broker_stock|%>
+          <%broker_stock.each do |transaction|%>
+          <tr>
             <td><%= transaction.buyer.email%></td>
             <td><%= transaction.broker_stock.symbol%></td>
             <td><%= transaction.broker_stock.broker.email%></td>
             <td><%= transaction.created_at.strftime('%B %d, %Y')%></td>
-        </tr>
-    <%end%>
-    <%elsif broker_signed_in?%>
-        <% @broker_transactions.each do |broker_stock|%>
-            <%broker_stock.each do |transaction|%>
-            <tr>
-                <td><%= transaction.buyer.email%></td>
-                <td><%= transaction.broker_stock.symbol%></td>
-                <td><%= transaction.broker_stock.broker.email%></td>
-                <td><%= transaction.created_at.strftime('%B %d, %Y')%></td>
-            </tr>
-            <%end%>
-    <%end%>
-    <%end%>
+          </tr>
+          <%end%>
+        <%end%>
+      <%end%>
     </tbody>
 </table>
+</section>

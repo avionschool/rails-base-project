@@ -1,0 +1,54 @@
+@import 'base';
+
+h2 {
+  font-size: var(--fs-h2);
+  text-align: center;
+}
+
+.table {
+  @include flexCenter(row);
+  width: 100%;
+  justify-content: center;
+  // border: 1px solid black;
+
+  .content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: var(--fs-body);
+    min-width: 600px;
+    border-radius: 0.3rem 0.3rem 0 0;
+    overflow: hidden;
+    box-shadow: var(--bs);
+
+    thead {
+      tr {
+        background-color: var(--clr-dark);
+        color: var(--clr-light);
+        text-align: left;
+        font-weight: var(--fw-bold);
+      }
+    }
+
+    th,
+    td {
+      padding: 12px 15px;
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #ddd;
+
+        &:nth-child(odd) {
+          background-color: #f3f3f3;
+        }
+
+        &:last-of-type {
+          border-bottom: 2px solid var(--clr-accent2);
+        }
+      }
+      a {
+        color: var(--clr-accent2);
+      }
+    }
+  }
+}

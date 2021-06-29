@@ -1,18 +1,83 @@
-<nav class = 'nav-bar'>
-  <div class ="nav-bar-links">
+<nav class = 'sidebar'>
+  <div class="logo_content">
+    <div class="logo">
+      <i class='bx bxs-coin-stack'></i>
+      <h1>stockpile</h1>
+      <i class='bx bx-menu'></i>
+    </div>
+  </div>
+
+  <ul class="nav_list">
+  
     <%if broker_signed_in? || buyer_signed_in?%>
-      <%= current_user.email%>
       <%if broker_signed_in?%>
-        <%= link_to "List Stock", new_broker_stock_path%>
-        <%= link_to "Profile", broker_stocks_path%>
-        <%= link_to 'Transactions', user_transactions_path(current_broker)%>
-        <%= link_to "Sign Out", destroy_broker_session_path, method: :delete%>
+
+        <li class="list">
+          <%= link_to(new_broker_stock_path) do %>
+            <i class='bx bxl-bitcoin'></i>
+            <span>List stock</span>
+          <% end %>
+        </li>
+
+        <li class="list">
+          <%= link_to(broker_stocks_path) do %>
+            <i class='bx bxs-book'></i>
+            <span>Portfolio</span>
+          <% end %>
+        </li>
+
+        <li class="list">
+          <%= link_to user_transactions_path(current_broker) do %>
+            <i class='bx bx-transfer-alt'></i>
+            <span>Transactions</span>
+          <% end %>
+        </li>
+
+        <li class="list">
+          <%= link_to destroy_broker_session_path, method: :delete do %>
+            <i class='bx bx-log-out-circle'></i>
+            <span>Sign Out</span>
+          <% end %>
+        </li>
+
       <% elsif buyer_signed_in?%>
-        <%= link_to "Buy Stocks", broker_stocks_path%>
-        <%= link_to 'Portfolio', buyer_stocks_path%>
-        <%= link_to 'Transactions', user_transactions_path(current_buyer)%>
-        <%= link_to "Sign Out", destroy_buyer_session_path, method: :delete%>
+
+        <li class="list">
+          <%= link_to(broker_stocks_path) do %>
+            <i class='bx bxl-bitcoin'></i>
+            <span>Buy Stocks</span>
+          <% end %>
+        </li>
+
+        <li class="list">
+          <%= link_to(buyer_stocks_path) do %>
+            <i class='bx bxs-book'></i>
+            <span>Portfolio</span>
+          <% end %>
+        </li>
+
+
+        <li class="list">
+          <%= link_to user_transactions_path(current_buyer) do %>
+            <i class='bx bx-transfer-alt'></i>
+            <span>Transactions</span>
+          <% end %>
+        </li>
+
+
+        <li class="list">
+          <%= link_to destroy_buyer_session_path, method: :delete do %>
+            <i class='bx bx-log-out-circle'></i>
+            <span>Sign Out</span>
+          <% end %>
+        </li>
+
       <% end %>
+
+    <div class="user_profile">
+      <i class='bx bxs-user'></i>
+      <%= current_user.email %>
+    </div>
 
     <%elsif admin_logged_in?%>
       <%= link_to "All Users", admins_path%>
@@ -20,7 +85,9 @@
       <%= link_to "Create Broker", new_admin_broker_path(current_admin)%>
       <%= link_to "Pending Brokers", admin_brokers_path(current_admin)%>
       <%= link_to "Logout", logout_path(current_admin), method: :delete%>
-    <%end%>
-  </div>
-</nav>
 
+    <%end%>
+
+  </ul>
+
+</nav>
