@@ -1,7 +1,6 @@
 class BrokerStocksController < ApplicationController
   # before_action :authenticate_user!
   before_action :authenticate_broker!, except: %i[index show]
-
   def index
     if broker_signed_in?
       @broker_stocks = current_broker.broker_stocks.all
@@ -17,6 +16,12 @@ class BrokerStocksController < ApplicationController
 
   def show
     @broker_stock = BrokerStock.find(params[:id])
+
+    @client = IEX::Api::Client.new(
+      publishable_token: Rails.application.credentials.dig(:iex_cloud, :api_key),
+      secret_token: Rails.application.credentials.dig(:iex_cloud, :secret_key),
+      endpoint: 'https://cloud.iexapis.com/v1'
+    )
   end
 
   def create

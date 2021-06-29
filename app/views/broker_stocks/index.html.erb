@@ -11,26 +11,26 @@
       <th>Broker</th>
       <th>Transactions</th>
     </thead>
-
-    <tbody>
-    <% if broker_signed_in? %>
-      <% @broker_stocks.each do |stock| %>
-        <tr>
-          <td><%= stock.symbol%></td>
-          <td><%= stock.company_name%></td>
-        </tr>
-      <%end%>
-
-    <% elsif buyer_signed_in? %>
-      <% @available_stocks.each do |stock| %>
-        <tr>
-          <td><%= stock.symbol%></td>
-          <td><%= stock.company_name%></td>
-          <td><%= stock.broker.email%></td>
-          <td><%= link_to 'Show', broker_stock_path(stock)%></td>
-        </tr>
-      <%end%>
+  <tbody>
+  <% if broker_signed_in? %>
+    <% @broker_stocks.each do |stock| %>
+      <tr>
+        <td><%= stock.symbol%></td>
+        <td><%= stock.company_name%></td>
+        <td><%= link_to 'Show', broker_stock_path(stock)%></td>
+      </tr>
     <%end%>
-    </tbody>
+
+  <% elsif buyer_signed_in? %>
+    <% @available_stocks.each do |stock| %>
+      <tr>
+        <td><%= stock.symbol%></td>
+        <td><%= stock.company_name%></td>
+        <td><%= stock.broker.email%></td>
+        <td><%= link_to 'Buy', broker_stock_path(stock)%></td>
+      </tr>
+    <%end%>
+  <%end%>
+  </tbody>
   </table>
 </section>

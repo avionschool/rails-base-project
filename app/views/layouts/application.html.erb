@@ -15,8 +15,10 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
   <body>
   <% if user_signed_in? || admin_logged_in? %>
+  <body class="<%= controller_name%>-<%= action_name%>">
     <%= render 'shared/nav_bar'%>
     <% end %>
     <%= yield %>

@@ -12,9 +12,11 @@
         <tr>
           <td><%= stock.symbol%></td>
           <td><%= stock.company_name%></td>
+          <td><%= stock.quantity%></td>
           <td><%= link_to 'Show', buyer_stock_path(stock)%></td>
         </tr>
       <%end%>
     </tbody>
   </table>
 </section>
+

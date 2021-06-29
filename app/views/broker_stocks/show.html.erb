@@ -1,8 +1,20 @@
 <section>
-    <h1><%= @broker_stock.symbol%></h1>
-    <h2><%= @broker_stock.company_name%></h2>
 
-    <%if buyer_signed_in?%>
-        <%= button_to "Buy", buyer_stocks_path(current_buyer), params: { buyer_stock: { broker_stock_id: @broker_stock.id } }, method: :post, local: true%>
-    <%end%>
+  <h1><%= @broker_stock.symbol%></h1>
+  <h2>Company Name<%= @broker_stock.company_name%></h2>
+  
+  
+
+  <%if buyer_signed_in?%>
+      <%= form_with scope: :buyer_stock, url: buyer_stocks_path(current_buyer), local: true do |f|%>
+          <%= f.hidden_field :broker_stock_id, value: @broker_stock.id%>
+          <div>
+              <%= f.label :quantity%><br>
+              <%= f.number_field :quantity, value: 1, id: :quantity%><br>
+            <div id = confirm-quantity >Confirm</div>
+          </div>
+          <div><%= f.number_field :total_price, step: :any, id: :total_price%></div>
+          <%= f.submit 'Buy'%>
+      <%end%>
+  <%end%>
 </section>
