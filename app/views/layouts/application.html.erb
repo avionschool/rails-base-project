@@ -10,9 +10,11 @@
   </head>
 
   <body>
+    <%= render "partials/navbar" %>
+    
     <div class="container">
-      <%= render "partials/navbar" %>
       <%= render "partials/flash" %>
+
       <%= yield %>
     </div>
   </body>
