@@ -15,7 +15,7 @@
     box-shadow: var(--bs);
     overflow: hidden;
     height: var(--h-form);
-    width: 50rem;
+    width: var(--w-form);
 
     .left {
       position: relative;
@@ -26,11 +26,12 @@
       color: var(--clr-light);
 
       h3 {
+        margin-top: 1em;
         font-size: var(--fs-h3);
       }
       p {
         font-size: var(--fs-body);
-        margin-bottom: 3em;
+        margin-bottom: 4em;
       }
       .signup-btn__left,
       .login-as-buyer__left,
@@ -78,6 +79,7 @@
       }
 
       h2 {
+        margin: 0.825em 0;
         font-size: var(--fs-h2);
       }
 
@@ -111,6 +113,10 @@
   }
 }
 
+.em_6chars_min {
+  font-size: var(--fs-label);
+}
+
 // admin
 .admin-wrapper-body {
   @include flexCenter(row);
@@ -141,6 +147,7 @@
         margin-bottom: 1.2em;
       }
       h2 {
+        margin: 0.825em 0;
         font-size: var(--fs-h2);
         text-align: center;
       }
@@ -171,4 +178,8 @@
       }
     }
   }
+}
+
+.field_with_errors {
+  display: inline;
 }
