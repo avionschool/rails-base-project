@@ -1,5 +1,5 @@
 <%# <nav class="navbar navbar-expand-lg navbar-light bg-light"> %>
-<nav class="navbar navbar-expand-lg navbar-dark bg-orange">
+<nav class="navbar navbar-expand-lg navbar-dark bg-orange sticky-top">
 
   <div class="container">
     <a class="navbar-brand" href="/">Stock Overflow</a>
@@ -38,10 +38,10 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Sign-up", new_user_registration_path, class: "nav-link" %>
+            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Sign-in", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>
         <%# <li class="nav-item">
