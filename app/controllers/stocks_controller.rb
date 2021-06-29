@@ -3,9 +3,10 @@ class StocksController < ApplicationController
   before_action :update_stocks
 
   def index
-    if @user_type == 'broker'
+    case @user_type
+    when 'broker'
       @stocks_list = Stock.all
-    elsif @user_type == 'buyer'
+    when 'buyer'
       @stock_list = BrokerStock.all
     end
   end

@@ -1,11 +1,11 @@
 <h1 class="mb-5">All Stocks</h1>
 
 <% if @user_type == 'broker' %>
-  Broker
+
   <%= render "broker/stocks", stocks_list: @stocks_list %>
 
 <% elsif @user_type == 'buyer' %>
-  Buyer
+
   <%= render "buyer/stocks", stocks_list: @stocks_list %>
 
 <% end %>
