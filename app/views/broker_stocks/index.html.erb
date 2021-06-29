@@ -1,30 +1,36 @@
 <%# if broker has signed in show broker_stocks %>
 <%# if buyer has signed in show available_stocks %>
 
-<table>
-  <thead>
-    <th>Symbol</th>
-    <th>Company Name</th>
-  </thead>
-  <tbody>
-  <% if broker_signed_in? %>
-    <% @broker_stocks.each do |stock| %>
-      <tr>
-        <td><%= stock.symbol%></td>
-        <td><%= stock.company_name%></td>
-      </tr>
-    <%end%>
+<h2>Stocks</h2>
 
-  <% elsif buyer_signed_in? %>
-    <% @available_stocks.each do |stock| %>
-      <tr>
-        <td><%= stock.symbol%></td>
-        <td><%= stock.company_name%></td>
-        <td><%= stock.broker.email%></td>
-        <td><%= link_to 'Show', broker_stock_path(stock)%></td>
-      </tr>
-    <%end%>
-  <%end%>
-  </tbody>
-</table>
+<section class="table">
+  <table class="content-table">
+    <thead>
+      <th>Symbol</th>
+      <th>Company Name</th>
+      <th>Broker</th>
+      <th>Transactions</th>
+    </thead>
 
+    <tbody>
+    <% if broker_signed_in? %>
+      <% @broker_stocks.each do |stock| %>
+        <tr>
+          <td><%= stock.symbol%></td>
+          <td><%= stock.company_name%></td>
+        </tr>
+      <%end%>
+
+    <% elsif buyer_signed_in? %>
+      <% @available_stocks.each do |stock| %>
+        <tr>
+          <td><%= stock.symbol%></td>
+          <td><%= stock.company_name%></td>
+          <td><%= stock.broker.email%></td>
+          <td><%= link_to 'Show', broker_stock_path(stock)%></td>
+        </tr>
+      <%end%>
+    <%end%>
+    </tbody>
+  </table>
+</section>

@@ -1,0 +1,54 @@
+@import 'base';
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 200px;
+  background: var(--clr-dark);
+  padding: 0em 1em;
+  // display: none;
+
+  .logo {
+    color: aliceblue;
+    @include flexCenter(row);
+    margin-bottom: 4em;
+  }
+
+  .nav_list {
+    height: 50%;
+    margin: 0;
+    padding: 0%;
+    @include flexCenter(column);
+    justify-content: space-evenly;
+
+    .user_profile {
+      position: absolute;
+      bottom: 2em;
+      width: 100%;
+      text-align: center;
+      color: var(--clr-accent);
+    }
+
+    .list {
+      span:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// footer
+.footer-center {
+  @include flexCenter(row);
+  width: 100%;
+  justify-content: center;
+
+  footer {
+    font-size: var(--fs-label);
+    margin-left: 5em;
+    position: absolute;
+    bottom: 0.2em;
+  }
+}
