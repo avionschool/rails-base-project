@@ -1,3 +1,8 @@
 <%# Welcomes Users and shows them any notifications %>
 
-<h1> Greetings <%= @user_type %> <%= @name %> </h1>
+<% if current_user %>
+  <h1> Greetings <%= @user_type %> <%= @name %> </h1>
+<% else %>
+  <h1>THIS SHOWS WHEN NO ONE IS LOGGED IN</h1>
+<% end %>
+
