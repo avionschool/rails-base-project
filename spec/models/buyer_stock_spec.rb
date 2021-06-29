@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe BuyerStock, type: :model do
-  let!(:buyer) { Buyer.create(email: 'e@email.com', password: 'password', password_confirmation: 'password') }
-  let(:buyer_stock) { buyer.buyer_stocks.build(symbol: 'MC', price: 260.76, company_name: 'Microsoft Corp') }
+  let!(:buyer) { Buyer.create(email: 'e@email.com', first_name: 'Light', last_name: 'Yagami', username: 'Kira', password: 'password', password_confirmation: 'password') }
+  let(:buyer_stock) { buyer.buyer_stocks.build(symbol: 'MC', quantity: 2, company_name: 'Microsoft Corp') }
 
   context 'with validations/stock should fail to save' do
     it 'is not valid without symbol' do
