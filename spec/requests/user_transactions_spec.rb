@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'UserTransactions', type: :request do
   describe 'GET /user_transactions' do
-    let!(:buyer) { Buyer.create(email: 'buy@email.com', password: '1234567', password_confirmation: '1234567') }
+    let!(:buyer) { Buyer.create(email: 'buy@email.com', first_name: 'Light', last_name: 'Yagami', username: 'Kira', password: '1234567', password_confirmation: '1234567') }
 
     before do
       sign_in buyer

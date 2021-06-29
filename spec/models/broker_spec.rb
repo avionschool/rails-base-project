@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Broker, type: :model do
-  let!(:broker) { described_class.create(email: 'e@email.com', password: 'password', password_confirmation: 'password') }
+  let!(:broker) { described_class.create(email: 'e@email.com', first_name: 'Light', last_name: 'Yagami', username: 'Kira', password: 'passwordBuyer', password_confirmation: 'passwordBuyer') }
 
   context 'with validation tests' do
     it 'ensures email presence' do
