@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <h2>My portfolio</h2>
 
 <section class="table">
@@ -13,28 +12,11 @@
         <tr>
           <td><%= stock.symbol%></td>
           <td><%= stock.company_name%></td>
+          <td><%= stock.quantity%></td>
           <td><%= link_to 'Show', buyer_stock_path(stock)%></td>
         </tr>
       <%end%>
     </tbody>
   </table>
 </section>
-=======
-<table>
-  <thead>
-    <th>Symbol</th>
-    <th>Company Name</th>
-    <th>Quantity</th>
-  </thead>
-  <tbody>
-    <% @buyer_stocks.each do |stock| %>
-      <tr>
-        <td><%= stock.symbol%></td>
-        <td><%= stock.company_name%></td>
-        <td><%= stock.quantity%></td>
-        <td><%= link_to 'Show', buyer_stock_path(stock)%></td>
-      </tr>
-    <%end%>
-  </tbody>
-</table>
->>>>>>> add cells on the tables
+
