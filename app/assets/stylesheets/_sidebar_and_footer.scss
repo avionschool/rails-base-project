@@ -5,29 +5,26 @@
   top: 0;
   left: 0;
   height: 100%;
-  width: 200px;
   background: var(--clr-dark);
   padding: 0em 1em;
   // display: none;
 
   .logo {
-    color: aliceblue;
+    color: var(--clr-light);
     @include flexCenter(row);
     margin-bottom: 4em;
+    padding: 2em 4em 0 0;
   }
 
   .nav_list {
     height: 50%;
-    margin: 0;
-    padding: 0%;
     @include flexCenter(column);
+    align-items: flex-start;
     justify-content: space-evenly;
 
     .user_profile {
       position: absolute;
       bottom: 2em;
-      width: 100%;
-      text-align: center;
       color: var(--clr-accent);
     }
 

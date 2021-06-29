@@ -16,6 +16,7 @@
 
   --h-form: 320px;
   --p-form: 1.8em;
+  --w-form: 38rem;
 
   --input-w: 18rem;
 
@@ -29,10 +30,11 @@
     --fs-h2: 2rem;
     --fs-h3: 1.35rem;
     --fs-body: 0.9rem;
-    --fs-label: 0.8rem;
+    --fs-label: 0.725rem;
 
     --h-form: 370px;
     --p-form: 2.4em;
+    --w-form: 42rem;
 
     --input-w: 22rem;
   }
@@ -44,10 +46,11 @@
     --fs-h2: 2.2rem;
     --fs-h3: 1.45rem;
     --fs-body: 1rem;
-    --fs-label: 0.925rem;
+    --fs-label: 0.9rem;
 
-    --h-form: 400px;
-    --p-form: 2.8em;
+    --h-form: auto;
+    --p-form: 2.5em;
+    --w-form: 48rem;
 
     --input-w: 24rem;
   }
@@ -64,6 +67,8 @@
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
+  margin: 0;
+  padding: 0;
 }
 
 body {

@@ -1,6 +1,7 @@
 @import 'base';
 
 h2 {
+  margin-top: 1em;
   font-size: var(--fs-h2);
   text-align: center;
 }
@@ -21,6 +22,10 @@ h2 {
     box-shadow: var(--bs);
 
     thead {
+      th {
+        font-size: var(--fs-h3);
+      }
+
       tr {
         background-color: var(--clr-dark);
         color: var(--clr-light);
@@ -48,6 +53,9 @@ h2 {
       }
       a {
         color: var(--clr-accent2);
+      }
+      td {
+        font-size: var(--fs-label);
       }
     }
   }
