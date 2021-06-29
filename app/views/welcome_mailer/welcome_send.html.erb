@@ -1,0 +1,7 @@
+<h1>Hello <%=@user.email%></h1>
+<%if @user.buyer?%>
+    <h2>Welcome to Stockjobbers</h2>
+<%elsif @user.broker?%>
+    <h2>Welcome to Stockjobbers. We are still Proccessing your account please wait for the Admin to Approve your Registration. Thank you</h2>
+<%end%>
+

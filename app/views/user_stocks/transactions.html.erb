@@ -1,1 +1,48 @@
-<h1>My Transactions</h1>
+<h1>Transaction Records</h1>
+<div class="row">
+<div class="col-12">
+  <table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Transaction Type</th>
+      <th scope="col">Stock Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">price per share</th>
+      <th scope="col">Total Price</th>
+      <%if current_user.buyer?%>
+        <th scope="col">Broker Name</th>
+      <%elsif current_user.broker?%>
+         <th scope="col">Buyer Name</th>
+      <%else%>
+          <th scope="col">Buyer Name</th>
+          <th scope="col">Broker Name</th>
+      <%end%>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%@transactions.each do |transaction|%>
+    
+    <tr>
+      <th scope="row"><%=transaction.transaction_type%></th>
+      <th scope="row"><%=transaction.stock.name%></th>
+      <th scope="row"><%=transaction.quantity%></th>
+      <th scope="row"><%=transaction.stock_price%></th>
+      <th scope="row"><%=transaction.total_price%></th>
+      <%if current_user.buyer?%>
+        <th scope="row"><%=transaction.broker.username%></th>
+      <%elsif current_user.broker?%>
+        <th scope="row"><%=transaction.buyer.username%></th>
+      <%else%>
+        <th scope="row"><%=transaction.buyer.username%></th>
+        <th scope="row"><%=transaction.broker.username%></th>
+      <%end%>
+      <th scope="row"><%=transaction.created_at%></th>
+     
+    </tr>
+  <%end%>
+    
+  </tbody>
+</table>
+</div>
+</div>

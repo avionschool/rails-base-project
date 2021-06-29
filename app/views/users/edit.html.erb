@@ -1,0 +1,19 @@
+<h1>Edit User Profile</h1>
+<%= form_with(model:@user, local:true) do |f| %>
+  
+    <div class="form-group">
+        <%= f.label :username %>
+        <%= f.text_field :username, autofocus: true, autocomplete: 'username', class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+    </div>
+  
+    <div class="form-group">
+    <%= f.submit(@user.new_record? ? 'Sign Up' : 'Update Account', class:'btn btn-danger btn-lg btn-signup')%>  </div>
+    </div>
+  <% end %>
+
+  
+    

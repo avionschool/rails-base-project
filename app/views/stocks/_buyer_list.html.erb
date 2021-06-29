@@ -1,0 +1,44 @@
+<div class="row">
+<div class="col-12">
+  <table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Stock Code</th>
+      <th scope="col">Stock Name</th>
+      <th scope="col">Portfolio %</th>
+      <th scope="col">Market Price</th>
+      <th scope="col">Average Price</th>
+      <th scope="col">Total Shares</th>
+      <th scope="col">Net Cost</th>
+      <th scope="col">Market Value</th>
+      <th scope="col">Gain/loss</th>
+      <th scope="col">%Gain/loss</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%@user_stocks.each do |user_stock|%>
+    
+    <tr>
+      <th scope="row"><%=user_stock.stock.ticker%></th>
+      <td><%=user_stock.stock.name%></td>
+      <td><%='%.2f' % (((user_stock.net_cost).to_f/(current_user.total_net_cost).to_f)*100)%>%</td>    
+      <td><%=user_stock.stock.last_price.to_f.round(2)%></td>
+      <td><%=user_stock.average_price.to_f.round(2)%></td>
+      
+      <td><%=user_stock.total_shares%></td>
+      <td><%=user_stock.net_cost%></td>
+      <td><%=user_stock.market_value%></td>
+      <td><%=user_stock.gain_loss%></td>
+      <td><%=user_stock.percent_gain_loss%>%</td>
+      <td>
+        <%=link_to 'Buy', new_user_stock_path(user_stock,transactiontype:'buy'), class: "btn btn-xs btn-success buy-stock"%>      
+            <%=link_to 'Sell', new_user_stock_path(user_stock,transactiontype:'sell'), class: "btn btn-xs btn-danger buy-stock"%>
+       </td>
+    </tr>
+  <%end%>
+    
+  </tbody>
+</table>
+</div>
+</div>

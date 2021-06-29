@@ -7,38 +7,61 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 me-3 mb-lg-0">
       <%if user_signed_in?%>
-        <li class="nav-item">
-          <%=link_to marketplace_path,{ :class => 'nav-link link-dark'}   do%>
-            <i class="fas fa-chart-line 2x icon"></i>Stock Market
-          <%end%>   
-        </li>
-        <li class="nav-item">
-          <%=link_to stock_search_path,{ :class => 'nav-link link-dark'}   do%>
-            <i class="fas fa-search-dollar icon"></i>Search Stock
-          <%end%>  
-        </li>
-        <li class="nav-item">
-        <%=link_to my_portfolio_path,{ :class => 'nav-link link-dark'}   do%>
-          <i class="fas fa-home icon"></i>My Portfolio
+        <%if current_user.admin?%>
+          <li class="nav-item">
+            <%=link_to admin_home_path,{ :class => 'nav-link link-dark'}   do%>
+              <i class="fas fa-home icon"></i>Home
+            <%end%>   
+          </li>
+          <li class="nav-item">
+            <%=link_to users_path,{ :class => 'nav-link link-dark'}   do%>
+              <i class="fas fa-users"></i>Users
+            <%end%>   
+          </li>
+          <li class="nav-item">
+            <%=link_to transactions_path,{ :class => 'nav-link link-dark'}   do%>
+              <i class="far fa-list-alt icon"></i>Transactions
+            <%end%>   
+          </li>
+          <li class="nav-item">
+            <%=link_to pending_user_path,{ :class => 'nav-link link-dark'}   do%>
+              <i class="fas fa-bell"></i>Pending Users
+            <%end%>   
+          </li>
+        <%else%>
+          <li class="nav-item">
+            <%=link_to marketplace_path,{ :class => 'nav-link link-dark'}   do%>
+              <i class="fas fa-chart-line 2x icon"></i>Stock Market
+            <%end%>   
+          </li>
+          <li class="nav-item">
+            <%=link_to stock_search_path,{ :class => 'nav-link link-dark'}   do%>
+              <i class="fas fa-search-dollar icon"></i>Search Stock
+            <%end%>  
+          </li>
+          <li class="nav-item">
+          <%=link_to my_portfolio_path,{ :class => 'nav-link link-dark'}   do%>
+            <i class="fas fa-home icon"></i>My Portfolio
+          <%end%>
+          </li>
+          <li>
+            <%=link_to transactions_path,{ :class => 'nav-link link-dark'}   do%>
+              <i class="far fa-list-alt icon"></i>Transactions
+            <%end%>   
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+            <strong>mdo</strong>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to('Sign out', destroy_user_session_path, method: :delete) %> </li>
+              </ul>
+          </li>
         <%end%>
-        </li>
-        <li>
-          <%=link_to transactions_path,{ :class => 'nav-link link-dark'}   do%>
-            <i class="far fa-list-alt icon"></i>Transactions
-          <%end%>   
-        </li>
-        <li class="nav-item dropdown">
-          <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-           <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-           <strong>mdo</strong>
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><%= link_to('Sign out', destroy_user_session_path, method: :delete) %> </li>
-            </ul>
-        </li>
         <%else%>
          <li class="nav-item">
           <%=link_to new_user_session_path,{ :class => 'nav-link link-dark'}   do%>
