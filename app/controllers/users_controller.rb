@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def new_admin
+    @user = User.new
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -12,6 +16,16 @@ class UsersController < ApplicationController
       redirect_to dashboard_path
     else
       redirect_to '/users/new'
+    end
+  end
+
+  def create_admin
+    @user = User.new(user_params)
+    if @user.save
+      @user.update(status: 'approved') if @user.broker_role.downcase == 'broker'
+      redirect_to '/dashboard_admin'
+    else
+      redirect_to users_new_admin_path
     end
   end
 
