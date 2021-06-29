@@ -1,0 +1,44 @@
+<section 
+  class="hero" 
+  style="background-image: url(<%= asset_path('hero.jpg') %>)"
+>
+  <div class="dark-overlay">
+    <div class="container d-flex flex-column h-100 justify-content-around align-items-center">
+      <div class="d-flex flex-column align-items-center">
+        <h1 class="hero-heading text-center mb-4">STOCK OVERFLOW</h1>
+
+        <p class="lead text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, fugit dolores, dolor, nesciunt doloremque asperiores quibusdam explicabo sequi blanditiis soluta repellendus molestiae laboriosam commodi voluptatum accusantium rerum autem sed dicta?</p>
+
+        <div class="d-flex flex-column flex-sm-row hero-cta mt-4">
+          <%= 
+            link_to "Sign Up", 
+            new_user_registration_path, 
+            class: "btn btn-primary mb-3 mb-sm-0 mx-3" 
+          %>
+          <!--<a href="#" class="btn btn-primary mx-3">Sign Up</a>-->
+
+          <%= 
+            link_to "Login", 
+            new_user_session_path, 
+            class: "btn btn-secondary mx-3" 
+          %>
+          <!--<a href="#" class="btn btn-secondary mx-3">Login</a>-->
+          
+        </div>
+      </div>
+
+      
+      <div>
+        <a class="btn btn-info btn-lg" href="#learn-more">Learn More</a>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section 
+  id="learn-more"
+  style="height: 5000px"
+>
+  <%= render "partials/navbar" %>
+</section>

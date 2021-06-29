@@ -15,18 +15,48 @@
  *= require_self
  */
 
-/* Global */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   /* color: #333; */
   color: #202a35;
 }
 
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+  /* width: 20px; */
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fd5f00;
+  border-radius: 10px;
+  transition: 0.2s ease-in;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #005792;
+}
+/* End Scrollbar */
+
+/* Global */
 .orange {
-  color: #ff5829;
+  color: #fd5f00;
 }
 
 .bg-orange {
-  background-color: #ff5829;
+  background-color: #fd5f00;
 }
 
 a {
@@ -44,11 +74,16 @@ a:hover {
   transition: 0.2s ease-in;
 }
 
+.btn {
+  min-width: 150px;
+}
+
 /* Navbar */
 nav.navbar a.nav-link {
-  color: #fff !important;
+  color: #f6f6e9 !important;
 }
 
 nav.navbar a.nav-link:hover {
-  color: yellow !important;
+  /* color: yellow !important; */
+  color: #005792 !important;
 }

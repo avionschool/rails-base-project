@@ -1,3 +1,112 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+// Landing page partial
+section.hero {
+  position: relative;
+  height: 100vh;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  color: #f6f6e9;
+
+  .dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(19, 51, 76, 0.9);
+  }
+
+  .hero-heading {
+    font-size: 64px;
+    font-weight: 700;
+  }
+
+  .lead {
+    font-size: 24px;
+    max-width: 75%;
+  }
+
+  .hero-cta {
+    .btn {
+      border-radius: 50px;
+    }
+
+    .btn-primary {
+      background-color: #fd5f00;
+      border: 3px solid #fd5f00;
+
+      &:hover {
+        background-color: #f6f6e9;
+        border: 3px solid #f6f6e9;
+        color: #13334c;
+      }
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      border: 3px solid #fd5f00;
+
+      &:hover {
+        background-color: #f6f6e9;
+        border: 3px solid #f6f6e9;
+        color: #13334c;
+      }
+    }
+  }
+
+  .btn-info {
+    background-color: #005792;
+    border: 3px solid #005792;
+
+    &:hover {
+      background-color: #f6f6e9;
+      border: 3px solid #f6f6e9;
+      color: #13334c;
+    }
+  }
+
+  // // Extra large devices (large desktops, 1200px and up)
+  // @media (max-width: 1199px) {
+  // }
+
+  // Large devices (desktops, 992px and up)
+  @media (max-width: 991px) {
+    .hero-heading {
+      font-size: 56px;
+    }
+
+    .lead {
+      font-size: 20px;
+    }
+  }
+
+  // Medium devices (tablets, 768px and up)
+  @media (max-width: 767px) {
+    .hero-heading {
+      font-size: 48px;
+    }
+
+    .lead {
+      font-size: 18px;
+      max-width: 80%;
+    }
+  }
+
+  // Small devices (landscape phones, 576px and up)
+  @media (max-width: 575px) {
+    .hero-heading {
+      font-size: 36px;
+    }
+
+    .lead {
+      font-size: 16px;
+      max-width: 90%;
+    }
+  }
+}
