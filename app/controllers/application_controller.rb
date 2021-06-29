@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :update_allowed_parameters, if: :devise_controller?
   before_action :user_types, if: :devise_controller?
   # before_action :find_user_type, if: :authenticate_user!
+  before_action :find_user_type, if: :current_user
 
   protected
 
