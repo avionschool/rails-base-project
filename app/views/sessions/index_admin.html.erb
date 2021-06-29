@@ -17,6 +17,9 @@
   <div class="body_layout">
     <div class="admin_section">
       <div class="pending_section">
+        <%= link_to users_new_admin_path, :class => "user_link" do %>
+          <h4 class="user_text username">Create New User</h4>
+        <% end %>
         <p class="user_text username bold">Pending Brokers</p>
         <div class="user_card_pending">
           <p class="user_text bold">Username</p>

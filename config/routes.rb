@@ -9,8 +9,12 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#out'
 
   get 'approve', to: 'sessions#approve'
+ 
   get '/users/details/:id' => 'users#details', as: 'users_details'
   put '/users/update/:id' => 'users#update', as: 'users_update'
+  get '/users/request_status' => 'users#request_status', as: 'users_request'
+  get '/users/new_admin' => 'users#new_admin', as: 'users_new_admin'
+  post '/users/create_admin' => 'users#create_admin', as: 'users_create_admin'
 
   resources :stocks
   get 'search-stock', to: 'stocks#search'
