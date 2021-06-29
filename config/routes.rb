@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get '/transactions' => 'pages#transactions', as: 'pages_transactions'
   # Stocks
   resources :stocks, only: [:index]
+  # Broker Stocks
+  post '/stocks/:id' => 'broker_stocks#add_stock', as: 'stock_add'
 end
