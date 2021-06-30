@@ -1,5 +1,4 @@
 class TransactionsController < ApplicationController
-
   def add_broker_stock
     @transaction = Transaction.new
     @transaction.user_id = current_user.id
@@ -7,5 +6,4 @@ class TransactionsController < ApplicationController
     @transaction.amount = 0
     redirect_to stocks_path if @transaction.save
   end
-
 end
