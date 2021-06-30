@@ -9,10 +9,12 @@
   --fs-body: 0.7rem;
   --fs-label: 0.65rem;
 
-  --clr-light: rgb(238, 238, 238);
+  --clr-light: rgb(248, 248, 248);
   --clr-dark: #404040;
-  --clr-accent: #ffa69e;
-  --clr-accent2: #009789;
+  --clr-accent-light: #5ba1c1;
+  --clr-accent-lighter: #8fcbe6;
+  --clr-accent-dark: #01627f;
+  --clr-accent-darker: #003c57;
 
   --h-form: 320px;
   --p-form: 1.8em;
@@ -20,8 +22,8 @@
 
   --input-w: 18rem;
 
-  --bs: -0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25),
-    0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
+  --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.145),
+    -0.1em 0.125em 0.25em rgba(0, 0, 0, 0.1);
 }
 
 @media (min-width: 650px) {
@@ -32,7 +34,7 @@
     --fs-body: 0.9rem;
     --fs-label: 0.725rem;
 
-    --h-form: 370px;
+    --h-form: 400px;
     --p-form: 2.4em;
     --w-form: 42rem;
 
@@ -48,7 +50,7 @@
     --fs-body: 1rem;
     --fs-label: 0.9rem;
 
-    --h-form: auto;
+    --h-form: 450px;
     --p-form: 2.5em;
     --w-form: 48rem;
 
@@ -72,18 +74,28 @@
 }
 
 body {
+  position: relative;
   height: 100vh;
-  background-color: #ffa69e;
-  background-image: linear-gradient(315deg, #ffa69e 0%, #5d4954 85%);
   font-family: mont;
+  background-repeat: no-repeat;
 }
 
 a {
   color: var(--clr-accent);
 }
 
-@mixin flexCenter($direction) {
+.button {
+  cursor: pointer;
+  background: var(--clr-accent-dark);
+  border: none;
+  outline: none;
+  padding: 0.5em 2em;
+  border-radius: 0.4rem;
+  color: var(--clr-light);
+}
+
+@mixin flexCenter($direction, $align-items) {
   display: flex;
-  align-items: center;
+  align-items: $align-items;
   flex-direction: $direction;
 }

@@ -3,7 +3,7 @@
     <div class="logo">
       <i class='bx bxs-coin-stack'></i>
       <h1>stockpile</h1>
-      <i class='bx bx-menu'></i>
+      <%# <i class='bx bx-menu'></i> %>
     </div>
   </div>
 
@@ -33,7 +33,7 @@
           <% end %>
         </li>
 
-        <li class="list">
+        <li class="list signout">
           <%= link_to destroy_broker_session_path, method: :delete do %>
             <i class='bx bx-log-out-circle'></i>
             <span>Sign Out</span>
@@ -65,7 +65,7 @@
         </li>
 
 
-        <li class="list">
+        <li class="list signout">
           <%= link_to destroy_buyer_session_path, method: :delete do %>
             <i class='bx bx-log-out-circle'></i>
             <span>Sign Out</span>
@@ -76,7 +76,8 @@
 
     <div class="user_profile">
       <i class='bx bxs-user'></i>
-      <%= current_user.email %>
+      <%= current_user.username %>
+      <em><%=current_user.email%></em>
     </div>
 
     <%elsif admin_logged_in?%>
