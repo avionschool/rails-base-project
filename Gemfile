@@ -19,6 +19,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise', '~> 4.8'
 gem 'hamlit-rails'
+gem 'will_paginate', '~> 3.1.0'
+gem 'database_cleaner'
 
 
 group :development, :test do
