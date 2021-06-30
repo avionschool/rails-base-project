@@ -1,7 +1,8 @@
 <section>
-
-  <h1><%= @broker_stock.symbol%></h1>
+  <h2><%= @broker_stock.symbol%></h2>
+  <h2><%= @quote.change_percent_s%></h2>
   <h2>Company Name<%= @broker_stock.company_name%></h2>
+  <h2 id = 'latest_price' data-price = "<%= @quote.latest_price%>" ><%= @quote.latest_price%></h2>
   
   
 
