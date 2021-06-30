@@ -64,6 +64,18 @@ a:hover {
   min-width: 150px;
 }
 
+.btn-primary {
+  background-color: #fd5f00;
+  border: 3px solid #fd5f00;
+  transition: 0.2s ease-in;
+}
+
+.btn-primary:hover {
+  background-color: #005792;
+  border: 3px solid transparent;
+  color: #f6f6e9;
+}
+
 .form-devise {
   min-height: calc(100vh - 56px);
   padding: 60px 0;
