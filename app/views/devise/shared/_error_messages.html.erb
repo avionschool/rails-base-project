@@ -1,15 +1,16 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: resource.class.model_name.human.downcase)
-       %>
-    </h2>
-    <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+  <div id="error_explanation" class="container">
+    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+      <ul class="form-error-ul">
+        <% resource.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+        <% end %>
+      </ul>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
   </div>
 <% end %>

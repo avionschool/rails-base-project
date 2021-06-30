@@ -1,15 +1,10 @@
-<h1>Pending Brokers</h1>
+<%= render "partials/navbar" %>
 
-<table class="table table-striped table-bordered table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Name:</th>
-      <th scope="col">Email:</th>
-      <th scope="col">Approval:</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @pending.each do |user| %>
+<section>
+  <h1>Pending Brokers</h1>
+
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
       <tr>
         <td><%= user.first_name %> <%= user.last_name %></td>
         <td><%= user.email %></td>
@@ -18,7 +13,24 @@
             <%= f.check_box :verified, onclick: "this.form.submit();" %> <br />
           <% end %>
         </td>
+        <th scope="col">Name:</th>
+        <th scope="col">Email:</th>
+        <th scope="col">Approval:</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @pending.each do |user| %>
+        <tr>
+          <td><%= user.first_name %> <%= user.last_name %></td>
+          <td><%= user.email %></td>
+          <td>
+            <%= form_with model: user, url: "pending/#{user.id}", method: :patch, local: true do |f| %>
+              <%= f.hidden_field :id, :value => user.id %>
+              <%= f.check_box :verified, onclick: "this.form.submit();" %> <br />
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+</section>
+  

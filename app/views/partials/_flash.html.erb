@@ -1,2 +1,33 @@
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div class="flash-message">
+  <% if notice || alert %>
+    <div class="close-notice-display container mt-3">
+      <% if notice %>
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          <div class="text-center"><%= notice %></div>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+
+      <% if alert %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <div class="text-center"><%= alert %></div>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+    </div>
+
+    <!--
+    <script>
+      // const closeNoticeDisplay = document.querySelector(".close-notice-display")
+
+      // setTimeout(function () {
+      //   closeNoticeDisplay.style.visibility = "hidden";
+      // }, 5000);
+    </script>
+    -->
+  <% end %>
+</div>

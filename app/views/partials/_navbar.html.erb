@@ -1,30 +1,53 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">Stock Overflow</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <% if user_signed_in? %>
-        <%# Admin Only %>
-        <% if @user_type == 'admin' %>
-        <%= link_to "Users Index", users_index_path, class: "nav_link" %>
-        <%= link_to "Approval Requests", users_pending_path, class: "nav_link" %>
-        <%# Buyers and Brokers %>
-        <% elsif @user_type == 'broker' || @user_type == 'buyer' %>
-        <%= link_to "Stocks", stocks_path, class: "nav_link" %>
-        <%= link_to "Portfolio", pages_portfolio_path, class: "nav_link" %>
+<%# <nav class="navbar navbar-expand-lg navbar-light bg-light"> %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-orange sticky-top">
+
+  <div class="container">
+    <a class="navbar-brand" href="/">Stock Overflow</a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <%# Admin Only %>
+          <% if @user_type == 'admin' %>
+            <li class="nav-item">
+              <%= link_to "Users Index", users_index_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Approval Requests", users_pending_path, class: "nav-link" %>
+            </li>
+          <%# Buyers and Brokers %>
+          <% elsif @user_type == 'broker' || @user_type == 'buyer' %>
+            <li class="nav-item">
+              <%= link_to "Stocks", stocks_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Portfolio", pages_portfolio_path, class: "nav-link" %>
+            </li>
+          <% end %>
+
+          <%# All Users %>
+          <li class="nav-item">
+            <%= link_to "Transactions", pages_transactions_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Log-out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+          </li>
         <% end %>
-        <%# All Users %>
-        <%= link_to "Transactions", pages_transactions_path, class: "nav_link" %>
-        <%= link_to "Log-out", destroy_user_session_path, method: :delete, class: "nav_link" %>
-      <% else %>
-        <%= link_to "Sign-up", new_user_registration_path, class: "nav_link" %>
-        <%= link_to "Sign-in", new_user_session_path, class: "nav_link" %>
-      <% end %>
-      <%# <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li> %>
-    </ul>
+        <%# <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li> %>
+      </ul>
+    </div>
   </div>
 </nav>

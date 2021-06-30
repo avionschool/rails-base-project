@@ -1,44 +1,62 @@
-<h2>Sign up</h2>
+<%= render "partials/navbar" %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="form-devise d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-body">
 
-   <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first-name" %>
-  </div>
+            <h2 class="mb-4 text-center">Sign up</h2>
 
-   <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name" %>
-  </div>
+            <%= render "partials/flash" %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label "Account Type" %>
-    <%= f.select :user_type_id, [["Broker", @broker.id], ["Buyer", @buyer.id]], {} %>
-  </div>
+              <div class="field form-group mb-5">
+                <%= f.label "Account Type" %>
+                <%= f.select :user_type_id, [["Broker", @broker.id], ["Buyer", @buyer.id]], {}, {class: "form-control"} %>
+              </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+              <div class="field form-group">
+                <%= f.text_field :first_name, autofocus: true, autocomplete: "first-name", placeholder: :first_name, class: "form-control" %>
+              </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+              <div class="field form-group">
+                <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name", placeholder: :last_name, class: "form-control" %>
+              </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+              <div class="field form-group">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: :email, class: "form-control" %>
+              </div>
 
-<%= render "devise/shared/links" %>
+              <div class="field form-group">
+                <%= 
+                  f.password_field :password, 
+                  autocomplete: "new-password", 
+                  placeholder: "Password (6 characters minimum)", 
+                  class: "form-control"
+                %>
+              </div>
+
+              <div class="field form-group">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: :password_confirmation, class: "form-control" %>
+              </div>
+
+              <div class="actions mt-5">
+                <%= f.submit "Sign up", class: "btn btn-primary bg-orange btn-block" %>
+              </div>
+            <% end %>
+          </div><!-- card-body -->
+        </div><!-- card -->
+
+        <%#= render "devise/shared/links" %>
+        <div class="mt-4 text-center">
+          Already have an account? <span style="color: #005792;"><%= link_to 'Sign in here.', new_user_session_path %></span>
+        </div>
+
+      </div><!-- col -->
+    </div><!-- row -->
+  </div><!-- container -->
+</div>

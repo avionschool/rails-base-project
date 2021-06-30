@@ -1,8 +1,9 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:home]
 
   def home
-    @name = current_user.first_name
+    @name = current_user.first_name if current_user
   end
 
   # Admin Only

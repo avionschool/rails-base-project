@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Rails Project</title>
+    <title>Stock Overflow</title>
+     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,10 +11,8 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= render "partials/navbar" %>
-      <%= render "partials/flash" %>
-      <%= yield %>
-    </div>
+    <%#= render "partials/flash" %>
+    <%= yield %>
+    
   </body>
 </html>
