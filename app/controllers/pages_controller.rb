@@ -29,9 +29,9 @@ class PagesController < ApplicationController
   def portfolio
     case @user_type
     when 'broker'
-      @portfolio = current_user.stocks
+      @portfolio = current_user.stocks.all
     when 'buyer'
-      @portfolio = current_user.buyer_stocks
+      @portfolio = current_user.buyer_stocks.all
     end
   end
 
