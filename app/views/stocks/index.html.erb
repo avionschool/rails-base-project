@@ -1,13 +1,11 @@
 <%= render "partials/navbar" %>
 
 <% if @user_type == 'broker' %>
+
   <%= render "broker/stocks", stocks_list: @stocks_list %>
+
 <% elsif @user_type == 'buyer' %>
-<<<<<<< HEAD
-  <%= render "buyer/stocks", stocks_list: @stocks_list %>
-=======
 
   <%= render "buyer/stocks", broker_stocks_list: @broker_stocks_list %>
-
->>>>>>> changed index vars for buyer stocks list
+  
 <% end %>
