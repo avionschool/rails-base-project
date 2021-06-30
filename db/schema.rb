@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_22_111348) do
+ActiveRecord::Schema.define(version: 2021_06_30_044646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 2021_06_22_111348) do
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "transaction_logs", force: :cascade do |t|
+    t.bigint "transaction_id", null: false
+    t.integer "amount_change"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["transaction_id"], name: "index_transaction_logs_on_transaction_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -67,6 +75,7 @@ ActiveRecord::Schema.define(version: 2021_06_22_111348) do
 
   add_foreign_key "broker_stocks", "stocks"
   add_foreign_key "broker_stocks", "users"
+  add_foreign_key "transaction_logs", "transactions"
   add_foreign_key "transactions", "broker_stocks"
   add_foreign_key "transactions", "users"
   add_foreign_key "users", "user_types"
