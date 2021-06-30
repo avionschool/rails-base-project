@@ -1,16 +1,7 @@
-<h1>Portfolio</h1>
-
-<% if @user_type == 'broker' %>
-
-  <%= render "broker/portfolio", portfolio: @portfolio %>
-
-<% elsif @user_type == 'buyer' %>
-
-  <%= render "broker/portfolio", portfolio: @portfolio %>
-
-<% end %>
 <%= render "partials/navbar" %>
 
-<section>
-  <h1>Portfolio</h1>
-</section>
+<% if @user_type == 'broker' %>
+  <%= render "broker/portfolio", portfolio: @portfolio %>
+<% elsif @user_type == 'buyer' %>
+  <%= render "broker/portfolio", portfolio: @portfolio %>
+<% end %>
