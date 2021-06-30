@@ -90,6 +90,11 @@ a:hover {
   min-width: 150px;
 }
 
+.form-sign-up {
+  min-height: calc(100vh - 56px);
+  padding: 75px 0;
+}
+
 /* Navbar */
 nav.navbar a.nav-link {
   color: #f6f6e9 !important;
@@ -98,4 +103,27 @@ nav.navbar a.nav-link {
 nav.navbar a.nav-link:hover {
   /* color: yellow !important; */
   color: #005792 !important;
+}
+
+/* RESPONSIVE LAYOUT */
+/* Extra large devices  */
+@media (max-width: 1199px) {
+}
+
+/* Large devices */
+@media (max-width: 991px) {
+}
+
+/* Medium devices */
+@media (max-width: 767px) {
+  .form-sign-up {
+    padding: 50px 0;
+  }
+}
+
+/* Small devices */
+@media (max-width: 575px) {
+  .form-sign-up {
+    padding: 30px 0;
+  }
 }
