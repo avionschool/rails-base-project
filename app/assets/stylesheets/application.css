@@ -24,6 +24,10 @@ body {
   color: #202a35;
 }
 
+section {
+  padding: 60px 0;
+}
+
 /* Global */
 .orange {
   color: #fd5f00;
@@ -102,6 +106,10 @@ nav.navbar a.nav-link:hover {
 
 /* Medium devices */
 @media (max-width: 767px) {
+  section {
+    padding: 40px 0;
+  }
+
   .form-devise {
     padding: 40px 0;
   }
@@ -109,6 +117,10 @@ nav.navbar a.nav-link:hover {
 
 /* Small devices */
 @media (max-width: 575px) {
+  section {
+    padding: 30px 0;
+  }
+
   .form-devise {
     padding: 30px 0;
   }
