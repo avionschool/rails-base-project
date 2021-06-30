@@ -7,7 +7,7 @@ class StocksController < ApplicationController
     when 'broker'
       @stocks_list = Stock.all
     when 'buyer'
-      @stock_list = BrokerStock.all
+      @broker_stocks_list = BrokerStock.all
     end
   end
 
