@@ -25,7 +25,7 @@ body {
 }
 
 section {
-  padding: 60px 0;
+  padding: 40px 0;
 }
 
 /* Global */
@@ -82,7 +82,7 @@ a:hover {
 
 .form-devise {
   min-height: calc(100vh - 56px);
-  padding: 60px 0;
+  padding: 40px 0;
 }
 
 /* Navbar */
@@ -107,21 +107,21 @@ nav.navbar a.nav-link:hover {
 /* Medium devices */
 @media (max-width: 767px) {
   section {
-    padding: 40px 0;
+    padding: 30px 0;
   }
 
   .form-devise {
-    padding: 40px 0;
+    padding: 30px 0;
   }
 }
 
 /* Small devices */
 @media (max-width: 575px) {
   section {
-    padding: 30px 0;
+    padding: 20px 0;
   }
 
   .form-devise {
-    padding: 30px 0;
+    padding: 20px 0;
   }
 }
