@@ -11,12 +11,14 @@
     <%end%>
 
     <thead>
-      <th>Symbol</th>
-      <th>Company Name</th>
-    <%if buyer_signed_in?%>
-      <th>Broker</th>
-    <%end%>
-      <th>View</th>
+      <tr>
+        <th>Symbol</th>
+        <th>Company Name</th>
+      <%if buyer_signed_in?%>
+        <th>Broker</th>
+      <%end%>
+        <th>View</th>
+      </tr>
     </thead>
   <tbody>
   <% if broker_signed_in? %>

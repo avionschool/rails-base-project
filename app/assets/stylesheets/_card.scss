@@ -1,0 +1,95 @@
+@import 'base';
+
+.card {
+  @include flexCenter(row, center);
+  justify-content: center;
+  height: 100vh;
+  color: var(--clr-accent-darker);
+
+  .card-wrapper {
+    position: relative;
+    border-radius: 0.4rem;
+    box-shadow: var(--bs);
+    height: var(--h-form);
+    padding: var(--p-form);
+    min-width: 35rem;
+
+    .top {
+      margin-bottom: 4em;
+
+      .name_and_symbol {
+        text-align: center;
+        border-bottom: 1px solid var(--clr-accent-darker);
+      }
+    }
+
+    .middle {
+      margin-bottom: 4em;
+      @include flexCenter(row, center);
+      justify-content: space-around;
+
+      h2 {
+        color: var(--clr-accent-darker);
+      }
+
+      .change,
+      .price {
+        color: var(--clr-accent-dark);
+        text-align: center;
+      }
+    }
+
+    .bottom {
+      @include flexCenter(column, center);
+
+      .quantity {
+        @include flexCenter(row, center);
+
+        label {
+          font-size: var(--fs-h3);
+        }
+
+        input {
+          outline: none;
+          margin: 0 0.2em 0 1em;
+          padding: 0.2em 0 0 0.2em;
+          font-size: 1.5rem;
+        }
+
+        .btn-confirm {
+          background-color: var(--clr-accent-darker);
+          color: var(--clr-light);
+          padding: 0.5em 1em;
+          border-radius: 0.2rem;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .total {
+      position: absolute;
+      bottom: 3em;
+      right: 5em;
+
+      label {
+        font-size: var(--fs-h3);
+      }
+
+      .total_input {
+        border: none;
+        outline: none;
+        pointer-events: none;
+        border-bottom: 1px solid var(--clr-accent-darker);
+      }
+
+      .buy {
+        background-color: var(--clr-accent-darker);
+        color: var(--clr-light);
+        padding: 0.5em 1em;
+        border-radius: 0.2rem;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}

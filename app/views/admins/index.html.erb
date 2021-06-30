@@ -1,9 +1,49 @@
-<h1>All Buyers</h1>
-<% @buyers.each do |buyer|%>
-    <div><%= buyer.email%></div>
-<%end%>
+<section class="admin-table">
+  <table class="admin-content-table">
+    <Caption>All Buyers</Caption>
 
-<h1>All Brokers</h1>
-<% @brokers.each do |broker|%>
-    <div><%= link_to broker.email, admin_broker_path(current_admin, broker)%><%= link_to 'Edit', edit_admin_broker_path(current_admin, broker)%></div>
-<%end%>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @buyers.each do |buyer|%>
+        <tr>
+          <td><%= buyer.email%></td>
+          <td><%= buyer.first_name%></td>
+          <td><%= buyer.last_name%></td>
+          <td><%= buyer.username%></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+
+  <table class="admin-content-table">
+    <Caption>All Brokers</Caption>
+
+    <thead>
+      <th>Email</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    </thead>
+
+    <tbody>
+      <% @brokers.each do |broker|%>
+        <tr>
+          <td><%= broker.email %></td>
+          <td><%= broker.first_name%></td>
+          <td><%= broker.last_name%></td>
+          <td><%= broker.username%></td>
+        </tr>
+      <%end%>
+    </tbody>
+
+  </table>
+
+</section>

@@ -1,21 +1,45 @@
-<section>
-  <h2><%= @broker_stock.symbol%></h2>
-  <h2><%= @quote.change_percent_s%></h2>
-  <h2>Company Name<%= @broker_stock.company_name%></h2>
-  <h2 id = 'latest_price' data-price = "<%= @quote.latest_price%>" ><%= @quote.latest_price%></h2>
-  
-  
+<section class="card">
+  <div class="card-wrapper">
+    <div class='top'>
+      <div class='name_and_symbol'>
+        <h2><%= @broker_stock.company_name%></h2>
+        <em><%= @broker_stock.symbol%></em>
+      </div>
+    </div>
 
-  <%if buyer_signed_in?%>
+    <div class="middle">
+
+      <div class="change">
+        <h2><%= @quote.change_percent_s%></h2>
+        <em>Change</em>
+      </div>
+  
+      <div class="price">
+        <h2 id = 'latest_price' data-price = "<%= @quote.latest_price%>" ><%= @quote.latest_price%></h2>
+        <em>Price</em>
+      </div>
+    </div>
+    
+  
+    <%if buyer_signed_in?%>
       <%= form_with scope: :buyer_stock, url: buyer_stocks_path(current_buyer), local: true do |f|%>
-          <%= f.hidden_field :broker_stock_id, value: @broker_stock.id%>
-          <div>
-              <%= f.label :quantity%><br>
-              <%= f.number_field :quantity, value: 1, id: :quantity%><br>
-            <div id = confirm-quantity >Confirm</div>
+        <%= f.hidden_field :broker_stock_id, value: @broker_stock.id%>
+          
+        <div class="bottom">
+          <div class="quantity">
+            <%= f.label :quantity %>
+            <%= f.number_field :quantity, value: 1, id: :quantity%>
+            <p class="btn-confirm" id="confirm-quantity ">Confirm</p>
           </div>
-          <div><%= f.number_field :total_price, step: :any, id: :total_price%></div>
-          <%= f.submit 'Buy'%>
+
+          <div class="total">
+            <%= f.label :total %>
+            <%= f.number_field :total_price, step: :any, id: :total_price, class:'total_input' %>
+            <%= f.submit 'Buy', class:"buy" %>
+          </div>
+
+        </div>
       <%end%>
-  <%end%>
+    <%end%>
+  </div>
 </section>

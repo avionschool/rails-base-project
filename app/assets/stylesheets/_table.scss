@@ -58,3 +58,62 @@
     }
   }
 }
+
+// admin all user
+.admin-table {
+  @include flexCenter(column, center);
+  width: 100%;
+  justify-content: center;
+  margin-left: 5rem;
+
+  Caption {
+    margin-top: 1em;
+    font-size: var(--fs-h2);
+    text-align: center;
+    letter-spacing: 0.5rem;
+  }
+  .admin-content-table {
+    border-collapse: collapse;
+    margin: 1em 0;
+    min-width: 800px;
+    box-shadow: var(--bs);
+
+    thead {
+      th {
+        font-size: var(--fs-body);
+      }
+
+      tr {
+        background-color: var(--clr-accent-darker);
+        color: var(--clr-light);
+        text-align: left;
+        font-weight: var(--fw-bold);
+      }
+    }
+
+    th,
+    td {
+      padding: 0.9em 1em;
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid var(--clr-accent-lighter);
+
+        &:nth-child(odd) {
+          background-color: #f3f3f3;
+        }
+
+        &:last-of-type {
+          border-bottom: 2px solid var(--clr-accent-darker);
+        }
+      }
+      a {
+        color: var(--clr-accent-dark);
+      }
+      td {
+        font-size: var(--fs-label);
+      }
+    }
+  }
+}

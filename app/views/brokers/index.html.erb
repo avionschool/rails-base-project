@@ -1,5 +1,26 @@
-<%@brokers.each do |broker|%>
-    <div><%= broker.email%><%= link_to "Edit", edit_admin_broker_path(current_admin, broker)%></div>
-    <%= button_to "Approve", admin_broker_path(current_admin, broker), params: { broker:{ approved: true }}, method: :patch%>
-<%end%>
+<section class="admin-table">
+  <table class="admin-content-table">
+    <Caption>Pending Brokers</Caption>
 
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+        <th> </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @brokers.each do |broker|%>
+        <tr>
+          <td><%= broker.email %></td>
+          <td><%= broker.first_name%></td>
+          <td><%= broker.last_name%></td>
+          <td><%= broker.username%></td>
+          <td><%= button_to "Approve", admin_broker_path(current_admin, broker), params: { broker:{ approved: true }}, method: :patch%></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
