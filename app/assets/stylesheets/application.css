@@ -24,32 +24,6 @@ body {
   color: #202a35;
 }
 
-/* Scrollbar */
-/* width */
-::-webkit-scrollbar {
-  /* width: 20px; */
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #fd5f00;
-  border-radius: 10px;
-  transition: 0.2s ease-in;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #005792;
-}
-/* End Scrollbar */
-
 /* Global */
 .orange {
   color: #fd5f00;
@@ -92,7 +66,7 @@ a:hover {
 
 .form-sign-up {
   min-height: calc(100vh - 56px);
-  padding: 75px 0;
+  padding: 60px 0;
 }
 
 /* Navbar */
@@ -117,7 +91,7 @@ nav.navbar a.nav-link:hover {
 /* Medium devices */
 @media (max-width: 767px) {
   .form-sign-up {
-    padding: 50px 0;
+    padding: 40px 0;
   }
 }
 
