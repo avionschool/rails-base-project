@@ -69,9 +69,21 @@ a:hover {
   text-decoration: none;
 }
 
-/* Notice Alert */
-.close-notice-display {
-  transition: 0.2s ease-in;
+/* Flash Message */
+/* .flash-message {
+  min-height: 50px;
+  margin: 16px 0;
+} */
+
+/* .alert {
+  margin-bottom: 0 !important;
+} */
+
+/* Form error list */
+.form-error-ul {
+  margin: 0;
+  /* padding: 0; */
+  /* list-style-type: none; */
 }
 
 .btn {
