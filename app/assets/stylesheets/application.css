@@ -64,8 +64,7 @@ a:hover {
   min-width: 150px;
 }
 
-.form-sign-up,
-.form-sign-in {
+.form-devise {
   min-height: calc(100vh - 56px);
   padding: 60px 0;
 }
@@ -91,16 +90,14 @@ nav.navbar a.nav-link:hover {
 
 /* Medium devices */
 @media (max-width: 767px) {
-  .form-sign-up,
-  .form-sign-in {
+  .form-devise {
     padding: 40px 0;
   }
 }
 
 /* Small devices */
 @media (max-width: 575px) {
-  .form-sign-up,
-  .form-sign-in {
+  .form-devise {
     padding: 30px 0;
   }
 }

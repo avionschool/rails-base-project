@@ -1,6 +1,6 @@
 <%= render "partials/navbar" %>
 
-<section class="form-sign-in d-flex align-items-center">
+<section class="form-devise d-flex align-items-center">
   <div class="container">
     <div class="row">
       <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
@@ -14,7 +14,7 @@
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="field form-group">
                 <%#= f.label :email %><!--<br />-->
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: :email, class: "form-control"  %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: :email, class: "form-control" %>
               </div>
 
               <div class="field form-group">
