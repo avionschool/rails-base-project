@@ -1,16 +1,41 @@
-<h2>Forgot your password?</h2>
+<%= render "partials/navbar" %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<section class="form-devise d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-body">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+            <h2 class="mb-4 text-center">Forgot your password?</h2>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+            <%= render "partials/flash" %>
 
-<%= render "devise/shared/links" %>
+            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+
+              <div class="field">
+                <%#= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: :email, class: "form-control" %>
+              </div>
+
+              <div class="actions mt-4">
+                <%= f.submit "Send me reset password instructions", class: "btn btn-primary bg-orange btn-block" %>
+              </div>
+            <% end %>
+          </div><!-- card-body -->
+        </div><!-- card -->
+
+      <%#= render "devise/shared/links" %>
+      <div class="mt-4 text-center">
+        <span style="color: #005792;"><%= link_to 'Log in', new_user_session_path %></span>
+
+        or 
+
+        <span style="color: #005792;"><%= link_to 'Sign Up', new_user_registration_path %>
+      </div>
+
+      </div><!-- col -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
