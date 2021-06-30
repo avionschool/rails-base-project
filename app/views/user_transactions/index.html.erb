@@ -18,6 +18,12 @@
             <td><%= transaction.buyer.email%></td>
             <td><%= transaction.broker_stock.symbol%></td>
             <td><%= transaction.broker_stock.broker.email%></td>
+            <td><%= transaction.quantity%></td>
+            <%unless transaction.total_price.nil?%>
+              <td><%= transaction.total_price.ceil(2)%></td>
+              <%else%>
+                <td><%= transaction.total_price%></td>
+            <%end%>
             <td><%= transaction.created_at.strftime('%B %d, %Y')%></td>
           </tr>
         <%end%>

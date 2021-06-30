@@ -1,7 +1,10 @@
 <section>
   <div>
-    <h1><%= @buyer_stock.symbol%></h1>
-    <h2><%= @buyer_stock.company_name%></h2>
-
+   <h2><%= @buyer_stock.symbol%></h2>
+    <h2><%= @quote.change_percent_s%></h2>
+    <h2>Company Name<%= @buyer_stock.company_name%></h2>
+     <h2 id = 'latest_price' data-price = "<%= @quote.latest_price%>" > Latest Price: <%= @quote.latest_price%></h2>
+    <h2> Quantity: <%= @buyer_stock.quantity%></h2>
+    <h2> Total Amount: <%= @quote.latest_price * @buyer_stock.quantity%></h2>
   </div>
 </section>

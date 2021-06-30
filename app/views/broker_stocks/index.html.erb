@@ -1,13 +1,19 @@
 <%# if broker has signed in show broker_stocks %>
 <%# if buyer has signed in show available_stocks %>
-
-<h2>Portfolio</h2>
-
+<%if broker_signed_in?%>
+  <h2>Portfolio</h2>
+<%elsif buyer_signed_in?%>
+  <h2>Stocks</h2>
+<%end%>
 <section class="table">
   <table class="content-table">
     <thead>
       <th>Symbol</th>
       <th>Company Name</th>
+    <%if buyer_signed_in?%>
+      <th>Broker</th>
+    <%end%>
+      <th>View</th>
     </thead>
   <tbody>
   <% if broker_signed_in? %>
