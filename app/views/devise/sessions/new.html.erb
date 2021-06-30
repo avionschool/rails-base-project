@@ -1,8 +1,17 @@
+
+
 <section class="wrapper-body">
+  
 
   <div class="wrapper-grid">
 
     <article class="left">
+      <div class="logo-container">
+        <div class="logo">
+          <i class='bx bxs-coin-stack'></i>
+          <h1>stockpile</h1>
+        </div>
+      </div>
 
       <% if current_page?(buyer_session_path) %>
         <div>
@@ -36,7 +45,7 @@
     <article class="input-data right">
       <h2>Log in</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field label-email"">
+        <div class="field">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input email" %>
         </div>

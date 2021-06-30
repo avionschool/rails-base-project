@@ -7,4 +7,3 @@
 <% @brokers.each do |broker|%>
     <div><%= link_to broker.email, admin_broker_path(current_admin, broker)%><%= link_to 'Edit', edit_admin_broker_path(current_admin, broker)%></div>
 <%end%>
-

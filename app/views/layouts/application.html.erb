@@ -18,14 +18,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-
-  <body>
-  <% if user_signed_in? || admin_logged_in? %>
   <body class="<%= controller_name%>-<%= action_name%>">
-    <%= render 'shared/nav_bar'%>
+    <% if user_signed_in? || admin_logged_in? %>
+      <%= render 'shared/nav_bar'%>
     <% end %>
-    <%= yield %>
-    <%= render 'shared/footer'%>
+    
+      <%= yield %>
 
-  </body>
+    </body>
 </html>

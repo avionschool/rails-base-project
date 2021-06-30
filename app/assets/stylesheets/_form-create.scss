@@ -1,0 +1,61 @@
+@import 'base';
+
+.create-wrapper-body {
+  @include flexCenter(row, center);
+  justify-content: center;
+  height: 100vh;
+  font-family: mont;
+  color: var(--clr-accent-darker);
+
+  .create-wrapper {
+    border-radius: 0.4rem;
+    box-shadow: var(--bs);
+    height: var(--h-form);
+    padding: var(--p-form);
+    @include flexCenter(column, center);
+
+    .create-input-data {
+      .create-admin-input {
+        padding: 0.2em 0.7em;
+        font-size: var(--fs-body);
+        outline: none;
+        border: none;
+        background: none;
+        border-bottom: 1px solid var(--clr-dark);
+        width: var(--input-w);
+      }
+
+      h2 {
+        margin: 0.2em 0 0.825em;
+        font-size: var(--fs-h2);
+        text-align: center;
+      }
+      label {
+        font-size: var(--fs-label);
+      }
+
+      .field {
+        margin-top: 1.5em;
+      }
+
+      .btn {
+        background-color: var(--clr-accent-darker);
+        box-shadow: var(--bs);
+        color: var(--clr-light);
+        cursor: pointer;
+        padding: 0.5em 1em;
+        outline: none;
+        border: none;
+        // border-radius: 0.2rem;
+        border-radius: 0.145rem;
+        transition: transform 200ms ease-in-out;
+        font-size: var(--fs-body);
+        margin: 2em 0;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}

@@ -1,12 +1,15 @@
 <%# if broker has signed in show broker_stocks %>
 <%# if buyer has signed in show available_stocks %>
-<%if broker_signed_in?%>
-  <h2>Portfolio</h2>
-<%elsif buyer_signed_in?%>
-  <h2>Stocks</h2>
-<%end%>
+
 <section class="table">
   <table class="content-table">
+  
+    <%if broker_signed_in?%>
+      <Caption>Portfolio</Caption>
+    <%elsif buyer_signed_in?%>
+      <Caption>Stocks</Caption>
+    <%end%>
+
     <thead>
       <th>Symbol</th>
       <th>Company Name</th>
@@ -21,7 +24,7 @@
       <tr>
         <td><%= stock.symbol%></td>
         <td><%= stock.company_name%></td>
-        <td><%= link_to 'Show', broker_stock_path(stock)%></td>
+        <td><%= button_to 'Show', broker_stock_path(stock), method: :get, class:"button"%></td>
       </tr>
     <%end%>
 
@@ -31,7 +34,7 @@
         <td><%= stock.symbol%></td>
         <td><%= stock.company_name%></td>
         <td><%= stock.broker.email%></td>
-        <td><%= link_to 'Buy', broker_stock_path(stock)%></td>
+        <td><%= button_to 'Buy', broker_stock_path(stock), method: :get, class:"button"%></td>
       </tr>
     <%end%>
   <%end%>

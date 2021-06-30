@@ -1,41 +1,53 @@
 @import 'base';
 
 .wrapper-body {
-  @include flexCenter(row);
+  @include flexCenter(row, center);
   justify-content: center;
   height: 100vh;
   font-family: mont;
-  color: var(--clr-dark);
+  color: var(--clr-accent-darker);
 
   .wrapper-grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    border-radius: 0.4rem;
-    background-color: var(--clr-light);
+    border-radius: 0.145rem;
     box-shadow: var(--bs);
-    overflow: hidden;
-    height: var(--h-form);
-    width: var(--w-form);
+    // overflow: hidden;
+    min-height: var(--h-form);
+    width: var(--w-form); // this is to fix the form width of all the forms
 
     .left {
       position: relative;
-      @include flexCenter(column);
+      @include flexCenter(column, center);
       text-align: center;
       padding: var(--p-form);
-      background: var(--clr-dark);
-      color: var(--clr-light);
+      background: var(--clr-accent-darker);
+
+      .logo-container {
+        position: absolute;
+        left: 0;
+        top: -22px;
+
+        .logo {
+          @include flexCenter(row, center);
+          color: var(--clr-accent-dark);
+        }
+      }
 
       h3 {
-        margin-top: 1em;
+        color: var(--clr-accent-lighter);
+        margin: 1em 0;
         font-size: var(--fs-h3);
       }
       p {
         font-size: var(--fs-body);
         margin-bottom: 4em;
+        color: var(--clr-light);
       }
       .signup-btn__left,
+      .login-btn__left,
       .login-as-buyer__left,
-      .login-btn__left {
+      .become-a-broker__left {
         transition: transform 200ms ease-in-out;
 
         &:hover {
@@ -45,9 +57,9 @@
         .signup-btn__left__linkto,
         .login-btn__left__linkto {
           padding: 0.5em 1.2em;
-          background-color: var(--clr-accent);
-          border-radius: 2rem;
-          color: var(--clr-dark);
+          background-color: var(--clr-accent-light);
+          border-radius: 0.145rem;
+          color: var(--clr-light);
           box-shadow: var(--bs);
           font-size: var(--fs-body);
         }
@@ -60,22 +72,22 @@
         .become-a-broker__left-link-to,
         .login-as-buyer__left-link_to {
           text-decoration: underline;
+          color: var(--clr-light);
         }
       }
     }
 
     .input-data {
-      @include flexCenter(column);
+      @include flexCenter(column, center);
 
       .input {
-        padding: 0.4em 0.7em;
+        padding: 0.2em 0.7em;
         font-size: var(--fs-body);
         outline: none;
         border: none;
         background: none;
         border-bottom: 1px solid var(--clr-dark);
         width: var(--input-w);
-        margin-bottom: 1.2em;
       }
 
       h2 {
@@ -87,54 +99,52 @@
         font-size: var(--fs-label);
       }
 
-      .label-email {
-        margin-top: 0.725em;
+      .field {
+        margin-top: 0.9em;
       }
 
       .btn {
-        background-color: var(--clr-accent);
+        background-color: var(--clr-accent-darker);
         box-shadow: var(--bs);
-        color: var(--clr-dark);
+        color: var(--clr-light);
         cursor: pointer;
         padding: 0.5em 1em;
         outline: none;
         border: none;
         // border-radius: 0.2rem;
-        border-radius: 2rem;
-        margin-top: 1em;
+        border-radius: 0.145rem;
         transition: transform 200ms ease-in-out;
         font-size: var(--fs-body);
+        margin: 3em 0;
 
         &:hover {
           transform: scale(1.1);
         }
       }
+      .em_6chars_min {
+        font-size: var(--fs-label);
+      }
     }
   }
 }
 
-.em_6chars_min {
-  font-size: var(--fs-label);
-}
-
 // admin
 .admin-wrapper-body {
-  @include flexCenter(row);
+  @include flexCenter(row, center);
   justify-content: center;
   height: 100vh;
   font-family: mont;
-  color: var(--clr-dark);
+  color: var(--clr-accent-darker);
 
   .admin-wrapper-grid {
     display: flex;
     border-radius: 0.4rem;
-    background-color: var(--clr-light);
     box-shadow: var(--bs);
     height: var(--h-form);
     padding: var(--p-form);
 
     .admin-input-data {
-      @include flexCenter(column);
+      @include flexCenter(column, center);
 
       .admin-input {
         padding: 0.4em 0.7em;
@@ -142,9 +152,9 @@
         outline: none;
         border: none;
         background: none;
-        border-bottom: 1px solid var(--clr-dark);
+        border-bottom: 1px solid var(--clr-accent-darker);
         width: var(--input-w);
-        margin-bottom: 1.2em;
+        margin-bottom: 1.5em;
       }
       h2 {
         margin: 0.825em 0;
@@ -155,19 +165,21 @@
       label {
         font-size: var(--fs-label);
       }
+
       .admin-label-email {
         margin-top: 0.725em;
       }
+
       .btn {
-        background-color: var(--clr-accent);
+        background-color: var(--clr-accent-darker);
         box-shadow: var(--bs);
-        color: var(--clr-dark);
+        color: var(--clr-accent-lighter);
         cursor: pointer;
         padding: 0.5em 1em;
         outline: none;
         border: none;
         // border-radius: 0.2rem;
-        border-radius: 2rem;
+        border-radius: 0.3rem;
         margin-top: 1em;
         transition: transform 200ms ease-in-out;
         font-size: var(--fs-body);
