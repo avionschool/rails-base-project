@@ -6,13 +6,14 @@ class BuyerStocksController < ApplicationController
   end
 
   def show
-    @buyer_stock = current_buyer.buyer_stocks.find_by(params[:symbol])
+    @buyer_stock = current_buyer.buyer_stocks.find(params[:id])
 
     @client = IEX::Api::Client.new(
       publishable_token: Rails.application.credentials.dig(:iex_cloud, :api_key),
       secret_token: Rails.application.credentials.dig(:iex_cloud, :secret_key),
       endpoint: 'https://cloud.iexapis.com/v1'
     )
+    @quote = @client.quote(@buyer_stock.symbol)
   end
 
   def create
