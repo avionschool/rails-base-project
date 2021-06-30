@@ -3,5 +3,5 @@
 <% if @user_type == 'broker' %>
   <%= render "broker/portfolio", portfolio: @portfolio %>
 <% elsif @user_type == 'buyer' %>
-  <%= render "broker/portfolio", portfolio: @portfolio %>
+  <%= render "buyer/portfolio", portfolio: @portfolio %>
 <% end %>
