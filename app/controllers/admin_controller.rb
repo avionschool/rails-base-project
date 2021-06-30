@@ -2,6 +2,7 @@ class AdminController < ApplicationController
 
     def users
       @buyers = User.buyers.all
+      @admins = User.admins.all
       @brokers = User.brokers.where(verified: true)
       @users = User.all
     end
