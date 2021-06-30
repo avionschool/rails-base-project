@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   # Stocks
   resources :stocks, only: [:index]
   # Broker Stocks
-  post '/stocks/:id' => 'broker_stocks#add_stock', as: 'stock_add'
+  post '/stocks/broker/:id' => 'broker_stocks#add_stock', as: 'stock_add' #Adds stock to broker
+  # Transactions
+  post '/stocks/buyer:id' => 'transactions#add_broker_stock', as: 'broker_stock_add' #Adds broker_stock to buyer
 end
