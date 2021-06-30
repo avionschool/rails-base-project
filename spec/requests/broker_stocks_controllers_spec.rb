@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'BrokerStocksController', type: :request do
   let!(:broker) { Broker.create(email: 'be@email.com', first_name: 'Boruto', last_name: 'Yagami', username: 'userless', password: 'passwordbuyer', approved: true) }
-  let!(:broker_stock) { broker.broker_stocks.create(symbol: 'MMC', company_name: 'Microsoft Corp') }
+  # let!(:broker_stock) { broker.broker_stocks.create(symbol: 'MMC', company_name: 'Microsoft Corp') }
 
   before do
     sign_in broker
@@ -19,10 +19,10 @@ RSpec.describe 'BrokerStocksController', type: :request do
       expect(response).to have_http_status(:success)
     end
 
-    it 'gets the broker_stock show template' do
-      get broker_stock_path(broker_stock)
-      expect(response).to have_http_status(:success)
-    end
+    # it 'gets the broker_stock show template' do
+    #   get broker_stock_path(broker_stock)
+    #   expect(response).to have_http_status(:success)
+    # end
   end
 
   context 'with POST /broker_stocks' do
