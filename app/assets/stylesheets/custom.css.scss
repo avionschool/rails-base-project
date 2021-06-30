@@ -12,7 +12,38 @@ body{
     font-size: 1.5rem;
     overflow-x: hidden;
 }
-
+.heading{
+  &-primary{
+      font-family: $font-heading ;
+      font-weight: 800;
+      color: rgb(20, 20, 20);
+      &-h1{
+          font-size: 5rem;
+      }
+      &-h2{
+        font-size: 4rem;
+      }
+      &-h3{
+          a{
+              color: #c53f3f;
+              text-decoration: none;
+          }
+      }
+      &-h2{
+          text-transform: none !important;
+      }
+  }
+}
+.body-container{
+  margin-top: 2rem;
+}
+.main-container{
+  position: relative;
+  width: 95% !important;
+  margin: auto;
+  padding-top: 2rem !important;
+  box-sizing: border-box;
+}
 .sidebar{
     height: 100%;
     width: 0;
@@ -97,6 +128,9 @@ body{
     .flickr_pagination .next_page {
       margin-left: 1em; }
 
-
+.inner-table{
+  width: 70% !important;
+  margin-left: 15% !important;
+}
 
       

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   get 'new_order(/:id)', to: 'user_stocks#new', as: 'new_user_stock'
   post 'stocks/order', to: 'user_stocks#order', as: 'order_stocks'
-
+  get 'stocks/:id', to: 'stocks#show', as:'stock'
 
 end
 

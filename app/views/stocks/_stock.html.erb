@@ -1,5 +1,8 @@
 <tr>
-    <th scope="col"><%=stock.ticker%></th>
+
+    <th scope="col">
+        <%=link_to "#{stock.ticker}", stock_path(stock)%>
+    </th>
     <th scope="col"><%=stock.name%></th>
     <th scope="col"><%=stock.last_price%></th>
 

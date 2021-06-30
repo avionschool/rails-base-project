@@ -1,3 +1,65 @@
 // Place all the styles related to the stocks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.stock{
+    position: absolute;
+    top: 0;
+    left: 0;
+    &-stock-basic-info{
+        align-items: center;
+    }
+    &-logo{
+        height: 10rem;
+        width: auto;
+        width: max-content;
+        display: inline-block;
+        img{
+            height: 100% !important;
+        }
+    }
+    &-name{
+        display: inline-block;
+    }
+    &-price{
+        align-items: center;
+        &_latest{
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-right: 5rem;
+        }
+        &_change{
+            font-weight: 700;
+        }
+        &-loss{
+            color: red;
+        }
+        &-gain{
+            color: green;
+        }
+    }
+    &-description{
+        padding: 0.5rem 0rem;
+        margin: 0.5rem 2rem;
+        h4{
+            font-family: 'Hind', sans-serif;
+            line-height: 1.4;
+            text-align: justify;
+            text-indent: 3rem;
+            font-weight: 500;
+            font-size: 1.6rem;
+
+
+        }
+    }
+    &-details{
+        &-label{
+            padding: 1.5rem 0rem;
+            font-weight: 700;
+        }
+    }
+}
+.line-break{
+    height: 2px;
+    width: 100%;
+    background-color: #868686;
+}
