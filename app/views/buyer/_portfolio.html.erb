@@ -23,7 +23,7 @@
             <td><%= buyer_stock.user.email %></td>
             <td><%= transaction.amount %></td>
             <td>
-            Buy 
+            <%= link_to "Buy", buy_path(transaction) %>
             and 
             Sell
             </td>

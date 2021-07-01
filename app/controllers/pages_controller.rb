@@ -16,9 +16,18 @@ class PagesController < ApplicationController
     end
   end
 
+  # Buyers Only
+  def buy_page
+    @transaction = Transaction.find(params[:id])
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :user_type_id, :verified)
+  end
+
+  def transaction_params
+    params.require(:transaction).permit(:amount)
   end
 end
