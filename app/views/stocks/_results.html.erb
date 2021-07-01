@@ -1,0 +1,59 @@
+<div class="results-block">
+  <%=render 'layouts/messages'%>
+</div>
+
+<% if @stock %>
+    <div class="stock-basic-info d-flex">
+        <div class="stock-logo">
+            <img src=<%=@stock.logo%> alt=<%=@stock.name%>>
+        </div>
+        <div class="stock-details">
+            <h1 class="heading-primary heading-primary-h2 stock-name"><%="#{@stock.name} [#{@stock.ticker}]"%></h1>
+            <div class="stock-price d-flex">
+                <h2 class="stock-price_latest">$ <%=@stock.last_price%></h2>
+                <h3 class="stock-price_change stock-price-<%=@stock_quote&.change_percent > 0 ? 'gain' : 'loss'%>" ><i class="fas fa-sort-<%=@stock_quote.change_percent > 0 ? 'up' : 'down'%> me-3"></i><%="#{@stock_quote.change}  (#{@stock_quote.change_percent_s})"%></h3>
+                <%if current_user.broker?%>
+                    <%if current_user.stock_already_tracked?(@stock.ticker)%>
+                        <%=link_to user_stock_path(@stock.userstock(current_user)), method: :delete, class:'btn btn-add-remove btn-tracked-remove ms-auto' do%>
+                            <span>Already Tracked</span>
+                        <%end%>
+                    <%else%>
+                        <%=link_to 'Add to Portfolio', user_stocks_path(ticker: @stock.ticker), class: "btn btn-xs btn-add-remove btn-success add-stock ms-auto", method: :post%>
+                    <%end%>
+                <%end%>
+            </div>
+        </div>
+    </div>   
+<% end %> 
+
+<%if @broker_stocks%>
+    <%if current_user.buyer?%>
+        <div class="broker_list">
+            <h1>List of Brokers</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Broker</th>
+                        <th scope="col">Brokerage fee</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                        <%@broker_stocks. each do |broker_stock|%>
+                            <tr>
+                                <th scope="row"><%=broker_stock.user.email%></th>
+                                <td>1%</td>
+                                <td>
+                                    <%=link_to 'Buy', new_user_stock_path(broker_stock,transactiontype:'buy'), class: "btn btn-xs btn-success buy-stock"%>      
+                                    <%if current_user.stock_already_tracked?(@stock.ticker)%>
+                                        <%=link_to 'Sell', new_user_stock_path(broker_stock,transactiontype:'sell'), class: "btn btn-xs btn-danger buy-stock"%>
+                                    <%end%>
+                                </td>
+                            </tr>
+                        <%end%>
+                </tbody>
+            </table>
+        </div>
+    <%end%>
+<%end%>

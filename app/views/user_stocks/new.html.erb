@@ -1,4 +1,3 @@
-<%=render 'shared/errors', obj: @user_stock%>
 <h1>Order's Entry</h1>
 
 <div class="row">
@@ -20,15 +19,22 @@
             </div>
             <div class="form-group">
                 <%= f.label :action %>
-                <%= f.select :type, [["Buy", "buy"], ["Sell", "sell"]], class: 'form-control', selected: "#{@type}" %>
+                <select name="user_stocks[type]" id="user_stocks_type class="form-select form-select_sort", data-reflex="change->OrderStock#action">
+                    <option value= "buy" <%=@type == 'buy' ? 'selected' : ''%>>Buy</option>
+                    <option value= "sell" <%=@type == 'sell' ? 'selected' : ''%>>Sell</option>
+                </select>
             </div>
             <div class="form-group">
                 <%= f.label :quantity %>
-                <%= f.number_field :quantity, autofocus: true, class: 'form-control', min:"0" %>
+                <%= f.number_field :quantity, autofocus: true, class: 'form-control', id: 'stock-quantity', min:"1", max:"#{@type == 'sell' ? @available_qty : @max_qty}" %>
             </div>
             <div class="form-group">
                 <%= f.label "Price" %>
-                <%= f.number_field :stock_price, autofocus: true, class: 'form-control', value:"#{@stock.last_price}", :readonly => 'true', step: 0.1%>
+                <%= f.number_field :stock_price, autofocus: true, class: 'form-control',id: 'stock-price', value:"#{@stock.last_price}", :readonly => 'true', step: 0.1%>
+            </div>
+            <div class="form-group">
+                <%= f.label "Order Price" %>
+                <%= f.number_field :order_price, autofocus: true, class: 'form-control', id: 'order-price', :readonly => 'true', step: 0.1%>
             </div>
             <div class="form-group">         
                 <%= f.submit 'Submit order', class: 'btn btn-primary' %>
@@ -36,3 +42,8 @@
         <% end %>
     </div>
 </div>
+<div class="user-credit-info dflex" >
+<div class="Buying-Power"><span>Buying Power:</span>$<%=number_with_precision(current_user.cash, :precision => 2)%></div>
+    <div class="user-stock-quantity"><span>Available qty:</span><%=@available_qty%></div>
+</div>
+<%= javascript_pack_tag 'stock_order' %>

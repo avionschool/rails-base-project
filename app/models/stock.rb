@@ -35,10 +35,20 @@ class Stock < ApplicationRecord
   end
 
   def self.check_db(ticker_symbol)
-    find_by(ticker: ticker_symbol)
+    find_by(ticker: ticker_symbol&.upcase)
   end
 
   def userstock(current_user)
     user_stocks.find_by(user: current_user)
+  end
+
+  def self.update_price(ticker_symbol)
+    client = sandbox_api
+    stock = find_by(ticker: ticker_symbol)
+    begin
+      stock.update(last_price: client.price(ticker_symbol))
+    rescue StandardError
+      nil
+    end
   end
 end

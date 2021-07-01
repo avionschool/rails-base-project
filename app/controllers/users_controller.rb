@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
+    if @user.update(user_update_params)
       flash[:notice] = 'You have successfully created a new account'
       redirect_to users_path
     else
@@ -66,5 +66,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation, :role)
+  end
+
+  def user_update_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :role, :cash)
   end
 end

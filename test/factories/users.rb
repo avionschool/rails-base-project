@@ -4,6 +4,7 @@ FactoryBot.define do
     email { "#{username}@email.com" }
     password { 'secure123' }
     approved { true }
+    cash { 0 }
 
     trait :admin do
       username { 'admin' }

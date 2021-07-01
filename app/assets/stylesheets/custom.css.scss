@@ -2,17 +2,68 @@
 @import "font-awesome";
 @import 'bootstrap/dist/css/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 $font-body: 'Hind', sans-serif;
 $font-heading:  'Montserrat', sans-serif;
 html{
     font-size: 62.5%;
 }
+.gradient-background{
+  background: linear-gradient(90deg, rgba(22,74,65,0.82) 0%, rgba(77,119,78,0.88) 42%, rgba(157,200,141,1) 100%, rgba(184,210,174,1) 100%) !important;
+}
 body{
     font-family: $font-body;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     overflow-x: hidden;
+    min-height: 100vh !important;
 }
-
+.navbar-transparent{
+  background-color: transparent !important;
+  padding: 1.5% 10%;
+}
+.form-control{
+  font-size: 1.4rem !important;
+}
+.navbar-brand{
+  color: white !important;
+  font-family: 'Rubik', sans-serif !important;
+  font-weight: 800;
+}
+.link-light{
+  color: white !important;
+}
+.heading{
+  &-primary{
+      font-family: $font-heading ;
+      font-weight: 800;
+      color: rgb(20, 20, 20);
+      &-h1{
+          font-size: 5rem;
+      }
+      &-h2{
+        font-size: 4rem;
+      }
+      &-h3{
+          a{
+              color: #c53f3f;
+              text-decoration: none;
+          }
+      }
+      &-h2{
+          text-transform: none !important;
+      }
+  }
+}
+.body-container{
+  margin-top: 2rem;
+}
+.main-container{
+  position: relative;
+  width: 95% !important;
+  margin: auto;
+  padding-top: 2rem !important;
+  box-sizing: border-box;
+}
 .sidebar{
     height: 100%;
     width: 0;
@@ -97,6 +148,20 @@ body{
     .flickr_pagination .next_page {
       margin-left: 1em; }
 
-
-
-      
+.inner-table{
+  width: 70% !important;
+  margin-left: 15% !important;
+}
+.link-yellow{
+  color: #F1B24A;
+}
+.flash-message{
+  width: 30% !important;
+    margin: auto;
+    padding: 3rem 2rem;
+    position: fixed;
+    top: 2px;
+    right: 50%;
+    transform: translateX(50%);
+    border-radius: 1rem;
+}

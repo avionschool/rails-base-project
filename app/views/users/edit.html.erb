@@ -9,6 +9,13 @@
       <%= f.label :email %>
       <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
     </div>
+    <%if @user.buyer?%>
+      <div class="form-group">
+        <%= f.label :cash %>
+        <%= f.number_field :cash, autofocus: true, autocomplete: 'email', class: 'form-control', min:"0"%>
+      </div>
+    <%end%>
+    
   
     <div class="form-group">
     <%= f.submit(@user.new_record? ? 'Sign Up' : 'Update Account', class:'btn btn-danger btn-lg btn-signup')%>  </div>
