@@ -3,24 +3,10 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .stocks {
-  // background-color: blue;
-  // height: 100vh;
-  .stock-options {
-    border-radius: 20px;
-    color: white;
-  }
-
-  .stock-table {
-    height: 85vh;
-    overflow: hidden;
-    overflow-y: auto;
-
+  .table-container {
     th {
-      background: orange;
-      position: sticky;
-      top: 0; /* Don't forget this, required for the stickiness */
-      border-top: 0;
-      box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.9);
+      border: none;
+      border: 0;
     }
   }
 }
