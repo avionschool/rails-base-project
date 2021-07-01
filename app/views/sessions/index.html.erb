@@ -21,11 +21,18 @@
     <% end %>
   </div>
 
+  <% @user_stocks.each do |t| %>
+    <h4 class="user_text"><%= t.company %></h4>
+    <h4 class="user_text"><%= t.ticker %></h4>
+    <h4 class="user_text"><%= t.change_percent %></h4>
+    <h4 class="user_text"><%= t.quantity %></h4>
+    <h4 class="user_text"><%= t.price %></h4>
+    <h4 class="user_text"><%= t.total_price %></h4>
+  <% end %>
+
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Open modal
   </button>
-
-  <%= @stock.inspect %>
 
   <div class="modal" id="myModal">
     <div class="modal-dialog">

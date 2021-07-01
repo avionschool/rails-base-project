@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   end
   get 'search-stock', to: 'stocks#search'
   get 'update-stock', to: 'stocks#update_stock'
+  post 'transaction', to: 'stocks#transaction_buy'
 end

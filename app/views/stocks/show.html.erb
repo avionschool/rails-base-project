@@ -2,3 +2,20 @@
 <strong>Name: </strong> <%= @stock.company %><br/>
 <strong>Percent Change: </strong> <%= @stock.change_percent %><br/>
 <strong>Price: </strong> <%= @stock.price%><br/>
+
+
+<%= form_with scope: :stock, method: :post, url: transaction_path, local: true do |f| %>
+  <%= f.label :quantity %> <br>  
+  <%= f.text_field :quantity %> <br>  
+
+  <%= f.hidden_field :company, value: @stock.company %>
+  <%= f.hidden_field :ticker, value: @stock.ticker %>
+  <%= f.hidden_field :price, value: @stock.price %>
+  <%= f.hidden_field :change_percent, value: @stock.change_percent %>
+  <%= f.hidden_field :buyer, value: @user.username %>
+  <%= f.hidden_field :buyer_id, value: @user.id %>
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <%= f.hidden_field :seller, value: "stox.io" %>
+  <%= hidden_field_tag(:user_id, @user.id) %>
+  <%= f.submit 'Buy' %>
+<%end%>
