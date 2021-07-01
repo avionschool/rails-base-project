@@ -47,6 +47,11 @@ a:hover {
   text-decoration: none;
 }
 
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
 /* Flash Message */
 /* .flash-message {
   min-height: 50px;
