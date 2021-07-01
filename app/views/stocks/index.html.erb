@@ -1,9 +1,17 @@
 <% if @user_type == 'broker' %>
-
-  <%= render "broker/stocks", stocks_list: @stocks_list %>
+  <section>
+      <div class="container">
+      <h1>Stocks</h1>
+        <%= render "broker/stocks", stocks_list: @stocks_list %>
+      </div>
+  </section>
 
 <% elsif @user_type == 'buyer' %>
-
-  <%= render "buyer/stocks", broker_stocks_list: @broker_stocks_list %>
+  <section>
+    <div class="container">
+      <h1>Stocks</h1>
+      <%= render "buyer/stocks", broker_stocks_list: @broker_stocks_list %>
+    </div>
+  </section>
   
 <% end %>
