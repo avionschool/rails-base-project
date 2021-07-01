@@ -37,10 +37,9 @@ class StocksController < ApplicationController
     if @transaction.save
       @total_price = @transaction.price * @transaction.quantity
       @transaction.update(total_price: @total_price.round(2))
-      if @buyer_stock == nil 
+      if @buyer_stock.nil?
         BuyerStock.create(stock_params)
         BuyerStock.update(total_price: @total_price)
-        redirect_to stocks_path
       else
         @stock = BuyerStock.new(stock_params)
         @new_qty = @buyer_stock.quantity + @transaction.quantity
@@ -48,9 +47,10 @@ class StocksController < ApplicationController
         @new_percent = @stock.change_percent
         @new_price = @transaction.price
         BuyerStock.update(quantity: @new_qty, total_price: @new_total_price, change_percent: @new_percent, price: @new_price)
-        redirect_to stocks_path
       end
+      redirect_to stocks_path
     else
+      render 'show'
     end
   end
 
