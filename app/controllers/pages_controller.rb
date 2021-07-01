@@ -12,7 +12,7 @@ class PagesController < ApplicationController
     when 'broker'
       @portfolio = current_user.stocks.all
     when 'buyer'
-      @portfolio = current_user.buyer_stocks.all
+      @portfolio = current_user.transactions.all
     end
   end
 

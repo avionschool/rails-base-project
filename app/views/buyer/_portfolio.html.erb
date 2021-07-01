@@ -8,18 +8,25 @@
           <th scope="col">Company Name</th>
           <th scope="col">Latest Price</th>
           <th scope="col">Broker</th>
+          <th scope="col">Amount</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
-        <% portfolio.each do |buyer_stock| %>
+        <% portfolio.each do |transaction| %>
           <tr>
+            <% buyer_stock = transaction.broker_stock %>
             <% stock = buyer_stock.stock %>
             <td><%= stock.ticker %></td>
             <td><%= stock.stock %></td>
             <td><%= stock.price %></td>
             <td><%= buyer_stock.user.email %></td>
-            <td>Buy and Sell Buttons</td>
+            <td><%= transaction.amount %></td>
+            <td>
+            Buy 
+            and 
+            Sell
+            </td>
           </tr>
         <% end %>
       </tbody>
