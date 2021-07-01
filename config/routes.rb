@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   # FOr buying and selling stocks
   get '/portfolio/:id/buy' => 'pages#buy', as: 'buy'
   post '/portfolio/:id/buy' => 'pages#buy_stock', as: 'buy_stock'
+  get '/portfolio/:id/sell' => 'pages#sell', as: 'sell'
+  post '/portfolio/:id/sell' => 'pages#sell_stock', as: 'sell_stock'
 end

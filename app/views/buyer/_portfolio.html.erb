@@ -24,8 +24,7 @@
             <td><%= transaction.amount %></td>
             <td>
             <%= link_to "Buy", buy_path(transaction) %>
-            and 
-            Sell
+            <%= link_to "Sell", sell_path(transaction) %>
             </td>
           </tr>
         <% end %>
