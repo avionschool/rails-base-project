@@ -1,24 +1,27 @@
-<section>
+<section class="transactions">
   <div class="container">
-    <h1>Transactions</h1>
-    <table class="table table-striped table-bordered table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Buyer</th>
-          <th scope="col">Seller</th>
-          <th scope="col">Stock</th>
-          <th scope="col">Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @transaction_logs.each do |transaction_log| %>
+    <h2 class="text-center">Transactions</h2>
+
+    <div class="table-container">
+      <table class="table table-hover table-responsive-sm">
+        <thead class="thead-bg-color sticky-top">
           <tr>
-            <td><%= transaction_log.buyer_transaction.user.email %></td>
-            <td><%= transaction_log.buyer_transaction.broker_stock.user.email %></td>
-            <td><%= transaction_log.buyer_transaction.broker_stock.stock.stock %></td>
-            <td><%= transaction_log.amount_change %></td>
-        <% end %>
-      </tbody>
-    </table>
+            <th scope="col">Buyer</th>
+            <th scope="col">Seller</th>
+            <th scope="col">Stock</th>
+            <th scope="col" class="text-center">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @transaction_logs.each do |transaction_log| %>
+            <tr>
+              <td><%= transaction_log.buyer_transaction.user.email %></td>
+              <td><%= transaction_log.buyer_transaction.broker_stock.user.email %></td>
+              <td><%= transaction_log.buyer_transaction.broker_stock.stock.stock %></td>
+              <td class="text-center"><%= transaction_log.amount_change %></td>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
