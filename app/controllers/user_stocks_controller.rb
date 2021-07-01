@@ -5,6 +5,7 @@ class UserStocksController < ApplicationController
     @order_params = order_params(params[:user_stocks])
     stock_query(@order_params[:ticker])
     @total_price = @order_params[:quantity].to_i * @order_params[:price].to_d
+    @user_cash = current_user.cash if current_user.buyer?
     if current_user.stock_already_tracked?(@order_params[:ticker])
       @user_stock = current_user.user_stocks.find_by(stock_id: @stock.id)
       if @order_params[:transactiontype] == 'sell' && @order_params[:quantity].to_i == @user_stock.total_shares.to_i
@@ -21,22 +22,32 @@ class UserStocksController < ApplicationController
   end
 
   def new
+    client_sb = Stock.sandbox_api
     @user_stock = UserStock.new
     @broker_buyer_stock = UserStock.find_by(id: params[:id])
     @stock = @broker_buyer_stock.stock
+    @stock.update(last_price: client_sb.price(@stock.ticker))
     @type = params[:transactiontype]
     if !stock_valid?(@broker_buyer_stock)
       flash[:alert] = 'Stock is currently unavailable'
       redirect_to marketplace_path
     elsif @broker_buyer_stock.user.broker?
       @broker_stock = @broker_buyer_stock
+      @available_qty = UserStock.where(stock: @broker_stock.stock, user: current_user).first&.total_shares
     elsif @broker_buyer_stock.user == current_user
       @broker_stock = nil
+      @available_qty = @broker_buyer_stock.total_shares
     end
+    @max_qty = (current_user.cash / @stock.last_price).to_i
   end
 
   def create
     if current_user.buyer?
+      unless current_user.update(cash: @user_cash - @order_params[:order_price])
+        flash[:alert] = 'Insufficient funds to Execute Trade'
+        redirect_back(fallback_location: my_portfolio_path)
+        return
+      end
       @user_stock = UserStock.new(user: current_user, stock: @stock, average_price: @order_params[:price], total_shares: @order_params[:quantity])
       if @user_stock.save
         save_transaction
@@ -45,7 +56,7 @@ class UserStocksController < ApplicationController
       else
         @broker = User.find_by(id: @oder_params[:broker_id])
         flash[:alert] = 'unsuccessfull Transaction'
-        render :action => 'new', :@broker => @broker, :@stock => @stock
+        redirect_back(fallback_location: my_portfolio_path)
       end
     else
       stock_query(params[:ticker])
@@ -60,6 +71,10 @@ class UserStocksController < ApplicationController
 
   def destroy
     if current_user.buyer?
+      unless current_user.update(cash: (@user_cash + @order_params[:order_price]))
+        flash[:alert] = 'Something is wrong with your request please try again'
+        redirect_back(fallback_location: my_portfolio_path)
+      end
       @user_stock.destroy
       save_transaction
       flash[:notice] = 'Successfull Transaction'
@@ -78,9 +93,16 @@ class UserStocksController < ApplicationController
       total_shares = @user_stock.total_shares + @order_params[:quantity].to_d
       total_equity = ((@user_stock.average_price * @user_stock.total_shares) + @total_price)
       average_price = total_equity / total_shares
+      user_cash = @user_cash - @order_params[:order_price]
     when 'sell'
       total_shares = @user_stock.total_shares - @order_params[:quantity].to_d
       average_price = @user_stock.average_price
+      user_cash = @user_cash + @order_params[:order_price]
+    end
+    unless current_user.update(cash: user_cash)
+      flash[:alert] = 'Insufficient funds to Execute Trade'
+      redirect_back(fallback_location: my_portfolio_path)
+      return
     end
     if @user_stock.update(average_price: average_price, total_shares: total_shares)
       save_transaction
@@ -88,7 +110,7 @@ class UserStocksController < ApplicationController
       redirect_to my_portfolio_path
     else
       flash[:alert] = 'An error is encounter while procesing your order please try again'
-      render :action => 'new', :@broker => @broker, :@stock => @stock
+      redirect_back(fallback_location: my_portfolio_path)
     end
   end
 
@@ -120,7 +142,7 @@ class UserStocksController < ApplicationController
       if current_user.broker?
         redirect_to marketplace_path
       else
-        render :action => 'new', :@broker => @broker, :@stock => @stock
+        redirect_back(fallback_location: my_portfolio_path)
       end
     end
   end
@@ -130,7 +152,8 @@ class UserStocksController < ApplicationController
     price: params[:stock_price],
     broker_id: params[:broker_id],
     transactiontype: params[:type],
-    ticker: params[:ticker] }
+    ticker: params[:ticker],
+    order_price: params[:order_price].to_i }
   end
 
   def save_transaction

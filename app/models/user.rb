@@ -11,7 +11,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  before_create :approve_buyer
+  validates :cash, numericality: { greater_than: 0 }, if: :buyer?
+  before_create :buyer_default
   after_create :sign_up_proccess
 
   scope :pending_users, lambda {
@@ -20,6 +21,15 @@ class User < ApplicationRecord
   scope :approved_users, lambda {
     where(approved: true).where.not(role: 'admin')
   }
+  def buyer_default
+    approve_buyer
+    cash_zero
+  end
+
+  def cash_zero
+    self.cash = 0 if buyer?
+  end
+
   def approve_buyer
     self.approved = true if buyer?
   end
