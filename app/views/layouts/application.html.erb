@@ -12,6 +12,9 @@
 
   <body>
     <%#= render "partials/flash" %>
+    <% if current_user %>
+      <%= render "partials/navbar" %>
+    <% end %>
     <%= yield %>
     
   </body>

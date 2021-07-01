@@ -1,5 +1,3 @@
-<%= render "partials/navbar" %>
-
 <% if @user_type == 'broker' %>
   <%= render "broker/portfolio", portfolio: @portfolio %>
 <% elsif @user_type == 'buyer' %>
