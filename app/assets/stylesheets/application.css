@@ -52,15 +52,11 @@ a:hover {
   vertical-align: middle;
 }
 
-/* Flash Message */
-/* .flash-message {
-  min-height: 50px;
-  margin: 16px 0;
-} */
-
-/* .alert {
-  margin-bottom: 0 !important;
-} */
+.table-container {
+  height: 70vh;
+  overflow: hidden;
+  overflow-y: auto;
+}
 
 /* Form error list */
 .form-error-ul {
