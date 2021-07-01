@@ -11,7 +11,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :cash, numericality: { greater_than: 0 }, if: :buyer?
+  validates :cash, numericality: { greater_than_or_equal_to: 0 }, if: :buyer?
   before_create :buyer_default
   after_create :sign_up_proccess
 
