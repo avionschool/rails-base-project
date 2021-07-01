@@ -18,13 +18,13 @@ RSpec.describe 'StocksControllers', type: :request do
 
   describe 'GET stock_search' do
     it 'returns a redirect response not logged_in' do
-      get stock_search_path
+      get search_stock_path
       expect(response).to have_http_status(:found)
     end
 
     it 'returns a success response if logged_in' do
       sign_in user
-      get stock_search_path
+      get search_stock_path
       expect(response).to have_http_status(:ok)
     end
   end
