@@ -1,0 +1,8 @@
+<% flash.each do |name, msg| %>
+    <div class="flash-message flash alert alert-success alert-dismissible fade show no-margin" role="alert"  id="flash-message">
+    <%= msg %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% end %> 
+
+<%= javascript_pack_tag 'flash' %>

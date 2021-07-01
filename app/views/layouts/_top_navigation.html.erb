@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-transparent">
   <div class="container-fluid">
     <a class="navbar-brand brand ms-3" href="#">stockjobber</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,43 +9,43 @@
       <%if user_signed_in?%>
         <%if current_user.admin?%>
           <li class="nav-item">
-            <%=link_to admin_home_path,{ :class => 'nav-link link-dark'}   do%>
+            <%=link_to admin_home_path,{ :class => 'nav-link link-light'}   do%>
               <i class="fas fa-home icon"></i>Home
             <%end%>   
           </li>
           <li class="nav-item">
-            <%=link_to users_path,{ :class => 'nav-link link-dark'}   do%>
+            <%=link_to users_path,{ :class => 'nav-link link-light'}   do%>
               <i class="fas fa-users"></i>Users
             <%end%>   
           </li>
           <li class="nav-item">
-            <%=link_to transactions_path,{ :class => 'nav-link link-dark'}   do%>
+            <%=link_to transactions_path,{ :class => 'nav-link link-light'}   do%>
               <i class="far fa-list-alt icon"></i>Transactions
             <%end%>   
           </li>
           <li class="nav-item">
-            <%=link_to pending_user_path,{ :class => 'nav-link link-dark'}   do%>
+            <%=link_to pending_user_path,{ :class => 'nav-link link-light'}   do%>
               <i class="fas fa-bell"></i>Pending Users
             <%end%>   
           </li>
         <%else%>
           <li class="nav-item">
-            <%=link_to marketplace_path,{ :class => 'nav-link link-dark'}   do%>
+            <%=link_to marketplace_path,{ :class => 'nav-link link-light'}   do%>
               <i class="fas fa-chart-line 2x icon"></i>Stock Market
             <%end%>   
           </li>
           <li class="nav-item">
-            <%=link_to stock_search_path,{ :class => 'nav-link link-dark'}   do%>
+            <%=link_to search_stock_path,{ :class => 'nav-link link-light'}   do%>
               <i class="fas fa-search-dollar icon"></i>Search Stock
             <%end%>  
           </li>
           <li class="nav-item">
-          <%=link_to my_portfolio_path,{ :class => 'nav-link link-dark'}   do%>
+          <%=link_to my_portfolio_path,{ :class => 'nav-link link-light'}   do%>
             <i class="fas fa-home icon"></i>My Portfolio
           <%end%>
           </li>
           <li>
-            <%=link_to transactions_path,{ :class => 'nav-link link-dark'}   do%>
+            <%=link_to transactions_path,{ :class => 'nav-link link-light'}   do%>
               <i class="far fa-list-alt icon"></i>Transactions
             <%end%>   
           </li>
@@ -64,12 +64,12 @@
         <%end%>
         <%else%>
          <li class="nav-item">
-          <%=link_to new_user_session_path,{ :class => 'nav-link link-dark'}   do%>
+          <%=link_to new_user_session_path,{ :class => 'nav-link link-light'}   do%>
             <i class="fas fa-sign-in-alt icon"></i>Sign_in
           <%end%>   
          </li>
          <li class="nav-item">
-          <%=link_to new_user_registration_path,{ :class => 'nav-link link-dark'}   do%>
+          <%=link_to new_user_registration_path,{ :class => 'nav-link link-light'}   do%>
             <i class="fas fa-user-plus icon"></i>Sign_up
           <%end%>   
          </li>
@@ -78,4 +78,3 @@
     </div>
   </div>
 </nav>
-
