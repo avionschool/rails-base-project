@@ -71,7 +71,14 @@ a:hover {
 
 .table-container .btn {
   min-width: 100px;
+}
+
+.table-container .btn-info {
   background-color: #005792;
+}
+
+.table-container .btn-danger {
+  background-color: #fd5f00;
 }
 
 /* Form error list */
