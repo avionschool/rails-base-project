@@ -12,7 +12,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :cash, numericality: { greater_than_or_equal_to: 0 }, if: :buyer?
-  before_create :buyer_default
+  before_validation :buyer_default
   after_create :sign_up_proccess
 
   scope :pending_users, lambda {
