@@ -22,7 +22,6 @@ class SessionsController < ApplicationController
   def index
     if logged_in?
       @user = User.find_by(id: session[:user_id])
-
     else
       redirect_to root_path
     end
