@@ -1,21 +1,3 @@
 // Place all the styles related to the Stocks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
-.broker-stocks,
-.buyer-stocks {
-  .table-container {
-    .thead-dark {
-      background-color: #13334c;
-    }
-    th {
-      border: none;
-      border: 0;
-    }
-
-    .btn {
-      min-width: 100px;
-      background-color: #005792;
-    }
-  }
-}

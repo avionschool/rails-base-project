@@ -26,6 +26,7 @@ body {
 
 section {
   padding: 40px 0;
+  /* background-color: #f6f6e9; */
 }
 
 /* Global */
@@ -56,6 +57,21 @@ a:hover {
   height: 70vh;
   overflow: hidden;
   overflow-y: auto;
+}
+
+.table-container .thead-bg-color {
+  background-color: #005792;
+  color: #f6f6e9;
+}
+
+.table-container th {
+  border: none;
+  border: 0;
+}
+
+.table-container .btn {
+  min-width: 100px;
+  background-color: #005792;
 }
 
 /* Form error list */
