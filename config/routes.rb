@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   post '/stocks/buyer/:id' => 'transactions#add_broker_stock', as: 'broker_stock_add' #Adds broker_stock to buyer
   # FOr buying and selling stocks
   get '/portfolio/:id/buy' => 'pages#buy', as: 'buy'
+  post '/portfolio/:id/buy' => 'pages#buy_stock', as: 'buy_stock'
 end

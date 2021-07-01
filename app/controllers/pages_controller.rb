@@ -1,3 +1,5 @@
+require 'pp'
+
 class PagesController < ApplicationController
   # before_action :authenticate_user!
   before_action :authenticate_user!, except: [:home]
@@ -17,8 +19,21 @@ class PagesController < ApplicationController
   end
 
   # Buyers Only
-  def buy_page
+  def buy
     @transaction = Transaction.find(params[:id])
+  end
+
+  def buy_stock
+    @transaction = Transaction.find(params[:id])
+    @purchased_stock = params[:transaction][:purchased_stock].to_i
+    @transaction.amount = @transaction.amount + @purchased_stock
+    if @transaction.save
+      @ts = TransactionLog.new()
+      @ts.transaction_id = params[:id]
+      @ts.amount_change = @purchased_stock
+      @ts.save!()
+      redirect_to pages_portfolio_path, notice: 'Stock Successfully Purchased'
+    end
   end
 
   private
