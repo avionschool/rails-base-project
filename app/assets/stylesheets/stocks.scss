@@ -2,22 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.broker-stocks,
 .buyer-stocks {
-  background-color: blue;
   .table-container {
+    .thead-dark {
+      background-color: #13334c;
+    }
     th {
       border: none;
       border: 0;
     }
-  }
-}
 
-.broker-stocks {
-  background-color: yellowgreen;
-  .table-container {
-    th {
-      border: none;
-      border: 0;
+    .btn {
+      min-width: 100px;
+      background-color: #005792;
     }
   }
 }
