@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get '/admin/pending' => 'admin#pending', as: 'users_pending'
   patch '/admin/pending/:id' => 'admin#approve_pending', as: 'users_approve_pending'
   get '/admin/user/:id' => 'admin#show', as: 'user_show'
+  get '/admin/users/new' => 'admin#new', as: 'user_new'
+  post '/admin/users' => 'admin#create', as: 'user_create'
+  get '/admin/user/:id/edit' => 'admin#edit', as: 'user_edit'
+  put '/admin/users:id/edit' => 'admin#update', as: 'user_update'
   # Buyer or Broker Only
   get '/portfolio' => 'pages#portfolio', as: 'pages_portfolio'
   # All
