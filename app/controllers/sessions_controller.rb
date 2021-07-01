@@ -22,7 +22,8 @@ class SessionsController < ApplicationController
   def index
     if logged_in?
       @user = User.find_by(id: session[:user_id])
-      @user_stocks = BuyerStock.where(user_id: @user.id)
+      @stocks = BuyerStock.where(user_id: @user.id)
+      @user_stocks = @stocks.where('quantity > ?', 0)
     else
       redirect_to root_path
     end
@@ -32,6 +33,7 @@ class SessionsController < ApplicationController
     if logged_in?
       @pending_users = User.where(status: 'pending').sort
       @users = User.where(role: 'Buyer').sort
+      @transactions = Transaction.all.sort_by(&:created_at).reverse
     else
       redirect_to root_path
     end
