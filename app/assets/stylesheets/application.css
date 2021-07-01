@@ -104,7 +104,9 @@ a:hover {
   color: #f6f6e9;
 }
 
-.form-devise {
+.form-devise,
+.form-buy,
+.form-sell {
   min-height: calc(100vh - 56px);
   padding: 40px 0;
 }

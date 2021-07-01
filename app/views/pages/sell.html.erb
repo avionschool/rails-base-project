@@ -1,26 +1,49 @@
-<div class="container">
-  <%= form_with model: @transaction, url: sell_stock_path, method: :post do |f| %>
-    <% buyer_stock = @transaction.broker_stock %>
-    <% stock = buyer_stock.stock %>
+<div class="form-sell d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-body">
 
-    <div class="field form-group">
-      <h3>Company: <%= stock.stock %></h3>
-    </div>
+            <%= form_with model: @transaction, url: sell_stock_path, method: :post do |f| %>
+              <% buyer_stock = @transaction.broker_stock %>
+              <% stock = buyer_stock.stock %>
 
-    <div class="field form-group">
-      <h3>Latest Price: <%= stock.price %></h3>
-    </div>
+              <div class="field form-group">
+                <table class="table table-borderless">
+                  <tr>
+                    <td><strong>Company</strong></td>
+                    <td><%= stock.stock %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Latest Price</strong></td>
+                    <td>
+                      <%#= stock.price %>
+                      <%= 
+                        number_with_precision(
+                          stock.price, :precision => 2, :delimiter => ','
+                        )
+                      %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Current Amount</strong></td>
+                    <td><%= @transaction.amount %></td>
+                  </tr>
+                </table>
+              </div>
 
-    <div class="field form-group">
-      <h3>Current Amount: <%= @transaction.amount %></h3>
-    </div>
+              <div class="field form-group">
+                <%= f.number_field :sold_stock, autofocus: true, placeholder: "Amount", class: "form-control" %>
+              </div>
 
-    <div class="field form-group">
-      <%= f.number_field :sold_stock, autofocus: true, placeholder: "Amount", class: "form-control" %>
+              <div class="actions mt-5">
+                <%= f.submit "Sell", class: "btn btn-primary bg-orange btn-block" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="actions mt-5">
-      <%= f.submit "Sell", class: "btn btn-primary bg-orange btn-block" %>
-    </div>
-  <% end %>
+  </div>
 </div>
