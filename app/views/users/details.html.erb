@@ -70,15 +70,58 @@
           <p class="user_text bold">Total Price</p>
         </div>
         <div class="scrollable">
-          <div class="user_card_transactions table-bg">
-            <p class="user_text"> Advanced Micro Devices Inc.</p>
-            <p class="user_text">AMD</p>
-            <p class="user_text">Aamir</p>
-            <p class="user_text">Khan</p>
-            <p class="user_text">8</p>
-            <p class="user_text">93.92 $</p>
-            <p class="user_text">751.36 $</p>
-          </div>
+          <% @transactions_buy.each do |t| %>
+            <div class="user_card_transactions table-bg">
+              <h4 class="user_text"><%= t.company %></h4>
+              <h4 class="user_text"><%= t.ticker %></h4>
+
+              <% if t.buyer == "stox.io" %>
+                <h4 class="user_text"><%= t.buyer %></h4>
+              <% else %>
+                <%= link_to users_details_path(:id => t.buyer_id), :class => "user_link" do %>
+                  <h4 class="user_text username" title="See User Details"><%= t.buyer %></h4>
+                <% end %>
+              <% end %>
+
+              <% if t.seller == "stox.io" %>
+                <h4 class="user_text"><%= t.seller %></h4>
+              <% else %>
+                <%= link_to users_details_path(:id => t.broker_id), :class => "user_link" do %>
+                  <h4 class="user_text username" title="See User Details"><%= t.seller %></h4>
+                <% end %>
+              <% end %>
+              
+              <h4 class="user_text"><%= t.quantity %></h4>
+              <h4 class="user_text"><%= ('%.2f' % t.price) %> $</h4>
+              <h4 class="user_text"><%= ('%.2f' % t.total_price) %> $</h4>
+            </div>
+          <% end %>
+          <% @transactions_sell.each do |t| %>
+            <div class="user_card_transactions table-bg">
+              <h4 class="user_text"><%= t.company %></h4>
+              <h4 class="user_text"><%= t.ticker %></h4>
+
+              <% if t.buyer == "stox.io" %>
+                <h4 class="user_text"><%= t.buyer %></h4>
+              <% else %>
+                <%= link_to users_details_path(:id => t.buyer_id), :class => "user_link" do %>
+                  <h4 class="user_text username" title="See User Details"><%= t.buyer %></h4>
+                <% end %>
+              <% end %>
+
+              <% if t.seller == "stox.io" %>
+                <h4 class="user_text"><%= t.seller %></h4>
+              <% else %>
+                <%= link_to users_details_path(:id => t.broker_id), :class => "user_link" do %>
+                  <h4 class="user_text username" title="See User Details"><%= t.seller %></h4>
+                <% end %>
+              <% end %>
+              
+              <h4 class="user_text"><%= t.quantity %></h4>
+              <h4 class="user_text"><%= ('%.2f' % t.price) %> $</h4>
+              <h4 class="user_text"><%= ('%.2f' % t.total_price) %> $</h4>
+            </div>
+          <% end %>
         </div>
       </div>
   </div>
