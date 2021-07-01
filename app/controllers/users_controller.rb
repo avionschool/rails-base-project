@@ -31,6 +31,8 @@ class UsersController < ApplicationController
 
   def details
     @user = User.find_by(id: params[:id])
+    @transactions_buy = Transaction.where(buyer_id: @user.id).sort_by(&:created_at)
+    @transactions_sell = Transaction.where(broker_id: @user.id).sort_by(&:created_at)
   end
 
   def update
@@ -42,6 +44,12 @@ class UsersController < ApplicationController
   def request_status
     users = User.find_by(id: params[:id])
     users.update(status: 'pending')
+    redirect_to '/dashboard'
+  end
+
+  def add_money
+    @user = User.find_by(id: params[:id])
+    @user.update(money_params)
     redirect_to '/dashboard'
   end
 
@@ -57,5 +65,9 @@ class UsersController < ApplicationController
 
   def broker_params
     params.require(:user).permit(:broker_role)
+  end
+
+  def money_params
+    params.require(:user).permit(:money)
   end
 end
