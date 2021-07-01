@@ -8,8 +8,7 @@ class StocksController < ApplicationController
     render 'show'
   end
 
-  def show
-  end
+  def show; end
 
   def update_stock
     Stock.delete_all
