@@ -15,7 +15,9 @@
         <td><%= user.email %></td>
         <td><%= user.user_type.user_type %></td>
         <td>
-          View and Edit Buttons
+          <%= link_to "View", user_show_path(user) %>
+          and 
+          Edit Buttons
         </td>
       </tr>
     <% end %>

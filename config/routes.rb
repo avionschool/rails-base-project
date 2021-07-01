@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/admin/users' => 'admin#users', as: 'users_index'
   get '/admin/pending' => 'admin#pending', as: 'users_pending'
   patch '/admin/pending/:id' => 'admin#approve_pending', as: 'users_approve_pending'
+  get '/admin/user/:id' => 'admin#show', as: 'user_show'
   # Buyer or Broker Only
   get '/portfolio' => 'pages#portfolio', as: 'pages_portfolio'
   # All
