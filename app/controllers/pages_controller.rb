@@ -56,6 +56,18 @@ class PagesController < ApplicationController
     redirect_to pages_portfolio_path, notice: 'Stock Successfully Purchased'
   end
 
+  # Transaction Logs
+  def transactions
+    case @user_type
+    when 'admin'
+      @transaction_logs = TransactionLog.all
+    when 'broker'
+      @transaction_logs = TransactionLog.where(transaction_id: [Transaction.where(broker_stock_id: [BrokerStock.where(user_id: current_user.id).ids]).ids])
+    when 'buyer'
+      @transaction_logs = TransactionLog.where(transaction_id: [Transaction.where(user_id: current_user.id).ids])
+    end
+  end
+
   private
 
   def user_params
