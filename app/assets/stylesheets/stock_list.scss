@@ -1,0 +1,9 @@
+.stock_list {
+  display: grid;
+  grid-template-columns: 15% 55% 10% 10% 10%;
+}
+
+.scrollable {
+  height: 80vh;
+  overflow-y: auto;
+}
