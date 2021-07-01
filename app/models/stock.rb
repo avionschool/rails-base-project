@@ -35,7 +35,7 @@ class Stock < ApplicationRecord
   end
 
   def self.check_db(ticker_symbol)
-    find_by(ticker: ticker_symbol)
+    find_by(ticker: ticker_symbol.upcase)
   end
 
   def userstock(current_user)
