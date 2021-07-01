@@ -15,7 +15,7 @@
                 <td><%= stock.company %></td>
                 <td><%= stock.change_percent %></td>
                 <td><%= stock.price %></td>
-                <td><%= 'Action placeholder' %></td>
+                <td><%= link_to "Buy", search_stock_path(ticker: stock.ticker)%></td>
             </tr>
         <% end %>
     </tbody>

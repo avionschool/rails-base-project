@@ -4,9 +4,11 @@ class StocksController < ApplicationController
   end
 
   def search
-    @stock = Stock.new_lookup(params[:stock])
-    render 'index'
+    @stock = Stock.new_lookup(params[:ticker])
+    render 'show'
   end
+
+  def show; end
 
   def update_stock
     Stock.delete_all

@@ -6,6 +6,6 @@ class Stock < ApplicationRecord
     client = IEX::Api::Client.new(publishable_token: Rails.application.credentials.iex_client[:publish_access_key],
                                   secret_token: Rails.application.credentials.iex_client[:secret_access_key],
                                   endpoint: 'https://sandbox.iexapis.com/v1')
-    new(ticker: ticker_symbol, company: client.company(ticker_symbol).company_name, price: client.price(ticker_symbol))
+    new(ticker: ticker_symbol, company: client.company(ticker_symbol).company_name, change_percent: client.quote(ticker_symbol).change_percent_s, price: client.price(ticker_symbol))
   end
 end
