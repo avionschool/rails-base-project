@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   get '/users/new_admin' => 'users#new_admin', as: 'users_new_admin'
   post '/users/create_admin' => 'users#create_admin', as: 'users_create_admin'
 
-  resources :stocks
+  resources :stocks do
+    collection do
+      post 'add_buyer_stock', to: "stocks#add_buyer_stock"
+    end
+  end
   get 'search-stock', to: 'stocks#search'
+  get 'update-stock', to: 'stocks#update_stock'
 end

@@ -1,0 +1,23 @@
+<table>
+    <thead>
+        <tr>
+            <th>Ticker</th>
+            <th>Company Name</th>
+            <th>Percent Change</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+     <tbody>
+        <% @stocks.each do |stock| %>
+            <tr>
+                <td><%= stock.ticker %></td>
+                <td><%= stock.company %></td>
+                <td><%= stock.change_percent %></td>
+                <td><%= stock.price %></td>
+                <td><%= 'Action placeholder' %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= will_paginate @stocks %>
