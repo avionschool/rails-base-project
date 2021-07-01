@@ -1,0 +1,16 @@
+<%= link_to "Go Back", users_index_path %>
+
+<h3>First Name: <%= @user.first_name %></h3>
+<h3>Last Name: <%= @user.last_name %></h3>
+<h3>Email: <%= @user.email %></h3>
+<h3>Account Type: <%= @user.user_type.user_type %></h3>
+<% if @user.user_type.user_type == 'broker' %>
+  <h3>Account Status: 
+    <% case @user.verified %>
+    <% when true %> 
+    Account Verified
+    <% when false %> 
+    Pending Approval
+    <% end %>
+  </h3>
+<% end %>

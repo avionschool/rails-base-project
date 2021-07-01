@@ -4,10 +4,14 @@ Rails.application.routes.draw do
   # Users
   devise_for :users
   # Admin Only
-  get '/admin/users' => 'pages#users', as: 'users_index'
-  get '/admin/pending' => 'pages#pending', as: 'users_pending'
-  # get 'admin/pending/:id' => 'pages#edit_pending', as: 'users_edit_pending'
-  patch '/admin/pending/:id' => 'pages#approve_pending', as: 'users_approve_pending'
+  get '/admin/users' => 'admin#users', as: 'users_index'
+  get '/admin/pending' => 'admin#pending', as: 'users_pending'
+  patch '/admin/pending/:id' => 'admin#approve_pending', as: 'users_approve_pending'
+  get '/admin/user/:id' => 'admin#show', as: 'user_show'
+  get '/admin/users/new' => 'admin#new', as: 'user_new'
+  post '/admin/users' => 'admin#create', as: 'user_create'
+  get '/admin/user/:id/edit' => 'admin#edit', as: 'user_edit'
+  put '/admin/users:id/edit' => 'admin#update', as: 'user_update'
   # Buyer or Broker Only
   get '/portfolio' => 'pages#portfolio', as: 'pages_portfolio'
   # All

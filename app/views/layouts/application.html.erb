@@ -11,7 +11,11 @@
   </head>
 
   <body>
-    <%#= render "partials/flash" %>
+    <% if current_user %>
+      <%= render "partials/navbar" %>
+      <%= render "partials/flash" %>
+    <% end %>
+
     <%= yield %>
     
   </body>

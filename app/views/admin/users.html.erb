@@ -1,0 +1,21 @@
+<%= link_to "Add User", user_new_path %> 
+
+<section>
+  <h1>All</h1>
+  <%= render "users", users: @users %>
+</section>
+
+<section>
+  <h1>Admins</h1>
+  <%= render "users", users: @admins %>
+</section>
+
+<section>
+  <h1>Brokers</h1>
+  <%= render "users", users: @brokers %>
+</section>
+
+<section>
+  <h1>Buyers</h1>
+  <%= render "users", users: @buyers %>
+</section>

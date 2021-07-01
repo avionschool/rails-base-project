@@ -1,0 +1,51 @@
+<div class="form-devise d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-body">
+
+            <h2 class="mb-4 text-center">New User</h2>
+
+            <%= form_with model: @user, url: user_create_path, method: :post do |f| %>
+
+              <div class="field form-group mb-5">
+                <%= f.label "Account Type" %>
+                <%= f.select :user_type_id, [["Broker", @broker.id], ["Buyer", @buyer.id], ["Admin", @admin.id]], {}, {class: "form-control"} %>
+              </div>
+
+              <div class="field form-group">
+                <%= f.text_field :first_name, autofocus: true, autocomplete: "first-name", placeholder: :first_name, class: "form-control" %>
+              </div>
+
+              <div class="field form-group">
+                <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name", placeholder: :last_name, class: "form-control" %>
+              </div>
+
+              <div class="field form-group">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: :email, class: "form-control" %>
+              </div>
+
+              <div class="field form-group">
+                <%= 
+                  f.password_field :password, 
+                  autocomplete: "new-password", 
+                  placeholder: "Password (6 characters minimum)", 
+                  class: "form-control"
+                %>
+              </div>
+
+              <div class="field form-group">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: :password_confirmation, class: "form-control" %>
+              </div>
+
+              <div class="actions mt-5">
+                <%= f.submit "Create User", class: "btn btn-primary bg-orange btn-block" %>
+              </div>
+            <% end %>
+          </div><!-- card-body -->
+        </div><!-- card -->
+      </div><!-- col -->
+    </div><!-- row -->
+  </div><!-- container -->
+</div>

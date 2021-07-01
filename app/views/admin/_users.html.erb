@@ -1,0 +1,24 @@
+<table class="table table-striped table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name:</th>
+      <th scope="col">Email:</th>
+      <th scope="col">Type:</th>
+      <th scope="col">Actions:</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td><%= user.first_name %> <%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.user_type.user_type %></td>
+        <td>
+          <%= link_to "View", user_show_path(user) %>
+          <%= link_to "Edit", user_edit_path(user) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
