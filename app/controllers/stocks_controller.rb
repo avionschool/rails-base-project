@@ -46,7 +46,7 @@ class StocksController < ApplicationController
         @new_total_price = (@new_qty * @transaction.price).round(2)
         @new_percent = @stock.change_percent
         @new_price = @transaction.price
-        BuyerStock.update(quantity: @new_qty, total_price: @new_total_price, change_percent: @new_percent, price: @new_price)
+        @buyer_stock.update(quantity: @new_qty, total_price: @new_total_price, change_percent: @new_percent, price: @new_price)
       end
       redirect_to stocks_path
     else
