@@ -36,17 +36,23 @@ class StocksController < ApplicationController
     @transaction = Transaction.new(buy_params)
     @user = User.find_by(id: params[:user_id])
     @buyer_stock = BuyerStock.find_by(user_id: @user.id, ticker: @transaction.ticker)
+    @discounted_price = @transaction.price * 0.95
     @total_price = if @user.broker_role.downcase == 'broker'
-                     discounted_price * @transaction.quantity
+                     @discounted_price * @transaction.quantity
                    else
                      @transaction.price * @transaction.quantity
                    end
-    render 'show' unless @user.money > @total_price
-    render 'show' unless @transaction.save
+    if @user.money < @total_price
+      redirect_to search_stock_path(ticker: @transaction.ticker, action_made: 'buy')
+      return
+    end
+    unless @transaction.save
+      redirect_to search_stock_path(ticker: @transaction.ticker, action_made: 'buy')
+      return
+    end
     user_money = @user.money - @total_price
     @user.update(money: user_money)
-    @user.broker_role.downcase == 'broker' ? @transaction.update(price: discounted_price.round(2)) : @transaction.update(price: @transaction.round(2))
-
+    @user.broker_role.downcase == 'broker' ? @transaction.update(price: @discounted_price.round(2)) : @transaction.update(price: @transaction.price.round(2))
     @transaction.update(total_price: @total_price.round(2))
     if @buyer_stock.nil?
       BuyerStock.create(stock_params)
@@ -64,27 +70,31 @@ class StocksController < ApplicationController
     @transaction = Transaction.new(sell_params)
     @user = User.find_by(id: params[:user_id])
     @seller_stock = BuyerStock.find_by(user_id: @user.id, ticker: @transaction.ticker)
+
+    if @seller_stock.quantity < sell_params[:quantity].to_i
+      redirect_to search_stock_path(ticker: @transaction.ticker, action_made: 'sell')
+      return
+    end
+
     @interest_price = @transaction.price * 1.05
     @total_price = if @user.broker_role.downcase == 'broker'
                      @interest_price * @transaction.quantity
                    else
                      @transaction.price * @transaction.quantity
                    end
-    if @transaction.save
-      user_money = @user.money + @total_price
-      @user.update(money: user_money)
-      @transaction.update(price: @interest_price.round(2)) if @user.broker_role.downcase == 'broker'
-      @stock = BuyerStock.new(stock_params)
-      @transaction.update(total_price: @total_price.round(2))
-      @new_qty = @seller_stock.quantity - @stock.quantity
-      @new_total_price = (@new_qty * @stock.price).round(2)
-      @new_percent = @stock.change_percent
-      @new_price = @stock.price
-      @seller_stock.update(quantity: @new_qty, total_price: @new_total_price, change_percent: @new_percent, price: @new_price)
-      redirect_to stocks_path
-    else
-      render 'show'
+    unless @transaction.save
+      redirect_to search_stock_path(ticker: @transaction.ticker, action_made: 'buy')
+      return
     end
+    user_money = @user.money + @total_price
+    @user.update(money: user_money)
+    @transaction.update(price: @interest_price.round(2)) if @user.broker_role.downcase == 'broker'
+    @stock = BuyerStock.new(stock_params)
+    @transaction.update(total_price: @total_price.round(2))
+    @new_qty = @seller_stock.quantity - @stock.quantity
+    @new_total_price = (@new_qty * @stock.price).round(2)
+    @seller_stock.update(quantity: @new_qty, total_price: @new_total_price, change_percent: @stock.change_percent, price: @stock.price)
+    redirect_to stocks_path
   end
 
   private
@@ -99,9 +109,5 @@ class StocksController < ApplicationController
 
   def stock_params
     params.require(:stock).permit(:company, :price, :ticker, :quantity, :user_id, :change_percent)
-  end
-
-  def discounted_price
-    @discounted_price = @transaction.price * 0.95
   end
 end
