@@ -1,3 +1,13 @@
-<!--<%# if current_user %>
-  <p>Account Type: <%#= @user_type.capitalize() %></p>
-<%# end %>-->
+<footer>
+  <div class="container h-100 d-flex justify-content-center align-items-center">
+    <% if current_user %>
+      <div class="text-center">
+        You're logged in as: <strong><%= @user_type.capitalize() %></strong> | Copyright 2021
+      </div>
+    <% else %>
+      <div class="text-center">
+        Copyright 2021
+      </div>
+    <% end %>
+  </div>
+</footer>
