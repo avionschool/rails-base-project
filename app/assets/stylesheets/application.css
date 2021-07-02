@@ -112,7 +112,8 @@ a:hover {
   padding: 40px 0;
 }
 
-.form-devise .col-img-container {
+.form-devise .col-img-container,
+.form-devise .col-form-devise {
   position: relative;
 }
 
