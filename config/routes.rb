@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'welcome', to: 'sessions#welcome'
-get 'dashboard', to: 'sessions#index'
+  get 'dashboard', to: 'sessions#index'
   get 'dashboard_admin', to: 'sessions#index_admin'
   get 'logout', to: 'sessions#out'
 
