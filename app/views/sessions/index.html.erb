@@ -12,12 +12,20 @@
 </head>
 <body>
   <div class="brokerbtn">
+    <%= form_with scope: :user, method: :put, url: users_money_path(@user.id), local: true do |f| %>
+      <div class="modal_layout">
+        <p class="edit_title user_text">Account Top-Up</p>
+        <%= f.label :money, "Money", class:"user_text" %>
+        <%= f.text_field :money, class:"textfield", placeholder: 'Input Last Name' %>
+
+        <%= f.submit "ADD MONEY", :class => "update_user" %>
+      </div>
+    <% end %>
     <h1 class="user_text"><%= @user.username %></h1>
     <h1 class="user_text"><%= @user.broker_role %></h1>
-    <% if @user.broker_role.downcase == "broker" %>
-      <%= link_to stocks_path, :class => "user_link" do %>
-        <h4 class="user_text approve">Stock List</h4>
-      <% end %>
+    <h1 class="user_text"><%= @user.money %></h1>
+    <%= link_to stocks_path, :class => "user_link" do %>
+      <h4 class="user_text approve">Stock List</h4>
     <% end %>
   </div>
 
@@ -28,6 +36,7 @@
     <h4 class="user_text"><%= t.quantity %></h4>
     <h4 class="user_text"><%= t.price %></h4>
     <h4 class="user_text"><%= t.total_price %></h4>
+    <%= link_to "Sell", search_stock_path(ticker: t.ticker, action_made: "sell")%>
   <% end %>
 
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
