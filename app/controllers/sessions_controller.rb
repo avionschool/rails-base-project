@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
     if logged_in?
       @user = User.find_by(id: session[:user_id])
       @stocks = BuyerStock.where(user_id: @user.id)
-      @user_stocks = @stocks.where('quantity > ?', 0)
+      @user_stocks = @stocks.where('quantity > ?', 0).reverse
     else
       redirect_to root_path
     end
