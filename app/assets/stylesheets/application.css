@@ -26,6 +26,7 @@ body {
 
 section {
   padding: 40px 0;
+  /* background-color: #f6f6e9; */
 }
 
 /* Global */
@@ -47,15 +48,38 @@ a:hover {
   text-decoration: none;
 }
 
-/* Flash Message */
-/* .flash-message {
-  min-height: 50px;
-  margin: 16px 0;
-} */
+.table th,
+.table td {
+  vertical-align: middle;
+}
 
-/* .alert {
-  margin-bottom: 0 !important;
-} */
+.table-container {
+  height: 70vh;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.table-container .thead-bg-color {
+  background-color: #005792;
+  color: #f6f6e9;
+}
+
+.table-container th {
+  border: none;
+  border: 0;
+}
+
+.table-container .btn {
+  min-width: 100px;
+}
+
+.table-container .btn-info {
+  background-color: #005792;
+}
+
+.table-container .btn-danger {
+  background-color: #fd5f00;
+}
 
 /* Form error list */
 .form-error-ul {
@@ -80,7 +104,9 @@ a:hover {
   color: #f6f6e9;
 }
 
-.form-devise {
+.form-devise,
+.form-buy,
+.form-sell {
   min-height: calc(100vh - 56px);
   padding: 40px 0;
 }
