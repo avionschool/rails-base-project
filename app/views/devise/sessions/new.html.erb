@@ -1,6 +1,7 @@
 <div class="landing-page">
     <div class="welcome d-flex">
         <div class="welcome-text">       
+          <%= render 'shared/errors', obj: @user%>
           <h1><%= t('.sign_in') %></h1>
 
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

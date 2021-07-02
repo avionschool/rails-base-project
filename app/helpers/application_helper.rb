@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def top_nav_bar?
-    return true if current_uri == '/users/sign_up' || current_uri == '/' || current_uri == '/users/sign_in'
+    return true if current_uri == '/users/sign_up' || current_uri == '/' || current_uri == '/users/sign_in' || current_uri == '/users'
   end
 end
