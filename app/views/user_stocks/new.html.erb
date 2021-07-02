@@ -5,12 +5,13 @@
         <%= form_with scope: :user_stocks, url: order_stocks_path, local:true do |f|%>
             <div class="form-group">
                 <%= f.label :broker %>
-                <%if @broker_stock%>
-                    <%= f.select :broker_id, @stock.users.broker.map{|broker| [broker.email, broker.id]}, class: 'form-control', selected: "#{@broker_stock&.user&.id}"%>    
-                <%else%>
-                    <%= f.select :broker_id, @stock.users.broker.map{|broker| [broker.email, broker.id]}, class: 'form-control'%>    
-                <%end%>
+                    <%= f.select :broker_id, @stock.users.broker.map{|broker| [broker.email, broker.id]}, class: 'form-control', selected: "#{@broker&.id}"%>
             </div>
+        <div class="form-group">
+            <%= f.label 'Brokerage fee %' %>
+            <%= f.number_field :brokerage_fee, autofocus: true, class: 'form-control',id: 'brokerage-fee', value:"#{@broker&.brokerage_fee}", :readonly => 'true', step: 0.1%>
+        </div>
+
 
             <div class="form-group">
                  <%= f.label :stock %>
@@ -21,9 +22,12 @@
                 <%= f.label :action %>
                 <select name="user_stocks[type]" id="user_stocks_type class="form-select form-select_sort", data-reflex="change->OrderStock#action">
                     <option value= "buy" <%=@type == 'buy' ? 'selected' : ''%>>Buy</option>
-                    <option value= "sell" <%=@type == 'sell' ? 'selected' : ''%>>Sell</option>
+                    <%if current_user.stock_already_tracked?(@stock.ticker)%>
+                        <option value= "sell" <%=@type == 'sell' ? 'selected' : ''%>>Sell</option>
+                    <%end%>
                 </select>
             </div>
+            <%= f.hidden_field :type, id: 'action-type', :value => @type %>
             <div class="form-group">
                 <%= f.label :quantity %>
                 <%= f.number_field :quantity, autofocus: true, class: 'form-control', id: 'stock-quantity', min:"1", max:"#{@type == 'sell' ? @available_qty : @max_qty}" %>
@@ -35,6 +39,10 @@
             <div class="form-group">
                 <%= f.label "Order Price" %>
                 <%= f.number_field :order_price, autofocus: true, class: 'form-control', id: 'order-price', :readonly => 'true', step: 0.1%>
+            </div>
+            <div class="form-group">
+                <%= f.label "Total Price (+brokerage fee)" %>
+                <%= f.number_field :total_price, autofocus: true, class: 'form-control', id: 'total-price', :readonly => 'true', step: 0.1%>
             </div>
             <div class="form-group">         
                 <%= f.submit 'Submit order', class: 'btn btn-primary' %>

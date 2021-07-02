@@ -43,7 +43,7 @@
                         <%@broker_stocks. each do |broker_stock|%>
                             <tr>
                                 <th scope="row"><%=broker_stock.user.email%></th>
-                                <td>1%</td>
+                                <td><%=broker_stock.user.brokerage_fee%>%</td>
                                 <td>
                                     <%=link_to 'Buy', new_user_stock_path(broker_stock,transactiontype:'buy'), class: "btn btn-xs btn-success buy-stock"%>      
                                     <%if current_user.stock_already_tracked?(@stock.ticker)%>

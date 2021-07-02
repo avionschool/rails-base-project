@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_30_093238) do
+ActiveRecord::Schema.define(version: 2021_07_02_075727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_06_30_093238) do
     t.bigint "buyer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "brokerage_fee"
     t.index ["broker_id"], name: "index_transactionrecords_on_broker_id"
     t.index ["buyer_id"], name: "index_transactionrecords_on_buyer_id"
     t.index ["stock_id"], name: "index_transactionrecords_on_stock_id"
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 2021_06_30_093238) do
     t.integer "role"
     t.boolean "approved", default: false, null: false
     t.decimal "cash"
+    t.decimal "brokerage_fee"
     t.index ["approved"], name: "index_users_on_approved"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

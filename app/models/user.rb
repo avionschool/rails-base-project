@@ -12,7 +12,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :cash, numericality: { greater_than_or_equal_to: 0 }, if: :buyer?
-  before_validation :buyer_default
+  validates :brokerage_fee, numericality: { greater_than_or_equal_to: 0 }, if: :broker?
+
+  before_validation :user_default, on: %i[create save]
   after_create :sign_up_proccess
 
   scope :pending_users, lambda {
@@ -21,9 +23,14 @@ class User < ApplicationRecord
   scope :approved_users, lambda {
     where(approved: true).where.not(role: 'admin')
   }
-  def buyer_default
+  def user_default
     approve_buyer
     cash_zero
+    broker_brokerage_fee
+  end
+
+  def broker_brokerage_fee
+    self.brokerage_fee = 0 if broker?
   end
 
   def cash_zero
