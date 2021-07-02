@@ -112,6 +112,10 @@ a:hover {
   padding: 40px 0;
 }
 
+.form-devise .col-img-container {
+  position: relative;
+}
+
 /* Navbar */
 nav.navbar a.nav-link {
   color: #f6f6e9 !important;
