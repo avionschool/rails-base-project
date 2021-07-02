@@ -53,18 +53,22 @@
   left: 95vw;
 }
 
-.new_usericon {
+.reset {
   left: 91vw;
+}
+
+.new_usericon {
+  left: 87vw;
 }
 
 #transaction {
   cursor: pointer;
-  left: 87vw;
+  left: 83vw;
 }
 
 #user {
   cursor: pointer;
-  left: 83vw;
+  left: 79vw;
 }
 
 .body_layout {
@@ -159,7 +163,6 @@
 .users_section, .pending_section {
   border: 1vh solid #383d59;
   padding: 1.5rem;
-  border-radius: 25px;
 }
 
 #transaction_cover {
@@ -183,7 +186,6 @@
   width: 95%;
   border: 1vh solid #383d59;
   padding: 1.5rem;
-  border-radius: 25px;
 }
 
 .user_card_transactions {
@@ -199,7 +201,7 @@
 .admin_title {
   position: fixed;
   top: 1.75vh;
-  left: 70vw;
+  left: 66vw;
   font-family: "Oswald";
   font-weight: "bold";
   font-size: 3.5vh;

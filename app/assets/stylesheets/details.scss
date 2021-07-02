@@ -44,6 +44,7 @@ body {
 }
 
 .icons {
+  cursor: pointer;
   position: fixed;
   top: 1.25vh;
   width: 2.5vw;
@@ -57,6 +58,22 @@ body {
 
 .logouticon {
   left: 95vw;
+}
+
+.reset {
+  left: 91vw;
+}
+
+#user {
+  left: 79vw;
+}
+
+#transaction {
+  left: 83vw;
+}
+
+.new_usericon {
+  left: 87vw;
 }
 
 .details {
@@ -120,14 +137,19 @@ body {
   font-weight: 700;
 }
 
-.transaction_cover {
-  display: flex;
+#transaction_cover {
+  display: none;
   justify-content: center;
   align-items: center;
   overflow-y: hidden;
+  position: fixed;
+  top: 0vh;
+  left: 0vw;
   background-color: #0B132B;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   z-index: 2;
+  transition: ease 0.1s;
 }
 
 .transaction_section {
@@ -136,12 +158,11 @@ body {
   width: 95%;
   border: 1vh solid #383d59;
   padding: 1.5rem;
-  border-radius: 25px;
 }
 
 .user_card_transactions {
   display: grid;
-  grid-template-columns: 19% 15% 15% 15% 10% 13% 13%;
+  grid-template-columns: 10% 34% 12% 12% 8% 11% 13%;
   margin-bottom: 1rem;
   margin-right: 1rem;
   padding-left: 1rem;
@@ -258,7 +279,7 @@ body {
   color: #eaeeff;
 }
 
-#closebtn {
+#closebtn1 {
   cursor: pointer;
   position: fixed;
   left: 60vw;
@@ -266,4 +287,59 @@ body {
   font-weight: bold;
   font-size: 2rem;
   z-index: 17;
+}
+
+.user_link, .user_link:hover {
+  text-decoration: none;
+}
+
+.admin_title {
+  position: fixed;
+  top: 1.75vh;
+  left: 66vw;
+  font-family: "Oswald";
+  font-weight: "bold";
+  font-size: 3.5vh;
+  overflow-y: hidden;
+  z-index: 5;
+  color: #d2a517;
+}
+
+.stock_cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+  background-color: #0B132B;
+  width: 100%;
+  z-index: 2;
+}
+
+.stock_section {
+  margin-top: 10.25vh;
+  display: grid;
+  width: 95%;
+  border: 1vh solid #383d59;
+  padding: 1.5rem;
+}
+
+.user_card_stock {
+  display: grid;
+  grid-template-columns: 10% 40% 10% 10% 15% 15%;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  align-items: center;
+}
+
+.centertxt {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.section_title {
+  margin-bottom: -0.25rem;
 }

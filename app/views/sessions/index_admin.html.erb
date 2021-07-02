@@ -15,17 +15,21 @@
   <div class="navbar_admin"></div>
   <h1 class="admin_title">Admin Dashboard</h1>
 
+  <%= link_to update_stock_path do %>
+    <%= image_tag("update.png", :class => "reset icons", :title => "Refresh Seeds") %>
+  <% end %>
+
   <%= link_to logout_path, method: :get do %>
     <%= image_tag("logout.png", :class => "logouticon icons", :title => "Logout") %>
   <% end %>
   
   <%= link_to users_new_admin_path do %>
-    <%= image_tag("add.png", :class => "new_usericon icons", :title => "Add New User") %>
+    <%= image_tag("add.png", :class => "new_usericon icons", :title => "New User") %>
   <% end %>
 
-  <%= image_tag("transaction.png", :id => "transaction", :"class" => "icons", :title => "See Transactions") %>
+  <%= image_tag("transaction.png", :id => "transaction", :"class" => "icons", :title => "Transactions") %>
 
-  <%= image_tag("user.png", :id => "user", :"class" => "icons", :title => "See Users") %>
+  <%= image_tag("user.png", :id => "user", :"class" => "icons", :title => "Users") %>
 
   <div class="body_layout">
     <div class="admin_section">

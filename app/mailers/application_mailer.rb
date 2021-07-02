@@ -1,3 +1,3 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'eunel.soliveres@gmail.com'
+  default from: 'stox.io.community@gmail.com'
 end

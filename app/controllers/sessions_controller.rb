@@ -24,6 +24,8 @@ class SessionsController < ApplicationController
       @user = User.find_by(id: session[:user_id])
       @stocks = BuyerStock.where(user_id: @user.id)
       @user_stocks = @stocks.where('quantity > ?', 0).reverse
+      array = Transaction.where(buyer_id: @user.id) + Transaction.where(broker_id: @user.id)
+      @transactions = array.sort_by(&:created_at).reverse
     else
       redirect_to root_path
     end

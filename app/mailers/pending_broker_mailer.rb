@@ -1,5 +1,5 @@
 class PendingBrokerMailer < ApplicationMailer
-  default from: 'eunel.soliveres@gmail.com'
+  default from: 'stox.io.community@gmail.com'
 
   def notify_user
     @user = params[:user]

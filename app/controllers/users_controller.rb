@@ -31,8 +31,10 @@ class UsersController < ApplicationController
 
   def details
     @user = User.find_by(id: params[:id])
-    @transactions_buy = Transaction.where(buyer_id: @user.id).sort_by(&:created_at)
-    @transactions_sell = Transaction.where(broker_id: @user.id).sort_by(&:created_at)
+    stocks = BuyerStock.where(user_id: @user.id)
+    @user_stocks = stocks.where('quantity > ?', 0).reverse
+    array = Transaction.where(buyer_id: @user.id) + Transaction.where(broker_id: @user.id)
+    @transactions = array.sort_by(&:created_at).reverse
   end
 
   def update

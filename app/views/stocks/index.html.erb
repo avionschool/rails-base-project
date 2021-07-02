@@ -1,3 +1,79 @@
-<%= render 'stocks/list' %>
+<head>
+  <%= stylesheet_link_tag "stocks" %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <%= link_to logout_path, method: :get do %>
+    <%= image_tag("logout.png", :class => "logouticon icons", :title => "Logout") %>
+  <% end %>
 
-<%= link_to "Update Stock Database", update_stock_path %>
+  <%= link_to stocks_path, method: :get do %>
+    <%= image_tag("market.png", :class => "stockmarket icons", :title => "Stock Market") %>
+  <% end %>
+
+  <%= link_to dashboard_path, method: :get do %>
+    <%= image_tag("user.png", :id => "user", :"class" => "icons", :title => "User Stocks") %>
+  <% end %>
+
+  <%= link_to dashboard_path, method: :get do %>
+    <%= image_tag("logotxt.png", :class => "logo") %>
+  <% end %>
+  
+  <%= image_tag("wallet.png", :id => "topup", :"class" => "icons", :title => "Top Up") %>
+
+  <div class="navbar_admin"></div>
+  <div class="body-bg"></div>
+
+  <div class="stock_cover">
+    <div class="stock_section">
+      <p class="user_text username bold section_title">Stock Market</p>
+      <div class="stock_list">
+        <h4 class="user_text bold">Ticker</h4>
+        <h4 class="user_text bold">Company</h4>
+        <h4 class="user_text bold">Change</h4>
+        <h4 class="user_text bold">Price</h4>
+        <h4 class="user_text bold">Action</h4>
+      </div>
+      <div class="scrollable">
+        <% @stocks.each do |t| %>
+          <div class="stock_list table-bg">
+            <h4 class="user_text"><%= t.ticker %></h4>
+            <h4 class="user_text"><%= t.company %></h4>
+            <h4 class="user_text"><%= t.change_percent %></h4>
+            <h4 class="user_text"><%= ('%.2f' % t.price) %> $</h4>
+            <%= link_to "BUY", search_stock_path(ticker: t.ticker, action_made: "buy"), :class => "user_link bold username" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="digg_pagination">
+    <%= will_paginate @stocks %>
+  </div>
+
+  <div id="modalcover"></div>
+
+  <div id="modaltopup">
+    <p id="closebtn2">×</p>
+    <%= form_with scope: :user, method: :put, url: users_money_path(@user.id), local: true do |f| %>
+      <div class="modal_layout">
+        <p class="edit_title">ACCOUNT TOP-UP</p>
+        <%= f.label :money, "Amount", class:"labeltxt" %>
+        <%= f.number_field :money, class:"textfield", placeholder: '00.00 $', value: "", :required => true %>
+
+        <%= f.submit "ADD MONEY", :class => "update_user" %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= javascript_pack_tag 'market.js' %>
+</body>

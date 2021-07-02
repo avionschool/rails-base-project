@@ -1,41 +1,165 @@
-<strong>Symbol: </strong> <%= @stock.ticker %><br/>
-<strong>Name: </strong> <%= @stock.company %><br/>
-<strong>Percent Change: </strong> <%= @stock.change_percent %><br/>
-<strong>Price: </strong> <%= ('%.2f' %  @stock.price) %> $<br/>
-<% if @action_made == "sell" %>
-  <strong>Quantity You Possess: </strong> <%= @db_stock.quantity %><br/><br/>
-<%end%>
+<head>
+  <%= stylesheet_link_tag "stocks" %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <%= link_to logout_path, method: :get do %>
+    <%= image_tag("logout.png", :class => "logouticon icons", :title => "Logout") %>
+  <% end %>
 
-<% if @action_made == "buy" %>
-  <%= form_with scope: :stock, method: :post, url: transaction_buy_path, local: true do |f| %>
-    <%= f.label :quantity %> <br>  
-    <%= f.text_field :quantity %> <br>  
+  <%= link_to stocks_path, method: :get do %>
+    <%= image_tag("market.png", :class => "stockmarket icons", :title => "Stock Market") %>
+  <% end %>
 
-    <%= f.hidden_field :company, value: @stock.company %>
-    <%= f.hidden_field :ticker, value: @stock.ticker %>
-    <%= f.hidden_field :price, value: ('%.2f' %  @stock.price) %>
-    <%= f.hidden_field :change_percent, value: @stock.change_percent %>
-    <%= f.hidden_field :buyer, value: @user.username %>
-    <%= f.hidden_field :buyer_id, value: @user.id %>
-    <%= f.hidden_field :user_id, value: @user.id %>
-    <%= f.hidden_field :seller, value: "stox.io" %>
-    <%= hidden_field_tag(:user_id, @user.id) %>
-    <%= f.submit 'Buy' %>
-  <%end%>
-<% else %>
-  <%= form_with scope: :stock, method: :post, url: transaction_sell_path, local: true do |f| %>
-    <%= f.label :quantity %> <br>  
-    <%= f.text_field :quantity %> <br>  
+  <%= link_to dashboard_path, method: :get do %>
+    <%= image_tag("logotxt.png", :class => "logo") %>
+  <% end %>
 
-    <%= f.hidden_field :company, value: @stock.company %>
-    <%= f.hidden_field :ticker, value: @stock.ticker %>
-    <%= f.hidden_field :price, value: ('%.2f' %  @stock.price) %>
-    <%= f.hidden_field :change_percent, value: @stock.change_percent %>
-    <%= f.hidden_field :seller, value: @user.username %>
-    <%= f.hidden_field :broker_id, value: @user.id %>
-    <%= f.hidden_field :user_id, value: @user.id %>
-    <%= f.hidden_field :buyer, value: "stox.io" %>
-    <%= hidden_field_tag(:user_id, @user.id) %>
-    <%= f.submit 'Sell' %>
-  <%end%>
-<% end %>
+  <%= link_to dashboard_path, method: :get do %>
+    <%= image_tag("user.png", :id => "user", :"class" => "icons", :title => "User Stocks") %>
+  <% end %>
+
+  <%= image_tag("wallet.png", :id => "topup", :"class" => "icons", :title => "Top Up") %>
+  
+  <div class="trans_layout">
+    <div class="info_section">
+      <p class="oswald bold">TRANSACTION</p>
+      <div class="user_info">
+        <p class="user_text username">Ticker</p>
+        <p class="user_text"><%= @stock.ticker %></p>
+      </div>
+
+      <div class="user_info">
+        <p class="user_text username">Company</p>
+        <p class="user_text"><%= @stock.company %></p>
+      </div>
+
+      <div class="user_info">
+        <p class="user_text username">Change</p>
+        <p class="user_text"><%= @stock.change_percent %></p>
+      </div>
+
+      <div class="user_info">
+        <p class="user_text username">Current Value</p>
+        <p class="user_text" id="price"><%= ('%.2f' %  @stock.price) %> $</p>
+      </div>
+
+      <% if @action_made == "sell" %>
+        <div class="user_info">
+          <p class="user_text username">Quantity Owned</p>
+          <p class="user_text"><%= @db_stock.quantity %></p>
+        </div>
+      <%end%>
+    
+      <div class="user_info">
+        <p class="user_text username">Total Price</p>
+        <p class="user_text" id="total">0 $</p>
+      </div>
+
+      <div class="user_info">
+        <p class="user_text username">Money</p>
+        <p class="user_text"><%= ('%.2f' %  @user.money) %> $</p>
+      </div>
+
+      <% if @action_made == "buy" %>
+        <%= form_with scope: :stock, method: :post, url: transaction_buy_path, local: true do |f| %>
+          <%= f.label :quantity, class: "user_text username" %> <br>  
+          <%= f.number_field :quantity, class:"textfield_transaction", id:"qty", placeholder: 'Input quantity here...', value:"", :required => true %> <br>  
+
+          <%= f.hidden_field :company, value: @stock.company %>
+          <%= f.hidden_field :ticker, value: @stock.ticker %>
+          <%= f.hidden_field :price, value: ('%.2f' %  @stock.price) %>
+          <%= f.hidden_field :change_percent, value: @stock.change_percent %>
+          <%= f.hidden_field :buyer, value: @user.username %>
+          <%= f.hidden_field :buyer_id, value: @user.id %>
+          <%= f.hidden_field :user_id, value: @user.id %>
+          <%= f.hidden_field :seller, value: "stox.io" %>
+          <%= f.hidden_field :broker_role, value: @user.broker_role %>
+          <%= f.hidden_field :action_made, value: @action_made %>
+          <%= hidden_field_tag(:user_id, @user.id) %>
+          <%= f.submit 'BUY', :class => "transactionbtn" %>
+        <%end%>
+      <% else %>
+        <%= form_with scope: :stock, method: :post, url: transaction_sell_path, local: true do |f| %>
+          <%= f.label :quantity, class: "user_text username" %> <br>  
+          <%= f.number_field :quantity, class:"textfield_transaction", id:"qty", placeholder: 'Input quantity here...', value:"", :required => true %> <br>   
+
+          <%= f.hidden_field :company, value: @stock.company %>
+          <%= f.hidden_field :ticker, value: @stock.ticker %>
+          <%= f.hidden_field :price, value: ('%.2f' %  @stock.price) %>
+          <%= f.hidden_field :change_percent, value: @stock.change_percent %>
+          <%= f.hidden_field :seller, value: @user.username %>
+          <%= f.hidden_field :broker_id, value: @user.id %>
+          <%= f.hidden_field :user_id, value: @user.id %>
+          <%= f.hidden_field :buyer, value: "stox.io" %>
+          <%= f.hidden_field :broker_role, value: @user.broker_role %>
+          <%= f.hidden_field :action_made, value: @action_made %>
+          <%= hidden_field_tag(:user_id, @user.id) %>
+          <%= f.submit 'SELL', :class => "transactionbtn" %>
+        <%end%>
+      <% end %>
+    </div>
+
+    <% if @user.broker_role.downcase == "broker" %>
+      <div class="broker_check">
+        <p class="oswald bold">BROKER PRIVILEGES</p><br><br>
+        <h4 class="user_text spacing centertext">You're a broker and therefore inclined<br>to receive your special privileges.</h4><br>
+        <h4 class="user_text spacing centertext">The following benefits are available to you :</h4><br>
+        <h4 class="user_text spacing centertext">5% Interest per Stock when selling</h4>
+        <h4 class="user_text spacing centertext">5% Discount per Stock when buying</h4><br><br>
+
+        <% if @action_made == "buy" %>
+            <div class="user_info">
+              <p class="user_text username">Discounted Price</p>
+              <p class="user_text"><%= ('%.2f' %  (@stock.price * 0.95)) %> $</p>
+            </div>
+          <% else %>
+            <div class="user_info">
+              <p class="user_text username">Price w/ Interest</p>
+              <p class="user_text"><%= ('%.2f' %  (@stock.price * 1.05)) %> $</p>
+            </div>
+          <%end%>
+
+          <% if @action_made == "buy" %>
+            <div class="user_info">
+              <p class="user_text username">Discounted Total</p>
+              <p class="user_text" id="newtotal">0 $</p>
+            </div>
+          <% else %>
+            <div class="user_info">
+              <p class="user_text username">Total w/ Interest</p>
+              <p class="user_text" id="newtotal">0 $</p>
+            </div>
+          <%end%>
+      </div>
+    <%end%>
+  </div>
+
+  <div id="modalcover"></div>
+
+  <div id="modaltopup">
+    <p id="closebtn2">×</p>
+    <%= form_with scope: :user, method: :put, url: users_money_path(@user.id), local: true do |f| %>
+      <div class="modal_layout">
+        <p class="edit_title">ACCOUNT TOP-UP</p>
+        <%= f.label :money, "Amount", class:"labeltxt" %>
+        <%= f.number_field :money, class:"textfield", placeholder: '00.00 $', value: "", :required => true %>
+
+        <%= f.submit "ADD MONEY", :class => "update_user" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="navbar_admin"></div>
+  <div class="body-bg"></div>
+  <%= javascript_pack_tag 'market.js' %>
+  <%= javascript_pack_tag 'price.js' %>
+</body>

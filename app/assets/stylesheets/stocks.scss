@@ -1,3 +1,372 @@
-// Place all the styles related to the stocks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  overflow-x: hidden;
+  scrollbar-color: #383d59 #0b132b;
+  scrollbar-width: thin;
+}
+
+.body-bg {
+  position: fixed;
+  top: 0vh;
+  left: 0vw;
+  background-color: #0B132B;
+  height: 100vh;
+  width: 100vw;
+  z-index: -50;
+}
+
+.navbar_admin {
+  opacity: 1;
+  position: fixed;
+  top: -4vh;
+  left: 0vw;
+  background-color: #26223b;
+  height: 12vh;
+  width: 100vw;
+  z-index: 3;
+  transition: 0.5s ease;
+}
+
+.logo {
+  position: fixed;
+  top: 2vh;
+  left: 2vw;
+  width: 14vh;
+  z-index: 5;
+}
+
+.icons {
+  position: fixed;
+  top: 1.25vh;
+  width: 2.5vw;
+  z-index: 10;
+  transition: ease 0.1s;
+}
+
+.icons:hover {
+  filter: brightness(150%);
+}
+
+.logouticon {
+  left: 95vw;
+}
+
+.new_usericon {
+  left: 91vw;
+}
+
+#user {
+  cursor: pointer;
+  left: 83vw;
+}
+
+#topup {
+  cursor: pointer;
+  left: 87vw;
+}
+
+.stockmarket {
+  left: 91vw;
+}
+
+.stock_cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+  background-color: #0B132B;
+  width: 100%;
+  z-index: 2;
+}
+
+.stock_section {
+  margin-top: 10.25vh;
+  display: grid;
+  width: 70%;
+  border: 1vh solid #383d59;
+  padding: 1.5rem;
+}
+
+.stock_list {
+  display: grid;
+  grid-template-columns: 10% 60% 10% 10% 10%;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  align-items: center;
+}
+
+.centertxt {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.scrollable {
+  overflow-y: scroll;
+  scrollbar-color: #383d59 #0b132b;
+  height: 55vh;
+}
+
+.user_link, .user_link:hover {
+  text-decoration: none;
+}
+
+.user_text {
+  font-size: 0.85rem;
+  font-family: "Open Sans";
+  font-weight: 400;
+  overflow-y: hidden;
+  color: #eaeeff;
+  text-decoration: none;
+  transition: ease 0.2s;
+}
+
+.user_text:hover {
+  font-weight: bold;
+}
+
+.table-bg {
+  background-color: #383d59;
+  border-radius: 10px;
+  padding-bottom: 0.5rem;
+}
+
+.username {
+  color: #d2a517;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.digg_pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+  overflow-y: hidden;
+  cursor: default;
+  /* self-clearing method: */ }
+  .digg_pagination a, .digg_pagination span, .digg_pagination em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px; }
+  .digg_pagination .disabled {
+    color: #999999;
+    border: 1px solid #dddddd; }
+  .digg_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #383d59;
+    color: white;
+    border: 1px solid ; }
+  .digg_pagination a {
+    text-decoration: none;
+    color: white;
+    border: 1px solid #9aafe5; }
+    .digg_pagination a:hover, .digg_pagination a:focus {
+      color: #d2a517;
+      border-color: #d2a517; 
+      text-decoration: none; }
+  .digg_pagination .page_info {
+    background: #2e6ab1;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center; }
+    .digg_pagination .page_info b {
+      color: #000033;
+      background: #6aa6ed;
+      padding: 0.1em 0.25em; }
+  .digg_pagination:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+  * html .digg_pagination {
+    height: 1%; }
+  *:first-child + html .digg_pagination {
+    overflow: hidden; 
+}
+
+.section_title {
+  margin-bottom: -0.25rem;
+}
+
+#modalcover {
+  display: none;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top: 0vh;
+  width: 0vw;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(4, 4, 4, 0.75);
+  z-index: 10;
+}
+
+#modaltopup {
+  display: none;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top: 20vh;
+  left: 37vw;
+  border-radius: 15px;
+  background-color: #eaeeff;
+  height: 60vh;
+  width: 26vw;
+  z-index: 16;
+}
+
+.modal_layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.labeltxt {
+  font-family: "Open Sans";
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #0b132b;
+}
+
+.textfield {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 0.2vh solid #0b132b;
+  color: #0b132b;
+  margin-bottom: 2rem;
+}
+
+.textfield_transaction {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 0.2vh solid #d2a517;
+  color: #d2a517;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.edit_title {
+  font-family: "Oswald";
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #0b132b;
+}
+
+.update_user {
+  font-family: "Open Sans";
+  font-weight: bold;
+  font-size: 1rem;
+  color: #d2a517;
+  padding: 0.75rem 1.5rem;
+  border: 0.5vh solid #d2a517;
+  border-radius: 12px;
+  transition: ease 0.3s;
+}
+
+.update_user:hover {
+  background-color: #d2a517;
+  color: #eaeeff;
+}
+
+.transactionbtn {
+  font-family: "Open Sans";
+  font-weight: bold;
+  font-size: 0.9rem;
+  width: 100%;
+  color: #F72C25;
+  padding: 0.75rem 1.5rem;
+  border: 0.5vh solid #F72C25;
+  background-color: rgba(0,0,0,0);
+  border-radius: 12px;
+  transition: ease 0.3s;
+}
+
+.transactionbtn:hover {
+  background-color: #F72C25;
+  color: #eaeeff;
+}
+
+#closebtn2 {
+  cursor: pointer;
+  position: fixed;
+  left: 60vw;
+  top: 21vh;
+  font-weight: bold;
+  font-size: 2rem;
+  z-index: 17;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.user_info {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 40% 60%;
+}
+
+.trans_layout {
+  margin-top: 13vh;
+  display: flex;
+  justify-content: center;
+}
+
+.info_section {
+  width: 30vw;
+  border: 1vh solid #383d59;
+  padding: 1rem 2rem;
+}
+
+.oswald {
+  font-size: 1.25rem;
+  font-family: "Oswald";
+  font-weight: 400;
+  overflow-y: hidden;
+  color: #eaeeff;
+  text-decoration: none;
+  transition: ease 0.2s;
+  text-align: center;
+}
+
+.broker_check {
+  margin-left: 2rem;
+  width: 30vw;
+  border: 1vh solid #383d59;
+  padding: 1rem 2rem;
+}
+
+.spacing {
+  line-height: 3.5vh;
+}
+
+.centertext {
+  text-align: center;
+}

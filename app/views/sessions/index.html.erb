@@ -1,5 +1,5 @@
 <head>
-  <%= stylesheet_link_tag "admin" %>
+  <%= stylesheet_link_tag "users" %>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,65 +11,177 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <div class="brokerbtn">
+  <%= link_to logout_path, method: :get do %>
+    <%= image_tag("logout.png", :class => "logouticon icons", :title => "Logout") %>
+  <% end %>
+
+  <%= link_to stocks_path, method: :get do %>
+    <%= image_tag("market.png", :class => "stockmarket icons", :title => "Stock Market") %>
+  <% end %>
+
+  <%= image_tag("wallet.png", :id => "topup", :"class" => "icons", :title => "Top Up") %>
+  <%= image_tag("transaction.png", :id => "transaction", :"class" => "icons", :title => "Transactions") %>
+  <%= image_tag("user.png", :id => "user", :"class" => "icons", :title => "User Stocks") %>
+
+  
+  <div class="details">
+    <div class="user_down">
+      <div class="user_info">
+        <p class="user_text username bold"><%= @user.username %></p>
+
+        <div class="detes">
+          <h4 class="user_text username">Name :</h4>
+          <h4 class="user_text"><%= @user.first_name %> <%= @user.last_name %></h4>
+        </div>
+
+        <div class="detes">
+          <h4 class="user_text username">Role :</h4>
+          <h4 class="user_text"><%= @user.broker_role %></h4>
+        </div>
+        
+        <div class="detes">
+          <h4 class="user_text username">Money :</h4>
+          <h4 class="user_text"><%= ('%.2f' % @user.money) %> $</h4>
+        </div>
+      </div>
+
+      <div class="brokership">
+        <% if @user.status == "none" %>
+          <h4 class="username oswald">BE A BROKER NOW</h4>
+          <h4 class="user_text spacing">Being a broker grants you a big advantage compared to others</h4>
+          <h4 class="user_text spacing">5% Interest per Stock when selling</h4>
+          <h4 class="user_text spacing">5% Discount per Stock when buying</h4>
+          <div class="center_btn"> 
+            <div id="editmodal">
+              <p>Apply Now</p>
+            </div>
+          </div>  
+        <% elsif @user.status == "approved" %>
+          <h4 class="username oswald">BROKER BENEFITS</h4>
+          <h4 class="user_text spacing">You're a broker and have a big advantage compared to others</h4>
+          <h4 class="user_text spacing">5% Interest per Stock when selling</h4>
+          <h4 class="user_text spacing">5% Discount per Stock when buying</h4>
+          <h4 class="user_text spacing">Good luck!</h4>
+          <h4 class="user_text spacing">Happy Trading!</h4>
+        <% else %>
+          <h4 class="username oswald">PENDING APPLICATION</h4>
+          <h4 class="user_text spacing">You have a pending application</h4>
+          <h4 class="user_text spacing">The following benefits will be available once you're a broker</h4>
+          <h4 class="user_text spacing">5% Interest per Stock when selling</h4>
+          <h4 class="user_text spacing">5% Discount per Stock when buying</h4>
+          <h4 class="user_text spacing">Happy Trading!</h4>
+        <% end %>
+      </div>
+    </div>
+
+
+
+    
+
+    <div class="stock_cover">
+      <div class="stock_section">
+        <p class="user_text username bold section_title">Stock List</p>
+        <div class="user_card_stock">
+          <p class="user_text bold">Ticker</p>
+          <p class="user_text bold">Company</p>
+          <p class="user_text bold">Qty</p>
+          <p class="user_text bold">Change</p>
+          <p class="user_text bold">Price</p>
+          <p class="user_text bold">Total Price</p>
+          <div class="centertxt">
+            <p class="user_text bold">Action</p>
+          </div>
+        </div>
+        <div class="scrollable">
+          <% @user_stocks.each do |t| %>
+            <div class="user_card_stock table-bg">
+              <h4 class="user_text"><%= t.ticker %></h4>
+              <h4 class="user_text"><%= t.company %></h4>
+              <h4 class="user_text"><%= t.quantity %></h4>
+              <h4 class="user_text"><%= t.change_percent %></h4>
+              <h4 class="user_text"><%= ('%.2f' % t.price) %> $</h4>
+              <h4 class="user_text"><%= ('%.2f' % t.total_price) %> $</h4>
+              <div class="centertxt">
+                <%= link_to search_stock_path(ticker: t.ticker, action_made: "sell"), :class => "user_link" do %>
+                  <h4 class="user_text username centertxt bold" title="Sell Stocks">SELL</h4>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="transaction_cover" value="0">
+    <div class="transaction_section">
+        <p class="user_text username bold section_title">Transaction List</p>
+        <div class="user_card_transactions">
+          <p class="user_text bold">Ticker</p>
+          <p class="user_text bold">Company</p>
+          <p class="user_text bold">Buyer</p>
+          <p class="user_text bold">Seller</p>
+          <p class="user_text bold">Qty</p>
+          <p class="user_text bold">Value</p>
+          <p class="user_text bold">Total Price</p>
+        </div>
+        <div class="scrollable">
+          <% @transactions.each do |t| %>
+            <div class="user_card_transactions table-bg">
+              <h4 class="user_text"><%= t.ticker %></h4>
+              <h4 class="user_text"><%= t.company %></h4>
+
+              <% if t.buyer == "stox.io" %>
+                <h4 class="user_text"><%= t.buyer %></h4>
+              <% else %>
+                <h4 class="user_text username" title="See User Details"><%= t.buyer %></h4>
+              <% end %>
+
+              <% if t.seller == "stox.io" %>
+                <h4 class="user_text"><%= t.seller %></h4>
+              <% else %>
+                <h4 class="user_text username" title="See User Details"><%= t.seller %></h4>
+              <% end %>
+              
+              <h4 class="user_text"><%= t.quantity %></h4>
+              <h4 class="user_text"><%= ('%.2f' % t.price) %> $</h4>
+              <h4 class="user_text"><%= ('%.2f' % t.total_price) %> $</h4>
+            </div>
+          <% end %>
+        </div>
+      </div>
+  </div>
+
+  <div id="modalcover"></div>
+  
+  <div id="modalupdate">
+    <p id="closebtn1">×</p>
+    <div class="modal_layout">
+      <p class="edit_title">BROKERSHIP REQUIREMENTS</p>
+      <p class="modaltxt">User must have a minimum of<br>30,000 $ in their account<br>to apply for brokership.</p>
+      <%= link_to users_request_path(:id => @user.id), :class => "user_link" do %>
+        <h4 class="update_user">Apply Now</h4>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="modaltopup">
+    <p id="closebtn2">×</p>
     <%= form_with scope: :user, method: :put, url: users_money_path(@user.id), local: true do |f| %>
       <div class="modal_layout">
-        <p class="edit_title user_text">Account Top-Up</p>
-        <%= f.label :money, "Money", class:"user_text" %>
-        <%= f.text_field :money, class:"textfield", placeholder: 'Input Last Name', value:0 %>
+        <p class="edit_title">ACCOUNT TOP-UP</p>
+        <%= f.label :money, "Amount", class:"labeltxt" %>
+        <%= f.number_field :money, class:"textfield", placeholder: '00.00 $', value: "", :required => true %>
 
         <%= f.submit "ADD MONEY", :class => "update_user" %>
       </div>
     <% end %>
-    <h1 class="user_text"><%= @user.username %></h1>
-    <h1 class="user_text"><%= @user.broker_role %></h1>
-    <h1 class="user_text"><%= @user.money %></h1>
-    <%= link_to stocks_path, :class => "user_link" do %>
-      <h4 class="user_text approve">Stock List</h4>
-    <% end %>
   </div>
 
-  <% @user_stocks.each do |t| %>
-    <h4 class="user_text"><%= t.company %></h4>
-    <h4 class="user_text"><%= t.ticker %></h4>
-    <h4 class="user_text"><%= t.change_percent %></h4>
-    <h4 class="user_text"><%= t.quantity %></h4>
-    <h4 class="user_text"><%= t.price %></h4>
-    <h4 class="user_text"><%= t.total_price %></h4>
-    <%= link_to "Sell", search_stock_path(ticker: t.ticker, action_made: "sell")%>
-  <% end %>
-
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    Open modal
-  </button>
-
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <%= link_to users_request_path(:id => @user.id), :class => "user_link" do %>
-            <h4 class="user_text approve">Apply for Change</h4>
-          <% end %>
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <%= link_to "Logout", logout_path, :class => "logoutbtn" %>
   <div class="navbar_admin"></div>
   <%= image_tag("logotxt.png", :class => "logo") %>
   <div class="body-bg"></div>
+  <%= javascript_pack_tag 'index.js' %>
+  <%= javascript_pack_tag 'details.js' %>|
+  <%= javascript_pack_tag 'broker.js' %>
 </body>

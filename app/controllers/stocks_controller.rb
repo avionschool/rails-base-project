@@ -1,13 +1,14 @@
 class StocksController < ApplicationController
   def index
     @stocks = Stock.all.paginate(page: params[:page], per_page: 50)
+    @user = User.find_by(id: session[:user_id])
   end
 
   def search
     @stock = Stock.new_lookup(params[:ticker])
-    @db_stock = BuyerStock.find_by(ticker: params[:ticker])
-    @action_made = params[:action_made]
     @user = User.find_by(id: session[:user_id])
+    @db_stock = BuyerStock.find_by(user_id: @user.id, ticker: params[:ticker])
+    @action_made = params[:action_made]
     render 'show'
   end
 
@@ -16,14 +17,13 @@ class StocksController < ApplicationController
   def update_stock
     Stock.delete_all
     client = IEX::Api::Client.new(
-      publishable_token: Rails.application.credentials.iex_client[:publish_access_key],
-      secret_token: Rails.application.credentials.iex_client[:secret_access_key],
+      publishable_token: ENV['PUBLISH_ACCESS_KEY'],
+      secret_token: ENV['SECRET_ACCESS_KEY'],
       endpoint: 'https://sandbox.iexapis.com/v1'
     )
     symbols = client.ref_data_symbols
     nas_symbols = symbols.select { |symbol| symbol.exchange == 'NAS' }
     @selected_symbols = (0...nas_symbols.length).select { |x| x % 30 == 30 - 1 }.map { |y| nas_symbols[y] }
-
     @selected_symbols.each do |stock|
       Stock.find_or_create_by('ticker' => stock.symbol, 'company' => client.company(stock.symbol).company_name, 'change_percent' => client.quote(stock.symbol).change_percent_s, 'price' => client.price(stock.symbol))
     rescue StandardError
@@ -55,8 +55,9 @@ class StocksController < ApplicationController
     @user.broker_role.downcase == 'broker' ? @transaction.update(price: @discounted_price.round(2)) : @transaction.update(price: @transaction.price.round(2))
     @transaction.update(total_price: @total_price.round(2))
     if @buyer_stock.nil?
-      BuyerStock.create(stock_params)
-      BuyerStock.update(total_price: @total_price)
+      @buyer_stock = BuyerStock.new(stock_params)
+      @buyer_stock.save
+      @buyer_stock.update(total_price: @total_price)
     else
       @stock = BuyerStock.new(stock_params)
       @new_qty = @buyer_stock.quantity + @stock.quantity

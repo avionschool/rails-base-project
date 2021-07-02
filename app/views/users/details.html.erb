@@ -11,6 +11,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+  <h1 class="admin_title">Admin Dashboard</h1>
+
+  <%= link_to update_stock_path do %>
+    <%= image_tag("update.png", :class => "reset icons", :title => "Refresh Seeds") %>
+  <% end %>
 
   <%= link_to '/dashboard_admin', method: :get do %>
     <%= image_tag("logotxt.png", :class => "logo", :title => "Back to Dashboard") %>
@@ -19,11 +24,19 @@
   <%= link_to logout_path, method: :get do %>
     <%= image_tag("logout.png", :class => "logouticon icons", :title => "Logout") %>
   <% end %>
+
+  <%= link_to users_new_admin_path do %>
+    <%= image_tag("add.png", :class => "new_usericon icons", :title => "New User") %>
+  <% end %>
+
+  <%= image_tag("transaction.png", :id => "transaction", :"class" => "icons", :title => "Transactions") %>
+  <%= image_tag("user.png", :id => "user", :class => "icons", :title => "Users") %>
+
   <div class="navbar_admin"></div>
 
   <div class="details">
     <div class="user_down">
-      <p class="user_text username bold section_title">User Details</p>
+      <p class="user_text username bold">User Details</p>
 
       <div class="detes">
         <h4 class="user_text username">Username :</h4>
@@ -57,12 +70,40 @@
       </div>
     </div>
 
-    <div class="transaction_cover">
-      <div class="transaction_section">
+    <div class="stock_cover">
+      <div class="stock_section">
+        <p class="user_text username bold section_title">Stock List</p>
+        <div class="user_card_stock">
+          <p class="user_text bold">Ticker</p>
+          <p class="user_text bold">Company</p>
+          <p class="user_text bold">Qty</p>
+          <p class="user_text bold">Change</p>
+          <p class="user_text bold">Price</p>
+          <p class="user_text bold">Total Price</p>
+        </div>
+        <div class="scrollable">
+          <% @user_stocks.each do |t| %>
+            <div class="user_card_stock table-bg">
+              <h4 class="user_text"><%= t.ticker %></h4>
+              <h4 class="user_text"><%= t.company %></h4>
+              <h4 class="user_text"><%= t.quantity %></h4>
+              <h4 class="user_text"><%= t.change_percent %></h4>
+              <h4 class="user_text"><%= ('%.2f' % t.price) %> $</h4>
+              <h4 class="user_text"><%= ('%.2f' % t.total_price) %> $</h4>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div id="transaction_cover" value="0">
+    <div class="transaction_section">
         <p class="user_text username bold section_title">Transaction List</p>
         <div class="user_card_transactions">
-          <p class="user_text bold">Company</p>
           <p class="user_text bold">Ticker</p>
+          <p class="user_text bold">Company</p>
           <p class="user_text bold">Buyer</p>
           <p class="user_text bold">Seller</p>
           <p class="user_text bold">Qty</p>
@@ -70,51 +111,21 @@
           <p class="user_text bold">Total Price</p>
         </div>
         <div class="scrollable">
-          <% @transactions_buy.each do |t| %>
+          <% @transactions.each do |t| %>
             <div class="user_card_transactions table-bg">
-              <h4 class="user_text"><%= t.company %></h4>
               <h4 class="user_text"><%= t.ticker %></h4>
+              <h4 class="user_text"><%= t.company %></h4>
 
               <% if t.buyer == "stox.io" %>
                 <h4 class="user_text"><%= t.buyer %></h4>
               <% else %>
-                <%= link_to users_details_path(:id => t.buyer_id), :class => "user_link" do %>
-                  <h4 class="user_text username" title="See User Details"><%= t.buyer %></h4>
-                <% end %>
+                <h4 class="user_text username" title="See User Details"><%= t.buyer %></h4>
               <% end %>
 
               <% if t.seller == "stox.io" %>
                 <h4 class="user_text"><%= t.seller %></h4>
               <% else %>
-                <%= link_to users_details_path(:id => t.broker_id), :class => "user_link" do %>
-                  <h4 class="user_text username" title="See User Details"><%= t.seller %></h4>
-                <% end %>
-              <% end %>
-              
-              <h4 class="user_text"><%= t.quantity %></h4>
-              <h4 class="user_text"><%= ('%.2f' % t.price) %> $</h4>
-              <h4 class="user_text"><%= ('%.2f' % t.total_price) %> $</h4>
-            </div>
-          <% end %>
-          <% @transactions_sell.each do |t| %>
-            <div class="user_card_transactions table-bg">
-              <h4 class="user_text"><%= t.company %></h4>
-              <h4 class="user_text"><%= t.ticker %></h4>
-
-              <% if t.buyer == "stox.io" %>
-                <h4 class="user_text"><%= t.buyer %></h4>
-              <% else %>
-                <%= link_to users_details_path(:id => t.buyer_id), :class => "user_link" do %>
-                  <h4 class="user_text username" title="See User Details"><%= t.buyer %></h4>
-                <% end %>
-              <% end %>
-
-              <% if t.seller == "stox.io" %>
-                <h4 class="user_text"><%= t.seller %></h4>
-              <% else %>
-                <%= link_to users_details_path(:id => t.broker_id), :class => "user_link" do %>
-                  <h4 class="user_text username" title="See User Details"><%= t.seller %></h4>
-                <% end %>
+                <h4 class="user_text username" title="See User Details"><%= t.seller %></h4>
               <% end %>
               
               <h4 class="user_text"><%= t.quantity %></h4>
@@ -125,12 +136,11 @@
         </div>
       </div>
   </div>
-  </div>
 
   <div id="modalcover"></div>
   
   <div id="modalupdate">
-    <p id="closebtn">×</p>
+    <p id="closebtn1">×</p>
     <%= form_with scope: :user, method: :put, url: users_update_path(@user.id), local: true do |f| %>
       <div class="modal_layout">
         <p class="edit_title">USER DETAILS</p>
@@ -147,4 +157,5 @@
 
   <div class="body-bg"></div>
   <%= javascript_pack_tag 'details.js' %>
+  <%= javascript_pack_tag 'index.js' %>
 </body>

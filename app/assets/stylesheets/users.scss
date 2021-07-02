@@ -1,3 +1,388 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  overflow-x: hidden;
+  scrollbar-color: #383d59 #0b132b;
+  scrollbar-width: thin;
+}
+
+.body-bg {
+  position: fixed;
+  top: 0vh;
+  left: 0vw;
+  background-color: #0B132B;
+  height: 100vh;
+  width: 100vw;
+  z-index: -50;
+}
+
+.navbar_admin {
+  opacity: 1;
+  position: fixed;
+  top: -4vh;
+  left: 0vw;
+  background-color: #26223b;
+  height: 12vh;
+  width: 100vw;
+  z-index: 3;
+  transition: 0.5s ease;
+}
+
+.logo {
+  position: fixed;
+  top: 2vh;
+  left: 2vw;
+  width: 14vh;
+  z-index: 5;
+}
+
+.icons {
+  position: fixed;
+  top: 1.25vh;
+  width: 2.5vw;
+  z-index: 10;
+  transition: ease 0.1s;
+}
+
+.icons:hover {
+  filter: brightness(150%);
+}
+
+.logouticon {
+  left: 95vw;
+}
+
+.new_usericon {
+  left: 91vw;
+}
+
+#transaction {
+  cursor: pointer;
+  left: 87vw;
+}
+
+.user_text {
+  font-size: 0.85rem;
+  font-family: "Open Sans";
+  font-weight: 400;
+  overflow-y: hidden;
+  color: #eaeeff;
+  text-decoration: none;
+  transition: ease 0.2s;
+}
+
+.user_text:hover {
+  font-weight: bold;
+}
+
+.table-bg {
+  background-color: #383d59;
+  border-radius: 10px;
+}
+
+.stockmarket {
+  left: 91vw;
+}
+
+#topup {
+  cursor: pointer;
+  left: 87vw;
+}
+
+#transaction {
+  cursor: pointer;
+  left: 83vw;
+}
+
+#user {
+  cursor: pointer;
+  left: 79vw;
+}
+
+.details {
+  margin-top: 5vh;
+  margin-left: 2.5vw;
+  width: 95%;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.user_down {
+  margin-top: 10vh;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user_info, .brokership {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1vh solid #383d59;
+}
+
+.brokership {
+  margin-top: 5vh;
+}
+
+.oswald {
+  font-size: 1.25rem;
+  font-family: "Oswald";
+  font-weight: 400;
+  overflow-y: hidden;
+  color: #eaeeff;
+  text-decoration: none;
+  transition: ease 0.2s;
+  text-align: center;
+}
+
+.spacing {
+  line-height: 3.5vh;
+}
+
+.detes {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.user_text {
+  font-size: 0.85rem;
+  font-family: "Open Sans";
+  font-weight: 400;
+  overflow-y: hidden;
+  color: #eaeeff;
+  text-decoration: none;
+  transition: ease 0.2s;
+}
+
+.user_text:hover {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.username {
+  color: #d2a517;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.stock_cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+  background-color: #0B132B;
+  width: 100%;
+  z-index: 2;
+}
+
+.stock_section {
+  margin-top: 10.25vh;
+  display: grid;
+  width: 95%;
+  border: 1vh solid #383d59;
+  padding: 1.5rem;
+}
+
+.user_card_stock {
+  display: grid;
+  grid-template-columns: 10% 37% 7% 10% 13% 13% 10%;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  align-items: center;
+}
+
+.scrollable {
+  margin-top: -3vh;
+  overflow-y: scroll;
+  scrollbar-color: #383d59 #0b132b;
+  height: 55vh;
+}
+
+.section_title {
+  margin-bottom: -0.25rem;
+}
+
+#transaction_cover {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+  position: fixed;
+  top: 0vh;
+  left: 0vw;
+  background-color: #0B132B;
+  height: 100vh;
+  width: 100vw;
+  z-index: 2;
+  transition: ease 0.1s;
+}
+
+.transaction_section {
+  margin-top: 10.25vh;
+  display: grid;
+  width: 95%;
+  border: 1vh solid #383d59;
+  padding: 1.5rem;
+}
+
+.user_card_transactions {
+  display: grid;
+  grid-template-columns: 10% 34% 12% 12% 8% 11% 13%;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  align-items: center;
+}
+
+.centertxt {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.user_link, .user_link:hover {
+  text-decoration: none;
+}
+
+.hide {
+  display: none;
+}
+
+.center_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#editmodal {
+  cursor: pointer;
+  margin-top: 1rem;
+  text-align: center;
+  font-family: "Open Sans";
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #eaeeff;
+  padding: 0.75rem;
+  background-color: #2980b9;
+  height: 7vh;
+  width: 12vw;
+  overflow-y: hidden;
+}
+
+#modalcover {
+  display: none;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top: 0vh;
+  width: 0vw;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(4, 4, 4, 0.75);
+  z-index: 10;
+}
+
+#modalupdate, #modaltopup {
+  display: none;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top: 20vh;
+  left: 37vw;
+  border-radius: 15px;
+  background-color: #eaeeff;
+  height: 60vh;
+  width: 26vw;
+  z-index: 16;
+}
+
+.modal_layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.labeltxt {
+  font-family: "Open Sans";
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #0b132b;
+}
+
+.textfield {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 0.2vh solid #0b132b;
+  color: #0b132b;
+  margin-bottom: 2rem;
+}
+
+.edit_title {
+  font-family: "Oswald";
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #0b132b;
+}
+
+.update_user {
+  font-family: "Open Sans";
+  font-weight: bold;
+  font-size: 1rem;
+  color: #d2a517;
+  padding: 0.75rem 1.5rem;
+  border: 0.5vh solid #d2a517;
+  border-radius: 12px;
+  transition: ease 0.3s;
+}
+
+.update_user:hover {
+  background-color: #d2a517;
+  color: #eaeeff;
+}
+
+#closebtn1, #closebtn2 {
+  cursor: pointer;
+  position: fixed;
+  left: 60vw;
+  top: 21vh;
+  font-weight: bold;
+  font-size: 2rem;
+  z-index: 17;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.modaltxt {
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 6vh;
+  overflow-y: hidden;
+  margin-bottom: 2rem;
+}
