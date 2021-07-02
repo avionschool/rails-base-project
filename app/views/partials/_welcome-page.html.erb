@@ -1,0 +1,66 @@
+<section class="welcome">
+  <div class="container">
+    <h2 class="text-center">Greetings, <%= @user_type %> <%= @name %> </h2>
+
+    <div class="options-container">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-4">
+        <%= link_to stocks_path, class: "mb-5 options-box" do %>
+          <div class="col h-100">
+            <div class="card h-100">
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title text-center">
+                  Stocks
+                </h3>
+
+                <div class="img-fluid mt-3 mt-md-0">
+                  <img 
+                    src=<%= asset_path('stocks-animate.svg') %> 
+                    alt="stocks"
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <%= link_to pages_portfolio_path, class: "mb-5 options-box" do %>
+          <div class="col h-100">
+            <div class="card h-100">
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title text-center">
+                  Portfolio
+                </h3>
+
+                <div class="img-fluid mt-3 mt-md-0">
+                  <img 
+                    src=<%= asset_path('portfolio-animate.svg') %> 
+                    alt="portfolio"
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <%= link_to pages_transactions_path, class: "mb-5 options-box" do %>
+          <div class="col h-100">
+            <div class="card h-100">
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title text-center">
+                  Transactions
+                </h3>
+
+                <div class="img-fluid mt-3 mt-md-0">
+                  <img 
+                    src=<%= asset_path('transactions-animate.svg') %> 
+                    alt="portfolio"
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
