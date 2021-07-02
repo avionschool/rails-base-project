@@ -116,33 +116,37 @@ section#learn-more {
 }
 
 // Welcome Page
-.options-container {
-  min-height: 75vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.welcome {
+  min-height: calc(100vh - 112px);
 
-  .options-box {
-    transition: 0.2s ease-in-out;
+  .options-container {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-    .card {
-      // background-color: #dbe2ef;
-      border: 0;
-      border: none;
-
+    .options-box {
       transition: 0.2s ease-in-out;
-    }
 
-    :hover {
       .card {
-        transform: translateY(-10px);
-        background-color: #005792;
+        // background-color: #dbe2ef;
+        border: 0;
+        border: none;
 
-        color: #f9f7f7;
+        transition: 0.2s ease-in-out;
+      }
 
-        .card-text {
-          .text-muted {
-            color: #f9f7f7 !important;
+      :hover {
+        .card {
+          transform: translateY(-10px);
+          background-color: #005792;
+
+          color: #f9f7f7;
+
+          .card-text {
+            .text-muted {
+              color: #f9f7f7 !important;
+            }
           }
         }
       }
