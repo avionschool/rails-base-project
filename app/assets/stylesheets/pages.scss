@@ -114,3 +114,38 @@ section.hero {
 section#learn-more {
   padding: 0;
 }
+
+// Welcome Page
+.options-container {
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .options-box {
+    transition: 0.2s ease-in-out;
+
+    .card {
+      // background-color: #dbe2ef;
+      border: 0;
+      border: none;
+
+      transition: 0.2s ease-in-out;
+    }
+
+    :hover {
+      .card {
+        transform: translateY(-10px);
+        background-color: #005792;
+
+        color: #f9f7f7;
+
+        .card-text {
+          .text-muted {
+            color: #f9f7f7 !important;
+          }
+        }
+      }
+    }
+  }
+}
