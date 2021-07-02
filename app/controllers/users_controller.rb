@@ -49,7 +49,8 @@ class UsersController < ApplicationController
 
   def add_money
     @user = User.find_by(id: params[:id])
-    @user.update(money_params)
+    new_money = money_params[:money].to_f + @user.money
+    @user.update(money: new_money)
     redirect_to '/dashboard'
   end
 
