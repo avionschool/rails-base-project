@@ -1,0 +1,2 @@
+class FoodGroup < ApplicationRecord
+end
