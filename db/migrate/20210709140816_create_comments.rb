@@ -6,7 +6,8 @@ class CreateComments < ActiveRecord::Migration[6.0]
       t.integer :nutritionist_id
       t.boolean :like
       t.string :comment
-      t.integer :articles_id
+      t.integer :article_id
+      t.integer :food_id
       t.timestamps
     end
   end
