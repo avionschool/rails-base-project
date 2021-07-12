@@ -1,0 +1,2 @@
+class TravelTransaction < ApplicationRecord
+end
