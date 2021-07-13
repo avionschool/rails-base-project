@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2021_07_13_091910) do
   create_table "articles", force: :cascade do |t|
     t.integer "nutritionist_id"
     t.string "caption"
+    t.string "source_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -48,16 +49,9 @@ ActiveRecord::Schema.define(version: 2021_07_13_091910) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "food_groups", force: :cascade do |t|
-    t.string "food_name"
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "foods", force: :cascade do |t|
     t.string "name"
-    t.integer "food_group_id"
+    t.string "food_group"
     t.integer "user_id"
     t.integer "comment_id"
     t.string "caption"
