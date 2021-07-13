@@ -1,0 +1,2 @@
+module CpusHelper
+end
