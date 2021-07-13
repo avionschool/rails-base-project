@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :first_name, :last_name, :contact, :address, presence: true
 
-  has_many :items
-  has_many :comments
-  has_many :reviews
+  has_many :items, dependent: :restrict_with_exception
+  has_many :comments, dependent: :restrict_with_exception
+  has_many :reviews, dependent: :restrict_with_exception
 end

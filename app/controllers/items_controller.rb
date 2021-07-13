@@ -6,14 +6,12 @@ class ItemsController < ApplicationController
   def create
     user = User.find_by(id: params[:user_id])
     item = user.items.new(item_params)
-    if item.save 
-      redirect_to root_path
-    end 
+    redirect_to root_path if item.save
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:name,:description,:status)
+    params.require(:item).permit(:name, :description, :status)
   end
 end
