@@ -1,36 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe NutritionalInformation, type: :model do
-  subject {
-    described_class.new(label: "Cholesterol",
-                        quantity: 22.4,
-                        unit: "mg")
-  }
+  let!(:user) { User.create(email: 'user@email.com', username: 'new_user', password: 'qwerty', password_confirmation: 'qwerty') }
+  let!(:food) { user.foods.build(name: 'Pizza') }
+  let(:nutritional_information) { food.nutritional_informations.build(label: 'Calories', quantity: 100, unit: 'cal') }
 
-  describe "Validations" do
-
-    it "is valid with valid attributes" do
-      expect(subject).to be_valid
+  describe 'Validations' do
+    it 'is not valid without a label' do
+      nutritional_information.label = nil
+      expect(nutritional_information).not_to be_valid
     end
 
-    it "is not valid without a label" do
-      subject.label = nil
-      expect(subject).to_not be_valid
+    it 'is not valid without a quantity' do
+      nutritional_information.quantity = nil
+      expect(nutritional_information).not_to be_valid
     end
 
-    it "is not valid without a quantity" do
-      subject.quantity = nil
-      expect(subject).to_not be_valid
+    it 'is not valid without a unit' do
+      nutritional_information.unit = nil
+      expect(nutritional_information).not_to be_valid
     end
-
-    it "is not valid without a unit" do
-      subject.unit = nil
-      expect(subject).to_not be_valid
-    end
-
   end
 
-  describe "Associations" do
-    it { should belong_to(:food) }
+  describe 'Associations' do
+    it { is_expected.to belong_to(:food) }
   end
 end

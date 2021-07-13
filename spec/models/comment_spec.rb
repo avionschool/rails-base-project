@@ -1,25 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  subject {
-    described_class.new(comment: "This is delicious")
-  }
+  let(:comment) { described_class.create(comment: 'This is delicious') }
 
-  describe "Validations" do
-
-    it "is valid with valid attributes" do
-      expect(subject).to be_valid
+  describe 'Validations' do
+    it 'is not valid without a comment' do
+      comment.comment = nil
+      expect(comment).not_to be_valid
     end
-
-    it "is not valid without a comment" do
-      subject.comment = nil
-      expect(subject).to_not be_valid
-    end
-
   end
 
-  describe "Associations" do
-    it { should belong_to(:food) }
-    it { should belong_to(:article) }
+  describe 'Associations' do
+    it { is_expected.to belong_to(:food) }
+    it { is_expected.to belong_to(:article) }
   end
 end

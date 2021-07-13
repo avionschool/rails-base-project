@@ -1,5 +1,5 @@
 class FoodGroup < ApplicationRecord
   validates :name, presence: true
   validates :food_name, presence: true
-  has_many :food
+  has_many :food, dependent: :destroy
 end
