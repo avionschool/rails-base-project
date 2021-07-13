@@ -4,6 +4,12 @@
       <%= image_tag("altpic.png", :class => "itempic") %>
       <h5 class="item_name"><%= @item.name %></h5>
       <h6 class="item_name"><%= @item.description %></h6>
+      <h6 class="item_name"><%= @item.user.email %></h6> <!--we can change this username-->
+      <div>
+        <!--if convo !exist, create new-->
+        <div class="btn btn-primary">Send message</div>
+        <div class="btn btn-primary">Like</div>
+      </div>
     </div>
   </div>
 </div>
