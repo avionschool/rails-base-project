@@ -1,0 +1,2 @@
+class Mobo < ApplicationRecord
+end

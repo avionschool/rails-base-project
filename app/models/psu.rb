@@ -1,0 +1,2 @@
+class Psu < ApplicationRecord
+end
