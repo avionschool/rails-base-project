@@ -1,7 +1,62 @@
 <section class="homepage">
   <div class="container">
     <div class="homepage__title">
-      <h1 class="text-center my-5">Kalakalph Homepage</h1>
+      <!-- <h1 class="text-center my-5">Kalakalph Homepage</h1> -->
+    </div>
+    <% if user_signed_in? %>
+      <div class="post_here">
+        <button type="button" class="btn btn-primary down" data-toggle="modal" data-target="#exampleModal">
+          Post New Item
+        </button>
+      </div>
+    <% end %>
+    <div class="products">
+      <% @items.each do |t| %>
+        <%= link_to items_index_path(t.id), method: :get do %>
+          <div class="items">
+            <%= image_tag("altpic.png", :class => "itempic") %>
+            <h5 class="item_name"><%= t.name %></h5>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
+
+  <% if user_signed_in? %>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Create Barter Post</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= form_with scope: :item, url: items_create_path(current_user.id), local: true do |f| %>
+              <div class="field">
+                <%= f.label :name %><br />
+                <%= f.text_field :name, autofocus: true %>
+              </div>
+
+              <div class="field">
+                <%= f.label :description %><br />
+                <%= f.text_area :description, autofocus: true %>
+              </div>
+              
+              <%= f.hidden_field :status, value: "open" %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= hidden_field_tag(:user_id, current_user.id) %>
+
+              <%= f.submit "Post Item", :class => "post_item" %>
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </section>

@@ -1,6 +1,38 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-// .homepage {
-//   height: 100vh;
-// }
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.products {
+  margin-top: 1rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.items {
+  border: 0.1rem solid #c5c8ca;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 20rem;
+  width: 17.5rem;
+  padding: 1rem;
+  margin: 0 0.5rem;
+}
+
+.itempic {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.item_name {
+  margin-top: 0.5rem;
+}
+
+.post_item, .down {
+  margin-top: 1rem;
+}

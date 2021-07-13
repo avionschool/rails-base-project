@@ -1,3 +1,5 @@
 class HomeController < ApplicationController
-  def index; end
+  def index
+    @items = Item.where(status: 'open').sort_by(&:created_at)
+  end
 end
