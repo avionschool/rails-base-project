@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :items, dependent: :restrict_with_exception
   has_many :comments, dependent: :restrict_with_exception
   has_many :reviews, dependent: :restrict_with_exception
-  has_many :messages, :restrict_with_exception
+  has_many :messages, :destroy
 
   def conversations
     # return all conversations where the current_user is a part of
