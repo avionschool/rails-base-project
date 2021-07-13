@@ -1,0 +1,2 @@
+class Ram < ApplicationRecord
+end
