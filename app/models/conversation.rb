@@ -1,5 +1,5 @@
 class Conversation < ApplicationRecord
-  # how to approach dependent of messages? if a convo is destroyed, the other user's copy should not be automatically deleted
+  # how to approach dependence of messages? if a convo is destroyed, the other user's copy should not be automatically deleted
   has_many :messages, class_name: 'Message', dependent: :destroy
   belongs_to :user1, class_name: 'User'
   belongs_to :user2, class_name: 'User'

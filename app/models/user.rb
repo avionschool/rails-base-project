@@ -8,7 +8,8 @@ class User < ApplicationRecord
   has_many :items, dependent: :restrict_with_exception
   has_many :comments, dependent: :restrict_with_exception
   has_many :reviews, dependent: :restrict_with_exception
-  has_many :messages, :destroy
+  # how to approach dependence of messages? if a message is destroyed, the other user's copy should not be automatically deleted
+  has_many :messages, dependent: :destroy
 
   def conversations
     # return all conversations where the current_user is a part of
