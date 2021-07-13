@@ -1,0 +1,2 @@
+class CaseFan < ApplicationRecord
+end
