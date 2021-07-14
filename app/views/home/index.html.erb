@@ -4,12 +4,17 @@
       <!-- <h1 class="text-center my-5">Kalakalph Homepage</h1> -->
     </div>
     <% if user_signed_in? %>
+        <%= render 'sidebar' %>
+
       <div class="post_here">
         <button type="button" class="btn btn-primary down" data-toggle="modal" data-target="#exampleModal">
           Post New Item
         </button>
       </div>
     <% end %>
+
+    
+
     <div class="products">
       <% @items.each do |t| %>
         <%= link_to item_path(t.id), method: :get do %>
