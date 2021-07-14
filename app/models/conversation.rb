@@ -3,6 +3,7 @@ class Conversation < ApplicationRecord
   has_many :messages, class_name: 'Message', dependent: :destroy
   belongs_to :user1, class_name: 'User'
   belongs_to :user2, class_name: 'User'
+  belongs_to :item
 
   # returns conversation participants in array
   def participants

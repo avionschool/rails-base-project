@@ -1,0 +1,15 @@
+<div class="tmp-sidebar">
+    <h6>temporary sidebar</h6>
+
+    <% @conversations.each do |conv| %>
+        <%= link_to item_conversation_path(conv.item_id, conv.id) do %>
+            <div class="card">
+                <div class="card-body">
+                    <h6><%= conv.item.name %></h6>
+                    <p><%= conv.item.user.email %></p>
+                </div>
+            </div>
+        <% end %>    
+    <% end %>
+
+</div>
