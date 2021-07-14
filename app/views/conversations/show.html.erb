@@ -1,3 +1,9 @@
-<div>
-    convo show page to
-</div>
+<% if user_signed_in? %>
+    <%= render 'home/sidebar' %>
+<% end %>
+
+<section class="homepage">
+  <div class="container">
+    <h6><%= @conversation.item.name %> <%= @conversation.item.user.email %></h6>
+  </div>
+</section>
