@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get '/items/:id' => 'items#index', as: 'items_index'
   post '/items/create/:id' => 'items#create', as: 'items_create'
   post '/items/comment/:id' => 'items#comment', as: 'items_comment'
-  devise_for :users
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
