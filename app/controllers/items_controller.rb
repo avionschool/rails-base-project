@@ -2,10 +2,8 @@ class ItemsController < ApplicationController
   # before_action :authenticate_user!, except: [:index]
 
   def show
-    if user_signed_in?
-        @conversations = current_user.conversations
-    end
-    
+    @conversations = current_user.conversations if user_signed_in?
+
     @item = Item.find_by(id: params[:id])
     @comments = Comment.where(item_id: @item.id).sort_by(&:updated_at).reverse
   end
