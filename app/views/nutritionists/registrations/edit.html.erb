@@ -1,11 +1,16 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+  <%= render "nutritionists/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :years_exp, "Years of Experience" %><br />
+    <%= f.number_field :years_exp, autofocus: true, in: 1..60, step: 1 %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

@@ -17,4 +17,10 @@ class Nutritionist < ApplicationRecord
   def inactive_message
     approved? ? super : :not_approved
   end
+
+  after_create :send_admin_mail
+  def send_admin_mail
+    DoctorMailer.new_nutritionist_account_pending(email).deliver
+    AdminMailer.new_nutritionist_waiting_for_approval(email).deliver
+  end
 end
