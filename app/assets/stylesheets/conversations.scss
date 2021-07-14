@@ -1,3 +1,31 @@
 // Place all the styles related to the conversations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.conversation-container {
+    height: 90vh;
+    
+    .messages-container {
+        height: 90%;
+        border: 1px solid #7777773f;
+        padding: 20px 30px;
+
+        .message {
+            display: inline-block;
+            background-color: #777777;
+            background-color: #eeeeee;
+            padding: 8px 16px;
+            border-radius: 15px;
+        }
+    }
+
+    .message-form {
+
+        .form-inline {
+
+            #message-input-box {
+                width: 93.5%;
+            }
+        }
+    }
+}

@@ -3,7 +3,13 @@
 <% end %>
 
 <section class="homepage">
-  <div class="container">
+  <div class="conversation-container container">
     <h6><%= @conversation.item.name %> <%= @conversation.item.user.email %></h6>
+    <div class="messages-container mb-2 rounded-lg">
+        <div class="message">This is a sample message</div>
+    </div>
+    <div class="message-form">
+        <%= render 'messages/form' %>
+    </div>
   </div>
 </section>

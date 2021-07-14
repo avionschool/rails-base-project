@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   post '/items/comment/:id' => 'items#comment', as: 'items_comment'
 
   resources :items do 
-    resources :conversations
+    resources :conversations do
+        resources :messages
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
