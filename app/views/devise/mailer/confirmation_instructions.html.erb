@@ -1,5 +1,10 @@
-<p>Welcome <%= @email %>!</p>
+<!--<h1>Welcome <%= @email %>!</h1>-->
 
-<p>You can confirm your account email through the link below:</p>
+<h3>Welcome to <strong>Kalakalph</strong>, <%= @user.first_name %>!</h3>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p>You are now part of a community that connects different people with different needs around the world. With over 200,000 unique users, there will be no shortage of interesting finds that will catch your interest.
+Find an item you want. Negotiate your way through a deal. Discover things you can do.</p>
+
+<p>Please confirm your account email through the link below:</p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), target: '_blank' %></p>
