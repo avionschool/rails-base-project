@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  
+  devise_for :users, controllers: {
+    confirmations: 'confirmations'
+  }
+  
   root to: 'home#index'
   
-#   get '/items/:id' => 'items#index', as: 'items_index'
-#   post '/items/create/:id' => 'items#create', as: 'items_create'
-  devise_for :users
+  
+  resources :items
+  post '/items/comment/:id' => 'items#comment', as: 'items_comment'
 
   resources :items do 
     resources :conversations do

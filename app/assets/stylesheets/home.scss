@@ -4,10 +4,12 @@
 }
 
 .products {
-  margin-top: 1rem;
+  max-width: 63rem;
+  height: auto;
   padding: 1rem;
   display: flex;
-  justify-content: flex-start;
+  flex-flow: wrap;
+  justify-content: center;
   align-items: flex-start;
 }
 
@@ -20,7 +22,7 @@
   height: 20rem;
   width: 17.5rem;
   padding: 1rem;
-  margin: 0 0.5rem;
+  margin: 1rem;
 }
 
 .itempic {

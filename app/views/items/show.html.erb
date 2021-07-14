@@ -1,26 +1,31 @@
-<div class="container">
-  <div class="products">
-    <div class="items">
-      <%= image_tag("altpic.png", :class => "itempic") %>
-      <h5 class="item_name"><%= @item.name %></h5>
-      <h6 class="item_name"><%= @item.description %></h6>
-      <h6 class="item_name"><%= @item.user.email %></h6> <!--we can change this username-->
-      <div>
-        <!--if convo !exist, create new-->
-        <!--hidden form for create new conversation-->
+<head>
+  <%= stylesheet_link_tag "items" %> 
+</head> 
+<body>
+  <div class="container">
+    <div class="products_items">
+      <div class="item">
+        <%= image_tag("altpic.png", :class => "itempic") %>
+        <h5 class="item_name"><%= @item.name %></h5>
+        <h6 class="item_description"><%= @item.description %></h6>
         <% if user_signed_in? %>
-            <div><%#= render 'conversations/form' %>
-                <%= form_with scope: :conversation, url: item_conversations_path(@item.id), local: true do |form| %>
-                    <%= form.hidden_field :item_id, value: @item.id, class: 'form-control' %>
-                    <%= form.hidden_field :user1_id, value: @item.user_id, class: 'form-control' %>
-                    <%= form.hidden_field :user2_id, value: current_user.id, class: 'form-control' %>
-                    <%= form.submit "Send Message", class: "btn btn-primary" %>
-                <% end %>
-            </div>
-        <% end %>
+          <%= form_with scope: :comment, url: items_comment_path(@item.id), local: true do |f| %>
+            <div class="user_comment">
+              <%= f.text_area :body, autofocus: true, id:"comment_user", class:"comment", placeholder: 'Write a public comment...' %>
+              <%= f.hidden_field :commenter_id, value: current_user.id %>
 
-        <div class="btn btn-primary">Like</div>
+              <%= f.submit "Post Comment", :class => "post_item" %>
+            </div>
+            <%= javascript_pack_tag 'comment.js' %>
+          <% end %>
+        <% end %>
+        <% @comments.each do |t| %>
+          <div class="comment_section">
+            <h5 class="commenter_name"><%= User.find_by(id: t.commenter_id).email %></h5>
+            <h5 class="commenter_description"><%= t.body %></h5>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
-</div>
+</body>
