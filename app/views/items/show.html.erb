@@ -7,7 +7,8 @@
       <h6 class="item_name"><%= @item.user.email %></h6> <!--we can change this username-->
       <div>
         <!--if convo !exist, create new-->
-        <div class="btn btn-primary">Send message</div>
+        <!--hidden form for create new conversation-->
+        <div><%= render 'conversations/form' %></div>
         <div class="btn btn-primary">Like</div>
       </div>
     </div>

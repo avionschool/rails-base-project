@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 #   post '/items/create/:id' => 'items#create', as: 'items_create'
   devise_for :users
 
-  resources :items
+  resources :items do 
+    resources :conversations do
+        resources :messages
+    end
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
