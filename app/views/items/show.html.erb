@@ -8,7 +8,17 @@
       <div>
         <!--if convo !exist, create new-->
         <!--hidden form for create new conversation-->
-        <div><%= render 'conversations/form' %></div>
+        <% if user_signed_in? %>
+            <div><%#= render 'conversations/form' %>
+                <%= form_with scope: :conversation, url: item_conversations_path(@item.id), local: true do |form| %>
+                    <%= form.hidden_field :item_id, value: @item.id, class: 'form-control' %>
+                    <%= form.hidden_field :user1_id, value: @item.user_id, class: 'form-control' %>
+                    <%= form.hidden_field :user2_id, value: current_user.id, class: 'form-control' %>
+                    <%= form.submit "Send Message", class: "btn btn-primary" %>
+                <% end %>
+            </div>
+        <% end %>
+
         <div class="btn btn-primary">Like</div>
       </div>
     </div>
