@@ -20,8 +20,6 @@
     background: gray; 
 }
 
-
-
 .conversation-container {
     height: 90vh;
     
@@ -30,8 +28,6 @@
         border: 1px solid #7777773f;
         padding: 20px 30px;
         overflow-y: auto;
-
-        
 
         .message {
             width: 100%;
@@ -64,10 +60,7 @@
                 }
             }
             
-            
         }
-
-        
 
     }
 
