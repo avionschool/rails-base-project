@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
   # before_action :authenticate_user!, except: [:index]
 
-  def index
-    @user = User.find_by(id: params[:user_id])
+  def show
     @item = Item.find_by(id: params[:id])
     @comments = Comment.where(item_id: @item.id).sort_by(&:updated_at).reverse
   end
@@ -16,7 +15,7 @@ class ItemsController < ApplicationController
   def comment
     item = Item.find_by(id: params[:id])
     comment = item.comments.new(comment_params)
-    redirect_to root_path if comment.save
+    redirect_to item_path(item.id) if comment.save
   end
 
   private

@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   
   root to: 'home#index'
   
-  get '/items/:id' => 'items#index', as: 'items_index'
-  post '/items/create/:id' => 'items#create', as: 'items_create'
+  
+  resources :items
   post '/items/comment/:id' => 'items#comment', as: 'items_comment'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
