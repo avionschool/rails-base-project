@@ -2,6 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #77777781; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: gray; 
+}
+
+
+
 .conversation-container {
     height: 90vh;
     
@@ -9,14 +29,46 @@
         height: 90%;
         border: 1px solid #7777773f;
         padding: 20px 30px;
+        overflow-y: auto;
+
+        
 
         .message {
-            display: inline-block;
-            background-color: #777777;
-            background-color: #eeeeee;
-            padding: 8px 16px;
-            border-radius: 15px;
+            width: 100%;
+            min-height: 59px;
+
+            .content-container {
+                display: inline-block;
+
+                .content {
+                    background-color: #eeeeee;
+                    padding: 8px 16px;
+                    border-radius: 15px;
+                }
+    
+                .author {
+                    font-size: 0.8rem;
+                    color: #777777;
+                    margin-left: 10px;
+                }
+            }
+
+            &.me {
+                .content-container {
+                    float: right;
+
+                    .content {
+                        color: white;
+                        background-color: #007bff;
+                    }
+                }
+            }
+            
+            
         }
+
+        
+
     }
 
     .message-form {
