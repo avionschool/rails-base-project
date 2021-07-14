@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   def index
     @user = User.find_by(id: params[:user_id])
     @item = Item.find_by(id: params[:id])
-    @comments = Comment.where(item_id: @item.id)
+    @comments = Comment.where(item_id: @item.id).sort_by(&:updated_at).reverse
   end
 
   def create

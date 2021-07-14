@@ -32,6 +32,7 @@
 
 .item_description {
   margin-top: 0.5rem;
+  margin-bottom: 1rem;
   font-size: 1.2rem;
 }
 
@@ -61,10 +62,12 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: #d9dee0;
+  margin: 1rem 0rem;
 }
 
 .commenter_name {
-  margin-top: 1.5rem;
   font-size: 1.2rem;
   font-weight: 600;
 }
