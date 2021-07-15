@@ -39,7 +39,7 @@
         <% @comments.each do |t| %>
           <div class="comment_details" id= "comment<%= t.id %>">
             <div class="comment_section">
-              <h5 class="commenter_name"><%= t.item.user.first_name %> <%= t.item.user.last_name %></h5>
+              <h5 class="commenter_name"><%= User.find_by(id: t.commenter_id).first_name %> <%= User.find_by(id: t.commenter_id).last_name %></h5>
               <h5 class="commenter_description"><%= t.body %></h5>
             </div>
             <% if current_user.id === t.commenter_id %>
