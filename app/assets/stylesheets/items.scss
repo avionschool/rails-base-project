@@ -5,19 +5,32 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .item {
+    border: 0.1rem solid #c5c8ca;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    width: 40rem;
+    padding: 1rem;
+    margin: 0 0.5rem;
+  }
+  
 }
 
-.item {
-  border: 0.1rem solid #c5c8ca;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: auto;
-  width: 40rem;
-  padding: 1rem;
-  margin: 0 0.5rem;
-}
+// .item {
+//   border: 0.1rem solid #c5c8ca;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   flex-direction: column;
+//   height: auto;
+//   width: 40rem;
+//   padding: 1rem;
+//   margin: 0 0.5rem;
+// }
 
 .itempic {
   height: 100%;
@@ -57,14 +70,21 @@
   width: 100%;
 }
 
+.comment_details {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 99.9% 0.1%;
+  background-color: #d9dee0;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0rem;
+}
+
 .comment_section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  padding: 0.5rem 1rem;
-  background-color: #d9dee0;
-  margin: 1rem 0rem;
+
 }
 
 .commenter_name {
@@ -75,4 +95,14 @@
 .commenter_description {
   margin-top: 0.5rem;
   font-size: 1rem;
+}
+
+.dropdown_btn {
+  display: flex;
+  background-color: transparent;
+  border: 0px;
+}
+
+.option {
+  height: 1rem;
 }
