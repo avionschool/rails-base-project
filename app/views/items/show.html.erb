@@ -12,7 +12,7 @@
       <div class="item">
         <%= image_tag("altpic.png", :class => "itempic") %>
         <h5 class="item_name"><%= @item.name %></h5>
-        <h6 class="item_description"><%= @item.user.email %></h6>
+        <h6 class="item_description"><%= @item.user.first_name %> <%= @item.user.last_name %></h6>
         <h6 class="item_description"><%= @item.description %></h6>
 
         <% if user_signed_in? %>
@@ -37,9 +37,35 @@
         <% end %>
 
         <% @comments.each do |t| %>
-          <div class="comment_section">
-            <h5 class="commenter_name"><%= User.find_by(id: t.commenter_id).email %></h5>
-            <h5 class="commenter_description"><%= t.body %></h5>
+          <div class="comment_details" id= "comment<%= t.id %>">
+            <div class="comment_section">
+              <h5 class="commenter_name"><%= User.find_by(id: t.commenter_id).first_name %> <%= User.find_by(id: t.commenter_id).last_name %></h5>
+              <h5 class="commenter_description"><%= t.body %></h5>
+            </div>
+            <% if current_user.id === t.commenter_id %>
+              <%= javascript_pack_tag 'comment.js' %>
+              <div class="dropdown">
+                <button class="dropdown_btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= image_tag("options.png", :class => "option") %>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item edit" id=<%= t.id %>>Edit Comment</a>
+                  <%= form_with scope: :comment, method: :delete, url: delete_comment_path(t.id), local: true do |f| %>
+                    <%= f.submit :"Delete Comment", :class => "dropdown-item" %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="hide" id= "edit<%= t.id %>">
+            <%= form_with scope: :comment, url: update_comment_path(t.id), local: true, method: :put do |f| %>
+              <div class="user_comment">
+                <%= f.text_area :body, value: t.body, autofocus: true, id:"comment_user", class:"comment", placeholder: 'Write a public comment...' %>
+
+                <%= f.submit "Update Comment", :class => "post_item" %>
+              </div>
+              <%= javascript_pack_tag 'comment.js' %>
+            <% end %>
           </div>
         <% end %>
 

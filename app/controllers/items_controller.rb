@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
     @conversations = current_user.conversations if user_signed_in?
 
     @item = Item.find_by(id: params[:id])
-    @comments = Comment.where(item_id: @item.id).sort_by(&:updated_at).reverse
+    @comments = @item.comments.sort_by(&:created_at)
   end
 
   def create
@@ -20,6 +20,17 @@ class ItemsController < ApplicationController
     redirect_to item_path(item.id) if comment.save
   end
 
+  def update_comment
+    comment = Comment.find_by(id: params[:id])
+    redirect_to item_path(comment.item_id) if comment.update(comment_update_params)
+  end
+
+  def delete_comment
+    comment = Comment.find_by(id: params[:id])
+    item_id = comment.item_id
+    redirect_to item_path(item_id) if comment.delete
+  end
+
   private
 
   def item_params
@@ -28,5 +39,9 @@ class ItemsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:commenter_id, :body)
+  end
+
+  def comment_update_params
+    params.require(:comment).permit(:body)
   end
 end

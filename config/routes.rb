@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   root to: 'home#index'
   
   post '/items/comment/:id' => 'items#comment', as: 'items_comment'
+  put '/items/:id' => 'items#update_comment', as: 'update_comment'
+  delete '/items/:id' => 'items#delete_comment', as: 'delete_comment'
 
   resources :items do 
     resources :conversations do
