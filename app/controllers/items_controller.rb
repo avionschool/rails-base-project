@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
     @conversations = current_user.conversations if user_signed_in?
 
     @item = Item.find_by(id: params[:id])
-    @comments = @item.comments.sort_by(&:created_at).reverse
+    @comments = @item.comments.sort_by(&:created_at)
   end
 
   def create
