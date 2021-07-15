@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_07_13_061638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cpus", force: :cascade do |t|
+    t.string "socket"
+    t.integer "core_count"
+    t.integer "core_clock"
+    t.integer "boost_clock"
+    t.string "tdp"
+    t.boolean "smt"
+    t.string "rating"
+    t.float "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end
