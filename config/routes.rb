@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  
   devise_for :users, controllers: {
     confirmations: 'confirmations'
   }
+
+  resources :users do
+    member do
+      get :confirm_email
+    end
+  end
   
   root to: 'home#index'
   
