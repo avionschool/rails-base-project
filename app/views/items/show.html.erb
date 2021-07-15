@@ -49,9 +49,9 @@
                   <%= image_tag("options.png", :class => "option") %>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item edit" id=<%= t.id %>>Edit Post</a>
+                  <a class="dropdown-item edit" id=<%= t.id %>>Edit Comment</a>
                   <%= form_with scope: :comment, method: :delete, url: delete_comment_path(t.id), local: true do |f| %>
-                    <%= f.submit :"Delete Post", :class => "dropdown-item" %>
+                    <%= f.submit :"Delete Comment", :class => "dropdown-item" %>
                   <% end %>
                 </div>
               </div>
@@ -62,7 +62,7 @@
               <div class="user_comment">
                 <%= f.text_area :body, value: t.body, autofocus: true, id:"comment_user", class:"comment", placeholder: 'Write a public comment...' %>
 
-                <%= f.submit "Update Post", :class => "post_item" %>
+                <%= f.submit "Update Comment", :class => "post_item" %>
               </div>
               <%= javascript_pack_tag 'comment.js' %>
             <% end %>
