@@ -323,6 +323,10 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webdrivers (4.6.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (>= 3.0, < 4.0)
     webmock (3.13.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -372,6 +376,7 @@ DEPENDENCIES
   tzinfo-data
   vcr
   web-console (>= 3.3.0)
+  webdrivers (~> 4.0)
   webmock
   webpacker (~> 5.0)
 
