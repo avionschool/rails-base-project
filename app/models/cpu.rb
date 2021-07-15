@@ -1,28 +1,24 @@
 require 'scraper'
 require 'byebug'
 
-class Cpu < Scraper
+class Cpu < ApplicationRecord
+  def self.name
+    @name = 'cpus'
+  end
 
-  @name = 'cpu_scraper'
-  @start_urls = ["https://pcpartpicker.com/products/cpu/fetch/?xcx=0&page=1&mode=list&xslug=&search="]
-  @last = ''
-  @config = { before_request: {
-    delay: 4..6
-  } }
+  def self.url
+    @start_urls = ["https://pangoly.com/en/browse/cpu?page=#{@page}"]
+  end
 
-  def parse(response, url:, data: {})
-    sleep 5.seconds
-    puts 'getting response'
-    page = browser.current_response  
-    puts page
-    page.xpath("//tr[contains(@class, 'tr__product')]").each do |cpu|
-    # response.xpath("//tr").each do |cpu|
-      puts 'in the loop'
-      item = {}
-      @last = cpu
-      byebug
-
-      # Cpu.find_or_create_by(item)
-    end
+  def self.parse_repo_page(response)
+    puts('getting info')
+    item = {}
+    item[:socket] = response.xpath("//table[@class='table table-bordered table-striped table-hover']/tbody").css('tr')[4].css('td')[1].text.squish
+    item[:core_count] = response.xpath("//table[@class='table table-bordered table-striped table-hover']/tbody").css('tr')[6].css('td')[1].text.squish.to_i
+    item[:core_clock] = response.xpath("//table[@class='table table-bordered table-striped table-hover']/tbody").css('tr')[8].css('td')[1].text.squish.to_i
+    item[:boost_clock] = response.xpath("//table[@class='table table-bordered table-striped table-hover']/tbody").css('tr')[9].css('td')[1].text.squish.to_i
+    item[:tdp] = response.xpath("//table[@class='table table-bordered table-striped table-hover']/tbody").css('tr')[10].css('td')[1].text.squish
+    item[:price] = response.xpath("//span[@class='price']").text.tr('^0-9.', '').to_f
+    self.find_or_create_by(item)
   end
 end
