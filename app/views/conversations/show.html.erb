@@ -1,3 +1,22 @@
-<div>
-    convo show page to
-</div>
+<% if user_signed_in? %>
+    <%= render 'home/sidebar' %>
+<% end %>
+
+<section class="homepage">
+  <div class="conversation-container container">
+    <h6><%= @conversation.item.name %> <%= @conversation.item.user.email %></h6>
+    <div class="messages-container mb-2 rounded-lg">
+        <% @conversation.messages.each do |message| %>
+            <div class="message mb-3 <%= 'me' if message.user == current_user %>">
+                <div class="content-container">
+                    <div class="content"><%= message.content %></div>
+                    <div class="author"><%= message.user.email %></div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <div class="message-form">
+        <%= render 'messages/form' %>
+    </div>
+  </div>
+</section>

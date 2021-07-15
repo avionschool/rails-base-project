@@ -1,6 +1,11 @@
 class ConversationsController < ApplicationController
   def index
-    @conversations = User.conversations
+    @conversations = current_user.conversations if user_signed_in?
+  end
+
+  def show
+    @conversation = Conversation.find(params[:id])
+    @conversations = current_user.conversations if user_signed_in?
   end
 
   def new
@@ -8,25 +13,9 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    if Conversation.exists?(conversation_params)
-      redirect_to request.referer, alert: 'Conversation exists!'
-    # redirect to conversation show page
-    else
-      @conversation = Conversation.new(conversation_params)
-      @conversation.save
-      redirect_to request.referer, alert: 'New conversation created!'
-      # redirect to conversation show page
-    end
-
-    # respond_to do |format|
-    #   if @conversation.save
-    #     format.html { redirect_to @conversation, notice: "Conversation was successfully created." }
-    #     format.json { render :show, status: :created, location: @conversation }
-    #   else
-    #     format.html { render :new, status: :unprocessable_entity }
-    #     format.json { render json: @conversation.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    Conversation.create(conversation_params) unless Conversation.exists?(conversation_params)
+    conv = Conversation.where(conversation_params)
+    redirect_to item_conversation_path(params[:item_id], conv.first.id)
   end
 
   private
