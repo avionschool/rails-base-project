@@ -1,12 +1,22 @@
 <div class="tmp-sidebar">
   <h6>temporary sidebar</h6>
+  <br>
+  <h5>Hello, <%= current_user.first_name %></h5>
+  <br>
 
   <% @conversations.each do |conv| %>
     <%= link_to item_conversation_path(conv.item_id, conv.id) do %>
       <div class="card">
         <div class="card-body">
           <h6><%= conv.item.name %></h6>
-          <p><%= conv.item.user.email %></p>
+          <!--displaying username of current_user's conversation partner -->
+          <% if conv.item.user == current_user && current_user.id == conv.user2_id %>
+            <p><%= User.find(conv.user1_id).username %></p>
+          <% elsif conv.item.user == current_user && current_user.id == conv.user1_id %>
+            <p><%= User.find(conv.user2_id).username %></p>  
+          <% else %>
+            <p><%= conv.item.user.username %></p>  
+          <% end %>
         </div>
       </div>
     <% end %>    
