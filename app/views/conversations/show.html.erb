@@ -4,6 +4,10 @@
 
 <section class="homepage">
   <div class="conversation-container container">
+
+    <div id="conversation-id" data-conversation-id="<%= @conversation.try(:id) %>"></div>
+    <div id="user-id" data-user-id="<%= current_user.id %>"></div>
+
     <h6><%= @conversation.item.name %></h6>
     <!--displaying username of current_user's conversation partner -->
     <% if @conversation.item.user == current_user && current_user.id == @conversation.user2_id %>
@@ -13,15 +17,9 @@
     <% else %>
         <p><%= @conversation.item.user.username %></p>  
     <% end %>
-    <div class="messages-container mb-2 rounded-lg">
+    <div class="messages-container mb-2 rounded-lg" id="messages-container">
         <% @conversation.messages.each do |message| %>
-            <div class="message mb-3 <%= 'me' if message.user == current_user %>">
-                <div class="content-container">
-                    <div class="content"><%= message.content %></div>
-                    <!--might remove author, when avatar is available-->
-                    <div class="author"><%= message.user.username %></div>
-                </div>
-            </div>
+            <%= render 'messages/message', message: message %>
         <% end %>
     </div>
     <div class="message-form">

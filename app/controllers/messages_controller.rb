@@ -3,7 +3,9 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.user = current_user
     @message.save
-    redirect_to request.referer
+    # redirect_to request.referer
+
+    SendMessageJob.perform_later(@message)
   end
 
   private
