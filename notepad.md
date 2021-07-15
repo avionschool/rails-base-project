@@ -9,3 +9,8 @@
 
 ## for starting redis server as service:
     run 'sudo service redis-server start'
+
+
+## bugs to fix:
+    -when user is not logged in, clicking a listing with comments returns an error
+    -when an exchange happened in a conversation, sometimes clicking on another conversation and clicking back to the previous conversation, the previous conversation doesn't show the recent exchange
