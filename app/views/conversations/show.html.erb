@@ -4,13 +4,22 @@
 
 <section class="homepage">
   <div class="conversation-container container">
-    <h6><%= @conversation.item.name %> <%= @conversation.item.user.email %></h6>
+    <h6><%= @conversation.item.name %></h6>
+    <!--displaying username of current_user's conversation partner -->
+    <% if @conversation.item.user == current_user && current_user.id == @conversation.user2_id %>
+        <p><%= User.find(@conversation.user1_id).username %></p>
+    <% elsif @conversation.item.user == current_user && current_user.id == @conversation.user1_id %>
+        <p><%= User.find(@conversation.user2_id).username %></p>  
+    <% else %>
+        <p><%= @conversation.item.user.username %></p>  
+    <% end %>
     <div class="messages-container mb-2 rounded-lg">
         <% @conversation.messages.each do |message| %>
             <div class="message mb-3 <%= 'me' if message.user == current_user %>">
                 <div class="content-container">
                     <div class="content"><%= message.content %></div>
-                    <div class="author"><%= message.user.email %></div>
+                    <!--might remove author, when avatar is available-->
+                    <div class="author"><%= message.user.username %></div>
                 </div>
             </div>
         <% end %>
