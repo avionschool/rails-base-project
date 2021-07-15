@@ -1,0 +1,7 @@
+<div class="message mb-3 <%= 'me' if message.user == current_user %>">
+    <div class="content-container">
+        <div class="content"><%= message.content %></div>
+        <!--might remove author, when avatar is available-->
+        <div class="author"><%= message.user.username %></div>
+    </div>
+</div>
