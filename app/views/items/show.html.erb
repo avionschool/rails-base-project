@@ -9,67 +9,128 @@
 
   <div class="container">
     <div class="products_items">
-      <div class="item">
-        <%= image_tag("altpic.png", :class => "itempic") %>
-        <h5 class="item_name"><%= @item.name %></h5>
-        <h6 class="item_description"><%= @item.user.first_name %> <%= @item.user.last_name %></h6>
-        <h6 class="item_description"><%= @item.description %></h6>
+      <% if @item != nil %>
+        <div class="item">
+          <div class="item_details">
+            <h6 class="item_description"><%= @item.user.first_name %> <%= @item.user.last_name %></h6>
+            <% if user_signed_in? %>
+              <% if current_user.id === @item.user_id %>
+                <div class="dropdown">
+                  <button class="dropdown_btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%= image_tag("options.png", :class => "option") %>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item edit" data-toggle="modal" data-target="#exampleModal">Edit Post</a>
+                    <%= form_with scope: :comment, method: :delete, url: delete_post_path(@item.id), local: true do |f| %>
+                      <%= f.submit :"Delete Post", :class => "dropdown-item" %>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
 
-        <% if user_signed_in? %>
-          <%= form_with scope: :comment, url: items_comment_path(@item.id), local: true do |f| %>
-            <div class="user_comment">
-              <%= f.text_area :body, autofocus: true, id:"comment_user", class:"comment", placeholder: 'Write a public comment...' %>
-              <%= f.hidden_field :commenter_id, value: current_user.id %>
+          <h5 class="item_name"><%= @item.name %></h5>
+          <h6 class="item_description"><%= @item.description %></h6>
+          <%= image_tag("altpic.png", :class => "itempic") %>
 
-              <%= f.submit "Post Comment", :class => "post_item" %>
-            </div>
-            <%= javascript_pack_tag 'comment.js' %>
+          <% if user_signed_in? %>
+            <%= form_with scope: :comment, url: comment_path(@item.id), local: true do |f| %>
+              <div class="user_comment">
+                <%= f.text_area :body, autofocus: true, id:"comment_user", class:"comment", placeholder: 'Write a public comment...' %>
+                <%= f.hidden_field :commenter_id, value: current_user.id %>
+
+                <%= f.submit "Post Comment", :class => "post_item" %>
+              </div>
+              <%= javascript_pack_tag 'comment.js' %>
+            <% end %>
+
+              <% if @item.user.id != current_user.id %>
+                  <%= form_with scope: :conversation, url: item_conversations_path(@item.id), local: true do |f| %>
+                      <%= f.hidden_field :item_id, value: @item.id %>
+                      <%= f.hidden_field :user1_id, value: @item.user.id %>
+                      <%= f.hidden_field :user2_id, value: current_user.id %>
+                      <%= f.submit "Send Message" %>
+                  <% end %>
+              <% end %>    
           <% end %>
 
-            <% if @item.user.id != current_user.id %>
-                <%= form_with scope: :conversation, url: item_conversations_path(@item.id), local: true do |f| %>
-                    <%= f.hidden_field :item_id, value: @item.id %>
-                    <%= f.hidden_field :user1_id, value: @item.user.id %>
-                    <%= f.hidden_field :user2_id, value: current_user.id %>
-                    <%= f.submit "Send Message" %>
-                <% end %>
-            <% end %>    
-        <% end %>
-
-        <% @comments.each do |t| %>
-          <div class="comment_details" id= "comment<%= t.id %>">
-            <div class="comment_section">
-              <h5 class="commenter_name"><%= User.find_by(id: t.commenter_id).first_name %> <%= User.find_by(id: t.commenter_id).last_name %></h5>
-              <h5 class="commenter_description"><%= t.body %></h5>
-            </div>
-            <% if current_user.id === t.commenter_id %>
-              <%= javascript_pack_tag 'comment.js' %>
-              <div class="dropdown">
-                <button class="dropdown_btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <%= image_tag("options.png", :class => "option") %>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item edit" id=<%= t.id %>>Edit Comment</a>
-                  <%= form_with scope: :comment, method: :delete, url: delete_comment_path(t.id), local: true do |f| %>
-                    <%= f.submit :"Delete Comment", :class => "dropdown-item" %>
-                  <% end %>
+          <% @comments.each do |t| %>
+            <div class="comment_details" id= "comment<%= t.id %>">
+              <div class="comment_section">
+                <h5 class="commenter_name"><%= User.find_by(id: t.commenter_id).first_name %> <%= User.find_by(id: t.commenter_id).last_name %></h5>
+                <h5 class="commenter_description"><%= t.body %></h5>
+              </div>
+              <% if current_user.id === t.commenter_id %>
+                <%= javascript_pack_tag 'comment.js' %>
+                <div class="dropdown">
+                  <button class="dropdown_btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%= image_tag("options.png", :class => "option") %>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item edit" id=<%= t.id %>>Edit Comment</a>
+                    <%= form_with scope: :comment, method: :delete, url: delete_comment_path(t.id), local: true do |f| %>
+                      <%= f.submit :"Delete Comment", :class => "dropdown-item" %>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
-            <% end %>
-          </div>
-          <div class="hide" id= "edit<%= t.id %>">
-            <%= form_with scope: :comment, url: update_comment_path(t.id), local: true, method: :put do |f| %>
-              <div class="user_comment">
-                <%= f.text_area :body, value: t.body, autofocus: true, id:"comment_user", class:"comment", placeholder: 'Write a public comment...' %>
+              <% end %>
+            </div>
+            <div class="hide" id= "edit<%= t.id %>">
+              <%= form_with scope: :comment, url: update_comment_path(t.id), local: true, method: :put do |f| %>
+                <div class="user_comment">
+                  <%= f.text_area :body, value: t.body, autofocus: true, id:"comment_user", class:"comment", placeholder: 'Write a public comment...' %>
 
-                <%= f.submit "Update Comment", :class => "post_item" %>
-              </div>
-              <%= javascript_pack_tag 'comment.js' %>
-            <% end %>
-          </div>
-        <% end %>
-
-      </div>
+                  <%= f.submit "Update Comment", :class => "post_item" %>
+                </div>
+                <%= javascript_pack_tag 'comment.js' %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <h1>Item has been removed by User</h1>
+      <% end %>
     </div>
   </div>
+
+  <% if @item != nil %>
+    <% if current_user.id == @item.user.id %>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Update Item Post</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= form_with scope: :item, url: update_post_path(@item.id), method: :put, local: true do |f| %>
+                <div class="field">
+                  <%= f.label :name %><br />
+                  <%= f.text_field :name, autofocus: true %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :description %><br />
+                  <%= f.text_area :description, autofocus: true %>
+                </div>
+                
+                <%= f.hidden_field :status, value: "open" %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= hidden_field_tag(:user_id, current_user.id) %>
+
+                <%= f.submit "Post Item", :class => "post_item" %>
+              <% end %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </body>
