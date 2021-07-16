@@ -19,8 +19,9 @@ class Scraper < Kimurai::Base
 
   def parse(response, url:, data: {})
     puts 'getting response'
-    page = browser.current_response  
-    page.xpath("//a[contains(@class, 'productItemLink')]").each do |a|
+    products = response.xpath("//a[contains(@class, 'productItemLink')]")
+    return if products.empty?
+    products.each do |a|
       puts 'getting link'
       request_to :parse_repo_page, url: absolute_url(a[:href], base: url)
       puts 'next item'
