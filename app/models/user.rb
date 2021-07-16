@@ -6,22 +6,26 @@ class User < ApplicationRecord
 
   has_one_attached :profile_pic
   has_one_attached :cover_pic
-  has_many :messages
+  has_many :messages, dependent: :nullify
 
   def chat_room(user)
-    chat_rooms.select { |chat_room| chat_room.users.include?(user)}.first
+    chat_rooms.select { |chat_room| chat_room.users.include?(user) }.first
   end
+
   def tourist?
-    type == "Tourist"
+    type == 'Tourist'
   end
+
   def agency?
-    type == "Agency"
+    type == 'Agency'
   end
+
   def admin?
-    type == "Admin"
+    type == 'Admin'
   end
+
   def username
-    if self.agency?
+    if agency?
       agency_name
     else
       "#{first_name} #{last_name}"
