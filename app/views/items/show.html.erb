@@ -94,43 +94,45 @@
     </div>
   </div>
 
-  <% if @item != nil %>
-    <% if current_user.id == @item.user.id %>
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Update Item Post</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <%= form_with scope: :item, url: update_post_path(@item.id), method: :put, local: true do |f| %>
-                <div class="field">
-                  <%= f.label :name %><br />
-                  <%= f.text_field :name, autofocus: true %>
-                </div>
+  <% if user_signed_in? %>
+    <% if @item != nil %>
+      <% if current_user.id == @item.user.id %>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Item Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= form_with scope: :item, url: update_post_path(@item.id), method: :put, local: true do |f| %>
+                  <div class="field">
+                    <%= f.label :name %><br />
+                    <%= f.text_field :name, autofocus: true %>
+                  </div>
 
-                <div class="field">
-                  <%= f.label :description %><br />
-                  <%= f.text_area :description, autofocus: true %>
-                </div>
-                
-                <%= f.hidden_field :status, value: "open" %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= hidden_field_tag(:user_id, current_user.id) %>
+                  <div class="field">
+                    <%= f.label :description %><br />
+                    <%= f.text_area :description, autofocus: true %>
+                  </div>
+                  
+                  <%= f.hidden_field :status, value: "open" %>
+                  <%= f.hidden_field :user_id, value: current_user.id %>
+                  <%= hidden_field_tag(:user_id, current_user.id) %>
 
-                <%= f.submit "Post Item", :class => "post_item" %>
-              <% end %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <%= f.submit "Post Item", :class => "post_item" %>
+                <% end %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   <% end %>
 </body>
