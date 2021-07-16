@@ -1,0 +1,31 @@
+<% @foods_and_articles.each do |post| %>
+  <% if post.attributes.has_key? 'user_username' %>
+    <table>
+      <tr>
+        <% if user_signed_in? && current_user.id == post.user_id %>
+          <td><%= link_to post.user_username, foods_path %></td>
+          <td><%= link_to post.name, food_path(post.id) %></td>
+        <% else %>
+          <td><%= link_to post.user_username, user_path(post.user_id) %></td>
+          <td><%= link_to post.name, user_food_path(post.user_id, post.id) %></td>
+        <% end %>
+        <td><%= post.food_group %></td>
+        <td><%= post.caption %></td>
+        <td><%= post.recipe_url %></td>
+      </tr>
+    </table>
+  <% else %>
+    <table>
+      <tr>
+        <% if nutritionist_signed_in? && current_nutritionist.id == post.nutritionist_id %>
+          <td><%= link_to post.nutritionist_username, articles_path %></td>
+          <td><%= link_to post.caption, article_path(post.id) %></td>
+        <% else %>
+          <td><%= link_to post.nutritionist_username, nutritionist_path(post.nutritionist_id) %></td>
+          <td><%= link_to post.caption, nutritionist_article_path(post.nutritionist_id, post.id) %></td>
+        <% end %>
+        <td><%= post.source_url %></td>
+      </tr>
+    </table>
+  <% end %>
+<% end %>

@@ -1,0 +1,33 @@
+<%= form_with model: article do |f| %>
+    <% article.errors.full_messages_for(:nutritionist_username).each do |message| %>
+      <%= message %>
+    <% end %>
+  
+    <% article.errors.full_messages_for(:caption).each do |message| %>
+      <%= message %>
+    <% end %>
+  
+    <% article.errors.full_messages_for(:source_url).each do |message| %>
+      <%= message %>
+    <% end %>
+  
+    
+    <div class="field">
+      <%= f.text_field :nutritionist_username, autofocus: true, value:current_nutritionist.username, placeholder:"username" %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :caption %><br />
+      <%= f.text_area :caption, autofocus: true %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :source_url %><br />
+      <%= f.text_field :source_url, autofocus: true %>
+    </div>
+  
+    <div class="actions">
+      <%= f.submit "Post" %>
+    </div>
+  
+  <% end %>

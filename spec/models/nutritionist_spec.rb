@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Nutritionist, type: :model do
-  let(:nutritionist) { described_class.new(email: 'nut@email.com', username: 'nut', license_num: 12_345, years_exp: 5, password: 'qwerty', password_confirmation: 'qwerty') }
+  let(:nutritionist) { described_class.new(email: 'nut@email.com', username: 'nut', license_num: 12_345, years_exp: 5, password: 'qwerty', password_confirmation: 'qwerty', approved: true) }
 
   describe 'Validations' do
     it 'is not valid without an email' do

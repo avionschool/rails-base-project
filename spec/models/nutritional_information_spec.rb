@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe NutritionalInformation, type: :model do
-  let!(:user) { User.create(email: 'user@email.com', username: 'new_user', password: 'qwerty', password_confirmation: 'qwerty') }
+  let!(:user) { User.create(email: 'user@email.com', username: 'new_user', password: 'qwerty', password_confirmation: 'qwerty', confirmed_at: Time.zone.now, confirmation_sent_at: Time.zone.now, confirmation_token: 'token') }
   let!(:food) { user.foods.build(name: 'Pizza') }
   let(:nutritional_information) { food.nutritional_informations.build(label: 'Calories', quantity: 100, unit: 'cal') }
 
