@@ -100,3 +100,9 @@
 .hide {
   display: none;
 }
+
+.item_details {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 99.9% 0.1%;
+}
