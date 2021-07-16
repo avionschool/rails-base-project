@@ -1,3 +1,4 @@
 class CaseFan < ApplicationRecord
-  belongs_to :build
+  has_many :build_case_fans, dependent: :destroy
+  has_many :builds, through: :build_case_fans
 end

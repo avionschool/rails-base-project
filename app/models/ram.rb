@@ -1,3 +1,4 @@
 class Ram < ApplicationRecord
-  belongs_to :build
+  has_many :build_rams, dependent: :destroy
+  has_many :builds, through: :build_rams
 end

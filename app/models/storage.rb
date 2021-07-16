@@ -1,3 +1,4 @@
 class Storage < ApplicationRecord
-  belongs_to :build
+  has_many :build_storages, dependent: :destroy
+  has_many :builds, through: :build_storages
 end

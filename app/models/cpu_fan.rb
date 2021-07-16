@@ -1,3 +1,3 @@
 class CpuFan < ApplicationRecord
-  belongs_to :build
+  has_many :builds, dependent: :destroy
 end

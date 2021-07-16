@@ -1,3 +1,4 @@
 class Gpu < ApplicationRecord
-  belongs_to :build
+  has_many :build_gpus, dependent: :destroy
+  has_many :builds, through: :build_gpus
 end
