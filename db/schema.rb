@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_13_131545) do
+ActiveRecord::Schema.define(version: 2021_07_16_075721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2021_07_13_131545) do
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "image"
   end
 
   create_table "cases", force: :cascade do |t|
@@ -61,12 +63,15 @@ ActiveRecord::Schema.define(version: 2021_07_13_131545) do
     t.string "color"
     t.boolean "power_supply"
     t.string "side_panel_window"
-    t.integer "external_525_bays"
-    t.integer "internal_325_bays"
+    t.integer "bay_2_5"
+    t.integer "bay_3_5"
     t.string "rating"
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "image"
+    t.string "motherboard_form_factor", array: true
   end
 
   create_table "cpu_fans", force: :cascade do |t|
@@ -78,6 +83,10 @@ ActiveRecord::Schema.define(version: 2021_07_13_131545) do
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "image"
+    t.string "supported_socket", array: true
+    t.string "height"
   end
 
   create_table "cpus", force: :cascade do |t|
@@ -91,6 +100,9 @@ ActiveRecord::Schema.define(version: 2021_07_13_131545) do
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "image"
+    t.string "max_memory"
   end
 
   create_table "gpus", force: :cascade do |t|
@@ -103,6 +115,10 @@ ActiveRecord::Schema.define(version: 2021_07_13_131545) do
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "image"
+    t.string "memory_size"
+    t.string "memory_type"
   end
 
   create_table "mobos", force: :cascade do |t|
@@ -115,6 +131,9 @@ ActiveRecord::Schema.define(version: 2021_07_13_131545) do
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "image"
+    t.string "supported_memory"
   end
 
   create_table "psus", force: :cascade do |t|
@@ -127,6 +146,8 @@ ActiveRecord::Schema.define(version: 2021_07_13_131545) do
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "image"
   end
 
   create_table "rams", force: :cascade do |t|
@@ -139,6 +160,9 @@ ActiveRecord::Schema.define(version: 2021_07_13_131545) do
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "image"
+    t.string "memory_type"
   end
 
   create_table "storages", force: :cascade do |t|
@@ -151,6 +175,8 @@ ActiveRecord::Schema.define(version: 2021_07_13_131545) do
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "image"
   end
 
   create_table "users", force: :cascade do |t|
