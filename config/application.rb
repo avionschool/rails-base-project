@@ -32,7 +32,7 @@ module RailsProject
     # Don't generate system test files.
     config.generators.system_tests = nil
 
-    config.autoloader = :classic
+    # config.autoloader = :classic
     config.to_prepare do
       # Load stuff not inside models, views, controllers
       [ "../app/sanitizers/*.rb" ].each do |x|
