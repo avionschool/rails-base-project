@@ -4,26 +4,30 @@
 
 <section class="homepage">
   <div class="conversation-container container">
+    
+    <% if @conversation.item != nil %>
+      <div id="conversation-id" data-conversation-id="<%= @conversation.try(:id) %>"></div>
+      <div id="user-id" data-user-id="<%= current_user.id %>"></div>
 
-    <div id="conversation-id" data-conversation-id="<%= @conversation.try(:id) %>"></div>
-    <div id="user-id" data-user-id="<%= current_user.id %>"></div>
-
-    <h6><%= @conversation.item.name %></h6>
-    <!--displaying username of current_user's conversation partner -->
-    <% if @conversation.item.user == current_user && current_user.id == @conversation.user2_id %>
+      <h6><%= @conversation.item.name %></h6>
+      <!--displaying username of current_user's conversation partner -->
+      <% if @conversation.item.user == current_user && current_user.id == @conversation.user2_id %>
         <p><%= User.find(@conversation.user1_id).username %></p>
-    <% elsif @conversation.item.user == current_user && current_user.id == @conversation.user1_id %>
+      <% elsif @conversation.item.user == current_user && current_user.id == @conversation.user1_id %>
         <p><%= User.find(@conversation.user2_id).username %></p>  
-    <% else %>
+      <% else %>
         <p><%= @conversation.item.user.username %></p>  
-    <% end %>
-    <div class="messages-container mb-2 rounded-lg" id="messages-container">
+      <% end %>
+      <div class="messages-container mb-2 rounded-lg" id="messages-container">
         <% @conversation.messages.each do |message| %>
-            <%= render 'messages/message', message: message %>
+          <%= render 'messages/message', message: message %>
         <% end %>
-    </div>
-    <div class="message-form">
+      </div>
+      <div class="message-form">
         <%= render 'messages/form' %>
-    </div>
+      </div>
+    <% else %>
+      <h1>Item has been removed by User</h1>
+    <% end %>
   </div>
 </section>
