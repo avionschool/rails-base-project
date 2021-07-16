@@ -1,4 +1,6 @@
 class Cpu < ApplicationRecord
+  has_many :builds, dependent: :destroy
+
   def self.name
     @name = 'cpus'
   end
