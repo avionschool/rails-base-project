@@ -15,7 +15,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'hamlit-rails'
-gem 'react-rails', '~> 2.6', '>= 2.6.1'
+# gem 'react-rails', '~> 2.6', '>= 2.6.1'
 gem 'cloudinary', '~> 1.20'
 gem 'letter_opener', '~> 1.7'
 gem 'letter_opener_web', '~> 1.4'
