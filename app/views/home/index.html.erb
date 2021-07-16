@@ -1,9 +1,13 @@
 <% if user_signed_in? %>
-  <h1>Hi user! welcome to bouffage's newsfeed</h1>
+  <h1>Hi user! welcome to the newsfeed of bouffage</h1>
   <%= link_to 'Log out', destroy_admin_session_path, method: :delete %>
+  <%= render 'newsfeed' %>
+  <%= link_to 'New Post', new_food_path %>
 <% elsif nutritionist_signed_in? %>
-  <h1>Hi nutritionist! welcome to bouffage's newsfeed</h1>
+  <h1>Hi nutritionist! welcome newsfeed of bouffage</h1>
   <%= link_to 'Log out', destroy_admin_session_path, method: :delete %>
+  <%= render 'newsfeed' %>
+  <%= link_to 'New Post', new_article_path %>
 <% elsif admin_signed_in? %>
   <h1>Hi administrator these doctors are pending for approval</h1>
   <% @nut.each do |nutritionist| %>
@@ -17,5 +21,11 @@
   <% end %>
   <%= link_to 'Log out', destroy_admin_session_path, method: :delete %>
 <% else %>
-  <h1>Welcome please sign up or sign in!</h1>
+  <h1>Welcome to bouffage please sign up or sign in!</h1>
+  <%= link_to 'User Sign Up', new_user_registration_path %>
+  <%= link_to 'User Sign In', new_user_session_path %><br>
+  <%= link_to 'Doctor Sign Up', new_nutritionist_registration_path %>
+  <%= link_to 'Doctor Sign In', new_nutritionist_session_path %><br>
+  <%= link_to 'Admin Sign Up', new_admin_registration_path %>
+  <%= link_to 'Admin Sign In', new_admin_session_path %><br>
 <% end %>

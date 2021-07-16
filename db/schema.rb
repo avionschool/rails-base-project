@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_07_13_091910) do
   end
 
   create_table "articles", force: :cascade do |t|
+    t.string "nutritionist_username"
     t.integer "nutritionist_id"
     t.string "caption"
     t.string "source_url"
@@ -38,9 +39,7 @@ ActiveRecord::Schema.define(version: 2021_07_13_091910) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "food_name"
-    t.integer "user_id"
-    t.integer "nutritionist_id"
+    t.string "commentor"
     t.boolean "like"
     t.string "comment"
     t.integer "article_id"
@@ -50,10 +49,10 @@ ActiveRecord::Schema.define(version: 2021_07_13_091910) do
   end
 
   create_table "foods", force: :cascade do |t|
+    t.string "user_username"
     t.string "name"
     t.string "food_group"
     t.integer "user_id"
-    t.integer "comment_id"
     t.string "caption"
     t.string "recipe_url"
     t.datetime "created_at", precision: 6, null: false
