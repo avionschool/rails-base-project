@@ -10,10 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_07_16_075721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "build_case_fans", force: :cascade do |t|
+    t.bigint "build_id", null: false
+    t.bigint "case_fan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["build_id"], name: "index_build_case_fans_on_build_id"
+    t.index ["case_fan_id"], name: "index_build_case_fans_on_case_fan_id"
+  end
+
+  create_table "build_gpus", force: :cascade do |t|
+    t.bigint "build_id", null: false
+    t.bigint "gpu_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["build_id"], name: "index_build_gpus_on_build_id"
+    t.index ["gpu_id"], name: "index_build_gpus_on_gpu_id"
+  end
+
+  create_table "build_rams", force: :cascade do |t|
+    t.bigint "build_id", null: false
+    t.bigint "ram_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["build_id"], name: "index_build_rams_on_build_id"
+    t.index ["ram_id"], name: "index_build_rams_on_ram_id"
+  end
+
+  create_table "build_storages", force: :cascade do |t|
+    t.bigint "build_id", null: false
+    t.bigint "storage_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["build_id"], name: "index_build_storages_on_build_id"
+    t.index ["storage_id"], name: "index_build_storages_on_storage_id"
+  end
 
   create_table "builds", force: :cascade do |t|
     t.string "name"
@@ -21,25 +58,17 @@ ActiveRecord::Schema.define(version: 2021_07_16_075721) do
     t.float "total_price"
     t.bigint "user_id"
     t.bigint "cpu_id"
-    t.bigint "gpu_id"
     t.bigint "mobo_id"
     t.bigint "psu_id"
-    t.bigint "storage_id"
     t.bigint "case_id"
-    t.bigint "case_fan_id"
     t.bigint "cpu_fan_id"
-    t.bigint "ram_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["case_fan_id"], name: "index_builds_on_case_fan_id"
     t.index ["case_id"], name: "index_builds_on_case_id"
     t.index ["cpu_fan_id"], name: "index_builds_on_cpu_fan_id"
     t.index ["cpu_id"], name: "index_builds_on_cpu_id"
-    t.index ["gpu_id"], name: "index_builds_on_gpu_id"
     t.index ["mobo_id"], name: "index_builds_on_mobo_id"
     t.index ["psu_id"], name: "index_builds_on_psu_id"
-    t.index ["ram_id"], name: "index_builds_on_ram_id"
-    t.index ["storage_id"], name: "index_builds_on_storage_id"
     t.index ["user_id"], name: "index_builds_on_user_id"
   end
 
@@ -192,4 +221,12 @@ ActiveRecord::Schema.define(version: 2021_07_16_075721) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "build_case_fans", "builds"
+  add_foreign_key "build_case_fans", "case_fans"
+  add_foreign_key "build_gpus", "builds"
+  add_foreign_key "build_gpus", "gpus"
+  add_foreign_key "build_rams", "builds"
+  add_foreign_key "build_rams", "rams"
+  add_foreign_key "build_storages", "builds"
+  add_foreign_key "build_storages", "storages"
 end
