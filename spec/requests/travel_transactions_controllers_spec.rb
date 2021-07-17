@@ -1,12 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "TravelTransactionsControllers", type: :request do
+RSpec.describe 'TravelTransactionsControllers', type: :request do
   let!(:admin) { create(:admin) }
   let!(:tourist) { create(:tourist) }
   let!(:agency) { create(:approved_agency) }
-  let!(:tour) { create(:tour, agency: agency) }
-  let!(:tourist_tour) { create(:tourist_tour, tourist: tourist, tour: tour) }
-  let!(:travel_transaction) { create(:travel_transaction, tourist_tour: tourist_tour, agency: agency) }
+  let!(:tourist_tour) { create(:tourist_tour, tourist: tourist) }
+  let(:travel_transaction) { create(:travel_transaction, tourist_tour: tourist_tour, agency: agency) }
 
   describe 'GET  /travel_transactions index path request response for different users' do
     it 'returns a redirect response if not logged_in ' do
@@ -32,5 +31,4 @@ RSpec.describe "TravelTransactionsControllers", type: :request do
       expect(response).to have_http_status(:ok)
     end
   end
-
 end
