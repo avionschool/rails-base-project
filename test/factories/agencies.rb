@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :agency do
-    email { "#{agency_name.gsub(' ', '')}@email.com" }
+    email { "#{agency_name.gsub(' ', '')}#{rand(1..100)}@email.com" }
     password { 'secure123' }
     address { 'Antipolo City' }
     agency_name { 'Tourist Travel Tours' }
