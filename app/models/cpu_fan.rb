@@ -20,7 +20,6 @@ class CpuFan < ApplicationRecord
     item[:name] = response.xpath("//div[contains(@class, 'product-info')]").css('h2').text
     item[:image] = response.xpath("//img[@class='nivo-main-image']").attr('src').value
     item[:height] = get_text('Height')
-    byebug
     find_or_create_by(item)
   end
 

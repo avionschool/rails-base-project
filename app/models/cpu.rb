@@ -21,7 +21,6 @@ class Cpu < ApplicationRecord
     item[:name] = response.xpath("//div[contains(@class, 'product-info')]").css('h2').text
     item[:image] = response.xpath("//img[@class='nivo-main-image']").attr('src').value
     item[:max_memory] = get_text('Maximum Supported Memory')
-    byebug
     find_or_create_by(item)
   end
 

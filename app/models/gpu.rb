@@ -22,7 +22,6 @@ class Gpu < ApplicationRecord
     item[:image] = response.xpath("//img[@class='nivo-main-image']").attr('src').value
     item[:memory_size] = get_text('GPU Memory Size')
     item[:memory_type] = get_text('GPU Memory Type')
-    byebug
     find_or_create_by(item)
   end
 

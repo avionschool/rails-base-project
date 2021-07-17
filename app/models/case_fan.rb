@@ -20,7 +20,6 @@ class CaseFan < ApplicationRecord
     item[:price] = response.xpath("//span[@class='price']").text.tr('^0-9.', '').to_f
     item[:name] = response.xpath("//div[contains(@class, 'product-info')]").css('h2').text
     item[:image] = response.xpath("//img[@class='nivo-main-image']").attr('src').value
-    byebug
     find_or_create_by(item)
   end
 
