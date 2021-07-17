@@ -4,7 +4,7 @@
       <h1 class="heading-primary-h1">Create a new Tour</h1>
       <%= render 'shared/errors', obj: @tour %>
       <div class="form-style">
-        <%= form_with scope: :tour, url: tours_path, local:true do |f|%>
+        <%= form_with scope: :tour, model: @tour,method: :patch, local:true do |f|%>
           <div class="form-group pb-3">    
             <%= f.text_field :name, autofocus: true,placeholder:"Package Name",class:"form-control" %>
           </div>
@@ -32,7 +32,7 @@
             </div>
             <div class="d-flex flex-row-reverse">
               <%= link_to 'Cancel',tours_path, class:'btn btn-danger' %> 
-              <%= f.submit "Post",class:"btn btn-success mx-3" %>
+              <%= f.submit "Update",class:"btn btn-success mx-3" %>
             </div>
         <% end %>
       </div>
