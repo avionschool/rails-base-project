@@ -9,25 +9,94 @@
       <div id="conversation-id" data-conversation-id="<%= @conversation.try(:id) %>"></div>
       <div id="user-id" data-user-id="<%= current_user.id %>"></div>
 
-      <h6><%= @conversation.item.name %></h6>
-      <!--displaying username of current_user's conversation partner -->
+      <!-- getting username of current_user's conversation partner -->
       <% if @conversation.item.user == current_user && current_user.id == @conversation.user2_id %>
-        <p><%= User.find(@conversation.user1_id).username %></p>
+        <span><% convo_partner = User.find(@conversation.user1_id).username %></span>
       <% elsif @conversation.item.user == current_user && current_user.id == @conversation.user1_id %>
-        <p><%= User.find(@conversation.user2_id).username %></p>  
+        <span><% convo_partner = User.find(@conversation.user2_id).username %></span>  
       <% else %>
-        <p><%= @conversation.item.user.username %></p>  
+        <span><% convo_partner = @conversation.item.user.username %></span>  
       <% end %>
+
+      <div class="d-flex justify-content-between align-items-center mb-2 mt-2">
+        <div>
+          <span><%= @conversation.item.name %></span>
+          <span class="convo_partner"><%= convo_partner %></span>
+          <% status = @conversation.item.status == 'open' ? '' : "(" + @conversation.item.status.capitalize + ")"%>
+          <span class="status font-italic text-warning"><%= status %></span>
+        </div>
+
+        <% if @conversation.item.user == current_user %>
+            <div class="item-status-update d-flex justify-content-around">
+                <% disabled = @conversation.item.status == 'traded' %>
+
+                <% if @conversation.item.status != 'reserved'%>
+                    <%= form_with scope: :item, method: :patch, url: item_path(@conversation.item), local: true do |f| %>
+                        <%= f.hidden_field :status, value: "reserved" %>
+                        <%= f.submit "Mark as Reserved", disabled: disabled, class: "btn btn-primary" %>
+                    <% end %>
+                <% else %>
+                    <%= form_with scope: :item, method: :patch, url: item_path(@conversation.item), local: true do |f| %>
+                        <%= f.hidden_field :status, value: "open" %>
+                        <%= f.submit "Mark as Open", disabled: disabled, class: "btn btn-primary" %>
+                    <% end %>
+                <% end %>
+
+                <% if @conversation.item.status != 'traded' %>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Mark as Traded</button>
+                <% else %>
+                    <%= form_with scope: :item, method: :patch, url: item_path(@conversation.item), local: true do |f| %>
+                        <%= f.hidden_field :status, value: "open" %>
+                        <%= f.submit "Unmark as Traded", class: "btn btn-primary" %>
+                    <% end %>
+                <% end %>
+
+                <!-- change item status to traded verification modal -->
+                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Mark item as Traded</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>Please verify that you wish to change this item's status to Traded.</div>
+                            <div class="text-danger">Note: Once confirmed, you will not be able to edit it afterwards.</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <%= form_with scope: :item, method: :patch, url: item_path(@conversation.item), local: true do |f| %>
+                                <%= f.hidden_field :status, value: "traded" %>
+                                <%= f.submit "Proceed, mark as Traded", class: "btn btn-primary" %>
+                            <% end %>
+                            <!--<button type="button" class="btn btn-primary">Understood</button>-->
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+      </div> 
+
       <div class="messages-container mb-2 rounded-lg" id="messages-container">
-        <% @conversation.messages.each do |message| %>
-          <%= render 'messages/message', message: message %>
+        <% @conversation.messages.each_with_index do |message, i| %>
+          <% if i >= 0 %>
+            <!-- checking time difference between messages in minutes -->
+            <% time_diff = (message.created_at - @conversation.messages[i-1].created_at)/60.to_i %>
+          <% end %>
+          <%= render 'messages/message', message: message, time_diff: time_diff %>
         <% end %>
       </div>
+
       <div class="message-form">
         <%= render 'messages/form' %>
       </div>
+
     <% else %>
       <h1>Item has been removed by User</h1>
     <% end %>
+
   </div>
 </section>

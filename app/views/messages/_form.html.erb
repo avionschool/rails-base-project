@@ -1,10 +1,11 @@
-<%= form_with scope: :message, url: item_conversation_messages_path(@conversation.item.id, @conversation.id), local: true do |f| %>
+<%= form_with scope: :message, url: item_conversation_messages_path(@conversation.item.id, @conversation.id), local: false, remote: true do |f| %>
     <div class="form-inline">
     <%= f.hidden_field :conversation_id, value: @conversation.id %>
     <%= f.hidden_field :user_id, value: current_user.id %>
         
     <%= f.text_field :content, placeholder: 'Type your message here...', class: 'form-control mr-2', id: 'message-input-box' %>
-    <%= f.submit 'Send', id: 'send-btn', class: 'btn btn-primary' %>
-        
+    <% disabled = @conversation.item.status == 'traded' %>
+    <%= f.submit 'Send', id: 'send-btn', class: 'btn btn-primary', disabled: disabled %>
+    
     </div>
 <% end %>

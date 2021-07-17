@@ -5,6 +5,7 @@ document.addEventListener('turbolinks:load', () => {
     const conversation_id = Number(conversation_element.getAttribute('data-conversation-id'));
     const send_button = document.getElementById('send-btn');
     const input_box = document.getElementById('message-input-box');
+    const messages_container = document.getElementById('messages-container');
 
     // for terminating other subscriptions when connected to a new subscription
     consumer.subscriptions.subscriptions.forEach(subs => {
@@ -14,6 +15,7 @@ document.addEventListener('turbolinks:load', () => {
     consumer.subscriptions.create({ channel: "ConversationChannel", conversation_id: conversation_id }, {
         connected() {
           // Called when the subscription is ready for use on the server
+          messages_container.scrollTop = messages_container.scrollHeight;
         },
       
         disconnected() {
@@ -33,6 +35,7 @@ document.addEventListener('turbolinks:load', () => {
       
           send_button.disabled = false;
           input_box.value = '';
+          messages_container.scrollTop = messages_container.scrollHeight;
         }
       });
 });

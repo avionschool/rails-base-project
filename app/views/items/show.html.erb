@@ -12,7 +12,7 @@
       <% if @item != nil %>
         <div class="item">
           <div class="item_details">
-            <h6 class="item_description"><%= @item.user.first_name %> <%= @item.user.last_name %></h6>
+            <h6 class="item_description"><%= @item.user.username %></h6>
             <% if user_signed_in? %>
               <% if current_user.id === @item.user_id %>
                 <div class="dropdown">
@@ -71,7 +71,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item edit" id=<%= t.id %>>Edit Comment</a>
                       <%= form_with scope: :comment, method: :delete, url: delete_comment_path(t.id), local: true do |f| %>
-                        <%= f.submit :"Delete Comment", :class => "dropdown-item" %>
+                        <%= f.submit "Delete Comment", :class => "dropdown-item" %>
                       <% end %>
                     </div>
                   </div>
