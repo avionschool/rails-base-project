@@ -5,7 +5,6 @@ RSpec.describe Tour, type: :model do
 
   context 'with validations' do
     it 'is not valid without name' do
-      name = "haha"
       expect(tour).to validate_presence_of(:name)
     end
 
@@ -32,13 +31,11 @@ RSpec.describe Tour, type: :model do
     it 'must have a valid duration' do
       expect(tour).to validate_numericality_of(:duration).is_greater_than_or_equal_to(1)
     end
-
   end
 
   context 'with validations of relationship' do
     it 'belongs to agency' do
       expect(tour).to belong_to(:agency)
     end
-
   end
 end

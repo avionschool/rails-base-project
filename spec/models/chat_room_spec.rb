@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe ChatRoom, type: :model do
   let!(:chat_room) { described_class.new }
 
-
   context 'with validations of relationship' do
     it 'belongs to messages' do
       expect(chat_room).to have_many(:messages)
