@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :admins
-  resources :agencies, only: [:index, :show]
+  resources :agencies, only: [:index, :show, :update]
   resources :tourists, only: :show
   resources :tours, except: [:destroy]
   resources :tourist_tours, except: [:new, :edit, :update]
