@@ -21,6 +21,11 @@ RSpec.describe 'ToursControllers', type: :request do
       get new_tour_path
       expect(response).to have_http_status(:ok)
     end
+
+    it 'gets the edit tour template' do
+      get edit_tour_path(tour)
+      expect(response).to have_http_status(:ok)
+    end
   end
 
   context 'when POST and PATCH tours' do
