@@ -20,7 +20,7 @@ class Scraper < Kimurai::Base
     return if products.empty?
 
     products.each do |_a|
-      request_to :parse_repo_page, url: absolute_url(next_page[:href], base: url)
+      request_to :parse_repo_page, url: absolute_url(_a[:href], base: url)
     end
     @page += 1
   end
