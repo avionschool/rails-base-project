@@ -5,6 +5,10 @@
       <th scope="col">Agency</th>
       <th scope="col">Agency Email</th>
       <th scope="col" id="Address">Address</th>
+      <% if admin_signed_in? %>
+        <th scope="col">Action</th>
+      <% end %>
+      
     </tr>
   </thead>
   <tbody>
@@ -13,6 +17,9 @@
         <td><%= link_to agency.agency_name, agency_path(agency)%></td>
         <td><%= agency.email%></td>
         <td><%= agency.address%></td>
+         <% if admin_signed_in? %>
+          <td scope="col"><%= button_to 'Approve', agency_path(agency), params: {agency: { approved: true, verified_by: current_admin.id }}, method: :patch, local: true%></td>
+        <% end %>
     </tr>
     <%end%>
     </tbody>
