@@ -81,8 +81,12 @@
       </div> 
 
       <div class="messages-container mb-2 rounded-lg" id="messages-container">
-        <% @conversation.messages.each do |message| %>
-          <%= render 'messages/message', message: message %>
+        <% @conversation.messages.each_with_index do |message, i| %>
+          <% if i >= 0 %>
+            <!-- checking time difference between messages in minutes -->
+            <% time_diff = (message.created_at - @conversation.messages[i-1].created_at)/60.to_i %>
+          <% end %>
+          <%= render 'messages/message', message: message, time_diff: time_diff %>
         <% end %>
       </div>
 

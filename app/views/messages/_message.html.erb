@@ -1,7 +1,13 @@
-<div class="message mb-3 <%= 'me' if message.user == current_user %>">
+<div class="message mb-4 <%= 'me' if message.user == current_user %>">
     <div class="content-container">
         <div class="content"><%= message.content %></div>
         <!--might remove author, when avatar is available-->
-        <div class="author"><%= message.user.username %></div>
+        <div class="d-flex flex-column author-date">
+            <div class="author"><%= message.user.username %></div>
+            <!-- displaying message.created_at if difference between this and previous message is > 5 mins -->
+            <% if time_diff > 5 %>
+                <div class="message-created_at font-italic"><%= message.created_at.strftime("%d-%m-%Y %I:%M%p") %></div>
+            <% end %>
+        </div>
     </div>
 </div>
