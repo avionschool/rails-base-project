@@ -1,0 +1,83 @@
+<br/>
+<div class="container ">
+    <div class="main-body border border-info rounded">
+          <div class="row gutters-sm">
+          <%if @tourist.cover_pic.attached?%>
+            <img src="<%=(url_for(@tourist.cover_pic))%>" height="200" alt="" id="image"> 
+          <%else%>
+            <img src="https://newevolutiondesigns.com/images/freebies/green-facebook-cover-8.jpg" alt="" id="image"/>
+          <%end%>
+            <div class="col-md-4 mb-3"><br/>
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <%if @tourist.profile_pic.attached?%>
+                        <img src="<%=(url_for(@tourist.profile_pic))%>" class="rounded-circle" width="150" height="150" alt=""> 
+                    <%else%>
+                      <img src="http://www.pngall.com/wp-content/uploads/5/Profile-Male-PNG-Free-Download.png" class="rounded-circle" width="150" height="150" alt="" />
+                    <%end%>
+
+                    <div class="mt-3">
+                      <h4><%= @tourist.first_name%> <%=@tourist.last_name%></h4>
+                      <p class="text-secondary mb-1">Tourist</p>
+                        <% if @tourist == current_tourist%>
+                        <%= button_to 'Edit Profile', edit_tourist_registration_path,class:"btn btn-info ", method: :get%>
+                        <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card mb-3"><br/>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">First Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%= @tourist.first_name%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Last Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                       <%=@tourist.last_name%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%= @tourist.email%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Birth Date</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%= @tourist&.birth_date&.strftime('%b %d, %Y')%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%= @tourist.address%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>

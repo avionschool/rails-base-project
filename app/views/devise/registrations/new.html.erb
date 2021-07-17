@@ -1,29 +1,63 @@
-<h2>Sign up</h2>
+<script src="https://use.fontawesome.com/f59bcd8580.js"></script>
+<%= render 'shared/errors', obj: resource %>
+<div class="container">
+  <div class="row m-5 no-gutters shadow-lg">
+    <div class="col-md-6 d-none d-md-block">
+    <% if current_page?(new_tourist_registration_path) %>
+    <img src="https://images.unsplash.com/photo-1536152470836-b943b246224c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=378&q=80" style="width:50rem; height: 50rem;" />
+    <% elsif current_page?( new_agency_registration_path) %>
+     <img src="https://images.unsplash.com/photo-1614951660371-a195320a6a51?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" style="width:50rem; height: 40rem;" />
+    <%end %>
+    </div>
+    <div class="col-md-6 bg-white p-5">
+    <h3 class="pb-3">Sign Up</h3>
+    <div class="form-style">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="form-group pb-3">    
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control" %>
+      </div>
+    <%if current_page?(new_tourist_registration_path)%>
+      <div class = "form-group pb-3">
+        <%= f.label :first_name%><br />
+        <%= f.text_field :first_name, class:"form-control"%>
+      </div>
+      <div class = "form-group pb-3">
+        <%= f.label :last_name%><br />
+        <%= f.text_field :last_name, class:"form-control"%>
+      </div>
+      <div class = "form-group pb-3">
+        <%= f.label :birth_date%><br />
+        <%= f.date_field :birth_date, class:"form-control"%>
+      </div>
+    <% elsif current_page?(new_agency_registration_path) %>
+      <%= f.label :agency_name%><br />
+      <%= f.text_field :agency_name, class:"form-control"%>
+    <%end%>
+      <div class = "form-group pb-3">
+        <%= f.label :address%><br />
+        <%= f.text_field :address, class:"form-control"%>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="form-group pb-3">   
+        <%= f.label :password %><br />
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password",placeholder:"Password",class:"form-control" %>
+      </div>
+       <div class="form-group pb-3">    
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"Confirm Password",class:"form-control" %>
+      </div>
+      <div class="pb-2">
+        <div class="actions">
+          <%= f.submit "Sign up",class:"btn btn-dark w-100 font-weight-bold mt-2" %>
+        </div>
+      </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
+    </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

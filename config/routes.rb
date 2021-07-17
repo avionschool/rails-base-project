@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :admins
-  resources :agencies
+  resources :agencies, only: [:index, :show]
+  resources :tourists, only: :show
+  resources :tours, except: [:destroy]
+  resources :tourist_tours, except: [:new, :edit, :update]
+  resources :travel_transactions, only: [:index]
 end
