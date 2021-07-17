@@ -16,6 +16,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'hamlit-rails'
+gem 'webdrivers', '~> 4.0'
 gem 'jquery-rails'
 
 group :development, :test do
