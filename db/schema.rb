@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_16_122615) do
+ActiveRecord::Schema.define(version: 2021_07_17_063905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,8 +91,6 @@ ActiveRecord::Schema.define(version: 2021_07_16_122615) do
     t.string "color"
     t.boolean "power_supply"
     t.string "side_panel_window"
-    t.integer "bay_2_5"
-    t.integer "bay_3_5"
     t.string "rating"
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
@@ -100,6 +98,7 @@ ActiveRecord::Schema.define(version: 2021_07_16_122615) do
     t.string "name"
     t.string "image"
     t.string "motherboard_form_factor", array: true
+    t.string "internal_bays", array: true
   end
 
   create_table "cpu_fans", force: :cascade do |t|
