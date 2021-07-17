@@ -8,26 +8,22 @@
     <ul class="nav-items-container nav nav-pills flex-column mb-auto">
         <li class="nav-item">
             <a href="#" class="nav-link active" aria-current="page">
-            <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
                 Dashboard
             </a>
         </li>
         <li>
             <a href="#" class="nav-link link-dark">
-                <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
                 My listings
             </a>
         </li>
 
         <li>
-            <a href="#" class="nav-link link-dark">
-                <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                Create listing
+            <a type="button" class="nav-link link-dark" data-toggle="modal" data-target="#exampleModal">
+                Create new listing
             </a>
         </li>
         <li>
             <a href="#" class="nav-link link-dark">
-                <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
                 History
             </a>
         </li>
@@ -55,10 +51,41 @@
         <% end %>
     </ul>
 
+    <!-- create listing modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New listing</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= form_with scope: :item, url: items_path(current_user.id), local: true do |f| %>
+              <div class="field">
+                <%= f.label :name, "Item name" %><br />
+                <%= f.text_field :name, class: "form-control", autofocus: true %>
+              </div>
 
-
-
-  <% if @conversations != nil %>
-    <%= javascript_pack_tag 'sidebar.js' %>
-  <% end %>
+              <div class="field">
+                <%= f.label :description %><br />
+                <%= f.text_area :description, class: "form-control", size: "30x10", autofocus: true %>
+              </div>
+              
+              <%= f.hidden_field :status, value: "open" %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= hidden_field_tag(:user_id, current_user.id) %>
+            
+              <div class="modal-footer">
+                <%= f.submit "Create listing", class: "btn btn-primary" %>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            <% end %>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <%= javascript_pack_tag 'sidebar.js' %>  
 </div>
