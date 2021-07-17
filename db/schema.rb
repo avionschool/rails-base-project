@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_17_063905) do
+ActiveRecord::Schema.define(version: 2021_07_17_081433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2021_07_17_063905) do
     t.string "name"
     t.string "image"
     t.string "motherboard_form_factor", array: true
-    t.string "internal_bays", array: true
+    t.text "internal_bays"
   end
 
   create_table "cpu_fans", force: :cascade do |t|
