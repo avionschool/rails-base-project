@@ -1,0 +1,40 @@
+@import 'base';
+
+.nav-section {
+  @include flexCenter(row, space-between, center);
+  width: 100%;
+  background-color: var(--clr-darker);
+  padding: 0.5em 4em;
+
+  a {
+    color: var(--clr-light);
+  }
+
+  .username {
+    cursor: pointer;
+  }
+
+  .nav-section__container-ul {
+    @include flexCenter(row, space-evenly, center);
+    width: 40%;
+
+    .right-profile {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 27px;
+      left: -20px;
+      min-width: 150px;
+      z-index: 1;
+      background-color: var(--clr-dark);
+      border-radius: 5px;
+    }
+  }
+}
+
+.right-profile:hover .dropdown-menu {
+  display: block;
+}

@@ -1,23 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand fs-3 text-white" href="#">JADE</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class="nav-section">
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
+  <%= link_to(root_path) do %>
+    <h1 class="brand">jade</h1>
+  <% end %>
 
-        <li class="nav-item">
-          <%= link_to 'Sign In', new_user_session_path, class:"nav-link text-white" %>
-        </li>
+  <ul class="nav-section__container-ul">
+    <% if user_signed_in? %>
 
-        <li class="nav-item">
-          <%= link_to 'Sign Up', new_user_registration_path, class:"nav-link text-white" %>
-          
-        </li>
+      <li class="nav-li">
+        <%= link_to 'Build', builds_path, class:"nav-link text-white" %>
+      </li>
 
-      </ul>
-    </div>
-  </div>
+      <div class="right-profile">
+        <a class="username"><%= current_user.username %></a>
+
+        <div class="dropdown-menu">
+          <div class="flex flex-col">
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:"px-2 py-2 hover:underline eli-field-menu" %>
+          </div>
+        </div>
+      </div>
+
+    <% else %>
+      <li class="nav-li">
+        <%= link_to 'Sign In', new_user_session_path, class:"nav-link text-white" %>
+      </li>
+
+      <li class="nav-li">
+        <%= link_to 'Sign Up', new_user_registration_path, class:"nav-link text-white" %>
+      </li>
+    <% end %>
+
+  </ul>
 </nav>

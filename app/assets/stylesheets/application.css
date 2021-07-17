@@ -10,51 +10,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require bootstrap
  *= require_tree .
  *= require_self
  */
 
-body {
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  color: #303030;
-  background-color: #f3f4f7;
-  background-image: linear-gradient(315deg, #f3f4f7 0%, #caccd1 74%);
-}
-
-input {
-  margin-bottom: 1em;
-  padding: 0.5em;
-  width: 20rem;
-  background-color: #f3f4f7;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid black;
-}
-
-input[type='submit'] {
-  background-color: aquamarine;
-  border: none;
-  border-radius: 5px;
-}
-
-input[type='submit']:hover {
-  background-color: blanchedalmond;
-}
-
-.sign_up {
-  padding: 2em 3em;
-  background-color: #f3f4f7;
-  box-shadow: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25),
-    0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-}
-
-.navbar {
-  background-color: #303030 !important;
-}
 
 i {
   cursor: pointer;
