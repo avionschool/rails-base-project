@@ -19,6 +19,10 @@ class Gpu < ApplicationRecord
     item[:chipset] = self.get_text('GPU Chipset')
     item[:length] = self.get_text('Length')
     item[:price] = response.xpath("//span[@class='price']").text.tr('^0-9.', '').to_f
+    item[:name] = response.xpath("//div[contains(@class, 'product-info')]").css('h2').text
+    item[:image] = response.xpath("//img[@class='nivo-main-image']").attr('src').value
+    item[:memory_size] = self.get_text('GPU Memory Size')
+    item[:memory_type] = self.get_text('GPU Memory Type')
     byebug
     self.find_or_create_by(item)
   end
