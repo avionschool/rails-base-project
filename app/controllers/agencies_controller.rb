@@ -1,7 +1,7 @@
 class AgenciesController < ApplicationController
   def index
     if tourist_signed_in?
-      @agencies = Agency.all
+      @agencies = Agency.where(approved: true)
     elsif admin_signed_in?
       @agencies = Agency.where(approved: false)
     end
