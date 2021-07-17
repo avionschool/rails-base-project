@@ -11,35 +11,37 @@ class CaseFan < ApplicationRecord
   end
 
   def self.parse_repo_page(response)
-    puts('getting info')
     item = {}
     @table = response.xpath("//table[@class='table table-bordered table-striped table-hover']/tbody")
-    item[:size] = self.get_text('Fan Size')
-    item[:color] = self.get_text('Color')
-    item[:airflow] = self.get_text('Air Flow')
-    item[:rpm] = self.get_text('Fan RPM')
+    item[:size] = get_text('Fan Size')
+    item[:color] = get_text('Color')
+    item[:airflow] = get_text('Air Flow')
+    item[:rpm] = get_text('Fan RPM')
     item[:price] = response.xpath("//span[@class='price']").text.tr('^0-9.', '').to_f
     item[:name] = response.xpath("//div[contains(@class, 'product-info')]").css('h2').text
     item[:image] = response.xpath("//img[@class='nivo-main-image']").attr('src').value
     byebug
-    self.find_or_create_by(item)
+    find_or_create_by(item)
   end
 
   def self.get_text(column)
     info = @table.css('tr').xpath("//strong[text()='#{column}']").xpath('..').xpath('..').css('td')[1]
     return nil unless info
-    return info.text.squish
+
+    info.text.squish
   end
 
   def self.get_int(column)
     info = @table.css('tr').xpath("//strong[text()='#{column}']").xpath('..').xpath('..').css('td')[1]
     return nil unless info
-    return info.text.squish.to_i
+
+    info.text.squish.to_i
   end
 
   def self.get_arr(column)
     info = @table.css('tr').xpath("//strong[text()='#{column}']").xpath('..').xpath('..').css('td')[1]
     return nil unless info
-    return info.css('ul/li').map{ |item| item.text }
+
+    info.css('ul/li').map(&:text)
   end
 end
