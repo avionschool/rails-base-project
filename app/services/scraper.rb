@@ -19,8 +19,8 @@ class Scraper < Kimurai::Base
     products = response.xpath("//a[contains(@class, 'productItemLink')]")
     return if products.empty?
 
-    products.each do |_a|
-      request_to :parse_repo_page, url: absolute_url(_a[:href], base: url)
+    products.each do |a|
+      request_to :parse_repo_page, url: absolute_url(a[:href], base: url)
     end
     @page += 1
   end
