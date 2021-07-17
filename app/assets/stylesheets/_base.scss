@@ -12,6 +12,7 @@
   --clr-light: rgb(248, 248, 248);
   --clr-dark: #404040;
   --clr-darker: #202020;
+  --clr-darkest: #101010;
 
   --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.145),
     -0.1em 0.125em 0.25em rgba(0, 0, 0, 0.1);
@@ -65,6 +66,7 @@ body {
   height: 100vh;
   background-repeat: no-repeat;
   font-family: 'Poppins', sans-serif;
+  background-color: var(--clr-darker);
 }
 
 @mixin flexCenter($direction, $justify, $align-items) {

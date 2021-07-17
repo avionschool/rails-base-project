@@ -1,0 +1,56 @@
+@import 'base';
+
+/* footer2 */
+.footer2_section {
+  @include flexCenter(column, space-evenly, center);
+  background-color: var(--clr-darkest);
+  padding-bottom: 2rem;
+  padding-top: 1rem;
+}
+
+.slogan_section {
+  @include flexCenter(row, space-between, center);
+  color: white;
+  width: 95%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: .1rem solid white;
+  margin-bottom: 2rem;
+}
+
+.slogan {
+  @include flexCenter(column, center, flex-start);
+  margin-top: 1rem;
+}
+
+.logo {
+  width: 6rem;
+  background-color: dimgray;
+  border-radius: 50%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.info_section {
+  @include flexCenter(row, space-evenly, flex-start);
+  width: 100%;
+}
+
+.info h3 {
+  color: seagreen;
+}
+
+.info {
+  @include flexCenter(column, center, flex-start);
+}
+
+.info_items {
+  width: 10rem;
+}
+
+.info_text {
+  color: white;
+}
+/* footer2 */
