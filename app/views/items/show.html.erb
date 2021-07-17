@@ -71,7 +71,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item edit" id=<%= t.id %>>Edit Comment</a>
                       <%= form_with scope: :comment, method: :delete, url: delete_comment_path(t.id), local: true do |f| %>
-                        <%= f.submit :"Delete Comment", :class => "dropdown-item" %>
+                        <%= f.submit "Delete Comment", :class => "dropdown-item" %>
                       <% end %>
                     </div>
                   </div>
