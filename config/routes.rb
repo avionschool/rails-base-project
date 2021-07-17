@@ -14,10 +14,7 @@ Rails.application.routes.draw do
   post '/comments/comment/:id' => 'comments#comment', as: 'comment'
   put '/comments/:id' => 'comments#update', as: 'update_comment'
   delete '/comments/:id' => 'comments#delete', as: 'delete_comment'
-  put '/items/:id' => 'items#update', as: 'update_post'
-  delete '/items/:id' => 'items#delete', as: 'delete_post'
-
-  
+ 
   resources :items do 
     resources :conversations do
         resources :messages

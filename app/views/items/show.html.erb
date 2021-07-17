@@ -20,9 +20,9 @@
                     <%= image_tag("options.png", :class => "option") %>
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item edit" data-toggle="modal" data-target="#exampleModal">Edit Post</a>
-                    <%= form_with scope: :comment, method: :delete, url: delete_post_path(@item.id), local: true do |f| %>
-                      <%= f.submit :"Delete Post", :class => "dropdown-item" %>
+                    <a class="dropdown-item edit" data-toggle="modal" data-target="#update-item-modal">Edit listing</a>
+                    <%= form_with scope: :comment, method: :delete, url: item_path(@item.id), local: true do |f| %>
+                      <%= f.submit :"Delete listing", :class => "dropdown-item" %>
                     <% end %>
                   </div>
                 </div>
@@ -100,37 +100,38 @@
     <% if @item != nil %>
       <% if current_user.id == @item.user.id %>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="update-item-modal" tabindex="-1" aria-labelledby="update-item-modalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Item Post</h5>
+                <h5 class="modal-title" id="update-item-modalLabel">Edit listing</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <%= form_with scope: :item, url: update_post_path(@item.id), method: :put, local: true do |f| %>
+                <%= form_with scope: :item, url: item_path(@item.id), method: :put, local: true do |f| %>
                   <div class="field">
                     <%= f.label :name %><br />
-                    <%= f.text_field :name, autofocus: true %>
+                    <%= f.text_field :name, class: "form-control", autofocus: true %>
                   </div>
 
                   <div class="field">
                     <%= f.label :description %><br />
-                    <%= f.text_area :description, autofocus: true %>
+                    <%= f.text_area :description, class: "form-control", size: "30x10", autofocus: true %>
                   </div>
                   
                   <%= f.hidden_field :status, value: "open" %>
                   <%= f.hidden_field :user_id, value: current_user.id %>
                   <%= hidden_field_tag(:user_id, current_user.id) %>
-
-                  <%= f.submit "Post Item", :class => "post_item" %>
+                  <div class="modal-footer">
+                    <%= f.submit "Update listing", class: "btn btn-primary" %>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                  
                 <% end %>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
+              
             </div>
           </div>
         </div>
