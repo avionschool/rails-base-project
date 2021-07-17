@@ -1,6 +1,11 @@
 <div class="tmp-sidebar d-flex flex-column flex-shrink-0 p-3 bg-light justify-content-start" style="width: 280px;">
-  <%= link_to root_path, class: "hello-username d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none" do %>
-    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+    <%= link_to root_path, class: "navbar-brand link-dark text-decoration-none custom-link" do %>
+        <%= image_tag("kalakalph_logo.svg", size: '28', alt: "kalakalph logo") %>
+        <span>Kalakalph</span>
+    <% end %>
+
+  <!-- should link to profile page -->
+  <%= link_to root_path, class: " d-flex align-items-center justify-content-center mt-2 mb-4 link-dark text-decoration-none" do %>
     <span class="fs-4">Hello, <%= current_user.username %></span>
   <% end %>
 

@@ -4,6 +4,12 @@
     text-decoration: none;
   }
   
+  .custom-link, .custom-link:hover {
+    text-decoration: none;
+    color: black;
+    margin: auto; 
+  }
+
   .products {
     max-width: 65rem;
     height: auto;
@@ -36,12 +42,6 @@
     margin-top: 0.5rem;
   }
   
-  .post_item, .down {
-    margin-top: 1rem;
-  }
-  
-  /* bootstrap bg primary: #007bff */
-  
   .tmp-sidebar {
       position: absolute;
       left: 0;
@@ -50,19 +50,17 @@
       box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
       
     .hello-username {
-      //   background-color: red;
         height: 5rem;
         margin-bottom: 20px !important;
     }
   
     .nav-items-container {
-      //   background-color: green;
     }
   
     .conversations {
-      //   background-color: yellow;
         height: 60vh;
         overflow-y: auto;
+        
   
         .nav-item {
             border-radius: 5px;
@@ -82,8 +80,6 @@
                       color: #5a5a5a;
                   }
             }
-  
-            
   
           .other-user-username {
               font-size: 0.8rem;

@@ -1,24 +1,38 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag("kalakalph_logo.svg", size: '28', alt: "kalakalph logo") %>
-        <span>Kalakalph</span>
-    <% end %>
+    
+  <form class="form-inline">
+    <%= image_tag 'search.svg', size: '20x20', class: 'mr-4' %>
+    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+  </form>
     
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
-              Logged in as: <%= current_user.username %>
+          <li class="nav-item dropdown mr-3">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.username %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <!-- this should redirect to profile page instead -->
+                <%= link_to "My profile", root_path, class: "dropdown-item" %>
+                <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+          <li>
+            <!-- this should redirect to profile page instead -->
+            <a href="/">
+                <%= image_tag 'Bertram_Gilfoyle.jpg', size: '50x50', class: 'rounded-circle', alt: 'profile avatar' %>
             </a>
           </li>
-          <li class="nav-item">
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
-          </li>
+
         <% else %>
           <li class="nav-item">
             <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
