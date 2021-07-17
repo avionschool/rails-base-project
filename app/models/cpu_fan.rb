@@ -16,8 +16,11 @@ class CpuFan < ApplicationRecord
     item[:fan_rpm] = self.get_text('Fan RPM')
     item[:noise_level] = self.get_text('Noise Level')
     item[:radiator_size] = self.get_text('Radiator Size')
-    item[:supported_sockets] = self.get_arr('Supported Sockets')
+    item[:supported_socket] = self.get_arr('Supported Sockets')
     item[:price] = response.xpath("//span[@class='price']").text.tr('^0-9.', '').to_f
+    item[:name] = response.xpath("//div[contains(@class, 'product-info')]").css('h2').text
+    item[:image] = response.xpath("//img[@class='nivo-main-image']").attr('src').value
+    item[:height] = get_text('Height')
     byebug
     self.find_or_create_by(item)
   end
