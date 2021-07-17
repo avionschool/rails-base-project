@@ -1,0 +1,19 @@
+<br/><br/>
+<table class="table table-striped table-bordered text-center">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Agency</th>
+      <th scope="col">Agency Email</th>
+      <th scope="col" id="Address">Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @agencies.each do |agency|%>
+    <tr>
+        <td><%= link_to agency.agency_name, agency_path(agency)%></td>
+        <td><%= agency.email%></td>
+        <td><%= agency.address%></td>
+    </tr>
+    <%end%>
+    </tbody>
+</table>
