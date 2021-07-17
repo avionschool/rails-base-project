@@ -21,8 +21,8 @@ class Case < ApplicationRecord
                           when 'No'
                             false
                           end
-    item[:bay_2_5] = get_int('Internal 2.5" Drive Bays')
-    item[:bay_3_5] = get_int('Internal 3.5" Drive Bays')
+    item[:internal_bay_small] = get_int('Internal 2.5" Drive Bays')
+    item[:internal_bay_large] = get_int('Internal 3.5" Drive Bays')
     item[:price] = response.xpath("//span[@class='price']").text.tr('^0-9.', '').to_f
     item[:name] = response.xpath("//div[contains(@class, 'product-info')]").css('h2').text
     item[:image] = response.xpath("//img[@class='nivo-main-image']").attr('src').value
