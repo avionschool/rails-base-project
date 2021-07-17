@@ -7,7 +7,7 @@ RSpec.describe 'TouristToursControllers', type: :request do
   let!(:tour) { create(:tour, agency: agency) }
   let!(:tourist_tour) { create(:tourist_tour, tourist: tourist, tour: tour) }
 
-  describe 'GET tourist_tour index path for different users' do
+  describe 'GET tourist_tour index path request response for different users' do
     it 'returns a redirect response if not logged_in ' do
       get tourist_tours_path
       expect(response).to have_http_status(:found)
