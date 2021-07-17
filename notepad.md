@@ -16,6 +16,10 @@
 
     2. after subscribing to a conversation, clicking a link other than the conversation links does not unsubscribe the user in the current conversation channel; clicking kalakalph which redirects the user to root should terminate the channel subscription
 
+    3. timestamp not working for newly sent messages but refreshing the page fixes it
+        - maybe time interval between two consecutive messages should be calculated in the background job
+
 ## minor details to add:
     1. channel broadcast when item's status is changed
     2. deleting listing should prompt a verification modal
+    3. in conversation show page, add image avatar in conversation name
