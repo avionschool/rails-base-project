@@ -23,6 +23,15 @@
 .conversation-container {
     height: 90vh;
     
+    .convo_partner {
+        font-size: 0.8rem;
+        color: #777777;
+    }
+
+    .item-status-update {
+        width: 27%;
+    }
+
     .messages-container {
         height: 90%;
         border: 1px solid #7777773f;

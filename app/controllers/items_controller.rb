@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
 
   def update
     item = Item.find_by(id: params[:id])
-    redirect_to item_path(item.id) if item.update(item_params)
+    redirect_to request.referrer if item.update(item_params)
   end
 
   def delete
