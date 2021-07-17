@@ -1,5 +1,6 @@
 class Case < ApplicationRecord
   has_many :builds, dependent: :destroy
+  serialize :internal_bays
 
   def self.name
     @name = 'case'
@@ -21,12 +22,12 @@ class Case < ApplicationRecord
                           when 'No'
                             false
                           end
-    item[:bay_2_5] = get_int('Internal 2.5" Drive Bays')
-    item[:bay_3_5] = get_int('Internal 3.5" Drive Bays')
+    item[:internal_bays] = { 'bay2.5' => get_int('Internal 2.5" Drive Bays'), 'bay3.5' => get_int('Internal 3.5" Drive Bays') }
     item[:price] = response.xpath("//span[@class='price']").text.tr('^0-9.', '').to_f
     item[:name] = response.xpath("//div[contains(@class, 'product-info')]").css('h2').text
     item[:image] = response.xpath("//img[@class='nivo-main-image']").attr('src').value
     item[:motherboard_form_factor] = get_text('Motherboard Compatibility').split(',')
+    byebug
     find_or_create_by(item)
   end
 
