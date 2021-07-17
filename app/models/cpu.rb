@@ -19,6 +19,9 @@ class Cpu < ApplicationRecord
     item[:boost_clock] = self.get_int('CPU Turbo Clock Rate')
     item[:tdp] = self.get_text('TDP')
     item[:price] = response.xpath("//span[@class='price']").text.tr('^0-9.', '').to_f
+    item[:name] = response.xpath("//div[contains(@class, 'product-info')]").css('h2').text
+    item[:image] = response.xpath("//img[@class='nivo-main-image']").attr('src').value
+    item[:max_memory] = self.get_text('Maximum Supported Memory')
     byebug
     self.find_or_create_by(item)
   end
