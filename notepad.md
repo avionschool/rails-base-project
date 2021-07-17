@@ -18,3 +18,4 @@
 
 ## minor details to add:
     1. channel broadcast when item's status is changed
+    2. deleting listing should prompt a verification modal
