@@ -55,7 +55,7 @@
     height: 500px;
 }
 
-a{
+a,#title{
     text-decoration: none
 }
 
@@ -185,7 +185,7 @@ a{
 
 .carousel-content {
   position: absolute;
-  bottom: 30%;
+  bottom: 20%;
   left: 10%;
   z-index: 20;
   color: white;
