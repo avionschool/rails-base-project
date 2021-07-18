@@ -86,6 +86,11 @@
               </div>
 
               <div class="field">
+                <%= f.label :images %><br />
+                <%= f.file_field :images, multiple: true %>
+              </div>
+
+              <div class="field">
                 <%= f.label :description %><br />
                 <%= f.text_area :description, class: "form-control", size: "30x10", autofocus: true %>
               </div>

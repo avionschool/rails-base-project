@@ -32,15 +32,22 @@
 
           <h5 class="item_name"><%= @item.name %></h5>
           <h6 class="item_description"><%= @item.description %></h6>
-          <%= image_tag("altpic.png", :class => "itempic") %>
 
+          <!-- make carousel for item images -->
+          <% (0...@item.images.count).each do |image| %>
+            <div style="width:300px; height:300px;">
+                <%= image_tag @item.images[image], style: 'width:100%; height:auto' %>
+            </div>
+          <% end %>
+
+          <!-- showing comments and send message button when user is logged in -->
           <% if user_signed_in? %>
             <%= form_with scope: :comment, url: comment_path(@item.id), local: true do |f| %>
               <div class="user_comment">
-                <%= f.text_area :body, autofocus: true, id:"comment_user", class:"comment", placeholder: 'Write a public comment...' %>
+                <%= f.text_area :body, autofocus: true, id:"comment_user", class: "comment", placeholder: 'Write a public comment...' %>
                 <%= f.hidden_field :commenter_id, value: current_user.id %>
 
-                <%= f.submit "Post Comment", :class => "post_item" %>
+                <%= f.submit "Post Comment", class: 'btn btn-primary' %>
               </div>
               <%= javascript_pack_tag 'comment.js' %>
             <% end %>
@@ -50,7 +57,7 @@
                       <%= f.hidden_field :item_id, value: @item.id %>
                       <%= f.hidden_field :user1_id, value: @item.user.id %>
                       <%= f.hidden_field :user2_id, value: current_user.id %>
-                      <%= f.submit "Send Message" %>
+                      <%= f.submit "Send Message", class: 'btn btn-primary' %>
                   <% end %>
               <% end %>    
           <% end %>
@@ -83,7 +90,7 @@
                 <div class="user_comment">
                   <%= f.text_area :body, value: t.body, autofocus: true, id:"comment_user", class:"comment", placeholder: 'Write a public comment...' %>
 
-                  <%= f.submit "Update Comment", :class => "post_item" %>
+                  <%= f.submit "Update Comment", class: 'btn btn-primary' %>
                 </div>
                 <%= javascript_pack_tag 'comment.js' %>
               <% end %>
@@ -99,7 +106,7 @@
   <% if user_signed_in? %>
     <% if @item != nil %>
       <% if current_user.id == @item.user.id %>
-        <!-- Modal -->
+        <!-- edit listing modal -->
         <div class="modal fade" id="update-item-modal" tabindex="-1" aria-labelledby="update-item-modalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -115,6 +122,13 @@
                     <%= f.label :name %><br />
                     <%= f.text_field :name, class: "form-control", autofocus: true %>
                   </div>
+                  <br>
+
+                  <div class="field">
+                    <%= f.label :images %><br />
+                    <%= f.file_field :images, multiple: true %>
+                  </div>
+                  <br>
 
                   <div class="field">
                     <%= f.label :description %><br />
