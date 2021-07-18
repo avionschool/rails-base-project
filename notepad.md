@@ -10,6 +10,21 @@
 ## for starting redis server as service:
     run 'sudo service redis-server start'
 
+## active storage
+    1. rails active_storage:install
+    2. rails db:migrate
+    3. update storage.yml:
+        test:
+            service: Disk
+            root: <%= Rails.root.join("tmp/storage") %>
+
+        local:
+            service: Disk
+            root: <%= Rails.root.join("storage") %>
+    4. update config/environments/development.rb:
+        config.active_storage.service = :local
+    5. update config/environments/test.rb:
+        config.active_storage.service = :test
 
 ## bugs to fix:
     1. when an exchange happened in a conversation, sometimes clicking on another conversation and clicking back to the previous conversation, the previous conversation doesn't show the recent exchange
@@ -19,6 +34,10 @@
     3. timestamp not working for newly sent messages but refreshing the page fixes it
         - maybe time interval between two consecutive messages should be calculated in the background job
 
+    4. if a user who participated in any conversation is deleted, app gets an error in displaying conversation partners
+
+    5. if a user who participated in any conversation is deleted, app gets an error in displaying conversation partners
+    
 ## minor details to add:
     1. channel broadcast when item's status is changed
     2. deleting listing should prompt a verification modal
