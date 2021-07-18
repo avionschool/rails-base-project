@@ -27,5 +27,4 @@ class Item < ApplicationRecord
   def image_count
     errors.add(:images, 'should be maximum of 5.') if images.count >= 5
   end
-  
 end
