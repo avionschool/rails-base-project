@@ -1,6 +1,11 @@
 <div class="tmp-sidebar d-flex flex-column flex-shrink-0 p-3 bg-light justify-content-start" style="width: 280px;">
-  <%= link_to root_path, class: "hello-username d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none" do %>
-    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+    <%= link_to root_path, class: "navbar-brand link-dark text-decoration-none custom-link" do %>
+        <%= image_tag("kalakalph_logo.svg", size: '28', alt: "kalakalph logo") %>
+        <span>Kalakalph</span>
+    <% end %>
+
+  <!-- should link to profile page -->
+  <%= link_to root_path, class: " d-flex align-items-center justify-content-center mt-2 mb-4 link-dark text-decoration-none" do %>
     <span class="fs-4">Hello, <%= current_user.username %></span>
   <% end %>
 
@@ -8,26 +13,22 @@
     <ul class="nav-items-container nav nav-pills flex-column mb-auto">
         <li class="nav-item">
             <a href="#" class="nav-link active" aria-current="page">
-            <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
                 Dashboard
             </a>
         </li>
         <li>
             <a href="#" class="nav-link link-dark">
-                <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
                 My listings
             </a>
         </li>
 
         <li>
-            <a href="#" class="nav-link link-dark">
-                <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                Create listing
+            <a type="button" class="nav-link link-dark" data-toggle="modal" data-target="#create-item-modal">
+                Create new listing
             </a>
         </li>
         <li>
             <a href="#" class="nav-link link-dark">
-                <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
                 History
             </a>
         </li>
@@ -39,26 +40,69 @@
             <% if conv.item != nil %>
                     <%= link_to item_conversation_path(conv.item_id, conv.id), class: "nav-link" do %>
                         <% active_class = (@conversation == conv) ? 'active' : '' %>
-                        <li class="nav-item d-flex flex-column align-items-center <%= active_class %>">
-                            <span class="convo-item-name"><%= conv.item.name %></span>
-                            <!--displaying username of current_user's conversation partner -->
+                        <li class="nav-item d-flex flex-row align-items-center <%= active_class %>">   
+                            <!-- getting username of current_user's conversation partner -->
                             <% if conv.item.user == current_user && current_user.id == conv.user2_id %>
-                                <span class="other-user-username"><%= User.find(conv.user1_id).username %></span>
+                                <% convo_partner = User.find(conv.user1_id) %>
                             <% elsif conv.item.user == current_user && current_user.id == conv.user1_id %>
-                                <span class="other-user-username"><%= User.find(conv.user2_id).username %></span>
+                                <% convo_partner = User.find(conv.user2_id) %>
                             <% else %>
-                                <span class="other-user-username"><%= conv.item.user.username %></span>
+                                <% convo_partner = conv.item.user %>
                             <% end %>
+
+                            <% if convo_partner.avatar.attached? %>
+                                <%= image_tag url_for(convo_partner.avatar), size: '30x30', class: 'rounded-circle img-responsive ml-2', alt: 'profile avatar' %>
+                            <% else %>
+                                <% filepath = (current_user.id % 8).to_s + '.svg' %>
+                                <%= image_tag 'default_avatars/' + filepath, size: '30x30', class: 'rounded-circle img-responsive ml-2', alt: 'profile avatar'  %>
+                            <% end %>
+
+                            <div class="d-flex flex-column align-items-center m-auto">
+                                <span class="convo-item-name"><%= conv.item.name %></span>
+                                <span class="other-user-username"><%= convo_partner.username %></span>
+                            </div>
+
                         </li> 
                     <% end %>
             <% end %>    
         <% end %>
     </ul>
 
+    <!-- create listing modal -->
+    <div class="modal fade" id="create-item-modal" tabindex="-1" aria-labelledby="create-item-modalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="create-item-modalLabel">New listing</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= form_with scope: :item, url: items_path(current_user.id), local: true do |f| %>
+              <div class="field">
+                <%= f.label :name, "Item name" %><br />
+                <%= f.text_field :name, class: "form-control", autofocus: true %>
+              </div>
 
-
-
-  <% if @conversations != nil %>
-    <%= javascript_pack_tag 'sidebar.js' %>
-  <% end %>
+              <div class="field">
+                <%= f.label :description %><br />
+                <%= f.text_area :description, class: "form-control", size: "30x10", autofocus: true %>
+              </div>
+              
+              <%= f.hidden_field :status, value: "open" %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= hidden_field_tag(:user_id, current_user.id) %>
+            
+              <div class="modal-footer">
+                <%= f.submit "Create listing", class: "btn btn-primary" %>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            <% end %>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <%= javascript_pack_tag 'sidebar.js' %>  
 </div>
