@@ -1,0 +1,39 @@
+<div class="comment-container" id= "comment<%= t.id %>">
+    <% commenter = User.find_by(id: t.user.id) %>
+    <div class="d-flex flex-row">
+        <%= image_tag url_for(commenter.avatar), size: '40x40', class: 'rounded-circle img-responsive', alt: 'profile avatar' %>
+        <div class="d-flex flex-column justify-content-start p-2 ml-3 rounded-lg author-content">
+            <!-- TO FOLLOW: make this link to profile page -->
+            <p class="commenter pl-1 m-0 font-weight-bold">
+                <%= commenter.first_name %> <%= commenter.last_name %>
+            </p>
+            <p class="pl-2 m-0 content"><%= t.body %></p>
+        </div>
+
+        <% if current_user.id === t.commenter_id %>
+            <%= javascript_pack_tag 'comment.js' %>
+            <div class="dropdown">
+            <button class="dropdown_btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= image_tag "options.svg", class: "options comment-options" %>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item edit" id=<%= t.id %>>Edit Comment</a>
+                <%= form_with scope: :comment, method: :delete, url: delete_comment_path(t.id), local: true do |f| %>
+                <%= f.submit "Delete Comment", :class => "dropdown-item" %>
+                <% end %>
+            </div>
+            </div>
+        <% end %>
+
+    </div>
+</div>
+
+<div class="hide" id= "edit<%= t.id %>">
+    <%= form_with scope: :comment, url: update_comment_path(t.id), local: true, method: :put do |f| %>
+    <div class="user_comment">
+        <%= f.text_area :body, value: t.body, autofocus: true, id:"comment_user", class:"comment", placeholder: 'Write a public comment...' %>
+        <%= f.submit "Update Comment", class: 'btn btn-primary' %>
+    </div>
+    <%= javascript_pack_tag 'comment.js' %>
+    <% end %>
+</div>

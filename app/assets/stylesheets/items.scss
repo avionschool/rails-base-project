@@ -57,31 +57,28 @@
   width: 100%;
 }
 
-.comment_details {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 99.9% 0.1%;
-  background-color: #d9dee0;
-  padding: 0.5rem 1rem;
-  margin: 1rem 0rem;
+.comment-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 99.9% 0.1%;
+    padding: 0.5rem 1rem;
+    margin: 0.3rem 0rem;
+
+    .author-content {
+        background-color: #d9dee0;
+        width: 100%;
+
+        .commenter {
+            font-size: 0.9rem;
+        }
+
+        .content {
+            line-height: 1.25;
+        }
+    }
 }
 
-.comment_section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-}
 
-.commenter_name {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.commenter_description {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-}
 
 .dropdown_btn {
   display: flex;
@@ -89,8 +86,17 @@
   border: 0px;
 }
 
-.option {
+.options {
   height: 1rem;
+  position: relative;
+  right: 1rem;
+}
+
+.comment-options {
+    height: 0.8rem;
+    position: relative;
+    right: 1.25rem;
+    top: 0.7rem
 }
 
 .dropdown-item {

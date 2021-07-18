@@ -17,7 +17,7 @@
               <% if current_user.id === @item.user_id %>
                 <div class="dropdown">
                   <button class="dropdown_btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <%= image_tag("options.png", :class => "option") %>
+                    <%= image_tag "options.svg", class: "options" %>
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item edit" data-toggle="modal" data-target="#update-item-modal">Edit listing</a>
@@ -46,56 +46,29 @@
               <div class="user_comment">
                 <%= f.text_area :body, autofocus: true, id:"comment_user", class: "comment", placeholder: 'Write a public comment...' %>
                 <%= f.hidden_field :commenter_id, value: current_user.id %>
-
                 <%= f.submit "Post Comment", class: 'btn btn-primary' %>
               </div>
               <%= javascript_pack_tag 'comment.js' %>
             <% end %>
 
-              <% if @item.user.id != current_user.id %>
-                  <%= form_with scope: :conversation, url: item_conversations_path(@item.id), local: true do |f| %>
-                      <%= f.hidden_field :item_id, value: @item.id %>
-                      <%= f.hidden_field :user1_id, value: @item.user.id %>
-                      <%= f.hidden_field :user2_id, value: current_user.id %>
-                      <%= f.submit "Send Message", class: 'btn btn-primary' %>
-                  <% end %>
-              <% end %>    
-          <% end %>
-
-          <% @comments.each do |t| %>
-            <div class="comment_details" id= "comment<%= t.id %>">
-              <div class="comment_section">
-                <h5 class="commenter_name"><%= User.find_by(id: t.commenter_id).first_name %> <%= User.find_by(id: t.commenter_id).last_name %></h5>
-                <h5 class="commenter_description"><%= t.body %></h5>
-              </div>
-              <% if user_signed_in? %>
-                <% if current_user.id === t.commenter_id %>
-                  <%= javascript_pack_tag 'comment.js' %>
-                  <div class="dropdown">
-                    <button class="dropdown_btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <%= image_tag("options.png", :class => "option") %>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item edit" id=<%= t.id %>>Edit Comment</a>
-                      <%= form_with scope: :comment, method: :delete, url: delete_comment_path(t.id), local: true do |f| %>
-                        <%= f.submit "Delete Comment", :class => "dropdown-item" %>
-                      <% end %>
-                    </div>
-                  </div>
+            <!-- create conversation form when "Send Message" button is clicked -->
+            <% if @item.user.id != current_user.id %>
+                <%= form_with scope: :conversation, url: item_conversations_path(@item.id), local: true do |f| %>
+                    <%= f.hidden_field :item_id, value: @item.id %>
+                    <%= f.hidden_field :user1_id, value: @item.user.id %>
+                    <%= f.hidden_field :user2_id, value: current_user.id %>
+                    <%= f.submit "Send Message", class: 'btn btn-primary' %>
                 <% end %>
-              <% end %>
-            </div>
-            <div class="hide" id= "edit<%= t.id %>">
-              <%= form_with scope: :comment, url: update_comment_path(t.id), local: true, method: :put do |f| %>
-                <div class="user_comment">
-                  <%= f.text_area :body, value: t.body, autofocus: true, id:"comment_user", class:"comment", placeholder: 'Write a public comment...' %>
-
-                  <%= f.submit "Update Comment", class: 'btn btn-primary' %>
-                </div>
-                <%= javascript_pack_tag 'comment.js' %>
-              <% end %>
-            </div>
+            <% end %>    
           <% end %>
+
+          <!-- showing item comments -->
+          <% if user_signed_in? %>
+            <% @comments.each do |comment| %>
+                <%= render 'comments/comment', t: comment %>
+            <% end %>
+          <% end %>
+
         </div>
       <% else %>
         <h1>Item has been removed by User</h1>
