@@ -40,16 +40,27 @@
             <% if conv.item != nil %>
                     <%= link_to item_conversation_path(conv.item_id, conv.id), class: "nav-link" do %>
                         <% active_class = (@conversation == conv) ? 'active' : '' %>
-                        <li class="nav-item d-flex flex-column align-items-center <%= active_class %>">
-                            <span class="convo-item-name"><%= conv.item.name %></span>
-                            <!--displaying username of current_user's conversation partner -->
+                        <li class="nav-item d-flex flex-row align-items-center <%= active_class %>">   
+                            <!-- getting username of current_user's conversation partner -->
                             <% if conv.item.user == current_user && current_user.id == conv.user2_id %>
-                                <span class="other-user-username"><%= User.find(conv.user1_id).username %></span>
+                                <% convo_partner = User.find(conv.user1_id) %>
                             <% elsif conv.item.user == current_user && current_user.id == conv.user1_id %>
-                                <span class="other-user-username"><%= User.find(conv.user2_id).username %></span>
+                                <% convo_partner = User.find(conv.user2_id) %>
                             <% else %>
-                                <span class="other-user-username"><%= conv.item.user.username %></span>
+                                <% convo_partner = conv.item.user %>
                             <% end %>
+
+                            <% if convo_partner.avatar.attached? %>
+                                <%= image_tag url_for(convo_partner.avatar), size: '30x30', class: 'rounded-circle img-responsive ml-2', alt: 'profile avatar' %>
+                            <% else %>
+                                <%= image_tag 'Bertram_Gilfoyle.jpg', size: '30x30', class: 'rounded-circle img-responsive ml-2', alt: 'profile avatar'  %>
+                            <% end %>
+
+                            <div class="d-flex flex-column align-items-center m-auto">
+                                <span class="convo-item-name"><%= conv.item.name %></span>
+                                <span class="other-user-username"><%= convo_partner.username %></span>
+                            </div>
+
                         </li> 
                     <% end %>
             <% end %>    
