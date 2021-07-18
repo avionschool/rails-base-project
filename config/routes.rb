@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   resources :tours, except: [:destroy]
   resources :tourist_tours, except: [:new, :edit, :update]
   resources :travel_transactions, only: [:index]
+  resources :chat_rooms, only: [:index, :show]
+  resources :messages, only: [:create]
+  post 'chat_user', to: 'chat_rooms#chat_user', as: 'chat_user'
   get '/tourist_tours/new/:tour_id', to: 'tourist_tours#new', as: 'new_tourist_tour'
   
 end
