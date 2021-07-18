@@ -67,8 +67,8 @@
                       <%= @agency.tours.count%>
                     </div>
                   </div>
-                   <hr>
-                   <div class="row">
+                  <hr>
+                  <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Rating</h6>
                     </div>
@@ -76,6 +76,17 @@
                       <%#= @agency.address%> Very Good
                     </div>
                   </div>
+                  <% if @agency.verified_by %>
+                  <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Verified By:</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        <%= Admin.find(@agency.verified_by).email%>
+                      </div>
+                  </div>
+                  <% end %>
                 </div>
               </div>
             </div>

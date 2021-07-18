@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :agency do
-    email { "#{agency_name.gsub(' ', '')}#{rand(1..100)}@email.com" }
+    sequence(:email) { |n| "#{agency_name.gsub(' ', '')}#{n}@email.com" }
     password { 'secure123' }
     address { 'Antipolo City' }
     agency_name { 'Tourist Travel Tours' }
