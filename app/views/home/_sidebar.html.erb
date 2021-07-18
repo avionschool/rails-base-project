@@ -53,7 +53,8 @@
                             <% if convo_partner.avatar.attached? %>
                                 <%= image_tag url_for(convo_partner.avatar), size: '30x30', class: 'rounded-circle img-responsive ml-2', alt: 'profile avatar' %>
                             <% else %>
-                                <%= image_tag 'Bertram_Gilfoyle.jpg', size: '30x30', class: 'rounded-circle img-responsive ml-2', alt: 'profile avatar'  %>
+                                <% filepath = (current_user.id % 8).to_s + '.svg' %>
+                                <%= image_tag 'default_avatars/' + filepath, size: '30x30', class: 'rounded-circle img-responsive ml-2', alt: 'profile avatar'  %>
                             <% end %>
 
                             <div class="d-flex flex-column align-items-center m-auto">

@@ -32,7 +32,8 @@
                 <% if current_user.avatar.attached? %>
                   <%= image_tag url_for(current_user.avatar), size: '50x50', class: 'rounded-circle img-responsive', alt: 'profile avatar' %>
                 <% else %>
-                  <%= image_tag 'Bertram_Gilfoyle.jpg', size: '50x50', class: 'rounded-circle img-responsive', alt: 'profile avatar' %>
+                  <% filepath = (current_user.id % 8).to_s + '.svg' %>
+                  <%= image_tag 'default_avatars/' + filepath, size: '50x50', class: 'rounded-circle img-responsive', alt: 'profile avatar' %>
                 <% end %>
                 
             </a>
