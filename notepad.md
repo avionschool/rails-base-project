@@ -26,6 +26,9 @@
     5. update config/environments/test.rb:
         config.active_storage.service = :test
 
+### imagemagick install
+    run: sudo apt-get install imagemagick
+
 ## bugs to fix:
     1. when an exchange happened in a conversation, sometimes clicking on another conversation and clicking back to the previous conversation, the previous conversation doesn't show the recent exchange
 
@@ -37,6 +40,8 @@
     4. if a user who participated in any conversation is deleted, app gets an error in displaying conversation partners
 
     5. if a user who participated in any conversation is deleted, app gets an error in displaying conversation partners
+
+    6. when attempting to create or update a listing with validation errors; validation errors don't appear
     
 ## minor details to add:
     1. channel broadcast when item's status is changed
