@@ -1,0 +1,23 @@
+<%= form_for(message, html:{class:"row gx-3 ui reply form", role: "form"}, url: messages_path, remote: true) do |form| %>
+  <% if message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+        <% message.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :chat_room_id, value: room.id %>
+
+  <div class="field form-group col-9">
+    <%= form.text_field :body, placeholder: 'Type your message here...', class: 'form-control' %>
+  </div>
+
+  <div class="actions col-2">
+    <%= form.submit "Send", class: 'btn btn-primary' %>
+  </div>
+<% end %>
