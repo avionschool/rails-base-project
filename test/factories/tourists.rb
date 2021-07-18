@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :tourist do
-    email { "#{first_name.gsub(' ', '')}@email.com" }
+    sequence(:email) { |n| "#{first_name.gsub(' ', '')}#{n}@email.com" }
     password { 'secure123' }
     address { 'Antipolo City' }
     approved { true }
