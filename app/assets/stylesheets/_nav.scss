@@ -3,7 +3,7 @@
 .nav-section {
   @include flexCenter(row, space-between, center);
   width: 100%;
-  background-color: var(--clr-darker);
+  background-color: var(--clr-darkest);
   padding: 0.5em 4em;
 
   a {

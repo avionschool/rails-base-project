@@ -1,0 +1,46 @@
+@import 'base';
+
+/*footer*/
+.footer_section {
+  @include flexCenter(row, space-evenly, center);
+  background-color: var(--clr-darkest);
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.member_img {
+  max-width: 6rem;
+  border-radius: 50%;
+  padding: .3rem;
+  background-color: white;
+}
+
+.member_name, .member_email {
+  color: white;
+  margin-top: .5rem;
+}
+
+.member_slot {
+  @include flexCenter(column, space-evenly, center);
+}
+
+.links_list {
+  @include flexCenter(row, space-evenly, center);
+}
+
+.link {
+  margin-left: .5rem;
+  margin-top: 1rem;
+  margin-right: .5rem;
+}
+
+.fab {
+  color: white;
+}
+
+.fab:active, .fab:hover {
+  color: seagreen;
+}
+/*footer*/
