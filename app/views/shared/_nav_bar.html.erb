@@ -50,11 +50,18 @@
         </ul>
         <%elsif agency_signed_in?%>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <%= link_to 'Packages', tours_path, class:"nav-link"%>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'New', new_tour_path, class:"nav-link"%>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Packages
+            </a>
+            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+               <li class="dropdown-item">
+                  <%= link_to 'Packages', tours_path, class:"nav-link"%>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'New', new_tour_path, class:"nav-link"%>
+                </li>
+            </ul>
           </li>
           <li class="nav-item">
             <%= link_to 'Transactions', travel_transactions_path, class:"nav-link"%>
@@ -95,10 +102,3 @@
     </div>
   </div>
 </nav>
-
-
-
-<!-- Navigation Bar -->
-
- 
-<!-- End of Navigation Bar -->
