@@ -1,63 +1,113 @@
-<div class="container">
-  <h2>Sign up</h2>
-  
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-  
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
+<section class="devise__form">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 pt-5 d-none d-lg-flex flex-column justify-content-between align-items-center">
 
-    <div class="field">
-      <%= f.label :username %><br />
-      <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
-    </div>
+        <div class="header mt-5">
+          <h1 class="text-center">Kalakalph</h1>
+          <p class="lead text-center text-muted">
+            Pag ayaw mo na, i-barter mo na!
+          </p>
+        </div>
 
-    <div class="field">
-      <%= f.label :avatar, "Profile photo" %><br />
-      <%= f.file_field :avatar %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :first_name %><br />
-      <%= f.text_field :first_name, autofocus: true,autocomplete: "first name"%>
-    </div>
-  
-    <div class="field">
-      <%= f.label :last_name %><br />
-      <%= f.text_field :last_name, autofocus: true %>
-    </div>
-  
-    <div class="field">
-      <!--<%#= f.label :contact %><br />-->
-      <%= f.label 'Contact Number' %><br />
-      <%= f.text_field :contact, autofocus: true %>
-    </div>
-  
-    <div class="field">
-      <!--<%#= f.label :address %><br />-->
-      <%= f.label 'Home Address' %><br />
-      <%= f.text_area :address, autofocus: true %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-  
-    <div class="actions">
-      <%= f.submit "Sign up" %>
-    </div>
-  <% end %>
-  
-  <%= render "devise/shared/links" %>
-</div>
+        <div class="pb-3">
+          <hr>
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+
+      <div class="col-md-10 offset-md-1 col-lg-6 offset-lg-0">
+        <div class="card">
+          <div class="card-body">
+
+            <div class="d-block d-lg-none">
+              <h4 class="text-center">Kalakalph</h4>
+              <p class="text-center text-muted small">
+                Pag ayaw mo na, i-barter mo na!
+              </p>
+            </div>
+            
+            <h2 class="my-4 mb-lg-5 text-center">Create your account</h2>
+
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+            
+              <div class="field form-group">
+                <%= f.label :email %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+              </div>
+
+              <div class="field form-group">
+                <%= f.label :username %>
+                <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control" %>
+              </div>
+
+              <div class="field form-group">
+                <%= f.label :avatar, "Profile photo" %>
+                <%= f.file_field :avatar, class: "form-control choose-file-btn" %>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="field form-group">
+                    <%= f.label :first_name %>
+                    <%= f.text_field :first_name, autofocus: true,autocomplete: "first name", class: "form-control" %>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="field form-group">
+                    <%= f.label :last_name %>
+                    <%= f.text_field :last_name, autofocus: true, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="field form-group">
+                <!--<%#= f.label :contact %>-->
+                <%= f.label 'Contact Number' %>
+                <%= f.text_field :contact, autofocus: true, class: "form-control" %>
+              </div>
+            
+              <div class="field form-group">
+                <!--<%#= f.label :address %>-->
+                <%= f.label 'Home Address' %>
+                <%= f.text_area :address, autofocus: true, class: "form-control" %>
+              </div>
+            
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="field form-group">
+                    <%= f.label :password %>
+                    <!--<%# if @minimum_password_length %>
+                    <em>(<%#= @minimum_password_length %> characters minimum)</em>
+                    <%# end %>-->
+                    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+                  </div>
+                </div>
+              
+                <div class="col-md-6">
+                  <div class="field form-group">
+                    <%#= f.label :password_confirmation %>
+                    <%= f.label 'Confirm Password' %>
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="actions mt-4">
+                <%= f.submit "Sign up",  class: "btn btn-primary btn-block mt-4 mb-lg-4" %>
+              </div>
+            <% end %>
+            <div class="d-block d-lg-none">
+              <br>
+              <hr>
+              <%= render "devise/shared/links" %>
+            </div>
+            
+          </div><!-- card-body -->
+        </div><!-- card -->
+      </div><!-- col -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
