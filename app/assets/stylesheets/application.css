@@ -13,3 +13,69 @@
  *= require_tree .
  *= require_self
  */
+
+
+i {
+  cursor: pointer;
+}
+
+/*home*/
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 3rem;
+}
+
+li {
+  list-style: none;
+}
+/*home*/
+
+/* build-table */
+.table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 5em;
+}
+
+.content_table {
+  border-collapse: collapse;
+  width: 70rem;
+}
+
+thead, th {
+  font-size: 1rem;
+}
+
+thead tr {
+  background-color: #303030 !important;
+  color: #caccd1;
+  text-align: left;
+  font-weight: bolder;
+}
+
+tbody tr {
+  border-bottom: 1px solid #303030;
+}
+
+tbody tr:nth-child(add) {
+  background-color: #f3f3f3;
+}
+
+tbody tr:last-of-type {
+  border-bottom: 2px solid black;
+}
+/* build-table */

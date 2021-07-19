@@ -1,0 +1,77 @@
+:root {
+  // font
+  --fw-reg: 300;
+  --fw-bold: 900;
+
+  --fs-h1: 2.2rem;
+  --fs-h2: 1.8rem;
+  --fs-h3: 1.5rem;
+  --fs-body: 1.2rem;
+  --fs-label: 1rem;
+
+  --clr-light: rgb(248, 248, 248);
+  --clr-dark: #404040;
+  --clr-darker: #202020;
+  --clr-darkest: #101010;
+
+  --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.145),
+    -0.1em 0.125em 0.25em rgba(0, 0, 0, 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1;
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+}
+
+p {
+  font-size: var(--fs-body);
+  line-height: 1.5;
+}
+
+a,
+::placeholder {
+  font-size: var(--fs-body);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  height: 100vh;
+  background-repeat: no-repeat;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--clr-darker);
+}
+
+@mixin flexCenter($direction, $justify, $align-items) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align-items;
+}

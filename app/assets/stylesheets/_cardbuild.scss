@@ -1,0 +1,46 @@
+@import 'base';
+
+/*card build for home index*/
+.card_title {
+  color: white;
+  width: 100%;
+  margin-top: 3rem;
+  @include flexCenter(row, center, center);
+}
+
+.card_section {
+  margin-bottom: 5rem;
+  @include flexCenter(row, space-evenly, center);
+}
+
+.card_slot {
+  margin-top: 1rem;
+  background-color: white;
+  word-wrap: break-word;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 25rem;
+  border: .3rem solid var(--clr-darkest);
+  @include flexCenter(column, center, center);
+}
+
+.card_text {
+  color: var(--clr-darkest);
+  word-wrap: break-word;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  margin-top: 2rem;
+}
+
+.image_slot2 {
+  @include flexCenter(row, center, center);
+}
+
+.img1 {
+  max-width: 15rem;
+}
+
+.img2, .img3 {
+  max-height: 8rem !important;
+}
+/*card build for home index*/

@@ -1,0 +1,35 @@
+<nav class="nav-section">
+
+  <%= link_to(root_path) do %>
+    <h1 class="brand">jade</h1>
+  <% end %>
+
+  <ul class="nav-section__container-ul">
+    <% if user_signed_in? %>
+
+      <li class="nav-li">
+        <%= link_to 'Build', builds_path, class:"nav-link text-white" %>
+      </li>
+
+      <div class="right-profile">
+        <a class="username"><%= current_user.username %></a>
+
+        <div class="dropdown-menu">
+          <div class="flex flex-col">
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:"px-2 py-2 hover:underline eli-field-menu" %>
+          </div>
+        </div>
+      </div>
+
+    <% else %>
+      <li class="nav-li">
+        <%= link_to 'Sign In', new_user_session_path, class:"nav-link text-white" %>
+      </li>
+
+      <li class="nav-li">
+        <%= link_to 'Sign Up', new_user_registration_path, class:"nav-link text-white" %>
+      </li>
+    <% end %>
+
+  </ul>
+</nav>
