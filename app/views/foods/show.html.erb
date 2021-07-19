@@ -1,0 +1,14 @@
+<h1><%= @food.name %></h1>
+<table>
+  <tr>
+    <td><%= @food.food_group %></td>
+    <td><%= @food.caption %></td>
+    <td><%= @food.recipe_url %></td>
+  </tr>
+</table>
+
+<%= link_to 'Edit', edit_food_path(@food) %>
+<%= link_to 'Delete', food_path(@food), method: :delete, data: { confirm: "Are you sure?" } %>
+
+<%= render 'comments/comments', commentable: @food %>
+<%= render 'comments/form', commentable: @food %>

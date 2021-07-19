@@ -15,6 +15,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'hamlit-rails'
+# gem 'react-rails', '~> 2.6', '>= 2.6.1'
+gem 'cloudinary', '~> 1.20'
+gem 'letter_opener', '~> 1.7'
+gem 'letter_opener_web', '~> 1.4'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -25,6 +29,8 @@ group :development do
   gem 'listen', '~> 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'letter_opener', '~> 1.7'
+  gem 'letter_opener_web', '~> 1.4'
 end
 
 group :test do

@@ -1,0 +1,10 @@
+<h2>Comments</h2>
+<% commentable.comments.each do |comment| %>
+  <p>
+    <strong><%= comment.commenter %></strong><br>
+    <%= comment.body %>
+    <% if @cur_user.username == @food.user_username || comment.commenter == @cur_user.username %>
+    <%= link_to 'Delete', comment_path(comment), method: :delete %>
+    <% end %>
+  </p>
+<% end %>

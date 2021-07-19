@@ -1,0 +1,6 @@
+<h1><%= @selected_user.username %></h1><br>
+<h1><%= @article.caption %></h1><br>
+<h2><%= @article.source_url %></h1>
+
+<%= render 'comments/acomments', commentable: @article %>
+<%= render 'comments/aform', commentable: @article %>

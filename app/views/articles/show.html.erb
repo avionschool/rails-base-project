@@ -1,0 +1,9 @@
+<h1><%= current_nutritionist.username %></h1><br>
+<h1><%= @article.caption %></h1><br>
+<h2><%= @article.source_url %></h1>
+
+<%= link_to 'Edit', edit_article_path(@article) %>
+<%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %>
+
+<%= render 'comments/acomments', commentable: @article %>
+<%= render 'comments/aform', commentable: @article %>

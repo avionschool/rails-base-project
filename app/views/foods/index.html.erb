@@ -1,0 +1,11 @@
+<h1><%= current_user.username %>'s POSTS</h1>
+<% @foods.each do |food| %>
+  <table>
+      <tr>
+        <td><%= link_to food.name, food_path(food) %></td>
+        <td><%= food.food_group %></td>
+        <td><%= food.caption %></td>
+        <td><%= food.recipe_url %></td>
+      </tr>
+    </table>
+<% end %>

@@ -1,0 +1,11 @@
+<h1><%= @selected_user.username %>'s <%= @food.name %></h1>
+<table>
+  <tr>
+    <td><%= @food.food_group %></td>
+    <td><%= @food.caption %></td>
+    <td><%= @food.recipe_url %></td>
+  </tr>
+</table>
+
+<%= render 'comments/comments', commentable: @food %>
+<%= render 'comments/form', commentable: @food %>

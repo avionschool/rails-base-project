@@ -1,0 +1,9 @@
+<h1><%= @selected_user.username %>'s POSTS</h1>
+<% @articles.each do |article| %>
+  <table>
+      <tr>
+        <td><%= link_to article.caption, nutritionist_article_path(@selected_user, article) %></td>
+        <td><%= article.source_url %></td>
+      </tr>
+    </table>
+<% end %>
