@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :conversations, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_one :transact
 
   # crop image to 300x300px and center
   def thumbnail(img)

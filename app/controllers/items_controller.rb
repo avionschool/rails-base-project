@@ -4,19 +4,33 @@ class ItemsController < ApplicationController
   def show
     @conversations = current_user.conversations if user_signed_in?
 
-    @item = Item.find_by(id: params[:id])
+    @item = Item.find(params[:id])
     @comments = @item.comments.sort_by(&:created_at) unless @item.nil?
   end
 
   def create
-    user = User.find_by(id: params[:user_id])
+    user = User.find(params[:user_id])
     item = user.items.new(item_params)
     redirect_to root_path, notice: 'Listing was created succesfully' if item.save
     # this should redirect to current_user's item show page instead
   end
 
   def update
-    item = Item.find_by(id: params[:id])
+    item = Item.find(params[:id])
+    if params[:item][:status] == 'traded'
+        Transact.create(item_id: params[:id], traded_with: 'chuchu', user2_id: params[:item][:buyer_id])
+    end
+
+    transact = Transact.find_by(item_id: params[:id])
+
+    if transact
+        item.transact_id = transact.id
+        if params[:item][:status] == 'open'
+            transact.delete
+            item.transact_id = nil 
+        end
+    end
+    
     redirect_to request.referer, notice: 'Listing was updated succesfully' if item.update(item_params)
   end
 
@@ -28,6 +42,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :status, images: [])
+    params.require(:item).permit(:name, :description, :status, :transact_id, images: [])
   end
 end
