@@ -1,4 +1,5 @@
 <script src="https://use.fontawesome.com/f59bcd8580.js"></script>
+<br/><br/><br/>
 <div class="container">
   <div class="row m-5 no-gutters shadow-lg">
     <div class="col-md-6 d-none d-md-block">
@@ -9,6 +10,11 @@
     <%end %>
     </div>
     <div class="col-md-6 bg-white p-5">
+      <% if current_page?(new_tourist_session_path) %>
+          <h3 class="pb-3">Tourist Login</h3>
+      <% elsif current_page?( new_agency_session_path) %>
+          <h3 class="pb-3">Agency Login</h3>
+      <%end %>
     <h3 class="pb-3">Login</h3>
     <div class="form-style">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

@@ -1,4 +1,5 @@
 <script src="https://use.fontawesome.com/f59bcd8580.js"></script>
+<br/><br/><br/>
 <%= render 'shared/errors', obj: resource %>
 <div class="container">
   <div class="row m-5 no-gutters shadow-lg">
@@ -10,7 +11,12 @@
     <%end %>
     </div>
     <div class="col-md-6 bg-white p-5">
-    <h3 class="pb-3">Sign Up</h3>
+      <% if current_page?(new_tourist_registration_path) %>
+        <h3 class="pb-3">Tourist Sign Up</h3>
+      <% elsif current_page?( new_agency_registration_path) %>
+         <h3 class="pb-3">Agency Sign Up</h3>
+      <%end %>
+
     <div class="form-style">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <div class="form-group pb-3">    
