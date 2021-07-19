@@ -6,7 +6,6 @@
         <%= render 'home/sidebar' %>
     <% end %>
     
-
   <div class="container">
     <div class="products_items">
       <% if @item != nil %>
@@ -34,11 +33,31 @@
           <h6 class="item_description"><%= @item.description %></h6>
 
           <!-- make carousel for item images -->
-          <% (0...@item.images.count).each do |image| %>
-            <div style="width:300px; height:300px;">
-                <%= image_tag @item.thumbnail(image) %>
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                <% (0...@item.images.count).each do |image| %>
+                    <% active = image == 0 ? 'active' : '' %>
+                    <div class="carousel-item <%= active %>">
+                        <%= image_tag @item.thumbnail(image), class: "d-block" %>
+                    </div>
+                <% end %>
             </div>
-          <% end %>
+
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+          </div>
 
           <!-- showing comments and send message button when user is logged in -->
           <% if user_signed_in? %>
