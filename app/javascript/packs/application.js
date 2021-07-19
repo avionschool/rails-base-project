@@ -20,3 +20,11 @@ import "bootstrap"
  
 require("trix")
 require("@rails/actiontext")
+
+
+
+function hideFlash() {
+    setInterval(function() {document.querySelector('#flash').style.display = "none";}, 3000);
+  }
+  
+hideFlash();

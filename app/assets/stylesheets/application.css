@@ -12,6 +12,7 @@
  *
 
  *= require bootstrap
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
@@ -54,7 +55,7 @@
     height: 500px;
 }
 
-a{
+a,#title{
     text-decoration: none
 }
 
@@ -68,9 +69,12 @@ a{
 
 #image{
  height:100vh; 
-
 }
 
+#cover{
+    height:30vh; 
+    max-width:100%;
+}
 
 #editImage{
     width: 400px; 
@@ -167,16 +171,24 @@ a{
     color:#ffffff;
    }
 
+
+   #services{
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 4rem;
+    }
+
+    .feature{
+     background-image: linear-gradient(to bottom, rgba(39, 38, 38, 0), rgb(34, 33, 33));
+    }
    
 /* NAVBAR */
 
 .carousel-content {
   position: absolute;
-  bottom: 35%;
+  bottom: 20%;
   left: 10%;
   z-index: 20;
   color: white;
-  text-shadow: 0 1px 2px rgba(0,0,0,.6);
 }
 
 .carousel-content h1 {
@@ -192,3 +204,168 @@ a{
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+#card{
+    height:30vh; 
+    max-width:100%;
+}
+
+/* PARALLAX */
+
+#parallax {
+  /* The image used */
+  background-image: url("https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1382&q=80");
+
+  /* Set a specific height */
+  min-height: 400px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#caption{
+  font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 4rem;
+    color:rgb(0, 0, 0);
+    text-shadow: 2px 2px #ffffff;
+}
+
+
+
+/* TEAM SECTION */
+
+.our-team-section {
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-image: linear-gradient(to bottom, rgba(39, 38, 38, 0), rgb(34, 33, 33));
+}
+
+.our-team-section:before {
+  position: absolute;
+  top: -0;
+  left: 0;
+  content: " ";
+  background: url(img/service-section-bottom.png);
+  background-size: 100% 100px;
+  width: 100%;
+  height: 100px;
+  float: left;
+  z-index: 99;
+}
+.our-team {
+  padding: 30px 0 40px;
+  background: #f9f9f9;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 5px solid #00325a;
+}
+.our-team:hover{
+  border-bottom: 5px solid #2f2f2f;
+}
+
+.our-team .pic{
+  display: inline-block;
+  width: 130px;
+  height: 130px;
+  margin-bottom: 50px;
+  z-index: 1;
+  position: relative;
+}
+.our-team .pic:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #00325a;
+  position: absolute;
+  bottom: 135%;
+  right: 0;
+  left: 0;
+  opacity: 1;
+  transform: scale(3);
+  transition: all 0.3s linear 0s;
+}
+.our-team:hover .pic:before{
+height: 100%;
+  background: #2f2f2f; 
+}
+.our-team .pic:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #ffffff00;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: all 0.3s linear 0s;
+}
+.our-team:hover .pic:after{
+  background: #7ab92d;
+}
+.our-team .pic img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: all 0.9s ease 0s;
+  box-shadow: 0 0 0 14px #f7f5ec;
+  transform: scale(0.7);
+  position: relative;
+  z-index: 2;
+}
+.our-team:hover .pic img{
+  box-shadow: 0 0 0 14px #f7f5ec;
+  transform: scale(0.7);
+}
+.our-team .team-content{ margin-bottom: 30px; }
+.our-team .title{
+  font-size: 22px;
+  font-weight: 700;
+  color: #4e5052;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+}
+.our-team .post{
+  display: block;
+  font-size: 15px;
+  color: #4e5052;
+  text-transform:capitalize;
+}
+.our-team .social{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: #2f2f2f;
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  transition: all 0.5s ease 0s;
+}
+.our-team:hover .social{ bottom: 0; }
+.our-team .social li{ display: inline-block; }
+.our-team .social li a{
+  display: block;
+  padding: 10px;
+  font-size: 17px;
+  color: #fff;
+  transition: all 0.3s ease 0s;
+}
+.our-team .social li a:hover{
+  color: #2f2f2f;
+  background: #f7f5ec;
+}
+@media only screen and (max-width: 990px){
+  .our-team{ margin-bottom: 30px; }
+}
+
+#links{
+  color:white;
+}
