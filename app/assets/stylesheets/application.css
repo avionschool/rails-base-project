@@ -182,6 +182,22 @@ a,#title{
     }
    
 /* NAVBAR */
+/* #navbarSupportedContent{
+  display: flex;
+  justify-content: end;
+  padding-left: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+  #navbarSupportedContent{
+    display: flex;
+    justify-content: start;
+    padding-right: 500px;
+  }
+} */
+
+
+/**/
 
 .carousel-content {
   position: absolute;
