@@ -11,7 +11,9 @@
       <% if @item != nil %>
         <div class="item">
           <div class="item_details">
-            <h6 class="item_description"><%= @item.user.username %></h6>
+            <h6 class="item_description">
+                <%= link_to @item.user.username, user_path(@item.user) %>
+            </h6>
             <% if user_signed_in? %>
               <% if current_user.id === @item.user_id %>
                 <div class="dropdown">
