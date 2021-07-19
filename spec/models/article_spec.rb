@@ -13,6 +13,6 @@ RSpec.describe Article, type: :model do
 
   describe 'Associations' do
     it { is_expected.to belong_to(:nutritionist) }
-    it { is_expected.to have_many(:comments) }
+    it { is_expected.to have_many(:acomments) }
   end
 end

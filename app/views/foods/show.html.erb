@@ -10,30 +10,5 @@
 <%= link_to 'Edit', edit_food_path(@food) %>
 <%= link_to 'Delete', food_path(@food), method: :delete, data: { confirm: "Are you sure?" } %>
 
-<h2>Comments</h2>
-<% @food.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commentor %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.comment %>
-  </p>
-<% end %>
-
-<h2>Add a comment:</h2>
-<%= form_with model: [ @food, @food.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commentor %><br>
-    <%= form.text_field :commentor, value:@cur_user.username %>
-  </p>
-  <p>
-    <%= form.label :comment %><br>
-    <%= form.text_area :comment %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<%= render 'comments/comments', commentable: @food %>
+<%= render 'comments/form', commentable: @food %>

@@ -2,30 +2,5 @@
 <h1><%= @article.caption %></h1><br>
 <h2><%= @article.source_url %></h1>
 
-<h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commentor %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.comment %>
-  </p>
-<% end %>
-
-<h2>Add a comment:</h2>
-<%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commentor %><br>
-    <%= form.text_field :commentor, value:@cur_user.username %>
-  </p>
-  <p>
-    <%= form.label :comment %><br>
-    <%= form.text_area :comment %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<%= render 'comments/acomments', commentable: @article %>
+<%= render 'comments/aform', commentable: @article %>

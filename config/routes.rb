@@ -8,16 +8,16 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[show]
   get '/users/:user_id/foods/:id' => 'users#food', as: 'user_food'
+
   resources :nutritionists, only: %i[show]
   get '/nutritionists/:nutritionist_id/articles/:id' => 'nutritionists#article', as: 'nutritionist_article'
 
-  resources :foods do
-   resources :comments
-  end
+  resources :foods
+  resources :comments, only: %i[create destroy]
 
-  resources :articles do
-    resources :comments
-  end
+  resources :articles
+  resources :acomments, only: %i[create destroy]
+
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
   # mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
