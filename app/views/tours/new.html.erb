@@ -1,7 +1,8 @@
+<br/><br/>
 <div class="container">
   <div class="row m-5 no-gutters shadow-lg">
     <div class="col bg-white p-5">
-      <h1 class="heading-primary-h1">Create a new Tour</h1>
+      <h1 class="heading-primary-h1">Create a new Tour</h1><br/>
       <%= render 'shared/errors', obj: @tour %>
       <div class="form-style">
         <%= form_with scope: :tour, url: tours_path, local:true do |f|%>
@@ -15,13 +16,13 @@
             <%= f.text_field :location, placeholder: "Tour location" ,class:"form-control" %>
           </div>
           <div class="form-group pb-3">   
-            <%= f.number_field :duration, step:1, placeholder: "Duration" ,class:"form-control" %>
+            <%= f.number_field :duration, step:1, placeholder: "Number of Days" ,class:"form-control" %>
           </div>
           <div class="col bg-white p-5">
               <img class="img-fluid" id="img_prev" src="<%= asset_path('upload_image.png')%>" alt="">
               <div class="images-container p-3" id='images-prev'> 
               </div>
-              <div class="mb-3">
+              <div class="mb-3" id="images_container">
                 <%= f.label :"Select Hero Image",:class=>"form-label"%>
                 <%= f.file_field :images, multiple: true,:class=>"form-control form-control-lg image-upload"%>
               </div>

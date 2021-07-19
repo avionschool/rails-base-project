@@ -81,6 +81,14 @@ a,#title{
     height:210px; 
     object-fit: cover
 }
+/* 
+#img_prev{
+  width: 300px; 
+  height:300px; 
+  object-fit: cover
+} */
+
+
 
 #ProfilePic{
     width:150px; 
