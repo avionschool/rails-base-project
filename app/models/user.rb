@@ -29,6 +29,6 @@ class User < ApplicationRecord
   private
 
   def avatar_filesize
-    errors.add(:avatar, 'file size should not exceed 1 MB!') if avatar.byte_size >= 1.megabyte
+    errors.add(:avatar, 'file size should not exceed 1 MB!') if avatar.attached? && avatar.byte_size >= 1.megabyte
   end
 end
