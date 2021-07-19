@@ -17,7 +17,7 @@
               <% if current_user.id === @item.user_id %>
                 <div class="dropdown">
                   <button class="dropdown_btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <%= image_tag("options.png", :class => "option") %>
+                    <%= image_tag "options.svg", class: "options" %>
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item edit" data-toggle="modal" data-target="#update-item-modal">Edit listing</a>
@@ -32,63 +32,43 @@
 
           <h5 class="item_name"><%= @item.name %></h5>
           <h6 class="item_description"><%= @item.description %></h6>
-          <%= image_tag("altpic.png", :class => "itempic") %>
 
+          <!-- make carousel for item images -->
+          <% (0...@item.images.count).each do |image| %>
+            <div style="width:300px; height:300px;">
+                <%= image_tag @item.thumbnail(image) %>
+            </div>
+          <% end %>
+
+          <!-- showing comments and send message button when user is logged in -->
           <% if user_signed_in? %>
             <%= form_with scope: :comment, url: comment_path(@item.id), local: true do |f| %>
               <div class="user_comment">
-                <%= f.text_area :body, autofocus: true, id:"comment_user", class:"comment", placeholder: 'Write a public comment...' %>
+                <%= f.text_area :body, autofocus: true, id:"comment_user", class: "comment", placeholder: 'Write a public comment...' %>
                 <%= f.hidden_field :commenter_id, value: current_user.id %>
-
-                <%= f.submit "Post Comment", :class => "post_item" %>
+                <%= f.submit "Post Comment", class: 'btn btn-primary' %>
               </div>
               <%= javascript_pack_tag 'comment.js' %>
             <% end %>
 
-              <% if @item.user.id != current_user.id %>
-                  <%= form_with scope: :conversation, url: item_conversations_path(@item.id), local: true do |f| %>
-                      <%= f.hidden_field :item_id, value: @item.id %>
-                      <%= f.hidden_field :user1_id, value: @item.user.id %>
-                      <%= f.hidden_field :user2_id, value: current_user.id %>
-                      <%= f.submit "Send Message" %>
-                  <% end %>
-              <% end %>    
-          <% end %>
-
-          <% @comments.each do |t| %>
-            <div class="comment_details" id= "comment<%= t.id %>">
-              <div class="comment_section">
-                <h5 class="commenter_name"><%= User.find_by(id: t.commenter_id).first_name %> <%= User.find_by(id: t.commenter_id).last_name %></h5>
-                <h5 class="commenter_description"><%= t.body %></h5>
-              </div>
-              <% if user_signed_in? %>
-                <% if current_user.id === t.commenter_id %>
-                  <%= javascript_pack_tag 'comment.js' %>
-                  <div class="dropdown">
-                    <button class="dropdown_btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <%= image_tag("options.png", :class => "option") %>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item edit" id=<%= t.id %>>Edit Comment</a>
-                      <%= form_with scope: :comment, method: :delete, url: delete_comment_path(t.id), local: true do |f| %>
-                        <%= f.submit "Delete Comment", :class => "dropdown-item" %>
-                      <% end %>
-                    </div>
-                  </div>
+            <!-- create conversation form when "Send Message" button is clicked -->
+            <% if @item.user.id != current_user.id %>
+                <%= form_with scope: :conversation, url: item_conversations_path(@item.id), local: true do |f| %>
+                    <%= f.hidden_field :item_id, value: @item.id %>
+                    <%= f.hidden_field :user1_id, value: @item.user.id %>
+                    <%= f.hidden_field :user2_id, value: current_user.id %>
+                    <%= f.submit "Send Message", class: 'btn btn-primary' %>
                 <% end %>
-              <% end %>
-            </div>
-            <div class="hide" id= "edit<%= t.id %>">
-              <%= form_with scope: :comment, url: update_comment_path(t.id), local: true, method: :put do |f| %>
-                <div class="user_comment">
-                  <%= f.text_area :body, value: t.body, autofocus: true, id:"comment_user", class:"comment", placeholder: 'Write a public comment...' %>
-
-                  <%= f.submit "Update Comment", :class => "post_item" %>
-                </div>
-                <%= javascript_pack_tag 'comment.js' %>
-              <% end %>
-            </div>
+            <% end %>    
           <% end %>
+
+          <!-- showing item comments -->
+          <% if user_signed_in? %>
+            <% @comments.each do |comment| %>
+                <%= render 'comments/comment', t: comment %>
+            <% end %>
+          <% end %>
+
         </div>
       <% else %>
         <h1>Item has been removed by User</h1>
@@ -99,7 +79,7 @@
   <% if user_signed_in? %>
     <% if @item != nil %>
       <% if current_user.id == @item.user.id %>
-        <!-- Modal -->
+        <!-- edit listing modal -->
         <div class="modal fade" id="update-item-modal" tabindex="-1" aria-labelledby="update-item-modalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -115,6 +95,13 @@
                     <%= f.label :name %><br />
                     <%= f.text_field :name, class: "form-control", autofocus: true %>
                   </div>
+                  <br>
+
+                  <div class="field">
+                    <%= f.label :images %><br />
+                    <%= f.file_field :images, multiple: true %>
+                  </div>
+                  <br>
 
                   <div class="field">
                     <%= f.label :description %><br />

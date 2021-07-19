@@ -44,12 +44,22 @@
         padding: 20px 30px;
         overflow-y: auto;
 
+        .avatar-me {
+            float: right;
+        }
+
+        .avatar-not-me {
+            float: left;
+        }
+
         .message {
             width: 100%;
             min-height: 59px;
 
             .content-container {
-                display: inline-block;
+                float: left;
+                display: flex;
+                flex-direction: column;
 
                 .content {
                     background-color: #eeeeee;
@@ -58,13 +68,13 @@
                 }
     
                 .author {
-                    font-size: 0.8rem;
+                    font-size: 0.75rem;
                     color: #777777;
                     margin-left: 10px;
                 }
 
                 .message-created_at {
-                    font-size: 0.7rem;
+                    font-size: 0.65rem;
                     color: #777777;
                     margin-left: 10px;
                 }
@@ -87,7 +97,7 @@
                         margin-right: 10px;
 
                         .author {
-                            font-size: 0.8rem;
+                            font-size: 0.75rem;
                             color: #777777;
                         }
 

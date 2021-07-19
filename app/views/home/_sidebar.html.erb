@@ -51,7 +51,7 @@
                             <% end %>
 
                             <% if convo_partner.avatar.attached? %>
-                                <%= image_tag url_for(convo_partner.avatar), size: '30x30', class: 'rounded-circle img-responsive ml-2', alt: 'profile avatar' %>
+                                <%= image_tag url_for(convo_partner.thumbnail), size: '30x30', class: 'rounded-circle img-responsive ml-2', alt: 'profile avatar' %>
                             <% else %>
                                 <% filepath = (current_user.id % 8).to_s + '.svg' %>
                                 <%= image_tag 'default_avatars/' + filepath, size: '30x30', class: 'rounded-circle img-responsive ml-2', alt: 'profile avatar'  %>
@@ -83,6 +83,11 @@
               <div class="field">
                 <%= f.label :name, "Item name" %><br />
                 <%= f.text_field :name, class: "form-control", autofocus: true %>
+              </div>
+
+              <div class="field">
+                <%= f.label :images %><br />
+                <%= f.file_field :images, multiple: true %>
               </div>
 
               <div class="field">

@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :contact, :address, presence: true
   validates :username, presence: true, uniqueness: true
+  validate :avatar_filesize
 
   has_one_attached :avatar
   has_many :items, dependent: :restrict_with_exception
@@ -19,5 +20,15 @@ class User < ApplicationRecord
     a = Conversation.where(user1_id: self)
     b = Conversation.where(user2_id: self)
     a.or(b).uniq
+  end
+
+  def thumbnail
+    avatar.variant(combine_options: { thumbnail: '300x300^', gravity: 'center', extent: '300x300' })
+  end
+
+  private
+
+  def avatar_filesize
+    errors.add(:avatar, 'file size should not exceed 1 MB!') if avatar.byte_size >= 1.megabyte
   end
 end
