@@ -24,9 +24,9 @@ require("@rails/actiontext")
 
 
 function hideFlash() {
-    setInterval(function() {document.querySelector('#flash').style.display = "none";}, 3000);
-  }
-  
+  setInterval(function() {document.querySelector('#flash').style.display = "none";}, 3000);
+}
+
 hideFlash();
 
 

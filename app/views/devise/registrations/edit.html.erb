@@ -26,6 +26,19 @@
         <% elsif current_page?(edit_agency_registration_path) %>
           <%= f.label :agency_name%><br />
           <%= f.text_field :agency_name, class:"form-control"%>
+        <%elsif current_page?(edit_agency_registration_path)%>
+          <div class = "form-group pb-3">
+            <%= f.label :first_name%><br />
+            <%= f.text_field :first_name, class:"form-control"%>
+          </div>
+          <div class = "form-group pb-3">
+            <%= f.label :last_name%><br />
+            <%= f.text_field :last_name, class:"form-control"%>
+          </div>
+          <div class = "form-group pb-3">
+            <%= f.label :birth_date%><br />
+            <%= f.date_field :birth_date, class:"form-control"%>
+          </div>
         <%end%>
           <div class = "form-group pb-3">
             <%= f.label :address%><br />

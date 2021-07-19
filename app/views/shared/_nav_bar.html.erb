@@ -48,8 +48,10 @@
             <%= link_to 'Sign-out', destroy_tourist_session_path, method: :delete, class:"nav-link" %>
           </li>
         </ul>
+
+
         <%elsif agency_signed_in?%>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Packages
@@ -58,7 +60,7 @@
                <li class="dropdown-item">
                   <%= link_to 'Packages', tours_path, class:"nav-link"%>
                 </li>
-                <li class="nav-item">
+                <li class="dropdown-item">
                   <%= link_to 'New', new_tour_path, class:"nav-link"%>
                 </li>
             </ul>
@@ -72,7 +74,10 @@
           <li class="nav-item">
             <%= link_to 'Sign-out', destroy_agency_session_path, method: :delete, class:"nav-link"%>
           </li>
+        </ul>
+
         <%elsif admin_signed_in?%>
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <%= link_to 'Profile', admin_path(current_admin), class:"nav-link"%>
           </li>
@@ -87,8 +92,8 @@
           </li>
         </ul>
         <% end %>
-      <%elsif !user_signed_in?%>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <%elsif !user_signed_in?%>
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <%= link_to 'Tourist Sign-in', new_tourist_session_path, class:"nav-link"%>
           </li>
