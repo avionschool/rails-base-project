@@ -10,67 +10,14 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require bootstrap
  *= require_tree .
  *= require_self
  */
 
-body {
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  color: #303030;
-  background-color: #f3f4f7;
-  background-image: linear-gradient(315deg, #f3f4f7 0%, #caccd1 74%);
-}
-
-input {
-  margin-bottom: 1em;
-  padding: 0.5em;
-  width: 20rem;
-  background-color: #f3f4f7;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid black;
-}
-
-input[type='submit'] {
-  background-color: aquamarine;
-  border: none;
-  border-radius: 5px;
-}
-
-input[type='submit']:hover {
-  background-color: blanchedalmond;
-}
-
-.sign_up {
-  padding: 2em 3em;
-  background-color: #f3f4f7;
-  box-shadow: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25),
-    0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-}
-
-.navbar {
-  background-color: #303030 !important;
-}
 
 i {
   cursor: pointer;
 }
-
-/*footer*/
-.img-thumbnail {
-  max-width: 6rem;
-  border-radius: 50%;
-}
-
-.foot {
-  position: absolute;
-  bottom: 0%;
-}
-/*footer*/
 
 /*home*/
 .section {
@@ -132,105 +79,3 @@ tbody tr:last-of-type {
   border-bottom: 2px solid black;
 }
 /* build-table */
-
-/*card build for home index*/
-.card_title {
-  color: #303030;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-}
-
-.card_section {
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 5rem;
-}
-
-.card_slot {
-  margin-top: 1rem;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  word-wrap: break-word;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  width: 25rem;
-}
-
-.card_text {
-  color: #303030;
-  word-wrap: break-word;
-  padding-left: .5rem;
-  padding-right: .5rem;
-
-}
-
-.level2 {
-  display: flex;
-  justify-content: center;
-}
-
-.img1 {
-  max-width: 15rem;
-}
-
-.img2, .img3 {
-  max-height: 8rem !important;
-}
-/*card build for home index*/
-
-/* footer2 */
-.slogan_section {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.slogan {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  margin-top: 1rem;
-}
-
-.logo {
-  width: 6rem;
-  background-color: dimgray;
-  border-radius: 50%;
-}
-
-a {
-  text-decoration: none;
-}
-
-.info_section {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin-right: 5rem;
-}
-
-.info h5 {
-  color: seagreen;
-}
-
-.info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 2rem;
-  box-sizing: border-box;
-}
-
-.info_items {
-  width: 10rem;
-  box-sizing: border-box;
-}
-/* footer2 */

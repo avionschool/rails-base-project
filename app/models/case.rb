@@ -22,7 +22,12 @@ class Case < ApplicationRecord
                           when 'No'
                             false
                           end
+<<<<<<< HEAD
     item[:internal_bays] = { 'bay2.5' => get_int('Internal 2.5" Drive Bays'), 'bay3.5' => get_int('Internal 3.5" Drive Bays') }
+=======
+    item[:internal_bay_small] = get_int('Internal 2.5" Drive Bays')
+    item[:internal_bay_large] = get_int('Internal 3.5" Drive Bays')
+>>>>>>> 223eed4e8c5c209dfd763f997bcbf897dc8ca3a8
     item[:price] = response.xpath("//span[@class='price']").text.tr('^0-9.', '').to_f
     item[:name] = response.xpath("//div[contains(@class, 'product-info')]").css('h2').text
     item[:image] = response.xpath("//img[@class='nivo-main-image']").attr('src').value

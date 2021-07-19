@@ -4,10 +4,17 @@
     <title>Rails Project</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+</style>
+
     <script src="https://kit.fontawesome.com/c1ec78f5cd.js" crossorigin="anonymous"></script>
+
+    <%= stylesheet_link_tag 'main', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
