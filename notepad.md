@@ -52,3 +52,4 @@
     1. add channel broadcast when item's status is changed
     2. deleting listing should prompt a verification modal
     3. in conversation show page, add main item image in conversation name
+    4. add image carousel for item images
