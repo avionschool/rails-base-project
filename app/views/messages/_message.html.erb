@@ -1,13 +1,27 @@
-<div class="message mb-4 <%= 'me' if message.user == current_user %>">
-    <div class="content-container">
-        <div class="content"><%= message.content %></div>
-        <!--might remove author, when avatar is available-->
-        <div class="d-flex flex-column author-date">
-            <div class="author"><%= message.user.username %></div>
-            <!-- displaying message.created_at if difference between this and previous message is > 5 mins -->
-            <% if time_diff > 5 %>
-                <div class="message-created_at font-italic"><%= message.created_at.strftime("%d-%m-%Y %I:%M%p") %></div>
-            <% end %>
+<div class="d-flex flex-row">
+    <% if message.user == current_user %>
+        <% classes = "rounded-circle img-responsive mt-1 ml-2 avatar-me" %>
+    <% else %>
+        <% classes = "rounded-circle img-responsive mt-1 mr-2 avatar-not-me" %>
+    <% end %>
+
+    <div class="message mb-4 <%= 'me' if message.user == current_user %>">
+        <% if message.user.avatar.attached? %>
+            <%= image_tag url_for(message.user.thumbnail), size: '35x35', class: classes, alt: 'profile avatar' %>
+        <% else %>
+            <% filepath = (current_user.id % 8).to_s + '.svg' %>
+            <%= image_tag 'default_avatars/' + filepath, size: '35x35', class: classes, alt: 'profile avatar' %>
+        <% end %>
+
+        <div class="content-container">
+            <div class="content"><%= message.content %></div>
+            <div class="d-flex flex-column author-date">
+                <div class="author"><%= message.user.username %></div>
+                <!-- displaying timestamp if difference between this and previous message is > 5 mins -->
+                <% if time_diff > 5 %>
+                    <div class="message-created_at font-italic"><%= message.created_at.strftime("%d-%m-%Y %I:%M%p") %></div>
+                <% end %>
+            </div>
         </div>
     </div>
 </div>
