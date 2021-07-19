@@ -14,3 +14,11 @@
  *= require_tree .
  *= require_self
  */
+
+.devise__form {
+  padding: 60px 0;
+
+  .choose-file-btn {
+    padding: 0.2rem 0.75rem 0.2rem 0.2rem;
+  }
+}
