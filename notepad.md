@@ -26,8 +26,11 @@
     5. update config/environments/test.rb:
         config.active_storage.service = :test
 
-### imagemagick install
+## imagemagick install
     run: sudo apt-get install imagemagick
+
+## to copy master.key contents to heroku
+    run: heroku config:set RAILS_MASTER_KEY=`cat config/master.key`
 
 ## bugs to fix:
     1. when an exchange happened in a conversation, sometimes clicking on another conversation and clicking back to the previous conversation, the previous conversation doesn't show the recent exchange
@@ -42,8 +45,10 @@
     5. if a user who participated in any conversation is deleted, app gets an error in displaying conversation partners
 
     6. when attempting to create or update a listing with validation errors; validation errors don't appear
+
+    7. No button to redirect to home when user is not signed in
     
 ## minor details to add:
-    1. channel broadcast when item's status is changed
+    1. add channel broadcast when item's status is changed
     2. deleting listing should prompt a verification modal
-    3. in conversation show page, add image avatar in conversation name
+    3. in conversation show page, add main item image in conversation name
