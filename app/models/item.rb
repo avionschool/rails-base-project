@@ -27,4 +27,10 @@ class Item < ApplicationRecord
   def image_count
     errors.add(:images, 'should be maximum of 5.') if images.count >= 5
   end
+
+  def image_filesize
+    images.each do |image|
+      errors.add(:images, 'file size should not exceed 1 MB!') if image.byte_size >= 1.megabyte
+    end
+  end
 end
