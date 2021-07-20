@@ -59,6 +59,11 @@ a,#title{
     text-decoration: none
 }
 
+#title{
+  font-size: 2.5rem;
+  font-family: 'Oswald', sans-serif;
+}
+
 .Package{
     width: 300px;
 }
@@ -229,6 +234,13 @@ a,#title{
   -webkit-text-stroke-color: black;
 }
 
+#carouselExampleIndicators{
+  width: 550px;
+}
+
+#newImage{
+  width: 550px;
+}
 
 .carousel-inner{
     background-position: center;
