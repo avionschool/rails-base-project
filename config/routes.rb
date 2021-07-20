@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       get :confirm_email
     end
   end
+
+  get 'users/:id/history' => 'users#history', as: 'user_history'
   
   root to: 'home#index'
   

@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def history
     @user = User.find(params[:id])
+    @history_items = @user.items.where(status: 'traded')
   end
 
   # def user_params
