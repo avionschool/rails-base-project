@@ -35,6 +35,17 @@ class User < ApplicationRecord
     save
   end
 
+  def history_items
+    a = items.where(status: 'traded')
+    a = a.to_ary
+    transacts = Transact.where(user2_id: id)
+    transacts = transacts.to_ary
+    transacts.to_ary.each do |t|
+      a << t.item
+    end
+    a
+  end
+
   private
 
   def avatar_filetype

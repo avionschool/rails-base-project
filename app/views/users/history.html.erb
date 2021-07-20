@@ -6,7 +6,7 @@
         <thead>
             <tr>
             <th scope="col">Item</th>
-            <th scope="col">Traded to</th>
+            <th scope="col">Trade partner</th>
             <th scope="col">Traded with</th>
             <th scope="col">Timestamp</th>
             </tr>
@@ -19,7 +19,11 @@
                         <%= link_to item.name, item_path(item) %>
                     </td>
                     <td>
-                        <% traded_to = User.find(item.transact.user2_id) %>
+                        <% if current_user == item.user %>
+                            <% traded_to = User.find(item.transact.user2_id) %>
+                        <% else %>
+                            <% traded_to = item.user %>
+                        <% end %>
                         <%= link_to traded_to.username, user_path(item.transact.user2_id) %>
                     </td>
                     <td><%= item.transact.traded_with %></td>
