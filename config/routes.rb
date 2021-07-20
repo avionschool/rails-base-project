@@ -21,5 +21,10 @@ Rails.application.routes.draw do
     resources :conversations do
         resources :messages
     end
+
+    resources :transact do
+        resources :reviews
+    end
   end
+
 end
