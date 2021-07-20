@@ -14,19 +14,18 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
 
     # check first if review already exists
-    if params[:user1_id] == nil                 # user1 is giving the review
-        review_check = Review.find_by(transact_id: params[:transact_id], user2_id: params[:review][:user2_id])
-        review_check.delete if review_check        
-    elsif params[:user2_id] == nil              # user2 is giving the review
-        review_check = Review.find_by(transact_id: params[:transact_id], user1_id: params[:review][:user1_id])
-        review_check.delete if review_check
+    if params[:user1_id].nil?                 # user1 is giving the review
+      review_check = Review.find_by(transact_id: params[:transact_id], user2_id: params[:review][:user2_id])
+      review_check&.delete
+    elsif params[:user2_id].nil?              # user2 is giving the review
+      review_check = Review.find_by(transact_id: params[:transact_id], user1_id: params[:review][:user1_id])
+      review_check&.delete
     end
     if @review.save
-        redirect_to root_path, notice: 'Review was submitted succesfully.' 
+      redirect_to root_path, notice: 'Review was submitted succesfully.'
     else
-        redirect_to request.referer, alert: 'Review failed to submit.'
+      redirect_to request.referer, alert: 'Review failed to submit.'
     end
-    
   end
 
   private
