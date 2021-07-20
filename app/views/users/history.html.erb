@@ -1,26 +1,31 @@
-<div>This is <%= current_user.username %>'s history page</div>
+<section class="homepage">
+  <div class="container">
+    <%= render 'home/sidebar' %>
+    
+    <table class="table table-striped table-responsive">
+        <thead>
+            <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Traded to</th>
+            <th scope="col">Traded with</th>
+            <th scope="col">Timestamp</th>
+            </tr>
+        </thead>
 
-<table class="table table-striped table-responsive">
-  <thead>
-    <tr>
-      <th scope="col">Item</th>
-      <th scope="col">Traded to</th>
-      <th scope="col">Traded with</th>
-      <th scope="col">Timestamp</th>
-    </tr>
-  </thead>
+        <tbody>
+            <% @history_items.each do |item| %>
+                <tr>
+                    <th scope="row"><%= item.name %></th>
+                    <td>
+                        <% traded_to = User.find(item.transact.user2_id) %>
+                        <%= link_to traded_to.username, user_path(item.transact.user2_id) %>
+                    </td>
+                    <td><%= item.transact.traded_with %></td>
+                    <td><%= item.transact.created_at.strftime("%d-%m-%Y %I:%M%p") %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
 
-  <tbody>
-    <% @history_items.each do |item| %>
-        <tr>
-            <th scope="row"><%= item.name %></th>
-            <td>
-                <% traded_to = User.find(item.transact.user2_id) %>
-                <%= link_to traded_to.username, user_path(item.transact.user2_id) %>
-            </td>
-            <td><%= item.transact.traded_with %></td>
-            <td><%= item.transact.created_at.strftime("%d-%m-%Y %I:%M%p") %></td>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
+  </div>
+</section>
