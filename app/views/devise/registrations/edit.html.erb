@@ -47,6 +47,12 @@
             <%= f.label :current_password %><br />
             <%= f.password_field :current_password, autocomplete: "current-password",placeholder:"Current Password",class:"form-control" %>
           </div>
+          <div class="pb-3">
+            <div class="actions">
+              <%= f.submit "Update",class:"btn btn-success w-80 font-weight-bold mt-4" %>
+            </div>
+          </div>
+
       </div>
     </div>
     <div class="col-sm" id="DisplayProfile">
@@ -72,15 +78,16 @@
        </div>
     </div>
   </div>
+  <% end %>
+    <div class="row">
+      <div class="pb-3">
+        <div class="actions">
+          <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger w-80" %></p>
+        </div>
+      </div>
+    </div>
 </div>
-<div class="px-5 pb-3">
-  <div class="actions">
-    <%= f.submit "Update",class:"btn btn-success w-80 font-weight-bold mt-4 mx-2" %>
-  </div>
-</div>
-<% end %>
-<div class="px-5 pb-3">
-  <div class="actions">
-    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger w-80" %></p>
-  </div>
-</div>
+
+
+
+
