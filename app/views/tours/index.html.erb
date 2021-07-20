@@ -16,7 +16,7 @@
 <% @tours.each do |tour|%>
   <div class="card m-3" style="width: 20rem;">
     <% if tour.images.attached?%>
-            <img class="card-img-top" src="<%=(url_for(tour.images.first))%>" alt="...">
+            <img class="card-img-top" id="cardImage" src="<%=(url_for(tour.images.first))%>" alt="...">
     <%end%>
     <div class="card-body">
         <h4 class="card-title">Name: <%= tour.name%></h4>
