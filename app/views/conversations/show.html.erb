@@ -31,25 +31,21 @@
             <div class="item-status-update d-flex justify-content-around">
                 <% disabled = @conversation.item.status == 'traded' %>
 
-                <% if @conversation.item.status != 'reserved'%>
-                    <%= form_with scope: :item, method: :patch, url: item_path(@conversation.item), local: true do |f| %>
-                        <%= f.hidden_field :status, value: "reserved" %>
-                        <%= f.submit "Mark as Reserved", disabled: disabled, class: "btn btn-primary" %>
-                    <% end %>
+                <% if @conversation.item.status == 'traded' %>
+                    <button type="button" class="btn btn-success ml-1 mr-1">Rate <%= convo_partner.username %></button>
                 <% else %>
-                    <%= form_with scope: :item, method: :patch, url: item_path(@conversation.item), local: true do |f| %>
-                        <%= f.hidden_field :status, value: "open" %>
-                        <%= f.submit "Mark as Open", disabled: disabled, class: "btn btn-primary" %>
+                    <% if @conversation.item.status != 'reserved'%>
+                        <%= form_with scope: :item, method: :patch, url: item_path(@conversation.item), local: true do |f| %>
+                            <%= f.hidden_field :status, value: "reserved" %>
+                            <%= f.submit "Mark as Reserved", disabled: disabled, class: "btn btn-primary ml-1 mr-1" %>
+                        <% end %>
+                    <% else %>
+                        <%= form_with scope: :item, method: :patch, url: item_path(@conversation.item), local: true do |f| %>
+                            <%= f.hidden_field :status, value: "open" %>
+                            <%= f.submit "Mark as Open", disabled: disabled, class: "btn btn-primary ml-1 mr-1" %>
+                        <% end %>
                     <% end %>
-                <% end %>
-
-                <% if @conversation.item.status != 'traded' %>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Mark as Traded</button>
-                <% else %>
-                    <%= form_with scope: :item, method: :patch, url: item_path(@conversation.item), local: true do |f| %>
-                        <%= f.hidden_field :status, value: "open" %>
-                        <%= f.submit "Unmark as Traded", class: "btn btn-primary" %>
-                    <% end %>
+                    <button type="button" class="btn btn-primary ml-1 mr-1" data-toggle="modal" data-target="#staticBackdrop">Mark as Traded</button>
                 <% end %>
 
                 <!-- change item status to traded verification modal -->

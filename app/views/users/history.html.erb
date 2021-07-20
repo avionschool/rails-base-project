@@ -15,7 +15,9 @@
         <tbody>
             <% @history_items.each do |item| %>
                 <tr>
-                    <th scope="row"><%= item.name %></th>
+                    <td scope="row">
+                        <%= link_to item.name, item_path(item) %>
+                    </td>
                     <td>
                         <% traded_to = User.find(item.transact.user2_id) %>
                         <%= link_to traded_to.username, user_path(item.transact.user2_id) %>
