@@ -28,7 +28,7 @@
               </li>
             </ul>
           </nav>
-          <div class="ui feed message-container" id="message-container-<%=@room.try(:id)%>">
+          <div class="ui feed message-container " id="message-container-<%=@room.try(:id)%>">
             <%  @room.messages.each do |message|%>
                 <%=render 'messages/message', message: message%>
             <%end%>
