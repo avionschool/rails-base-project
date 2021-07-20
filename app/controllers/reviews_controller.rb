@@ -6,6 +6,6 @@ class ReviewsController < ApplicationController
     private
 
     def conversation_params
-      params.require(:review).permit(:poster_id, :commenter_id, :user2_id)
+      params.require(:review).permit(:transact_id, :user1_id, :user2_id, :user1_score, :user2_score, :description)
     end
 end
