@@ -20,65 +20,64 @@
 
       <div class="d-flex justify-content-between align-items-center mb-2 mt-2">
         <div>
-          <span><%= @conversation.item.name %></span>
-          <span class="convo_partner"><%= convo_partner.username %></span>
+          <span><%= link_to @conversation.item.name, item_path(@conversation.item) %></span>
+          <span class="convo_partner"><%= link_to convo_partner.username, user_path(convo_partner) %></span>
           <% status = @conversation.item.status == 'open' ? '' : "(" + @conversation.item.status.capitalize + ")"%>
           <span class="status font-italic text-warning"><%= status %></span>
         </div>
 
         <!-- only item owner can change item's status -->
-        
-            <div class="item-status-update d-flex justify-content-around">
-                <% disabled = @conversation.item.status == 'traded' %>
+        <div class="item-status-update d-flex justify-content-around">
+            <% disabled = @conversation.item.status == 'traded' %>
 
-                <% if @conversation.item.status == 'traded' %>
-                    <button type="button" class="btn btn-success ml-1 mr-1">Rate <%= convo_partner.username %></button>
-                <% end %>
+            <% if @conversation.item.status == 'traded' %>
+                <button type="button" class="btn btn-success ml-1 mr-1">Rate <%= convo_partner.username %></button>
+            <% end %>
 
-                <% if @conversation.item.user == current_user %>
-                    <% if @conversation.item.status != 'traded' %>
-                        <% if @conversation.item.status != 'reserved' %>
-                            <%= form_with scope: :item, method: :patch, url: item_path(@conversation.item), local: true do |f| %>
-                                <%= f.hidden_field :status, value: "reserved" %>
-                                <%= f.submit "Mark as Reserved", disabled: disabled, class: "btn btn-primary ml-1 mr-1" %>
-                            <% end %>
-                        <% else %>
-                            <%= form_with scope: :item, method: :patch, url: item_path(@conversation.item), local: true do |f| %>
-                                <%= f.hidden_field :status, value: "open" %>
-                                <%= f.submit "Mark as Open", disabled: disabled, class: "btn btn-primary ml-1 mr-1" %>
-                            <% end %>
+            <% if @conversation.item.user == current_user %>
+                <% if @conversation.item.status != 'traded' %>
+                    <% if @conversation.item.status != 'reserved' %>
+                        <%= form_with scope: :item, method: :patch, url: item_path(@conversation.item), local: true do |f| %>
+                            <%= f.hidden_field :status, value: "reserved" %>
+                            <%= f.submit "Mark as Reserved", disabled: disabled, class: "btn btn-primary ml-1 mr-1" %>
                         <% end %>
-                        <button type="button" class="btn btn-primary ml-1 mr-1" data-toggle="modal" data-target="#staticBackdrop">Mark as Traded</button>
+                    <% else %>
+                        <%= form_with scope: :item, method: :patch, url: item_path(@conversation.item), local: true do |f| %>
+                            <%= f.hidden_field :status, value: "open" %>
+                            <%= f.submit "Mark as Open", disabled: disabled, class: "btn btn-primary ml-1 mr-1" %>
+                        <% end %>
                     <% end %>
+                    <button type="button" class="btn btn-primary ml-1 mr-1" data-toggle="modal" data-target="#staticBackdrop">Mark as Traded</button>
                 <% end %>
+            <% end %>
 
-                <!-- change item status to traded verification modal -->
-                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Mark item as Traded</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div>Please verify that you wish to change this item's status to Traded.</div>
-                                <div class="text-danger">Note: Once confirmed, you will not be able to edit it afterwards.</div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <!-- when item is marked as traded, a transaction instance is created -->
-                                <%= form_for @conversation.item do |f| %>
-                                    <%= f.hidden_field :status, value: "traded" %>
-                                    <%= f.hidden_field :buyer_id, value: convo_partner.id %>
-                                    <%= f.submit "Proceed, mark as Traded", class: "btn btn-primary" %>
-                                <% end %> 
-                            </div>
+            <!-- change item status to traded verification modal -->
+            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Mark item as Traded</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>Please verify that you wish to change this item's status to Traded.</div>
+                            <div class="text-danger">Note: Once confirmed, you will not be able to edit it afterwards.</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <!-- when item is marked as traded, a transaction instance is created -->
+                            <%= form_for @conversation.item do |f| %>
+                                <%= f.hidden_field :status, value: "traded" %>
+                                <%= f.hidden_field :buyer_id, value: convo_partner.id %>
+                                <%= f.submit "Proceed, mark as Traded", class: "btn btn-primary" %>
+                            <% end %> 
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
       </div> 
 
       <div class="messages-container mb-2 rounded-lg" id="messages-container">
