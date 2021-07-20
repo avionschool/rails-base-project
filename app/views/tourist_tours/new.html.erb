@@ -1,35 +1,60 @@
-<br/><br/><br/><br/>
+<br/><br/><br/><br/><br/>
 <div class="card mb-3">
 <h1 id="title" class="text-center"> <%=@tour.name%> </h1>
   <div class="container">
     <div class="row">
-      <div class="col">
-        <% if @tour.images.attached?%>
-            <%@tour.images.each do |image|%>
-                <img class="img-fluid card-img-top" id="newImage"  src="<%=(url_for(image))%>" alt="...">
-            <%end%>
-        <%end%>
+      <div class="col d-flex justify-content-center align-items-center">
+        <div id="carouselExampleIndicators" class="carousel slide border border-dark border border-3 mt-3" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                <% if @tour.images.attached?%>
+                        <%@tour.images.each do |image|%>
+                    <div class="carousel-item active">
+                    <img class="img-fluid d-block w-100" src="<%=(url_for(image))%>" alt="...">
+                    </div>
+                        <%end%>
+                    <%end%>
+                    <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=793&q=80" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
       </div>
       <div class="col">
         <%= form_with url: checkouts_path, local: false, remote: true do |f|%>
           <div>
-            <%= f.label :guest_quantity%> <br>
-            <%= f.number_field :quantity, id: 'guest_quantity'%>
+            <%= f.label :guest_quantity, id:"formId" %> <br>
+            <%= f.number_field :quantity, id: 'guest_quantity', class:"form-control"%>
           </div>
           
           <div>
-            <%= f.label 'Total Price'%> <br>
-            <%= f.number_field :amount, readonly: true, id: 'total_price', min: 1%>
+            <%= f.label 'Total Price', id:"formId" %> <br>
+            <%= f.number_field :amount, readonly: true, id: 'total_price',class:"form-control", min: 1%>
           </div>
 
           <div>
-            <%= f.label :start_date%> <br>
-            <%= f.date_field :start_date, id: 'start-date'%>
+            <%= f.label :start_date, id:"formId" %> <br>
+            <%= f.date_field :start_date, id: 'start-date',class:"form-control"%>
           </div>
 
           <div>
-            <%= f.label :end_date%> <br>
-            <%= f.date_field :end_date, readonly: true, id: 'end-date'%>
+            <%= f.label :end_date, id:"formId" %> <br>
+            <%= f.date_field :end_date, readonly: true, id: 'end-date',class:"form-control"%>
           </div>
 
           <%= f.hidden_field :tour_id, value: @tour.id%>
@@ -40,7 +65,7 @@
   </div>
   <div class="card-body">
     <div class="container-sm"> 
-      <h2> <%=@tour.location%> </h2>
+      <h2>Location: <%=@tour.location%> </h2>
       <h3 id = tour-price data-price = <%=@tour.price%> >Price: <%=@tour.price%></h3>
       <h3 id = tour-duration data-duration = <%=@tour.duration%>>Duration: <%=@tour.duration%> day/s</h3>
       <h3>Details:</h3>
