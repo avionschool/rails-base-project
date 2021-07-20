@@ -1,0 +1,93 @@
+<br/><br/>
+<div class="container ">
+    <div class="main-body border border-info rounded mt-5">
+          <div class="row gutters-sm">
+          <%if @agency.cover_pic.attached?%>
+            <img src="<%=(url_for(@agency.cover_pic))%>" alt="" id="cover">
+          <%else%>
+            <img src="https://newevolutiondesigns.com/images/freebies/green-facebook-cover-10.jpg" alt="" id="cover" />
+          <%end%>
+            <div class="col-md-4 mb-3"><br/>
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <%if @agency.profile_pic.attached?%>
+                        <img src="<%=(url_for(@agency.profile_pic))%>" class="rounded-circle" width="150" height="150" alt=""> 
+                    <%else%>
+                      <img src="http://www.pngall.com/wp-content/uploads/5/Profile-Male-PNG-Free-Download.png" class="rounded-circle" width="150" height="150" alt="" />
+                    <%end%>
+                    <div class="mt-3">
+                      <h4><%= @agency.agency_name%></h4>
+                      <p class="text-secondary mb-1">Agency</p>
+                        <% if agency_signed_in?%>
+                        <%= button_to 'Edit Profile', edit_agency_registration_path,class:"btn btn-info ", method: :get%>
+                        <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card mb-3"><br/>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%= @agency.agency_name%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%= @agency.email%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%= @agency.address%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Packages Created</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%= @agency.tours.count%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Rating</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%#= @agency.address%> Very Good
+                    </div>
+                  </div>
+                  <% if @agency.verified_by %>
+                  <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Verified By:</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        <%= Admin.find(@agency.verified_by).email%>
+                      </div>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>

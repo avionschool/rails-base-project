@@ -1,0 +1,35 @@
+<br/><br/><br/><br/>
+<% if @tours.count == 0 %>
+
+<div class="d-flex justify-content-center" id="cont">
+    <%= image_tag("journey-animate.svg")%>
+    <img src="journey-animate.svg" height="200" alt="" />
+</div>
+
+<div class="d-flex justify-content-center">
+<%= link_to 'Create Tour', new_tour_path, class:"h1 text-secondary"%>
+</div>
+
+<%else%>
+<br/><br/>
+<div class="d-flex justify-content-center flex-wrap">
+<% @tours.each do |tour|%>
+  <div class="card m-3" style="width: 20rem;">
+    <% if tour.images.attached?%>
+            <img class="card-img-top" src="<%=(url_for(tour.images.first))%>" alt="...">
+    <%end%>
+    <div class="card-body">
+        <h4 class="card-title">Name: <%= tour.name%></h4>
+        <h6 class="card-text">Price: <%= tour.price%></h6>
+        <h6 class="card-text">Location: <%= tour.location%></h6>
+        <%if tourist_signed_in?%>
+            <%= link_to 'Show Package', tour_path(tour.id),class:"btn btn-primary"%>
+        <%else%>
+            <%= link_to 'Show', tour_path(tour),class:"btn btn-primary"%>
+        <%end%>
+    </div>
+   </div>
+<%end%>
+</div>
+
+<%end%>

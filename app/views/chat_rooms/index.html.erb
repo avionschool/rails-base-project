@@ -1,0 +1,42 @@
+<br/><br/><br/><br/>
+<div id="room-id" data-room-id=<%= @room.try(:id)%>></div>
+<div id="user-id" data-user-id=<%= current_user.id%>></div>
+<div class="container border border-dark border border-4">
+  <div class="row">
+    <div id="availChats" class="col-3">
+    <p id="chatTitle">Hello, <%=current_user&.first_name%></p>
+      <% @rooms.each do |room| %>
+        <%= link_to room do%>
+          <div class="card border border-info">
+            <div class="d-flex justify-content-start align-items-center p-2">
+              <%if room.chat_mate(current_user).profile_pic.attached?%>
+                  <img src="<%=(url_for(room.chat_mate(current_user).profile_pic))%>" height="35" alt=""> 
+              <%end%>
+              <h1 id="chatPrimaryName"><%=room.chat_mate(current_user).username%></h1>
+            </div>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
+    <div class="col-9 border border-success">
+      <% if @room.present?%>
+        <div class="chat-room">
+          <nav class="navbar navbar-light bg-light" >
+            <ul class="navbar-nav">
+              <li class="nav-item" id="chatPrimaryTitle">
+                <%=@room.chat_mate(current_user).username%>
+              </li>
+            </ul>
+          </nav>
+          <div class="ui feed message-container " id="message-container-<%=@room.try(:id)%>">
+            <%  @room.messages.each do |message|%>
+                <%=render 'messages/message', message: message%>
+            <%end%>
+          </div>
+          <div class="chatbox">
+            <%= render 'messages/form', message: Message.new, room: @room %>
+          </div>
+        </div>    
+      <%end%>
+    </div>
+</div>
