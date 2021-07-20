@@ -4,54 +4,73 @@
 
 <section class="homepage">
   <div class="conversation-container container">
-    
-    <% if @conversation.item != nil %>
+    <% item = @conversation.item %>
+    <% if item != nil %>
       <div id="conversation-id" data-conversation-id="<%= @conversation.try(:id) %>"></div>
       <div id="user-id" data-user-id="<%= current_user.id %>"></div>
 
       <!-- getting username of current_user's conversation partner -->
-      <% if @conversation.item.user == current_user && current_user.id == @conversation.user2_id %>
+      <% if item.user == current_user && current_user.id == @conversation.user2_id %>
         <span><% convo_partner = User.find(@conversation.user1_id) %></span>
-      <% elsif @conversation.item.user == current_user && current_user.id == @conversation.user1_id %>
+      <% elsif item.user == current_user && current_user.id == @conversation.user1_id %>
         <span><% convo_partner = User.find(@conversation.user2_id) %></span>  
       <% else %>
-        <span><% convo_partner = @conversation.item.user %></span>  
+        <span><% convo_partner = item.user %></span>  
       <% end %>
 
       <div class="d-flex justify-content-between align-items-center mb-2 mt-2">
         <div>
-          <span><%= @conversation.item.name %></span>
-          <span class="convo_partner"><%= convo_partner.username %></span>
-          <% status = @conversation.item.status == 'open' ? '' : "(" + @conversation.item.status.capitalize + ")"%>
+          <span><%= link_to item.name, item_path(item) %></span>
+          <span class="convo_partner"><%= link_to convo_partner.username, user_path(convo_partner) %></span>
+          <% status = item.status == 'open' ? '' : "(" + item.status.capitalize + ")"%>
           <span class="status font-italic text-warning"><%= status %></span>
         </div>
 
         <!-- only item owner can change item's status -->
-        <% if @conversation.item.user == current_user %>
-            <div class="item-status-update d-flex justify-content-around">
-                <% disabled = @conversation.item.status == 'traded' %>
+        <div class="item-status-update d-flex justify-content-around">
+            <% disabled = item.status == 'traded' %>
 
-                <% if @conversation.item.status == 'traded' %>
-                    <button type="button" class="btn btn-success ml-1 mr-1">Rate <%= convo_partner.username %></button>
-                <% else %>
-                    <% if @conversation.item.status != 'reserved'%>
-                        <%= form_with scope: :item, method: :patch, url: item_path(@conversation.item), local: true do |f| %>
+            <% if item.status == 'traded' && %>
+                <!-- rate button will only appear to 'seller' and 'buyer' -->
+                <% if (current_user == item.user && item.transact.user2_id == convo_partner.id) || current_user.id == item.transact.user2_id %>
+                    <% buyer_review = Review.find_by(transact_id: item.transact.id, user2_id: item.transact.user2_id) %>
+                    <% seller_review = Review.find_by(transact_id: item.transact.id, user1_id: item.user.id) %>
+
+                    <!-- if other party is rated, disable rate button -->
+                    <% if current_user == item.user && !(buyer_review.nil?) %>
+                        <% disabled = "disabled" %>
+                    <% elsif current_user.id == item.transact.user2_id && !(seller_review.nil?) %>
+                        <% disabled = "disabled" %>
+                    <% else %>
+                        <% disabled = "" %>
+                    <% end %>
+    
+                    <%= link_to "Rate " + convo_partner.username, new_item_transact_review_path(item, item.transact), class: "btn btn-success ml-1 mr-1 " + disabled %>
+                    
+                <% end %>
+            <% end %>
+
+            <% if item.user == current_user %>
+                <% if item.status != 'traded' %>
+                    <% if item.status != 'reserved' %>
+                        <%= form_with scope: :item, method: :patch, url: item_path(item), local: true do |f| %>
                             <%= f.hidden_field :status, value: "reserved" %>
                             <%= f.submit "Mark as Reserved", disabled: disabled, class: "btn btn-primary ml-1 mr-1" %>
                         <% end %>
                     <% else %>
-                        <%= form_with scope: :item, method: :patch, url: item_path(@conversation.item), local: true do |f| %>
+                        <%= form_with scope: :item, method: :patch, url: item_path(item), local: true do |f| %>
                             <%= f.hidden_field :status, value: "open" %>
                             <%= f.submit "Mark as Open", disabled: disabled, class: "btn btn-primary ml-1 mr-1" %>
                         <% end %>
                     <% end %>
                     <button type="button" class="btn btn-primary ml-1 mr-1" data-toggle="modal" data-target="#staticBackdrop">Mark as Traded</button>
                 <% end %>
+            <% end %>
 
-                <!-- change item status to traded verification modal -->
-                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
+            <!-- change item status to traded verification modal -->
+            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="staticBackdropLabel">Mark item as Traded</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -65,18 +84,16 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             <!-- when item is marked as traded, a transaction instance is created -->
-                            <%= form_for @conversation.item do |f| %>
+                            <%= form_for item do |f| %>
                                 <%= f.hidden_field :status, value: "traded" %>
                                 <%= f.hidden_field :buyer_id, value: convo_partner.id %>
                                 <%= f.submit "Proceed, mark as Traded", class: "btn btn-primary" %>
-                            <% end %>
-                            
-                        </div>
+                            <% end %> 
                         </div>
                     </div>
                 </div>
             </div>
-        <% end %>
+        </div>
       </div> 
 
       <div class="messages-container mb-2 rounded-lg" id="messages-container">

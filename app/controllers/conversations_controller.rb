@@ -1,11 +1,11 @@
 class ConversationsController < ApplicationController
   def index
-    @conversations = current_user.conversations if user_signed_in?
+    @conversations = current_user.conversations
   end
 
   def show
     @conversation = Conversation.find(params[:id])
-    @conversations = current_user.conversations if user_signed_in?
+    @conversations = current_user.conversations
   end
 
   def new
