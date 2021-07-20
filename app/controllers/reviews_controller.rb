@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    @conversations = current_user.conversations if user_signed_in?
+    @conversations = current_user.conversations
     @item = Item.find(params[:item_id])
     @user1 = @item.user                             # user1 is the item owner ('seller')
     @transact = Transact.find(params[:transact_id])
@@ -22,6 +22,7 @@ class ReviewsController < ApplicationController
       review_check&.delete
     end
     if @review.save
+      # update user ave_rating
       redirect_to root_path, notice: 'Review was submitted succesfully.'
     else
       redirect_to request.referer, alert: 'Review failed to submit.'
