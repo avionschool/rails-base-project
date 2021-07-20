@@ -1,22 +1,16 @@
-<br/>
+<br/><br/><br/><br/>
 <div class="card mb-3">
-<h1> <%=@tour.name%> </h1>
-    <% if @tour.images.attached?%>
-        <%@tour.images.each do |image|%>
-            <img class="img-fluid card-img-top"   src="<%=(url_for(image))%>" alt="...">
-         <%end%>
-    <%end%>
-  <div class="card-body">
-    <div class="d-flex justify-content-evenly">
-      <div class="container-sm"> 
-        <h2> <%=@tour.location%> </h2>
-        <h3 id = tour-price data-price = <%=@tour.price%> >Price: <%=@tour.price%></h3>
-        <h3 id = tour-duration data-duration = <%=@tour.duration%>>Duration: <%=@tour.duration%> day/s</h3>
-        <h3>Details:</h3>
-        <p><%=@tour.details%></p>
+<h1 id="title" class="text-center"> <%=@tour.name%> </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <% if @tour.images.attached?%>
+            <%@tour.images.each do |image|%>
+                <img class="img-fluid card-img-top" id="newImage"  src="<%=(url_for(image))%>" alt="...">
+            <%end%>
+        <%end%>
       </div>
-
-      <div>
+      <div class="col">
         <%= form_with url: checkouts_path, local: false, remote: true do |f|%>
           <div>
             <%= f.label :guest_quantity%> <br>
@@ -39,9 +33,18 @@
           </div>
 
           <%= f.hidden_field :tour_id, value: @tour.id%>
-          <%= f.submit 'Avail'%>
+          <%= f.submit 'Avail', class:"btn btn-success mt-3"%>
         <%end%>
       </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="container-sm"> 
+      <h2> <%=@tour.location%> </h2>
+      <h3 id = tour-price data-price = <%=@tour.price%> >Price: <%=@tour.price%></h3>
+      <h3 id = tour-duration data-duration = <%=@tour.duration%>>Duration: <%=@tour.duration%> day/s</h3>
+      <h3>Details:</h3>
+      <p><%=@tour.details%></p>
     </div>
   </div>
 </div>

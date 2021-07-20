@@ -59,6 +59,11 @@ a,#title{
     text-decoration: none
 }
 
+#title{
+  font-size: 2.5rem;
+  font-family: 'Oswald', sans-serif;
+}
+
 .Package{
     width: 300px;
 }
@@ -88,7 +93,14 @@ a,#title{
   object-fit: cover
 } */
 
+#info {
+  transition-duration: 0.4s;
+}
 
+#info:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
 
 #ProfilePic{
     width:150px; 
@@ -222,6 +234,13 @@ a,#title{
   -webkit-text-stroke-color: black;
 }
 
+#carouselExampleIndicators{
+  width: 550px;
+}
+
+#newImage{
+  width: 550px;
+}
 
 .carousel-inner{
     background-position: center;

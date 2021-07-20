@@ -1,49 +1,63 @@
-<br/><br/><br/><br/>
+<br/><br/><br/><br/>    
 <div class="card text-left">
-    <div class="card-header d-flex justify-content-between"><h1><%=@tour.name%></h1>
-    <%= link_to 'Edit', edit_tour_path, class:"nav-link"%>
-    </div>
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-    <% if @tour.images.attached?%>
-            <%@tour.images.each do |image|%>
-        <div class="carousel-item active">
-        <img class="img-fluid d-block w-100" src="<%=(url_for(image))%>" alt="...">
-        </div>
-            <%end%>
+    <div class="card-header d-flex justify-content-around align-items-center">
+        <h1 id="title"><%=@tour.name%></h1>
+        <%if user_signed_in? && current_user&.type == 'Agency' %>
+        <%= link_to 'Edit', edit_tour_path, class:"btn btn-info"%>
+        <%elsif user_signed_in? && current_user&.type == 'Tourist'%>
+             <div class="d-flex justify-content-center m-2">
+                <%if user_signed_in? && current_user&.type != 'Agency' %>
+                <%=link_to chat_user_path(user_id: "#{@tour.agency.id}"), method: :post  ,class: 'btn btn-primary me-4' do%>
+                    <i class="fab fa-facebook-messenger"></i> Message Me
+                <%end%> 
+                <%=link_to ' Avail', new_tourist_tour_path(@tour),class: 'btn btn-primary'%>  
+                <%end%>
+            </div>
         <%end%>
-        <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=793&q=80" class="d-block w-100" alt="...">
+    </div>
+    <div class="container">
+        <div class="row">
+        <div class="col d-flex justify-content-center align-items-center">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                <% if @tour.images.attached?%>
+                        <%@tour.images.each do |image|%>
+                    <div class="carousel-item active">
+                    <img class="img-fluid d-block w-100" src="<%=(url_for(image))%>" alt="...">
+                    </div>
+                        <%end%>
+                    <%end%>
+                    <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=793&q=80" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>  
+        <div class="col">
+            <div class="card-body">
+                <h2>Location: <%=@tour.location%></h2>
+                <h3>Price: <%=@tour.price%> </h3>
+                <h3>Duration: <%=@tour.duration%></h3>
+                <h3>Details:</h3>
+                <p><%=@tour.details%></p>
+            </div>
         </div>
-        <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="d-block w-100" alt="...">
         </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-    </div>
-    <div class="card-body">
-    <h2>Location: <%=@tour.location%></h2>
-    <h3>Price: <%=@tour.price%> </h3>
-    <h3>Duration: <%=@tour.duration%></h3>
-    <h3>Details:</h3>
-    <p><%=@tour.details%></p>
-    </div>
-    <%if user_signed_in? && current_user&.type != 'Agency' %>
-    <%=link_to chat_user_path(user_id: "#{@tour.agency.id}"), method: :post  ,class: 'btn btn-primary' do%>
-        <i class="fab fa-facebook-messenger"></i>Message Me
-      <%end%> 
-    <%=link_to 'Avail', new_tourist_tour_path(@tour),class: 'btn btn-primary'%>
-    <%end%>
+     </div>   
 </div>
