@@ -47,5 +47,6 @@
     <%=link_to chat_user_path(user_id: "#{@tour.agency.id}"), method: :post  ,class: 'btn btn-primary' do%>
         <i class="fab fa-facebook-messenger"></i>Message Me
       <%end%> 
+    <%=link_to 'Avail', new_tourist_tour_path(@tour),class: 'btn btn-primary'%>
     <%end%>
 </div>

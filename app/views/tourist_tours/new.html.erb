@@ -17,15 +17,15 @@
       </div>
 
       <div>
-        <%= form_with scope: :tourist_tour, url: tourist_tours_path, local: true do |f|%>
+        <%= form_with url: checkouts_path, local: false, remote: true do |f|%>
           <div>
             <%= f.label :guest_quantity%> <br>
-            <%= f.number_field :guest_quantity, id: 'guest_quantity'%>
+            <%= f.number_field :quantity, id: 'guest_quantity'%>
           </div>
           
           <div>
             <%= f.label 'Total Price'%> <br>
-            <%= f.number_field :amount_bought, readonly: true, id: 'total_price', min: 1%>
+            <%= f.number_field :amount, readonly: true, id: 'total_price', min: 1%>
           </div>
 
           <div>
