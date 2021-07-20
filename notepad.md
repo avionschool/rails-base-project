@@ -42,19 +42,16 @@
 
     4. if a user who participated in any conversation is deleted, app gets an error in displaying conversation partners
 
-    5. if a user who participated in any conversation is deleted, app gets an error in displaying conversation partners
+    5. when attempting to create or update a listing with validation errors; validation errors don't appear
 
-    6. when attempting to create or update a listing with validation errors; validation errors don't appear
-
-    7. No button to redirect to home when user is not signed in
+    6. No button to redirect to home when user is not signed in
     
-    8. Chat avatar is late to appear when a message is sent
+    7. Chat avatar is late to appear when a message is sent
 
-    9. (not a bug) create and delete of transaction is kinda hacky; can't make nested forms work so resorted to the workaround for now
+    8. (not a bug) create and delete of transaction is kinda hacky; can't make nested forms work so resorted to the workaround for now
 
-    10. item should appear in the history of both user1 and user2. currently, it only appear in user1's history
+    9. item should appear in the history of both user1 and user2. currently, it only appear in user1's history
 
-    11. when a review is created, rate button should be disabled; make sure reviews is 1:1 for buyers and sellers
 ## minor details to add:
     1. add channel broadcast when item's status is changed
     2. deleting listing should prompt a verification modal
