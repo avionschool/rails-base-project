@@ -33,8 +33,8 @@
             <% if item.status == 'traded' && %>
                 <!-- rate button will only appear to 'seller' and 'buyer' -->
                 <% if (current_user == item.user && item.transact.user2_id == convo_partner.id) || current_user.id == item.transact.user2_id %>
-                    <% buyer_review = Review.find_by(user2_id: item.transact.user2_id) %>
-                    <% seller_review = Review.find_by(user1_id: item.user.id) %>
+                    <% buyer_review = Review.find_by(transact_id: item.transact.id, user2_id: item.transact.user2_id) %>
+                    <% seller_review = Review.find_by(transact_id: item.transact.id, user1_id: item.user.id) %>
 
                     <!-- if other party is rated, disable rate button -->
                     <% if current_user == item.user && !(buyer_review.nil?) %>
