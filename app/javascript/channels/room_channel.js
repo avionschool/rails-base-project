@@ -1,5 +1,13 @@
 import consumer from "./consumer"
 
+const scroll_bottom = function () {
+  if ($('.message-container').length > 0) {
+      $('.message-container').scrollTop($('.message-container')[0].scrollHeight)
+  }
+}
+const clear_input = function () {
+  $('#message_body').val('')
+}
 document.addEventListener('turbolinks:load', () => {
   const room_id = $('#room-id').attr('data-room-id');
   consumer.subscriptions.create({ channel: "RoomChannel", room_id: room_id }, {
@@ -26,6 +34,8 @@ document.addEventListener('turbolinks:load', () => {
       }
       if (room_id == data.message.chat_room_id) {
         $(`#message-container-${data.message.chat_room_id}`).append(html);
+        scroll_bottom();
+        clear_input();
       }
       
     }
