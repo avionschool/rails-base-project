@@ -55,5 +55,5 @@
     1. add channel broadcast when item's status is changed
     2. deleting listing should prompt a verification modal
     3. in conversation show page, add main item image in conversation name
-    4. add image carousel for item images
-    5. entire conversation history between 2 users should not be loaded all at once when visiting a conversation show page
+    4. entire conversation history between 2 users should not be loaded all at once when visiting a conversation show page
+    5. in user's profile page, items should be grouped in terms of status
