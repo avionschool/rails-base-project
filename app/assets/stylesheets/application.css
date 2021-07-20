@@ -234,7 +234,7 @@ a,#title{
   -webkit-text-stroke-color: black;
 }
 
-#carouselExampleIndicators{
+#newImage{
   width: 550px;
 }
 
@@ -253,6 +253,16 @@ a,#title{
     max-width:100%;
 }
 
+#cardBody{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+#formId{
+  font-size: 1.3rem;
+  padding-top: 10px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
 /* PARALLAX */
 
 #parallax {

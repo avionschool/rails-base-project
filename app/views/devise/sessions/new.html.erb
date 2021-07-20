@@ -13,11 +13,11 @@
     </div>
     <div class="col-md-6 bg-white p-5">
       <% if current_page?(new_tourist_session_path) %>
-          <h3 class="pb-3">Tourist Login</h3>
+          <h3 class="pb-3" id="title">Tourist Login</h3>
       <% elsif current_page?( new_agency_session_path) %>
-          <h3 class="pb-3">Agency Login</h3>
+          <h3 class="pb-3" id="title">Agency Login</h3>
       <% elsif current_page?( new_admin_session_path) %>
-        <h3 class="pb-3">Admin Login</h3>
+        <h3 class="pb-3" id="title">Admin Login</h3>
       <%end %>
     <div class="form-style">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
