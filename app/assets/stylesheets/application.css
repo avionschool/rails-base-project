@@ -286,6 +286,11 @@ a,#title{
     max-width:100%;
 }
 
+#cardImage{
+  width: 300px;
+  height: 200px;
+}
+
 #cardBody{
   font-family: 'Roboto Condensed', sans-serif;
 }
