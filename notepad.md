@@ -51,6 +51,8 @@
     8. Chat avatar is late to appear when a message is sent
 
     9. (not a bug) create and delete of transaction is kinda hacky; can't make nested forms work so resorted to the workaround for now
+
+    10. item should appear in the history of both user1 and user2. currently, it only appear in user1's history
 ## minor details to add:
     1. add channel broadcast when item's status is changed
     2. deleting listing should prompt a verification modal
