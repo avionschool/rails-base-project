@@ -31,9 +31,22 @@
             <% disabled = item.status == 'traded' %>
 
             <% if item.status == 'traded' && %>
-                <!-- rate button will only appear to 'buyer' and 'seller' -->
+                <!-- rate button will only appear to 'seller' and 'buyer' -->
                 <% if (current_user == item.user && item.transact.user2_id == convo_partner.id) || current_user.id == item.transact.user2_id %>
-                    <%= link_to "Rate " + convo_partner.username, new_item_transact_review_path(item, item.transact), class: "btn btn-success ml-1 mr-1" %>
+                    <% buyer_review = Review.find_by(user2_id: item.transact.user2_id) %>
+                    <% seller_review = Review.find_by(user1_id: item.user.id) %>
+
+                    <!-- if other party is rated, disable rate button -->
+                    <% if current_user == item.user && !(buyer_review.nil?) %>
+                        <% disabled = "disabled" %>
+                    <% elsif current_user.id == item.transact.user2_id && !(seller_review.nil?) %>
+                        <% disabled = "disabled" %>
+                    <% else %>
+                        <% disabled = "" %>
+                    <% end %>
+    
+                    <%= link_to "Rate " + convo_partner.username, new_item_transact_review_path(item, item.transact), class: "btn btn-success ml-1 mr-1 " + disabled %>
+                    
                 <% end %>
             <% end %>
 
