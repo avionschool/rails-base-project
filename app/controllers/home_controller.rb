@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!
-  before_action :redirect
+  # before_action :authenticate_user!
+  # before_action :redirect
   def index; end
 
   private
