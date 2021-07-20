@@ -12,25 +12,19 @@
 
     <ul class="nav-items-container nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a href="#" class="nav-link active" aria-current="page">
-                Dashboard
-            </a>
+            <%= link_to  "Dashboard", root_path, class: "nav-link active" %>
         </li>
-        <li>
-            <a href="#" class="nav-link link-dark">
-                My listings
-            </a>
+        <li class="nav-item">
+            <%= link_to  "My listings", user_path(current_user), class: "nav-link link-dark" %>
         </li>
 
-        <li>
+        <li class="nav-item">
             <a type="button" class="nav-link link-dark" data-toggle="modal" data-target="#create-item-modal">
                 Create new listing
             </a>
         </li>
-        <li>
-            <a href="#" class="nav-link link-dark">
-                History
-            </a>
+        <li class="nav-item">
+            <%= link_to "History", user_history_path(current_user), class: "nav-link link-dark" %>
         </li>
     </ul>
 
