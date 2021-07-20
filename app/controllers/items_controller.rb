@@ -17,8 +17,6 @@ class ItemsController < ApplicationController
 
   def update
     item = Item.find(params[:id])
-    Transact.create(item_id: params[:id], traded_with: 'chuchu', user2_id: params[:item][:buyer_id]) if params[:item][:status] == 'traded'
-
     transact = Transact.find_by(item_id: params[:id])
 
     if transact
@@ -27,6 +25,8 @@ class ItemsController < ApplicationController
         transact.delete
         item.transact_id = nil
       end
+    else
+        Transact.create(item_id: params[:id], traded_with: 'chuchu', user2_id: params[:item][:buyer_id]) if params[:item][:status] == 'traded'
     end
 
     redirect_to request.referer, notice: 'Listing was updated succesfully' if item.update(item_params)
