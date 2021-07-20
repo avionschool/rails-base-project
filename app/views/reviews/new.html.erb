@@ -1,0 +1,46 @@
+<%= render 'home/sidebar' %>
+
+    <div class="card" style="width: 50rem; margin-left: 40rem; margin-top: 2rem;">
+        <!-- style attribut is temporary to put the card in the center -->
+        <div class="card-body">
+            <h2 class="my-4 mb-lg-5 text-center">Create a review</h2>
+            
+            <%= form_with scope: :review, url: item_transact_reviews_path(@item.id, @transact.id), local: true do |f| %>          
+                <div class="d-flex flex-row">
+                    <div class="col-md-6">
+                        <div class="field form-group"> 
+                            <%= f.label "Review for" %>
+                            <%= f.hidden_field :transact_id, value: @transact.id %>
+                            <% if current_user == @user1 %>
+                                <% review_for = @user2 %>
+                                <%= f.hidden_field :user2_id, value: review_for.id %>
+                                <%= f.select :user2_score, [1, 2, 3, 4, 5], class: "form-control" %>
+                            <% elsif current_user == @user2 %>
+                                <% review_for = @user1 %>
+                                <%= f.hidden_field :user1_id, value: review_for.id %>
+                                <%= f.select :user1_score, [1, 2, 3, 4, 5], class: "form-control" %>
+                            <% end %>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="field form-group">
+                            <input type="text" class="form-control" placeholder="<%= review_for.username %>: <%= @item.name %>" disabled>
+                        </div>
+                    </div>
+                </div>       
+            
+                <div class="field form-group">
+                    <%= f.label :description, 'Description' %>
+                    <%= f.text_area :description, autofocus: true, class: "form-control" %>
+                </div>
+            
+                <div class="actions mt-4">
+                    <%= f.submit "Submit review", class: "btn btn-primary btn-block mt-4" %>
+                </div>
+            <% end %>
+        
+        </div><!-- card-body -->
+    </div><!-- card -->
+</div>
+
