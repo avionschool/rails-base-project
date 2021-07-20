@@ -64,6 +64,39 @@ a,#title{
   font-family: 'Oswald', sans-serif;
 }
 
+#chatTitle{
+  font-size: 1.5rem;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  color: white;
+}
+#chatPrimaryTitle{
+  font-size: 1.5rem;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+#chatName{
+  font-size: 1rem;
+  font-family: 'Oswald', sans-serif;
+  padding-left:10px;
+  text-decoration: none;
+}
+
+#chatPrimaryName{
+  font-size: 1rem;
+  font-family: 'Oswald', sans-serif;
+  padding-left:10px;
+  text-decoration: none;
+  color:black
+}
+
+#availChats{
+  background: linear-gradient(to bottom left, #2b2c2c 0%, #32719b 100%);
+}
+
+
 .Package{
     width: 300px;
 }
@@ -417,6 +450,13 @@ height: 100%;
 }
 @media only screen and (max-width: 990px){
   .our-team{ margin-bottom: 30px; }
+  #chatPrimaryName{
+    font-size: 0.7rem;
+    font-family: 'Oswald', sans-serif;
+    padding-left:10px;
+    text-decoration: none;
+    color:black
+  }
 }
 
 #links{
