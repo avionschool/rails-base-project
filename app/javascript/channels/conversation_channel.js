@@ -9,7 +9,9 @@ document.addEventListener('turbolinks:load', () => {
 
     // for terminating other subscriptions when connected to a new subscription
     consumer.subscriptions.subscriptions.forEach(subs => {
+        // console.log("disconnected to conversation: " + JSON.parse(subs.identifier).conversation_id);
         consumer.subscriptions.remove(subs);
+        
     });
 
     consumer.subscriptions.create({ channel: "ConversationChannel", conversation_id: conversation_id }, {
@@ -39,6 +41,3 @@ document.addEventListener('turbolinks:load', () => {
         }
       });
 });
-
-
-
