@@ -47,13 +47,22 @@
                                 <% convo_partner = conv.item.user %>
                             <% end %>
 
-                            <% if convo_partner.avatar.attached? %>
-                                <%= image_tag url_for(convo_partner.thumbnail), size: '30x30', class: 'rounded-circle img-responsive ml-2', alt: 'profile avatar' %>
-                            <% else %>
-                                <%# filepath = (current_user.id % 8).to_s + '.svg' %>
-                                <% filepath = (current_user.id % 8).to_s + '.png' %>
-                                <%= image_tag 'default_avatars/' + filepath, size: '30x30', class: 'rounded-circle img-responsive ml-2', alt: 'profile avatar'  %>
-                            <% end %>
+                            <!-- image stack -->
+                            <div class="image-stack-container">
+                                <div class="image-stack">
+                                    <div class="image-stack__item image-stack__item--top">
+                                        <% if convo_partner.avatar.attached? %>
+                                            <%= image_tag url_for(convo_partner.thumbnail), size: '30x30', class: 'rounded-circle img-responsive', alt: 'profile avatar' %>
+                                        <% else %>
+                                            <% filepath = (current_user.id % 8).to_s + '.png' %>
+                                            <%= image_tag 'default_avatars/' + filepath, size: '30x30', class: 'rounded-circle img-responsive', alt: 'profile avatar'  %>
+                                        <% end %>
+                                    </div>
+                                    <div class="image-stack__item image-stack__item--bottom">
+                                        <%= image_tag conv.item.images[0], size: '30x30', class: 'rounded-circle img-responsive' %>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="d-flex flex-column align-items-center m-auto">
                                 <span class="convo-item-name"><%= conv.item.name %></span>
