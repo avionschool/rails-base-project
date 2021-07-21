@@ -42,8 +42,8 @@ class WebhooksController < ApplicationController
       )
       tour = Tour.find(data.tour_id)
       @travel_transaction = TravelTransaction.create(tourist_tour: @tourist_tour,
-          agency_id: tour.agency.id,
-          total_price: data.total_amount)
+                                                     agency_id: tour.agency.id,
+                                                     total_price: data.total_amount)
     end
 
     render json: { message: 'success' }

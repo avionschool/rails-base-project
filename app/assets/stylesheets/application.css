@@ -119,12 +119,12 @@ a,#title{
     height:210px; 
     object-fit: cover
 }
-/* 
+
 #img_prev{
-  width: 300px; 
+  width: 500px; 
   height:300px; 
-  object-fit: cover
-} */
+}
+
 
 #info {
   transition-duration: 0.4s;
@@ -287,9 +287,17 @@ a,#title{
 }
 
 #cardImage{
-  width: 300px;
+  width: 317px;
   height: 200px;
 }
+
+#carouselImage{
+  max-width: 520px;
+  max-height: 350px;
+  object-fit: contain;
+}
+
+
 
 #cardBody{
   font-family: 'Roboto Condensed', sans-serif;
@@ -462,6 +470,12 @@ height: 100%;
     text-decoration: none;
     color:black
   }
+  #carouselImage{
+    width: 380px;
+    height: 250px;
+    object-fit: fill;
+  }
+  
 }
 
 #links{
