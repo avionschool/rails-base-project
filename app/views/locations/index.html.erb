@@ -1,0 +1,90 @@
+<section class="devise__form">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-body">
+
+            <h2>Verify Address</h2>
+
+            <% if current_user.locations.first == nil %>
+              <%= form_with scope: :location, url: locations_path(current_user.id), method: :post, local: true do |f| %>    
+                <div class="field form-group">
+                  <%= f.label 'Street' %>
+                  <%= f.text_field :street, autofocus: true, class: "form-control", placeholder: "Ex. 25 Maginhawa Street", required: true %>
+                </div>
+
+                <div class="field form-group">
+                  <%= f.label 'Suburb', class: "mb-0" %> <i>( Barangay / Neighborhood )</i>
+                  <%= f.text_field :suburb, autofocus: true, class: "form-control", placeholder: "Ex. Bagong Silang", required: true %>
+                </div>
+
+                <div class="field form-group">
+                  <%= f.label 'City' %>
+                  <%= f.text_field :city, autofocus: true, class: "form-control", placeholder: "Ex. Quezon City", required: true %>
+                </div>
+
+                <div class="field form-group">
+                  <%= f.label 'Nearest Landmark' %> <i>( preferrably big infrastructures like malls, or nationally recognized landmarks )</i> 
+                  <%= f.text_field :landmark, autofocus: true, class: "form-control mt-2", placeholder: "Ex. SM North Edsa", required: true %> 
+                </div>
+
+                <div class="field form-group">
+                  <%= f.label 'Latitude' %>
+                  <%= f.text_field :latitude, autofocus: true, class: "form-control", disabled: true, placeholder: "coordinates will display here..." %>
+                </div>
+
+                <div class="field form-group">
+                  <%= f.label 'Longitude' %>
+                  <%= f.text_field :longitude, autofocus: true, class: "form-control", disabled: true, placeholder: "coordinates will display here..." %>
+                </div>
+
+                <div class="actions mt-4">
+                  <%= f.submit "Verify", class: "btn btn-primary btn-block mt-4 mb-lg-4" %>
+                </div>
+              <% end %>
+            <% else %>
+              <%= form_with scope: :location, url: location_path(current_user.id), method: :put, local: true do |f| %>    
+                <div class="field form-group">
+                  <%= f.label 'Street' %>
+                  <%= f.text_field :street, autofocus: true, class: "form-control", value: @location.street, placeholder: "Ex. 25 Maginhawa Street", required: true %>
+                </div>
+
+                <div class="field form-group">
+                  <%= f.label 'Suburb', class: "mb-0" %> <i>( Barangay / Neighborhood )</i>
+                  <%= f.text_field :suburb, autofocus: true, class: "form-control", value: @location.suburb, placeholder: "Ex. Bagong Silang", required: true %>
+                </div>
+
+                <div class="field form-group">
+                  <%= f.label 'City' %>
+                  <%= f.text_field :city, autofocus: true, class: "form-control", value: @location.city, placeholder: "Ex. Quezon City", required: true %>
+                </div>
+
+                <div class="field form-group">
+                  <%= f.label 'Nearest Landmark' %> <i>( preferrably big infrastructures like malls, or nationally recognized landmarks )</i> 
+                  <%= f.text_field :landmark, autofocus: true, class: "form-control mt-2", value: @location.landmark, placeholder: "Ex. SM North Edsa", required: true %>
+                </div>
+
+                <div class="field form-group">
+                  <%= f.label 'Latitude' %>
+                  <%= f.text_field :latitude, autofocus: true, class: "form-control", disabled: true, value: @location.latitude, placeholder: "coordinates will display here..." %>
+                </div>
+
+                <div class="field form-group">
+                  <%= f.label 'Longitude' %>
+                  <%= f.text_field :longitude, autofocus: true, class: "form-control", disabled: true, value: @location.longitude, placeholder: "coordinates will display here..." %>
+                </div>
+
+                <div class="actions mt-4">
+                  <%= f.submit "Verify", class: "btn btn-primary btn-block mt-4 mb-lg-4" %>
+                </div>
+              <% end %>
+            <% end %>
+
+            <%= link_to "Back", :back, class: "d-block text-center" %>
+          </div><!-- card-body -->
+        </div><!-- card -->
+      </div><!-- col -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
