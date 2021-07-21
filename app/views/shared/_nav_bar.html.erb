@@ -42,6 +42,9 @@
             </ul>
           </li> 
           <li class="nav-item">
+            <%= link_to 'Chat Rooms', chat_rooms_path(current_tourist), class:"nav-link"%>
+          </li>
+          <li class="nav-item">
             <%= link_to 'Profile', tourist_path(current_tourist), class:"nav-link"%>
           </li>
           <li class="nav-item">
@@ -67,6 +70,9 @@
           </li>
           <li class="nav-item">
             <%= link_to 'Transactions', travel_transactions_path, class:"nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Chat Rooms', chat_rooms_path(current_agency), class:"nav-link"%>
           </li>
           <li class="nav-item">
             <%= link_to 'Profile', agency_path(current_agency), class:"nav-link"%>
