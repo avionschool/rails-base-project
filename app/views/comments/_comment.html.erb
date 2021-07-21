@@ -1,17 +1,17 @@
 <div class="comment-container" id= "comment<%= t.id %>">
     <% commenter = User.find_by(id: t.user.id) %>
     <div class="d-flex flex-row">
-        <% if commenter.avatar.attached? %>
-            <%= image_tag url_for(commenter.thumbnail), size: '40x40', class: 'rounded-circle img-responsive', alt: 'profile avatar' %>
-        <% else %>
-            <% filepath = (commenter.id % 8).to_s + '.png' %>
-            <%= image_tag 'default_avatars/' + filepath, size: '40x40', class: 'rounded-circle img-responsive', alt: 'profile avatar' %>
+        <%= link_to user_path(commenter) do %>
+            <% if commenter.avatar.attached? %>
+                <%= image_tag url_for(commenter.thumbnail), size: '40x40', class: 'rounded-circle img-responsive', alt: 'profile avatar' %>
+            <% else %>
+                <% filepath = (commenter.id % 8).to_s + '.png' %>
+                <%= image_tag 'default_avatars/' + filepath, size: '40x40', class: 'rounded-circle img-responsive', alt: 'profile avatar' %>
+            <% end %>
         <% end %>
+
         <div class="d-flex flex-column justify-content-start p-2 ml-3 rounded-lg author-content">
-            <!-- TO FOLLOW: make this link to profile page -->
-            <p class="commenter pl-1 m-0 font-weight-bold">
-                <%= commenter.first_name %> <%= commenter.last_name %>
-            </p>
+            <%= link_to commenter.username, user_path(commenter), class: "commenter pl-1 m-0 font-weight-bold" %>
             <p class="pl-2 m-0 content"><%= t.body %></p>
         </div>
 
