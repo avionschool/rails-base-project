@@ -1,26 +1,17 @@
 <section class="homepage">
-  <div class="container">
-    <div class="homepage__title">
-      <!-- <h1 class="text-center my-5">Kalakalph Homepage</h1> -->
-    </div>
-    <% if user_signed_in? %>
+  <% if user_signed_in? %>
+    <div class="user-dashboard">
+      <div class="left-content">
         <%= render 'sidebar' %>
-    <% end %>
-
-    <div class="products">
-      <% @items.each do |t| %>
-        <%= link_to item_path(t.id), method: :get do %>
-          <div class="items">
-            <% if t.images.attached? %>
-              <%= image_tag t.images[0], class: "itempic" %>
-            <% else %>
-              <%= image_tag "altpic.png", class: "itempic" %>
-            <% end %>
-            <h5 class="item_name"><%= t.name %></h5>
-          </div>
-        <% end %>
-      <% end %>
+      </div>
+      
+      <div class="right-content">
+        <%= render 'products' %>
+      </div>
     </div>
-
-  </div>
+  <% else %>
+    <div class="container">
+      <%= render 'products' %>
+    </div>
+  <% end %>
 </section>
