@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :locations
+
   get 'users/:id/history' => 'users#history', as: 'user_history'
   
   root to: 'home#index'
