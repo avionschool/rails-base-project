@@ -31,10 +31,11 @@
             <% end %>
           </div>
 
-          <h5 class="item_name"><%= @item.name %></h5>
+          <% status = @item.status != 'open' ? '(' + @item.status.capitalize + ')': '' %>
+          <h5 class="item_name"><%= @item.name %> <span style="font-style:italic; color:#f0ad4e; font-weight:normal;"><%= status %></span></h5>
           <h6 class="item_description"><%= @item.description %></h6>
 
-          <!-- make carousel for item images -->
+          <!-- carousel for item images -->
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
