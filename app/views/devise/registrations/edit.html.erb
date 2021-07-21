@@ -47,8 +47,14 @@
               </div>
               
               <div class="field form-group">
-                <%= f.label 'Home Address' %>
-                <%= f.text_area :address, autofocus: true, class: "form-control" %>
+                <%= f.label 'Home Address' %> &nbsp
+                <%= link_to "Verify Address ->", locations_path, data: { confirm: "By verifying your address, you will have the option to have the results shown in your homepage be arranged according to the nearest distance to you. Do you want to verify your address?" }, method: :get%>
+                <% if current_user.locations.first != nil %>
+                  <%= f.text_area :address, autofocus: true, class: "form-control", disabled: true, 
+                    value: current_user.locations.last.street + ", " + current_user.locations.last.suburb + ", " + current_user.locations.last.city %>
+                <% else %>
+                  <%= f.text_area :address, autofocus: true, class: "form-control", disabled: true %>
+                <% end %>
               </div>
 
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

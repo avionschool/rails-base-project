@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :items, dependent: :destroy
+  has_many :locations, class_name: 'Location', dependent: :restrict_with_exception
   has_many :comments, dependent: :destroy
   has_many :reviews, dependent: :restrict_with_exception
   # how to approach dependence of messages? if a message is destroyed, the other user's copy should not be automatically deleted
