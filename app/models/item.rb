@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   validates :status, presence: true
   validate :image_type
   validate :image_count
+  validate :image_filesize
 
   has_many_attached :images
   belongs_to :user
