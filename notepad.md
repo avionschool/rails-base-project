@@ -50,11 +50,14 @@
 
     8. (not a bug) create and delete of transaction is kinda hacky; can't make nested forms work so resorted to the workaround for now
 
-    9. item should appear in the history of both user1 and user2. currently, it only appear in user1's history
-
+    9. listings fail to edit in production
 ## minor details to add:
     1. add channel broadcast when item's status is changed
     2. deleting listing should prompt a verification modal
     3. in conversation show page, add main item image in conversation name
     4. entire conversation history between 2 users should not be loaded all at once when visiting a conversation show page
     5. in user's profile page, items should be grouped in terms of status
+    6. add links to avatar, first_name last_name, in comment section
+    7. preview for uploaded images
+    8. conversations should be tagged as traded when item is traded
+
