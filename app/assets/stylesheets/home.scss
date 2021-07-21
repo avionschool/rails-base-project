@@ -12,7 +12,8 @@
 }
 
 .products {
-  max-width: 65rem;
+  // max-width: 65rem;
+  max-width: 1600px;
   height: auto;
   padding: 1rem;
   display: flex;
@@ -43,47 +44,47 @@
   margin-top: 0.5rem;
 }
 
-.tmp-sidebar {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+// .tmp-sidebar {
+//   position: absolute;
+//   left: 0;
+//   top: 0;
+//   bottom: 0;
+//   box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
 
-  .hello-username {
-    height: 5rem;
-    margin-bottom: 20px !important;
-  }
+//   .hello-username {
+//     height: 5rem;
+//     margin-bottom: 20px !important;
+//   }
 
-  .conversations {
-    height: 60vh;
-    overflow-y: auto;
+//   .conversations {
+//     height: 60vh;
+//     overflow-y: auto;
 
-    .nav-item {
-      border-radius: 5px;
+//     .nav-item {
+//       border-radius: 5px;
 
-      &:hover {
-        background-color: #e0e0e0;
-      }
+//       &:hover {
+//         background-color: #e0e0e0;
+//       }
 
-      &.active {
-        background-color: #007bff;
+//       &.active {
+//         background-color: #007bff;
 
-        .convo-item-name {
-          color: white;
-        }
+//         .convo-item-name {
+//           color: white;
+//         }
 
-        .other-user-username {
-          color: #5a5a5a;
-        }
-      }
+//         .other-user-username {
+//           color: #5a5a5a;
+//         }
+//       }
 
-      .other-user-username {
-        font-size: 0.8rem;
-        color: #777777;
-      }
-    }
-  }
+//       .other-user-username {
+//         font-size: 0.8rem;
+//         color: #777777;
+//       }
+//     }
+//   }
 
-  // Comment
-}
+//   // Comment
+// }

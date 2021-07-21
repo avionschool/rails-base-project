@@ -1,8 +1,11 @@
-<div class="tmp-sidebar d-flex flex-column flex-shrink-0 p-3 bg-light justify-content-start" style="width: 280px;">
-    <%= link_to root_path, class: "navbar-brand link-dark text-decoration-none custom-link" do %>
+<%# <div class="tmp-sidebar d-flex flex-column flex-shrink-0 p-3 bg-light justify-content-start" style="width: 280px;"> %>
+<div class="tmp-sidebar">
+    <div class="brand-wrapper d-flex">
+      <%= link_to root_path, class: "navbar-brand link-dark text-decoration-none custom-link text-center" do %>
         <%= image_tag("kalakalph_logo.svg", size: '28', alt: "kalakalph logo") %>
         <span>Kalakalph</span>
-    <% end %>
+      <% end %>
+    </div>
 
   <!-- should link to profile page -->
   <%= link_to root_path, class: " d-flex align-items-center justify-content-center mt-2 mb-4 link-dark text-decoration-none" do %>
