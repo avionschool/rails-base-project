@@ -32,6 +32,10 @@
     height: calc(100vh - 66px);
     overflow: auto;
   }
+
+  .left-content {
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  }
 }
 
 .tmp-sidebar {
@@ -39,7 +43,8 @@
   // left: 0;
   // top: 0;
   // bottom: 0;
-  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  padding: 0 1rem;
+  // box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
 
   width: 280px;
 
