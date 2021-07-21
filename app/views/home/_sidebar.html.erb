@@ -50,7 +50,8 @@
                             <% if convo_partner.avatar.attached? %>
                                 <%= image_tag url_for(convo_partner.thumbnail), size: '30x30', class: 'rounded-circle img-responsive ml-2', alt: 'profile avatar' %>
                             <% else %>
-                                <% filepath = (current_user.id % 8).to_s + '.svg' %>
+                                <%# filepath = (current_user.id % 8).to_s + '.svg' %>
+                                <% filepath = (current_user.id % 8).to_s + '.png' %>
                                 <%= image_tag 'default_avatars/' + filepath, size: '30x30', class: 'rounded-circle img-responsive ml-2', alt: 'profile avatar'  %>
                             <% end %>
 
