@@ -37,7 +37,7 @@
             <% if conv.item != nil %>
                     <%= link_to item_conversation_path(conv.item_id, conv.id), class: "nav-link" do %>
                         <% active_class = (@conversation == conv) ? 'active' : '' %>
-                        <li class="nav-item d-flex flex-row align-items-center <%= active_class %>">   
+                        <li class="nav-item d-flex flex-row align-items-center pl-1 <%= active_class %>">   
                             <!-- getting username of current_user's conversation partner -->
                             <% if conv.item.user == current_user && current_user.id == conv.user2_id %>
                                 <% convo_partner = User.find(conv.user1_id) %>
