@@ -65,7 +65,11 @@
                             </div>
 
                             <div class="d-flex flex-column align-items-center m-auto">
-                                <span class="convo-item-name"><%= conv.item.name %></span>
+                                <span class="convo-item-name">
+                                    <%= conv.item.name %>
+                                    <% status = conv.item.status == 'open' ? '' : "(" + conv.item.status.capitalize + ")"%>
+                                    <span class="status font-italic text-warning"><%= status %></span>
+                                </span>
                                 <span class="other-user-username"><%= convo_partner.username %></span>
                             </div>
 
