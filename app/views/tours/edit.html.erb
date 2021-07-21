@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row m-5 no-gutters shadow-lg">
     <div class="col bg-white p-5">
-      <h1 class="heading-primary-h1">Edit Tour</h1><br/>
+      <h1 class="heading-primary-h1" id="title">Edit Tour</h1><br/>
       <%= render 'shared/errors', obj: @tour %>
       <div class="form-style">
         <%= form_with scope: :tour, model: @tour,method: :patch, local:true do |f|%>

@@ -1,4 +1,4 @@
-<br/><br/><br/><br/>
+<br/><br/>
 <% if @tours.count == 0 %>
 
 <div class="d-flex justify-content-center" id="cont">
@@ -14,7 +14,7 @@
 <br/><br/>
 <div class="d-flex justify-content-center flex-wrap">
 <% @tours.each do |tour|%>
-  <div class="card m-3" style="width: 20rem;">
+  <div class="card m-3 border border-success border border-2" style="width: 20rem;">
     <% if tour.images.attached?%>
             <img class="card-img-top" id="cardImage" src="<%=(url_for(tour.images.first))%>" alt="...">
     <%end%>
