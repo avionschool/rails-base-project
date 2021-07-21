@@ -1,37 +1,10 @@
 <section class="homepage">
-  <div class="container">
-    <%= render 'home/sidebar' %>
-    
-    <table class="table table-striped table-responsive">
-        <thead>
-            <tr>
-            <th scope="col">Item</th>
-            <th scope="col">Trade partner</th>
-            <th scope="col">Traded with</th>
-            <th scope="col">Timestamp</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <% @history_items.each do |item| %>
-                <tr>
-                    <td scope="row">
-                        <%= link_to item.name, item_path(item) %>
-                    </td>
-                    <td>
-                        <% if current_user == item.user %>
-                            <% traded_to = User.find(item.transact.user2_id) %>
-                        <% else %>
-                            <% traded_to = item.user %>
-                        <% end %>
-                        <%= link_to traded_to.username, user_path(item.transact.user2_id) %>
-                    </td>
-                    <td><%= item.transact.traded_with %></td>
-                    <td><%= item.transact.created_at.strftime("%d-%m-%Y %I:%M%p") %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-
+  <div class="user-dashboard">
+    <div class="left-content">
+      <%= render 'home/sidebar' %>
+    </div>
+    <div class="right-content">
+      <%= render 'history-list' %>
+    </div>
   </div>
 </section>
