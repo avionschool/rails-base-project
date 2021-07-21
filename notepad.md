@@ -54,7 +54,7 @@
     2. deleting listing should prompt a verification modal
     3. entire conversation history between 2 users should not be loaded all at once when visiting a conversation show page
     4. in user's profile page, items should be grouped in terms of status
-    5. add links to avatar, first_name last_name, in comment section
-    6. preview for uploaded images
-    7. conversations should be tagged as traded when item is traded
+    5. preview for uploaded images
 
+## major details to add:
+    1. pagination in root page
