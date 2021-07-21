@@ -1,21 +1,23 @@
 <section class="homepage">
-  <div class="container">
-    <%= render 'home/sidebar' %>
-    
-    <div class="products">
-        <% @user.items.each do |item| %>
-            <%= link_to item_path(item) do %>
-                <div class="items">
-                <% if item.images.attached? %>
-                    <%= image_tag item.images[0], class: "itempic" %>
-                <% else %>
-                    <%= image_tag "altpic.png", class: "itempic" %>
-                <% end %>
-                <h5 class="item_name"><%= item.name %></h5>
-                </div>
-            <% end %>
-        <% end %>
+  <div class="user-dashboard">
+    <div class="left-content">
+      <%= render 'home/sidebar' %>
     </div>
-
+    <div class="right-content">
+      <div class="products">
+        <% @user.items.each do |item| %>
+          <%= link_to item_path(item) do %>
+            <div class="items">
+              <% if item.images.attached? %>
+                <%= image_tag item.images[0], class: "itempic" %>
+              <% else %>
+                <%= image_tag "altpic.png", class: "itempic" %>
+              <% end %>
+              <h5 class="item_name"><%= item.name %></h5>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>  
   </div>
 </section>

@@ -22,3 +22,71 @@
     padding: 0.2rem 0.75rem 0.2rem 0.2rem;
   }
 }
+
+.user-dashboard {
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  .left-content,
+  .right-content {
+    height: calc(100vh - 66px);
+    overflow: auto;
+  }
+
+  .left-content {
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  }
+}
+
+.tmp-sidebar {
+  // position: absolute;
+  // left: 0;
+  // top: 0;
+  // bottom: 0;
+  // box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  padding: 0 1rem;
+  display: block;
+
+  width: 280px;
+
+  .hello-username {
+    height: 5rem;
+    margin-bottom: 20px !important;
+  }
+
+  .conversations {
+    height: 60vh;
+    overflow-y: auto;
+
+    .nav-item {
+      border-radius: 5px;
+
+      &:hover {
+        background-color: #e0e0e0;
+      }
+
+      &.active {
+        background-color: #007bff;
+
+        .convo-item-name {
+          color: white;
+        }
+
+        .other-user-username {
+          color: #5a5a5a;
+        }
+      }
+
+      .other-user-username {
+        font-size: 0.8rem;
+        color: #777777;
+      }
+    }
+  }
+}
+
+// @media screen and (max-width: 991px) {
+//   .tmp-sidebar {
+//     display: none;
+//   }
+// }
