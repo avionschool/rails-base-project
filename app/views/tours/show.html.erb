@@ -25,7 +25,7 @@
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
-                <% if @tour.images.attached?%>
+                    <% if @tour.images.attached?%>
                         <%@tour.images.each do |image|%>
                     <div class="carousel-item active" id="carouselImage">
                     <img class="img-fluid" src="<%=(url_for(image))%>" alt="...">

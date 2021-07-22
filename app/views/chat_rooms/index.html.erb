@@ -4,7 +4,7 @@
 <div class="container border border-dark border border-4">
   <div class="row">
     <div id="availChats" class="col-3">
-    <p id="chatTitle">Hello, <%=current_user&.first_name%></p>
+    <p id="chatTitle">Hello, <%=current_user&.first_name || current_user&.agency_name%></p>
       <% @rooms.each do |room| %>
         <%= link_to room do%>
           <div class="card border border-info">
