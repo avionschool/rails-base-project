@@ -20,16 +20,26 @@
                 <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control" %>
               </div>
 
-              <div class="field form-group">
-                <%= f.label :avatar, "Profile photo" %>
-                <%= f.file_field :avatar, autofocus: true, autocomplete: "username", class: "form-control choose-file-btn" %>
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="field form-group">
+                    <%= f.label :avatar, "Profile photo" %>
+                    <%= f.file_field :avatar, autofocus: true, class: "form-control choose-file-btn", id: "image-input" %>
+                  </div>
+                </div>
+                    
+                <div class="col-md-4">
+                    <div class="m-auto">
+                        <img id="image-preview" src="" style="width: 140px; height: auto;">
+                    </div>
+                </div>
               </div>
-              
+
               <div class="row">
                 <div class="col-md-6">
                   <div class="field form-group">
                     <%= f.label :first_name %>
-                    <%= f.text_field :first_name, autofocus: true,autocomplete: "first name", class: "form-control" %>
+                    <%= f.text_field :first_name, autofocus: true, autocomplete: "first name", class: "form-control" %>
                   </div>
                 </div>
 
@@ -102,3 +112,5 @@
     </div><!-- row -->
   </div><!-- container -->
 </section>
+
+<%= javascript_pack_tag 'image_previewer.js' %> 
