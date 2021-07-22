@@ -23,7 +23,7 @@
               <% traded_to = item.user %>
             <% end %>
             
-            <%= link_to traded_to.username, user_path(item.transact.user2_id) %>
+            <%= link_to traded_to.username, user_path(traded_to) %>
           </td>
           <td><%= item.transact.traded_with %></td>
           <td>

@@ -13,7 +13,12 @@
               <% else %>
                 <%= image_tag "altpic.png", class: "itempic" %>
               <% end %>
-              <h5 class="item_name"><%= item.name %></h5>
+              
+              <% status = item.status == 'open' ? '' : "(" + item.status.capitalize + ")"%>
+              <h5 class="item_name">
+                <%= item.name %>
+                <span class="status font-italic text-warning fst-normal"><%= status %></span>
+              </h5>
             </div>
           <% end %>
         <% end %>

@@ -33,28 +33,28 @@
     run: heroku config:set RAILS_MASTER_KEY=`cat config/master.key`
 
 ## bugs to fix:
-    1. when an exchange happened in a conversation, sometimes clicking on another conversation and clicking back to the previous conversation, the previous conversation doesn't show the recent exchange
+    1. after subscribing to a conversation, clicking a link other than the conversation links does not unsubscribe the user in the current conversation channel; clicking kalakalph which redirects the user to root should terminate the channel subscription
 
-    2. after subscribing to a conversation, clicking a link other than the conversation links does not unsubscribe the user in the current conversation channel; clicking kalakalph which redirects the user to root should terminate the channel subscription
-
-    3. timestamp not working for newly sent messages but refreshing the page fixes it
+    2. timestamp not working for newly sent messages but refreshing the page fixes it
         - maybe time interval between two consecutive messages should be calculated in the background job
 
-    4. if a user who participated in any conversation is deleted, app gets an error in displaying conversation partners
+    3. if a user who participated in any conversation is deleted, app gets an error in displaying conversation partners
 
-    5. when attempting to create or update a listing with validation errors; validation errors don't appear
+    4. when attempting to create or update a listing with validation errors; validation errors don't appear
 
-    6. No button to redirect to home when user is not signed in
+    5. No button to redirect to home when user is not signed in
     
-    7. Chat avatar is late to appear when a message is sent
+    6. Chat avatar is late to appear when a message is sent
 
-    8. (not a bug) create and delete of transaction is kinda hacky; can't make nested forms work so resorted to the workaround for now
+    7. (not a bug) create and delete of transaction is kinda hacky; can't make nested forms work so resorted to the workaround for now
 
-    9. item should appear in the history of both user1 and user2. currently, it only appear in user1's history
-
+    8. listings fail to edit in production
 ## minor details to add:
     1. add channel broadcast when item's status is changed
     2. deleting listing should prompt a verification modal
-    3. in conversation show page, add main item image in conversation name
-    4. entire conversation history between 2 users should not be loaded all at once when visiting a conversation show page
-    5. in user's profile page, items should be grouped in terms of status
+    3. entire conversation history between 2 users should not be loaded all at once when visiting a conversation show page
+    4. in user's profile page, items should be grouped in terms of status
+    5. preview for uploaded images
+
+## major details to add:
+    1. pagination in root page

@@ -21,8 +21,12 @@
           <% end %>
         <% end %>
       </div>
-
-      <h5 class="item_name"><%= @item.name %></h5>
+    
+      <% status = @item.status == 'open' ? '' : "(" + @item.status.capitalize + ")"%>
+      <h5 class="item_name">
+        <%= @item.name %>
+        <span class="status font-italic text-warning fw-light"><%= status %></span>
+      </h5>
       <h6 class="item_description"><%= @item.description %></h6>
 
       <!-- make carousel for item images -->
