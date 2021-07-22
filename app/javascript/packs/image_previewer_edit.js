@@ -20,8 +20,8 @@ function readURL(input) {
     } 
 }
 
-const imagePreviewContainer = document.getElementById('image-preview-container');
-const imageFileField = document.getElementById('image-input');
+const imagePreviewContainer = document.getElementById('image-preview-container-edit');
+const imageFileField = document.getElementById('image-input-edit');
 imageFileField.addEventListener('change', function() {  
     readURL(this);
 });
