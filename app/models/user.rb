@@ -47,6 +47,42 @@ class User < ApplicationRecord
     a
   end
 
+  def lat
+    locations.first.latitude
+  end
+
+  def long
+    locations.first.longitude
+  end
+
+  def items_from_user
+    items = Item.where(status: 'open').sort_by(&:created_at).reverse
+    items_arr = []
+    nodist_arr = []
+
+    final_arr = []
+    lat1 = lat
+    long1 = long
+
+    items.each do |item|
+      if item.user.locations.first.nil?
+        nodist_arr.push(item)
+        next
+      elsif item.user == self
+        next
+      end
+      lat2 = item.user.lat
+      long2 = item.user.long
+      dist = Location.distance(lat1, lat2, long1, long2)
+      items_arr.push([item.id, dist])
+    end
+
+    items_arr.sort_by(&:last).each do |n|
+      final_arr.push(Item.find(n[0]))
+    end
+    [final_arr, nodist_arr]
+  end
+
   private
 
   def avatar_filetype
