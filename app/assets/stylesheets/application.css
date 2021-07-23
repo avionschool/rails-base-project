@@ -10,6 +10,474 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+
+ *= require bootstrap
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
+ html {
+    scroll-behavior: smooth;
+  }
+  
+ *{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+
+.user-card-full {
+    overflow: hidden
+}
+
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+    border: none;
+    margin-bottom: 30px
+}
+
+.user-card-full .user-profile {
+    border-radius: 5px 0 0 5px
+}
+
+@media only screen and (min-width: 1400px) {
+    p {
+        font-size: 14px
+    }
+}
+
+
+#cont{
+    width: auto;
+    height: 500px;
+}
+
+a,#title{
+    text-decoration: none
+}
+
+#title{
+  font-size: 2.5rem;
+  font-family: 'Oswald', sans-serif;
+}
+
+#chatTitle{
+  font-size: 1.5rem;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  color: white;
+}
+#chatPrimaryTitle{
+  font-size: 1.5rem;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+#chatName{
+  font-size: 1rem;
+  font-family: 'Oswald', sans-serif;
+  padding-left:10px;
+  text-decoration: none;
+}
+
+#chatPrimaryName{
+  font-size: 1rem;
+  font-family: 'Oswald', sans-serif;
+  padding-left:10px;
+  text-decoration: none;
+  color:black
+}
+
+#availChats{
+  background: linear-gradient(to bottom left, #2b2c2c 0%, #32719b 100%);
+}
+
+
+.Package{
+    width: 300px;
+}
+
+.Address{
+    width: 600px;
+}
+
+#image{
+ height:100vh; 
+}
+
+#cover{
+    height:30vh; 
+    max-width:100%;
+}
+
+#editImage{
+    width: 400px; 
+    height:210px; 
+    object-fit: cover
+}
+
+#img_prev{
+  width: 500px; 
+  height:300px; 
+}
+
+
+#info {
+  transition-duration: 0.4s;
+}
+
+#info:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+#ProfilePic{
+    width:150px; 
+    height:150px; 
+    border-radius: 50%;
+}
+
+#form{
+    width: 500px;
+}
+
+/* FEATURES */
+
+  .box {
+    position: relative;
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 90px 15px 15px;
+    background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(112, 116, 111));;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.4);
+  }
+  
+  .box:before{
+    content: "";
+    position: absolute;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(79, 133, 19);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s;
+  }
+  
+  .box:hover:before{
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.5s;
+  }
+  
+  .box h2{
+   position: absolute;
+   left: 40px;
+   top: 40px;
+   font-size: 2.5em;
+   z-index: 1;
+   opacity: 0.2;
+   transition: .5s;
+   color:rgb(56, 36, 0);
+   font-family: 'Oswald', sans-serif;
+  }
+  
+  .box:hover h2{
+    color:#ffffff;
+    opacity: 1;
+    transform: translateY(-20px);
+    font-family: 'Oswald', sans-serif;
+   }
+  
+   
+  .box h3{
+    position: relative;
+    font-size: 1.3em;
+    z-index: 2;
+    opacity: 0.8;
+    transition: .5s;
+    color:rgb(0, 0, 0);
+   }
+    
+  .box:hover h3{
+    color:#ffffff;
+   }
+  
+  
+  .box p{
+    position: relative;
+    z-index: 2;
+    opacity: 0.8;
+    transition: .5s;
+    color:rgb(0, 0, 0);
+    font-size: 1rem;
+  }
+    
+  .box:hover p{
+    color:#ffffff;
+   }
+
+
+   #services{
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 4rem;
+    }
+
+    .feature{
+     background-image: linear-gradient(to bottom, rgba(39, 38, 38, 0), rgb(34, 33, 33));
+    }
+   
+/* NAVBAR */
+/* #navbarSupportedContent{
+  display: flex;
+  justify-content: end;
+  padding-left: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+  #navbarSupportedContent{
+    display: flex;
+    justify-content: start;
+    padding-right: 500px;
+  }
+} */
+
+
+/**/
+
+.carousel-content {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  z-index: 20;
+  color: white;
+}
+
+.carousel-content h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 4rem;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+#newImage{
+  width: 550px;
+}
+
+#newImage{
+  width: 550px;
+}
+
+.carousel-inner{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+#card{
+    height:30vh; 
+    max-width:100%;
+}
+
+#cardImage{
+  width: 317px;
+  height: 200px;
+}
+
+#carouselImage{
+  max-width: 520px;
+  max-height: 350px;
+  object-fit: contain;
+}
+
+
+
+#cardBody{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+#formId{
+  font-size: 1.3rem;
+  padding-top: 10px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+/* PARALLAX */
+
+#parallax {
+  /* The image used */
+  background-image: url("https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1382&q=80");
+
+  /* Set a specific height */
+  min-height: 400px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#caption{
+  font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 4rem;
+    color:rgb(0, 0, 0);
+    text-shadow: 2px 2px #ffffff;
+}
+
+
+
+/* TEAM SECTION */
+
+.our-team-section {
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-image: linear-gradient(to bottom, rgba(39, 38, 38, 0), rgb(34, 33, 33));
+}
+
+.our-team-section:before {
+  position: absolute;
+  top: -0;
+  left: 0;
+  content: " ";
+  background: url(img/service-section-bottom.png);
+  background-size: 100% 100px;
+  width: 100%;
+  height: 100px;
+  float: left;
+  z-index: 99;
+}
+.our-team {
+  padding: 30px 0 40px;
+  background: #f9f9f9;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 5px solid #00325a;
+}
+.our-team:hover{
+  border-bottom: 5px solid #2f2f2f;
+}
+
+.our-team .pic{
+  display: inline-block;
+  width: 130px;
+  height: 130px;
+  margin-bottom: 50px;
+  z-index: 1;
+  position: relative;
+}
+.our-team .pic:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #00325a;
+  position: absolute;
+  bottom: 135%;
+  right: 0;
+  left: 0;
+  opacity: 1;
+  transform: scale(3);
+  transition: all 0.3s linear 0s;
+}
+.our-team:hover .pic:before{
+height: 100%;
+  background: #2f2f2f; 
+}
+.our-team .pic:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #ffffff00;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: all 0.3s linear 0s;
+}
+.our-team:hover .pic:after{
+  background: #7ab92d;
+}
+.our-team .pic img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: all 0.9s ease 0s;
+  box-shadow: 0 0 0 14px #f7f5ec;
+  transform: scale(0.7);
+  position: relative;
+  z-index: 2;
+}
+.our-team:hover .pic img{
+  box-shadow: 0 0 0 14px #f7f5ec;
+  transform: scale(0.7);
+}
+.our-team .team-content{ margin-bottom: 30px; }
+.our-team .title{
+  font-size: 22px;
+  font-weight: 700;
+  color: #4e5052;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+}
+.our-team .post{
+  display: block;
+  font-size: 15px;
+  color: #4e5052;
+  text-transform:capitalize;
+}
+.our-team .social{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: #2f2f2f;
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  transition: all 0.5s ease 0s;
+}
+.our-team:hover .social{ bottom: 0; }
+.our-team .social li{ display: inline-block; }
+.our-team .social li a{
+  display: block;
+  padding: 10px;
+  font-size: 17px;
+  color: #fff;
+  transition: all 0.3s ease 0s;
+}
+.our-team .social li a:hover{
+  color: #2f2f2f;
+  background: #f7f5ec;
+}
+@media only screen and (max-width: 990px){
+  .our-team{ margin-bottom: 30px; }
+  #chatPrimaryName{
+    font-size: 0.7rem;
+    font-family: 'Oswald', sans-serif;
+    padding-left:10px;
+    text-decoration: none;
+    color:black
+  }
+  #carouselImage{
+    width: 380px;
+    height: 250px;
+    object-fit: fill;
+  }
+  
+}
+
+#links{
+  color:white;
+}

@@ -1,0 +1,56 @@
+// Place all the styles related to the chat_rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.chat-room {
+    min-height: 80vh;
+    overflow-x: hidden;
+    .message{
+        display:inline-block;
+        width: 100%;
+        .content-container{
+            width: max-content;
+            .content{
+                background-color: #eee;
+                padding: 10px 30px 10px 15px;
+                border-radius: 15px;
+            }
+        }
+        &.me{
+            .content-container{
+            float: right;             
+            .content{ 
+                background-color: #0d6efd;
+                color: white;
+                }
+            }
+        }
+        
+    }
+    .author{
+        font-size: 0.6rem;
+        color: #777777;
+        margin-left: 10px;
+    }
+    .chat-box{
+        position: absolute;
+        bottom: 0;
+        padding-bottom: 20px;
+        width: calc(100%-15px)
+
+        input{
+            height: 45px !important;
+            font-size: 18px;
+            padding: 8px;
+        }
+    }
+    .btn{
+        height: 45px !important;
+    }
+
+}
+
+.message-container{
+    height: 65vh;
+    overflow-y: scroll;
+}
