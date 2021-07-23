@@ -1,7 +1,7 @@
 class TouristToursController < ApplicationController
   before_action :authenticate_tourist!
   def index
-    @tourist_tours = current_tourist.tourist_tours.all
+    @tourist_tours = current_tourist.tourist_tours.all.paginate(page: params[:page], per_page: 10)
   end
 
   def show

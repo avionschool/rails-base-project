@@ -2,7 +2,7 @@ class AdminsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @users = User.where(type: %w[Tourist Agency], approved: true).all
+    @users = User.where(type: %w[Tourist Agency], approved: true).all.paginate(page: params[:page], per_page: 20)
   end
 
   def show

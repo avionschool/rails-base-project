@@ -27,3 +27,10 @@
     <%end%>
   </tbody>
 </table>
+
+<div class="flickr_pagination">
+    <div class="page_info">
+      <%= page_entries_info @travel_transactions %>
+    </div>
+    <%= will_paginate @travel_transactions, :container => false %>
+  </div>
