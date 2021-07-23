@@ -15,6 +15,16 @@
  *= require_self
  */
 
+// .flash-notice {
+// height: 82px;
+// position: absolute;
+
+// top: 70px;
+// left: 300px;
+// width: 75%;
+// margin: 0 auto;
+// }
+
 .devise__form {
   padding: 60px 0;
 
@@ -26,27 +36,15 @@
 .container-custom {
   width: 100%;
   max-width: 1600px;
-  // align-items: center;
 }
-
-// .brand-wrapper {
-//   width: 100%;
-//   max-width: 240px;
-
-//   @media screen and (max-width: 991px) {
-//     max-width: 0;
-//   }
-// }
 
 .user-dashboard {
   display: grid;
   grid-template-columns: auto 1fr;
-  // margin-top: 5rem;
 
   .left-content,
   .right-content {
     min-height: calc(100vh - 66px);
-    // height: calc(100vh - 66px);
   }
 
   .left-content {
@@ -55,21 +53,15 @@
 
   .right-content {
     & > :nth-child(1) {
-      max-width: 1400px;
-      margin: 0 auto;
+      // max-width: 1400px;
+      // margin: 0 auto;
       height: calc(100vh - 66px);
       overflow: auto;
     }
   }
-
-  // .right-content {
-  //   overflow: hidden;
-  // }
 }
 
 .tmp-sidebar {
-  // padding: 0 1rem;
-  // position: sticky;
   padding: 1rem;
   display: block;
 
@@ -89,7 +81,6 @@
   .conversations {
     height: 50vh;
     overflow-y: auto;
-    // padding: 0.25rem;
 
     .nav-item {
       border-radius: 5px;
