@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
 
     return if current_user.locations.first.nil?
     return if @item.user.locations.first.nil?
+
     lat1 = current_user.lat
     long1 = current_user.long
     lat2 = @item.user.lat
