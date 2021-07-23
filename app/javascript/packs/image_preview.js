@@ -11,13 +11,14 @@ $(function () {
 
                 reader.onload = function(event) {
                     $($.parseHTML('<img>')).attr('src', event.target.result).addClass('tour_img').appendTo(placeToInsertImagePreview);
+                        output.src = event.target.result
                 }
 
                 reader.readAsDataURL(input.files[i]);
             }
         }
-
     };
+
 
     $('#tour_images').on('change', function() {
         imagesPreview(this, 'div.images-container');
