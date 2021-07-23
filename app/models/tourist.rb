@@ -1,5 +1,5 @@
 class Tourist < User
-  #like functionality
+  # like functionality
   acts_as_voter
 
   has_many :tourist_tours, dependent: :nullify

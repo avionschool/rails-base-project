@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
-  #like functionality
+  # like functionality
   acts_as_votable
 
   validates :rating, presence: true, numericality: { greater_than_or_equal_to: 0.01 }
