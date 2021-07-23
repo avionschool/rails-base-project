@@ -28,3 +28,9 @@
     <%end%>
     </tbody>
 </table>
+<div class="flickr_pagination">
+    <div class="page_info">
+      <%= page_entries_info @agencies %>
+    </div>
+    <%= will_paginate @agencies, :container => false %>
+  </div>

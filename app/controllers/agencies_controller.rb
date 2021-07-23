@@ -1,9 +1,9 @@
 class AgenciesController < ApplicationController
   def index
     if tourist_signed_in?
-      @agencies = Agency.where(approved: true)
+      @agencies = Agency.where(approved: true).paginate(page: params[:page], per_page: 10)
     elsif admin_signed_in?
-      @agencies = Agency.where(approved: false)
+      @agencies = Agency.where(approved: false).paginate(page: params[:page], per_page: 10)
     end
   end
 
