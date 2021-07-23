@@ -44,7 +44,14 @@
   </button>
 </div>
 
-
+<div class = 'search'>
+    <%= form_tag( tours_path, role: "search", method: :get) do%>
+        <%= search_field_tag :search, nil, placeholder: 'Search location' %>
+        <%= button_tag :submit do%>
+          <i class="fal fa-search"></i>
+        <% end %>
+    <% end %>
+  </div>
 <div class="feature pb-5">
   <div class="d-flex justify-content-center mt-5">
   <h1 id="services">SERVICES OFFERED</h1>
