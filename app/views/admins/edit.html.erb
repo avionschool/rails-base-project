@@ -1,0 +1,81 @@
+<%= form_for(resource, as: resource_name, url: edit_admin_path, html: { method: :put }) do |f| %>
+<%= render "devise/shared/error_messages", resource: resource %>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-sm" id="form">
+       <h3 class="pb-3 pt-5 text-center">Edit <%= resource_name.to_s.humanize %></h3>
+      <div class="form-style">
+        <div class="form-group pb-3">    
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"Email",class:"form-control" %>
+        </div>
+          <div class = "form-group pb-3">
+            <%= f.label :first_name%><br />
+            <%= f.text_field :first_name, class:"form-control"%>
+          </div>
+          <div class = "form-group pb-3">
+            <%= f.label :last_name%><br />
+            <%= f.text_field :last_name, class:"form-control"%>
+          </div>
+          <div class = "form-group pb-3">
+            <%= f.label :birth_date%><br />
+            <%= f.date_field :birth_date, class:"form-control"%>
+          </div>
+          <div class = "form-group pb-3">
+            <%= f.label :address%><br />
+            <%= f.text_field :address, class:"form-control"%>
+          </div>
+
+          <div class="form-group pb-3">   
+            <%= f.label :password %><br />
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password",placeholder:"Password",class:"form-control" %>
+          </div>
+          <div class="form-group pb-3">    
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"Confirm Password",class:"form-control" %>
+          </div>
+          <div class="form-group pb-3">    
+            <%= f.label :current_password %><br />
+            <%= f.password_field :current_password, autocomplete: "current-password",placeholder:"Current Password",class:"form-control" %>
+          </div>
+      </div>
+    </div>
+    <div class="col-sm" id="DisplayProfile">
+      <div class="field pt-5 px-3">
+        <div class = "form-group pb-3 pt-5">
+          <%= f.label "Cover Photo"%>
+          <%= f.file_field :cover_pic%>
+        </div>
+        <%if current_user.cover_pic.attached?%>
+          <img src="<%=(url_for(current_user.cover_pic))%>" alt="" id="editImage">
+        <%else%> 
+          <img src="https://jordan-medical-services.com/wp-content/plugins/uix-page-builder/uixpb_templates/images/UixPageBuilderTmpl/default-cover-6.jpg" alt="" id="editImage"/>
+        <%end%>
+        <div class = "form-group pb-3 pt-5">
+          <%= f.label "Profile Photo"%>
+          <%= f.file_field :profile_pic%>
+        </div>
+        <%if current_user.profile_pic.attached?%>
+          <img src="<%=(url_for(current_user.profile_pic))%>" alt="" id="ProfilePic"> 
+        <%else%> 
+          <img src="http://www.pngall.com/wp-content/uploads/5/Profile-Male-PNG-Free-Download.png" alt="" id="ProfilePic"/>
+        <%end%>
+       </div>
+    </div>
+  </div>
+</div>
+<div class="px-5 pb-3">
+  <div class="actions">
+    <%= f.submit "Update",class:"btn btn-success w-80 font-weight-bold mt-4 mx-2" %>
+  </div>
+</div>
+<% end %>
+<div class="px-5 pb-3">
+  <div class="actions">
+    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger w-80" %></p>
+  </div>
+</div>

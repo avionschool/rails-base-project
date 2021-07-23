@@ -1,0 +1,46 @@
+<script src="https://use.fontawesome.com/f59bcd8580.js"></script>
+<%= render 'shared/errors', obj: @admin %>
+<div class="container">
+  <div class="row m-5 no-gutters shadow-lg">
+    <div class="col-md-6 bg-white p-5">
+    <h3 class="pb-3">Create Admin</h3>
+    <div class="form-style">
+    <%= form_with scope: :admin, model: @admin, local: true do |f| %>
+      <div class="form-group pb-3">    
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control" %>
+      </div>
+      <div class = "form-group pb-3">
+        <%= f.label :first_name%><br />
+        <%= f.text_field :first_name, class:"form-control"%>
+      </div>
+      <div class = "form-group pb-3">
+        <%= f.label :last_name%><br />
+        <%= f.text_field :last_name, class:"form-control"%>
+      </div>
+      <div class = "form-group pb-3">
+        <%= f.label :birth_date%><br />
+        <%= f.date_field :birth_date, class:"form-control"%>
+      </div>
+      
+      <div class="form-group pb-3">   
+        <%= f.label :password %><br />
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password",placeholder:"Password",class:"form-control" %>
+      </div>
+       <div class="form-group pb-3">    
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"Confirm Password",class:"form-control" %>
+      </div>
+      <div class="pb-2">
+        <div class="actions">
+          <%= f.submit "Sign up",class:"btn btn-dark w-100 font-weight-bold mt-2" %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+    </div>
+  </div>
+</div>

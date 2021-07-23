@@ -1,0 +1,32 @@
+<br/><br/><br/><br/>
+<table class="table table-striped text-center">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">Email</th>
+      <th scope="col">Type</th>
+      <th scope="col">Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user|%>
+    <tr>
+        <% if user.type == 'Tourist' %>
+          <td><%= link_to "#{ user.first_name} #{ user.last_name}", tourist_path(user)%></td>
+        <%elsif user.type == 'Agency'%>
+            <td><%= link_to "#{ user.agency_name}", agency_path(user)%></td>
+        <% end %>
+        <td><%= user.type%></td>
+        <td><%= user.email%></td>
+        <td><%= user.address%></td>
+    </tr>
+    <%end%>
+    </tbody>
+</table>
+
+<div class="flickr_pagination">
+    <div class="page_info">
+      <%= page_entries_info @users %>
+    </div>
+    <%= will_paginate @users, :container => false %>
+  </div>

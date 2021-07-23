@@ -1,0 +1,95 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+$breakpoint: 800px;
+
+
+.search{
+    width: 100%;
+    position: absolute;
+    top: 12rem;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    
+    
+
+    form[role=search]{
+        position: relative;
+        input{
+            padding: 10px;
+            font-size: 20px;
+            border: none;
+            box-shadow: 5px 8px;
+        }
+        button{
+            padding: 10px;
+            font-size: 20px;
+            border: none;
+        }
+        input[type=search]{
+            width: 40vw;
+            border-radius: 1rem;
+        }
+        button[type=submit]{
+            background-color: transparent;
+            position: absolute;
+            color: rgb(78, 78, 78);
+            font-weight: 400;
+            right: 10px;
+        }
+        button:hover{
+            color: rgb(1, 151, 89);
+            transition: linear .2s;
+        }
+
+
+    }
+} 
+
+@media (max-width: $breakpoint) {
+    .search{
+        width: 100%;
+        position: absolute;
+        top: 8rem;
+        z-index: 4;
+        display: flex;
+        justify-content: center;
+        
+        
+    
+        form[role=search]{
+            position: relative;
+            input{
+                padding: 10px;
+                font-size: 20px;
+                border: none;
+                box-shadow: 5px 8px;
+            }
+            button{
+                padding: 10px;
+                font-size: 20px;
+                border: none;
+            }
+            input[type=search]{
+                width: 40vw;
+                border-radius: 1rem;
+            }
+            button[type=submit]{
+                background-color: transparent;
+                position: absolute;
+                color: rgb(78, 78, 78);
+                font-weight: 400;
+                right: 10px;
+            }
+            button:hover{
+                color: rgb(1, 151, 89);
+                transition: linear .2s;
+            }
+    
+    
+        }
+    } 
+  
+}
