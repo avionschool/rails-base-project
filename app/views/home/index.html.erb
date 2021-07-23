@@ -12,34 +12,14 @@
           <p>ENERGIZE YOUR LIFE<p>
           <h1 data-aos="fade-up"  data-aos-delay="500" data-aos-duration="1000">Let's make Your Tour Unforgettable</h1>
           <p data-aos="fade-down"  data-aos-delay="300" data-aos-duration="2000">Explore the world with Intense! We offer you a vast variety of tours of all types featuring both exotic and already well-known destinations.</p>
-        <div class ='grid'>
-            <div class="row">
-            <%= form_tag( tours_path, role: "search", method: :get) do%>
-                <%= search_field_tag :search, nil, placeholder: 'Search location',class:"searchBar shadow-lg",type:"search" %>
-                <%= button_tag :submit do %>
-                <button class="btn btn-success" type="submit"> <i class="fal fa-search"></i></button>
-                <% end %>
-            <% end %>
-            </div>
-        </div>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block w-100" id="image" alt="...">
+      <img src="https://images.unsplash.com/photo-1588392382834-a891154bca4d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=755&q=80" class="d-block w-100" id="image" alt="...">   
       <div class="carousel-content">
           <p>ENERGIZE YOUR LIFE<p>
           <h1 data-aos="fade-up"  data-aos-delay="500">Let's make Your Best Trip Ever</h1>
           <p data-aos="fade-up" data-aos-duration="1000">Some representative placeholder content for the second slide.</p>
-        <div class ='grid'>
-            <div class="row">
-            <%= form_tag( tours_path, role: "search", method: :get) do%>
-                <%= search_field_tag :search, nil, placeholder: 'Search location',class:"searchBar shadow-lg",type:"search" %>
-                <%= button_tag :submit do %>
-                <button class="btn btn-success" type="submit"> <i class="fal fa-search"></i></button>
-                <% end %>
-            <% end %>
-            </div>
-        </div>
       </div>
     </div>
     <div class="carousel-item">
@@ -48,16 +28,6 @@
           <p>ENERGIZE YOUR LIFE<p>
           <h1 data-aos="fade-up" data-aos-duration="5000">We Provide Only the Best Tours</h1>
           <p>We are committed to offering travel services of the highest quality, combining our energy and enthusiasm, with our years of experience.</p>
-        <div class ='grid'>
-            <div class="row">
-            <%= form_tag( tours_path, role: "search", method: :get) do%>
-                <%= search_field_tag :search, nil, placeholder: 'Search location',class:"searchBar shadow-lg",type:"search" %>
-                <%= button_tag :submit do %>
-                <button class="btn btn-success" type="submit"> <i class="fal fa-search"></i></button>
-                <% end %>
-            <% end %>
-            </div>
-        </div>
       </div>
     </div>
   </div>
@@ -70,6 +40,14 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+<div class = 'search'>
+    <%= form_tag( tours_path, role: "search", method: :get) do%>
+        <%= search_field_tag :search, nil, placeholder: 'Search location' %>
+        <%= button_tag :submit do%>
+          <i class="fal fa-search"></i>
+        <% end %>
+    <% end %>
+  </div>
 
 <div class="feature pb-5">
   <div class="d-flex justify-content-center mt-5">
