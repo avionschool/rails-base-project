@@ -1,11 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    
-  <form class="form-inline">
-    <%= image_tag 'search.svg', size: '20x20', class: 'mr-4' %>
-    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-  </form>
-    
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <% if user_signed_in? %>
+    <%# <div class="container container-custom m-auto"> %>
+    <div class="container container-custom ml-5">
+  <% else %>
+    <div class="container m-auto">
+  <% end %>
+    <!--<form class="form-inline">
+      <%= image_tag 'search.svg', size: '20x20', class: 'mr-4' %>
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+    </form>-->
+
+    <div class="brand-wrapper d-flex">
+      <%= link_to root_path, class: "navbar-brand link-dark text-decoration-none custom-link text-center" do %>
+        <%= image_tag("kalakalph_logo.svg", size: '28', alt: "kalakalph logo") %>
+        <span>Kalakalph</span>
+      <% end %>
+    </div>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

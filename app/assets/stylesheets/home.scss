@@ -14,12 +14,14 @@
 .products {
   // max-width: 65rem;
   max-width: 1600px;
-  height: auto;
+  // height: calc(100vh - 66px);
   padding: 1rem;
   display: flex;
   flex-flow: wrap;
   justify-content: center;
   align-items: flex-start;
+
+  // overflow: auto;
 }
 
 .items {
@@ -46,26 +48,26 @@
 
 //----------- image-stack -----------
 .image-stack {
-    width: auto;
-    padding: 0;
+  width: auto;
+  padding: 0;
 }
 
 .image-stack::after {
-  content: '';
+  content: "";
   display: table;
   clear: both;
 }
 
 .image-stack__item--top {
-    float: left;
-    width: 66%;
-    margin-right: -100%;
-    padding-top: 15%; // arbitrary
-    position: relative;
-    z-index: 1;
+  float: left;
+  width: 66%;
+  margin-right: -100%;
+  padding-top: 15%; // arbitrary
+  position: relative;
+  z-index: 1;
 }
 
 .image-stack__item--bottom {
-    float: right;
-    width: 75%;
+  float: right;
+  width: 75%;
 }

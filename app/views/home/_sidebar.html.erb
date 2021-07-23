@@ -1,19 +1,24 @@
 <%# <div class="tmp-sidebar d-flex flex-column flex-shrink-0 p-3 bg-light justify-content-start" style="width: 280px;"> %>
 <div class="tmp-sidebar">
-    <div class="brand-wrapper d-flex">
+    <!--<div class="brand-wrapper d-flex">
       <%= link_to root_path, class: "navbar-brand link-dark text-decoration-none custom-link text-center" do %>
         <%= image_tag("kalakalph_logo.svg", size: '28', alt: "kalakalph logo") %>
         <span>Kalakalph</span>
       <% end %>
-    </div>
+    </div>-->
+
+  <form class="form-inline">
+    <%= image_tag 'search.svg', size: '20x20', class: 'mr-4' %>
+    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+  </form>
 
   <!-- should link to profile page -->
-  <%= link_to root_path, class: " d-flex align-items-center justify-content-center mt-2 mb-4 link-dark text-decoration-none" do %>
+  <%= link_to root_path, class: " d-flex align-items-center justify-content-center m-4 link-dark text-decoration-none" do %>
     <span class="fs-4">Hello, <%= current_user.username %></span>
   <% end %>
 
 
-    <ul class="nav-items-container nav nav-pills flex-column mb-auto">
+    <ul class="nav-items-container nav nav-pills flex-column mb-auto text-center">
         <li class="nav-item">
             <%= link_to  "Dashboard", root_path, class: "nav-link active" %>
         </li>
@@ -31,8 +36,9 @@
         </li>
     </ul>
 
-    <h6>Conversations</h6>
-    <ul class="conversations nav nav-pills flex-column mb-auto">
+    <h6 class="mt-3 text-center">Conversations</h6>
+    <%# <ul class="conversations nav nav-pills flex-column mb-auto"> %>
+    <ul class="conversations">
         <% @conversations.each do |conv| %>
             <% if conv.item != nil %>
                     <%= link_to item_conversation_path(conv.item_id, conv.id), class: "nav-link" do %>
@@ -64,8 +70,9 @@
                                 </div>
                             </div>
 
-                            <div class="d-flex flex-column align-items-center m-auto">
-                                <span class="convo-item-name">
+                            <%# <div class="d-flex flex-column align-items-center m-auto"> %>
+                            <div class="d-flex flex-column align-items-center m-3">
+                                <span class="convo-item-name text-center">
                                     <%= conv.item.name %>
                                     <% status = conv.item.status == 'open' ? '' : "(" + conv.item.status.capitalize + ")"%>
                                     <span class="status font-italic text-warning"><%= status %></span>
