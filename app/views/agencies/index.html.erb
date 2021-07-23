@@ -18,9 +18,9 @@
         <td><%= agency.email%></td>
         <td><%= agency.address%></td>
          <% if admin_signed_in? %>
-          <td scope="col d-flex">
-            <%= button_to 'Approve', agency_path(agency), params: {agency: { approved: true, verified_by: current_admin.id }}, method: :patch, local: true%>
-            <%= button_to 'Reject', agency_path(agency), method: :delete, data: {confirm: "Are you sure you want to reject this broker? rejecting will delete user record from the database!"}, local: true%>
+          <td class="d-flex justify-content-center">
+            <%= button_to 'Approve', agency_path(agency), params: {agency: { approved: true, verified_by: current_admin.id }},class:"btn btn-primary me-3", method: :patch, local: true%>
+            <%= button_to 'Reject', agency_path(agency), method: :delete, data: {confirm: "Are you sure you want to reject this broker? rejecting will delete user record from the database!"},class:"btn btn-danger", local: true%>
           </td>
 
         <% end %>
