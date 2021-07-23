@@ -12,5 +12,5 @@ class Tour < ApplicationRecord
   has_rich_text :details
   has_many_attached :images
 
-  scope :search, ->(search) { where('location LIKE ?', "%#{search}%") }
+  scope :search, ->(search) { where('LOWER(location) LIKE ?', "%#{search}%") }
 end
