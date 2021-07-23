@@ -63,5 +63,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     
 
+    <!--star rating script-->
+    <script>
+      $('.star-rating').raty({
+        path: '/',
+        readOnly: true,
+        half: true,
+        score: function(){
+          return $(this).attr('data-score');
+        },
+      });
+
+      $('#star-rating-new-review').raty({
+        path: '/',
+        half: true,
+        scoreName: 'review[rating]'
+      });
+    </script>
+
+
+
   </body>
 </html>

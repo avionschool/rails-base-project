@@ -22,7 +22,7 @@ require("trix")
 require("@rails/actiontext")
 require("packs/jquery.raty")
 
-
+global.$ = jQuery;
 
 function hideFlash() {
   setInterval(function() {document.querySelector('#flash').style.display = "none";}, 3000);
