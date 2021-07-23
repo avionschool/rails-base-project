@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
   def sign_up_mailer
     UserMailer.welcome_send(self).deliver
+    AdminMailer.new_user_waiting_for_approval(self).deliver if agency?
   end
 
   def tourist?
