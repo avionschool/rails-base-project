@@ -2,11 +2,11 @@ class ToursController < ApplicationController
   before_action :authenticate_agency!, except: %i[index show]
 
   def index
-    if tourist_signed_in?
-      @tours = Tour.all
-    elsif agency_signed_in?
-      @tours = current_agency.tours.all
-    end
+    @tours = if agency_signed_in?
+               current_agency.tours.all
+             else
+               Tour.search(params[:search])
+             end
   end
 
   def show

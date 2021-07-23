@@ -11,4 +11,6 @@ class Tour < ApplicationRecord
   has_many :travel_transactions, through: :tourist_tours
   has_rich_text :details
   has_many_attached :images
+
+  scope :search, ->(search) { where('location LIKE ?', "%#{search}%") }
 end
