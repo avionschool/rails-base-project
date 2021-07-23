@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'ToursControllers', type: :request do
+  let!(:admin) { create(:admin) }
   let!(:agency) { create(:approved_agency) }
   let!(:tour) { create(:tour, agency: agency) }
 
@@ -8,6 +9,12 @@ RSpec.describe 'ToursControllers', type: :request do
 
   context 'when GET in tours' do
     it 'gets all active tours' do
+      get tours_path
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'gets all active tours if signed in as admin' do
+      sign_in(admin)
       get tours_path
       expect(response).to have_http_status(:ok)
     end
