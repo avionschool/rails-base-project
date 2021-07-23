@@ -3,13 +3,12 @@
 <br><br>
 <hr>
 <div class="container">
-    			
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="rating-block">
-					<h4>Average user rating</h4>
-					<h2 class="bold padding-bottom-7"><%= Review.where(:agency_id => @agency.id ).average(:rating).round(2) %> <small>/ 5</small></h2>
-					<div class="star-rating" data-score=<%= Review.where(:agency_id => @agency.id ).average(:rating) %> ></div>
+					<h4>Average agency rating</h4>
+					<h2 class="bold padding-bottom-7"><%= Review.where(agency_id: @agency.id ).average(:rating).round(2) %> <small>/ 5</small></h2>
+					<div class="star-rating" data-score=<%= Review.where(agency_id: @agency.id ).average(:rating) %> ></div>
 				</div>
 			</div>
 			<div class="col-sm-3">
@@ -20,13 +19,14 @@
 					</div>
 					<div class="pull-left" style="width:180px;">
 						<div class="progress" style="height:9px; margin:8px 0;">
-						  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 1000%">
-							<span class="sr-only">80% Complete (danger)</span>
+                          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 
+                          <%= (Review.where("rating >= 4.5 AND rating < 5", agency_id: @agency.id ).count * 100)/Review.where(agency_id: @agency.id ).count %>%">
+							
 						  </div>
             
 						</div>
 					</div>
-					<div class="pull-right" style="margin-left:10px;">1</div>
+					<div class="pull-right" style="margin-left:10px;"><%= Review.where("rating >= 4.5 AND rating < 5", agency_id: @agency.id ).count %></div>
 				</div>
 				<div class="pull-left">
 					<div class="pull-left" style="width:35px; line-height:1;">
@@ -34,12 +34,13 @@
 					</div>
 					<div class="pull-left" style="width:180px;">
 						<div class="progress" style="height:9px; margin:8px 0;">
-						  <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%">
-							<span class="sr-only">80% Complete (danger)</span>
+                          <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 
+                          <%= (Review.where("rating >= 3.5 AND rating < 4.5", agency_id: @agency.id ).count * 100)/Review.where(agency_id: @agency.id ).count %>%">
+							
 						  </div>
 						</div>
 					</div>
-					<div class="pull-right" style="margin-left:10px;">1</div>
+					<div class="pull-right" style="margin-left:10px;"><%= Review.where("rating >= 3.5 AND rating < 4.5", agency_id: @agency.id ).count %></div>
 				</div>
 				<div class="pull-left">
 					<div class="pull-left" style="width:35px; line-height:1;">
@@ -47,12 +48,13 @@
 					</div>
 					<div class="pull-left" style="width:180px;">
 						<div class="progress" style="height:9px; margin:8px 0;">
-						  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 60%">
-							<span class="sr-only">80% Complete (danger)</span>
+                          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 
+                          <%= (Review.where("rating >= 2.5 AND rating < 3.5", agency_id: @agency.id ).count * 100)/Review.where(agency_id: @agency.id ).count %>%">
+							
 						  </div>
 						</div>
 					</div>
-					<div class="pull-right" style="margin-left:10px;">0</div>
+					<div class="pull-right" style="margin-left:10px;"><%= Review.where("rating >= 2.5 AND rating < 3.5", agency_id: @agency.id ).count %></div>
 				</div>
 				<div class="pull-left">
 					<div class="pull-left" style="width:35px; line-height:1;">
@@ -60,12 +62,13 @@
 					</div>
 					<div class="pull-left" style="width:180px;">
 						<div class="progress" style="height:9px; margin:8px 0;">
-						  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 40%">
-							<span class="sr-only">80% Complete (danger)</span>
+                          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 
+                          <%= (Review.where("rating >= 1.5 AND rating < 2.5", agency_id: @agency.id ).count * 100)/Review.where(agency_id: @agency.id ).count %>%">
+							
 						  </div>
 						</div>
 					</div>
-					<div class="pull-right" style="margin-left:10px;">0</div>
+					<div class="pull-right" style="margin-left:10px;"><%= Review.where("rating >= 1.5 AND rating < 2.5", agency_id: @agency.id ).count %></div>
 				</div>
 				<div class="pull-left">
 					<div class="pull-left" style="width:35px; line-height:1;">
@@ -73,12 +76,13 @@
 					</div>
 					<div class="pull-left" style="width:180px;">
 						<div class="progress" style="height:9px; margin:8px 0;">
-						  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
-							<span class="sr-only">80% Complete (danger)</span>
+                          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 
+                          <%= (Review.where("rating >= 1 AND rating < 1.5", agency_id: @agency.id ).count * 100)/Review.where(agency_id: @agency.id ).count %>%">
+							
 						  </div>
 						</div>
 					</div>
-					<div class="pull-right" style="margin-left:10px;">0</div>
+					<div class="pull-right" style="margin-left:10px;"><%= Review.where("rating >= 1 AND rating < 1.5", agency_id: @agency.id ).count %></div>
 				</div>
 			</div>			
 		</div>			
