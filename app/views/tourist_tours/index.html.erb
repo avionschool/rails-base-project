@@ -31,3 +31,9 @@
 </div>
 
 <%end%>
+<div class="flickr_pagination">
+    <div class="page_info">
+      <%= page_entries_info @tourist_tours %>
+    </div>
+    <%= will_paginate @tourist_tours, :container => false %>
+  </div>
