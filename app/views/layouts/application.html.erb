@@ -13,8 +13,11 @@
 
   <body>
     <%= render "partials/navbar" %>
-    <%= render 'partials/flash' %>
-
+    
+    <% unless user_signed_in? %>
+      <%= render 'partials/flash' %>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>

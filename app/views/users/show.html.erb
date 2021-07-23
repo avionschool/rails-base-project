@@ -3,26 +3,152 @@
     <div class="left-content">
       <%= render 'home/sidebar' %>
     </div>
+
     <div class="right-content">
-      <div class="products">
-        <% @user.items.each do |item| %>
-          <%= link_to item_path(item) do %>
-            <div class="items">
-              <% if item.images.attached? %>
-                <%= image_tag item.images[0], class: "itempic" %>
-              <% else %>
-                <%= image_tag "altpic.png", class: "itempic" %>
-              <% end %>
-              
-              <% status = item.status == 'open' ? '' : "(" + item.status.capitalize + ")"%>
-              <h5 class="item_name">
-                <%= item.name %>
-                <span class="status font-italic text-warning fst-normal"><%= status %></span>
-              </h5>
+      <div class="profile">
+        
+        <%= render 'partials/flash' %>
+        
+        <div class="profile-info">
+          <div class="profile-info-wrapper">
+            <div class="profile-content text-center">
+              <div class="profile-image">
+                <% if current_user.avatar.attached? %>
+                  <%= image_tag url_for(current_user.thumbnail), class: "rounded-circle", alt: 'profile image' %>
+                <% else %>
+                  <% filepath = (current_user.id % 8).to_s + '.png' %>
+                  <%= image_tag 'default_avatars/' + filepath, class: "rounded-circle", alt: 'profile avatar' %>
+                <% end %>
+              </div>
+
+              <div class="profile-details">
+                <h2 class="fullname">
+                  <%= current_user.first_name %> <%= current_user.last_name %>
+                </h2>
+
+                <h3>
+                  <span class="text-danger"><%= current_user.username %></span>
+                </h3>
+                
+                <h5> <%= current_user.ave_rating.round(2) %> / 5 </h5>
+              </div>
             </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>  
-  </div>
+            
+            <!-- RATING COMMENTS -->
+            <div class="profile-rating-carousel">
+              <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item text-center active">
+                    <h5>Rating 1</h5>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex perferendis, eos cupiditate hic aperiam iusto accusantium maiores sint dolores nobis libero facilis, quasi id aspernatur aut obcaecati error sequi temporibus? ...</p>
+                  </div>
+                  <div class="carousel-item text-center">
+                    <h5>Rating 2</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus animi provident natus dolore dignissimos, veniam accusamus fuga dicta assumenda? Repellendus ab, dignissimos pariatur quis nemo fugit animi quo maxime adipisci! ...</p>
+                  </div>
+                  <div class="carousel-item text-center">
+                    <h5>Rating 3</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum provident nobis voluptas aliquam labore ea eaque? Iste, odit inventore id, esse veniam molestias ad maiores corporis velit adipisci saepe animi. ...</p>
+                  </div>
+                </div>
+              </div><!-- .carousel .slide -->
+            </div><!-- .profile-rating-carousel -->
+          </div><!-- .profile-info-wrapper -->
+        </div><!-- .profile-info -->
+
+        <div class="profile-tabs">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Available Items</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Reserved</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Traded</a>
+            </li>
+          </ul>
+          
+          
+          <div class="tab-content" id="myTabContent">
+            <!-- Tab for AVAILABLE items -->
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="products">
+                <% @user.items.each do |item| %>
+                  <% if item.status=='open' %>
+                    <%= link_to item_path(item) do %>
+                      <div class="items">
+                        <% if item.images.attached? %>
+                          <%= image_tag item.images[0], class: "itempic" %>
+                        <% else %>
+                          <%= image_tag "altpic.png", class: "itempic" %>
+                        <% end %>
+                        
+                        <% status = item.status == 'open' ? '' : "(" + item.status.capitalize + ")"%>
+                        <h5 class="item_name">
+                          <%= item.name %>
+                          <span class="status font-italic text-warning fst-normal"><%= status %></span>
+                        </h5>
+                      </div>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+
+            <!-- Tab for RESERVED items -->
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <div class="products">
+                <% @user.items.each do |item| %>
+                  <% if item.status=='reserved' %>
+                    <%= link_to item_path(item) do %>
+                      <div class="items">
+                        <% if item.images.attached? %>
+                          <%= image_tag item.images[0], class: "itempic" %>
+                        <% else %>
+                          <%= image_tag "altpic.png", class: "itempic" %>
+                        <% end %>
+                        
+                        <% status = item.status == 'open' ? '' : "(" + item.status.capitalize + ")"%>
+                        <h5 class="item_name">
+                          <%= item.name %>
+                          <span class="status font-italic text-warning fst-normal"><%= status %></span>
+                        </h5>
+
+                      </div>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+
+            <!-- Tab for TRADED items -->
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+              <div class="products">
+                <% @user.items.each do |item| %>
+                  <% if item.status=='traded' %>
+                    <%= link_to item_path(item) do %>
+                      <div class="items">
+                        <% if item.images.attached? %>
+                          <%= image_tag item.images[0], class: "itempic" %>
+                        <% else %>
+                          <%= image_tag "altpic.png", class: "itempic" %>
+                        <% end %>
+                        
+                        <% status = item.status == 'open' ? '' : "(" + item.status.capitalize + ")"%>
+                        <h5 class="item_name">
+                          <%= item.name %>
+                          <span class="status font-italic text-warning fst-normal"><%= status %></span>
+                        </h5>
+                      </div>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div><!-- .products -->
+            </div><!-- .tab-pane -->
+          </div><!-- .tab-content -->
+        </div><!-- .profile-tabs -->
+      </div><!-- .profile -->
+    </div><!-- .right-content -->
+  </div><!-- .user-dashboard -->
 </section>

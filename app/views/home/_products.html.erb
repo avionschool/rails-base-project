@@ -1,4 +1,7 @@
 <div class="products">
+
+  <%= render 'partials/flash' %>
+
   <% @items.each do |t| %>
     <%= link_to item_path(t.id), method: :get do %>
       <div class="items">

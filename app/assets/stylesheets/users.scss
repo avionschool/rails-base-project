@@ -7,3 +7,78 @@
   margin: 0 auto;
   padding: 2rem 1rem;
 }
+
+.profile {
+  &-info,
+  &-tabs {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  &-info {
+    .profile-info-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(119, 119, 119, 0.25);
+
+      .profile-content {
+        flex: 1;
+
+        .profile-image {
+          display: inline-block;
+          width: 150px;
+          height: 150px;
+          margin: 1rem;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .profile-details {
+          margin: 1rem;
+        }
+      }
+
+      .profile-rating-carousel {
+        margin-left: 3rem;
+
+        flex: 2;
+      }
+    }
+  }
+
+  &-tabs {
+    .nav-link {
+      font-weight: 500;
+      font-size: 20px;
+    }
+
+    .tab-content {
+      height: 70vh;
+      overflow: auto;
+
+      border-left: 1px solid rgba(119, 119, 119, 0.25);
+      border-right: 1px solid rgba(119, 119, 119, 0.25);
+      border-bottom: 1px solid rgba(119, 119, 119, 0.25);
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .profile-info-wrapper {
+      flex-direction: column;
+
+      .profile-rating-carousel {
+        margin-top: 3rem;
+        margin-left: 0;
+      }
+    }
+  }
+}
