@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   def show
     @conversations = current_user.conversations if user_signed_in?
 
-    @item = Item.find(params[:id])
+  @item = Item.find(params[:id])
     @comments = @item.comments.sort_by(&:created_at) unless @item.nil?
   end
 
