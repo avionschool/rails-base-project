@@ -12,7 +12,16 @@
           <p>ENERGIZE YOUR LIFE<p>
           <h1 data-aos="fade-up"  data-aos-delay="500" data-aos-duration="1000">Let's make Your Tour Unforgettable</h1>
           <p data-aos="fade-down"  data-aos-delay="300" data-aos-duration="2000">Explore the world with Intense! We offer you a vast variety of tours of all types featuring both exotic and already well-known destinations.</p>
-          <button type="button" class="btn btn-danger" href="#services">Learn More</button>
+        <div class ='grid'>
+            <div class="row">
+            <%= form_tag( tours_path, role: "search", method: :get) do%>
+                <%= search_field_tag :search, nil, placeholder: 'Search location',class:"searchBar shadow-lg",type:"search" %>
+                <%= button_tag :submit do %>
+                <button class="btn btn-success" type="submit"> <i class="fal fa-search"></i></button>
+                <% end %>
+            <% end %>
+            </div>
+        </div>
       </div>
     </div>
     <div class="carousel-item">
@@ -21,7 +30,16 @@
           <p>ENERGIZE YOUR LIFE<p>
           <h1 data-aos="fade-up"  data-aos-delay="500">Let's make Your Best Trip Ever</h1>
           <p data-aos="fade-up" data-aos-duration="1000">Some representative placeholder content for the second slide.</p>
-          <button type="button" class="btn btn-danger" href="#services">Learn More</button>
+        <div class ='grid'>
+            <div class="row">
+            <%= form_tag( tours_path, role: "search", method: :get) do%>
+                <%= search_field_tag :search, nil, placeholder: 'Search location',class:"searchBar shadow-lg",type:"search" %>
+                <%= button_tag :submit do %>
+                <button class="btn btn-success" type="submit"> <i class="fal fa-search"></i></button>
+                <% end %>
+            <% end %>
+            </div>
+        </div>
       </div>
     </div>
     <div class="carousel-item">
@@ -30,7 +48,16 @@
           <p>ENERGIZE YOUR LIFE<p>
           <h1 data-aos="fade-up" data-aos-duration="5000">We Provide Only the Best Tours</h1>
           <p>We are committed to offering travel services of the highest quality, combining our energy and enthusiasm, with our years of experience.</p>
-          <button type="button" class="btn btn-danger" href="#services">Learn More</button>
+        <div class ='grid'>
+            <div class="row">
+            <%= form_tag( tours_path, role: "search", method: :get) do%>
+                <%= search_field_tag :search, nil, placeholder: 'Search location',class:"searchBar shadow-lg",type:"search" %>
+                <%= button_tag :submit do %>
+                <button class="btn btn-success" type="submit"> <i class="fal fa-search"></i></button>
+                <% end %>
+            <% end %>
+            </div>
+        </div>
       </div>
     </div>
   </div>
@@ -44,14 +71,6 @@
   </button>
 </div>
 
-<div class = 'search'>
-    <%= form_tag( tours_path, role: "search", method: :get) do%>
-        <%= search_field_tag :search, nil, placeholder: 'Search location' %>
-        <%= button_tag :submit do%>
-          <i class="fal fa-search"></i>
-        <% end %>
-    <% end %>
-  </div>
 <div class="feature pb-5">
   <div class="d-flex justify-content-center mt-5">
   <h1 id="services">SERVICES OFFERED</h1>
@@ -101,7 +120,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                 <div class="our-team">
                     <div class="pic">
-                        <img src="https://scontent.fcrk1-1.fna.fbcdn.net/v/t1.18169-9/18920201_1473457416008657_792496766214744901_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeGl8Do3GVU4OQMQLbf8OTQDbxQAlrUiTNJvFACWtSJM0jsHluLZtCc-1VwUGO-tYmFVFkj3mzBhBUVMGX_9wGiK&_nc_ohc=Omz4WKS3vdYAX8U2ddR&_nc_ht=scontent.fcrk1-1.fna&oh=ced63928fca89e5659e9932d88a3d188&oe=60F8E66A">
+                        <%= image_tag("el.jpg", :alt => "rss feed") %>             
                     </div>
                     <div class="team-content">
                         <h3 class="title">Eileen de Guzman</h3>
@@ -127,7 +146,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
                 <div class="our-team">
                     <div class="pic">
-                        <img src="https://scontent.fcrk1-3.fna.fbcdn.net/v/t1.6435-9/120323289_3811985145496562_2463989999475682301_n.jpg?_nc_cat=106&ccb=1-3&_nc_sid=174925&_nc_eui2=AeE8pfdmsJdmDlim6KAhjf81SZS4Xo-V_RVJlLhej5X9Fca78rXoGoAvvaqme6KYIiujdB7yGwtKxRDflA7zOw_a&_nc_ohc=cUmmY8T-oGIAX9-EeyV&_nc_ht=scontent.fcrk1-3.fna&oh=a0e11d6df0bae482feaf49c108a6ea95&oe=60F91294">
+                        <%= image_tag("lf.jpg", :alt => "rss feed") %>
                     </div>
                     <div class="team-content">
                         <h3 class="title">Leif Bersamina</h3>
@@ -152,7 +171,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
                 <div class="our-team">
                     <div class="pic">
-                        <img src="https://scontent.fmnl25-1.fna.fbcdn.net/v/t1.6435-9/53806364_10214047012556932_2056223555829366784_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeG1-KcCvJt6KlhmtvCPSAnT8hkU6kMuBfryGRTqQy4F-tJCLHrK7BHx1o8HfVfl5BQ&_nc_ohc=NmiBc6YxsnIAX98Gu76&_nc_ht=scontent.fmnl25-1.fna&oh=efa50d7204768a6932de51a147134ebf&oe=60FAEE17">
+                        <%= image_tag("jc.jpg", :alt => "rss feed") %>
                     </div>
                     <div class="team-content">
                         <h3 class="title">Joseph Ong</h3>
@@ -178,7 +197,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration="1000">
                 <div class="our-team">
                     <div class="pic">
-                        <img src="https://scontent.fcrk1-1.fna.fbcdn.net/v/t1.6435-9/140633688_3743627382327267_5753054491802911267_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=174925&_nc_eui2=AeHe2_yPRlNBQfbUqCAcvaoZFH_OP6jltZIUf84_qOW1kisf7X4mJfdwdB5mrFaWutVpNocGv61wlPCsgXaNVIxL&_nc_ohc=hj1iqnaIGy0AX_0AXEh&_nc_ht=scontent.fcrk1-1.fna&oh=1a816742dc0bb6becbbca1217cc78e4a&oe=60F847D0">
+                        <%= image_tag("rm.jpg", :alt => "rss feed") %>        
                     </div>
                     <div class="team-content">
                         <h3 class="title">Ronald Magno</h3>

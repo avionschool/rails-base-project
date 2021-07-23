@@ -1,38 +1,3 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
-.search{
-    width: 100%;
-    position: absolute;
-    top: 15rem;
-    z-index: 4;
-    display: flex;
-    justify-content: center;
-    
-    form[role=search]{
-        position: relative;
-        input, button{
-            padding: 10px;
-            font-size: 20px;
-            border: none;
-        }
-        input[type=search]{
-            width: 40vw;
-            border-radius: 1rem;
-        }
-        button[type=submit]{
-            background-color: transparent;
-            position: absolute;
-            color: rgb(78, 78, 78);
-            font-weight: 400;
-            right: 10px;
-        }
-        button:hover{
-            color: rgb(1, 151, 89);
-            transition: linear .2s;
-        }
-
-        
-    }
-}
