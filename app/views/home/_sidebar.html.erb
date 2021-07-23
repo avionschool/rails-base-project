@@ -98,8 +98,10 @@
 
               <div class="field">
                 <%= f.label :images %><br />
-                <%= f.file_field :images, multiple: true %>
+                <%= f.file_field :images, id: "image-input", multiple: true %>
               </div>
+
+              <div id="image-preview-container"></div>
 
               <div class="field">
                 <%= f.label :description %><br />
@@ -120,5 +122,6 @@
         </div>
       </div>
     </div>
-    <%= javascript_pack_tag 'sidebar.js' %>  
+    <%= javascript_pack_tag 'sidebar.js' %>
+    <%= javascript_pack_tag 'image_previewer.js' %>  
 </div>

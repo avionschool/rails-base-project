@@ -54,7 +54,7 @@
     2. deleting listing should prompt a verification modal
     3. entire conversation history between 2 users should not be loaded all at once when visiting a conversation show page
     4. in user's profile page, items should be grouped in terms of status
-    5. preview for uploaded images
 
 ## major details to add:
     1. pagination in root page
+    2. proper user profile page layout

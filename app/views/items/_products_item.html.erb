@@ -113,9 +113,11 @@
 
                 <div class="field">
                   <%= f.label :images %><br />
-                  <%= f.file_field :images, multiple: true %>
+                  <%= f.file_field :images, multiple: true, id: "image-input-edit" %>
                 </div>
                 <br>
+
+                <div id="image-preview-container-edit"></div>
 
                 <div class="field">
                   <%= f.label :description %><br />
@@ -139,3 +141,4 @@
     <% end %>
   <% end %>
 <% end %>
+<%= javascript_pack_tag 'image_previewer_edit.js' %>
