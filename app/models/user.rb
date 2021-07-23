@@ -7,9 +7,14 @@ class User < ApplicationRecord
   has_one_attached :profile_pic
   has_one_attached :cover_pic
   has_many :messages, dependent: :nullify
+  after_create :sign_up_mailer
 
   def chat_room(user)
     chat_rooms.select { |chat_room| chat_room.users.include?(user) }.first
+  end
+
+  def sign_up_mailer
+    UserMailer.welcome_send(self).deliver
   end
 
   def tourist?
