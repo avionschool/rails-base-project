@@ -3,9 +3,9 @@ class ToursController < ApplicationController
 
   def index
     @tours = if agency_signed_in?
-               current_agency.tours.all
+               current_agency.tours.all.paginate(page: params[:page], per_page: 9)
              else
-               Tour.search(params[:search])
+               Tour.paginate(page: params[:page], per_page: 9).search(params[:search])
              end
   end
 
