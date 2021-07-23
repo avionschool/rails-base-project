@@ -6,11 +6,11 @@ class UserMailer < ApplicationMailer
 
   def approve_account(user)
     @user = user
-    mail to: user.email, subject: 'Welcome to Stockjobbers', from: 'noreply@stockjobbers.com'
+    mail to: user.email, subject: 'Travel-zilla Approve account', from: 'noreply@stockjobbers.com'
   end
 
   def reject_account(user)
     @user = user
-    mail to: user.email, subject: 'Welcome to Stockjobbers', from: 'noreply@stockjobbers.com'
+    mail to: user.email, subject: 'Travel-zilla Reject Account', from: 'noreply@stockjobbers.com'
   end
 end
