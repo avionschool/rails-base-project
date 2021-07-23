@@ -17,6 +17,17 @@ class AgenciesController < ApplicationController
     if @agency.valid? && @agency.update(agency_params)
       @agency.save
       redirect_to admins_path, notice: 'Agency approved!'
+      UserMailer.approve_account(@agency).deliver
+    else
+      redirect_back fallback_location: agencies_path, alert: @agency.errors.first
+    end
+  end
+
+  def destroy
+    @agency = Agency.find(params[:id])
+    if @agency.destroy
+      redirect_to admins_path, notice: 'Agency rejected!'
+      UserMailer.reject_account(@agency).deliver
     else
       redirect_back fallback_location: agencies_path, alert: @agency.errors.first
     end
