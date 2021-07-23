@@ -20,6 +20,7 @@ import "bootstrap"
  
 require("trix")
 require("@rails/actiontext")
+require("packs/jquery.raty")
 
 
 
