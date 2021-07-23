@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'ChatRoomsControllers', type: :request do
+  let!(:admin) { create(:admin) }
   let!(:tourist) { create(:tourist) }
   let!(:tourist2) { create(:tourist) }
   let!(:agency) { create(:approved_agency) }
@@ -18,6 +19,7 @@ RSpec.describe 'ChatRoomsControllers', type: :request do
     end
 
     it 'returns a success response if logged_in' do
+      sign_in(admin)
       sign_in(tourist)
       get chat_rooms_path
       expect(response).to have_http_status(:ok)

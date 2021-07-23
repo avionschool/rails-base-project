@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'AgenciesControllers', type: :request do
-  let!(:agency) { Agency.create(email: 'agency@email.com', agency_name: 'AgencyOne', address: 'address', password: '1234567') }
-  let!(:admin) { Admin.create(email: 'admin@email.com', first_name: 'Admin', last_name: 'Last', password: '1234567') }
+  let!(:admin) { create(:admin) }
+  let!(:agency) { create(:approved_agency) }
 
   before { sign_in(admin) }
 
