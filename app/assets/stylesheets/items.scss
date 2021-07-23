@@ -112,3 +112,14 @@
   display: grid;
   grid-template-columns: 99.9% 0.1%;
 }
+
+.distance {
+  display: flex;
+}
+
+.pin {
+  position: relative;
+  width: 1.15rem;
+  margin-top: -0.5rem;
+  margin-right: 0.5rem;
+}

@@ -30,6 +30,14 @@
         <%= @item.name %>
         <span class="status font-italic text-warning fw-light"><%= status %></span>
       </h5>
+      <% if current_user.locations.first != nil %>
+        <% if @item.user.locations.first != nil %>
+          <div class="distance">
+            <%= image_tag("pin.svg", class: "pin") %>
+            <h6 class="text-muted">Item is within <%= @distance %> km from you in <%= @city %></h6>
+          </div>
+        <% end %>
+      <% end %>
       <h6 class="item_description"><%= @item.description %></h6>
 
       <!-- make carousel for item images -->

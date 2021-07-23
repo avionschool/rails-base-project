@@ -6,6 +6,16 @@ class ItemsController < ApplicationController
 
     @item = Item.find(params[:id])
     @comments = @item.comments.sort_by(&:created_at) unless @item.nil?
+
+    return if current_user.locations.first.nil?
+    return if @item.user.locations.first.nil?
+    lat1 = current_user.lat
+    long1 = current_user.long
+    lat2 = @item.user.lat
+    long2 = @item.user.long
+    dist = Location.distance(lat1, lat2, long1, long2)
+    @distance = dist.ceil(-1)
+    @city = @item.user.locations.first.city
   end
 
   def create
