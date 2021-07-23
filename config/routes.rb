@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'reviews/index'
+  get 'reviews/new'
+  get 'reviews/create'
   devise_for :tourists
   devise_for :agencies
   devise_for :admins, skip: :registration
@@ -8,7 +11,15 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :admins
-  resources :agencies, only: [:index, :show, :update, :destroy]
+  resources :agencies, only: [:index, :show, :update, :destroy] do
+    resources :reviews do
+      member do
+        put "like" => "reviews#like"
+      end
+    end
+  
+  end
+
   resources :tourists, only: :show
   resources :tours, except: [:destroy]
   resources :tourist_tours, except: [:new, :edit, :update]

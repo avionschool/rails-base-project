@@ -22,6 +22,7 @@ gem "font-awesome-rails"
 gem "stripe"
 gem "hirb"
 gem 'redis'
+gem 'acts_as_votable'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
