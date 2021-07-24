@@ -15,3 +15,29 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+import "bootstrap"
+ 
+require("trix")
+require("@rails/actiontext")
+require("packs/jquery.raty")
+
+global.$ = jQuery;
+
+function hideFlash() {
+  setInterval(function() {document.querySelector('#flash').style.display = "none";}, 3000);
+}
+
+hideFlash();
+
+const scroll_bottom = function () {
+  if ($('.message-container').length > 0) {
+      $('.message-container').scrollTop($('.message-container')[0].scrollHeight)
+  }
+}
+$(document).on('turbolinks:load', function() {
+  scroll_bottom();
+})
+
+
+import "controllers"

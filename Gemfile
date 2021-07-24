@@ -13,8 +13,17 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'image_processing'
 gem 'devise'
 gem 'hamlit-rails'
+gem "aws-sdk-s3", require: false
+gem "mini_magick"
+gem "font-awesome-rails"
+gem "stripe"
+gem "hirb"
+gem 'redis'
+gem 'acts_as_votable'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -37,3 +46,5 @@ group :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
 end
+
+gem "stimulus_reflex", "~> 3.4"

@@ -1,0 +1,63 @@
+<br/><br/><br/> 
+<div class="card text-left">
+    <div class="card-header d-flex justify-content-around align-items-center">
+        <h1 id="title"><%=@tour.name%></h1>
+        <%if user_signed_in? && current_user&.type == 'Agency' %>
+            <%= link_to 'Edit', edit_tour_path, class:"btn btn-info"%>
+        <%elsif user_signed_in? && current_user&.type == 'Tourist'%>
+            <div class="d-flex justify-content-center m-2">
+                <%if user_signed_in? && current_user&.type != 'Agency' %>
+                <%=link_to chat_user_path(user_id: "#{@tour.agency.id}"), method: :post  ,class: 'btn btn-primary me-4' do%>
+                    <i class="fab fa-facebook-messenger"></i> Message Me
+                <%end%> 
+                <%=link_to 'Avail', new_tourist_tour_path(@tour),class: 'btn btn-success'%>  
+                <%end%>
+            </div>
+        <%end%>
+    </div>
+    <div class="container">
+        <div class="row">
+        <div class="col d-flex justify-content-center align-items-start mt-4">
+            <div id="carouselExampleIndicators" class="carousel slide border-dark border border-3" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <% if @tour.images.attached?%>
+                        <%@tour.images.each do |image|%>
+                    <div class="carousel-item active" id="carouselImage">
+                    <img class="img-fluid" src="<%=(url_for(image))%>" alt="...">
+                    </div>
+                        <%end%>
+                    <%end%>
+                    <div class="carousel-item" id="carouselImage">
+                    <img src="https://images.pexels.com/photos/2864763/pexels-photo-2864763.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="...">
+                    </div>
+                    <div class="carousel-item" id="carouselImage">
+                    <img src="https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>  
+        <div class="col">   
+            <div class="card-body" id="cardBody">
+                <h4>Location: <%=@tour.location%></h4>
+                <h4>Price: $<%=@tour.price%></h4>
+                <h4>Duration: <%=@tour.duration%></h4>
+                <h4>Details:</h4>
+                <h6><%=@tour.details%></h6>
+            </div>
+        </div>
+        </div>
+     </div>   
+</div>

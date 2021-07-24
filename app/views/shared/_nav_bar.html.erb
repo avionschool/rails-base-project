@@ -1,0 +1,115 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+  <lord-icon
+    src="https://cdn.lordicon.com/zzcjjxew.json"
+    trigger="loop"
+    colors="primary:#ffffff,secondary:#08a88a"
+    stroke="100"
+    style="width:50px;height:50px">
+  </lord-icon>
+    <h3 class="text-light bg-dark me-5 fw-bold"><%= link_to 'TravelZilla', root_path, class:"nav-link" %></h3>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <%if user_signed_in?%>
+        <% if tourist_signed_in? %>
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tours
+            </a>
+            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+              <li class="dropdown-item bg-dark">
+                <%= link_to 'Tours', tours_path, class:"nav-link"%>
+              </li>
+              <li class="dropdown-item bg-dark">
+                <%= link_to 'Your Tours', tourist_tours_path, class:"nav-link"%>
+              </li>
+            </ul> 
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tables
+            </a>
+            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+              <li class="dropdown-item bg-dark">
+                <%= link_to 'Agencies', agencies_path, class:"nav-link"%>
+              </li>
+              <li class="dropdown-item bg-dark">
+                <%= link_to 'Transactions', travel_transactions_path, class:"nav-link"%>
+              </li>
+            </ul>
+          </li> 
+          <li class="nav-item">
+            <%= link_to 'Chat Rooms', chat_rooms_path(current_tourist), class:"nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Profile', tourist_path(current_tourist), class:"nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign-out', destroy_tourist_session_path, method: :delete, class:"nav-link" %>
+          </li>
+        </ul>
+
+
+        <%elsif agency_signed_in?%>
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Packages
+            </a>
+            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+               <li class="dropdown-item bg-dark">
+                  <%= link_to 'Packages', tours_path, class:"nav-link"%>
+                </li>
+                <li class="dropdown-item bg-dark">
+                  <%= link_to 'New', new_tour_path, class:"nav-link"%>
+                </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Transactions', travel_transactions_path, class:"nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Chat Rooms', chat_rooms_path(current_agency), class:"nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Profile', agency_path(current_agency), class:"nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign-out', destroy_agency_session_path, method: :delete, class:"nav-link"%>
+          </li>
+        </ul>
+
+        <%elsif admin_signed_in?%>
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to 'Profile', admin_path(current_admin), class:"nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'All Users', admins_path, class:"nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Pending Agencies', agencies_path, class:"nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign-out', destroy_admin_session_path, method: :delete, class:"nav-link"%>
+          </li>
+        </ul>
+        <% end %>
+    <%elsif !user_signed_in?%>
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to 'Tourist Sign-in', new_tourist_session_path, class:"nav-link text-dark btn btn-primary me-2"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Agency Sign-in', new_agency_session_path, class:"nav-link text-dark btn btn-primary me-2"%>
+          </li>
+        </ul>
+    <% end %>
+      <form class="d-flex">
+      </form>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,52 @@
+<br><br><br><br>
+
+<div class="container">
+  <%= link_to 'Back to Profile', agency_path(params[:agency_id]), class:"btn btn-outline-dark", method: :get%>
+  <hr>
+  <%= form_with scope: :review, url: agency_reviews_path(@agency) do |form| %>
+
+  <% if @review.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+        <ul>
+          <% @review.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+  <div class="card mt-5">
+    <h3 class="card-header text-center"> Review for agency <%= @agency.agency_name %></h3>
+    <div class="card-body">
+      
+        <div class="mb-3">
+          <%= form.hidden_field :agency_id, value: @agency.id %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.hidden_field :tourist_id, value: current_user.id %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :rating, class: "form-label" %>
+          
+          <div id="star-rating-new-review"></div>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :review, class: "form-label" %>
+          <%= form.text_area :review, size: "70x5",  class: "form-control" %>
+        </div>
+
+        <div class="mb-3 ml-auto align-self-end">
+          <%= form.submit 'Leave a Review', class: "btn btn-primary " %>
+        </div>
+
+      
+    </div>
+  </div>
+
+  <% end %>
+</div>

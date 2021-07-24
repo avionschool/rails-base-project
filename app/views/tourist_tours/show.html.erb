@@ -1,0 +1,15 @@
+<br/><br/><br/>
+<div class="d-flex justify-content-center">
+    <div class="card mb-3" style="width: 50rem;">
+        <%if @tourist_tour.tour.images.attached?%>
+            <%@tourist_tour.tour.images.each do |img|%>
+                <img src="<%= url_for(img)%>" alt="">
+            <% end %>
+        <%end%>
+    <div class="card-body">
+        <h3 class="card-title"><%= @tourist_tour.tour.name%></h3>
+        <p class="card-text"><%= @tourist_tour.tour.details.body%></p>
+
+    </div>
+</div>
+</div>

@@ -1,0 +1,15 @@
+$('.liked-btn').on('ajax:success', function(){
+    
+    $(this).parent().parent().find('.like_count').html('<%= @review.get_likes.size %> ');
+    
+    $(this).parent().html('<%= link_to like_agency_review_path(@agency.id,  @review.id, "like"), class:"float-right btn text-white btn-danger like-btn", method: :put, remote: :true do %><i class="fa fa-heart"></i> Like <%end%><span class="like_count" <%= @review.id %> > <%= @review.get_likes.size %> </span>');
+
+});
+
+$('.like-btn').on('ajax:success', function(){
+    
+    $(this).parent().parent().find('.like_count').html('<%= @review.get_likes.size %> ');
+    
+    $(this).parent().html('<%= link_to like_agency_review_path(@agency.id,  @review.id, "unlike"), class:"float-right btn text-white btn-danger liked-btn", method: :put, remote: :true do %><i class="fa fa-heart"></i> Liked <%end%><span class="like_count" <%= @review.id %> > <%= @review.get_likes.size %> </span>');
+
+});
