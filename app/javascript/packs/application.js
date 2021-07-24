@@ -39,3 +39,5 @@ $(document).on('turbolinks:load', function() {
   scroll_bottom();
 })
 
+
+import "controllers"
