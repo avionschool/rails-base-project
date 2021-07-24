@@ -2,7 +2,7 @@ class ToursController < ApplicationController
   before_action :authenticate_agency!, except: %i[index show]
 
   def index
-    @sort_by ||= "price"
+    @sort_by ||= 'price'
     @tours = if agency_signed_in?
                current_agency.tours.all.paginate(page: params[:page], per_page: 9).order(:"#{@sort_by}")
              else
