@@ -1,4 +1,16 @@
+
 <br/><br/>
+
+<div class="sort-container d-flex mt-5">
+<p class='sort-text sort-text-dashboard'>Sort By:</p>
+<select class="form-select form-select_sort" aria-label="Default select example", data-reflex="change->Tour#sort",  data-active="today">
+    <option value="price">Price</option>
+    <option value= "created_at" selected>Date Created</option>
+    <option value="name">Name</option>
+    <option value="location">Location</option>
+    <option value="duration">Duration</option>
+</select>
+</div>
 <% if @tours.count == 0 %>
 
 <div class="d-flex justify-content-center" id="cont">

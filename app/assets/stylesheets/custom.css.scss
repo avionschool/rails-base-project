@@ -29,3 +29,21 @@
       margin-right: 1em; }
     .flickr_pagination .next_page {
       margin-left: 1em; }
+
+      .sort{
+        &-text{
+           white-space: nowrap;
+           margin-bottom: 0 !important;
+           margin-right: 1rem;
+        }
+        &-container{
+            align-items: center;
+            margin-left: 13.5%;
+            background-color: rgb(255, 255, 255);
+            border: 2px black solid;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            box-shadow: 8px 8px 0px 1px rgba(190, 190, 190, 0.75) !important;
+            width: 20%;
+        }
+    }
