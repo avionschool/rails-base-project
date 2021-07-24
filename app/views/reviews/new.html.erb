@@ -1,7 +1,9 @@
-<br>
-<%= link_to 'Back to Profile', agency_path(params[:agency_id]), class:"btn btn-outline-dark", method: :get%>
-<br>
-<%= form_with scope: :review, url: agency_reviews_path(@agency) do |form| %>
+<br><br><br><br>
+
+<div class="container">
+  <%= link_to 'Back to Profile', agency_path(params[:agency_id]), class:"btn btn-outline-dark", method: :get%>
+  <hr>
+  <%= form_with scope: :review, url: agency_reviews_path(@agency) do |form| %>
 
   <% if @review.errors.any? %>
       <div id="error_explanation">
@@ -46,4 +48,5 @@
     </div>
   </div>
 
-<% end %>
+  <% end %>
+</div>
