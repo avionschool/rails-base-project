@@ -13,10 +13,10 @@
     <div class="container">
       <header>
         <nav>
-          <div class="title-container"><h1>Aviontrade</h1></div>
+          <div class="title-container"><h1><%= link_to "Aviontrade", users_path() %></h1></div>
           <div class="menu-container">
-            <span class=menu-item>Register</span>
-            <span class=menu-item>Login</span>
+            <span class=menu-item><%= link_to "Login", new_user_session_path() %></span>
+            <span class=menu-item><%= link_to "Register", new_user_registration_path() %></span>
           </div>
         </nav>
       </header>
