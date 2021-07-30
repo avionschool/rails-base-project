@@ -12,8 +12,8 @@ class User < ApplicationRecord
     approved? ? super : :not_approved
   end
 
-  after_create :send_admin_mail
-  def send_admin_mail
-    AdminMailer.new_user_waiting_for_approval(email).deliver
+  after_create :send_email_approval
+  def send_email_approval
+    UserMailer.signup_confirmation(email).deliver
   end
 end
