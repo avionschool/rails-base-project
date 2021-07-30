@@ -14,7 +14,16 @@ class StocksViewController < ActionController::Base
             secret_token: 'sk_bedf09f6562c479381c77a73f4788d6d',
             endpoint: 'https://cloud.iexapis.com/v1'
           )
-
+        
         @quote = client.quote('MSFT')
+
+        stocks_list = ['MSFT', 'AAPL', 'TSLA', 'FB', 'PYPL', 'NVDA', 'MDLZ', 'ZM', 'CTSH', 'WDAY']
+        @stocks_view = []
+
+        stocks_list.each do |item|
+            stock = client.quote(item)
+            @stocks_view.push(stock)
+        end
+
     end
 end
