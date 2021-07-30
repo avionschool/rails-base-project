@@ -5,7 +5,8 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.signup_confirmation.subject
   #
-  def signup_confirmation(email)
-    mail to: email, subject: "Account approval pending.."
+  def signup_confirmation(user)
+    @user = user
+    mail to: @user.email, subject: "Account approval pending.."
   end
 end
