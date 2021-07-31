@@ -1,0 +1,22 @@
+Hi
+
+<%= render '/stocks/form' %>
+
+<div class='stock_info'>
+    <p><%= @company_symbol %></p>
+    <p><%= @company_name %></p>
+    <p><%= @current_price %></p>
+    <p><%= @change_percent_s %></p>
+    <p><%= @outstanding_shares %></p>       
+
+    <% if flash[:alert] %>
+        <div class="alert alert-warning"><%= flash[:alert] %></div>
+    <% end %>
+</div>
+
+<%= render '/transactions/form' %>
+<div class='stock_info'>
+    <%= @result%>
+</div>
+
+<div class="mx-auto mt-5" style="width: 400px"></div>

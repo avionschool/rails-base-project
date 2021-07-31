@@ -1,0 +1,5 @@
+<%= form_with(url: search_path, method: 'get', local: true) do %>
+    <%= label_tag :company, 'Search for a stock '%>
+    <%= text_field_tag :company, nil, class: 'form-control' %>
+    <%= button_tag 'Search', class: 'btn btn-success btn-block' %>
+<% end %>
