@@ -17,3 +17,43 @@
 .stocks-view-card:hover{
     border: 3px solid #111111 !important;
 }
+
+.get-stocks-view-container a{
+    color: #111111;
+    text-decoration: none;
+}
+
+.get-stocks-view-container a:visited{
+    color: #111111;
+    text-decoration: none;
+}
+
+.get-stock-show-container{
+    display: grid;
+    grid-gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 12px;
+}
+
+.get-stock-show-item{
+    background-color: #eeeeee;
+    border-radius: 4px;
+    border: 3px solid #bebebe;
+    padding: 10px;
+}
+
+.get-stock-show-item:hover{
+    box-shadow: 0px 3px 4px 0px rgba(187,187,187,0.71);
+    -webkit-box-shadow: 0px 3px 4px 0px rgba(187,187,187,0.71);
+    -moz-box-shadow: 0px 3px 4px 0px rgba(187,187,187,0.71);
+}
+
+.stock-show-item-high-low-container{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+}
+
+#latest-price-show{
+    font-size: 2rem;
+}
