@@ -1,0 +1,14 @@
+<h2>Stocks Price Today: Nasdaq</h2>
+<div class="get-stocks-view-container">
+    <% @stocks_view.each do |item|%>
+        <%= link_to stock_view_show_path(item.symbol) do %>
+            <div class="stocks-view-card">
+                <h3><%= item.symbol %></h3>
+                <p><%= item.company_name %></p>
+                <p>Latest Price: $<%= item.latest_price %></p>
+                <p>Previous Price: $<%= item.previous_close %></p>
+                <p>Change Percent: <%= item.change_percent_s %></p>
+            </div>
+        <% end %>
+    <% end %>
+</div>
