@@ -20,6 +20,7 @@ class StocksViewController < ApplicationController
         stocks_list = ['MSFT']
         # , 'FB', 'PYPL', 'NVDA', 'MDLZ', 'ZM', 'CTSH', 'WDAY' , 'AAPL'
         # , 'TSLA'
+        # add more stocks here if needed
         @stocks_view = []
 
         stocks_list.each do |item|
