@@ -17,8 +17,9 @@ class StocksViewController < ApplicationController
         
         @quote = client.quote('MSFT')
 
-        stocks_list = ['MSFT', 'AAPL', 'TSLA']
-        # , 'FB', 'PYPL', 'NVDA', 'MDLZ', 'ZM', 'CTSH', 'WDAY'
+        stocks_list = ['MSFT']
+        # , 'FB', 'PYPL', 'NVDA', 'MDLZ', 'ZM', 'CTSH', 'WDAY' , 'AAPL'
+        # , 'TSLA'
         @stocks_view = []
 
         stocks_list.each do |item|

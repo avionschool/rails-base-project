@@ -1,3 +1,8 @@
+.stock-view-container-first, .stock-view-show-container{
+    width: 100%;
+    padding: 15px;
+}
+
 .get-stocks-view-container{
     padding-top: 12px;
     padding-bottom: 15px;
@@ -12,6 +17,7 @@
     border-radius: 4px;
     border: 3px solid #bebebe;
     padding: 10px;
+    min-height: 140px;
 }
 
 .stocks-view-card:hover{

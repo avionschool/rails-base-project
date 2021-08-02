@@ -1,26 +1,29 @@
-<h1>Ticker: <%= params[:stocksymbol] %></h1>
+<div class="stock-view-show-container">
 
-<div class="get-stock-show-container">
-    <div class="get-stock-show-item">
-        <p>Latest Price:</p>
-        <p><span id="latest-price-show"><strong>$<%= @quote.latest_price %></strong></span></p>
-    </div>
-    <div class="stock-show-item-high-low-container">
+    <h1>Ticker: <%= params[:stocksymbol] %></h1>
+
+    <div class="get-stock-show-container">
         <div class="get-stock-show-item">
-            <p>High:</p>
-            <p><strong>$<%= @quote.high %></strong></p>
+            <p>Latest Price:</p>
+            <p><span id="latest-price-show"><strong>$<%= @quote.latest_price %></strong></span></p>
+        </div>
+        <div class="stock-show-item-high-low-container">
+            <div class="get-stock-show-item">
+                <p>High:</p>
+                <p><strong>$<%= @quote.high %></strong></p>
+            </div>
+            <div class="get-stock-show-item">
+                <p>Low:</p>
+                <p> <strong>$<%= @quote.low%></strong></p>
+            </div>    
         </div>
         <div class="get-stock-show-item">
-            <p>Low:</p>
-            <p> <strong>$<%= @quote.low%></strong></p>
-        </div>    
-    </div>
-    <div class="get-stock-show-item">
-        <p>Company Name:</p>
-        <p> <strong><%= @quote.company_name %></strong></p>
-    </div>
-    <div class="get-stock-show-item">
-        <p>Exchange Name:</p>
-        <p> <strong><%= @quote.primary_exchange %></strong></p>
+            <p>Company Name:</p>
+            <p> <strong><%= @quote.company_name %></strong></p>
+        </div>
+        <div class="get-stock-show-item">
+            <p>Exchange Name:</p>
+            <p> <strong><%= @quote.primary_exchange %></strong></p>
+        </div>
     </div>
 </div>
