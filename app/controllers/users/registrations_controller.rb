@@ -10,14 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super
-    if @user.save
-      UserMailer.signup_confirmation(@user).deliver
-    else
-      render :new
-    end
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit
