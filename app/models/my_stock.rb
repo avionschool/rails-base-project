@@ -1,0 +1,2 @@
+class MyStock < ApplicationRecord
+end
