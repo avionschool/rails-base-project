@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :stocks
   resources :transactions
   get '/search' => 'stocks#search'
-  get '/search' => 'transactions#index'
 
-  get '/compute_total_price' => 'stocks#index'
+  get '/compute_total_price' => 'transactions#compute_total_price'
 end
