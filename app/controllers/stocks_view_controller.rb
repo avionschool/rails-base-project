@@ -38,5 +38,7 @@ class StocksViewController < ApplicationController
           )
         
         @quote = client.quote(symbol)
+
+        @mystock = MyStock.new()
     end
 end

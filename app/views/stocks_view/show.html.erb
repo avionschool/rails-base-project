@@ -1,8 +1,15 @@
 <div class="stock-view-show-container">
 
     <h1>Ticker: <%= params[:stocksymbol] %></h1>
-
     <div class="get-stock-show-container">
+        
+        <%= form_with model: @mystock, url: post_req_buy_stocks_path(), method: :post, local: true, scope: "mystock" do |form| %>
+            <%= form.number_field :stock_count_bought, min: 1, id: "stock-count-buying" %>
+            <%= form.hidden_field :stock_price_bough, value: @quote.latest_price %>
+            <%= form.hidden_field :stock_name_bought, value: params[:stocksymbol] %>
+            <%= form.submit "Buy Now", id: "form-create-new" %>  
+        <% end %>
+
         <div class="get-stock-show-item">
             <p>Latest Price:</p>
             <p><span id="latest-price-show"><strong>$<%= @quote.latest_price %></strong></span></p>
@@ -14,7 +21,7 @@
             </div>
             <div class="get-stock-show-item">
                 <p>Low:</p>
-                <p> <strong>$<%= @quote.low%></strong></p>
+                <p><strong>$<%= @quote.low %></strong></p>
             </div>    
         </div>
         <div class="get-stock-show-item">
