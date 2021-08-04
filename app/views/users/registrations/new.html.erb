@@ -1,5 +1,4 @@
-<div class="container-sign-up">
-<h2>Register an Account</h2>
+<h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
@@ -8,7 +7,7 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-
+  
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -33,5 +32,3 @@
 <% end %>
 
 <%= render "users/shared/links" %>
-
-</div>
