@@ -17,8 +17,7 @@ class StocksController < ApplicationController
         @current_price = @quote.latest_price
         @change_percent_s = @quote.change_percent_s   
         @outstanding_shares = @key_stats.shares_outstanding
-            
-
+        
         if @company
             render :index
         else
@@ -27,9 +26,27 @@ class StocksController < ApplicationController
         end       
     end
 
-    def count_shares
-        byebug
-        @count_shares = params[:transaction][:count_shares].to_i
+    # def count_shares
+    #     @count_shares
+    # end
+
+    def calculate_total_price
+        @company = @client.company(params[:company])
+        @quote = @client.quote(params[:company])
+        @key_stats = @client.key_stats(params[:company]) 
+
+        @company_symbol = @company.symbol
+        @company_name = @company.company_name
+        @current_price = @quote.latest_price
+
+        @change_percent_s = @quote.change_percent_s   
+        @outstanding_shares = @key_stats.shares_outstanding
+        
+        @count_shares_string = 'Number of Shares Purchased:'
+        @count_shares = params[:count_shares].to_i
+        @total_price = 'Total Price:'
+        @result = @count_shares * @current_price.to_i
+        render :index
     end
 
     private
@@ -41,8 +58,9 @@ class StocksController < ApplicationController
             endpoint: 'https://cloud.iexapis.com/v1'
         )       
     end
-
-
-
+    
+    def compute_total_price
+        @total_price = @count_shares*@latest_price
+    end
 
 end

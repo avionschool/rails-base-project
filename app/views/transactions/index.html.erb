@@ -1,3 +1,3 @@
-Hi
-<%= @total_price.inspect %>
-<%= @current_price.inspect %>
+<% @transactions.methods do |t| %>
+    <p id="task-title"> <%= t.stock_name %></p>
+<% end %>

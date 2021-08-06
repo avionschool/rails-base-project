@@ -10,5 +10,9 @@ Rails.application.routes.draw do
   resources :transactions
   get '/search' => 'stocks#search'
 
-  get '/compute_total_price' => 'transactions#compute_total_price'
+  get '/calculate_total_price' => 'stocks#calculate_total_price', :as => 'calculate_total_price'
+
+  
+  # post '/transactions' => 'transactions#create'
+
 end

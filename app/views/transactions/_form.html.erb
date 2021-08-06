@@ -1,3 +1,18 @@
+<%='transaction'%>
+<%= form_with(model: @transaction, url: transactions_path, method: 'post', local: true)do |form|%>
+    <%= form.text_field :company, value: @company_name, class: 'form-control' %>
+    <%= form.text_field :stock_symbol, value: @company_symbol, class: 'form-control' %>
+    <%= form.number_field :current_price, value: @current_price, class: 'form-control' %>
+
+    <%= label_tag :count_shares, 'Number of Shares to Buy'%>
+    <%= form.number_field :count_shares, value: @count_shares, class: 'form-control' %>
+
+    <%= form.number_field :total_price, value: @result, class: 'form-control' %>
+
+    <%= button_tag 'Buy Stock', class: 'btn btn-success btn-block' %>
+<% end %>
+
+
 
 
 

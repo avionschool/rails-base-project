@@ -15,10 +15,7 @@ Hi
 </div>
 
 <%= render '/stocks/pre-transact_stock' %>
-<div class='stock_info'>
 
-<p><%= :count_shares.byebug %></p> 
-
-</div>
+<%= render '/transactions/form', @transaction%>
 
 <div class="mx-auto mt-5" style="width: 400px"></div>
