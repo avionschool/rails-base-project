@@ -41,4 +41,10 @@ class StocksViewController < ApplicationController
 
         @mystock = MyStock.new()
     end
+
+
+   
+    def view_my_stocks
+        @all_my_stocks = MyStock.all()
+    end
 end

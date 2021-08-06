@@ -17,7 +17,7 @@
     border-radius: 4px;
     border: 3px solid #bebebe;
     padding: 10px;
-    min-height: 140px;
+    min-height: 160px;
 }
 
 .stocks-view-card:hover{
@@ -67,4 +67,24 @@
 #stock-count-buying{
     padding: 5px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.my-stock-porfolio-container{
+    padding: 10px 15px;
+}
+
+.my-stock-porfolio-container h1{
+    margin-bottom: 10px;
+}
+
+.stock-porfolio-item-container{
+    padding: 10px;
+    background-color: #eeeeee;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    border: 2px solid #bebebe;
+}
+
+.my-stock-item-container{
+    padding-left: 5px;
 }
