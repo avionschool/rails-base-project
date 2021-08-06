@@ -47,4 +47,8 @@ class StocksViewController < ApplicationController
     def view_my_stocks
         @all_my_stocks = MyStock.all()
     end
+
+    def view_transactions
+        # @all_transactions 
+    end
 end
