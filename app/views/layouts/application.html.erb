@@ -15,8 +15,11 @@
         <nav>
           <div class="title-container"><h1><%= link_to "Aviontrade", root_path() %></h1></div>
           <div class="menu-container">
+            <span class=menu-item><%= link_to "My Porfolio", stock_view_my_stocks_path() %></span>
+            <span class=menu-item><%= link_to "Latest Transaction", stock_view_transactions_path() %></span>
             <span class=menu-item><%= link_to "Login", new_user_session_path() %></span>
             <span class=menu-item><%= link_to "Register", new_user_registration_path() %></span>
+            <span class=menu-item><%= link_to "Logout" %></span>
           </div>
         </nav>
       </header>

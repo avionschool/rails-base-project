@@ -1,3 +1,11 @@
-<div class="my-transactions-container">
+<div class="my-trans-container">
     <h1>My Transactions</h1>
+    <h3>Latest</h3>
+    <% @all_transaction.each do |item| %>
+    <div class="my-trans-item-container">
+        <h4><%= item.transction_type.upcase %></h4>
+        <p><%= item.transaction_text %></p>
+        <span><%= time_ago_in_words(item.created_at) %> ago</span>
+    </div>
+    <% end %>
 </div>

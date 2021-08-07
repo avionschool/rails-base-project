@@ -1,13 +1,16 @@
 <div class="my-stock-porfolio-container">
     <h1>My Stock Porfolio</h1>
+    <h3>Latest</h3>
     <% @all_my_stocks.each do |item| %>
     <div class="stock-porfolio-item-container">
         <h3>Ticker: <%= item.stock_name_bought %></h3>
         <div class="my-stock-item-container">
             <p>Stock Count: <%= item.stock_count_bought %></p>
             <p>Bought At: $<%= item.stock_price_bough %></p>
-            <p>Date: <%= item.created_at %></p>
-            <p>Sell This Stock</p>
+            <p>Date: <%= item.created_at.strftime("%B-%d-%Y") %></p>
+            <p>Time: <%= item.created_at %></p>
+
+            <p><%= link_to "Sell this position", delete_req_sell_stocks_path(item.id), method: "delete", data: {confirm: "Sell this stock?"} %></p>
         </div>
     </div>
     <% end %>

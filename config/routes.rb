@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   
   get '/get/mystocks' => 'stocks_view#view_my_stocks', as: 'stock_view_my_stocks'
   get '/get/transactions' => 'stocks_view#view_transactions', as: 'stock_view_transactions'
+  delete '/get/mystocks/sell/:id' => 'my_stock#sell_stocks', as: 'delete_req_sell_stocks'
 end

@@ -45,10 +45,10 @@ class StocksViewController < ApplicationController
 
    
     def view_my_stocks
-        @all_my_stocks = MyStock.all()
+        @all_my_stocks = MyStock.all().order(id: :desc)
     end
 
     def view_transactions
-        # @all_transactions 
+        @all_transaction = TransactionTable.all().order(id: :desc)
     end
 end
