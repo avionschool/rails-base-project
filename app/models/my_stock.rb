@@ -8,7 +8,7 @@ class MyStock < ApplicationRecord
         trans = TransactionTable.new(transaction_text: "You BOUGHT #{rec.stock_count_bought} of #{rec.stock_name_bought} at \n$#{rec.stock_price_bough}/stock", transction_type: "buy")
         trans.save        
     end
-
+    # self.price = price *100 
     def create_sell_transaction
         # byebug
         # puts "transaction : SOLD #{stock_name_bought}"

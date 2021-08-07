@@ -3,9 +3,40 @@
     <h3>Latest</h3>
     <% @all_transaction.each do |item| %>
     <div class="my-trans-item-container">
-        <h4><%= item.transction_type.upcase %></h4>
+        <h4 id="transaction-type-h4"><%= item.transction_type.upcase %></h4>
         <p><%= item.transaction_text %></p>
         <span><%= time_ago_in_words(item.created_at) %> ago</span>
     </div>
     <% end %>
 </div>
+
+<script>
+    h4 = document.querySelectorAll("h4")
+    console.log(h4.length)
+
+    for(i = 0; i < (h4.length -1); i++){
+        console.log(h4[i].innerText)
+        
+        if(h4[i].innerText == "BUY"){
+            h4[i].style.color = "#008080"
+        }
+
+        if(h4[i].innerText == "SELL"){
+            h4[i].style.color = "#B61D1D"
+        }
+    }
+
+    // [...h4].map( item => () {
+    //     if(ele.innerText == "BUY"){
+    //         ele.style.color = "#008080"
+    //     } 
+    // })
+    // if (h4.innerText == "BUY"){
+    //     h4.style.color = "#008080";
+    // } 
+    // if (h4.innerText == "SELL"){
+    //     h4.style.color = "#B61D1D";
+    // }
+
+    // console.log(h4.innerText)
+</script>

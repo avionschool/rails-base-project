@@ -80,7 +80,7 @@
 .stock-porfolio-item-container, .my-trans-item-container{
     padding: 10px;
     background-color: #eeeeee;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     border-radius: 3px;
     border: 2px solid #bebebe;
 }
@@ -88,3 +88,15 @@
 .my-stock-item-container{
     padding-left: 5px;
 }
+
+.stock-porfolio-item-container:hover, .my-trans-item-container:hover{
+    box-shadow: 0px 3px 4px 0px rgba(187,187,187,0.71);
+    -webkit-box-shadow: 0px 3px 4px 0px rgba(187,187,187,0.71);
+    -moz-box-shadow: 0px 3px 4px 0px rgba(187,187,187,0.71);
+}
+
+// .get-stock-show-item:hover{
+    // box-shadow: 0px 3px 4px 0px rgba(187,187,187,0.71);
+    // -webkit-box-shadow: 0px 3px 4px 0px rgba(187,187,187,0.71);
+    // -moz-box-shadow: 0px 3px 4px 0px rgba(187,187,187,0.71);
+// }

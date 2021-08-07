@@ -83,6 +83,14 @@ input[type="submit"]{
     width: 50%;
 }
 
+#notice-id, #alert-id{
+    margin: 5px 15px;
+    padding: 8px;
+    background-color: #fff6a4;
+    border-radius: 4px;
+    border: 2px solid #bebebe;
+}
+
 
 
 
