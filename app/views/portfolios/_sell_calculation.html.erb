@@ -3,7 +3,7 @@
     <%= text_field_tag :company, nil, class: 'form-control' %>
 
     <%= label_tag :count_shares, 'Number of Shares to Sell'%>
-    <%= form.number_field :count_shares, value: @count_shares, class: 'form-control' %>
+    <%= form.number_field :count_shares, value: @count_shares.to_i , class: 'form-control' %>
 
     <%= button_tag 'Search', class: 'btn btn-success btn-block' %>
 <% end %>

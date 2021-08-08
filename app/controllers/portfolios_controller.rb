@@ -25,16 +25,6 @@ class PortfoliosController < ApplicationController
         render :index  
     end
 
-    def buy_stock
-        @transaction = current_user.transactions.build(transaction_params)
-
-        if @transaction.save
-            redirect_to transactions_path
-        else
-            render :new, status: :unprocessable_entity 
-        end
-
-    end
 
     def sell_stock
         @transaction = current_user.transactions.build(transaction_params)

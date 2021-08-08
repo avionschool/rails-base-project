@@ -12,6 +12,17 @@ class TransactionsController < ApplicationController
     def show
     end
 
+    def buy_stock
+        @transaction = current_user.transactions.build(transaction_params)
+
+        if @transaction.save
+            redirect_to transactions_path
+        else
+            render :new, status: :unprocessable_entity 
+        end
+
+    end
+
     private
     
     def set_transaction
