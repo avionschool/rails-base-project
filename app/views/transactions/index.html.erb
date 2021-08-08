@@ -1,3 +1,7 @@
-<% @transactions.methods do |t| %>
-    <p id="task-title"> <%= t.stock_name %></p>
+<% @transactions.each do |t| %>
+    <%= t.stock_name %></p>
+    <%= t.stock_symbol %></p>
+    <%= t.current_price %></p>
+    <%= t.count_shares %></p>
+    <%= t.total_price %></p>
 <% end %>

@@ -1,20 +1,11 @@
-<%='calculation'%>
+<%'calculation'%>
 <%= form_with(url: calculate_total_price_path, method:'get', local:true)  do |form|%>
-    <%= form.text_field :company, value: @company_name, class: 'form-control' %>
-    <%= form.text_field :company, value: @company_symbol, class: 'form-control' %>
-    <%= form.number_field :current_price, value: @current_price, class: 'form-control' %>
+    <%= form.hidden_field :company, value: @company_name, class: 'form-control' %>
+    <%= form.hidden_field :company, value: @company_symbol, class: 'form-control' %>
+    <%= form.hidden_field :current_price, value: @current_price, class: 'form-control' %>
 
     <%= label_tag :count_shares, 'Number of Shares to Buy'%>
     <%= form.number_field :count_shares, class: 'form-control' %>
 
     <%= button_tag 'Check Total Price', class: 'btn btn-success btn-block' %>
 <% end %>
-
-<p> 
-    <%= @count_shares_string %> 
-    <%= @count_shares %> 
-    <%= @total_price %> 
-    <%= @result %> 
-</p>
-
-

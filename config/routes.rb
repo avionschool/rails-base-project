@@ -8,9 +8,12 @@ Rails.application.routes.draw do
 
   resources :stocks
   resources :transactions
+  resources :portfolios
   get '/search' => 'stocks#search'
 
   get '/calculate_total_price' => 'stocks#calculate_total_price', :as => 'calculate_total_price'
+
+  post '/buy_stock' => 'transactions#buy_stock', :as => 'buy_stock'
 
   
   # post '/transactions' => 'transactions#create'

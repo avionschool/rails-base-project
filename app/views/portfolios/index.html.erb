@@ -1,0 +1,46 @@
+<%= @stock_symbol%>
+<%= @shares_sum.values%>
+<%= @shares_ave.values%>
+
+<div class= "portfolio_table">
+
+<table class ="portfolio_detail">
+  <tbody>
+    <% @stock_symbol.each do |sym| %>
+        <tr>
+          <td>
+            <p> <%= sym %></p>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table class="portfolio_detail" >
+  <tbody>
+    <% @shares_sum.values.each do |sum| %>
+      <tr>
+          <td>
+            <p> <%= sum %></p>
+          </td>
+        </tr>
+        </tr>
+    <% end %>
+    
+  </tbody>
+</table>
+
+<table class="portfolio_detail" >
+  <tbody>
+    <% @shares_ave.values.each do |ave| %>
+      <tr>
+          <td>
+            <p> <%= ave %></p>
+          </td>
+        </tr>
+        </tr>
+    <% end %>
+    
+  </tbody>
+</table>
+</div>

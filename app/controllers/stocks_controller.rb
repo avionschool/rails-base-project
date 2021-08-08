@@ -63,4 +63,6 @@ class StocksController < ApplicationController
         @total_price = @count_shares*@latest_price
     end
 
+
+
 end

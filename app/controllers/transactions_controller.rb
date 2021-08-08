@@ -2,22 +2,36 @@ class TransactionsController < ApplicationController
     before_action :set_transaction, only: %i[ show edit update destroy ]
 
     def index
-        @transactions = Transaction.all
+        @transactions = current_user.transactions
     end
 
     def new
-        @transaction = Transaction.new
+        @transaction = current_user.transactions.new
     end
 
-    def create
-        @transaction = Transaction.new(params[:transaction])
+    def show
+    end
+
+    def buy_stock
+        @transaction = current_user.transactions.build(transaction_params)
+        if @transaction.save
+            redirect_to transactions_path
+        else
+            render :new, status: :unprocessable_entity 
+        end
+    end
+
+    def sell_stock
+        @transaction = current_user.transactions.build(transaction_params)
 
         if @transaction.save
-            redirect_to @transaction
-          else
+            redirect_to transactions_path
+        else
             render :new, status: :unprocessable_entity 
-          end
+        end
     end
+
+
 
     private
     
@@ -25,11 +39,16 @@ class TransactionsController < ApplicationController
         @transaction = Transaction.find(params[:id])
     end
 
-    def transaction_params
-        params.require(:transaction).permit(:company, :stock_symbol, :current_price.to_f, :count_shares.to_i, :total_price)
+    def transaction_params        
+        params.require(:transaction).permit(:stock_name, :stock_symbol, :current_price, :count_shares, :total_price, :user_id)
+    end                                                                                                
+
+    def is_current_user
+        @transaction = current_user.transactions.find_by(id: params[:user_id])
     end
 
-
-    
+    def portfolio_params        
+        params.require(:portfolio).permit(:stock_name, :stock_symbol, :average_buy_price, :total_shares, :user_id)
+    end
 
 end

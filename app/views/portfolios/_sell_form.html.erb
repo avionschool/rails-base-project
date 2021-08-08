@@ -1,0 +1,15 @@
+<%='sellstock'%>
+<%= form_with do |form|%>
+    <%= form.text_field :stock_name, value: @company_name, class: 'form-control' %>
+    <%= form.text_field :stock_symbol, value: @company_symbol, class: 'form-control' %>
+    <%= form.number_field :current_price, value: @current_price, class: 'form-control' %>
+
+    <%= label_tag :count_shares, 'Number of Shares to Sell'%>
+    <%= form.number_field :count_shares, value: @count_shares, class: 'form-control' %>
+
+    <%= form.number_field :total_price, value: @result, class: 'form-control' %>
+
+    <%= form.number_field :user_id, id: :transaction_user_id, value: current_user.id, class: 'form-control' %>
+
+    <%= button_tag 'Buy Stock', class: 'btn btn-success btn-block' %>
+<% end %>

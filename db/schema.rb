@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_31_033055) do
+ActiveRecord::Schema.define(version: 2021_08_07_102335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "portfolios", force: :cascade do |t|
+    t.string "stock_name"
+    t.string "stock_symbol"
+    t.integer "total_shares"
+    t.float "average_buy_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_portfolios_on_user_id"
+  end
 
   create_table "stocks", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -28,6 +39,8 @@ ActiveRecord::Schema.define(version: 2021_07_31_033055) do
     t.float "current_price"
     t.integer "count_shares"
     t.float "total_price"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,4 +56,6 @@ ActiveRecord::Schema.define(version: 2021_07_31_033055) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "portfolios", "users"
+  add_foreign_key "transactions", "users"
 end
