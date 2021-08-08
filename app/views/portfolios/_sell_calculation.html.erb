@@ -1,0 +1,9 @@
+<%= form_with(url: calculate_sell_price_path, method: 'get', local: true) do |form| %>
+    <%= label_tag :company, 'Search for a stock '%>
+    <%= text_field_tag :company, nil, class: 'form-control' %>
+
+    <%= label_tag :count_shares, 'Number of Shares to Sell'%>
+    <%= form.number_field :count_shares, value: @count_shares, class: 'form-control' %>
+
+    <%= button_tag 'Search', class: 'btn btn-success btn-block' %>
+<% end %>

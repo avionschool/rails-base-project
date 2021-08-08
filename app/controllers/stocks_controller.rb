@@ -41,11 +41,12 @@ class StocksController < ApplicationController
 
         @change_percent_s = @quote.change_percent_s   
         @outstanding_shares = @key_stats.shares_outstanding
-        
-        @count_shares_string = 'Number of Shares Purchased:'
-        @count_shares = params[:count_shares].to_i
-        @total_price = 'Total Price:'
-        @result = @count_shares * @current_price.to_i
+
+        @count_shares = params[:count_shares]
+        @result = @count_shares.to_f * @current_price.to_i
+
+        @confirmation_message = "You are about to purchase #{@count_shares} share/s for $#{@result}."
+
         render :index
     end
 

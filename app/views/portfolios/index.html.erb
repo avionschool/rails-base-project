@@ -2,6 +2,16 @@
 <%= @shares_sum.values%>
 <%= @shares_ave.values%>
 
+<%= render '/portfolios/sell_calculation', @transaction%>
+
+<%= @current_price%>
+<%= @count_shares%>
+
+<%=@price_at_purchase%>
+<%= render '/portfolios/sell_form', @transaction%>
+
+
+
 <div class= "portfolio_table">
 
 <table class ="portfolio_detail">
@@ -9,7 +19,8 @@
     <% @stock_symbol.each do |sym| %>
         <tr>
           <td>
-            <p> <%= sym %></p>
+            <p> <%= sym %>
+            </p>
           </td>
         </tr>
     <% end %>
@@ -18,7 +29,7 @@
 
 <table class="portfolio_detail" >
   <tbody>
-    <% @shares_sum.values.each do |sum| %>
+    <% @sum.each do |sum| %>
       <tr>
           <td>
             <p> <%= sum %></p>
@@ -32,7 +43,7 @@
 
 <table class="portfolio_detail" >
   <tbody>
-    <% @shares_ave.values.each do |ave| %>
+    <% @ave.each do |ave| %>
       <tr>
           <td>
             <p> <%= ave %></p>
@@ -44,3 +55,5 @@
   </tbody>
 </table>
 </div>
+
+

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/search' => 'stocks#search'
 
   get '/calculate_total_price' => 'stocks#calculate_total_price', :as => 'calculate_total_price'
+  get '/calculate_sell_price' => 'portfolios#calculate_sell_price', :as => 'calculate_sell_price'
 
   post '/buy_stock' => 'transactions#buy_stock', :as => 'buy_stock'
 

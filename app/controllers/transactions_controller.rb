@@ -12,27 +12,6 @@ class TransactionsController < ApplicationController
     def show
     end
 
-    def buy_stock
-        @transaction = current_user.transactions.build(transaction_params)
-        if @transaction.save
-            redirect_to transactions_path
-        else
-            render :new, status: :unprocessable_entity 
-        end
-    end
-
-    def sell_stock
-        @transaction = current_user.transactions.build(transaction_params)
-
-        if @transaction.save
-            redirect_to transactions_path
-        else
-            render :new, status: :unprocessable_entity 
-        end
-    end
-
-
-
     private
     
     def set_transaction
@@ -45,10 +24,6 @@ class TransactionsController < ApplicationController
 
     def is_current_user
         @transaction = current_user.transactions.find_by(id: params[:user_id])
-    end
-
-    def portfolio_params        
-        params.require(:portfolio).permit(:stock_name, :stock_symbol, :average_buy_price, :total_shares, :user_id)
     end
 
 end
