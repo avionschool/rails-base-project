@@ -1,6 +1,8 @@
-<%= @stock_symbol%>
-<%= @shares_sum.values%>
-<%= @shares_ave.values%>
+<% @stock_symbol%>
+<% @shares_sum.values%>
+<% @shares_ave.values%>
+
+<%= render '/portfolios/shared'%>
 
 <%= render '/portfolios/sell_calculation', @transaction%>
 

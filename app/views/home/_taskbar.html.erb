@@ -1,12 +1,7 @@
-
 <div class="user_options">
-    <div id="find_stock">
-      <%= link_to 'View Portfolio', portfolios_path %>    
-    </div>  
+    <div id="logout">
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+    </div> 
 </div>
 
-<div class="user_options">
-    <div id="find_stock">
-      <%= link_to 'View Transactions', transactions_path %>    
-    </div>  
-</div>
+

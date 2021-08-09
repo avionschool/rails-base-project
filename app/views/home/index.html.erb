@@ -1,9 +1,6 @@
 <h1>Welcome</h1>
 
 <% if current_user %>
-
-<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-
 <div class="user_options">
     <div id="find_stock">
       <%= link_to 'Find Stock', stocks_path %>    
@@ -13,7 +10,6 @@
 <%else%>
 <%= link_to 'Sign Up', new_user_registration_path%>
 <%= link_to 'Login', new_user_session_path %>
-
 <%end%>
 
 
