@@ -1,4 +1,5 @@
 class StocksViewController < ApplicationController
+    before_action :authenticate_user!
     # require '../config/iex_client'
     # require 'iex-ruby-client'
 
@@ -45,10 +46,10 @@ class StocksViewController < ApplicationController
 
    
     def view_my_stocks
-        @all_my_stocks = MyStock.all().order(id: :desc)
+        @all_my_stocks = current_user.my_stocks.all().order(id: :desc)
     end
 
     def view_transactions
-        @all_transaction = TransactionTable.all().order(id: :desc)
+        @all_transaction = current_user.transaction_tables.all().order(id: :desc)
     end
 end

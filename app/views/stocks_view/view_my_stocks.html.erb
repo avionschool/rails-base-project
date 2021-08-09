@@ -6,7 +6,7 @@
         <h3>Ticker: <%= item.stock_name_bought %></h3>
         <div class="my-stock-item-container">
             <p>Stock Count: <%= item.stock_count_bought %></p>
-            <p>Bought At: $<%= item.stock_price_bough %></p>
+            <p>Bought At: $<%= (item.stock_price_bough.to_f / 100) %></p>
             <p>Date: <%= item.created_at.strftime("%B-%d-%Y") %></p>
             <p>Time: <%= item.created_at %></p>
 
