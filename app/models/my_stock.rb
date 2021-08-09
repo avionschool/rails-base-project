@@ -1,6 +1,8 @@
 class MyStock < ApplicationRecord
     after_create :create_buy_transaction
     before_destroy :create_sell_transaction
+    # before_save :price_x_100
+    # after_find :price_x_100
     private
 
     def create_buy_transaction
@@ -24,4 +26,8 @@ class MyStock < ApplicationRecord
         trans = TransactionTable.new(transaction_text: "You SOLD #{stock_count_bought} of #{stock_name_bought} at \nCURRENT PRICE: $#{latest_price}/stock PREVIOUS PRICE: $#{stock_price_bough}/stock", transction_type: "sell")
         trans.save
     end
+
+    # def price_x_100
+    #     self.stock_price_bough = self.stock_price_bough * 100
+    # end
 end
