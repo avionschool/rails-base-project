@@ -1,10 +1,10 @@
 <%= render '/transactions/shared' %>
 
-<%= @bought%>
+
 <% @transactions.each do |t| %>
-    <%= t.stock_name %></p>
-    <%= t.stock_symbol %></p>
-    <%= t.current_price %></p>
-    <%= t.count_shares %></p>
-    <%= t.total_price %></p>
+    <p><%= t.stock_name %></p>
+    <p><%= t.stock_symbol %></p>
+    <p><%= t.current_price %></p>
+    <p><%= t.count_shares %> shares </p>
+    <p> for <%= t.total_price %></p>
 <% end %>

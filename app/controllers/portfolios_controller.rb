@@ -18,6 +18,7 @@ class PortfoliosController < ApplicationController
         @quote = @client.quote(params[:company])
 
         @company_symbol = @company.symbol
+        @company_name = @company.company_name
         @current_price = @quote.latest_price
 
         @count_shares = params[:count_shares] 

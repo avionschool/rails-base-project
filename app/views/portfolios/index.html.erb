@@ -11,51 +11,42 @@
 
 <%=@price_at_purchase%>
 <%= render '/portfolios/sell_form', @transaction%>
-
-
-
 <div class= "portfolio_table">
 
 <table class ="portfolio_detail">
   <tbody>
-    <% @stock_symbol.each do |sym| %>
         <tr>
           <td>
-            <p> <%= sym %>
-            </p>
+            Symbol
+          </td>
+            
+          <td>
+            Shares
+          </td>
+          <td>
+            Bid Price
           </td>
         </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<table class="portfolio_detail" >
-  <tbody>
-    <% @sum.each do |sum| %>
-      <tr>
+        <tr>
           <td>
+            <% @stock_symbol.each do |sym| %>
+              <p> <%= sym %> </p>
+            <% end %>
+          </td>
+
+          <td>
+          <% @sum.each do |sum| %>
             <p> <%= sum %></p>
+          <% end %>
           </td>
-        </tr>
-        </tr>
-    <% end %>
-    
-  </tbody>
-</table>
-
-<table class="portfolio_detail" >
-  <tbody>
-    <% @ave.each do |ave| %>
-      <tr>
           <td>
-            <p> <%= ave %></p>
+            <% @ave.each do |ave| %>
+              <p> <%= ave %></p>
+            <% end %>
           </td>
+
         </tr>
-        </tr>
-    <% end %>
     
   </tbody>
 </table>
-</div>
-
-

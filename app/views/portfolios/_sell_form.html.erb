@@ -1,6 +1,8 @@
 <%='sellstock'%>
 <%= form_with(model: :transaction, url: sell_stock_path, scope: :transaction, method: 'post', local: true) do |form|%>
     <%= form.text_field :stock_symbol, value: @company_symbol, class: 'form-control' %>
+    <%= form.text_field :stock_name, value: @company_name, class: 'form-control' %>
+
     <%= form.number_field :current_price, value: @current_price, class: 'form-control' %>
 
     <%= label_tag :count_shares, 'Number of Shares to Sell'%>

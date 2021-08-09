@@ -14,7 +14,7 @@ class TransactionsController < ApplicationController
 
     def buy_stock
         @transaction = current_user.transactions.build(transaction_params)
-
+    
         if @transaction.save
             redirect_to transactions_path
         else
