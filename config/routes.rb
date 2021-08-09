@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   post '/buy_stock' => 'transactions#buy_stock', :as => 'buy_stock'
 
+  post '/sell_stock' => 'portfolios#sell_stock', :as => 'sell_stock'
+
   
   # post '/transactions' => 'transactions#create'
 

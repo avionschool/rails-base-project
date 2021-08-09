@@ -11,6 +11,10 @@
 
   <body>
     <%= render 'layouts/alerts' %>
+    <% if current_user %>
+      <%= render 'home/taskbar' %>
+    <%end%>
+
     <%= yield %>
   </body>
 </html>

@@ -1,5 +1,5 @@
 class PortfoliosController < ApplicationController
-    before_action :get_transaction, only: %i[ show edit update destroy ]
+    before_action :is_current_user, only: %i[ sell_stock ]
     before_action :portfolio_operations
     before_action :request_api
 
@@ -27,15 +27,21 @@ class PortfoliosController < ApplicationController
 
 
     def sell_stock
-        @transaction = current_user.transactions.build(transaction_params)
+        @transactions = current_user.transactions
 
-        if @transaction.save
-            redirect_to transactions_path
+        if @transactions.where(stock_symbol: transaction_params[:stock_symbol]).count > 0
+            @transaction = current_user.transactions.create(transaction_params)
+
+            if @transaction.save
+                redirect_to transactions_path
+            else
+                render :new, status: :unprocessable_entity 
+            end
         else
-            render :new, status: :unprocessable_entity 
+            redirect_to portfolios_path
         end
 
-        @final_shares = @shares_sum.where(:stock_symbol).sum(:count_shares) - @count_shares
+            # @final_shares = @shares_sum.where(:stock_symbol).sum(:count_shares) - @count_shares
     end
 
     private
@@ -53,12 +59,18 @@ class PortfoliosController < ApplicationController
     end
 
     def is_current_user
-        @transactions = current_user.transactions.find_by(id: params[:user_id])
+        @transaction = current_user.transactions.find_by(stock_symbol: params[:stock_symbol])
     end
 
     def portfolio_operations
         @shares_sum = current_user.transactions.group(:stock_symbol).sum(:count_shares)
         @shares_ave = current_user.transactions.group(:stock_symbol).average(:current_price)
     end
+
+    def transaction_params        
+        params.require(:transaction).permit(:stock_name, :stock_symbol, :current_price, :count_shares, :total_price, :user_id)
+    end  
+
+
 
 end
