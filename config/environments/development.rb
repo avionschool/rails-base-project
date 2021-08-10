@@ -39,13 +39,13 @@ Rails.application.configure do
   
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  address: 'smtp.gmail.com',
-  port: 587,
-  domain: 'mail.google.com',
-  user_name: '',
-  password: '',
-  authentication: 'plain',
-  enable_starttls_auto: true }
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'mail.google.com',
+    user_name: "dummy.sender1232@gmail.com",
+    password: "miscount-jar-lack",
+    authentication: 'plain',
+    enable_starttls_auto: true }
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -70,7 +70,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
 
 end
