@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Users::ConfirmationsController < Devise::ConfirmationsController
+class ConfirmationsController < Devise::ConfirmationsController
 
   private
 

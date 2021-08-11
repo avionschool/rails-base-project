@@ -1,13 +1,20 @@
-<h1>Welcome</h1>
-
 <% if current_user %>
-<div class="user_options">
-    <div id="find_stock">
+
+  <% if current_user.admin == false %>
+    <div class="user_options">
+      <div id="find_stock">
       <%= link_to 'Find Stock', stocks_path %>    
       <%= link_to 'Portfolio', portfolios_path %>    
       <%= link_to 'Transactions', transactions_path %>   
-    </div>  
-</div>
+      </div>  
+    </div>
+  <%else%>
+    <% @users.each do |user| %>
+      <%= user.email %>
+      <%= user.admin %>
+    <%end%>
+
+  <%end%>
 
 <%else%>
 <%= link_to 'Sign Up', new_user_registration_path%>
