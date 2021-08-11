@@ -1,52 +1,91 @@
-<% @stock_symbol%>
-<% @shares_sum.values%>
-<% @shares_ave.values%>
-
 <%= render '/portfolios/shared'%>
 
-<%= render '/portfolios/sell_calculation', @transaction%>
+<div class= 'portfolios'>
+  <% @stock_symbol%>
+  <% @shares_sum.values%>
+  <% @shares_ave.values%>
 
-<%= @current_price%>
-<%= @count_shares%>
-
-<%=@price_at_purchase%>
-<%= render '/portfolios/sell_form', @transaction%>
-<div class= "portfolio_table">
-
-<table class ="portfolio_detail">
-  <tbody>
-        <tr>
-          <td>
+  
+  <div class= "portfolio_table">
+    
+    <table class ="portfolio_table_contents">
+      <tbody class ="portfolio_table_contents_body">
+        <tr class ="portfolio_table_headers">
+          <td class = "pth">
             Symbol
           </td>
+
+          <td class = "pth">
+            Company Name
+          </td>
             
-          <td>
+          <td class = "pth">
             Shares
           </td>
-          <td>
-            Bid Price
+
+          <td class = "pth">
+            Price at Purchase
           </td>
         </tr>
 
-        <tr>
-          <td>
+        <tr class ="portfolio_details">
+          <td class = "ptd">
             <% @stock_symbol.each do |sym| %>
-              <p> <%= sym %> </p>
+              <p class = "ptd_each" > <%= sym %> </p>
             <% end %>
           </td>
 
-          <td>
+          <td class = "ptd">
+            <% @stock_name.each do |name| %>
+              <p class = "ptd_each"> <%= name %> </p>
+            <% end %>
+          </td>
+
+          <td class = "ptd">
           <% @sum.each do |sum| %>
-            <p> <%= sum %></p>
+            <p class = "ptd_each"> <%= sum %></p>
           <% end %>
           </td>
-          <td>
+
+          <td class = "ptd">
             <% @ave.each do |ave| %>
-              <p> <%= ave %></p>
+              <p class = "ptd_each"> <%= ave %></p>
+              
             <% end %>
           </td>
 
         </tr>
-    
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class= 'portfolio-forms'>
+    <div class= 'portfolio-forms-content'>
+      <p>
+      <%= 'Sell Stock' %>
+      </p>
+
+      <p>
+      <%= render '/portfolios/sell_calculation', @transaction%>
+      </p>
+
+      <p>
+      Current Market Price: <%= @current_market_price%>
+      </p>
+
+
+      <% @count_shares%>
+
+      <p>
+      Total Ask Price: <%= @result %>
+      </p>
+
+      <% @price_at_purchase%>
+      <% @profit %>
+
+      <%= render '/portfolios/sell_form', @transaction%>
+    </div>
+  </div>
+
+</div>

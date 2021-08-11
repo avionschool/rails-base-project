@@ -1,9 +1,21 @@
 <%= form_with(url: calculate_sell_price_path, method: 'get', local: true) do |form| %>
-    <%= label_tag :company, 'Search for a stock '%>
+    <p>
+    <%= label_tag :company, 'Stock Name'%>
+    </p>
+
+    <p>
     <%= text_field_tag :company, nil, class: 'form-control' %>
+    </p>
 
+    <p>
     <%= label_tag :count_shares, 'Number of Shares to Sell'%>
-    <%= form.number_field :count_shares, value: @count_shares.to_i , class: 'form-control' %>
+    </p>
 
-    <%= button_tag 'Search', class: 'btn btn-success btn-block' %>
+    <p>
+    <%= form.number_field :count_shares, value: @count_shares.to_i , class: 'form-control' %>
+    </p>
+
+    <p>
+    <%= button_tag 'Get Total Price', class: 'btn btn-success btn-block' %>
+    </p>
 <% end %>

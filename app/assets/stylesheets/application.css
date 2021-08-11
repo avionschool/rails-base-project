@@ -1,15 +1,82 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif
+}
+
+
+/* #portfolios */
+
+.portfolios{
+    display:flex;
+    flex-direction: row;
+    height: inherit;
+}
+
+.portfolio_table{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 170vmin;
+}
+
+.portfolio_table_contents{
+    display: flex;
+    justify-content: center;
+    width: inherit;
+    margin-top: 3vmin;
+}
+
+.portfolio_table_contents_body{
+    width: inherit;
+    display:flex;
+    flex-direction: column;
+    height: inherit
+}
+
+.portfolio_table_headers{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vmin;
+}
+
+.pth{
+    width: 30vmin;
+    font-size: 3.5vmin;
+    display:flex;
+    justify-content: center;
+}
+
+.portfolio_details{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ptd{
+    width: 30vmin;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 2.5vmin;
+}
+
+.ptd_each{
+    padding-top: 2.5vmin;
+}
+
+.portfolio-forms{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.portfolio-forms-content{
+    display: flex;
+    flex-direction: column;
+}

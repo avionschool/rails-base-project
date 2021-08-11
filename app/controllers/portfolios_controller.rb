@@ -7,9 +7,11 @@ class PortfoliosController < ApplicationController
         @stock_symbol = @shares_ave.keys
         @sum = @shares_sum.values
         @ave = @shares_ave.values
+        @stock_name = @total_price.keys
     end
 
     def calculate_sell_price
+        @stock_name = @total_price.keys
         @stock_symbol = @shares_ave.keys
         @sum = @shares_sum.values
         @ave = @shares_ave.values
@@ -19,10 +21,15 @@ class PortfoliosController < ApplicationController
 
         @company_symbol = @company.symbol
         @company_name = @company.company_name
-        @current_price = @quote.latest_price
+        @current_market_price = @quote.latest_price
 
         @count_shares = params[:count_shares] 
-        @result = @count_shares.to_f * @current_price.to_i
+        @result = @count_shares.to_f * @current_market_price.to_i
+
+        #compute profit per sold share
+        # @transactions = current_user.transactions
+        # @profit = (@count_shares * @current_market_price.to_i) - (@count_shares))
+
         render :index  
     end
 
@@ -66,6 +73,7 @@ class PortfoliosController < ApplicationController
     def portfolio_operations
         @shares_sum = current_user.transactions.group(:stock_symbol).sum(:count_shares)
         @shares_ave = current_user.transactions.group(:stock_symbol).average(:current_price)
+        @total_price = current_user.transactions.group(:stock_name).sum(:total_price)
     end
 
     def transaction_params        
