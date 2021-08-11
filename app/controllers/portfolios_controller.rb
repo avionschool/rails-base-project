@@ -49,8 +49,8 @@ class PortfoliosController < ApplicationController
 
     def request_api
         @client = IEX::Api::Client.new(
-            publishable_token: 'pk_8e56851e45654ca5a7a4c19b5557b30d',
-            secret_token: 'sk_1d81363bad404b98ab77a585c94d3c5c',
+            publishable_token: Rails.application.credentials.iex[:publishable_token],
+            secret_token: Rails.application.credentials.iex[:secret_token],
             endpoint: 'https://cloud.iexapis.com/v1'
         )       
     end
