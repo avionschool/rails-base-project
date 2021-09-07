@@ -1,7 +1,7 @@
 Link to Sprints - https://docs.google.com/spreadsheets/d/1kkk92dnzicN3sfbry8AEG34IYah9IXX5vFrmGfYxfmE/edit#gid=0
 
 Schema: 
-![image](https://user-images.githubusercontent.com/71489331/132347997-1ec7c05d-652e-453f-b463-ddc5af30887b.png)
+![image](https://user-images.githubusercontent.com/71489331/132348982-308bc11a-f8fd-478f-85ae-e09d96a173b3.png)
 
 Main App Flow
 ![image](https://user-images.githubusercontent.com/71489331/132342159-c90258a1-102c-4c8b-8aa0-a1f4ff9e7cd0.png)
