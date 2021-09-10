@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   attr_writer :login
+
   validate :validate_username
 
   def login
@@ -14,16 +15,17 @@ class User < ApplicationRecord
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
-      where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
-    elsif conditions.has_key?(:username) || conditions.has_key?(:email)
-      where(conditions.to_h).first
+
+    where(conditions.to_h).find_by(['lower(username) = :value OR lower(email) = :value', 
+        { :value => login.downcase }])
+
+    elsif conditions.key?(:username) || conditions.key?(:email)
+      find_by(conditions.to_h)
     end
   end
 
   def validate_username
-    if User.where(email: username).exists?
-      errors.add(:username, :invalid)
-    end
+    return errors.add(:username, :invalid) if User.where(email: username).exists?  
   end
 
 end
