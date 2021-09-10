@@ -1,0 +1,2 @@
+class TraderController < ApplicationController
+end
