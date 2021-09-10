@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validate :validate_username
 
   def login
-    @login = self.username || self.email
+    @login = username || email
   end
 
   def self.find_for_database_authentication(warden_conditions)
@@ -24,5 +24,4 @@ class User < ApplicationRecord
   def validate_username
     return errors.add(:username, :invalid) if User.find_by(email: username).exists?
   end
-
 end
