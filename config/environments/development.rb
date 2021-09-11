@@ -59,4 +59,13 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  IEX::Api.configure do |config|
+    config.publishable_token = 'pk_394b5f8bbfca4f96b4ab2688973077f3' # defaults to ENV['IEX_API_PUBLISHABLE_TOKEN']
+    config.secret_token = 'secret_token' # defaults to ENV['IEX_API_SECRET_TOKEN']
+    config.endpoint = 'https://cloud.iexapis.com/v1' # use 'https://sandbox.iexapis.com/v1' for Sandbox
+  end
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  
 end
