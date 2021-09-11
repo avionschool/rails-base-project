@@ -22,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def validate_username
-    return if User.find_by(email: username)==nil
+    return if User.find_by(email: username).nil?
     return errors.add(:username, :invalid) if User.find_by(email: username).exists?
   end
 end
