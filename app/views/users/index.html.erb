@@ -1,8 +1,8 @@
 <% if current_user %>
-	<h2>I'm a Trader</h2>
-	<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+<h2>I'm a Trader</h2>
+<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 <% else %>
-	<h2>I'm a Trader</h2>
-	<%= link_to"Register", new_user_registration_path %>
-	<%= link_to "Sign In", new_user_session_path %>
+<h2>I'm a Trader</h2>
+<%= link_to"Register", new_user_registration_path %>
+<%= link_to "Sign In", new_user_session_path %>
 <% end %>
