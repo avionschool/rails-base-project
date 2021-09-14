@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2021_09_10_112730) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end 
+    
   create_table "stocks", force: :cascade do |t|
     t.string "code"
     t.string "name"
