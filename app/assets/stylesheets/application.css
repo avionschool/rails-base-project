@@ -28,12 +28,17 @@
 
  a {
     text-decoration: none !important;
-    color: inherit;
+    color: inherit !important;
   }
 
   a:hover{
       color: black;
   }
+
+
+ .sidebar-active{
+    background: #DCDCDC;
+ }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 

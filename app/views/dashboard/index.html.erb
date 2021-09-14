@@ -1,0 +1,33 @@
+<div class="dashboard_index">
+    <%=render 'shared/nav_dashboard'%>
+    <div class="dashboard_body">
+        <%=render 'shared/sidebar'%>
+        <div class="dashboard_main">
+            <div class="dashboard_userInfo">
+                <i class="fas fa-user-astronaut dashboard_userInfoIcon"></i>
+                <div class="dashboard_userInfoContainer">
+                    <div class="dashboard_userInfoMain">
+                        <span class="dashboard_userInfoMain_email"> <%= current_user.email %> </span>
+                        <span class="dashboard_userInfoMain_username"> <%= current_user.username %> </span>
+                    </div>
+                    <div class="dashboard_userInfoDetails">                    
+                        <span> <label>Last login time</label> <%= current_user.last_sign_in_at.strftime("%Y-%m-%d %H:%M") %> </span>
+                        <span> <label>IP</label> <%= current_user.last_sign_in_ip %> </span>
+                    </div>
+                </div>
+            </div>   
+            <div class="dashboard_market">
+                <div class="dashboard_market_left"> 
+                    <%=render 'shared/balance'%>
+                    <%=render 'shared/portfolio'%>
+                </div>
+                <div class="dashboard_market_right">
+                    <%=render 'shared/most_active'%>
+                    <%=render 'shared/most_active'%>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%=render 'shared/links'%>
+    <%=render 'shared/footer'%>
+</div>
