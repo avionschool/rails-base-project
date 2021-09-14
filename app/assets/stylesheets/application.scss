@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+//import bootstrap first
+@import "bootstrap/scss/bootstrap";
+
+//import css reset
+@import "reset";
+//import variables first
+@import "variable";
+//import mixins
+@import "mixins";
+
+//import structure, containers
+@import "page_structure";
