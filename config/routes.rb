@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   
   devise_scope :trader do
-    root to: 'devise/sessions#new'
+    root to: 'dashboard#index'
   end
   
   devise_for :traders
