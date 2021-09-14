@@ -1,0 +1,67 @@
+.signup_page{
+    background: #181A20;
+    width: 100vw;
+    height: 95vh;
+}
+
+.nav_signup{
+    padding: 1rem;
+}
+
+.navbar_logo:hover{
+    color: rgb(248, 209, 47);
+}
+
+.form_signup{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    padding: 2rem;
+    left: 20%;
+}
+
+.form_signup h3{
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: rgb(248, 209, 47);
+}
+
+.form_signup span{
+    margin-bottom: 1rem;
+}
+
+.sign_up_label{
+    font-size: 12px;
+    color: whitesmoke;
+}
+
+.sign_up_input{
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    width: 30%;
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid gray;
+    color: white;
+}
+
+.sign_up_input:focus{
+    outline: 1px solid gold;
+    border: none;
+}
+
+.signup_login{
+    font-size: 12px;
+}
+
+.sign_up_highlight, .sign_up_highlight:hover{
+    color: gold;
+    font-size: 15px;
+}
+
+.signup_btn{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 30%;
+    padding: .5rem;
+}

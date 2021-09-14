@@ -10,6 +10,66 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
+
+ @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+ @import '@fortawesome/fontawesome-free';
+
+
+ body{
+     font-family: 'Jost', sans-serif;
+     background: black;
+     color: white;
+ }
+
+ a {
+    text-decoration: none !important;
+    color: inherit;
+  }
+
+  a:hover{
+      color: black;
+  }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active
+{
+ -webkit-box-shadow: 0 0 0 30px black inset !important;
+ -webkit-text-fill-color: white !important;
+}
+
+ .navbar{
+     font-size: 14px !important;
+ }
+
+ .nav-item, .item_info{
+     cursor: pointer !important;
+ }
+
+ .nav-item:hover, .item_info:hover, .item_footer span:hover{
+    color: rgb(248, 209, 47) !important;
+}
+
+.nav-link:hover{
+    color: rgb(248, 209, 47) !important;
+}
+
+ .dropdown-item{
+    color: white !important;
+}
+
+.dropdown-item:hover{
+    background: black !important;
+}
+
+.btn-primary{
+    background: rgb(248, 209, 47) !important;
+    border: none !important;
+    color: black;
+}

@@ -1,3 +1,115 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.home_logo{
+    height: 2rem;
+}
+
+.nav_right_side{
+    margin-right: 1rem;
+    padding: .3rem;
+}
+
+.nav_register{
+    background: rgb(248, 209, 47) ;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+}
+
+.main_container{
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 40vh;
+}
+
+.main_card{
+    width: 40rem;
+    height: 100%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.item_footer span{
+    cursor: pointer;
+}
+
+.main_card_body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main_btn{
+    width: 40%;
+}
+
+.right_card{
+    background: url('c4d22d5b20710629b85f8d924cebadd4.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 40rem;
+    height: 100%;
+}
+
+.section_info{
+    padding: 1rem;
+}
+
+.section_info_container h2{
+    padding: 2rem;
+}
+
+.fa-3x{
+    margin-bottom: 1rem;
+    color: rgb(248, 209, 47);
+}
+
+.item_info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.item_info:hover{
+    background: #36454F;
+}
+
+.item_info .icons{
+    width: 20px;
+}
+
+.item_info span{
+    color: gray;
+}
+
+.section_footer{
+    padding-top: 3rem;
+}
+
+.item_footer{
+    display: flex;
+    flex-direction: column;
+}
+
+.item_footer span{
+    color: gray;
+    font-size: 12px;
+    margin-bottom: .5rem;
+}
+
+.section_copyright{
+    display: flex;
+    padding: 1rem;
+    border-top: 1px solid black;
+    justify-content: center;
+    color: gray;
+    font-size: 12px;
+}
