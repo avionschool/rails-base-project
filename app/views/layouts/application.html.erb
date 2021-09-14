@@ -4,13 +4,27 @@
     <title>Rails Project</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render 'layouts/alerts'%>
-    <%= yield %>
+    <section class="container-app">
+      <%# <%= render 'layouts/alerts'%>
+      <section class="container-app_main">
+        <%= render 'layouts/navigation'%>
+
+        <main>
+          <%= yield %>
+        </main>
+      </section>
+      <section class="container-app_footer">
+        <footer>
+          This is the footer
+        </footer>
+      </section>
+    </section>
   </body>
 </html>

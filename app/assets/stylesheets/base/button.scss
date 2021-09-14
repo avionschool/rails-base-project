@@ -1,0 +1,14 @@
+.link-btn-primary{
+  @include link-btn-style($color-primary);
+}
+
+.link-nav-btn-primary-dark{
+  @include link-nav($color-primary);
+  @media only screen and (min-width: 768px) {
+    @include link-btn-style($color-primary);
+  }
+  
+}
+.link-nav-dark{
+  @include link-nav($color-primary);
+}

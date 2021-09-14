@@ -1,0 +1,12 @@
+.nav-logo{
+  >img{
+    width: 13rem;
+    height: 6rem;
+  }
+}
+
+.nav-user-links{
+  @media only screen and (max-width: 768px) {
+    @include flex-col();
+  }
+}

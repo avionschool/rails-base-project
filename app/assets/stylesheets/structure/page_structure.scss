@@ -1,0 +1,30 @@
+
+.container-app{
+  background-color: khaki;
+  width: 100%;
+  @include flex-col-space-between();
+  >.container-app_main{
+    width: 100%;
+    min-height: 95vh;
+    background-color: rgb(236, 125, 162);
+
+    >main,
+    nav{
+      width: 100%;
+      background-color: rgb(235, 197, 210);
+    }
+
+    >main{
+
+    }
+
+    >nav{
+      padding: 1rem 5%;
+    }
+  }
+
+  >.container-app_footer{
+    width: 100%;
+    background-color: lightblue;
+  }
+}
