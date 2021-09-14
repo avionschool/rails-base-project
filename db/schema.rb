@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_08_123538) do
+ActiveRecord::Schema.define(version: 2021_09_13_140602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "portfolios", force: :cascade do |t|
+    t.decimal "price"
+    t.integer "qty"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "trader_id", null: false
+    t.index ["trader_id"], name: "index_portfolios_on_trader_id"
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.string "token"
+    t.string "company_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "traders", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +43,18 @@ ActiveRecord::Schema.define(version: 2021_09_08_123538) do
     t.index ["reset_password_token"], name: "index_traders_on_reset_password_token", unique: true
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.decimal "price"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "trader_id", null: false
+    t.bigint "stock_id", null: false
+    t.index ["stock_id"], name: "index_transactions_on_stock_id"
+    t.index ["trader_id"], name: "index_transactions_on_trader_id"
+  end
+
+  add_foreign_key "portfolios", "traders"
+  add_foreign_key "transactions", "stocks"
+  add_foreign_key "transactions", "traders"
 end
