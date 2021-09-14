@@ -65,6 +65,8 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
+    chart-js-rails (0.1.7)
+      railties (> 3.1)
     concurrent-ruby (1.1.8)
     crack (0.4.5)
       rexml
@@ -270,6 +272,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
+  chart-js-rails
   database_rewinder
   devise
   devise-bootstrap5
