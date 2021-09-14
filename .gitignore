@@ -43,3 +43,4 @@ yarn-debug.log*
 config/database.yml
 
 master.key
+.env
