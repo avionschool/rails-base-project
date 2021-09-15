@@ -7,6 +7,7 @@ class User < ApplicationRecord
   attr_writer :login
 
   validate :validate_username
+  has_many :wallets
 
   def login
     @login = username || email
