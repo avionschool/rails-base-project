@@ -98,6 +98,9 @@ GEM
     hashdiff (1.0.1)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    inline_svg (1.7.2)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     listen (3.5.1)
@@ -271,6 +274,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   hamlit-rails
+  inline_svg
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg
