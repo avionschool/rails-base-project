@@ -8,21 +8,10 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     "bootstrap": "5.0.0",
     "bootstrap-icons": "^1.5.0",
-    "jquery": "3.4.1",
-=======
-    "bootstrap": "4.0",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
->>>>>>> Stashed changes
-=======
-    "bootstrap": "4.0",
-    "jquery": "^3.6.0",
-    "popper.js": "^1.16.1",
->>>>>>> Stashed changes
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
