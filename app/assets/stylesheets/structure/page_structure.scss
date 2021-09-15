@@ -6,7 +6,7 @@
   >.container-app_main{
     @include flex-col-center();
     width: 100%;
-    min-height: 98vh;
+    min-height: 94vh;
     // background-color: rgb(236, 125, 162);
 
     >main{
@@ -23,6 +23,7 @@
   >.container-app_footer{
     width: 100%;
     >footer{
+      padding: 1.3rem;
       text-align: center;
       @include flex-col-center();
     }
@@ -83,4 +84,4 @@
       }
     }
   }
-}
+} 
