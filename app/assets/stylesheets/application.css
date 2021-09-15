@@ -10,8 +10,13 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+<<<<<<< Updated upstream
  *= require bootstrap
  *= require font-awesome
+=======
+ *= require font-awesome
+ *= require bootstrap
+>>>>>>> Stashed changes
  *= require_tree .
  *= require_self
  */

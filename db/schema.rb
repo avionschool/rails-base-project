@@ -10,11 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< Updated upstream
 ActiveRecord::Schema.define(version: 2021_09_14_143821) do
+=======
+ActiveRecord::Schema.define(version: 2021_09_14_131255) do
+>>>>>>> Stashed changes
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< Updated upstream
   create_table "roles", force: :cascade do |t|
     t.string "role"
     t.integer "user_id"
@@ -27,6 +32,23 @@ ActiveRecord::Schema.define(version: 2021_09_14_143821) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["role_id"], name: "index_user_roles_on_role_id"
     t.index ["user_id"], name: "index_user_roles_on_user_id"
+=======
+  create_table "stocks", force: :cascade do |t|
+    t.string "ticker"
+    t.string "name"
+    t.decimal "last_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_stocks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "stock_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stock_id"], name: "index_user_stocks_on_stock_id"
+    t.index ["user_id"], name: "index_user_stocks_on_user_id"
+>>>>>>> Stashed changes
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,6 +71,11 @@ ActiveRecord::Schema.define(version: 2021_09_14_143821) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+<<<<<<< Updated upstream
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
+=======
+  add_foreign_key "user_stocks", "stocks"
+  add_foreign_key "user_stocks", "users"
+>>>>>>> Stashed changes
 end
