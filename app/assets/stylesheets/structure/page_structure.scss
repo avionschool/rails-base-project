@@ -43,6 +43,15 @@
     }
   }
 
+  >.img-form-page >svg{
+    width: 50vw;
+    max-height: 30vh;
+    @media only screen and (max-width: 1000px) {
+      max-height: 30vh;
+      width: 70vw;
+    }
+  }
+
   >.heading{
     @include flex-col-center();
     >.header-landing{
