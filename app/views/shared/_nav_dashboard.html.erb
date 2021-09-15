@@ -1,0 +1,98 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%=link_to(root_path, class:"navbar-brand")  do %>
+        <img src="https://bin.bnbstatic.com/static/images/common/favicon.ico"/>
+        BWINANCE
+    <%end%>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Buy Stocks</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Markets</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Trade
+          </a>
+          <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Convert</a></li>
+            <li><a class="dropdown-item" href="#">Classic</a></li>
+            <li><a class="dropdown-item" href="#">Advanced</a></li>
+            <li><a class="dropdown-item" href="#">Margin</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Finance
+          </a>
+          <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Earn</a></li>
+            <li><a class="dropdown-item" href="#">Pool</a></li>
+            <li><a class="dropdown-item" href="#">Liquid Swap</a></li>
+            <li><a class="dropdown-item" href="#">Binance-ish Pay</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">NFT</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Wallet
+          </a>
+          <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Earn</a></li>
+            <li><a class="dropdown-item" href="#">Pool</a></li>
+            <li><a class="dropdown-item" href="#">Liquid Swap</a></li>
+            <li><a class="dropdown-item" href="#">Binance-ish Pay</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Orders
+          </a>
+          <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Earn</a></li>
+            <li><a class="dropdown-item" href="#">Pool</a></li>
+            <li><a class="dropdown-item" href="#">Liquid Swap</a></li>
+            <li><a class="dropdown-item" href="#">Binance-ish Pay</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="far fa-user"></i>
+          </a>
+          <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+            <li><a class="dropdown-item" href="#">Payment</a></li>
+            <li><a class="dropdown-item" href="#">Security</a></li>
+            <li>
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <i class="far fa-bell"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            Downloads
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            Support
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
