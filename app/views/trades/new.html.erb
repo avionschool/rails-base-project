@@ -1,0 +1,15 @@
+<% if @trade.errors.any? %>
+  <% @trade.errors.full_messages.each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+<% end %>
+
+<%= form_with scope: :trade, url: create_trade_path(@stock), local: true do |f| %>
+  <%= f.label :transaction_type, "Buy/Sell" %>
+  <%= f.select :transaction_type, [["Buy", "buy"], ["Sell", "sell"]] %>
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity %>
+  <%= f.submit "Submit", disable_with: 'Processing...' %>
+<% end %>
