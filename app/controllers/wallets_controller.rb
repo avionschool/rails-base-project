@@ -7,7 +7,7 @@ class WalletsController < ApplicationController
     @deposit = Wallet.new
     @balance = current_user.wallets.total_balance
   end
-  
+
   def withdraw
     @withdraw = Wallet.new
     @balance = current_user.wallets.total_balance
