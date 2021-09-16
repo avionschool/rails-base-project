@@ -7,9 +7,9 @@ jobs:
     services:
       postgres:
         image: postgres
-        ports: ['5432:5432']
+        ports: ["5432:5432"]
         env:
-          POSTGRES_PASSWORD: 'test'
+          POSTGRES_PASSWORD: "test"
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -17,36 +17,36 @@ jobs:
           --health-retries 5
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 2.7.2
-        bundler-cache: true
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2
+          bundler-cache: true
 
-    - name: Install dependencies
-      run: |
-        bundle install
+      - name: Install dependencies
+        run: |
+          bundle install
 
-    - name: Setup Database
-      run: |
-        cp config/database.yml.sample config/database.yml
-        yarn install --check-files
-        bundle exec rake db:create
-        bundle exec rake db:schema:load
-      env:
-        DATABASE_HOST: 127.0.0.1
-        DATABASE_USERNAME: 'postgres'
-        DATABASE_PASSWORD: 'test'
+      - name: Setup Database
+        run: |
+          cp config/database.yml.sample config/database.yml
+          yarn install --check-files
+          bundle exec rake db:create
+          bundle exec rake db:schema:load
+        env:
+          DATABASE_HOST: 127.0.0.1
+          DATABASE_USERNAME: "postgres"
+          DATABASE_PASSWORD: "test"
 
-    - name: Run Rubocop
-      run: bundle exec rubocop
+      - name: Run Rubocop
+        run: bundle exec rubocop
 
-    - name: Run Tests
-      run: bundle exec rspec
-      env:
-        DATABASE_HOST: 127.0.0.1
-        DATABASE_USERNAME: 'postgres'
-        DATABASE_PASSWORD: 'test'
-        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+      - name: Run Tests
+        run: bundle exec rspec
+        env:
+          DATABASE_HOST: 127.0.0.1
+          DATABASE_USERNAME: "postgres"
+          DATABASE_PASSWORD: "test"
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}

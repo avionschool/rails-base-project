@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+
+.card-body {
+  background-color: rgba(80, 30, 30, 0.817) !important;
+}
