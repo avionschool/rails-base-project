@@ -1,0 +1,22 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.search-area {
+    padding-top: 50px
+}
+
+.no-right-padding {
+    padding-right: 0 !important;
+}
+
+.no-left-padding {
+    padding-left: 0 !important;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.results-block {
+    display: inline-block;
+    margin-bottom: 1rem;
+}
