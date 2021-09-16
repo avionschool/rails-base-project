@@ -1,6 +1,8 @@
 
 .container-app{
-  // background-color: khaki;
+  &.admin{
+    background-color: $color-primary;
+  }
   width: 100%;
   @include flex-col-space-between();
   >.container-app_main{
@@ -22,6 +24,10 @@
 
   >.container-app_footer{
     width: 100%;
+    min-height: 6vh;
+    &.admin{
+      color: white;
+    }
     >footer{
       padding: 1.3rem;
       text-align: center;
@@ -56,6 +62,7 @@
 
   >.heading{
     @include flex-col-center();
+
     >.header-landing{
       text-align: center;
       margin-top: 2rem;
@@ -64,11 +71,23 @@
       letter-spacing: 3px;
       color: $color-black;
     }
+
     >.subheader-landing{
       text-align: center;
       font-family: 'Montserrat';
       font-size: $font-size-subheader-landing;
       color: $color-black;
+    }
+
+    >.admin-header-landing{
+      font-weight: 800;
+      font-size: $font-size-admin-header-landing;
+      color: white;
+    }
+    >.admin-subheader-landing{
+      font-weight: 400;
+      font-size: $font-size-subheader-landing;
+      color: white;
     }
 
     >.landing-action{
@@ -85,4 +104,4 @@
       }
     }
   }
-} 
+}

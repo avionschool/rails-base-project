@@ -11,16 +11,15 @@
   </head>
 
   <body>
-    <section class="container-app">
+    <section class="<%= append_admin_style("container-app") %>" >
       <%# <%= render 'layouts/alerts'%>
       <section class="container-app_main">
         <%= render 'layouts/navigation'%>
-
         <main>
           <%= yield %>
         </main>
       </section>
-      <section class="container-app_footer">
+      <section class="<%= append_admin_style("container-app_footer") %>">
         <footer>
           Created by Christian Michael Dollosa & Andrea Pauline De Guzman. © 2021
         </footer>
