@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :user_stocks, dependent: :destroy
   has_many :stocks, through: :user_stocks
+  has_many :wallets, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :trackable,
@@ -9,7 +10,6 @@ class User < ApplicationRecord
   attr_writer :login
 
   validate :validate_username
-  has_many :wallets
 
   def login
     @login = username || email

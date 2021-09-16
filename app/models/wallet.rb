@@ -16,8 +16,6 @@ class Wallet < ApplicationRecord
   private
 
   def withdrawals_not_exceed_deposits
-    if self.sum(:withdrawals) > self.sum(:deposit)
-      errors.add(:base, 'Are you serious? You can\'t withdraw what you don\'t have')
-    end
+    return errors.add(:base, 'Are you serious? You can\'t withdraw what you don\'t have') if self.sum(:withdrawals) > self.sum(:deposit)
   end
 end

@@ -1,8 +1,7 @@
 class WalletsController < ApplicationController
   before_action :setup, only: [:show]
 
-  def index
-  end
+  def index; end
 
   def deposit
     @deposit = Wallet.new
@@ -18,13 +17,15 @@ class WalletsController < ApplicationController
     @wallet = Wallet.new(wallet_params)
     @wallet.user = current_user
     if @wallet.save
-      flash[:notice] = "Your transaction has been posted to your account."
+      flash[:notice] = 'Your transaction has been posted to your account.'
       redirect_to dashboard_path
     else
-      flash[:alert] = "Invalid inputs. Please check form."
+      flash[:alert] = 'Invalid inputs. Please check form.'
       render :new
     end
   end
+
+  def show; end
 
   private
 
