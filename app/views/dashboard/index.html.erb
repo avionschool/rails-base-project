@@ -11,7 +11,7 @@
                         <span class="dashboard_userInfoMain_username"> <%= current_user.username %> </span>
                     </div>
                     <div class="dashboard_userInfoDetails">                    
-                        <span> <label>Last login time</label> <%= current_user.last_sign_in_at.strftime("%Y-%m-%d %H:%M") %> </span>
+                        <span> <label>Last login time</label> <%= current_user.last_sign_in_at %> </span>
                         <span> <label>IP</label> <%= current_user.last_sign_in_ip %> </span>
                     </div>
                 </div>
