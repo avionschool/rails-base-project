@@ -23,6 +23,12 @@
   justify-content: center;
 }
 
+@mixin flex-row-start(){
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 @mixin link-btn-style($color){
   background-color: $color;
   font-size: $font-size-navlinks;
