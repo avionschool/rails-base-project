@@ -9,8 +9,8 @@ class Stock < ApplicationRecord
                                     endpoint: 'https://sandbox.iexapis.com/v1')
     begin
       new(ticker: ticker_symbol, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol))
-    rescue => e
-      return nil
+    rescue Exception => e
+      puts "caught exception #{e}!"
     end
   end
 end
