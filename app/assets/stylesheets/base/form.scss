@@ -1,0 +1,68 @@
+form{
+  margin-top: 1rem;
+  max-width: 35rem;
+  width: 100%;
+  @media only screen and (max-width: 390px) {
+    width: 95%;
+  }
+
+  >.remember-me{
+    display: flex;
+    align-items: center;
+    height: 1.1rem;
+    // @include flex-row();
+    >input[type="checkbox"]{
+      width: auto;
+      margin-right: 1rem;
+    }
+    >label{
+      height: 100%;
+    }
+    margin-bottom: 4rem;
+  }
+
+  >.field >input,
+  >.field >.field_with_errors >input{
+    margin-bottom: 1.3rem;
+    outline: none;
+    font-family: inherit;
+    font-size: 1.3rem;
+    padding: 0.7rem 1rem;
+    width: 100%;
+    border: 1px solid $form-input-border-color;
+
+    &::placeholder{
+      opacity: .5;
+    }
+  }
+
+  >.field >label,
+  >.field >em,
+  >.field >.field_with_errors >label,
+  >.field >.field_with_errors >em{
+    font-family: inherit;
+    font-size: 1.1rem;
+    color: #727272;
+  }
+
+  >.actions > input[type="submit"]{
+    width: 100%;
+    border-style: none;
+    @include link-btn-style($color-primary);
+  }
+}
+
+.devise-shared-link{
+  margin-top: 1.3rem;
+  text-align: center;
+  font-family: 'Montserrat';
+  font-size: $font-size-shared-links;
+  color: $color-primary;
+}
+
+.devise-forgot-password{
+  font-family: inherit;
+  font-size: 1.2rem;
+  text-decoration: underline;
+  color: #727272;
+}

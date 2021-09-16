@@ -1,8 +1,10 @@
-
-<h1> This is the static_page#home_page</h1>
-
-<div>
-<%= link_to "I'm a Trader", users_path %>
-<%= link_to "I'm an admin", admins_path %>
-		
-</div>
+<section class="container-static">
+  <div class="img-landing-page">
+    <%= inline_svg_tag('landing_page.svg') %>
+  </div>
+  <div class="heading">
+    <h1 class="header-landing">The best trading platform for you</h1>
+    <p class="subheader-landing">Emporia wallet enables first-time traders to train using real world currency</p>
+    <%= link_to 'Create Account now', new_user_registration_path, class: 'landing-action' %>
+  </div>
+</section>
