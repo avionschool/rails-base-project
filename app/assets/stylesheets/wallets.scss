@@ -1,3 +1,141 @@
 // Place all the styles related to the Wallets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.wallets_body{
+    display: flex;
+    width: 100vw;
+    height: 90vh;
+    background: whitesmoke;
+    color: rgb(33, 40, 51);
+}
+
+.wallets_container{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    margin-top: 1rem;
+}
+
+.deposit_card{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    width:  70%;
+}
+
+.form_item{
+    display: flex;
+    align-items: center;
+}
+
+.form_currency{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form_currency_dropdown{
+    padding-top: .5rem;
+    width: 80%;
+    background: white;
+    padding: .2rem;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.form_credit_details{
+    display: flex;
+    flex-direction: column;
+    margin-top: .5rem;
+}
+
+.form_credit_details_icons{
+    display: flex;
+    width: 80%;
+    justify-content: flex-end;
+}
+
+.form_credit_details_icon{
+    margin-left: .5rem;
+    font-size: 20px;
+}
+
+.form_credit_details_card{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-top: .5rem;
+}
+
+.form_credit_details_card_other{
+    display: flex;
+    margin-top: .5rem;
+}
+
+.form_credit_details_card_name{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.form_credit_details_card_inputs{
+    display: flex;
+    width: 80%;
+}
+
+.form_spacing{
+    margin-right: .5rem;
+}
+
+.wallets_label{
+    font-size: 12px;
+}
+
+.form_credit_details_btn{
+    display: flex;
+    width: 80%;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.wallets_btn{
+    font-size: 20px;
+}
+
+.withdraw_btn{
+    font-size: 20px;
+    background: rgb(165, 42, 42) !important;
+    border: none !important;
+    color: whitesmoke;
+}
+
+.withdraw_highlights{
+    color: rgb(165, 42, 42) !important;
+}
+
+.deposit_highlights{
+    color: green !important;
+}
+
+.deposits_account_balance{
+    display: flex;
+    position: relative;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    padding: 1rem;
+}
+
+.deposits_account_balance_main{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 80%;
+}
+
+.deposits_account_balance h2{
+    color: green;
+}

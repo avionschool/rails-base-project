@@ -2,8 +2,8 @@
   <div class="card-header bg-transparent balance_header">
         <span>Balance Details</span>
     <div class="button_holder">
-        <button class="btn btn-primary balance_btn"> Deposit </button>
-        <button class="btn btn-primary last_btn"> Withdraw </button>
+        <%=link_to "Deposit", deposit_wallets_path, class:"btn btn-primary balance_btn"%>
+        <%=link_to "Withdraw", withdraw_wallets_path, class:"btn btn-primary balance_btn"%>
     </div>
   </div>
   <div class="card-body balance_body">
