@@ -9,6 +9,20 @@
   }
   
 }
+
 .link-nav-dark{
   @include link-nav($color-primary);
+}
+
+.link-nav-white{
+  @include link-nav($color-neutral-white);
+  font-weight: 400;
+}
+
+.link-card-action{
+  font-family: 'Open Sans', sans-serif;
+  font-size: $font-size-navlinks;
+  font-weight: 700;
+  cursor: pointer;
+  color: $color-secondary;
 }

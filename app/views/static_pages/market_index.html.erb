@@ -1,0 +1,29 @@
+<section class="container-static">
+  <section class="card-container">
+    <div class="card-header-name">
+      <h1>Stock Market List</h1>
+    </div>
+  
+    <div class="card-container-table">
+      <%# data headers %>
+      <div class="card-item headers market">
+        <h5 class="default">Market</h5>
+        <h5 class="default">Change (24h)</h5>
+        <h5>Buy</h5>
+        <h5>Sell</h5>
+        <h5 class="default">Action</h5>
+      </div>
+
+      <%# loop all data here %>
+      <% 30.times do %>
+      <div class="card-item market">
+        <h5 class="default">APPL</h5>
+        <h5 class="default"> -0.17%</h5>
+        <h5>P 125,000.00</h5>
+        <h5>P 115,000.00</h5>
+        <%= link_to "View", root_path, class: "link-card-action default" %>
+      </div>
+      <% end %>
+    </div>
+  </section>
+</section>

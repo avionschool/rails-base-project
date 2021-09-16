@@ -57,6 +57,18 @@ form{
     @include link-btn-style($color-primary-light);
   }
 
+  >.actions > input.transaction-buy[type="submit"]{
+    width: 100%;
+    border-style: none;
+    @include link-btn-style($color-green);
+  }
+
+  >.actions > input.transaction-sell[type="submit"]{
+    width: 100%;
+    border-style: none;
+    @include link-btn-style($color-red);
+  }
+
 }
 
 .devise-shared-link{

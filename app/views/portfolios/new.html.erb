@@ -1,0 +1,38 @@
+<section class="container-static">
+  <section class="card-container">
+    <div class="card-header-name">
+      <h1>Market Name</h1>
+    </div>
+    <div class="card-container-stats">
+      <div>
+        <h1>Php 130, 123.00</h1>
+        <h5>Buy</h5>
+      </div>
+      <div>
+        <h1>Php 135, 123.00</h1>
+        <h5>Sell</h5>
+      </div>
+    </div>
+    <div class="card-container-transaction">
+      <%= form_with url: root_path do |f| %>
+        <div class="field">
+          <%= f.number_field :price, autofocus: true, placeholder: "Price" %>
+          <%= f.number_field :amount, placeholder: "Amount" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Buy", class: 'transaction-buy' %>
+        </div>
+      <% end %>
+
+      <%= form_with url: root_path do |f| %>
+        <div class="field">
+          <%= f.number_field :price, autofocus: true, placeholder: "Price" %>
+          <%= f.number_field :amount, placeholder: "Amount" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Sell", class: 'transaction-sell' %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+</section>

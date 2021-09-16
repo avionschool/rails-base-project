@@ -17,6 +17,18 @@
   justify-content: space-between;
 }
 
+@mixin flex-row(){
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-row-start(){
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 @mixin link-btn-style($color){
   background-color: $color;
   font-size: $font-size-navlinks;
