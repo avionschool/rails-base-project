@@ -1,5 +1,6 @@
+<% unless request.fullpath.start_with?('/admins/') %>
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-  <%= link_to image_tag("logo-light.png"), root_path, class: "nav-logo" %>
+  <%= link_to image_tag("logo-light-hires.png"), root_path, class: "nav-logo" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -14,3 +15,11 @@
     </div>
   </div>
 </nav>
+<% else %>
+<nav class="navbar navbar-expand-md navbar-light bg-dark">
+  <%= link_to image_tag("logo-dark-hires.png"), root_path, class: "nav-logo" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+<% end %>

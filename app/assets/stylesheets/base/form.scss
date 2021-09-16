@@ -50,6 +50,13 @@ form{
     border-style: none;
     @include link-btn-style($color-primary);
   }
+
+  >.actions > input.admin-login[type="submit"]{
+    width: 100%;
+    border-style: none;
+    @include link-btn-style($color-primary-light);
+  }
+
 }
 
 .devise-shared-link{
