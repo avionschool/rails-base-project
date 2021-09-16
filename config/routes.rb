@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :static_pages
   resources :users
   resources :admins
+  resources :portfolios, only: [:new]
+  
 
   root 'static_pages#home_page'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
