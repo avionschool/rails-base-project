@@ -1,20 +1,40 @@
 <% unless request.fullpath.start_with?('/admins/') %>
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-  <%= link_to image_tag("logo-light-hires.png"), root_path, class: "nav-logo" %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <% if user_signed_in? %>
+  <nav class="navbar navbar-expand-md navbar-light bg-dark">
+    <%= link_to image_tag("logo-dark-hires.png"), root_path, class: "nav-logo" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <%# Dummy class for space-between %>
-    </ul>
-    <div class="nav-user-links">
-      <%= link_to 'Login', new_user_session_path, class: "link-nav-dark" %>
-      <%= link_to 'Try for free', new_user_session_path, class: "link-nav-btn-primary-dark" %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <%= link_to 'My Portfolio', users_path, class: "link-nav-white" %>
+        <%= link_to 'Stock Market', markets_path, class: "link-nav-white" %>
+        <%= link_to 'Transactions', root_path, class: "link-nav-white" %>
+      </ul>
+      <div class="nav-user-links">
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "link-nav-white" %>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+  <% else %>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <%= link_to image_tag("logo-light-hires.png"), root_path, class: "nav-logo" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <%# Dummy class for space-between %>
+      </ul>
+      <div class="nav-user-links">
+        <%= link_to 'Login', new_user_session_path, class: "link-nav-dark" %>
+        <%= link_to 'Try for free', new_user_session_path, class: "link-nav-btn-primary-dark" %>
+      </div>
+    </div>
+  </nav>
+  <% end %>
 <% else %>
 <nav class="navbar navbar-expand-md navbar-light bg-dark">
   <%= link_to image_tag("logo-dark-hires.png"), root_path, class: "nav-logo" %>

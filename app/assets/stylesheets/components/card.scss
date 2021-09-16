@@ -1,4 +1,5 @@
 .card-container{
+  margin-top: 3rem;
   @include flex-col-center();
   min-height: 30vh;
   width: 100%;
@@ -167,12 +168,13 @@
     }
 
     // card item style for stock market (different # of cols)
+    // can copy paste style below for other card-items with diff col #
     &.market{
       >*{
         padding: 1rem 0;
         flex-grow: 1;
-        min-width: 21%;
-        max-width: 23%;
+        min-width: 21%; //% depends on initial # of cols
+        max-width: 23%; //% depends on initial # of cols
         line-height: 100%;
       }
       @media only screen and (max-width: 650px) {
@@ -187,6 +189,7 @@
         }
       }
     }
+    //end of sample card-item table template for diff col #
   }
 
   @media only screen and (max-width: 500px) {

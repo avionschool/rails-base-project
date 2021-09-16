@@ -5,3 +5,30 @@
 .bg-dark{
   background-color: $color-primary !important;
 }
+
+.bg-dark{
+  >.navbar-toggler {
+    color: white;
+    background-color: $color-secondary;
+    opacity: .9;
+  }
+}
+
+
+.navbar-collapse{
+  >ul{
+    margin-left: 3rem;
+    >*{
+      margin: 0 1rem;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    margin-left: 1rem;
+    >ul{
+      margin-left: 0;
+      >*{
+        margin: 0;
+      }
+    }
+  }
+}
