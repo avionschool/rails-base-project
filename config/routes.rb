@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   devise_scope :trader do
     root to: 'dashboard#index'
   end
+  devise_scope :trader do
+    get '/traders/sign_out' => 'devise/sessions#destroy'
+  end
   
   devise_for :traders
   
