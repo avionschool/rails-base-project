@@ -1,9 +1,8 @@
 require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:user) { described_class.new(email: 'test@sample.com', username: 'testsss') }
-
   before { user.save }
-  
+
   context 'with validation' do
     it 'is not valid without username' do
       user.username = nil
