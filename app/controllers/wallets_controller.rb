@@ -1,6 +1,6 @@
 class WalletsController < ApplicationController
   before_action :setup_wallet, only: [:show]
-  before_action :wallet_config, only: [:deposit, :withdraw]
+  before_action :wallet_config, only: %i[deposit withdraw]
 
   def index; end
 
