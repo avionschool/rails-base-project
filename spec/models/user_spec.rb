@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
 
   before { user.save }
   
-  context 'with validation' do 
+  context 'with validation' do
     it 'is not valid without username' do
       user.username = nil
       expect(user).not_to be_valid
@@ -60,7 +60,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  it 'it is role of trader' do
+  it 'is role of trader' do
     user.username = 'testsss'
     user.firstname = 'test'
     user.lastname = 'test'
@@ -71,7 +71,7 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
-  it 'it is role of admin' do
+  it 'is role of admin' do
     user.username = 'testsss'
     user.firstname = 'test'
     user.lastname = 'test'
