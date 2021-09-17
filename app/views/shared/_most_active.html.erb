@@ -1,5 +1,11 @@
 <div class="most_active">
-    <div class="card table_title">TOP GAINERS</div>
+    <div class="card table_title">
+        <%if gain%>
+            <span class="table_title_gain">TOP GAINERS</span>
+        <%else%>
+            <span class="table_title_loss">TOP LOSERS</span>
+        <%end%>
+    </div>
     <table class="table table-hover table_most_active">
     <thead>
         <tr>
@@ -10,66 +16,22 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-        <th scope="row">FB</th>
-        <td>101</td>
-        <td>4%</td>
-        <td>1.5M</td>
-        </tr>
-        <tr>
-        <th scope="row">FB</th>
-        <td>101</td>
-        <td>4%</td>
-        <td>1.5M</td>
-        </tr>
-        <tr>
-        <th scope="row">FB</th>
-        <td>101</td>
-        <td>4%</td>
-        <td>1.5M</td>
-        </tr>
-        <tr>
-        <th scope="row">FB</th>
-        <td>101</td>
-        <td>4%</td>
-        <td>1.5M</td>
-        </tr>
-        <tr>
-        <th scope="row">FB</th>
-        <td>101</td>
-        <td>4%</td>
-        <td>1.5M</td>
-        </tr>
-        <tr>
-        <th scope="row">FB</th>
-        <td>101</td>
-        <td>4%</td>
-        <td>1.5M</td>
-        </tr>
-        <tr>
-        <th scope="row">FB</th>
-        <td>101</td>
-        <td>4%</td>
-        <td>1.5M</td>
-        </tr>
-        <tr>
-        <th scope="row">FB</th>
-        <td>101</td>
-        <td>4%</td>
-        <td>1.5M</td>
-        </tr>
-        <tr>
-        <th scope="row">FB</th>
-        <td>101</td>
-        <td>4%</td>
-        <td>1.5M</td>
-        </tr>
-        <tr>
-        <th scope="row">FB</th>
-        <td>101</td>
-        <td>4%</td>
-        <td>1.5M</td>
-        </tr>
+        <%stocks.each do |s|%>
+            <tr>
+                <th scope="row"><%=s.symbol%></th>
+                <td><%=s.latest_price%></td>
+                <%if gain%>
+                    <td class="table_title_gain">
+                        <%=s.change_percent_s%>
+                    </td>
+                <%else%>
+                    <td class="table_title_loss">
+                        <%=s.change_percent_s%>
+                    </td>
+                <%end%>
+                <td><%=number_to_human(s.avg_total_volume, :format => '%n%u', :units => { :million => 'M', :thousand => 'K' })%></td>
+            </tr>
+        <%end%>
     </tbody>
     </table>
 </div>

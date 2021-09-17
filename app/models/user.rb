@@ -33,19 +33,19 @@ class User < ApplicationRecord
   end
 
   def admin?
-    admin = Role.find_by(name: 'admin').id
+    admin = Role.find_by(role: 'admin').id
     roles.exists?(admin)
   end
 
   def trader?
-    trader = Role.find_by(name: 'trader').id
+    trader = Role.find_by(role: 'trader').id
     roles.exists?(trader)
   end
 
   private
 
   def set_default_role
-    roles << Role.find_by(name: 'trader') if roles.empty?
+    roles << Role.find_by(role: 'trader') if roles.empty?
   end
 
 end

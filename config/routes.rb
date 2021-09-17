@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
   resources :user_stocks
   devise_for :users
-  get 'dashboard', to: 'dashboard#index'
-  root 'pages#home'
+  
+  authenticated :user do
+    root 'dashboard#index', as: 'dashboard'
+  end
+
+  devise_scope :user do
+    root 'pages#home'
+  end
+
+  namespace :admin do
+    resources :users, only: %i[index show edit update]
+    patch 'users/:id/approve', to: 'users#approve', as: 'user_approve'
+  end
 
   resources :wallets, except: [:destroy] do
     collection do

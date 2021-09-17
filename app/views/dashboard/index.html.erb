@@ -27,13 +27,12 @@
                     <%=render 'shared/portfolio'%>
                 </div>
                 <div class="dashboard_market_right">
-                    <%=render 'shared/most_active'%>
-                    <%=render 'shared/most_active'%>
+                    <%=render 'shared/most_active', :stocks => @gainers, :gain => true %>
+                    <%=render 'shared/most_active', :stocks => @losers, :gain => false %>
                 </div>
             </div>
         </div>
     </div>
     <%=render 'shared/links'%>
     <%=render 'shared/footer'%>
-    <%=@gainers%>
 </div>
