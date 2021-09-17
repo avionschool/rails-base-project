@@ -3,7 +3,6 @@ RSpec.describe User, type: :model do
   let(:user) { described_class.new(email: 'test@sample.com', username: 'testsss') }
 
   before { user.save }
-  
   context 'with validation' do
     it 'is not valid without username' do
       user.username = nil
@@ -61,24 +60,12 @@ RSpec.describe User, type: :model do
   end
 
   it 'is role of trader' do
-    user.username = 'testsss'
-    user.firstname = 'test'
-    user.lastname = 'test'
-    user.email = 'test@sample.com'
-    user.password = '123456'
     user.role = 1
-    user.status = 0
     expect(user).to be_valid
   end
 
   it 'is role of admin' do
-    user.username = 'testsss'
-    user.firstname = 'test'
-    user.lastname = 'test'
-    user.email = 'test@sample.com'
-    user.password = '123456'
     user.role = 0
-    user.status = 1
     expect(user).to be_valid
   end
 end
