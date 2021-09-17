@@ -1,15 +1,18 @@
+<span>Stock Name</span>
+<strong><%= @stock.name %></strong>
+
 <% if @trade.errors.any? %>
   <% @trade.errors.full_messages.each do |message| %>
     <div><%= message %></div>
   <% end %>
 <% end %>
 
-<%= form_with scope: :trade, url: create_trade_path(@stock), local: true do |f| %>
+<%= form_with scope: :trade, url: create_trade_path(@stock.code), local: true do |f| %>
   <%= f.label :transaction_type, "Buy/Sell" %>
   <%= f.select :transaction_type, [["Buy", "buy"], ["Sell", "sell"]] %>
   <%= f.label :price %>
-  <%= f.text_field :price %>
+  <%= f.number_field :price, value: @stock.current_price, disabled: true %>
   <%= f.label :quantity %>
-  <%= f.text_field :quantity %>
+  <%= f.number_field :quantity %>
   <%= f.submit "Submit", disable_with: 'Processing...' %>
 <% end %>

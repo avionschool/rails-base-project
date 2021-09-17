@@ -3,7 +3,7 @@ class CreateTrades < ActiveRecord::Migration[6.0]
     create_table :trades do |t|
       t.integer :user_id
       t.string :stock_code, foreign_key: true
-      t.integer :price
+      t.float :price
       t.integer :quantity
       t.integer :transaction_type
 
