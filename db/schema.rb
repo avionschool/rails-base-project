@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_14_185348) do
+ActiveRecord::Schema.define(version: 2021_09_17_135713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(version: 2021_09_14_185348) do
   create_table "markets", force: :cascade do |t|
     t.string "stock"
     t.integer "curr_stock_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sample_stocks", force: :cascade do |t|
+    t.string "market_symbol"
+    t.float "curr_price"
+    t.string "logo_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
