@@ -47,5 +47,4 @@ class User < ApplicationRecord
   def set_default_role
     roles << Role.find_by(role: 'trader') if roles.empty?
   end
-
 end

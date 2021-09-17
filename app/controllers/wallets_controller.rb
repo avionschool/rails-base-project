@@ -1,16 +1,17 @@
 class WalletsController < ApplicationController
-  before_action :setup, only: [:show]
+  before_action :setup_wallet, only: [:show]
+  before_action :wallet_config, only: [:deposit, :withdraw]
 
   def index; end
 
   def deposit
-    @deposit = Wallet.new
-    @balance = current_user.wallets.total_balance
+    @gainers = @client.stock_market_list(:gainers)
+    @losers = @client.stock_market_list(:losers)
   end
 
   def withdraw
-    @withdraw = Wallet.new
-    @balance = current_user.wallets.total_balance
+    @gainers = @client.stock_market_list(:gainers)
+    @losers = @client.stock_market_list(:losers)
   end
 
   def create
@@ -29,8 +30,14 @@ class WalletsController < ApplicationController
 
   private
 
-  def setup
+  def setup_wallet
     @wallet = Wallet.find(params[:id])
+  end
+
+  def wallet_config
+    @deposit = Wallet.new
+    @withdraw = Wallet.new
+    @balance = current_user.wallets.total_balance
   end
 
   def wallet_params
