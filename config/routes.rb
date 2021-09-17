@@ -6,6 +6,13 @@ Rails.application.routes.draw do
     resources :trades, only: [:new]
   end
 
+  get 'admins/home' => 'admin_portals#index'
+  put 'admins/manage' => 'admin_portals#approve_user'
+  get 'admins/manage' => 'admin_portals#edit_user'
+  put 'admins/manage' => 'admin_portals#update_user'
+  get 'admins/view' => 'admin_portals#show_user'
+
+
   resources :trades, only: [:index]
 
   root 'pages#home'

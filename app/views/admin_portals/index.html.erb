@@ -1,0 +1,20 @@
+<h2> Welcome Admin! </h2>
+
+<%= link_to "Sign out", destroy_admin_session_path, method: 'delete' %>
+</br>
+<%= link_to "Create trader account", new_user_registration_path %>
+</br>
+
+<% @users.each do |user| %>
+  <% if user.confirmed? == true %>
+    <% if user.status == 'approved' %>
+      <%= user.email %> </br>
+      <%= user.status %> </br>
+      <%= link_to "View", admins_view_path(id: user.id), method: 'get' %>
+      <%= link_to "Edit User", admins_manage_path(id: user.id), method: 'get' %>
+      <%= button_to "Approve", admins_manage_path(id: user.id), method: 'put' %>    
+    <% end %>
+  <% end %>
+<% end %>
+
+
