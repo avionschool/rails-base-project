@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_15_153104) do
+ActiveRecord::Schema.define(version: 2021_09_17_164132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "roles", force: :cascade do |t|
     t.string "role"
+    t.index ["role"], name: "index_roles_on_role", unique: true
   end
 
   create_table "stocks", force: :cascade do |t|
