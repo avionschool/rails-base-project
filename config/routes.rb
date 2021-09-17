@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users, path: '/', path_names: { sign_in: 'signin',  sign_up: 'signup', sign_out: 'signout' }, controllers: { registrations: "users/registrations", confirmations: 'confirmations', sessions: 'users/sessions' }
+  devise_scope :user do
+    post '/signin',         to: 'users/sessions#create',       as: 'signin_create'
+    post '/signup',         to: 'users/registrations#create',  as: 'signup_create'
+    delete '/signout',      to: 'devise/sessions#destroy',      as: 'signout'
+  end
+  
+  root to: "home#index"
+get '/home', to: "home#home"
 end

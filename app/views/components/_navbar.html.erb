@@ -1,0 +1,16 @@
+<div class="background-img"></div>
+<nav class="navbar navbar-expand-lg navbar-light ms-3">
+  <a class="navbar-brand brand text-white" href="/">Superstocks</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto ">
+
+        <%= link_to root_path, class:"nav-link nav-item text-white" do %>Home <span class="sr-only">(current)</span><%end%>
+        <%= link_to new_user_session_path, class:"nav-link nav-item text-white" do %>Sign In <span class="sr-only">(current)</span><%end%>
+        <%= link_to new_user_registration_path, class:"nav-link nav-item text-white" do %>Sign Up <span class="sr-only">(current)</span><%end%>
+      
+    </div>
+  </div>
+</nav>
