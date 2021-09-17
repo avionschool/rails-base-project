@@ -1,5 +1,4 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  
   def create
     build_resource(sign_up_params)
     resource.role = 1
@@ -23,5 +22,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
       respond_with resource
     end
   end
-
 end
