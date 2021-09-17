@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 RSpec.describe User, type: :model do
   let(:user) { described_class.new(email: 'test@sample.com', username: 'testsss') }
 
@@ -82,5 +81,4 @@ RSpec.describe User, type: :model do
     user.status = 1
     expect(user).to be_valid
   end
-
 end
