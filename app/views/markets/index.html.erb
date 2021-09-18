@@ -18,8 +18,8 @@
       <div class="card-item market">
       <h5 class="default"><%= stocks.market_symbol %></h5>
       <h5 class="default"> -0.17%</h5>
-      <h5><%= current_buy_price(stocks.curr_price) %></h5>
-      <h5><%= current_sell_price(stocks.curr_price) %></h5>
+      <h5><%= calculate_price(stocks.curr_price, true) %></h5>
+      <h5><%= calculate_price(stocks.curr_price, false) %></h5>
       <%= link_to "View", root_path, class: "link-card-action default" %>
       </div>
       <% end %>
