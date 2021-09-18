@@ -1,0 +1,28 @@
+<section class="container-static">
+  <section class="card-container">
+    <div class="card-header-name">
+      <h1>Stock Market List</h1>
+    </div>
+  
+    <div class="card-container-table">
+      <%# data headers %>
+      <div class="card-item headers market">
+        <h5 class="default">Market</h5>
+        <h5 class="default">Change (24h)</h5>
+        <h5>Buy</h5>
+        <h5>Sell</h5>
+        <h5 class="default">Action</h5>
+      </div>
+
+  <% @sample_stocks.each do |stocks| %>
+      <div class="card-item market">
+      <h5 class="default"><%= stocks.market_symbol %></h5>
+      <h5 class="default"> -0.17%</h5>
+      <h5><%= current_buy_price(stocks.curr_price) %></h5>
+      <h5><%= current_sell_price(stocks.curr_price) %></h5>
+      <%= link_to "View", root_path, class: "link-card-action default" %>
+      </div>
+      <% end %>
+    </div>
+  </section>
+</section>
