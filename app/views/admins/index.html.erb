@@ -1,7 +1,0 @@
-<% if current_admin %>
-<h2> I'm an Admin </h2>
-<%= link_to "sign out", destroy_admin_session_path, method: :delete %>
-<% else %>
-<h2> I'm an Admin </h2>
-<%= link_to "sign in", new_admin_session_path %>
-<% end %>

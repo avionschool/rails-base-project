@@ -1,0 +1,31 @@
+<section class="container-static">
+  <section class="card-container">
+    <div class="card-header-name">
+      <h1>Trader List</h1>
+    </div>
+  
+    <div class="card-container-table">
+      <%# data headers %>
+      <div class="card-item headers market">
+        <h5 class="default">ID</h5>
+        <h5 class="default">Username</h5>
+        <h5>Email</h5>
+        <h5 class="default">Action</h5>
+      </div>
+
+      <%# loop all data here %>
+      <% 30.times do %>
+      <div class="card-item market">
+        <h5 class="default">1</h5>
+        <h5 class="default"> faker_username</h5>
+        <h5>faker@fake.com</h5>
+        <div>
+          <%= link_to "View", root_path, class: "link-card-action default" %>
+          <%= link_to "Delete", root_path, class: "link-card-action default" %>
+        </div>
+        
+      </div>
+      <% end %>
+    </div>
+  </section>
+</section>
