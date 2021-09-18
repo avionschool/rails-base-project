@@ -1,9 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Trade, type: :model do
+  context 'when validating associations' do
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:stock).with_foreign_key('stock_code') }
+  end
+
   context 'when validating presence' do
     it { is_expected.to validate_presence_of(:user_id) }
-    it { is_expected.to validate_presence_of(:stock_id) }
+    it { is_expected.to validate_presence_of(:stock_code) }
     it { is_expected.to validate_presence_of(:price) }
     it { is_expected.to validate_presence_of(:quantity) }
     it { is_expected.to validate_presence_of(:transaction_type) }

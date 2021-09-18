@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2021_09_16_074726) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "stocks", force: :cascade do |t|
+  create_table "stocks", id: false, force: :cascade do |t|
     t.string "code"
     t.string "name"
     t.float "current_price"
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 2021_09_16_074726) do
 
   create_table "trades", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "stock_id"
-    t.integer "price"
+    t.string "stock_code"
+    t.float "price"
     t.integer "quantity"
     t.integer "transaction_type"
     t.datetime "created_at", precision: 6, null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_09_16_074726) do
 
   create_table "user_stocks", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "stock_id"
+    t.integer "stock_code"
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

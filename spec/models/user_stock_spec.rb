@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe UserStock, type: :model do
   context 'when validating presence' do
     it { is_expected.to validate_presence_of(:user_id) }
-    it { is_expected.to validate_presence_of(:stock_id) }
+    it { is_expected.to validate_presence_of(:stock_code) }
     it { is_expected.to validate_presence_of(:quantity) }
   end
 
