@@ -1,5 +1,4 @@
 class SampleStock < ApplicationRecord
-
   def self.list_stocks
     client = IEX::Api::Client.new(
       publishable_token: Rails.application.credentials.iex_global_api[:publishable_token],
@@ -7,16 +6,14 @@ class SampleStock < ApplicationRecord
       endpoint: 'https://sandbox.iexapis.com/v1'
     )
 
-    file = File.open("app/api/stock_lists/market_symbol.txt")
+    file = File.open('app/api/stock_lists/market_symbol.txt')
     file_data = file.readlines.map(&:chomp)
 
     file_data.each do |data|
-     begin
-       create(market_symbol: data, curr_price: client.price(data), logo_url: client.logo(data))
-      rescue => exception
-       puts "symbol not found"
-     end
+      create(market_symbol: data, curr_price: client.price(data), logo_url: client.logo(data))
+    rescue StandardError => e
+      # puts "symbol not found"
+      nil
     end
   end
 end
-
