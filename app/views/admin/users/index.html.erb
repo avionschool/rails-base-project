@@ -1,1 +1,34 @@
-ADMIN INDEX VIEW TO BE UPDATED
+<div class="dashboard_index">
+    <%=render 'shared/nav_dashboard'%>
+    <div class="wallets_body">
+        <%=render 'shared/sidebar'%>
+        <div class="container admin_table">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Sign In Count</th>
+                    <th scope="col">Last Sign In At</th>
+                    <th scope="col">Status</th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%@users.each do |user|%>
+                        <tr>
+                            <th scope="row"><%=user.username%></th>
+                            <td><%=user.email%></td>
+                            <td><%=user.sign_in_count%></td>
+                            <td><%=user.current_sign_in_at%></td>
+                            <td>Pending</td>
+                            <td><button class="btn btn-primary admin_approve_btn">Approve </button></td>
+                        </tr>
+                    <%end%> 
+                </tbody>
+                </table>
+        </div>
+    </div>
+    <%=render 'shared/links'%>
+    <%=render 'shared/footer'%>
+</div>
