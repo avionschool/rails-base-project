@@ -1,0 +1,12 @@
+.modal-content{
+  width: 85%;
+  padding-bottom: 2rem;
+}
+
+.modal-title{
+  font-size: $font-size-subheader;
+}
+
+.modal-body{
+  @include flex-col-center();
+}

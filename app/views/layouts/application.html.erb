@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <section class="<%= append_admin_style("container-app") %>" >
+    <section class="<%= append_admin_style_parent_container("container-app") %>" >
       <%# <%= render 'layouts/alerts'%>
       <section class="container-app_main">
         <%= render 'layouts/navigation'%>
@@ -24,5 +24,13 @@
         </footer>
       </section>
     </section>
+
+
+    <%# floating modals %>
+    <div class="modal fade" id="applicationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog">
+      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        
+      </div>
+    </div>
   </body>
 </html>

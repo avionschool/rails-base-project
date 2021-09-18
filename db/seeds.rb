@@ -30,3 +30,15 @@ sample_stocks.each do |data|
   end
     p "populated database :)"
 end
+
+#user seed#
+User.destroy_all #destroy all user data first
+user_count = 0
+30.times do
+  User.create(email: "test_user+#{user_count}@test.com", password: "test12345", full_name: "test_user #{user_count}", username: "test_user #{user_count}" )
+  user_count+=1
+end
+puts "30 users has been created"
+
+
+#END user seed#

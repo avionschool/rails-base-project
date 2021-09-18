@@ -10,8 +10,8 @@
 
 .card-header-name{
   width: 80%;
-  @include flex-row();
-  justify-content: flex-start;
+  @include flex-row-space-between();
+  // justify-content: flex-start;
   margin-bottom: 2rem;
   >h1{
     font-size: $font-size-header;
@@ -21,6 +21,7 @@
       font-size: $font-size-header/1.8;
     }
   }
+
 
   @media only screen and (max-width: 500px) {
     width: 100%;
@@ -142,12 +143,16 @@
   >.card-item{
     @include flex-row-start();
     width: 100%;
+    text-overflow: ellipsis;
     >*{
       padding: 1rem 0;
       flex-grow: 1;
       min-width: 14%;
       max-width: 14%;
       line-height: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
     @media only screen and (max-width: 650px) {
       @include flex-row-start();
@@ -176,6 +181,7 @@
         min-width: 21%; //% depends on initial # of cols
         max-width: 23%; //% depends on initial # of cols
         line-height: 100%;
+        text-overflow: ellipsis;
       }
       @media only screen and (max-width: 650px) {
         @include flex-row-start();

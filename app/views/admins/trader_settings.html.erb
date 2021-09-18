@@ -1,0 +1,36 @@
+<section class="container-static">
+  <section class="card-container">
+    <div class="card-header-name">
+      <h1>Trader List</h1>
+      <%= link_to 'Create Trader', admins_add_user_path, {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#applicationModal', class: "link-nav-btn-primary-dark" } %>
+    </div>
+  
+    <div class="card-container-table">
+      <%# data headers %>
+      <% if @traders.empty? %>
+      <h1>No Approved Traders yet</h1>
+      <% else %>
+      <div class="card-item headers market">
+        <h5 class="default">ID</h5>
+        <h5 class="default">Username</h5>
+        <h5>Email</h5>
+        <h5 class="default">Action</h5>
+      </div>
+
+      <%# loop all data here %>
+      <% @traders.each do |trader| %>
+      <div class="card-item market">
+        <h5 class="default"><%= trader.id %></h5>
+        <h5 class="default"><%= trader.username %></h5>
+        <h5><%= trader.email %></h5>
+        <div>
+          <%= link_to "View", root_path, class: "link-card-action default" %>
+          <%= link_to "Delete", root_path, class: "link-card-action default" %>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+      
+    </div>
+  </section>
+</section>

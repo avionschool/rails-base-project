@@ -29,6 +29,12 @@
   justify-content: flex-start;
 }
 
+@mixin flex-row-space-between(){
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 @mixin link-btn-style($color){
   background-color: $color;
   font-size: $font-size-navlinks;
