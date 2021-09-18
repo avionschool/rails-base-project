@@ -37,3 +37,12 @@ group :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
 end
+
+gem 'iex-ruby-client'
+gem 'mail', '~> 2.7'
+gem 'will_paginate', '~> 3.1.0'
+
+# Securely store environment variables
+gem 'figaro'
+
+
