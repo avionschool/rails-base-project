@@ -1,3 +1,11 @@
 class DashboardController < ApplicationController
-  def index; end
+  before_action :user_signed_in?
+
+  def index
+    @deposits = current_user.wallets.total_deposits
+    @withdrawals = current_user.wallets.total_withdrawals
+    @balance = current_user.wallets.total_balance
+    @gainers = @client.stock_market_list(:gainers)
+    @losers = @client.stock_market_list(:losers)
+  end
 end

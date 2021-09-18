@@ -1,0 +1,83 @@
+<div class="dashboard_index">
+    <%=render 'shared/nav_dashboard'%>
+    <div class="wallets_body">
+        <%=render 'shared/sidebar'%>
+        <div class="container wallets_container">
+            <div class="deposit_card">
+                <h4> Fund Your Account </h4>
+                <%= form_with(model: @deposit, class: "shadow p-3 mb-5 rounded", local:true)do  |f| %>
+                    <div class="form-group form_item">
+                        <div class="col-8">
+                            <%= f.label :deposit, "Amount", class: "col-2 col-form-label mr-3 wallets_label"%>
+                            <%= f.number_field :deposit, value: number_to_currency(f.object.deposit.to_f, delimiter: '', unit: ''), step: :any, class: "form-control shadow rounded", placeholder: "Title" %>
+                        </div>
+                        <div class="nav-item dropdown form_currency">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                USD
+                            </a>
+                            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">USD</a></li>
+                                <li><a class="dropdown-item" href="#">EUR</a></li>
+                                <li><a class="dropdown-item" href="#">GBP</a></li>
+                                <li><a class="dropdown-item" href="#">PHP</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group form_currency">
+                        <label class="wallets_label">Payment Method</label>
+                        <div class="form_currency_dropdown dropdown-toggle-split">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Credit/Debit Card
+                            </a>
+                            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Credit/Debit Card</a></li>
+                                <li><a class="dropdown-item" href="#">Paypal</a></li>
+                                <li><a class="dropdown-item" href="#">Skrill</a></li>
+                                <li><a class="dropdown-item" href="#">Bank Transfer</a></li>
+                                <li><a class="dropdown-item" href="#">Neteller</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group form_credit_details">
+                        <div class="form_credit_details_icons">
+                            <i class="fab fa-cc-visa form_credit_details_icon"></i>
+                            <i class="fab fa-cc-mastercard form_credit_details_icon"></i>
+                            <i class="fab fa-bitcoin form_credit_details_icon"></i>
+                        </div>
+                        <div class="form_credit_details_card">
+                            <input type="text" class="form-control" placeholder="Card Number" aria-label="Card Number" aria-describedby="basic-addon1">
+                            <div class="form_credit_details_card_other">
+                                <input type="text" class="form-control form_spacing" placeholder="MM/YY" aria-label="MM/YY">
+                                <input type="text" class="form-control" placeholder="CVV" aria-label="CVV">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form_credit_details_card_name">
+                        <label class="wallets_label">Name on card </label>
+                        <div class="form_credit_details_card_inputs">
+                            <input type="text" class="form-control form_spacing" placeholder="First Name" aria-label="First Name" aria-describedby="button-addon2">
+                            <input type="text" class="form-control form_spacing" placeholder="Middle Name" aria-label="Middle Name" aria-describedby="button-addon2">
+                            <input type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="button-addon2">
+                        </div>
+                    </div>
+                    <div class="form_credit_details_btn">
+                        <%= f.submit "Deposit Amount", class: "btn btn-primary wallets_btn" %>
+                    </div>
+                <%end%>
+                <div class="deposits_account_balance">
+                    <div class="deposits_account_balance_main">
+                        <label>Account Balance</label>
+                        <h2>$ <%=@balance %></h2>
+                    </div>
+                    <span>By submitting this request, I confirm I have read and understood 
+                        <span class="deposit_highlights">Deposit Policy</span> & 
+                        <span class="deposit_highlights">Fees and Credit Policy</span>
+                    </span>
+                </div>
+            </div>
+            <%=render 'shared/most_active', :stocks => @gainers, :gain => true %>
+        </div>
+    </div>
+    <%=render 'shared/links'%>
+    <%=render 'shared/footer'%>
+</div>
