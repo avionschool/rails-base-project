@@ -1,0 +1,11 @@
+.markets_body{
+    margin: 1rem;
+    display: flex;
+    width: 100%;
+}
+
+.markets_grid{
+    grid-template-columns: 20% 60% 20%;
+    display: grid;
+    width: 100%;
+}

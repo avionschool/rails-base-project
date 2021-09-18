@@ -1,0 +1,40 @@
+<div class="dashboard_index">
+  <%=render 'shared/nav_dashboard'%>
+  <div class="dashboard_body">
+    <div class="markets_body">
+      <div class="markets_grid">
+          <%=render 'shared/bid_orders'%>
+        <div class="main_charts_grid">
+          <div class="main_charts card">
+            <div class='search-area'>
+              <h3> Search Stocks</h3>
+                <%= form_tag search_stock_path, remote: true, method: :get do %>
+                <div class="form-group-row">
+                  <div class="col-sm-9 no-right-padding">
+                    <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: "form-control form-control-lg" %>
+                </div>
+                <div class="col-sm-3 no-left-padding">
+                  <%= button_tag type: :submit, class: "btn btn-success" do %>
+                    <%= "Search" %>
+                  <% end %>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="main_buy_sell_form">
+          </div>
+        </div>
+        <%=render 'shared/sell_orders'%>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="results">
+
+</div>
+<% if !@tracked_stocks.empty? %>
+  <%= render 'stocks/list' %>
+<% end %>
