@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_09_16_074726) do
 
   create_table "user_stocks", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "stock_code"
+    t.string "stock_code"
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
