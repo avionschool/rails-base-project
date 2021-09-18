@@ -11,6 +11,7 @@ class AdminsController < ApplicationController
   def approve_account
     @trader = User.find(params[:id])
     @trader.update_attribute :approved, params[:approve]
+    ApproveMailer.approve_account_email(@trader.email).deliver_now
     redirect_to admins_trader_settings_path
   end
 

@@ -22,11 +22,7 @@
         <h5 class="default"><%= trader.id %></h5>
         <h5 class="default"><%= trader.username %></h5>
         <h5><%= trader.email %></h5>
-        <div>
-          <%= link_to "Approve",  admins_approvals_path(id: trader.id, approve: true), method: :put, class: "link-card-action default" %>
-          <%= link_to "View", root_path, class: "link-card-action default" %>
-        </div>
-        
+        <%= link_to "Approve",  admins_approvals_path(id: trader.id, approve: true), method: :put, class: "link-card-action default" %>
       </div>
       <% end %>
     </div>

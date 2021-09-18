@@ -1,5 +1,5 @@
 class ApproveMailer < ApplicationMailer
-  def approve_account_email
-    mail(to: 'emporia.wallet@gmail.com', subject: 'Account has been approved!')
+  def approve_account_email(email)
+    mail(to: email, subject: 'Account has been approved!')
   end
 end
