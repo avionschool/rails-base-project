@@ -10,4 +10,4 @@ User.create(email: "chestergarett3@gmail.com", password: "password", username: "
 Role.create(role: "admin")
 Role.create(role: "trader")
 admin = User.create(email: "admin@gmail.com", password: "admin", username: "admin_user")
-admin.roles = [Role.find_by(role: "admin")]
+admin.roles << [Role.find_by(role: "admin")]
