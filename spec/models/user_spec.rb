@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:user) { described_class.new(email: 'test@sample.com', username: 'testsss') }
-  before { user.save }
 
   context 'with validation' do
     it 'is not valid without username' do
@@ -61,11 +60,11 @@ RSpec.describe User, type: :model do
 
   it 'is role of trader' do
     user.role = 1
-    expect(user).to be_valid
+    expect(user).not_to be_valid
   end
 
   it 'is role of admin' do
     user.role = 0
-    expect(user).to be_valid
+    expect(user).not_to be_valid
   end
 end
