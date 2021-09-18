@@ -4,7 +4,23 @@
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="field form-group">
+    <%= f.label :email %><br />
     <%= f.email_field :email, class:"form-control", placeholder:"Email", autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field form-group" >
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
   </div>
 
   <div class="field form-group">
