@@ -11,7 +11,7 @@ class HomeController < ApplicationController
     @active = @client.stock_market_list(:mostactive)
     @sectors = @client.sectors('MARKET')
     # @all = client.crypto('SQL')
-    @market = @client.market
+    # @market = @client.market
     # @spy = client.market['SPY'].close.price
     @fb = @client.price('FB')
     # @fb_logo = client.logo('FB')
