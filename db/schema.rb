@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2021_09_18_194620) do
     t.string "username"
     t.integer "wallet_id"
     t.boolean "approved", default: false, null: false
+    t.index ["approved"], name: "index_users_on_approved"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

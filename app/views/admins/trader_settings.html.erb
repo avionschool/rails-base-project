@@ -6,6 +6,9 @@
   
     <div class="card-container-table">
       <%# data headers %>
+      <% if @traders.empty? %>
+      <h1>No Approved Traders yet</h1>
+      <% else %>
       <div class="card-item headers market">
         <h5 class="default">ID</h5>
         <h5 class="default">Username</h5>
@@ -23,9 +26,10 @@
           <%= link_to "View", root_path, class: "link-card-action default" %>
           <%= link_to "Delete", root_path, class: "link-card-action default" %>
         </div>
-        
       </div>
       <% end %>
+      <% end %>
+      
     </div>
   </section>
 </section>

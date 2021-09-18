@@ -6,6 +6,9 @@
   
     <div class="card-container-table">
       <%# data headers %>
+      <% if @traders.empty? %>
+      <h1>No Pending Approvals</h1>
+      <% end %>
       <div class="card-item headers market">
         <h5 class="default">ID</h5>
         <h5 class="default">Username</h5>
@@ -20,7 +23,7 @@
         <h5 class="default"><%= trader.username %></h5>
         <h5><%= trader.email %></h5>
         <div>
-          <%= link_to "Approve", root_path, class: "link-card-action default" %>
+          <%= link_to "Approve",  admins_approvals_path(id: trader.id, approve: true), method: :put, class: "link-card-action default" %>
           <%= link_to "View", root_path, class: "link-card-action default" %>
         </div>
         
