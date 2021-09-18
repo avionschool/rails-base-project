@@ -23,7 +23,7 @@ sample_stocks.each do |data|
   begin
     SampleStock.connection
     SampleStock.create(market_symbol: data, curr_price: client.price(data), logo_url: client.logo(data))
-  rescue => exception
+  rescue StandardError
     #puts "symbol not found"
     nil
   end
