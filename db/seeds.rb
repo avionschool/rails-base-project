@@ -3,11 +3,12 @@
 #
 # Examples:
 #
+Role.create(role: "admin")
+Role.create(role: "trader")
+
 User.create(email: "chestergarett@gmail.com", password: "password", username: "chestergarett")
 User.create(email: "chestergarett1@gmail.com", password: "password", username: "chestergarett1")
 User.create(email: "chestergarett2@gmail.com", password: "password", username: "chestergarett2")
 User.create(email: "chestergarett3@gmail.com", password: "password", username: "chestergarett3")
-Role.create(role: "admin")
-Role.create(role: "trader")
-admin = User.create(email: "admin@gmail.com", password: "admin", username: "admin_user")
+admin = User.create(email: "admin@gmail.com", password: "password", username: "admin_user")
 admin.roles << [Role.find_by(role: "admin")]
