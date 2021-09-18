@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   get '/admins/trader-settings', to: 'admins#trader_settings' #list view of users
   get '/admins/approvals', to: 'admins#approvals' #view to approve users
   put '/admins/approvals', to: 'admins#approve_account'
+  get '/admins/add_user', to: 'admins#add_user'
+  post '/admins/add_user', to: 'admins#create_user'
 end

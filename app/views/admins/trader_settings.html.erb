@@ -2,6 +2,7 @@
   <section class="card-container">
     <div class="card-header-name">
       <h1>Trader List</h1>
+      <%= link_to 'Create Trader', admins_add_user_path, {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#applicationModal', class: "link-nav-btn-primary-dark" } %>
     </div>
   
     <div class="card-container-table">

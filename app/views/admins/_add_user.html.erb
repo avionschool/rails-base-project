@@ -1,0 +1,22 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Add New Trader</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <%= form_with scope: :user, url: '/admins/add_user', method: :post  do |f| %>
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+        <%= f.text_field :full_name, autofocus: true, autocomplete: :off, placeholder: "Full Name" %>
+        <%= f.text_field :username, autofocus: true, autocomplete: :off, placeholder: "Username" %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password (6 characters minimum)" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Create Account" %>
+      </div>
+    <% end %>
+  </div>
+</div>
