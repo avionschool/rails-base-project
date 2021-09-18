@@ -8,12 +8,12 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :full_name, presence: true
 
-  #override methods for user approved col
-  def active_for_authentication? 
-    super && approved? 
-  end 
-    
-  def inactive_message 
+  # override methods for user approved col
+  def active_for_authentication?
+    super && approved?
+  end
+
+  def inactive_message
     approved? ? super : :not_approved
   end
 
