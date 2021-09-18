@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_09_13_154100) do
   create_table "trades", force: :cascade do |t|
     t.integer "user_id"
     t.string "stock_code"
-    t.integer "price"
+    t.float "price"
     t.integer "quantity"
     t.integer "transaction_type"
     t.datetime "created_at", precision: 6, null: false
