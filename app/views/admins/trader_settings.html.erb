@@ -14,11 +14,11 @@
       </div>
 
       <%# loop all data here %>
-      <% 30.times do %>
+      <% @traders.each do |trader| %>
       <div class="card-item market">
-        <h5 class="default">1</h5>
-        <h5 class="default"> faker_username</h5>
-        <h5>faker@fake.com</h5>
+        <h5 class="default"><%= trader.id %></h5>
+        <h5 class="default"><%= trader.username %></h5>
+        <h5><%= trader.email %></h5>
         <div>
           <%= link_to "View", root_path, class: "link-card-action default" %>
           <%= link_to "Delete", root_path, class: "link-card-action default" %>
