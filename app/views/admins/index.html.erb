@@ -1,0 +1,4 @@
+<% if current_admin %>
+<h3> Welcome Admin </h3>
+<%= link_to "Sign out", destroy_admin_session_path, method: delete %>
+<% end %>
