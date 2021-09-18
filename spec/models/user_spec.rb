@@ -39,13 +39,13 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context 'with username uniqueness' do
+  context 'with validation username uniqueness' do
     let(:user1) { described_class.new(email: 'test@sample.com', username: 'testsss') }
 
     it { expect(user1).not_to be_valid }
   end
 
-  context 'with email uniqueness' do
+  context 'with validation email uniqueness' do
     let(:user2) { described_class.new(email: 'test@sample.com', username: 'testsss') }
 
     it { expect(user2).not_to be_valid }
@@ -56,15 +56,5 @@ RSpec.describe User, type: :model do
       user.firstname = 'test' * 200
       expect(user).not_to be_valid
     end
-  end
-
-  it 'is role of trader' do
-    user.role = 1
-    expect(user).not_to be_valid
-  end
-
-  it 'is role of admin' do
-    user.role = 0
-    expect(user).not_to be_valid
   end
 end

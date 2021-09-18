@@ -27,7 +27,6 @@
               <%= f.text_field :username, autofocus: true, autocomplete: "username", class:"form-control" %>
                 <% resource.errors.full_messages_for(:username).each do |message| %>
                   <div class="text-red-900 font-bold"><%= message %></div>
-                  <br>
                 <% end %>
             </div>
 
@@ -36,7 +35,6 @@
               <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname", class:"form-control"  %>
               <% resource.errors.full_messages_for(:firstname).each do |message| %>
                   <div class="text-red-900 font-bold"><%= message %></div>
-                  <br>
                 <% end %>
             </div>
 
@@ -45,7 +43,7 @@
               <%= f.text_field :lastname, autofocus: true, autocomplete: "lastname", class:"form-control"  %>
               <% resource.errors.full_messages_for(:lastname).each do |message| %>
                   <div class="text-red-900 font-bold"><%= message %></div>
-                  <br>
+
                 <% end %>
             </div>
 
@@ -79,9 +77,7 @@
               <%= f.submit "Submit", class: "btn btn-primary btn-lg mt-3" %>
             </div>
         <% end %>
-      </div>
-
-       
+      </div>  
     </div>
   </div>
 </div>
