@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'StockSample', type: request do
+describe 'SampleStock', type: request do
   it 'returns all stock symboels' do
     get 'https://sandbox.iexapis.com/v1'
 
