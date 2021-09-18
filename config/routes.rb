@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :static_pages
   resources :users
   resources :admins
+
   resources :portfolios, only: [:new]
 
   get '/markets', to: 'static_pages#market_index'
