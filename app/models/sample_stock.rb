@@ -13,8 +13,7 @@ class SampleStock < ApplicationRecord
     file_data.each do |data|
      begin
        create(market_symbol: data, curr_price: client.price(data), logo_url: client.logo(data))
-    
-     rescue => exception
+      rescue => exception
        puts "symbol not found"
      end
     end
