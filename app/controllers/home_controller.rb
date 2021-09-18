@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  # def index
+  def index
   #   # @client = IEX::Api::Client.new(
   #   #   publishable_token: Rails.application.credentials.config[:aws][:publishable_token],
   #   #   secret_token: Rails.application.credentials.config[:aws][:secret_token],
@@ -17,5 +17,5 @@ class HomeController < ApplicationController
   #   # # @fb_logo = client.logo('FB')
   #   # @chart = @client.chart('MSFT', 'id', chart_simplify: true)
   #   # @logo = @client.logo('MSFT')
-  # end
+  end
 end
