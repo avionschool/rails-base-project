@@ -31,15 +31,15 @@
       </div>
 
       <%# loop all data here %>
-      <% 30.times do %>
+       <% @sample_stocks.each do |stocks| %>
       <div class="card-item">
-        <h5 class="default">APPL</h5>
+        <h5 class="default"><%= stocks.market_symbol %></h5>
         <h5 class="default">0.000123</h5>
         <h5>P 5,000.00</h5>
         <h5>5%</h5>
         <h5>P 250.00</h5>
         <h5>P 5250.00</h5>
-        <%= link_to "View", root_path, class: "link-card-action default" %>
+        <%= link_to "View", new_portfolio_path, class: "link-card-action default" %>
       </div>
       <% end %>
     </div>

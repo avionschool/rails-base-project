@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :full_name, presence: true
+  has_many :sample_stocks
 
   # override methods for user approved col
   def active_for_authentication?

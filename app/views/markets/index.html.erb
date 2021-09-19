@@ -20,7 +20,7 @@
       <h5 class="default"> -0.17%</h5>
       <h5><%= calculate_price(stocks.curr_price, true) %></h5>
       <h5><%= calculate_price(stocks.curr_price, false) %></h5>
-      <%= link_to "View", root_path, class: "link-card-action default" %>
+      <%= link_to "View", new_portfolio_path, class: "link-card-action default" %>
       </div>
       <% end %>
     </div>
