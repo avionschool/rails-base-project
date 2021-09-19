@@ -1,0 +1,19 @@
+<div>
+  <% if current_user %>
+    <%= link_to 'Home', home_path %>
+    <%= link_to 'Stocks', stocks_path %>
+    <%= link_to 'Transactions', transactions_path %>
+  <% end %>
+</div>
+
+<% if current_user %>
+  <div>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <%#= link_to "Edit", edit_user_registration_path %>
+    <%#= link_to "Sign up", new_user_registration_path %>
+    <% else%>
+    <%= link_to "Sign up", new_user_registration_path %>
+    <%= link_to "Sign in", new_user_session_path %>
+    <%= link_to "Sign in as Admin", new_admin_session_path %>
+  </div>
+<% end %>

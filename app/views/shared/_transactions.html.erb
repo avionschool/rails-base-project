@@ -1,0 +1,9 @@
+<h1>Transactions History</h1>
+<% transactions.each do |trade| %>
+  <div>
+    <%= trade.stock_code %>
+    <%= trade.transaction_type %>
+    <%= trade.quantity %>
+    <%= trade.price %>
+  </div>
+<% end %>

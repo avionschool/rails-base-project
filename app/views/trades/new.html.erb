@@ -1,5 +1,13 @@
-<span>Stock Name</span>
-<strong><%= @stock.name %></strong>
+<div>
+  <h1>Stock</h1>
+  <%= @stock.code %>
+  <%= @stock.name %>
+  <% if !@user_stock.nil? %>
+    <h4>Quantity: <%= @user_stock.quantity %></h4>
+  <% else %>
+    <h4>You don't own any of this stock.</h4>
+  <% end %>
+</div>
 
 <% if @trade.errors.any? %>
   <% @trade.errors.full_messages.each do |message| %>
@@ -15,4 +23,15 @@
   <%= f.label :quantity %>
   <%= f.number_field :quantity %>
   <%= f.submit "Submit", disable_with: 'Processing...' %>
+<% end %>
+
+<% if current_user %>
+  <div>
+    <h1>Wallet</h1>
+    <%= current_user.wallet.try{running_balance} %>
+  </div>
+  
+  <div>
+    <%= render 'shared/transactions', transactions: @transactions %>
+  </div>
 <% end %>

@@ -1,13 +1,30 @@
-<h1>Home Page</h1>
-<%= @test %>
-<h1>TEST2</h1>
+<h1>User Dashboard</h1>
 
 <% if current_user %>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-  <%= link_to "Edit", edit_user_registration_path %>
-  <%= link_to "Sign up", new_user_registration_path %>
-<% else%>
-  <%= link_to "Sign in", new_user_session_path %>
-  <%= link_to "Sign up", new_user_registration_path %>
-  <%= link_to "Sign in as Admin", new_admin_session_path %>
+  <div>
+    <h1>Wallet</h1>
+    <%= current_user.wallet.try{running_balance} %>
+  </div>
+
+  <div>
+    <h1>Portfolio</h1>
+    <% current_user.user_stocks.each do |user_stock| %>
+      <div>
+        <%= user_stock.stock_code %>
+        <%= user_stock.quantity %>
+        <%= link_to 'Buy/Sell', new_stock_trade_path(user_stock) %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <h1>Stocks</h1>
+    <% @stocks.each do |stock| %>
+      <div>
+        <%= stock.code %>
+        <%= stock.current_price %>
+        <%= link_to 'Buy/Sell', new_stock_trade_path(stock) %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
