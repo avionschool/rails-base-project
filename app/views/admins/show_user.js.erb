@@ -1,0 +1,5 @@
+$("#showModal").find(".modal-dialog").html("<%= j render partial: 'admins/show_user' %>");
+
+$("#adminUserEdit").click(function() {
+  $("#showModal").modal("hide")
+})

@@ -47,7 +47,8 @@
       <ul class="navbar-nav mr-auto">
         <%= link_to 'Trader Settings', admins_trader_settings_path, class: "link-nav-white" %>
         <%= link_to 'Approvals', admins_approvals_path, class: "link-nav-white" %>
-        <%= link_to 'Transactions', root_path, class: "link-nav-white" %>
+        <%# modify once transaction feature has been completed %>
+        <%= link_to 'Transactions', admins_trader_settings_path, class: "link-nav-white" %> 
       </ul>
       <div class="nav-user-links">
         <%= link_to 'Logout', destroy_admin_session_path, method: :delete, class: "link-nav-white" %>

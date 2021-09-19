@@ -9,28 +9,28 @@
 require 'json'
 require 'open-uri'
 
-url = "https://sandbox.iexapis.com/beta/ref-data/symbols?token=#{Rails.application.credentials.iex_global_api[:publishable_token]}"
-market_symbols = URI.open(url).read
-sample_stocks = JSON.parse(market_symbols)
+# url = "https://sandbox.iexapis.com/beta/ref-data/symbols?token=#{Rails.application.credentials.iex_global_api[:publishable_token]}"
+# market_symbols = URI.open(url).read
+# sample_stocks = JSON.parse(market_symbols)
 
-sample_stocks.each do |data|
-    client = IEX::Api::Client.new(
-      publishable_token: Rails.application.credentials.iex_global_api[:publishable_token],
-      secret_token: Rails.application.credentials.iex_global_api[:secret_token],
-      endpoint: 'https://sandbox.iexapis.com/v1'
-      )
+# sample_stocks.each do |data|
+#     client = IEX::Api::Client.new(
+#       publishable_token: Rails.application.credentials.iex_global_api[:publishable_token],
+#       secret_token: Rails.application.credentials.iex_global_api[:secret_token],
+#       endpoint: 'https://sandbox.iexapis.com/v1'
+#       )
 
-  begin
-    SampleStock.connection
-    SampleStock.create(market_symbol: data, curr_price: client.price(data), logo_url: client.logo(data))
-    puts SampleStock
-  rescue StandardError
-    #puts "symbol not found"
-    nil
-  end
-    p "populated database :)"
-end
-
+#   begin
+#     SampleStock.connection
+#     SampleStock.create(market_symbol: data, curr_price: client.price(data), logo_url: client.logo(data))
+#     puts SampleStock
+#   rescue StandardError
+#     #puts "symbol not found"
+#     nil
+#   end
+    
+# end
+p "populated database :)"
 #user seed#
 User.destroy_all #destroy all user data first
 user_count = 0
@@ -39,6 +39,10 @@ user_count = 0
   user_count+=1
 end
 puts "30 users has been created"
+#END user seed#
 
-
+#admin seed#
+Admin.destroy_all #destroy all user data first
+Admin.create(email: "admin@admin.com", password: "test12345", full_name: "admin", username: "admin" )
+puts "Admin has been created"
 #END user seed#
