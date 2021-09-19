@@ -23,10 +23,7 @@
         <h5 class="default"><%= trader.id %></h5>
         <h5 class="default"><%= trader.username %></h5>
         <h5><%= trader.email %></h5>
-        <div>
-          <%= link_to "View", root_path, class: "link-card-action default" %>
-          <%= link_to "Delete", root_path, class: "link-card-action default" %>
-        </div>
+        <%= link_to "View", user_profile_path(trader.id), {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#showModal', class: "link-nav-dark" }%>
       </div>
       <% end %>
       <% end %>

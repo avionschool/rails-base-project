@@ -1,12 +1,20 @@
 .modal-content{
   width: 85%;
-  padding-bottom: 2rem;
+  // padding-bottom: 2rem;
 }
 
 .modal-title{
   font-size: $font-size-subheader;
+  color: white;
 }
 
 .modal-body{
   @include flex-col-center();
+}
+
+.modal-header{
+  background-color: $color-primary;
+  >button{
+    color: white;
+  }
 }
