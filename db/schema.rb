@@ -10,14 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_17_164132) do
+ActiveRecord::Schema.define(version: 2021_09_20_004545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "buy_orders", force: :cascade do |t|
+    t.string "indicator"
+    t.float "quantity"
+    t.float "price"
+    t.float "total_amount"
+    t.string "status"
+    t.bigint "users_id", null: false
+    t.bigint "stocks_id", null: false
+    t.index ["stocks_id"], name: "index_buy_orders_on_stocks_id"
+    t.index ["users_id"], name: "index_buy_orders_on_users_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "role"
     t.index ["role"], name: "index_roles_on_role", unique: true
+  end
+
+  create_table "sell_orders", force: :cascade do |t|
+    t.string "indicator"
+    t.float "quantity"
+    t.float "price"
+    t.float "total_amount"
+    t.string "status"
+    t.bigint "users_id", null: false
+    t.bigint "stocks_id", null: false
+    t.index ["stocks_id"], name: "index_sell_orders_on_stocks_id"
+    t.index ["users_id"], name: "index_sell_orders_on_users_id"
   end
 
   create_table "stocks", force: :cascade do |t|
@@ -26,6 +50,19 @@ ActiveRecord::Schema.define(version: 2021_09_17_164132) do
     t.decimal "last_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "logo"
+    t.jsonb "prices"
+  end
+
+  create_table "user_portfolios", force: :cascade do |t|
+    t.float "quantity"
+    t.float "price"
+    t.float "total_amount"
+    t.float "unrealized"
+    t.bigint "users_id", null: false
+    t.bigint "stocks_id", null: false
+    t.index ["stocks_id"], name: "index_user_portfolios_on_stocks_id"
+    t.index ["users_id"], name: "index_user_portfolios_on_users_id"
   end
 
   create_table "user_roles", force: :cascade do |t|
@@ -69,6 +106,12 @@ ActiveRecord::Schema.define(version: 2021_09_17_164132) do
     t.integer "user_id"
   end
 
+  add_foreign_key "buy_orders", "stocks", column: "stocks_id"
+  add_foreign_key "buy_orders", "users", column: "users_id"
+  add_foreign_key "sell_orders", "stocks", column: "stocks_id"
+  add_foreign_key "sell_orders", "users", column: "users_id"
+  add_foreign_key "user_portfolios", "stocks", column: "stocks_id"
+  add_foreign_key "user_portfolios", "users", column: "users_id"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
   add_foreign_key "user_stocks", "stocks"

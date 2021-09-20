@@ -10,20 +10,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Buy Stocks</a>
+          <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
         </li>
         <li class="nav-item">
-          <%=link_to "Markets", market_path, class: "nav-link"%>
+          <%=link_to "Portfolio", portfolio_index_path, class: "nav-link"%>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Trade
           </a>
           <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Convert</a></li>
-            <li><a class="dropdown-item" href="#">Classic</a></li>
-            <li><a class="dropdown-item" href="#">Advanced</a></li>
-            <li><a class="dropdown-item" href="#">Margin</a></li>
+            <li><%=link_to "Classic", market_path, class: "dropdown-item"%></li>
+            <li><%=link_to "Premium", market_path, class: "dropdown-item"%></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -47,10 +45,9 @@
             Wallet
           </a>
           <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Earn</a></li>
-            <li><a class="dropdown-item" href="#">Pool</a></li>
-            <li><a class="dropdown-item" href="#">Liquid Swap</a></li>
-            <li><a class="dropdown-item" href="#">Binance-ish Pay</a></li>
+            <li><%=link_to "Deposit", deposit_wallets_path, class: "dropdown-item"%></li>
+            <li><%=link_to "Withdraw", withdraw_wallets_path, class: "dropdown-item"%></li>
+            <li><a class="dropdown-item" href="#">Balance</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -58,10 +55,8 @@
             Orders
           </a>
           <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Earn</a></li>
-            <li><a class="dropdown-item" href="#">Pool</a></li>
-            <li><a class="dropdown-item" href="#">Liquid Swap</a></li>
-            <li><a class="dropdown-item" href="#">Binance-ish Pay</a></li>
+            <li><%=link_to "Transactions", transactions_portfolio_index_path, class: "dropdown-item" %></li>
+            <li><%=link_to "Pending Orders", pending_orders_portfolio_index_path, class: "dropdown-item" %></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

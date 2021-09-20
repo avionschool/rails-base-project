@@ -9,3 +9,75 @@
     display: grid;
     width: 100%;
 }
+
+.main_charts_forms{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.main_charts_forms_buy{
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+}
+
+.main_charts_forms_sell{
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+}
+
+.main_charts_forms_buy_labels{
+    font-size: 12px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.main_charts_forms_buy_labels span{
+    margin-right: .5rem;
+}
+
+.main_charts_forms_sell_labels{
+    font-size: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.main_charts_forms_sell_labels span{
+    margin-right: .5rem;
+}
+
+.main_charts_forms_item{
+    margin-bottom: .5rem;
+}
+
+.main_charts_forms_button{
+    width: 100%;
+}
+
+.main_charts_search{
+    display: flex;
+    width: 100%;
+}
+
+.main_charts_search_button{
+    margin-left: 1rem;
+}
+
+.result_company{
+    font-size:15px;
+}
+
+.result_symbol{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.result_price{
+    font-size: 12px;
+    color: green;
+}
+
+#results{
+    margin-bottom: .5rem;
+}

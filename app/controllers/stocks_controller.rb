@@ -4,7 +4,7 @@ class StocksController < ApplicationController
       @stock = Stock.new_lookup(params[:stock])
       if @stock
         respond_to do |format|
-          format.js { render partial: 'users/result' }
+          format.js { render partial: 'users/result'}
         end
       else
         respond_to do |format|

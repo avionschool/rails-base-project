@@ -75,7 +75,10 @@
                     </span>
                 </div>
             </div>
-            <%=render 'shared/most_active', :stocks => @gainers, :gain => true %>
+            <div class="wallets_container_side">
+                <%=render 'shared/most_active', :stocks => @gainers, :gain => true %>
+                <%=render 'shared/most_active', :stocks => @losers, :gain => false %>
+            </div>
         </div>
     </div>
     <%=render 'shared/links'%>

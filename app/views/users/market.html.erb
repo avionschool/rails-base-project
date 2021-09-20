@@ -6,21 +6,50 @@
           <%=render 'shared/bid_orders'%>
         <div class="main_charts_grid">
           <div class="main_charts card">
-            <div class='search-area'>
-              <h3> Search Stocks</h3>
-                <%= form_tag search_stock_path, remote: true, method: :get do %>
-                <div class="form-group-row">
-                  <div class="col-sm-9 no-right-padding">
-                    <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: "form-control form-control-lg" %>
+              <%= form_tag search_stock_path, remote: true, method: :get do %>
+              <div class="form-group">
+                <div class="col-sm-9 main_charts_search">
+                  <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: "form-control form-control-sm" %>
+                  <%= button_tag type: :submit, class: "btn btn-warning main_charts_search_button" do %>
+                  <%= "Search" %>
+                <% end %>
+              </div>
+              <div class="col-sm-12 no-left-padding">
+                <div id="results">  
                 </div>
-                <div class="col-sm-3 no-left-padding">
-                  <%= button_tag type: :submit, class: "btn btn-success" do %>
-                    <%= "Search" %>
-                  <% end %>
+                <div class="main_charts_graph">
+                  <canvas id="myChart" width="400" height="200"></canvas>
+                </div>
+                <div class="main_charts_forms">
+                  <div class="main_charts_forms_buy">
+                    <div class="main_charts_forms_buy_labels main_charts_forms_item">
+                      <span>Limit</span>
+                      <span>Market</span>
+                      <span>Stop Limit</span>
+                    </div>
+                    <div class="form-group">
+                      <input type="email" class="form-control main_charts_forms_item" id="form_buy_price" placeholder="Price">
+                      <input type="email" class="form-control main_charts_forms_item" id="form_buy_amount" placeholder="Amount">
+                      <input type="email" readonly class="form-control main_charts_forms_item" id="form_buy_amount" placeholder="Total">
+                      <button type="button" class="btn btn-success main_charts_forms_item main_charts_forms_button">BUY BTC</button>
+                    </div>
+                  </div>
+                  <div class="main_charts_forms_sell">
+                    <div class="main_charts_forms_sell_labels main_charts_forms_item">
+                      <span>$10,000</span>
+                      <span>Available balance</span>
+                    </div>
+                    <div class="form-group">
+                      <input type="email" class="form-control main_charts_forms_item" id="form_buy_price" placeholder="Price">
+                      <input type="email" class="form-control main_charts_forms_item" id="form_buy_amount" placeholder="Amount">
+                      <input type="email" readonly class="form-control main_charts_forms_item" id="form_buy_amount" placeholder="Total">
+                      <button type="button" class="btn btn-danger main_charts_forms_item main_charts_forms_button">SELL BTC</button>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <% end %>
             </div>
+            <% end %>
           </div>
           <div class="main_buy_sell_form">
           </div>
@@ -31,10 +60,6 @@
   </div>
 </div>
 
-
-<div id="results">
-
-</div>
 <% if !@tracked_stocks.empty? %>
   <%= render 'stocks/list' %>
 <% end %>

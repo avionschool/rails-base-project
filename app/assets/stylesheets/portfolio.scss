@@ -13,3 +13,34 @@
     color: gray;
     margin-right: .5rem;
 }
+
+.portfolio_main{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    height: 90vh;
+    overflow: scroll;
+}
+
+.portfolio_side{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.portfolio_transaction{
+    margin-top: 1rem;
+}
+
+.thead-dark{
+    background: #333;
+    color: white;
+}
+
+.transaction_history{
+    height: 85vh;
+    overflow-y: scroll;
+}
