@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :portfolios, dependent: :nullify
+  has_many :portfolios, dependent: :destroy
   after_create :send_welcome_email
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
