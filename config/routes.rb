@@ -10,10 +10,14 @@ Rails.application.routes.draw do
 
   resources :trades, only: [:index]
 
-  root 'pages#home'
+  root 'pages#landing'
+
+  # buy/sell transaction
   get '/stocks/:stock_code/trades/new' => 'trades#new', as: 'new_stock_trade'
   post '/stocks/:stock_code/trades/new' => 'trades#create', as: 'create_trade'
 
-  #stocks
+  #pages
+  get '/home' => 'pages#home'
   get '/stocks' => 'stocks#index'
+  get '/transactions' => 'pages#transactions'
 end
