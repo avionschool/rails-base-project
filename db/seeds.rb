@@ -43,7 +43,7 @@ puts "Admin has been created"
 #BEGIN portfolio seed
 
 #BEGIN stock market seed#
-SampleStock.destroy_all
+Market.destroy_all
   client = IEX::Api::Client.new(
     publishable_token: Rails.application.credentials.iex_global_api[:publishable_token],
     secret_token: Rails.application.credentials.iex_global_api[:secret_token],
@@ -54,7 +54,7 @@ SampleStock.destroy_all
   file_data = file.readlines.map(&:chomp)
 
   file_data.each do |data|
-    SampleStock.create(market_symbol: data, curr_price: client.price(data), logo_url: client.logo(data))
+    Market.create(market_symbol: data, curr_price: client.price(data), logo_url: client.logo(data))
     rescue StandardError
       nil
     end
