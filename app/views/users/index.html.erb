@@ -1,11 +1,12 @@
 <section class="container-static">
   <section class="card-container">
-    <div class="card-header-name">
-      <h1>Account Information</h1>
+    <div class="card-header-name"> 
+      <%= current_user.present? ? "" : "" %>
+      <h1>Account Information: <%#= current_user.username %> </h1>
     </div>
     <div class="card-container-stats">
       <div>
-        <h3>Php 130, 123.00</h3>
+        <h3><%= user_balance %></h3>
         <h3>Balance</h3>
       </div>
       <div>
