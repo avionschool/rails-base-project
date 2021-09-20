@@ -12,6 +12,7 @@ RSpec.describe Trade, type: :model do
     it { is_expected.to validate_presence_of(:price) }
     it { is_expected.to validate_presence_of(:quantity) }
     it { is_expected.to validate_presence_of(:transaction_type) }
+    it { is_expected.to validate_presence_of(:total_price) }
   end
 
   context 'when validating acceptable values for numerals' do
