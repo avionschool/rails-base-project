@@ -1,26 +1,36 @@
-<h2>Log in</h2>
+<nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
+<div class="container-fluid">
+  <a class="navbar-brand" href="#">Tradance</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</div>
+</nav>
 
+<main class="form-signin">
+<h1 class="h3 mb-3 fw-normal">Sign in</h1>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="checkbox mb-3">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Sign in", class: "w-100 btn btn-lg btn-primary" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</main>
