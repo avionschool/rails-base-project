@@ -12,7 +12,6 @@ class Market < ApplicationRecord
     file_data.each do |data|
       create(market_symbol: data, curr_price: client.price(data), logo_url: client.logo(data))
     rescue StandardError
-      # puts "symbol not found"
       nil
     end
   end
