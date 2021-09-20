@@ -3,11 +3,12 @@ Rails.application.routes.draw do
   devise_for :users, path: 'users'
   resources :static_pages
   resources :users
+  resources :portfolios, only: [:new]
+    
   # resources :admins #removed resources for admins
 
   root 'static_pages#home_page'
-
-  resources :portfolios, only: [:new]
+  
   resources :markets, only: [:index]
   #get '/markets', to: 'static_pages#market_index'
 
