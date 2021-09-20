@@ -13,6 +13,7 @@ class AdminPortalsController < ApplicationController
     return unless @user.update(status: 'approved')
 
     CreateUserWallet.call(@user)
+
     redirect_to admins_home_path
   end
 
