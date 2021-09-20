@@ -3,5 +3,5 @@ class PortfoliosController < ApplicationController
     @users = User.all
     @markets = Market.all
     @portfolios = Portfolio.all
-   end
+  end
 end
