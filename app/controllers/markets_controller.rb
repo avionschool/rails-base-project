@@ -1,5 +1,5 @@
 class MarketsController < ApplicationController
   def index
-    @sample_stocks = SampleStock.all
+    @markets = Market.all
   end
 end
