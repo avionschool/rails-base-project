@@ -30,8 +30,9 @@ ActiveRecord::Schema.define(version: 2021_09_19_200406) do
   end
 
   create_table "markets", force: :cascade do |t|
-    t.string "stock"
-    t.integer "curr_stock_price"
+    t.string "market_symbol"
+    t.float "curr_price"
+    t.string "logo_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,14 +43,6 @@ ActiveRecord::Schema.define(version: 2021_09_19_200406) do
     t.float "hist_price"
     t.float "amount"
     t.integer "sample_stock_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "sample_stocks", force: :cascade do |t|
-    t.string "market_symbol"
-    t.float "curr_price"
-    t.string "logo_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
