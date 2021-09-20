@@ -16,8 +16,8 @@
     <div class="card-container-transaction">
       <%= form_with url: root_path do |f| %>
         <div class="field">
-          <%= f.number_field :price, autofocus: true, placeholder: "Price", value: '00.00', step: :any %>
-          <%= f.number_field :amount, placeholder: "Amount", value: '00.00', step: :any %>
+          <%= f.number_field :price, autofocus: true, placeholder: "Price", step: :any %>
+          <%= f.number_field :amount, placeholder: "Amount", step: :any %>
         </div>
         <div class="actions">
           <%= f.submit "Buy", class: 'transaction-buy' %>
@@ -26,8 +26,8 @@
 
       <%= form_with url: root_path do |f| %>
         <div class="field">
-          <%= f.number_field :price, autofocus: true, placeholder: "Price", value: '00.00', step: :any %>
-          <%= f.number_field :amount, placeholder: "Amount", value: '00.00', step: :any %>
+          <%= f.number_field :price, autofocus: true, placeholder: "Price", step: :any %>
+          <%= f.number_field :amount, placeholder: "Amount", step: :any %>
         </div>
         <div class="actions">
           <%= f.submit "Sell", class: 'transaction-sell' %>

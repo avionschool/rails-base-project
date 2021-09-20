@@ -1,4 +1,8 @@
 class Portfolio < ApplicationRecord
+  has_many :sample_stocks, dependent: :nullify
   belongs_to :user
-  belongs_to :sample_stock
+
+  def new
+    @sample_stocks = SampleStock.all
+  end
 end

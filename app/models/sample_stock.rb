@@ -1,4 +1,6 @@
 class SampleStock < ApplicationRecord
+  belongs_to :portfolios
+  
   def self.list_stocks
     client = IEX::Api::Client.new(
       publishable_token: Rails.application.credentials.iex_global_api[:publishable_token],

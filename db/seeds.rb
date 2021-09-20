@@ -1,13 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-require 'json'
-require 'open-uri'
+# require 'json'
+# require 'open-uri'
 
 # url = "https://sandbox.iexapis.com/beta/ref-data/symbols?token=#{Rails.application.credentials.iex_global_api[:publishable_token]}"
 # market_symbols = URI.open(url).read
@@ -28,14 +20,15 @@ require 'open-uri'
 #     #puts "symbol not found"
 #     nil
 #   end
-    
+#     p "populated database :)"
 # end
-p "populated database :)"
+
+
 #user seed#
 User.destroy_all #destroy all user data first
 user_count = 0
 30.times do
-  User.create(email: "test_user+#{user_count}@test.com", password: "test12345", full_name: "test_user #{user_count}", username: "test_user #{user_count}" )
+  User.create(approved: true, email: "test_user+#{user_count}@test.com", password: "test12345", full_name: "test_user #{user_count}", username: "test_user #{user_count}" )
   user_count+=1
 end
 puts "30 users has been created"
@@ -46,3 +39,24 @@ Admin.destroy_all #destroy all user data first
 Admin.create(email: "admin@admin.com", password: "test12345", full_name: "admin", username: "admin" )
 puts "Admin has been created"
 #END user seed#
+
+#BEGIN portfolio seed
+
+#BEGIN stock market seed#
+SampleStock.destroy_all
+  client = IEX::Api::Client.new(
+    publishable_token: Rails.application.credentials.iex_global_api[:publishable_token],
+    secret_token: Rails.application.credentials.iex_global_api[:secret_token],
+    endpoint: 'https://sandbox.iexapis.com/v1'
+    )
+
+  file = File.open('app/api/stock_lists/market_symbol.txt')
+  file_data = file.readlines.map(&:chomp)
+
+  file_data.each do |data|
+    SampleStock.create(market_symbol: data, curr_price: client.price(data), logo_url: client.logo(data))
+    rescue StandardError
+      nil
+    end
+  p "populated database :)"
+#END Stock market seed#

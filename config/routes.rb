@@ -5,15 +5,14 @@ Rails.application.routes.draw do
   resources :users
   # resources :admins #removed resources for admins
 
+  root 'static_pages#home_page'
+
   resources :portfolios, only: [:new]
   resources :markets, only: [:index]
   #get '/markets', to: 'static_pages#market_index'
 
-
-  root 'static_pages#home_page'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
-
   authenticated :admin do
     #admin specific routes
     get '/admins/trader-settings', to: 'admins#trader_settings' #list view of users
