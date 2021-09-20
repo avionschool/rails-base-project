@@ -14,13 +14,13 @@
         <h5 class="default">Action</h5>
       </div>
 
-  <% @sample_stocks.each do |stocks| %>
+  <% @markets.each do |stocks| %>
       <div class="card-item market">
       <h5 class="default"><%= stocks.market_symbol %></h5>
       <h5 class="default"> -0.17%</h5>
       <h5><%= calculate_price(stocks.curr_price, true) %></h5>
       <h5><%= calculate_price(stocks.curr_price, false) %></h5>
-      <%= link_to "View", root_path, class: "link-card-action default" %>
+      <%= link_to "View", new_portfolio_path, class: "link-card-action default" %>
       </div>
       <% end %>
     </div>

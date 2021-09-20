@@ -1,11 +1,12 @@
 <section class="container-static">
   <section class="card-container">
-    <div class="card-header-name">
-      <h1>Account Information</h1>
+    <div class="card-header-name"> 
+      <%= current_user.present? ? "" : "" %>
+      <h1>Account Information: <%#= current_user.username %> </h1>
     </div>
     <div class="card-container-stats">
       <div>
-        <h3>Php 130, 123.00</h3>
+        <h3><%= user_balance %></h3>
         <h3>Balance</h3>
       </div>
       <div>
@@ -31,17 +32,19 @@
       </div>
 
       <%# loop all data here %>
-      <% 30.times do %>
+       <% @portfolios.each do |portfolio| %>
+       <% if portfolio.user == current_user %>
       <div class="card-item">
-        <h5 class="default">APPL</h5>
+        <h5 class="default"><%= portfolio.market_symbol %></h5>
         <h5 class="default">0.000123</h5>
         <h5>P 5,000.00</h5>
         <h5>5%</h5>
         <h5>P 250.00</h5>
         <h5>P 5250.00</h5>
-        <%= link_to "View", root_path, class: "link-card-action default" %>
+        <%= link_to "View", new_portfolio_path, class: "link-card-action default" %>
       </div>
       <% end %>
+            <% end %>
     </div>
   </section>
 </section>

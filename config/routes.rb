@@ -3,17 +3,17 @@ Rails.application.routes.draw do
   devise_for :users, path: 'users'
   resources :static_pages
   resources :users
+  resources :portfolios, only: [:new]
+    
   # resources :admins #removed resources for admins
 
-  resources :portfolios, only: [:new]
+  root 'static_pages#home_page'
+  
   resources :markets, only: [:index]
   #get '/markets', to: 'static_pages#market_index'
 
-
-  root 'static_pages#home_page'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
-
   authenticated :admin do
     #admin specific routes
     get '/admins/trader-settings', to: 'admins#trader_settings' #list view of users
