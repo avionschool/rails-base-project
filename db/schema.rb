@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_18_021008) do
+ActiveRecord::Schema.define(version: 2021_09_20_121508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,10 +27,6 @@ ActiveRecord::Schema.define(version: 2021_09_18_021008) do
     t.decimal "balance", precision: 8, scale: 2, default: "0.0"
     t.integer "role", default: 0
     t.integer "status", default: 0
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
