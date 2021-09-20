@@ -17,14 +17,19 @@
             <li><a class="dropdown-item" href="#">Stock List</a></li>
           </ul>
         </li>
+        <% if current_user %>
+          <li class="nav-item">
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:"nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Log In', user_session_path, class:"nav-link"  %>
+          </li>
 
-        <li class="nav-item">
-          <%= link_to 'Log In', user_session_path, class:"nav-link"  %>
-        </li>
-
-        <li class="nav-item">
-          <%= link_to 'Sign Up', new_user_registration_path, class:"nav-link"  %>
-        </li>
+          <li class="nav-item">
+            <%= link_to 'Sign Up', new_user_registration_path, class:"nav-link"  %>
+          </li>
+        <% end %>
         
       </ul>
     </div>

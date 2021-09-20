@@ -1,8 +1,27 @@
 <%= csrf_meta_tags %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title"><%= current_user.first_name%> <%= current_user.last_name%></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= current_user.email%></h6>
+            <p class="card-text">I am an aggressive buyer.</p>
+              <a href="#" class="card-link">Wallet</a>
+              <a href="#" class="card-link">Transaction History</a>
+        </div>
+      </div>
+    </div>
 
-<h2>User Details</h2>
- <h3><%= current_user.email%></h3>
-
-<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
 
 
+    <div class="col-sm">
+
+      <h2> Owned Stocks </h2>
+      <tr>
+        <td> Company </td>
+        <td> Price </td>
+        <td> Quantity </td>
+    </div>
+  </div>
+</div>
