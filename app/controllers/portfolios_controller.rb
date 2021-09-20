@@ -1,10 +1,10 @@
 class PortfoliosController < ApplicationController
   def new
     @users = User.all
-    @sample_stocks = SampleStock.all
+    @markets = Market.all
     @portfolios = Portfolio.all
 
-    #@portfolio = @sample_stocks.portfolios.build
+    # @portfolio = @sample_stocks.portfolios.build
   end
 
   def create
