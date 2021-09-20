@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 RSpec.describe 'User', type: :model do
   it 'is not valid without first_name' do
     user = User.new(email: 'steven@gmail.com', username: 'stvn', first_name: nil, last_name: 'choy', password: 'test_password')

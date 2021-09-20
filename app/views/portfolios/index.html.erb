@@ -1,0 +1,8 @@
+<%= csrf_meta_tags %>
+
+<h2>User Details</h2>
+ <h3><%= current_user.email%></h3>
+
+<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+
+
