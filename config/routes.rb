@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     post '/signup',         to: 'users/registrations#create',  as: 'signup_create'
     delete '/signout',      to: 'devise/sessions#destroy',      as: 'signout'
   end
-  
+ 
+  get '/dashboard', to: "home#dashboard"
   root to: "home#index"
-  get '/home', to: "home#home"
 end

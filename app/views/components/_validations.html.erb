@@ -1,5 +1,5 @@
 <% if notice %>
-  <div class="alert-success mt-5 z-40"  style="position:fixed; top:0; " >
+  <div class="alert_success mt-5 z-40"  style="position:fixed; top:0;" >
     <div class="alert flex flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300">
 			<div class="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
 				<span class="text-green-500">
@@ -17,15 +17,15 @@
 					Success
 				</div>
 				<div class="alert-description text-sm text-green-600">
-					<%=notice%>
+					<%= notice%>
 				</div>
 			</div>
 		</div>
 	</div>
-<%end%>
 
-<% if alert %>
-  <div class="alert-success mt-5 z-40" style="position:fixed; top:0;">
+<% elsif alert %>
+
+  <div class="alert-error mt-5 z-40" style="position:fixed; top:0;">
     <div class="alert flex flex-row items-center bg-red-200 p-5 rounded border-b-2 border-red-300">
 			<div class="alert-icon flex items-center bg-red-100 border-2 border-red-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
 				<span class="text-red-500">
@@ -49,3 +49,18 @@
 		</div>
 	</div>
 <%end%>
+
+<script>
+  var alert_success = document.querySelector('.alert_success')
+  var alert_error = document.querySelector('.alert-error')
+  if (alert_success) {
+    setTimeout(() => {
+      alert_success.style.display = 'none'
+    }, 3000);
+  }
+	 if (alert_error) {
+    setTimeout(() => {
+      alert_error.style.display = 'none'
+    }, 3000);
+  }
+</script>
