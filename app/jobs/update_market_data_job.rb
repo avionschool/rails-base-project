@@ -1,7 +1,7 @@
-class UpdateMarketDataJob < ApplicationJob
-  queue_as :default
+class UpdateMarketDataJob
+  # queue_as :default
 
-  def perform(*args)
+  def self.perform()
     puts "Job test for update market data"
     JobsServices::UpdateStockData.new.call
   end
