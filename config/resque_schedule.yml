@@ -1,0 +1,8 @@
+update_market_data_job:
+  every: 
+    - '1min'
+    - :first_in: '5s'
+  class: "UpdateMarketDataJob"
+  args:
+  queue: high
+  description: Runs the perform method in UpdateMarketDataJob

@@ -1,3 +1,5 @@
+require 'resque/server'
+
 Rails.application.routes.draw do
   devise_for :admins, path: 'admins', skip: [:registrations, :passwords]
   devise_for :users, path: 'users'
@@ -25,5 +27,7 @@ Rails.application.routes.draw do
     put '/admins/trader-settings/:id', to: 'admins#modify_user'
     patch '/admins/trader-settings/:id', to: 'admins#modify_user'
     get '/admins/trader-settings/:id/edit', to: 'admins#edit_user', as: :edit_user_profile
+    #resque FE
+    mount Resque::Server.new, at: '/admins/jobs'
   end
 end
