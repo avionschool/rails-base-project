@@ -2,6 +2,6 @@ class UpdateMarketDataJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    # Do something later
+    puts "Job test for update market data"
   end
 end
