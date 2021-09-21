@@ -1,37 +1,43 @@
-<div>
-  <h1>Stock</h1>
-  <%= @stock.code %>
-  <%= @stock.name %>
-  <% if !@user_stock.nil? %>
-    <h4>Quantity: <%= @user_stock.quantity %></h4>
-  <% else %>
-    <h4>You don't own any of this stock.</h4>
-  <% end %>
-</div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 col-md-6 mb-5">
+      <h2><%= @stock.name %></h2>
+      <div>Symbol: <strong> <%= @stock.code %></strong></div>
+      <% if !@user_stock.nil? %>
+        <div>Available quantity in portfolio: <strong><%= @user_stock.quantity %> units</strong></div>
+      <% else %>
+        <span>You don't own any of this stock.</span>
+      <% end %>
+    </div>
+    
+    <div class="col-12 col-md-6 mb-5">
+      <%= form_with scope: :trade, url: create_trade_path(@stock.code), local: true do |f| %>
+        <div class="field mb-3">
+          <%= f.label :transaction_type, "Buy/Sell", class: 'form-label' %>
+          <%= f.select :transaction_type, [["Buy", "buy", class: 'buy'], ["Sell", "sell", class: 'sell']], {}, class: 'selectTransaction buy form-control' %>
+        </div>
+        <div class="field mb-3">
+          <%= f.label :price, class: 'form-label' %>
+          <%= f.number_field :price, value: @stock.current_price, disabled: true, class: 'form-control' %>
+        </div>
+        <div class="field mb-3">
+          <%= f.label :quantity, class: 'form-label' %>
+          <%= f.number_field :quantity, class: 'form-control' %>
+        </div>
+        <div class="field"><%= f.submit "Confirm Transaction", disable_with: 'Processing...', class: 'btn btn-primary submit__transaction form-control' %></div>
+      <% end %>
 
-<% if @trade.errors.any? %>
-  <% @trade.errors.full_messages.each do |message| %>
-    <div><%= message %></div>
-  <% end %>
-<% end %>
-
-<%= form_with scope: :trade, url: create_trade_path(@stock.code), local: true do |f| %>
-  <%= f.label :transaction_type, "Buy/Sell" %>
-  <%= f.select :transaction_type, [["Buy", "buy"], ["Sell", "sell"]] %>
-  <%= f.label :price %>
-  <%= f.number_field :price, value: @stock.current_price, disabled: true %>
-  <%= f.label :quantity %>
-  <%= f.number_field :quantity %>
-  <%= f.submit "Submit", disable_with: 'Processing...' %>
-<% end %>
-
-<% if current_user %>
-  <div>
-    <h1>Wallet</h1>
-    <%= current_user.wallet.try{running_balance} %>
+      <div class= "text-center">
+        <span><strong>Buying power:</strong> <%= number_to_currency(current_user.wallet.try{running_balance}) %></span>
+      </div>
+    </div>
   </div>
   
-  <div>
-    <%= render 'shared/transactions', transactions: @transactions %>
-  </div>
-<% end %>
+  <% if current_user %>
+    <div class= "mt-5 mb-5 border-top">
+      <%= render 'shared/transactions', transactions: @transactions %>
+    </div>
+  <% end %>
+  
+  <%= javascript_pack_tag 'new_transaction' %>
+</div>

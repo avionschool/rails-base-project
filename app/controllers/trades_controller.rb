@@ -16,14 +16,13 @@ class TradesController < ApplicationController
     @trade.total_price = CalculateTotalTradePrice.call(@stock, params[:trade][:quantity].to_i)
 
     if @trade.save
-      flash.now[:notice] = 'Transaction completed.'
+      flash[:notice] = 'Transaction completed.'
       update_wallet
       manage_user_stock
-      redirect_to new_stock_trade_path
     else
-      flash.now[:error] = 'Transaction failed.'
-      render :new
+      flash[:error] = "Transaction failed. #{@trade.errors.full_messages.first}"
     end
+    redirect_to new_stock_trade_path
   end
 
   private

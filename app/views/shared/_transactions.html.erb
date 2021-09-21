@@ -1,9 +1,35 @@
-<h1>Transactions History</h1>
-<% transactions.each do |trade| %>
-  <div>
-    <%= trade.stock_code %>
-    <%= trade.transaction_type %>
-    <%= trade.quantity %>
-    <%= trade.price %>
+<% if transactions.empty? %>
+  <div class="text-center">
+    <h1>Transactions History</h1>
+    <span>You don't have any transaction yet.</span>
   </div>
+
+<% else %>
+  <h1>Transactions History</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Stock Name</th>
+        <th class= "text-center">Type</th>
+        <th class= "text-center">Quantity</th>
+        <th class= "text-center">Price($)</th>
+        <th class= "text-center">Total($)</th>
+        <th class= "text-center">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% transactions.each do |trade| %>
+        <tr>
+          <td><%= trade.stock_code %></td>
+          <td><%= trade.stock.name %></td>
+          <td class= "text-center <%= trade.transaction_type %>" ><%= trade.transaction_type %></td>
+          <td class= "text-center"><%= trade.quantity %></td>
+          <td class= "text-center"><%= trade.price %></td>
+          <td class= "text-center"><%= trade.total_price %></td>
+          <td class= "text-center"><%= trade.created_at.to_formatted_s(:local) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>

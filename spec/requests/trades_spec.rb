@@ -29,7 +29,7 @@ RSpec.describe 'Trades', type: :request do
     it 'rerenders new if posts to /stocks/:stock_id/trades/new failed' do
       sign_in user, scope: :user
       post create_trade_path(stock.code), params: { trade: { user_id: user.id, stock_code: stock.code, price: stock.current_price, quantity: 100 } } # no transaction_type
-      expect(response).to render_template(:new)
+      expect(response).to redirect_to(new_stock_trade_path(stock))
     end
 
     it 'updates running_balance on user wallet on "buy" transaction' do
