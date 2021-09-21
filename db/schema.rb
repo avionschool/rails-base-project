@@ -15,6 +15,39 @@ ActiveRecord::Schema.define(version: 2021_09_20_121508) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "stocks", force: :cascade do |t|
+    t.string "ticker", null: false
+    t.string "company_name"
+    t.float "stock_price", default: 0.0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "stock_id"
+    t.integer "transaction_type"
+    t.string "company_name"
+    t.float "price", default: 0.0
+    t.float "total_price", default: 0.0
+    t.integer "quantity"
+    t.string "ticker"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_stocks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "stock_id"
+    t.string "ticker"
+    t.string "company_name"
+    t.float "price", default: 0.0
+    t.float "total_price", default: 0.0
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
