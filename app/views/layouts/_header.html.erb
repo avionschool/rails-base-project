@@ -1,19 +1,28 @@
-<div>
-  <% if current_user %>
-    <%= link_to 'Home', home_path %>
-    <%= link_to 'Stocks', stocks_path %>
-    <%= link_to 'Transactions', transactions_path %>
-  <% end %>
-</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-md-3">
+      <h3>Tradify</h3>
+    </div>
 
-<% if current_user %>
-  <div>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    <%#= link_to "Edit", edit_user_registration_path %>
-    <%#= link_to "Sign up", new_user_registration_path %>
-    <% else%>
-    <%= link_to "Sign up", new_user_registration_path %>
-    <%= link_to "Sign in", new_user_session_path %>
-    <%= link_to "Sign in as Admin", new_admin_session_path %>
+    <div class="col col-md-6 d-flex justify-content-center">
+        <% if current_user %>
+          <%= link_to 'Home', home_path, class: "px-1" %>
+          <%= link_to 'Portfolio', portfolio_path, class: "px-1" %>
+          <%= link_to 'Stocks', stocks_path, class: "px-1" %>
+          <%= link_to 'Transactions', transactions_path, class: "px-1" %>
+        <% end %>
+    </div>
+    
+    <div class="col col-md-3 d-flex justify-content-end">
+      <% if current_user %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+          <%#= link_to "Edit", edit_user_registration_path %>
+          <%#= link_to "Sign up", new_user_registration_path %>
+          <% else%>
+          <%= link_to "Sign up", new_user_registration_path %>
+          <%= link_to "Sign in", new_user_session_path %>
+          <%= link_to "Sign in as Admin", new_admin_session_path %>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>

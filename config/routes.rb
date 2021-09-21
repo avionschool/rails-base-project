@@ -14,10 +14,11 @@ Rails.application.routes.draw do
 
   # buy/sell transaction
   get '/stocks/:stock_code/trades/new' => 'trades#new', as: 'new_stock_trade'
-  post '/stocks/:stock_code/trades/new' => 'trades#create', as: 'create_trade'
+  post '/stocks/:stock_code/trades' => 'trades#create', as: 'create_trade'
 
   #pages
   get '/home' => 'pages#home'
+  get '/portfolio' => 'pages#portfolio'
   get '/stocks' => 'stocks#index'
   get '/transactions' => 'pages#transactions'
 end

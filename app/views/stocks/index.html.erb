@@ -1,3 +1,24 @@
-<% @stocks.each do |stock| %>
-  <h5><%= stock.name %></h5>
-<% end %>
+<div class="container mt-5">
+  <h1>Listed Stocks</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Stock Name</th>
+        <th class= "text-center">Price($)</th>
+        <th class= "text-center">Buy/Sell</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @stocks.each do |stock| %>
+        <tr>
+          <td><%= stock.code %></td>
+          <td><%= stock.name %></td>
+          <td class= "text-center"><%= stock.current_price %></td>
+          <td class= "text-center"><%= link_to 'buy/sell', new_stock_trade_path(stock) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

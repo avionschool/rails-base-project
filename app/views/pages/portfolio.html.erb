@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <% if @portfolio.empty? %>
+    <div class="text-center">
+      <h1>Portfolio</h1>
+      <span>You don't have any stock in your portfolio.</span>
+    </div>
+    
+  <% else %>
+    <h1>Portfolio</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Stock Name</th>
+          <th>Price</th>
+          <th class= "text-center">Quantity</th>
+          <th class= "text-center">Total Value</th>
+          <th class= "text-center">Buy/Sell</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @portfolio.each do |user_stock| %>
+          <% stock = Stock.find_by(code: user_stock.stock_code) %>
+          <tr>
+            <td><%= user_stock.stock_code %></td>
+            <td><%= stock.name %></td>
+            <td class= "text-center"><%= stock.current_price %></td>
+            <td class= "text-center"><%= user_stock.quantity %></td>
+            <td class= "text-center"><%= user_stock.quantity * stock.current_price %></td>
+            <td class= "text-center"><%= link_to 'Buy/Sell', new_stock_trade_path(user_stock.stock_code) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
