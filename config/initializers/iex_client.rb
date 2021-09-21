@@ -1,4 +1,5 @@
 IEX::Api.configure do |config|
-  config.publishable_token = 'Tpk_603243bdac5b4a0887544d42868da69a' # defaults to ENV['IEX_API_PUBLISHABLE_TOKEN']
+  config.publishable_token = ENV['IEX_API_PUBLISHABLE_TOKEN']
+  config.secret_token = ENV['IEX_API_SECRET_TOKEN']
   config.endpoint = 'https://sandbox.iexapis.com/v1'
 end
