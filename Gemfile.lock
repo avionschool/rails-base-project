@@ -361,7 +361,6 @@ DEPENDENCIES
   pg
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
-  redis
   resque
   resque-scheduler
   rspec-rails (~> 5.0, >= 5.0.2)
