@@ -1,5 +1,5 @@
-module SeedsServices
-  class CreateStockData < ApplicationService
+module JobsServices
+  class UpdateStockData < ApplicationService
     def call
       # delete market Data
       @logger.info 'Processing Market seed file'
