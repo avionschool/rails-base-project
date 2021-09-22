@@ -45,13 +45,11 @@ class AdminController < ApplicationController
   def update
     @user = User.find(params[:id])
     return if user_params[:balance] == ''
-    
       @user.update(balance: 0.00)
 
     if @user.update(user_params)
       redirect_to user_list_path
     else
-      puts @user.errors.messages
       render :edit
     end
   end
@@ -59,7 +57,6 @@ class AdminController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user_stocks = UserStock.where(user_id: params[:id]).paginate(page: params[:page], per_page: 10)
-    puts @user_stocks.inspect
   end
 
   def transactions
@@ -74,7 +71,7 @@ class AdminController < ApplicationController
     flash[:alert] = 'You are not authorized to perform this action'
     redirect_to dashboard_path
   end
-    
+
   def user_params
     params.require(:user).permit(:username, :firstname, :lastname, :email, :password, :password_confirmation, :role, :balance)
   end
