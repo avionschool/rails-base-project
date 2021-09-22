@@ -5,7 +5,7 @@
   <section>
     <div>
       <h1>User List</h1> 
-      <%= link_to 'Create User', admins_add_user_path, {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#applicationModal', class: "link-nav-btn-primary-dark" } %>
+      <%= link_to 'Create User', admins_add_user_path %>
     </div> 
     <%# add user path should have views and controller %>
      <%= link_to "Go to Approvals", admins_approvals_path, method: 'get'%>

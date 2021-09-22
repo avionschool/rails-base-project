@@ -1,0 +1,13 @@
+ <%= form_with scope: :user, url: '/admins/add_user', method: :post  do |f| %>
+      <div>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: :off, placeholder: "First Name" %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: :off, placeholder: "Last Name" %>
+        <%= f.text_field :username, autofocus: true, autocomplete: :off, placeholder: "Username" %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password (6 characters minimum)" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password" %>
+      </div>
+      <div>
+        <%= f.submit "Create Account" %>
+      </div>
+    <% end %>
