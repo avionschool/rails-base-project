@@ -4,18 +4,18 @@ class AdminController < ApplicationController
   def dashboard; end
 
   def pending_users
-    @users = User.where(status: 0).order("created_at ASC").paginate(page: params[:page], per_page: 10)
+    @users = User.where(status: 0).order('created_at ASC').paginate(page: params[:page], per_page: 10)
   end
 
   def user_list
-    @users = User.where(role: 1).order("created_at ASC").paginate(page: params[:page], per_page: 10)
+    @users = User.where(role: 1).order('created_at ASC').paginate(page: params[:page], per_page: 10)
   end
 
   def approval
     @user = User.find(params[:id])
-    @user.update_attribute(:status, 1)
+    @user.update(status: 1)
     UserMailer.confirmation_email(@user).deliver_later
-    redirect_to pending_users_path, notice: "Successfully approve trader signup"
+    redirect_to pending_users_path, notice: 'Successfully approve trader signup'
   end
 
   def remove_trader
@@ -34,7 +34,6 @@ class AdminController < ApplicationController
     if @user.save
       redirect_to pending_users_path, notice: 'Successfuly Created User'
     else
-      puts @user.errors.messages
       render :new
     end
   end
@@ -45,9 +44,9 @@ class AdminController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if user_params[:balance] == ""
-      return @user.update(balance: 0.00)
-    end
+    return if user_params[:balance] == ''
+    
+      @user.update(balance: 0.00)
 
     if @user.update(user_params)
       redirect_to user_list_path
@@ -64,13 +63,14 @@ class AdminController < ApplicationController
   end
 
   def transactions
-    @transactions = Transaction.all.order("created_at ASC").paginate(page: params[:page], per_page: 10)
+    @transactions = Transaction.all.order('created_at ASC').paginate(page: params[:page], per_page: 10)
   end
 
   private
 
   def require_admin
     return if current_user.role.zero?
+
     flash[:alert] = 'You are not authorized to perform this action'
     redirect_to dashboard_path
   end
