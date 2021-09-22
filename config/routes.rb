@@ -10,4 +10,13 @@ Rails.application.routes.draw do
    
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  resources :wallets, except: [:destroy] do
+    collection do
+      get 'deposit'
+      get 'withdraw'
+    end
+  end
+   get 'wallets_ontroller', to: 'wallets_controller#index'
+
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
