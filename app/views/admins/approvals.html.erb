@@ -1,0 +1,24 @@
+<%= csrf_meta_tags %>
+  <div class="card-container-table">
+  <%# data headers %>
+  <% if @users.empty? %>
+  <h1>No Pending Approvals</h1>
+  <% end %>
+  <div class="card-item headers market">
+    <h5 class="default">ID</h5>
+    <h5 class="default">Username</h5>
+    <h5>Email</h5>
+    <h5 class="default">Action</h5>
+  </div>
+
+  <%# loop all data here %>
+  <% @users.each do |user| %>
+  <div>
+    <h5><%= user.id %></h5>
+    <h5><%= user.username %></h5>
+    <h5><%= user.email %></h5>
+    <%= link_to "Admit",  admins_approvals_path(id: user.id, admitted: true), method: :put %>
+  </div>
+  <% end %>
+  </div>
+</div>
