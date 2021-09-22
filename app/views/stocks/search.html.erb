@@ -17,9 +17,9 @@
               <div class="col-sm-12 no-left-padding">
                 <div id="results">  
                   <% if @stock %>
-                    <span class="result_symbol"><%= @stock.ticker %></span>
-                    <span class="result_company"><%= @stock.name %></span>
-                    <span class="result_price"><%= @stock.last_price %></span>
+                    <span class="result_symbol"><%= @stock.ticker %></span> 
+                    <span class="result_company"><%= @stock.name %></span> 
+                    <span class="result_price"><%= @stock.last_price %></span> 
                   <% end %>
                 </div>
                 <div class="main_charts_graph">
@@ -51,7 +51,7 @@
                     <div class="form-group" id="sell_orders_form">
                         <%= form_with model: @sell_order, url: stock_sell_path, method: :post, local: true do |f| %>
                           <%# <%= render "shared/errors", obj: @sell_order %>
-                          <%= f.hidden_field :stock, value: @stock %>
+                          <%= f.hidden_field :stock, value: @stock.id.to_i %>
                           <%= f.number_field :quantity, autofocus: true, class: "form-control main_charts_forms_item", placeholder: "Quantity"%>
                           <%= f.number_field :price, autofocus: true, class: "form-control main_charts_forms_item", placeholder: "Price"%>
                           <input type="number" readonly class="form-control main_charts_forms_item" id="form_buy_amount" placeholder="Total">

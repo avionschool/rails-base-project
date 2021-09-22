@@ -13,21 +13,7 @@ class SellOrdersController < ApplicationController
 
   private
 
-  def stock_setup
-    @stock = Stock.check_stock(resource[:stock])
-    if @stock.blank?
-      @stock = Stock.new_lookup(resource[:stock])
-      @stock.save
-    else
-      @stock
-    end
-  end
-
   def sell_params
     params.require(:sell_order).permit(:price, :quantity, :stock)
-  end
-
-  def resource
-    params[:sell_order]
   end
 end
