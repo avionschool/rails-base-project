@@ -8,22 +8,22 @@
     <%= f.email_field :email, class:"form-control", placeholder:"Email", autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field form-group" >
+  <div class="field">
     <%= f.label :username %><br />
-    <%= f.text_field :username %>
+    <%= f.username_field :username, autofocus: true, autocomplete: "username" %>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+  <div class="field">
+    <%= f.label :firstname %><br />
+    <%= f.first_name_field :firstname, autofocus: true, autocomplete: "firstname" %>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+  <div class="field">
+    <%= f.label :lastname %><br />
+    <%= f.last_name_field :lastname, autofocus: true, autocomplete: "lastname" %>
   </div>
 
-  <div class="field form-group">
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
