@@ -58,6 +58,10 @@ RSpec.describe 'Trades', type: :request do
       expect(user.user_stocks.find_by(stock_code: stock.code).quantity).to eq(900)
     end
 
+    it 'does not create trade if user does not have a wallet' do
+      expect { post create_trade_path(stock.code), params: { trade: { user_id: user.id, stock_code: stock.code, price: stock.current_price, quantity: 10_000_000, transaction_type: 'buy' } } }.to change { user.trades.count }.by(0)
+    end
+
     it 'does not create trade if user has insufficient balance on "buy" transaction' do
       wallet
       expect { post create_trade_path(stock.code), params: { trade: { user_id: user.id, stock_code: stock.code, price: stock.current_price, quantity: 10_000_000, transaction_type: 'buy' } } }.to change { user.trades.count }.by(0)
