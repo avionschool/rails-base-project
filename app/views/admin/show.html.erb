@@ -1,0 +1,75 @@
+<div class="flex">
+  <div class="ml-5 mt-5 mr-5">
+    <h1 class="text-4xl font-bold text-pink-600 m-2 mt-5">Details</h1>
+    <div class="m-2 mt-4">
+      <strong class="text-2xl">Email</strong>
+      <h1 class="mt-3 font-bold"> <%= @user.email %> </h1>
+    </div>
+
+    <div class="m-2">
+      <strong class="text-2xl">Firstname</strong>
+      <h1 class="mt-3 font-bold"> <%= @user.firstname %> </h1>
+    </div>
+
+    <div class="m-2">
+      <strong class="text-2xl">Lastname</strong>
+      <h1 class="mt-3 font-bold"> <%= @user.lastname %> </h1>
+    </div>
+
+    <div class="m-2">
+      <strong class="text-2xl">Username</strong>
+      <h1 class="mt-3 font-bold"> <%= @user.username %> </h1>
+    </div>
+
+    <div class="m-2">
+      <strong class="text-2xl">Status</strong>
+      <h1 class="mt-3 font-bold text-<%= @user.status == 0 ? "blue-500" : "green-500" %>"> <%= @user.status == 0 ? "Pending" : "Approve" %> </h1>
+    </div>
+
+    <div class="m-2">
+      <strong class="text-2xl">Balance</strong>
+      <h1 class="mt-3 font-bold"> <%= @user.balance %> </h1>
+    </div>
+
+    <div class="m-2">
+      <strong class="text-2xl">Role</strong>
+      <h1 class="mt-3 font-bold"> <%= @user.role == 1 ? "Trader" : "Approve" %> </h1>
+    </div>
+
+    <div class="form-group flex justify-center items-center mt-4">
+      <%= link_to edit_user_path(@user.id) do %><i class="fas fa-user-edit p-2 btn-primary btn-md cursor-pointer"> <button class="">EDIT USER DETAILS</button> </i><% end %>
+    </div>
+  </div>
+
+<section class="container mx-auto p-6 font-mono ">
+  <h1 class="text-5xl text-pink-600 font-bold">User Stocks</h1>
+  <div class="w-full overflow-hidden rounded-lg shadow-lg ">
+    <div class="w-full overflow-x-auto ">
+      <table class="w-full">
+        <thead>
+          <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+            <th class="px-4 py-3">Ticker</th>
+            <th class="px-4 py-3">Company</th>
+            <th class="px-4 py-3">Stock Price</th>
+            <th class="px-4 py-3">Quantity</th>
+            <th class="px-4 py-3">Total Price</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white ">
+          <% @user_stocks.each do |stock| %>
+            <tr class="text-gray-700">
+              <td class="px-4 py-3 text-ms font-semibold border"><%= stock.ticker %></td>
+              <td class="px-4 py-3 text-ms font-semibold border"><%= stock.company_name %></td>
+              <td class="px-4 py-3 text-ms font-semibold border"><%= stock.price %></td>
+              <td class="px-4 py-3 text-ms font-semibold border"><%= stock.quantity %></td>
+              <td class="px-4 py-3 text-ms font-semibold border"><%= stock.total_price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+        <div class="digg_pagination cursor-pointer flex justify-center font-bold mb-2 mt-2">
+          <%= will_paginate @user_stocks, class: 'margin-2 text-xl' %>
+        </div>
+      </table>
+    </div>
+  </div>
+</section>
