@@ -1,21 +1,23 @@
 <div class="buy_order_grid card">
     <h5 class="order_headings">BID ORDERS</h5>
-    <table class="table table-borderless">
-    <thead>
-        <tr>
-        <th scope="col">Quantity</th>
-        <th scope="col">Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <%if buy_orders%>
+    <%if buy_orders.any?%>
+        <table class="table table-borderless">
+        <thead>
+            <tr>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
             <%buy_orders.each do |b|%>
             <tr>
             <td scope="col"><%=b.quantity.to_i%></td>
             <td scope="col"><%=b.price%></td>
             </tr>
             <%end%>
-        <%end%>
-    </tbody>
-    </table>
+        </tbody>
+        </table>
+    <%else%>
+        <span>No buy orders posted for this stock.</span>
+    <%end%>
 </div>

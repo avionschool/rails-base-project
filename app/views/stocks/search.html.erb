@@ -11,9 +11,10 @@
                 <div class="col-sm-9 main_charts_search">
                   <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: "form-control form-control-sm" %>
                   <%= button_tag type: :submit, class: "btn btn-warning main_charts_search_button" do %>
-                  <%= "Search" %>
-                <% end %>
-              </div>
+                    <%= "Search" %>
+                  <% end %>
+                </div>
+              <%end%>
               <div class="col-sm-12 no-left-padding">
                 <div id="results">  
                   <% if @stock %>
@@ -24,6 +25,50 @@
                 </div>
                 <div class="main_charts_graph">
                   <canvas id="myChart" width="400" height="200"></canvas>
+                  <%if @run_js %>
+                    <script>
+                      const ctx = document.getElementById('myChart').getContext('2d');
+                      const dates =  <% JSON.parse(@stock.prices).each do |p| %>
+                                        new Date(<%=p["date"]%>)
+                                      <%end%>
+                      const closings = <% JSON.parse(@stock.prices).each do |p| %>
+                                        <%=p["close"]%>
+                                      <%end%>
+                        const myChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: [dates],
+                                datasets: [{
+                                    data: [closings],
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                          options: {
+                              plugins: {
+                                  legend: {
+                                      display: false
+                                  }
+                              }
+                          }
+                        });
+                    </script>
+                  <%end%>
                 </div>
                 <div class="main_charts_forms">
                   <div class="main_charts_forms_buy">
@@ -34,6 +79,7 @@
                     </div>
                     <div class="form-group" id="buy_orders_form">
                       <%= form_with model: @buy_order, url: stock_buy_path, method: :post, local: true do |f| %>
+                        <%= f.hidden_field :stock, value: @stock.ticker %>
                         <%= f.number_field :quantity, autofocus: true, class: "form-control main_charts_forms_item", placeholder: "Quantity"%>
                         <%= f.number_field :price, autofocus: true, class: "form-control main_charts_forms_item", placeholder: "Price"%>
                         <input type="number" readonly class="form-control main_charts_forms_item" id="form_buy_amount" placeholder="Total">
@@ -49,22 +95,20 @@
                       <span>Available balance</span>
                     </div>
                     <div class="form-group" id="sell_orders_form">
-                        <%= form_with model: @sell_order, url: stock_sell_path, method: :post, local: true do |f| %>
-                          <%# <%= render "shared/errors", obj: @sell_order %>
-                          <%= f.hidden_field :stock, value: @stock.id.to_i %>
-                          <%= f.number_field :quantity, autofocus: true, class: "form-control main_charts_forms_item", placeholder: "Quantity"%>
-                          <%= f.number_field :price, autofocus: true, class: "form-control main_charts_forms_item", placeholder: "Price"%>
-                          <input type="number" readonly class="form-control main_charts_forms_item" id="form_buy_amount" placeholder="Total">
-                          <%if @stock%>
-                              <%= f.submit "SELL #{@stock.ticker}", class: 'btn btn-danger main_charts_forms_button main_charts_forms_item' %>
-                          <%end%>
+                      <%= form_with model: @sell_order, url: stock_sell_path, method: :post, local: true do |f| %>
+                        <%= f.hidden_field :stock, value: @stock.ticker %>
+                        <%= f.number_field :quantity, autofocus: true, class: "form-control main_charts_forms_item", placeholder: "Quantity"%>
+                        <%= f.number_field :price, autofocus: true, class: "form-control main_charts_forms_item", placeholder: "Price"%>
+                        <input type="number" readonly class="form-control main_charts_forms_item" id="form_buy_amount" placeholder="Total">
+                        <%if @stock%>
+                            <%= f.submit "SELL #{@stock.ticker}", class: 'btn btn-danger main_charts_forms_button main_charts_forms_item' %>
+                        <%end%>
                       <%end%>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <% end %>
           </div>
           <div class="main_buy_sell_form">
           </div>

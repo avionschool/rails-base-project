@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get 'market', to: 'users#market'
   get 'search_stock', to: 'stocks#search'
 
+
   post 'stock/sell', to: 'sell_orders#sell', as: 'stock_sell'
   post 'stock/buy', to: 'buy_orders#buy', as: 'stock_buy'
 
