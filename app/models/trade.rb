@@ -16,7 +16,7 @@ class Trade < ApplicationRecord
     user_wallet = Wallet.find_by(user_id: user_id)
     user_wallet_balance = user_wallet.try { running_balance }
 
-    return unless user_wallet_balance
+    return errors.add(:total_price, 'is exceeding your wallet balance, or you might not have an existing wallet.') if transaction_type == 'buy' && user_wallet_balance.nil?
 
     errors.add(:total_price, 'is exceeding your wallet balance') if transaction_type == 'buy' && user_wallet_balance < total_price
   end
