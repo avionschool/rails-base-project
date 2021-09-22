@@ -13,3 +13,67 @@
  *= require_tree .
  *= require_self
  */
+ .gradient-background {
+  background: linear-gradient(90deg, rgba(22, 34, 74, 0.82) 0%, rgba(177, 56, 131, 0.88) 42%, #ffaa80 100%, #b8d2ae 100%) !important;
+}
+
+ body {
+  font-family: 'Arimo', sans-serif !important;
+  /* font-weight: 800; */
+  overflow-x: hidden;
+  min-height: 100vh !important;
+  display: block;
+}
+div {
+  display: block;
+}
+form {
+  display: block;
+  margin-top: 0em;
+}
+
+button {
+  font-family: 'Arimo', sans-serif !important;
+}
+
+.welcome-text {
+  width: 40%;
+  color: white;
+  text-align: left;
+  margin-left: 5%;
+}
+.row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(var(--bs-gutter-y) * -1);
+  margin-right: calc(var(--bs-gutter-x) * -.5);
+  margin-left: calc(var(--bs-gutter-x) * -.5);
+}
+
+.landing-page{
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.form-control{
+  font-size: 1.4rem !important;
+}
+.navbar-brand{
+  color: white !important;
+  font-family: 'Rubik', sans-serif !important;
+  font-weight: 800;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
