@@ -45,7 +45,8 @@ class AdminController < ApplicationController
   def update
     @user = User.find(params[:id])
     return if user_params[:balance] == ''
-      @user.update(balance: 0.00)
+
+    @user.update(balance: 0.00)
 
     if @user.update(user_params)
       redirect_to user_list_path
