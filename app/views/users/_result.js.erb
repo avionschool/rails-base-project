@@ -1,6 +1,8 @@
-const searchButton = document.querySelector('.main_charts_search_button')
+<%# const searchButton = document.querySelector('.main_charts_search_button') %>
 document.querySelector('#results').innerHTML = '<%= j render 'users/result.html' %>'
-console.log(searchButton)
+document.querySelector('#buy_orders_form').innerHTML = '<%= j render 'users/buy_orders.html' %>'
+document.querySelector('#sell_orders_form').innerHTML = '<%= j render 'users/sell_orders.html' %>'
+<%# console.log(searchButton) %>
 <%# searchButton.addEventListener('click', function() =>{
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {

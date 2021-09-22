@@ -3,10 +3,10 @@
   <div class="dashboard_body">
     <div class="markets_body">
       <div class="markets_grid">
-          <%=render 'shared/bid_orders'%>
+          <%=render 'shared/bid_orders', :buy_orders => @buy_orders %>
         <div class="main_charts_grid">
           <div class="main_charts card">
-              <%= form_tag search_stock_path, remote: true, method: :get do %>
+              <%= form_tag search_stock_path, method: :get do %>
               <div class="form-group">
                 <div class="col-sm-9 main_charts_search">
                   <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: "form-control form-control-sm" %>
@@ -15,7 +15,7 @@
                 <% end %>
               </div>
               <div class="col-sm-12 no-left-padding">
-                <div id="results">  
+                <div id="results2">  
                 </div>
                 <div class="main_charts_graph">
                   <canvas id="myChart" width="400" height="200"></canvas>
@@ -28,10 +28,7 @@
                       <span>Stop Limit</span>
                     </div>
                     <div class="form-group">
-                      <input type="email" class="form-control main_charts_forms_item" id="form_buy_price" placeholder="Price">
-                      <input type="email" class="form-control main_charts_forms_item" id="form_buy_amount" placeholder="Amount">
-                      <input type="email" readonly class="form-control main_charts_forms_item" id="form_buy_amount" placeholder="Total">
-                      <button type="button" class="btn btn-success main_charts_forms_item main_charts_forms_button">BUY BTC</button>
+                    
                     </div>
                   </div>
                   <div class="main_charts_forms_sell">
@@ -40,10 +37,7 @@
                       <span>Available balance</span>
                     </div>
                     <div class="form-group">
-                      <input type="email" class="form-control main_charts_forms_item" id="form_buy_price" placeholder="Price">
-                      <input type="email" class="form-control main_charts_forms_item" id="form_buy_amount" placeholder="Amount">
-                      <input type="email" readonly class="form-control main_charts_forms_item" id="form_buy_amount" placeholder="Total">
-                      <button type="button" class="btn btn-danger main_charts_forms_item main_charts_forms_button">SELL BTC</button>
+                      
                     </div>
                   </div>
                 </div>
@@ -54,7 +48,7 @@
           <div class="main_buy_sell_form">
           </div>
         </div>
-        <%=render 'shared/sell_orders'%>
+        <%=render 'shared/sell_orders', :sell_orders => @sell_orders %>
       </div>
     </div>
   </div>

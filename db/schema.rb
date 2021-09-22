@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_20_004545) do
+ActiveRecord::Schema.define(version: 2021_09_21_124354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,11 +20,11 @@ ActiveRecord::Schema.define(version: 2021_09_20_004545) do
     t.float "quantity"
     t.float "price"
     t.float "total_amount"
-    t.string "status"
-    t.bigint "users_id", null: false
-    t.bigint "stocks_id", null: false
-    t.index ["stocks_id"], name: "index_buy_orders_on_stocks_id"
-    t.index ["users_id"], name: "index_buy_orders_on_users_id"
+    t.bigint "user_id", null: false
+    t.bigint "stock_id", null: false
+    t.integer "status", default: 0, null: false
+    t.index ["stock_id"], name: "index_buy_orders_on_stock_id"
+    t.index ["user_id"], name: "index_buy_orders_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -37,11 +37,11 @@ ActiveRecord::Schema.define(version: 2021_09_20_004545) do
     t.float "quantity"
     t.float "price"
     t.float "total_amount"
-    t.string "status"
-    t.bigint "users_id", null: false
-    t.bigint "stocks_id", null: false
-    t.index ["stocks_id"], name: "index_sell_orders_on_stocks_id"
-    t.index ["users_id"], name: "index_sell_orders_on_users_id"
+    t.bigint "user_id", null: false
+    t.bigint "stock_id", null: false
+    t.integer "status", default: 0, null: false
+    t.index ["stock_id"], name: "index_sell_orders_on_stock_id"
+    t.index ["user_id"], name: "index_sell_orders_on_user_id"
   end
 
   create_table "stocks", force: :cascade do |t|
@@ -54,15 +54,28 @@ ActiveRecord::Schema.define(version: 2021_09_20_004545) do
     t.jsonb "prices"
   end
 
+  create_table "trades", force: :cascade do |t|
+    t.integer "quantity"
+    t.float "price"
+    t.bigint "buy_orders_id", null: false
+    t.bigint "sell_orders_id", null: false
+    t.bigint "stock_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["buy_orders_id"], name: "index_trades_on_buy_orders_id"
+    t.index ["sell_orders_id"], name: "index_trades_on_sell_orders_id"
+    t.index ["stock_id"], name: "index_trades_on_stock_id"
+    t.index ["user_id"], name: "index_trades_on_user_id"
+  end
+
   create_table "user_portfolios", force: :cascade do |t|
     t.float "quantity"
     t.float "price"
     t.float "total_amount"
     t.float "unrealized"
-    t.bigint "users_id", null: false
-    t.bigint "stocks_id", null: false
-    t.index ["stocks_id"], name: "index_user_portfolios_on_stocks_id"
-    t.index ["users_id"], name: "index_user_portfolios_on_users_id"
+    t.bigint "user_id", null: false
+    t.bigint "stock_id", null: false
+    t.index ["stock_id"], name: "index_user_portfolios_on_stock_id"
+    t.index ["user_id"], name: "index_user_portfolios_on_user_id"
   end
 
   create_table "user_roles", force: :cascade do |t|
@@ -106,12 +119,16 @@ ActiveRecord::Schema.define(version: 2021_09_20_004545) do
     t.integer "user_id"
   end
 
-  add_foreign_key "buy_orders", "stocks", column: "stocks_id"
-  add_foreign_key "buy_orders", "users", column: "users_id"
-  add_foreign_key "sell_orders", "stocks", column: "stocks_id"
-  add_foreign_key "sell_orders", "users", column: "users_id"
-  add_foreign_key "user_portfolios", "stocks", column: "stocks_id"
-  add_foreign_key "user_portfolios", "users", column: "users_id"
+  add_foreign_key "buy_orders", "stocks"
+  add_foreign_key "buy_orders", "users"
+  add_foreign_key "sell_orders", "stocks"
+  add_foreign_key "sell_orders", "users"
+  add_foreign_key "trades", "buy_orders", column: "buy_orders_id"
+  add_foreign_key "trades", "sell_orders", column: "sell_orders_id"
+  add_foreign_key "trades", "stocks"
+  add_foreign_key "trades", "users"
+  add_foreign_key "user_portfolios", "stocks"
+  add_foreign_key "user_portfolios", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
   add_foreign_key "user_stocks", "stocks"

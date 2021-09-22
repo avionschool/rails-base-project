@@ -18,6 +18,3 @@ require("@fortawesome/fontawesome-free/js/all")
 // const imagePath = (name) => images(name, true)
 
 const Chart = require('chart.js/dist/chart.min.js')
-
-// document.addEventListener('turbolinks:load', ()=> {
-// })

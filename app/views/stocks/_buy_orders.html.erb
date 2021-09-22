@@ -1,0 +1,8 @@
+<%= form_with model: @buy_order, url: stock_buy_path, method: :post, local: true do |f| %>
+    <%=f.number_field :quantity, autofocus: true, class: "form-control main_charts_forms_item", placeholder: "Quantity"%>
+    <%=f.number_field :price, autofocus: true, class: "form-control main_charts_forms_item", placeholder: "Price"%>
+    <input type="number" readonly class="form-control main_charts_forms_item" id="form_buy_amount" placeholder="Total">
+    <%if @stock%>
+        <%= f.submit "BUY #{@stock.ticker}", class: 'btn btn-success main_charts_forms_button main_charts_forms_item' %>
+    <%end%>
+<%end%>
