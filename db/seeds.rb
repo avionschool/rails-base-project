@@ -6,7 +6,7 @@ end
 
 client = IEX::Api::Client.new
 
-@stocks = map_stocks(client.ref_data_symbols_for_exchange('NAS').first(10))
+@stocks = map_stocks(client.ref_data_symbols_for_exchange('NAS'))
 Stock.create!(@stocks)
 UpdateStockPrice.execute
 
