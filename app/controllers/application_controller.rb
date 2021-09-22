@@ -5,14 +5,14 @@ class ApplicationController < ActionController::Base
   private
 
   # Overwriting the sign_out redirect path method
-  def after_sign_out_path_for(resource)
+  def after_sign_out_path_for(_resource)
     root_path
   end
 
   def after_sign_in_path_for(resource)
-    if resource.class == Admin
-      admins_user_portfolio_path 
-    elsif resource.class == User
+    if resource.instance_of?(Admin)
+      admins_user_portfolio_path
+    elsif resource.instance_of?(User)
       user_homepage_path(current_user)
     end
   end
