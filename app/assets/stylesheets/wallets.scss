@@ -1,0 +1,91 @@
+// Place all the styles related to the Wallets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.wallets_container {
+  width: 80%;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  margin-top: 1rem;
+}
+
+h4 {
+  position: absolute;
+  top: 15%;
+  left: 45%;
+  font-size: 40px !important;
+  font-weight: 600 !important;
+}
+
+.deposit_card {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  width: 70%;
+}
+
+.form_item {
+  display: flex;
+  align-items: center;
+  margin-top: 30%;
+  margin-left: 60%;
+  margin-right: -70%;
+}
+
+.form_credit_details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+}
+
+.form_credit_details_btn {
+  display: flex;
+  width: 80%;
+  margin-top: 1rem;
+  margin-left: 56.6%;
+  justify-content: center;
+}
+
+.wallets_btn {
+  font-size: 20px;
+}
+
+.withdraw_btn {
+  font-size: 20px;
+  background: rgb(165, 42, 42) !important;
+  border: none !important;
+  color: whitesmoke;
+}
+
+.withdraw_highlights {
+  color: rgb(165, 42, 42) !important;
+}
+
+.deposit_highlights {
+  color: green !important;
+}
+
+.deposits_account_balance {
+  display: flex;
+  position: relative;
+  background-color: #fff;
+  background-clip: border-box;
+  border-bottom: 3px solid rgb(0, 0, 0);
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-top: 15%;
+  margin-left: 50%;
+  margin-right: -50%;
+  border-radius: 10px;
+  // box-shadow: -1px 9px 30px 0px rgba(85, 85, 85, 0.19);
+}
+
+.deposits_account_balance_main {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 80%;
+}
+
+.deposits_account_balance h2 {
+  color: rgb(70, 70, 70);
+}

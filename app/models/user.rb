@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
+  has_many :wallets, dependent: :destroy
 end
