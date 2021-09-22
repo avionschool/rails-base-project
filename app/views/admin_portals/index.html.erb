@@ -2,18 +2,18 @@
 
 <%= link_to "Sign out", destroy_admin_session_path, method: 'delete' %>
 </br>
-<%= link_to "Create trader account", new_user_registration_path %>
+<%= link_to "Create trader account", admins_add_user_path %>
 </br>
 
+<h2> Pending Registrations </h2>
 <% @users.each do |user| %>
-  <% if user.confirmed? == true %>
-    <% if user.status == 'approved' %>
+    <% if user.status == 'pending' %>
+      <%= user.username %> </br>
       <%= user.email %> </br>
       <%= user.status %> </br>
       <%= link_to "View", admins_view_path(id: user.id), method: 'get' %>
-      <%= link_to "Edit User", admins_manage_path(id: user.id), method: 'get' %>
+      <%= link_to "Edit User", edit_user_path(id: user.id), method: 'get' %>
       <%= button_to "Approve", admins_manage_path(id: user.id), method: 'put' %>    
-    <% end %>
   <% end %>
 <% end %>
 

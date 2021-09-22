@@ -10,10 +10,11 @@ class AdminPortalsController < ApplicationController
   def approve_user
     @user = User.all
     @user = User.find_by(id: params[:id])
-    return unless @user.update(status: 'approved')
+    @user.update(status: 'approved')
+    return unless @user.save
 
+    ApproveMailer.approve_email(@user.email).deliver_now
     CreateUserWallet.call(@user)
-
     redirect_to admins_home_path
   end
 
@@ -23,12 +24,15 @@ class AdminPortalsController < ApplicationController
 
   def update_user
     @user = User.find(params[:id])
-    redirect_to admins_home_path if @user.update(update_user_params)
+    @user.update(params.require(:user).permit(:username, :first_name, :last_name, :email))
+    redirect_to admins_home_path if @user.update(params.require(:user).permit(:username, :first_name, :last_name, :email))
   end
 
-  private
+  def add_user; end
 
-  def update_user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :current_password)
+  def create_user
+    @user = User.new(params.require(:user).permit(:username, :first_name, :last_name, :email, :password, :password_confirmation))
+    @user.save
+    redirect_to admins_home_path if @user.save
   end
 end
