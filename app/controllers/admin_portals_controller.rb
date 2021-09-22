@@ -12,6 +12,7 @@ class AdminPortalsController < ApplicationController
     @user = User.find_by(id: params[:id])
     @user.update(status: 'approved')
     return unless @user.save
+
     CreateUserWallet.call(@user)
     redirect_to admins_home_path
   end
