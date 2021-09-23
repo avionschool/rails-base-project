@@ -15,6 +15,9 @@
       <section class="container-app_main">
         <%= render 'layouts/navigation'%>
         <main>
+          <section class="flash-message-container">
+            <%= render 'layouts/flash_messages' %>
+          </section>
           <%= yield %>
         </main>
       </section>
