@@ -8,6 +8,7 @@ FactoryBot.define do
     code { 'AAPL' }
     name { 'Apple' }
     current_price { 1_000 }
+    price_updated_at { DateTime.now }
   end
 
   factory :trade do

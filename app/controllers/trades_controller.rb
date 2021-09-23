@@ -6,6 +6,7 @@ class TradesController < ApplicationController
 
   def new
     @trade = Trade.new
+    UpdateSingleStockPrice.execute(@stock)
   end
 
   def create
