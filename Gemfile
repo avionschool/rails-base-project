@@ -17,10 +17,10 @@ gem 'devise'
 gem 'devise-bootstrap5'
 gem 'hamlit-rails'
 gem 'font-awesome-rails'
-gem 'chart-js-rails'
 gem 'iex-ruby-client'
 gem "font-awesome-rails"
 gem 'bootstrap', '~> 4.0'
+gem 'active_record_union'
 
 
 group :development, :test do

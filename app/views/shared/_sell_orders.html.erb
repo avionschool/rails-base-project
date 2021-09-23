@@ -1,0 +1,23 @@
+<div class="buy_order_grid card">
+    <h5 class="order_headings">SELL ORDERS</h5>
+    <%if sell_orders.any?%>
+        <table class="table table-borderless">
+        <thead>
+            <tr>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%sell_orders.each do |s|%>
+            <tr>
+            <td scope="col"><%=s.quantity.to_i%></td>
+            <td scope="col"><%=s.price%></td>
+            </tr>
+            <%end%>
+        </tbody>
+        </table>
+    <%else%>
+        <span>No sell orders posted for this stock.</span>
+    <%end%>
+</div>

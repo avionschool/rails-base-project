@@ -10,14 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_17_164132) do
+ActiveRecord::Schema.define(version: 2021_09_23_073211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "buy_orders", force: :cascade do |t|
+    t.string "indicator", default: "BID"
+    t.float "quantity"
+    t.float "price"
+    t.float "total_amount"
+    t.bigint "user_id", null: false
+    t.bigint "stock_id", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["stock_id"], name: "index_buy_orders_on_stock_id"
+    t.index ["user_id"], name: "index_buy_orders_on_user_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "role"
     t.index ["role"], name: "index_roles_on_role", unique: true
+  end
+
+  create_table "sell_orders", force: :cascade do |t|
+    t.string "indicator", default: "SELL"
+    t.float "quantity"
+    t.float "price"
+    t.float "total_amount"
+    t.bigint "user_id", null: false
+    t.bigint "stock_id", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["stock_id"], name: "index_sell_orders_on_stock_id"
+    t.index ["user_id"], name: "index_sell_orders_on_user_id"
   end
 
   create_table "stocks", force: :cascade do |t|
@@ -26,6 +54,31 @@ ActiveRecord::Schema.define(version: 2021_09_17_164132) do
     t.decimal "last_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "logo"
+    t.jsonb "prices"
+    t.index ["ticker"], name: "index_stocks_on_ticker", unique: true
+  end
+
+  create_table "trades", force: :cascade do |t|
+    t.integer "quantity"
+    t.float "price"
+    t.bigint "buy_order_id", null: false
+    t.bigint "sell_order_id"
+    t.bigint "stock_id", null: false
+    t.index ["buy_order_id"], name: "index_trades_on_buy_order_id"
+    t.index ["sell_order_id"], name: "index_trades_on_sell_order_id"
+    t.index ["stock_id"], name: "index_trades_on_stock_id"
+  end
+
+  create_table "user_portfolios", force: :cascade do |t|
+    t.float "quantity"
+    t.float "price"
+    t.float "total_amount"
+    t.float "unrealized"
+    t.bigint "user_id", null: false
+    t.bigint "stock_id", null: false
+    t.index ["stock_id"], name: "index_user_portfolios_on_stock_id"
+    t.index ["user_id"], name: "index_user_portfolios_on_user_id"
   end
 
   create_table "user_roles", force: :cascade do |t|
@@ -69,6 +122,15 @@ ActiveRecord::Schema.define(version: 2021_09_17_164132) do
     t.integer "user_id"
   end
 
+  add_foreign_key "buy_orders", "stocks"
+  add_foreign_key "buy_orders", "users"
+  add_foreign_key "sell_orders", "stocks"
+  add_foreign_key "sell_orders", "users"
+  add_foreign_key "trades", "buy_orders"
+  add_foreign_key "trades", "sell_orders"
+  add_foreign_key "trades", "stocks"
+  add_foreign_key "user_portfolios", "stocks"
+  add_foreign_key "user_portfolios", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
   add_foreign_key "user_stocks", "stocks"

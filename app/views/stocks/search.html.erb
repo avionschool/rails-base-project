@@ -1,0 +1,122 @@
+<div class="dashboard_index">
+  <%=render 'shared/nav_dashboard'%>
+  <div class="dashboard_body">
+    <div class="markets_body">
+      <div class="markets_grid">
+          <%=render 'shared/bid_orders', :buy_orders => @buy_orders %>
+        <div class="main_charts_grid">
+          <div class="main_charts card">
+              <%= form_tag search_stock_path, method: :get do %>
+              <div class="form-group">
+                <div class="col-sm-9 main_charts_search">
+                  <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: "form-control form-control-sm" %>
+                  <%= button_tag type: :submit, class: "btn btn-warning main_charts_search_button" do %>
+                    <%= "Search" %>
+                  <% end %>
+                </div>
+              <%end%>
+              <div class="col-sm-12 no-left-padding">
+                <div id="results">  
+                  <% if @stock %>
+                    <span class="result_symbol"><%= @stock.ticker %></span> 
+                    <span class="result_company"><%= @stock.name %></span> 
+                    <span class="result_price"><%= @stock.last_price %></span> 
+                  <% end %>
+                </div>
+                <div class="main_charts_graph">
+                  <canvas id="myChart" width="400" height="200"></canvas>
+                  <%if @run_js %>
+                    <script>
+                      const ctx = document.getElementById('myChart').getContext('2d');
+                      const dates =  <% JSON.parse(@stock.prices).each do |p| %>
+                                        new Date(<%=p["date"]%>)
+                                      <%end%>
+                      const closings = <% JSON.parse(@stock.prices).each do |p| %>
+                                        <%=p["close"]%>
+                                      <%end%>
+                        const myChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: [dates],
+                                datasets: [{
+                                    data: [closings],
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                          options: {
+                              plugins: {
+                                  legend: {
+                                      display: false
+                                  }
+                              }
+                          }
+                        });
+                    </script>
+                  <%end%>
+                </div>
+                <div class="main_charts_forms">
+                  <div class="main_charts_forms_buy">
+                    <div class="main_charts_forms_buy_labels main_charts_forms_item">
+                      <span>Limit</span>
+                      <span>Market</span>
+                      <span>Stop Limit</span>
+                    </div>
+                    <div class="form-group" id="buy_orders_form">
+                      <%= form_with model: @buy_order, url: stock_buy_path, method: :post, local: true do |f| %>
+                        <%= f.hidden_field :stock, value: @stock.ticker %>
+                        <%= f.number_field :quantity, autofocus: true, class: "form-control main_charts_forms_item", placeholder: "Quantity"%>
+                        <%= f.number_field :price, autofocus: true, class: "form-control main_charts_forms_item", placeholder: "Price"%>
+                        <input type="number" readonly class="form-control main_charts_forms_item" id="form_buy_amount" placeholder="Total">
+                        <%if @stock%>
+                            <%= f.submit "BUY #{@stock.ticker}", class: 'btn btn-success main_charts_forms_button main_charts_forms_item' %>
+                        <%end%>
+                      <%end%>
+                    </div>
+                  </div>
+                  <div class="main_charts_forms_sell">
+                    <div class="main_charts_forms_sell_labels main_charts_forms_item">
+                      <span><%= "$ #{number_with_delimiter(@balance, :delimiter => ',')}" %></span>
+                      <span>Available balance</span>
+                    </div>
+                    <div class="form-group" id="sell_orders_form">
+                      <%= form_with model: @sell_order, url: stock_sell_path, method: :post, local: true do |f| %>
+                        <%= f.hidden_field :stock, value: @stock.ticker %>
+                        <%= f.number_field :quantity, autofocus: true, class: "form-control main_charts_forms_item", placeholder: "Quantity"%>
+                        <%= f.number_field :price, autofocus: true, class: "form-control main_charts_forms_item", placeholder: "Price"%>
+                        <input type="number" readonly class="form-control main_charts_forms_item" id="form_buy_amount" placeholder="Total">
+                        <%if @stock%>
+                            <%= f.submit "SELL #{@stock.ticker}", class: 'btn btn-danger main_charts_forms_button main_charts_forms_item' %>
+                        <%end%>
+                      <%end%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="main_buy_sell_form">
+          </div>
+        </div>
+        <%=render 'shared/sell_orders', :sell_orders => @sell_orders %>
+      </div>
+    </div>
+  </div>
+  <%=@errors%>
+</div>
+

@@ -21,8 +21,21 @@ Rails.application.routes.draw do
       get 'withdraw'
     end
   end
+
+  resources :portfolio, only: [:index] do
+    collection do
+      get 'transactions'
+      get 'pending_orders'
+    end
+  end
   
-  get 'my_portfolio', to: 'users#my_portfolio'
+  get 'market', to: 'users#market'
   get 'search_stock', to: 'stocks#search'
+
+
+  post 'stock/sell', to: 'sell_orders#sell', as: 'stock_sell'
+  post 'stock/buy', to: 'buy_orders#buy', as: 'stock_buy'
+
+  resources :stocks, only: [:show, :index]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

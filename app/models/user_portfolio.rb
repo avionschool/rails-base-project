@@ -1,0 +1,2 @@
+class UserPortfolio < ApplicationRecord
+end

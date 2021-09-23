@@ -15,6 +15,7 @@
     display: grid;
     grid-template-columns: 70% 30%;
     margin-top: 1rem;
+    height: 90vh;
 }
 
 .deposit_card{
@@ -138,4 +139,11 @@
 
 .deposits_account_balance h2{
     color: green;
+}
+
+.wallets_container_side{
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+    overflow: scroll;
 }

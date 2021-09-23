@@ -1,0 +1,41 @@
+<div class="card text-center transaction_history">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+            <%=link_to "My Portfolio", portfolio_index_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%=link_to "Records", transactions_portfolio_index_path, class: "nav-link active"%>
+        </li>
+        <li class="nav-item">
+            <%=link_to "Pending Orders", pending_orders_portfolio_index_path, class: "nav-link"%>
+        </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">Date Ordered</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Indicator</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price Ordered</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%if fulfilled_transactions.any?%>
+                <%fulfilled_transactions.each do |f|%>
+                    <tr>
+                        <th scope="row"><%=f.created_at.strftime("%B %d %Y")%></th>
+                        <td><%=f.stock.ticker%></td>
+                        <td><%=f.indicator%></td>
+                        <td><%=f.quantity%></td>
+                        <td><%=f.price%></td>
+                    </tr>
+                <%end%>
+            <%end%>
+        </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="dashboard_index">
+  <%=render 'shared/nav_dashboard'%>
+  <div class="dashboard_body">
+    <div class="markets_body">
+      <div class="markets_grid">
+          <%=render 'shared/most_active', :stocks => @gainers, :gain => true %>
+        <div class="main_charts_grid">
+          <div class="main_charts card">
+              <%= form_tag search_stock_path, method: :get do %>
+              <div class="form-group">
+                <div class="col-sm-9 main_charts_search">
+                  <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: "form-control form-control-sm" %>
+                  <%= button_tag type: :submit, class: "btn btn-warning main_charts_search_button" do %>
+                  <%= "Search" %>
+                <% end %>
+              </div>
+              <div class="col-sm-12 no-left-padding">
+                <div id="results2">  
+                </div>
+                <div class="main_charts_graph">
+
+                </div>
+                <div class="main_charts_forms">
+                  <div class="main_charts_forms_buy">
+                    <div class="main_charts_forms_buy_labels main_charts_forms_item">
+                      <span>Limit</span>
+                      <span>Market</span>
+                      <span>Stop Limit</span>
+                    </div>
+                    <div class="form-group">
+                    
+                    </div>
+                  </div>
+                  <div class="main_charts_forms_sell">
+                    <div class="main_charts_forms_sell_labels main_charts_forms_item">
+                      <span><%= "$ #{number_with_delimiter(@balance, :delimiter => ',')}" %></span>
+                      <span>Available balance</span>
+                    </div>
+                    <div class="form-group">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <div class="main_buy_sell_form">
+          </div>
+        </div>
+        <%=render 'shared/most_active', :stocks => @losers, :gain => false %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if !@tracked_stocks.empty? %>
+  <%= render 'stocks/list' %>
+<% end %>

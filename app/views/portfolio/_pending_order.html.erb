@@ -1,0 +1,45 @@
+<div class="card text-center transaction_history">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+            <%=link_to "My Portfolio", portfolio_index_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%=link_to "Records", transactions_portfolio_index_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%=link_to "Pending Orders", pending_orders_portfolio_index_path, class: "nav-link active"%>
+        </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">Date Ordered</th>
+            <th scope="col">B/S</th>
+            <th scope="col">Status</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <%if pending_orders.any?%>
+                <%pending_orders.each do |p|%>
+                    <tr>
+                        <th scope="row"><%=p.created_at.strftime("%B %d %Y")%></th>
+                        <th scope="row"><%=p.indicator%></th>
+                        <th scope="row"><%=p.status%></th>
+                        <td><%=p.stock.ticker%></td>
+                        <td><%=p.quantity%></td>
+                        <td><%=p.price%></td>
+                        <td><button class="btn btn-danger">Cancel Order</button></td>
+                    </tr>
+                <%end%>
+            <%end%>
+        </tbody>
+        </table>
+    </div>
+</div>

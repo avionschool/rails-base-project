@@ -7,5 +7,7 @@ class DashboardController < ApplicationController
     @balance = current_user.wallets.total_balance
     @gainers = @client.stock_market_list(:gainers)
     @losers = @client.stock_market_list(:losers)
+    @fulfilled_orders = BuyOrder.where(status: 1, user: current_user)
+    @admin = current_user.admin?
   end
 end
