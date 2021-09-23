@@ -1,0 +1,13 @@
+<h1> Pending Registrations </h1>
+
+<% @users.each do |user| %>
+  <% if user.status == 'pending' %>
+    <%= user.username %> </br>
+    <%= user.email %> </br>
+    <%= user.status %> </br>
+    <%= link_to "View", admins_view_path(id: user.id), method: 'get' %>
+    <%= link_to "Edit User", edit_user_path(id: user.id), method: 'get' %>
+    <%= button_to "Approve", admins_manage_path(id: user.id), method: 'put' %>  
+    <%= link_to "Back", admins_home_path %>  
+  <% end %>
+<% end %>
