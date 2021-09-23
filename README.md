@@ -1,58 +1,34 @@
-# Hi there 👋
+Stock On You App
 
-This repo serves as the main repo for our Rails Projects. 
+See Live https://stockonyou-trading-app.herokuapp.com/
 
+User Story
 
-#### Version
+Admin
 
-```
-  Ruby 2.7.2
-  Rails 6.0.3.4
-  NodeJS 12.18.3
-  Yarn 1.22.4
-```
+Email: Admin@stockonyou.com
+Password:123456
 
-#### Installation
+* As an Admin, I want to create a new trader to manually add them to the app
+* As an Admin, I want to edit a specific trader to update his/her details
+* As an Admin, I want to view a specific trader to show his/her details
+* As an Admin, I want to see all the trader that registered in the app so I can track all the traders
+* As an Admin, I want to have a page for pending trader sign up to easily check if there's a new trader sign up
+* As an Admin, I want to approve a trader sign up so that he/she can start adding stocks
+* As an Admin, I want to see all the transactions so that I can monitor the transaction flow of the app
 
-Fork this repo:
-![image](https://user-images.githubusercontent.com/9253881/111437757-6c527f00-873e-11eb-8d0a-862e4158f4ab.png)
+Trader
 
-Then, clone your forked repo to your machine
-```
-  $ git clone git@github.com:<username>/rails-base-project.git <name of your app>
-  $ cd <name of your app>
-```
+Email: Trader@stockonyou.com
+Password:123456
 
-#### Setup
-
-```
-  $ bundle install
-  $ rake db:setup
-```
-
-#### Starting the application
-
-```
-  $ rails server
-```
-
-#### How to run the test suite
-
-```
-  $ rspec
-```
-
-#### How to run the Ruby Linter
-
-```
-  $ rubocop
-```
-
-#### How to enable Github Workflow
-
-<img width="906" alt="Screen Shot 2021-03-23 at 10 10 52 PM" src="https://user-images.githubusercontent.com/9253881/112160501-2fe2bf80-8c25-11eb-8e2b-b9508711ec70.png">
-
-<img width="1244" alt="Screen Shot 2021-03-23 at 10 11 12 PM" src="https://user-images.githubusercontent.com/9253881/112160530-36713700-8c25-11eb-9f00-d69a3a36343f.png">
-
-
-
+* As a Trader, I want to create an account as to buy and sell stocks
+* As a Trader, I want to login my credentials so that I can access my account on the app
+* As a Trader, I want to receive an email to confirm my pending Account signup
+* As a Trader, I want to receive an approval Trader Account email to notify me once my account has been
+approved
+* As a Trader, I want to buy a stock to add to my investment(Trader signup should be approved)
+* As a Trader, I want to have a My Portfolio page to see all my stocks
+* As a Trader, I wan to have a Transaction page to see and monitor all the transactions made by buying and
+selling stocks
+* As a Trader, I want to sell my stocks to gain money.
