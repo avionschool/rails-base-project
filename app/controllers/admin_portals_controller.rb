@@ -1,6 +1,7 @@
 class AdminPortalsController < ApplicationController
   def index
     @users = User.all
+    @trades = Trade.all
   end
 
   def show_user
@@ -33,5 +34,13 @@ class AdminPortalsController < ApplicationController
     @user = User.new(params.require(:user).permit(:username, :first_name, :last_name, :email, :password, :password_confirmation))
     @user.save
     redirect_to admins_home_path if @user.save
+  end
+
+  def show_pending_users
+    @users = User.where(status: 'pending')
+  end
+
+  def show_registered_users
+    @users = User.all
   end
 end
