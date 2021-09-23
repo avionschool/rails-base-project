@@ -23,5 +23,7 @@ Rails.application.routes.draw do
     patch '/admins/user-portfolio/:id', to: 'admins#modify_user'
     get '/admins/user-portfolio/:id/edit', to: 'admins#edit_user', as: :edit_user_profile
   end
+  resources :stocks, only: [:index]
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end
