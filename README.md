@@ -1,4 +1,4 @@
-Stock On You App
+<h1> Stock On You App </h1>
 
 See Live https://stockonyou-trading-app.herokuapp.com/
 
