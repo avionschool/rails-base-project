@@ -8,14 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            About Us
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">About Us</a></li>
-            <li><a class="dropdown-item" href="#">Beginner's Guide</a></li>
-            <li><a class="dropdown-item" href="#">Stock List</a></li>
-          </ul>
+          <%= link_to 'Stock Market', stocks_path, class:"nav-link dropdown-toggle" %>
         </li>
         <% if current_user %>
           <li class="nav-item">
