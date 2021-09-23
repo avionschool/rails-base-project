@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :set_user, only: %i[update approve]
+  before_action :set_user, only: %i[update approval]
   before_action :authenticate_user!, :require_admin
 
   def index
@@ -8,23 +8,21 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    puts @user
-    puts 'user'
   end
 
   def approval
     @user = User.find(params[:id])
-    @user.update_attribute(:status, "Approved")
+    @user.update(:status, 'Approved')
     UserMailer.with(user: @user).new_trader_approved.deliver_later
     redirect_to pending_users_path
   end
 
   def pending_users
-    @users = User.where(status: 0).order("created_at ASC")
+    @users = User.where(status: 0).order('created_at ASC')
   end
 
   def approve_users
-    @users = User.where(status: 1).order("created_at ASC")
+    @users = User.where(status: 1).order('created_at ASC')
   end
 
   def new
@@ -33,7 +31,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      @user.update_attribute(:status, "Approved")
+      @user.update(:status, 'Approved')
       UserMailer.with(user: @user).new_trader_approved.deliver_later
       flash[:notice] = 'You have successfully update the user'
       redirect_to admin_users_path
@@ -46,7 +44,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     UserMailer.with(user: @user).new_trader_approved.deliver_later
-    flash[:success] = "The user was successfully destroyed."
+    flash[:success] = 'The user was successfully destroyed.'
     redirect_to admin_users_path
   end
 
