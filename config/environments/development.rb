@@ -37,7 +37,8 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   
   # The generator will install an initializer which describes ALL of Devise's configuration options.
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  host = 'localhost:3000'
+  config.action_mailer.default_url_options = { :host => 'localhost:3000', protocol: 'http' }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

@@ -1,0 +1,37 @@
+<%= csrf_meta_tags %>
+<h1> Admin Center <h1>
+
+<section>
+  <section>
+    <div>
+      <h1>User List</h1> 
+      <%= link_to 'Create User', admins_add_user_path %>
+    </div> 
+    <%# add user path should have views and controller %>
+     <%= link_to "Go to Approvals", admins_approvals_path, method: 'get'%>
+    <div>
+      <%# data headers %>
+      <% if @users.empty? %>
+      <h1>No Admitted Users yet</h1>
+      <% else %>
+      <div>
+        <h5>ID</h5>
+        <h5>Username</h5>
+        <h5>Email</h5>
+        <h5>Action</h5>
+      </div>
+
+      <%# loop all data here %>
+      <table>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.email %>
+            <td><%= user.approved %>
+            <td><%= link_to "Edit", edit_user_path(user) %>
+          </tr>
+        <% end %>
+      </table>
+       <% end %>
+
+  </section>
+</section>
