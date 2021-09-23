@@ -4,38 +4,39 @@
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="field form-group">
-    <%= f.label :email %><br />
     <%= f.email_field :email, class:"form-control", placeholder:"Email", autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field form-group" >
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
+    <br />
+    <%= f.text_field :username, class:"form-control", placeholder:"Username" %>
   </div>
 
   <div class="field form-group">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+    <br />
+    <%= f.text_field :first_name, class:"form-control", placeholder:"First Name" %>
   </div>
 
   <div class="field form-group">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <br />
+    <%= f.text_field :last_name, class:"form-control", placeholder:"Last Name" %>
   </div>
 
   <div class="field form-group">
-    <%= f.label :password %>
+    <br />
+    <%= f.password_field :password, class:"form-control", placeholder:"Password", autocomplete: "new-password" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, class:"form-control", placeholder:"Password", autocomplete: "new-password" %>
+    <% end %>
   </div>
 
   <div class="field form-group">
+    <br/>
     <%= f.password_field :password_confirmation, class:"form-control", placeholder:"Password Confirmation", autocomplete: "new-password", class:"form-control", placeholder:"password confirmation"%>
   </div>
 
   <div class="actions">
+    <br/>
     <%= f.submit "Sign up" %>
   </div>
 <% end %>

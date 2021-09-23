@@ -8,9 +8,7 @@ Rails.application.routes.draw do
     get 'homepage', to: 'portfolios#index'
   end
    
-  resources :stocks, only: [:index]
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'search_stock', to: 'stocks#search'
 
 
   #routes for admin only
