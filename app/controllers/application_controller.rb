@@ -5,19 +5,20 @@ class ApplicationController < ActionController::Base
   add_flash_types :danger, :info, :warning, :success, :light, :dark, :primary
 
   def after_sign_in_path_for(resource)
-    if resource.class == Admin
+    if resource.instance_of?(Admin)
       admins_trader_settings_path
-    elsif resource.class == User
+    elsif resource.instance_of?(User)
       root_path
-    end 
+    end
   end
 
   def after_sign_out_path_for(resource)
-    if resource == :admin
+    case resource
+    when :admin
       new_admin_session_path
-    elsif resource == :user
+    when :user
       root_path
-    end 
+    end
   end
 
   protected
