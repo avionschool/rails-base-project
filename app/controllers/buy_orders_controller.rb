@@ -3,6 +3,7 @@ class BuyOrdersController < ApplicationController
 
   def buy
     @buy_order = @stock.buy_orders.build(buy_params)
+    @buy_order.indicator = 'BUY'
     @buy_order.user = current_user
     if @buy_order.save
       @buy_order.complete_order

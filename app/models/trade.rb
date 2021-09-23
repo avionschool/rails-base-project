@@ -19,10 +19,4 @@ class Trade < ApplicationRecord
   rescue NoMethodError
     nil
   end
-
-  def updated_balance
-
-  end
-  private
-
 end

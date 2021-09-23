@@ -13,8 +13,8 @@ class StocksController < ApplicationController
         @run_js = true
       end
     else
-        flash.now[:alert] = 'Please enter a symbol to search'
-        @run_js = false
+      flash.now[:alert] = 'Please enter a symbol to search'
+      @run_js = false
     end
   end
 end

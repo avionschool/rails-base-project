@@ -1,9 +1,9 @@
 class PortfolioController < ApplicationController
   before_action :user_signed_in?
   before_action :setup_portfolio
-  
+
   def index
-    @fulfilled_orders = BuyOrder.where(status:1, user: current_user)
+    @fulfilled_orders = BuyOrder.where(status: 1, user: current_user)
   end
 
   def transactions

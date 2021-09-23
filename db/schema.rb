@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_23_061708) do
+ActiveRecord::Schema.define(version: 2021_09_23_073211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2021_09_23_061708) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "logo"
     t.jsonb "prices"
+    t.index ["ticker"], name: "index_stocks_on_ticker", unique: true
   end
 
   create_table "trades", force: :cascade do |t|

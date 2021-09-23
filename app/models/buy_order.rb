@@ -2,7 +2,7 @@ class BuyOrder < ApplicationRecord
   belongs_to :user
   belongs_to :stock
   has_many :trades, dependent: :destroy
-  enum status: {pending: 0, fulfilled: 1, cancelled: 2}
+  enum status: { pending: 0, fulfilled: 1, cancelled: 2 }
   scope :price_equal, ->(price) { where(price: price).order(price: :desc, quantity: :desc) }
   scope :quantity_equal, ->(quantity) { where(quantity: quantity).order(price: :desc, quantity: :desc) }
 
@@ -15,10 +15,8 @@ class BuyOrder < ApplicationRecord
   end
 
   def complete_order
-    if match_order.present?
-      trades.create(stock: stock, price: price, quantity: quantity, sell_order: match_order.first)
-      update(status: 1)
-    end
+    return unless match_order.present?
+    trades.create(stock: stock, price: price, quantity: quantity, sell_order: match_order.first)
+    update(status: 1)
   end
-
 end 
