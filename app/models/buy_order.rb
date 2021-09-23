@@ -16,7 +16,8 @@ class BuyOrder < ApplicationRecord
 
   def complete_order
     return unless match_order.present?
+
     trades.create(stock: stock, price: price, quantity: quantity, sell_order: match_order.first)
     update(status: 1)
   end
-end 
+end
