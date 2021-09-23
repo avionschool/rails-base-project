@@ -35,9 +35,11 @@
             <li><a class="dropdown-item" href="#">Binance-ish Pay</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link">NFT</a>
-        </li>
+        <%if @admin%>
+          <li class="nav-item">
+            <%=link_to "Admin Board", admin_users_path, class: "nav-link admin_button"%>
+          </li>
+        <%end%>
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item dropdown">

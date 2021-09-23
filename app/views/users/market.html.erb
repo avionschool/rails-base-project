@@ -3,7 +3,7 @@
   <div class="dashboard_body">
     <div class="markets_body">
       <div class="markets_grid">
-          <%=render 'shared/bid_orders', :buy_orders => @buy_orders %>
+          <%=render 'shared/most_active', :stocks => @gainers, :gain => true %>
         <div class="main_charts_grid">
           <div class="main_charts card">
               <%= form_tag search_stock_path, method: :get do %>
@@ -48,7 +48,7 @@
           <div class="main_buy_sell_form">
           </div>
         </div>
-        <%=render 'shared/sell_orders', :sell_orders => @sell_orders %>
+        <%=render 'shared/most_active', :stocks => @losers, :gain => false %>
       </div>
     </div>
   </div>
