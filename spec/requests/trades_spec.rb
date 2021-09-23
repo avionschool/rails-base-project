@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Trades', type: :request do
   let(:stock) { create(:stock) }
+  let(:stock_price_not_updated) { Stock.create(code: 'AAAA', name: 'Apple', current_price: 1, price_updated_at: 10.minutes.ago) }
   let(:user) { create(:user) }
   let(:user_stock) { UserStock.create(user_id: user.id, stock_code: stock.code, quantity: 1_000) }
   let(:wallet) { Wallet.create(user_id: user.id, running_balance: 1_000_000) }
@@ -17,6 +18,7 @@ RSpec.describe 'Trades', type: :request do
   describe 'create trade' do
     before do
       sign_in user, scope: :user
+      stock
       Wallet.create(user_id: user.id, running_balance: 1_000_000)
     end
 
@@ -71,6 +73,15 @@ RSpec.describe 'Trades', type: :request do
       user_stock
 
       expect { post create_trade_path(stock.code), params: { trade: { user_id: user.id, stock_code: stock.code, price: stock.current_price, quantity: 10_000_000, transaction_type: 'sell' } } }.to change { user.trades.count }.by(0)
+    end
+
+    it 'does not create trade if stock price has been updated more than 5 minutes ago (UTC)' do
+      expect { post create_trade_path(stock_price_not_updated.code), params: { trade: { user_id: user.id, stock_code: stock_price_not_updated.code, price: stock_price_not_updated.current_price, quantity: 100, transaction_type: 'buy' } } }.to change { user.trades.count }.by(0)
+    end
+
+    it 'updates the stock price automatically if trasaction failed and last update is more than 5 minutes ago' do
+      post create_trade_path(stock_price_not_updated.code), params:  { trade:  { user_id: user.id, stock_code: stock_price_not_updated.code, price: stock_price_not_updated.current_price, quantity: 100, transaction_type: 'buy' } }
+      expect(Stock.last.price_updated_at).to be_within(1.second).of DateTime.current
     end
   end
 end

@@ -6,4 +6,6 @@ class Stock < ApplicationRecord
   validates :code, presence: true
   validates :name, presence: true
   validates :current_price, presence: true, numericality: { greater_than: 0 }, on: :update
+
+  paginates_per 10
 end

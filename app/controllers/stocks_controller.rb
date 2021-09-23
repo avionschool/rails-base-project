@@ -1,6 +1,7 @@
 class StocksController < ApplicationController
   def index
-    @stocks = Stock.all
+    @stocks = Stock.order(:code).page params[:page]
+    UpdateStocksPrice.execute(@stocks)
   end
 
   # private

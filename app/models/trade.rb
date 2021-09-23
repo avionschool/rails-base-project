@@ -11,6 +11,7 @@ class Trade < ApplicationRecord
   validates :total_price, presence: true
   validate :sufficient_balance?
   validate :enough_stocks?
+  validate :price_updated?
 
   def sufficient_balance?
     user_wallet = Wallet.find_by(user_id: user_id)
@@ -29,5 +30,13 @@ class Trade < ApplicationRecord
 
     return errors.add(:quantity, 'being sold is exceeding your stocks') if transaction_type == 'sell' && user_stock_quantity.nil?
     return errors.add(:quantity, 'being sold is exceeding your stocks') if transaction_type == 'sell' && user_stock_quantity < quantity
+  end
+
+  def price_updated?
+    stock = Stock.find_by(code: stock_code)
+    return if stock.nil?
+
+    return errors.add(:price, 'has been updated. Please try again.') if stock.price_updated_at.nil?
+    return errors.add(:price, 'has been updated. Please try again.') if stock.price_updated_at < 5.minutes.ago
   end
 end
