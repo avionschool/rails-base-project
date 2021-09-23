@@ -5,6 +5,7 @@ class BuyOrdersController < ApplicationController
     @buy_order = @stock.buy_orders.build(buy_params)
     @buy_order.user = current_user
     if @buy_order.save
+      @buy_order.complete_order
       redirect_to dashboard_path
     else
       redirect_to search_stock_path

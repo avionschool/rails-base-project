@@ -4,8 +4,8 @@ class StocksController < ApplicationController
       @stock = Stock.new_lookup(params[:stock])
       @buy_order = BuyOrder.new
       @sell_order = SellOrder.new
-      @buy_orders = Stock.find_by(ticker: params[:stock]).buy_orders
-      @sell_orders = Stock.find_by(ticker: params[:stock]).sell_orders
+      @buy_orders = Stock.find_by(ticker: params[:stock]).buy_orders.pending
+      @sell_orders = Stock.find_by(ticker: params[:stock]).sell_orders.pending
       if @stock.nil?
         flash.now[:alert] = 'Please enter a valid symbol to search'
         @run_js = false
