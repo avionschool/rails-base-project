@@ -17,6 +17,7 @@
         <thead class="thead-dark">
             <tr>
             <th scope="col">Date Ordered</th>
+            <th scope="col">B/S</th>
             <th scope="col">Status</th>
             <th scope="col">Stock</th>
             <th scope="col">Quantity</th>
@@ -25,31 +26,19 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-            <th scope="row">Sep 20, 2021</th>
-            <th scope="row">Pending</th>
-            <td>FB</td>
-            <td>1000</td>
-            <td>10000</td>
-            <td><button class="btn btn-danger">Cancel Order</button></td>
-            </tr>
-        <tr>
-        <tr>
-            <th scope="row">Sep 20, 2021</th>
-            <th scope="row">Pending</th>
-            <td>FB</td>
-            <td>1000</td>
-            <td>10000</td>
-            <td><button class="btn btn-danger">Cancel Order</button></td>
-        </tr>
-        <tr>
-            <th scope="row">Sep 20, 2021</th>
-            <th scope="row">Pending</th>
-            <td>FB</td>
-            <td>1000</td>
-            <td>10000</td>
-            <td><button class="btn btn-danger">Cancel Order</button></td>
-        </tr>
+            <%if pending_orders.any?%>
+                <%pending_orders.each do |p|%>
+                    <tr>
+                        <th scope="row"><%=p.created_at.strftime("%B %d %Y")%></th>
+                        <th scope="row"><%=p.indicator%></th>
+                        <th scope="row"><%=p.status%></th>
+                        <td><%=p.stock.ticker%></td>
+                        <td><%=p.quantity%></td>
+                        <td><%=p.price%></td>
+                        <td><button class="btn btn-danger">Cancel Order</button></td>
+                    </tr>
+                <%end%>
+            <%end%>
         </tbody>
         </table>
     </div>

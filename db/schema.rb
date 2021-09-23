@@ -10,19 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_23_024341) do
+ActiveRecord::Schema.define(version: 2021_09_23_061708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "buy_orders", force: :cascade do |t|
-    t.string "indicator"
+    t.string "indicator", default: "BID"
     t.float "quantity"
     t.float "price"
     t.float "total_amount"
     t.bigint "user_id", null: false
     t.bigint "stock_id", null: false
     t.integer "status", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["stock_id"], name: "index_buy_orders_on_stock_id"
     t.index ["user_id"], name: "index_buy_orders_on_user_id"
   end
@@ -33,13 +35,15 @@ ActiveRecord::Schema.define(version: 2021_09_23_024341) do
   end
 
   create_table "sell_orders", force: :cascade do |t|
-    t.string "indicator"
+    t.string "indicator", default: "SELL"
     t.float "quantity"
     t.float "price"
     t.float "total_amount"
     t.bigint "user_id", null: false
     t.bigint "stock_id", null: false
     t.integer "status", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["stock_id"], name: "index_sell_orders_on_stock_id"
     t.index ["user_id"], name: "index_sell_orders_on_user_id"
   end

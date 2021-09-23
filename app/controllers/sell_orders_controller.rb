@@ -3,6 +3,7 @@ class SellOrdersController < ApplicationController
 
   def sell
     @sell_order = @stock.sell_orders.build(sell_params)
+    @sell_order.indicator = 'SELL'
     @sell_order.user = current_user
     if @sell_order.save
       @sell_order.complete_order

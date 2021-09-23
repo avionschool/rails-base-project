@@ -20,4 +20,5 @@ class BuyOrder < ApplicationRecord
       update(status: 1)
     end
   end
+
 end 

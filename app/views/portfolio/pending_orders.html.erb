@@ -4,7 +4,7 @@
         <%=render 'shared/sidebar'%>
         <div class="portfolio_main">
             <div class="portfolio_transaction">
-                <%=render 'pending_order'%>
+                <%=render 'pending_order', :pending_orders => @pending_orders %>
             </div>
             <div class="portfolio_side">
                 <%=render 'shared/most_active', :stocks => @gainers, :gain => true %>

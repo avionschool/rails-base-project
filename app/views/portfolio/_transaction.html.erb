@@ -16,55 +16,25 @@
         <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
-            <th scope="col">Date Bought</th>
-            <th scope="col">Date Sold</th>
+            <th scope="col">Date Ordered</th>
             <th scope="col">Stock</th>
+            <th scope="col">Indicator</th>
             <th scope="col">Quantity</th>
-            <th scope="col">Price</th>
-            <th scope="col">Cash Flows</th>
+            <th scope="col">Price Ordered</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-            <th scope="row">Sep 20, 2021</th>
-            <th scope="row">Sep 21, 2021</th>
-            <td>FB</td>
-            <td>1000</td>
-            <td>10000</td>
-            <td>20000</td>
-            </tr>
-        <tr>
-            <th scope="row">Sep 20, 2021</th>
-            <th scope="row">Sep 21, 2021</th>
-            <td>FB</td>
-            <td>1000</td>
-            <td>10000</td>
-            <td>20000</td>
-            </tr>
-            <tr>
-            <th scope="row">Sep 20, 2021</th>
-            <th scope="row">Sep 21, 2021</th>
-            <td>FB</td>
-            <td>1000</td>
-            <td>10000</td>
-            <td>20000</td>
-            </tr>
-            <tr>
-            <th scope="row">Sep 20, 2021</th>
-            <th scope="row">Sep 21, 2021</th>
-            <td>FB</td>
-            <td>1000</td>
-            <td>10000</td>
-            <td>20000</td>
-            </tr>
-            <tr>
-            <th scope="row">Sep 20, 2021</th>
-            <th scope="row">Sep 21, 2021</th>
-            <td>FB</td>
-            <td>1000</td>
-            <td>10000</td>
-            <td>20000</td>
-            </tr>
+            <%if fulfilled_transactions.any?%>
+                <%fulfilled_transactions.each do |f|%>
+                    <tr>
+                        <th scope="row"><%=f.created_at.strftime("%B %d %Y")%></th>
+                        <td><%=f.stock.ticker%></td>
+                        <td><%=f.indicator%></td>
+                        <td><%=f.quantity%></td>
+                        <td><%=f.price%></td>
+                    </tr>
+                <%end%>
+            <%end%>
         </tbody>
         </table>
     </div>

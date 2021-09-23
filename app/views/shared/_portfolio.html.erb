@@ -20,6 +20,7 @@
                 <th scope="col">Stocks</th>
                 <th scope="col">Trade Type</th>
                 <th scope="col">Last</th>
+                <th scope="col">Bid Price</th>
                 <th scope="col">Shares</th>
                 <th scope="col">Total Cost</th>
                 <th scope="col">Market Value</th>
@@ -28,76 +29,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <th scope="row">FB</th>
-                <td>Long</td>
-                <td>1000</td>
-                <td>101</td>
-                <td>80,000</td>
-                <td>101,000</td>
-                <td>21,000</td>
-                <td>21%</td>
-                </tr>
-                <tr>
-                <th scope="row">FB</th>
-                <td>Long</td>
-                <td>1000</td>
-                <td>101</td>
-                <td>80,000</td>
-                <td>101,000</td>
-                <td>21,000</td>
-                <td>21%</td>
-                </tr>
-                <tr>
-                <th scope="row">FB</th>
-                <td>Long</td>
-                <td>1000</td>
-                <td>101</td>
-                <td>80,000</td>
-                <td>101,000</td>
-                <td>21,000</td>
-                <td>21%</td>
-                </tr>
-                <tr>
-                <th scope="row">FB</th>
-                <td>Long</td>
-                <td>1000</td>
-                <td>101</td>
-                <td>80,000</td>
-                <td>101,000</td>
-                <td>21,000</td>
-                <td>21%</td>
-                </tr>
-                <tr>
-                <th scope="row">FB</th>
-                <td>Long</td>
-                <td>1000</td>
-                <td>101</td>
-                <td>80,000</td>
-                <td>101,000</td>
-                <td>21,000</td>
-                <td>21%</td>
-                </tr>
-                <tr>
-                <th scope="row">Total</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>101,000</td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <th scope="row">Total+Cash</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>120,000</td>
-                <td></td>
-                <td></td>
-                </tr>
+                <%if fulfilled_orders.any?%>
+                    <% fulfilled_orders.each do |f|%>
+                    <tr>
+                        <th scope="row"><%=f.stock.ticker%></th>
+                        <td>Long</td>
+                        <td><%=f.stock.last_price%></td>
+                        <td><%=f.price%></td>
+                        <td><%=f.quantity.to_i%></td>
+                        <td><%=f.total%></td>
+                        <td>101,000</td>
+                        <td>21,000</td>
+                        <td>21%</td>
+                    </tr>
+                    <%end%>
+                <%end%>
             </tbody>
         </table>
     <div class="portfolio_available_cash">

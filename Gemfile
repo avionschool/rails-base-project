@@ -20,6 +20,7 @@ gem 'font-awesome-rails'
 gem 'iex-ruby-client'
 gem "font-awesome-rails"
 gem 'bootstrap', '~> 4.0'
+gem 'active_record_union'
 
 
 group :development, :test do
