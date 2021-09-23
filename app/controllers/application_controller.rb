@@ -6,10 +6,12 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     admins_trader_settings_path if resource.instance_of?(Admin)
+    root_path if resource.instance_of?(User)
   end
 
   def after_sign_out_path_for(resource)
     new_admin_session_path if resource == :admin
+    root_path if resource == :user
   end
 
   protected
