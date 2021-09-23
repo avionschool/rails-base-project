@@ -22,7 +22,6 @@ gem "font-awesome-rails"
 gem 'bootstrap', '~> 4.0'
 gem 'active_record_union'
 
-
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
