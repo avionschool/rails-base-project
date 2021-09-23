@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
-<<<<<<< Updated upstream
   devise_for :admins, path: 'admins', controllers: { sessions: "admins/sessions"}
   devise_for :users, path: 'users', controllers: { sessions: "users/sessions" , registrations:  'users/registrations'}
-=======
-  devise_for :admins, path: 'admins', controllers: { sessions: "admins/sessions", registrations: : 'users/registrations'}
-  devise_for :users, path: 'users', controllers: { sessions: "users/sessions" }
->>>>>>> Stashed changes
  
   # get 'home/index'
   root 'home#index'
