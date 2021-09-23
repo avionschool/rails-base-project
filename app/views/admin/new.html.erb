@@ -1,0 +1,54 @@
+    <br><br>
+    <div class=" flex justify-center ">
+      <%= form_with :class => "", model: @user, url: create_user_path, locale: true do |f| %>
+      <h1 class="text-3xl font-bold text-pink-700">Create User trader</h1>
+      <br>
+      <div class="form-group">
+        <%= f.label :Username, :class => "" %>
+        <%= f.text_field :username, class:"form-control w-96", :placeholder => 'Username' %>
+          <% @user.errors.full_messages_for(:username).each do |message| %>
+        <div class=""><%= message %></div>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <%= f.label :Firstname, :class => "" %>
+        <%= f.text_field :firstname, class:"form-control", :placeholder => 'Firstname' %>
+        <% @user.errors.full_messages_for(:firstname).each do |message| %>
+          <div class=""><%= message %></div>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <%= f.label :Lastname, :class => "" %>
+        <%= f.text_field :lastname, class:"form-control", :placeholder => 'Lastname' %>
+        <% @user.errors.full_messages_for(:lastname).each do |message| %>
+          <div class=""><%= message %></div>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <%= f.label :Email, :class => "" %>
+        <%= f.email_field :email, class:"form-control", :placeholder => 'Email' , :pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}'%>
+        <% @user.errors.full_messages_for(:email).each do |message| %>
+          <div class=""><%= message %></div>
+        <% end %>
+      </div>
+      <div class="mb-6">
+        <%= f.label :Password, :class => "" %>
+        <%= f.password_field :password,  class:"form-control", :placeholder => 'Password' %>
+        <% @user.errors.full_messages_for(:password).each do |message| %>
+          <div class=""><%= message %></div>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <%= f.label :ConfirmPassword, :class => "" %>
+        <%= f.password_field :password_confirmation,  class:"form-control", :placeholder => 'PasswordConfirmation' %>
+        <% @user.errors.full_messages_for(:password_confirmation).each do |message| %>
+          <div class=""><%= message %></div>
+        <% end %>
+      </div>
+      <div class="form-group flex justify-between items-center">
+        <button class="btn btn-light btn-lg"><%= link_to 'back', dashboard_admin_path%></button>
+        <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
+      </div>
+ 
+    <% end %>
+</div>

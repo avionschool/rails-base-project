@@ -1,58 +1,49 @@
-# Hi there 👋
+<h1> Stock On You App </h1>
 
-This repo serves as the main repo for our Rails Projects. 
+See Live https://stockonyou-trading-app.herokuapp.com/
 
+![image](https://user-images.githubusercontent.com/80327905/134492430-4079f96b-055c-47dc-9a76-fc4bd20a99dd.png)
 
-#### Version
+<h2>User Story</h2>
 
-```
-  Ruby 2.7.2
-  Rails 6.0.3.4
-  NodeJS 12.18.3
-  Yarn 1.22.4
-```
+<h3>Admin</h3>
 
-#### Installation
+<p>Email: amin@stockonyou.com</p>
+<p>Password: 123456</p>
 
-Fork this repo:
-![image](https://user-images.githubusercontent.com/9253881/111437757-6c527f00-873e-11eb-8d0a-862e4158f4ab.png)
+* As an Admin, I want to create a new trader to manually add them to the app
+* As an Admin, I want to edit a specific trader to update his/her details
+* As an Admin, I want to view a specific trader to show his/her details
+* As an Admin, I want to see all the trader that registered in the app so I can track all the traders
+* As an Admin, I want to have a page for pending trader sign up to easily check if there's a new trader sign up
+* As an Admin, I want to approve a trader sign up so that he/she can start adding stocks
+* As an Admin, I want to see all the transactions so that I can monitor the transaction flow of the app
 
-Then, clone your forked repo to your machine
-```
-  $ git clone git@github.com:<username>/rails-base-project.git <name of your app>
-  $ cd <name of your app>
-```
+<h3>Trader</h3>
 
-#### Setup
+<p>Email: trader@stockonyou.com</p>
+<p>Password: 123456</p>
 
-```
-  $ bundle install
-  $ rake db:setup
-```
+* As a Trader, I want to create an account as to buy and sell stocks
+* As a Trader, I want to login my credentials so that I can access my account on the app
+* As a Trader, I want to receive an email to confirm my pending Account signup
+* As a Trader, I want to receive an approval Trader Account email to notify me once my account has been
+approved
+* As a Trader, I want to buy a stock to add to my investment(Trader signup should be approved)
+* As a Trader, I want to have a My Portfolio page to see all my stocks
+* As a Trader, I wan to have a Transaction page to see and monitor all the transactions made by buying and
+selling stocks
+* As a Trader, I want to sell my stocks to gain money.
+* 
+![image](https://user-images.githubusercontent.com/80327905/134492325-ebbb1d60-0f95-4933-bb2f-6a763f5529c7.png)
 
-#### Starting the application
+![image](https://user-images.githubusercontent.com/80327905/134492370-e4675d62-dc7e-468e-a9a4-e9e902e37fef.png)
 
-```
-  $ rails server
-```
+![image](https://user-images.githubusercontent.com/80327905/134492380-b65ea541-2eab-457e-bb6a-1720f78e3408.png)
 
-#### How to run the test suite
+![image](https://user-images.githubusercontent.com/80327905/134492492-e7a49685-7410-4eea-a25d-1863f1875506.png)
 
-```
-  $ rspec
-```
+![image](https://user-images.githubusercontent.com/80327905/134492467-2f34e0aa-5c65-44f1-8ef1-4025a1809b17.png)
 
-#### How to run the Ruby Linter
-
-```
-  $ rubocop
-```
-
-#### How to enable Github Workflow
-
-<img width="906" alt="Screen Shot 2021-03-23 at 10 10 52 PM" src="https://user-images.githubusercontent.com/9253881/112160501-2fe2bf80-8c25-11eb-8e2b-b9508711ec70.png">
-
-<img width="1244" alt="Screen Shot 2021-03-23 at 10 11 12 PM" src="https://user-images.githubusercontent.com/9253881/112160530-36713700-8c25-11eb-9f00-d69a3a36343f.png">
-
-
+![image](https://user-images.githubusercontent.com/80327905/134492349-a1922fdd-eab5-4283-9a2b-eac9f70c6a33.png)
 
