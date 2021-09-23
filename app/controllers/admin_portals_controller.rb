@@ -37,7 +37,7 @@ class AdminPortalsController < ApplicationController
   end
 
   def show_pending_users
-    @users = User.all
+    @users = User.where(status: 'pending')
   end
 
   def show_registered_users
