@@ -37,8 +37,6 @@ selling stocks
 * 
 ![image](https://user-images.githubusercontent.com/80327905/134492325-ebbb1d60-0f95-4933-bb2f-6a763f5529c7.png)
 
-![image](https://user-images.githubusercontent.com/80327905/134492349-a1922fdd-eab5-4283-9a2b-eac9f70c6a33.png)
-
 ![image](https://user-images.githubusercontent.com/80327905/134492370-e4675d62-dc7e-468e-a9a4-e9e902e37fef.png)
 
 ![image](https://user-images.githubusercontent.com/80327905/134492380-b65ea541-2eab-457e-bb6a-1720f78e3408.png)
@@ -46,4 +44,6 @@ selling stocks
 ![image](https://user-images.githubusercontent.com/80327905/134492492-e7a49685-7410-4eea-a25d-1863f1875506.png)
 
 ![image](https://user-images.githubusercontent.com/80327905/134492467-2f34e0aa-5c65-44f1-8ef1-4025a1809b17.png)
+
+![image](https://user-images.githubusercontent.com/80327905/134492349-a1922fdd-eab5-4283-9a2b-eac9f70c6a33.png)
 
