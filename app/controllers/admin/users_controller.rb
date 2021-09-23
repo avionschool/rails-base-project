@@ -6,18 +6,47 @@ class Admin::UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find(params[:id])
+    puts @user
+    puts 'user'
+  end
+
+  def approval
+    @user = User.find(params[:id])
+    @user.update_attribute(:status, "Approved")
+    UserMailer.with(user: @user).new_trader_approved.deliver_later
+    redirect_to pending_users_path
+  end
+
+  def pending_users
+    @users = User.where(status: 0).order("created_at ASC")
+  end
+
+  def approve_users
+    @users = User.where(status: 1).order("created_at ASC")
+  end
+
+  def new
+    @user = User.new
+  end
+
   def update
     if @user.update(user_params)
+      @user.update_attribute(:status, "Approved")
+      UserMailer.with(user: @user).new_trader_approved.deliver_later
       flash[:notice] = 'You have successfully update the user'
-      redirect_to admin_user_path
+      redirect_to admin_users_path
     else
       render :edit
     end
   end
 
-  def approve
-    @user.approved!
-    UserMailer.confirmation_email(@user).deliver_later
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    UserMailer.with(user: @user).new_trader_approved.deliver_later
+    flash[:success] = "The user was successfully destroyed."
     redirect_to admin_users_path
   end
 
@@ -30,11 +59,11 @@ class Admin::UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def set_user
-    @user = User.find(params[:id])
+  def user_params
+    params.permit(:user)
   end
 
-  def user_params
-    params.require(:user).permit(:email, :username, role_ids: [])
+  def set_user
+    @user = User.find(params[:id])
   end
 end
