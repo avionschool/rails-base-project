@@ -1,0 +1,68 @@
+.login-bg {
+  background: radial-gradient(
+    circle,
+    rgba(253, 193, 8, 1) 20%,
+    rgba(249, 131, 18, 1) 62%,
+    rgba(244, 98, 33, 1) 90%
+  ) !important;
+}
+
+.card {
+  margin-top: 6%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-left: 27%;
+  width: 40%;
+  background-color: rgba(255, 255, 255, 0.214) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  box-shadow: 10px 10px 5px 0px rgba(46, 46, 46, 0.75) !important;
+}
+.inner-card {
+  margin-left: 30%;
+  margin-bottom: 20px;
+}
+
+.login-text {
+  font-size: 20px;
+  margin-left: 50px;
+  margin-bottom: 20px;
+  margin-top: -20px;
+}
+
+.name-logo {
+  margin-left: -90px;
+  margin-top: -30px;
+}
+
+.form-group {
+  margin-bottom: 20px !important;
+}
+.form-control {
+  width: 90% !important;
+  margin-left: -50px !important;
+}
+.form-text {
+  margin-left: -50px !important;
+  margin-bottom: -20px !important;
+  color: black !important;
+}
+.form-text-rm {
+  margin-left: -30px !important;
+  margin-bottom: -20px !important;
+  color: black !important;
+}
+
+.lg-btn {
+  margin-top: -23% !important;
+  width: 90% !important;
+  margin-left: -48px !important;
+  margin-bottom: -80px;
+}
+
+.lg-su-btn {
+  margin-bottom: 10%;
+  margin-top: 5%;
+  width: 90% !important;
+  margin-left: -14% !important;
+}
