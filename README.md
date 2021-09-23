@@ -7,6 +7,7 @@ User Story
 Admin
 
 Email: Admin@stockonyou.com
+
 Password:123456
 
 * As an Admin, I want to create a new trader to manually add them to the app
@@ -20,6 +21,7 @@ Password:123456
 Trader
 
 Email: Trader@stockonyou.com
+
 Password:123456
 
 * As a Trader, I want to create an account as to buy and sell stocks
