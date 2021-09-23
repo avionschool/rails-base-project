@@ -1,0 +1,10 @@
+<%= form_with scope: :user, url: user_profile_path, method: :patch  do |f| %>
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, value: @trader.email %>
+        <%= f.text_field :full_name, autofocus: true, value: @trader.full_name %>
+        <%= f.text_field :username, autofocus: true, value: @trader.username %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Modify Account" %>
+      </div>
+<% end %>
