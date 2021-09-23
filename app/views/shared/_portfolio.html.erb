@@ -48,7 +48,7 @@
         </table>
     <div class="portfolio_available_cash">
         <label>Available Cash</label>
-        <span>200,000</span>
+        <span><%= "$ #{number_with_delimiter(@balance, :delimiter => ',')}" %></span>
     </div>        
     <a href="#" class="btn btn-primary">See more</a>
     </div>
