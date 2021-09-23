@@ -43,5 +43,4 @@ class AdminPortalsController < ApplicationController
   def show_registered_users
     @users = User.all
   end
-
 end
