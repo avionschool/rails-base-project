@@ -8,8 +8,8 @@ See Live https://stockonyou-trading-app.herokuapp.com/
 
 <h3>Admin</h3>
 
-<p>Email: Admin@stockonyou.com</p>
-<p>Password:123456</p>
+<p>Email: amin@stockonyou.com</p>
+<p>Password: 123456</p>
 
 * As an Admin, I want to create a new trader to manually add them to the app
 * As an Admin, I want to edit a specific trader to update his/her details
@@ -21,8 +21,8 @@ See Live https://stockonyou-trading-app.herokuapp.com/
 
 <h3>Trader</h3>
 
-<p>Email: Trader@stockonyou.com</p>
-<p>Password:123456</p>
+<p>Email: trader@stockonyou.com</p>
+<p>Password: 123456</p>
 
 * As a Trader, I want to create an account as to buy and sell stocks
 * As a Trader, I want to login my credentials so that I can access my account on the app
