@@ -22,6 +22,11 @@ Rails.application.routes.draw do
   #pages
   get '/home' => 'pages#home'
   get '/portfolio' => 'pages#portfolio'
-  get '/stocks' => 'stocks#index'
   get '/transactions' => 'pages#transactions'
+
+  concern :paginatable do
+    get 'page/:page', action: :index, on: :collection, as: ''
+  end
+  
+  resources :stocks, only: [:index], concerns: :paginatable
 end

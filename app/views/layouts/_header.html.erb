@@ -8,7 +8,7 @@
         <% if current_user %>
           <%= link_to 'Home', home_path, class: "px-1" %>
           <%= link_to 'Portfolio', portfolio_path, class: "px-1" %>
-          <%= link_to 'Stocks', stocks_path, class: "px-1" %>
+          <%= link_to 'Stocks', stocks_path(1), class: "px-1" %>
           <%= link_to 'Transactions', transactions_path, class: "px-1" %>
         <% end %>
     </div>
