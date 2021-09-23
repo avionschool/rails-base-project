@@ -10,25 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
   def create
     super
   end
->>>>>>> Stashed changes
-=======
-  def create
-    super
-  end
->>>>>>> Stashed changes
-=======
-  def create
-    super
-  end
->>>>>>> Stashed changes
-
   # GET /resource/edit
   # def edit
   #   super
