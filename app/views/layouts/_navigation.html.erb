@@ -49,6 +49,7 @@
         <%= link_to 'Approvals', admins_approvals_path, class: "link-nav-white" %>
         <%# modify once transaction feature has been completed %>
         <%= link_to 'Transactions', admins_trader_settings_path, class: "link-nav-white" %> 
+        <%# <%= link_to 'Resque Jobs UI', url: 'admins/jobs', target: :_blank, class: "link-nav-white" %>  %>
       </ul>
       <div class="nav-user-links">
         <%= link_to 'Logout', destroy_admin_session_path, method: :delete, class: "link-nav-white" %>
