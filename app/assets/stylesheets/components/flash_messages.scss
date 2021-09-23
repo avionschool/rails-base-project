@@ -1,5 +1,6 @@
 .flash-message-container{
   @include flex-col-center();
+  margin-top: 1rem;
   width: 100%;
   height: 2rem;
 }
