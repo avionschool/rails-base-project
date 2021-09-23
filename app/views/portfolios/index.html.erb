@@ -2,24 +2,36 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <div class="card" style="width: 18rem;">
+      <%# <div class="card" style="width: 18rem;" > %>
         <div class="card-body">
-            <h5 class="card-title"><%= current_user.first_name%> <%= current_user.last_name%></h5>
+            <h5 class="card-title"> Welcome, <%= current_user.first_name%> <%= current_user.last_name%></h5>
+            <div class="line"></div>
+             </div>
+      <%# </div> %>
+            <div class="cd-port">
             <h6 class="card-subtitle mb-2 text-muted"><%= current_user.email%></h6>
             <p class="card-text">I am an aggressive buyer.</p>
               <a href="#" class="card-link">Wallet</a>
               <a href="#" class="card-link">Transaction History</a>
-        </div>
+            </div>
+    </div>
+
+<div class="rectangle">
+    <div class="col-sm">
+     <div class="os-text">
+      <h2> Owned Stocks </h2>
+     </div>
+      <tr>
+      <div class='category'>
+         <div class="company"><td> Company </td></div>
+         <div class="price"><td> Price </td></div>
+         <div class="quantity"><td> Quantity </td></div>
       </div>
     </div>
-
-    <div class="col-sm">
-
-      <h2> Owned Stocks </h2>
-      <tr>
-        <td> Company </td>
-        <td> Price </td>
-        <td> Quantity </td>
-    </div>
+</div>
   </div>
+  <div class="lines"></div>
+  <div class="line1"></div>
+  <div class="line2"></div>
+  <div class="line3"></div>
 </div>
