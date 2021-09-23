@@ -112,6 +112,8 @@ GEM
     faraday_middleware (1.1.0)
       faraday (~> 1.0)
     ffi (1.15.4)
+    font-awesome-rails (4.7.0.7)
+      railties (>= 3.2, < 7)
     globalid (0.5.2)
       activesupport (>= 5.0)
     hamlit (2.15.1)
@@ -313,6 +315,7 @@ DEPENDENCIES
   database_rewinder
   devise
   factory_bot_rails
+  font-awesome-rails
   hamlit-rails
   iex-ruby-client
   jbuilder (~> 2.7)
