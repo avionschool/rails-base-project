@@ -4,17 +4,19 @@
 </br>
 <%= link_to "Create trader account", admins_add_user_path %>
 </br>
+<%= link_to "Pending Registrations", admins_show_pending_users_path %>
+</br>
+<%= link_to "Registered Users", admins_show_registered_users_path %>
+</br>
 
-<h2> Pending Registrations </h2>
-<% @users.each do |user| %>
-    <% if user.status == 'pending' %>
-      <%= user.username %> </br>
-      <%= user.email %> </br>
-      <%= user.status %> </br>
-      <%= link_to "View", admins_view_path(id: user.id), method: 'get' %>
-      <%= link_to "Edit User", edit_user_path(id: user.id), method: 'get' %>
-      <%= button_to "Approve", admins_manage_path(id: user.id), method: 'put' %>    
-  <% end %>
+<p> Transactions </p>
+<%= @trades.each do |trade| %>
+  <%= trade.user_id %>
+  <%= trade.stock_code %>
+  <%= trade.price %>
+  <%= trade.quantity %>
+  <%= trade.transaction_type %>
+  <%= trade.created_at %>
+  <%= trade.total_price %>
 <% end %>
-
 

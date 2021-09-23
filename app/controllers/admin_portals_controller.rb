@@ -1,6 +1,7 @@
 class AdminPortalsController < ApplicationController
   def index
     @users = User.all
+    @trades = Trade.all
   end
 
   def show_user
@@ -34,4 +35,13 @@ class AdminPortalsController < ApplicationController
     @user.save
     redirect_to admins_home_path if @user.save
   end
+
+  def show_pending_users
+    @users = User.all
+  end
+
+  def show_registered_users
+    @users = User.all
+  end
+
 end
