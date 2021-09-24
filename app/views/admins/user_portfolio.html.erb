@@ -10,21 +10,25 @@
     <%# add user path should have views and controller %>
      <%= link_to "Pending Approvals", admins_approvals_path, method: 'get'%>
     <div>
-      <%# data headers %>
-      <%# if @users.empty? %>
-      <%# else %>
-
-      <%# loop all data here %>
+      <% if @users.empty? %>
+      <h1>No Users Approved Yet</h1>
+      <% else %>
+        <div>
+          <tr>
+            <td>Email</td>
+          </tr>
+        </div>
+      <%# loop all data here for the approved accounts %>
       <table>
         <% @users.each do |user| %>
           <tr>
             <td><%= user.email %>
-            <td><%= user.approved %>
+            <td><% user.approved %>
             <td><%= link_to "View", user_profile_path(user) %>
           </tr>
         <% end %>
       </table>
-       <%# end %>
+       <% end %>
   </section>
 </section>
 
