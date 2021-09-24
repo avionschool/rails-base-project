@@ -34,7 +34,7 @@ class AdminsController < ApplicationController
     end
   end
 
-  def show_user
+  def view_user
     @user = User.find(params[:id])
   end
 
@@ -46,7 +46,7 @@ class AdminsController < ApplicationController
     @user = User.find(params[:id])
     @user.update(params.require(:user).permit(:email, :first_name, :last_name, :username))
     if @user.update(params.require(:user).permit(:email, :first_name, :last_name, :username))
-      redirect_back fallback_location: admins_add_user_path, success: 'User updated'
+      redirect_to user_profile_path fallback_location: admins_add_user_path, success: 'User updated'
     else
       redirect_back fallback_location: admins_add_user_path, danger: 'Error in updating the user'
     end
