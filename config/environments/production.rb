@@ -114,12 +114,24 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: host }
 
   # SMTP settings for gmail
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => 'pickystocker@gmail.com',
+    :password             => 'usmlfvsnmcidtpyg',
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+
+  # SMTP setting for mail trap
+  # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {
-  #   :address              => "smtp.gmail.com",
-  #   :port                 => 587,
-  #   :user_name            => Rails.application.credentials.gmail_mailer[:username],
-  #   :password             => Rails.application.credentials.gmail_mailer[:password],
-  #   :authentication       => "plain",
-  #   :enable_starttls_auto => true
+  #   :user_name => 'c01a01d1e19eb2',
+  #   :password => '1a83df53891213',
+  #   :address => 'smtp.mailtrap.io',
+  #   :domain => 'smtp.mailtrap.io',
+  #   :port => '25',
+  #   :authentication => :cram_md5
   # }
 end
