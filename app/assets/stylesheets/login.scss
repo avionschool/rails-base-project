@@ -8,11 +8,13 @@
 }
 
 .card {
-  margin-top: 6%;
-  padding-top: 3%;
-  padding-bottom: 3%;
-  margin-left: 27%;
-  width: 40%;
+  position: absolute;
+  margin-top: 5% !important;
+  left: 25%;
+  padding-top: 6%;
+  padding-bottom: 5% !important;
+  width: 500px;
+  height: 579px;
   background-color: rgba(255, 255, 255, 0.214) !important;
   border: none !important;
   border-radius: 10px !important;
@@ -25,7 +27,7 @@
 
 .login-text {
   font-size: 20px;
-  margin-left: 50px;
+  margin-left: 65px;
   margin-bottom: 20px;
   margin-top: -20px;
 }
@@ -36,11 +38,13 @@
 }
 
 .form-group {
-  margin-bottom: 20px !important;
+  margin-bottom: 10px !important;
 }
 .form-control {
-  width: 90% !important;
   margin-left: -50px !important;
+  width: 317px !important;
+  height: 40px !important;
+  border-radius: 7px !important;
 }
 .form-text {
   margin-left: -50px !important;
@@ -48,21 +52,33 @@
   color: black !important;
 }
 .form-text-rm {
-  margin-left: -30px !important;
-  margin-bottom: -20px !important;
+  position: absolute;
+  left: 24% !important;
+  top: 53.5% !important;
   color: black !important;
+}
+.forgetpass-text {
+  position: absolute;
+  top: 440px !important;
+  left: 175px !important;
 }
 
 .lg-btn {
-  margin-top: -23% !important;
-  width: 90% !important;
-  margin-left: -48px !important;
-  margin-bottom: -80px;
+  position: absolute;
+  width: 315px !important;
+  height: 34px;
+  left: 100px;
+  top: 335px;
+  font-size: 15px !important;
+  border-radius: 7px !important;
 }
 
 .lg-su-btn {
-  margin-bottom: 10%;
-  margin-top: 5%;
-  width: 90% !important;
-  margin-left: -14% !important;
+  position: absolute;
+  width: 315px !important;
+  height: 34px;
+  left: 100px;
+  top: 380px;
+  font-size: 15px !important;
+  border-radius: 7px !important;
 }

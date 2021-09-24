@@ -5,11 +5,10 @@
   //   left: 90px;
   //   top: 47px;
   margin-bottom: -100px;
-  margin-left: 35px;
-  margin-top: -10px;
+  margin-left: 40px !important;
+  margin-top: -90px;
 }
 .nav-link {
-  color: #000000 !important;
   font-weight: 600;
   position: absolute;
   height: 28px;
@@ -23,6 +22,7 @@
   box-shadow: 5px 5px 5px 0px rgba(16, 16, 16, 0.75) !important;
   display: flex !important;
   align-items: center !important;
+  font-size: 12px;
 }
 
 .nav-link-lg {
@@ -30,8 +30,8 @@
   font-weight: 600;
   position: absolute;
   height: 28px;
-  left: 1190px;
-  top: 30px;
+  left: 1260px;
+  top: 35px;
   text-decoration: none;
   color: #ffffff !important;
 
@@ -41,14 +41,15 @@
   box-shadow: 5px 5px 5px 0px rgba(16, 16, 16, 0.75) !important;
   display: flex !important;
   align-items: center !important;
+  font-size: 12px;
 }
 .nav-link-su {
   color: #000000 !important;
   font-weight: 600;
   position: absolute;
   height: 28px;
-  left: 1335px;
-  top: 30px;
+  left: 1390px;
+  top: 35px;
   text-decoration: none;
   color: #ffffff !important;
   background-color: #f98212c4;
@@ -57,14 +58,15 @@
   box-shadow: 5px 5px 5px 0px rgba(16, 16, 16, 0.75) !important;
   display: flex !important;
   align-items: center !important;
+  font-size: 12px;
 }
 .nav-link-so {
   color: #000000 !important;
   font-weight: 600;
   position: absolute;
   height: 28px;
-  left: 1350px;
-  top: 30px;
+  right: 100px;
+  top: 35px;
   text-decoration: none;
   color: #ffffff !important;
   background-color: #f98212c4;
@@ -74,4 +76,5 @@
   text-indent: 4px !important;
   display: flex !important;
   align-items: center !important;
+  font-size: 12px;
 }
