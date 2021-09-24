@@ -9,10 +9,9 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  def create
-    super
-    flash[:notice] = 'Your account has not been approved yet. Kindly wait for approval before using the application.' if !user.approved?
-  end
+  # def create
+  #   super
+  # end
 
   # DELETE /resource/sign_out
   # def destroy

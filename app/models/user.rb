@@ -42,7 +42,7 @@ class User < ApplicationRecord
     roles.exists?(trader)
   end
 
-  def active_for_authentication? 
+  def active_for_authentication?
     super && approved?
   end
 
