@@ -9,13 +9,13 @@ class PortfolioController < ApplicationController
   def transactions
     fulfilled_bids = BuyOrder.where(status: 1, user: current_user)
     fullfilled_sells = SellOrder.where(status: 1, user: current_user)
-    @fullfilled_transactions = fulfilled_bids.union(fullfilled_sells)
+    @fullfilled_transactions = fulfilled_bids.union(fullfilled_sells).order("updated_at DESC")
   end
 
   def pending_orders
     pending_bids = BuyOrder.where(status: 0, user: current_user)
     pending_sells = SellOrder.where(status: 0, user: current_user)
-    @pending_orders = pending_bids.union(pending_sells)
+    @pending_orders = pending_bids.union(pending_sells).order("updated_at DESC")
   end
 
   private

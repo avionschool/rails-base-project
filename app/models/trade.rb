@@ -9,14 +9,5 @@ class Trade < ApplicationRecord
   def amount
     price * quantity
   end
-
-  def buyer
-    buy_order.user
-  end
-
-  def seller
-    sell_order.user
-  rescue NoMethodError
-    nil
-  end
+  
 end

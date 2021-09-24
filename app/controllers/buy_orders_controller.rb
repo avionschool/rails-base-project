@@ -7,7 +7,7 @@ class BuyOrdersController < ApplicationController
     @buy_order.user = current_user
     if @buy_order.save
       @buy_order.complete_order
-      redirect_to dashboard_path
+      redirect_to pending_orders_portfolio_index_path
     else
       redirect_to search_stock_path
     end

@@ -13,6 +13,7 @@ class Wallet < ApplicationRecord
     total_deposits - total_withdrawals
   end
 
+
   private
 
   def withdrawals_not_exceed_deposits

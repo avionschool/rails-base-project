@@ -18,6 +18,7 @@ class BuyOrder < ApplicationRecord
     return if match_order.blank?
 
     trades.create(stock: stock, price: price, quantity: quantity, sell_order: match_order.first)
+    match_order.first.update(status: 1)
     update(status: 1)
   end
 end
