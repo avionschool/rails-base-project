@@ -21,4 +21,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
       respond_with resource
     end
   end
+
+  def update
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+
+    resource_updated = update_resource(resource, account_update_params)
+
+    if resource_updated
+      flash[:notice] = 'Successfully updated your account!'
+      bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
+      respond_with resource, location: trader_stock_path
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
+    end
+  end
+
+  protected
+
+  def account_update_params
+    # devise_parameter_sanitizer.sanitize(:account_update, keys: [:first_name, :last_name])
+    params.require(:user).permit(:username, :firstname, :lastname, :email, :password, :password_confirmation, :current_password)
+  end
 end

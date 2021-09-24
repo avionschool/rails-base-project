@@ -20,6 +20,20 @@ Rails.application.routes.draw do
   patch 'admin/update/:id', to: 'admin#update', as: 'update_user'
   get 'admin/show/:id', to: 'admin#show', as: 'show_user'
 
+  # TRADER ONLY
+  
+  get '/stock_market', to: "trader_stocks#stock_market", as: "stock_market"
+  get 'stocks/my_stock', to: 'trader_stocks#trader_stock', as: 'trader_stock'
+  get 'stocks/search', to: 'trader_stocks#search', as: 'search_stock'
+  get 'stocks/transaction_history', to: 'trader_stocks#transaction_history', as: 'transaction_history'
+  get 'stocks/search/buy/:ticker', to: 'trader_stocks#buy_stock_new', as: 'get_buy_stock'
+  post 'stocks/search/buy/:ticker', to: 'trader_stocks#buy_stock', as: 'buy_stock'
+  get 'stocks/sell/:id/:ticker', to: 'trader_stocks#sell_stock_new', as: 'get_sell_stock'
+  post 'stocks/sell/:id/:ticker', to: 'trader_stocks#sell_stock', as: 'sell_stock'
+  get '/topup_money', to: "trader_stocks#topup_money_new", as: "topup_money_new"
+  post '/topup_money', to: "trader_stocks#topup_money", as: "topup_money"
+  delete '/stocks/:id', to: 'trader_stocks#remove_stock', as: 'remove_stock'
+
   get '/dashboard', to: "home#dashboard"
   root to: "home#index"
 end

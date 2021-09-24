@@ -10,7 +10,8 @@
     <% if current_user %>
       <% if current_user.role.zero?%>
         <div class="navbar-nav ml-auto text-2xl">
-          <%= link_to dashboard_admin_path, class:"nav-link nav-item text-pink-100 mr-10 hover:bg-pink-400 rounded" do %><i class="fas fa-columns"> Dashboard</i><span class="sr-only">(current)</span><%end%>
+          <%#= link_to topup_money_new_path, class:"nav-link nav-item text-pink-100 mr-10 hover:bg-pink-400 rounded" do %>
+          <%#end%>
           <%= link_to new_user_path, class:"nav-link nav-item text-pink-100 mr-10 hover:bg-pink-400 rounded" do %><i class="fas fa-plus"> Add User</i> <span class="sr-only">(current)</span><%end%>
           <%= link_to user_list_path, class:"nav-link nav-item text-pink-100 mr-10 hover:bg-pink-400 rounded" do %><i class="fas fa-users"> Users </i><span class="sr-only">(current)</span><%end%>
           <%= link_to pending_users_path, class:"nav-link nav-item text-pink-100 mr-10 hover:bg-pink-400 rounded" do %><i class="fas fa-thumbtack"> Pending User </i><span class="sr-only">(current)</span><%end%>
@@ -19,10 +20,10 @@
         </div>
       <% elsif current_user.role == 1 %>
         <div class="navbar-nav ml-auto text-2xl">
-          <%= link_to dashboard_path, class:"nav-link nav-item text-pink-100 mr-10 hover:bg-pink-400 rounded" do %><i class="fas fa-columns"> Dashboard</i><span class="sr-only">(current)</span><%end%>
           <%= link_to stock_market_path, class:"nav-link nav-item text-pink-100 mr-10 hover:bg-pink-400 rounded" do %><i class="fas fa-shopping-cart"> Stock Market</i><span class="sr-only">(current)</span><%end%>
           <%= link_to trader_stock_path, class:"nav-link nav-item text-pink-100 mr-10 hover:bg-pink-400 rounded" do %><i class="fas fa-layer-group"> My Stocks</i><span class="sr-only">(current)</span><%end%>
           <%= link_to search_stock_path, class:"nav-link nav-item text-pink-100 mr-10 hover:bg-pink-400 rounded" do %><i class="fas fa-search"> Search Stocks </i> <span class="sr-only">(current)</span><%end%>
+          <%= link_to topup_money_new_path, class:"nav-link nav-item text-pink-100 mr-10 hover:bg-pink-400 rounded" do %><i class="fas fa-money-bill-alt"> Top Up Money</i><span class="sr-only">(current)</span><%end%>
           <%= link_to transaction_history_path, class:"nav-link nav-item text-pink-100 mr-10 hover:bg-pink-400 rounded" do %><i class="fas fa-history"> Transaction </i><span class="sr-only">(current)</span><%end%>
           <%= link_to signout_path,  method: :delete, class:"nav-link nav-item text-pink-100" do %><i class="fas fa-power-off"> Sign Out </i><span class="sr-only">(current)</span><%end%>
         </div>
