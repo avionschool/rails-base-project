@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   devise_for :admins, path: 'admins', controllers: { sessions: "admins/sessions"}
   devise_for :users, path: 'users', controllers: { sessions: "users/sessions" , registrations:  'users/registrations'}
- 
-  # get 'home/index'
+
   root 'home#index'
+  
   resources :users do
     get 'homepage', to: 'portfolios#index'
   end
    
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'search_stock', to: 'stocks#search'
 
 
   #routes for admin only
@@ -23,5 +23,7 @@ Rails.application.routes.draw do
     patch '/admins/user-portfolio/:id', to: 'admins#modify_user'
     get '/admins/user-portfolio/:id/edit', to: 'admins#edit_user', as: :edit_user_profile
   end
+  resources :stocks, only: [:index]
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end
