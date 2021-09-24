@@ -14,6 +14,7 @@ class AdminPortalsController < ApplicationController
     @user.update(status: 'approved')
     return unless @user.save
 
+    ApprovedAccountMailer.with(email: @user.email).approve_email.deliver_now
     CreateUserWallet.call(@user)
     redirect_to admins_home_path
   end
@@ -33,6 +34,7 @@ class AdminPortalsController < ApplicationController
   def create_user
     @user = User.new(params.require(:user).permit(:username, :first_name, :last_name, :email, :password, :password_confirmation))
     if @user.save && @user.update(status: 'approved')
+      ApprovedAccountMailer.with(email: @user.email).approve_email.deliver_now
       CreateUserWallet.call(@user)
       redirect_to admins_home_path
     else
