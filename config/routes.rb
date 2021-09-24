@@ -30,6 +30,11 @@ Rails.application.routes.draw do
   concern :paginatable do
     get 'page/:page', action: :index, on: :collection, as: ''
   end
+
+  concern :paginatable_transactions do
+    get 'transactions/:page', action: :transactions, on: :collection, as: ''
+  end
   
   resources :stocks, only: [:index], concerns: :paginatable
+  resources :pages, only: [:transactions], concerns: :paginatable_transactions
 end

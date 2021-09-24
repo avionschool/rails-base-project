@@ -5,6 +5,7 @@ class PagesController < ApplicationController
 
   def home
     @stocks = Stock.all
+    @home ||= IEX::Api::Client.new.stock_market_list(:mostactive)
   end
 
   def portfolio
@@ -12,6 +13,6 @@ class PagesController < ApplicationController
   end
 
   def transactions
-    @transactions = current_user.trades.order(:created_at).reverse
+    @transactions = current_user.trades.order('created_at DESC').page params[:page]
   end
 end
