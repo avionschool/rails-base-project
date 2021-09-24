@@ -1,28 +1,50 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col col-md-3">
-      <h3>Tradify</h3>
+<div class="container-fluid header sticky-top">
+  <div class="nav navbar-expand-md navbar__color">
+    <button
+      class="navbar-toggler me-auto"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#toggleMenu"
+      aria-controls="toggleMenu"
+      aria-expanded="false"
+      aria-label="Toggle Navigation"
+    >
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="header__image__container navbar-brand ms-auto">
+      <%= link_to root_path do %>
+        <%= image_tag 'tradify_img_transparent' %>
+      <% end %>
     </div>
 
-    <div class="col col-md-6 d-flex justify-content-center">
+    <div class="collapse navbar-collapse" id="toggleMenu">
+      <ul class="navbar-nav ms-auto">
         <% if current_user %>
-          <%= link_to 'Home', home_path, class: "px-1" %>
-          <%= link_to 'Portfolio', portfolio_path, class: "px-1" %>
-          <%= link_to 'Stocks', stocks_path(1), class: "px-1" %>
-          <%= link_to 'Transactions', transactions_path, class: "px-1" %>
+          <li><%= link_to 'Home', home_path, class: "px-2 nav-link" %></li>
+          <li><%= link_to 'Portfolio', portfolio_path, class: "px-2 nav-link" %></li>
+          <li><%= link_to 'Stocks', stocks_path(1), class: "px-2 nav-link" %></li>
+          <li><%= link_to 'Transactions', transactions_path, class: "px-2 nav-link" %></li>
+        <% elsif current_admin %>
+          <li><%= link_to "Create trader account", admins_add_user_path, class: "px-2 nav-link" %></li>
+          <li><%= link_to "Pending Registrations", admins_show_pending_users_path,class: "px-2 nav-link" %></li>
+          <li><%= link_to "Registered Users", admins_show_registered_users_path,class: "px-2 nav-link" %></li>
         <% end %>
+      </ul>
     </div>
     
-    <div class="col col-md-3 d-flex justify-content-end">
-      <% if current_user %>
-          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-          <%#= link_to "Edit", edit_user_registration_path %>
-          <%#= link_to "Sign up", new_user_registration_path %>
-          <% else%>
-          <%= link_to "Sign up", new_user_registration_path %>
-          <%= link_to "Sign in", new_user_session_path %>
-          <%= link_to "Sign in as Admin", new_admin_session_path %>
-      <% end %>
+    <div class="collapse navbar-collapse" id="toggleMenu" >
+      <ul class="navbar-nav ms-auto">
+        <% if current_user %>
+          <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "px-2 nav-link" %></li>
+        <% elsif current_admin%>
+          <li><%= link_to "Sign out", destroy_admin_session_path, method: :delete, class: "px-2 nav-link" %></li>
+        <% else %>
+          <li><%= link_to "Register", new_user_registration_path, class: "px-2 nav-link" %></li>
+          <li><%= link_to "Sign in", new_user_session_path, class: "px-2 nav-link" %></li>
+          <li><%= link_to "Admin", new_admin_session_path, class: "px-2 nav-link" %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>

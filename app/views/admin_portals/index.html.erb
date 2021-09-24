@@ -1,14 +1,5 @@
 <h2> Welcome Admin! </h2>
 
-<%= link_to "Sign out", destroy_admin_session_path, method: 'delete' %>
-</br>
-<%= link_to "Create trader account", admins_add_user_path %>
-</br>
-<%= link_to "Pending Registrations", admins_show_pending_users_path %>
-</br>
-<%= link_to "Registered Users", admins_show_registered_users_path %>
-</br>
-
 <p> Transactions </p>
 <%= @trades.each do |trade| %>
   <%= trade.user_id %>

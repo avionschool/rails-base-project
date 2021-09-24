@@ -26,7 +26,7 @@
           <td class= "text-center <%= trade.transaction_type %>" ><%= trade.transaction_type %></td>
           <td class= "text-center"><%= trade.quantity %></td>
           <td class= "text-center"><%= trade.price %></td>
-          <td class= "text-center"><%= trade.total_price %></td>
+          <td class= "text-center"><%= number_with_precision(trade.total_price, precision: 2) %></td>
           <td class= "text-center"><%= trade.created_at.to_formatted_s(:local) %></td>
         </tr>
       <% end %>

@@ -1,3 +1,71 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background-color: rgb(25,25,25) !important;
+  color: whitesmoke !important;
+  overflow: scroll;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+}
+
+/* Landing page */
+
+
+/* header */
+
+.header {
+  background-color: rgb(25,25,25);
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.navbar-nav li:hover{
+  border-radius: 5px;
+  background: rgb(208,125,8);
+  background: linear-gradient(90deg, rgba(208,125,8,1) 0%, rgba(159,101,6,1) 30%, rgba(255,0,142,1) 100%);
+}
+
+
+.header__image__container {
+  width: 150px;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.header__image__container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.navbar-toggler {
+  color: white !important;
+  width: 80px !important;
+}
+
+
+
+/* home page */
+.card {
+  background-color: inherit !important;
+  border-color: white !important;
+  background: rgb(208,125,8);
+  background: linear-gradient(90deg, rgba(208,125,8,1) 0%, rgba(159,101,6,1) 30%, rgba(255,0,142,1) 100%);
+}
+
+.table {
+  color: white !important;
+}
+
+
+
+
 /* buy/sell */
 #trade_transaction_type:focus {
   box-shadow: none !important;
@@ -13,14 +81,14 @@
 }
 
 .transaction_type_buy_button {
-  border-color: green !important;
+  border: none !important;
   background-color: green !important;
   color: white !important;
   width: 45% !important;
 }
 
 .transaction_type_sell_button {
-  border-color: red;
+  border: none !important;
   background-color: rgb(156, 4, 4) !important;
   color: white !important;
   width: 45% !important;
@@ -42,4 +110,111 @@
   background-color: rgb(156, 4, 4) !important;
   border-color: rgb(156, 4, 4) !important;
   color: white !important;
+}
+
+
+/*flash message*/
+.flash-alert_container {
+  position: fixed;
+  width: 100%;
+}
+
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+  animation: shake 0.5s;
+}
+
+.alert-alert {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+  animation: shake 0.8s;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+  animation: shake 0.8s;
+}
+
+.alert-notice {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+  animation: shake 0.8s;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+
+h1 {
+  background: rgb(214, 138, 16);
+  background-image: linear-gradient(90deg, rgb(247, 174, 73) 0%, rgb(214, 138, 16) 30%);
+  background-size: max-content;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+
+
+.landing__main__image {
+  width: 100%;
+}
+
+.landing__main__image img {
+  width: 45%;
+  object-fit: contain;
+}
+
+.title__header {
+  background: rgb(214, 138, 16);
+  background-image: linear-gradient(90deg, rgb(247, 174, 73) 0%, rgb(214, 138, 16) 30%, rgba(255,0,142,1) 100%);
+  background-size: max-content;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+}
+
+.landing__features {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing__features li {
+  margin-top: 2em;
+}
+
+.landing__features li:nth-child(odd) {
+  width: 45%;
+  align-self: flex-end !important;
+}
+.landing__features li:nth-child(even) {
+  width: 45%;
+  align-self: flex-start !important;
+  text-align: right;
 }

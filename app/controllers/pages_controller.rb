@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def landing
-    @stocks = Stock.all
+    redirect_to home_path and return if user_signed_in? || admin_signed_in?
   end
 
   def home
