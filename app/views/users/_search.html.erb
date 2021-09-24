@@ -1,0 +1,47 @@
+<div class="container">
+  <div class='search-area'>
+    <div class="st-text">
+      <h3>Search Stocks</h3>
+    </div>
+
+    <div class="card-st">
+      <%= form_tag search_stock_path, remote: true, method: :get do %>
+        <div class="form-group row">
+          <div class="col-sm-9 no-right-padding">
+            <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: "form-control form-control-lg" %>
+          </div>
+          <div class="col-sm-3 no-left-padding st-btn">
+            <%= button_tag type: :submit, class: "btn btn-success" do %>
+              <%= fa_icon 'search 2x' %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>  
+    </div>
+  </div>
+
+  <%= render 'layouts/messages' %>
+
+  <% if @stock %>
+    <div class="card card-header results-block">
+      <strong>Symbol:</strong> <%= @stock.stock_symbol %>
+      <strong>Company Name:</strong> <%= @stock.logo %>
+      <strong>Price:</strong> <%= @stock.current_price %>
+      <% if current_user.can_track_stock?(@stock.stock_symbol) %>
+        <%= link_to 'Buy Stock', user_stocks_path(user: current_user, stock_symbol: @stock.stock_symbol),
+                                                class: "btn btn-xs btn-success", method: :post %>
+      <% else %>
+        <span class="badge badge-secondary">
+          You are already tracking
+          <% if !current_user.under_stock_limit? %>
+            10 stocks
+          <% end %>
+          <% if current_user.stock_already_tracked?(@stock.stock_symbol) %>
+            this stock
+          <% end  %>  
+        </span>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
