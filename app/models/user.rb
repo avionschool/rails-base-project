@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  has_many :user_stocks
+  has_many :stocks, through: :user_stocks
+
+  validates :logo, :stock_symbol, :current_price, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   after_create :send_welcome_email
@@ -16,6 +20,21 @@ class User < ApplicationRecord
 
   def inactive_message
     approved? ? super : :not_approved
+  end
+
+  def stock_already_tracked?(stock_symbol)
+    stock = Stock.check_db(stock_symbol)
+    return dalse unless stock
+
+    stocks.exists?(id: stock.id)
+  end
+
+  def under_stock_limit?
+    stocks.count < 10
+  end
+
+  def can_track_stock?(stock_symbol)
+    under_stock_limit? && !stock_already_tracked?(stock_symbol)
   end
 
   private
