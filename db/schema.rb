@@ -62,9 +62,11 @@ ActiveRecord::Schema.define(version: 2021_09_24_122920) do
   create_table "trades", force: :cascade do |t|
     t.integer "quantity"
     t.float "price"
-    t.bigint "buy_order_id", null: false
+    t.bigint "buy_order_id"
     t.bigint "sell_order_id"
     t.bigint "stock_id", null: false
+    t.string "buyer"
+    t.string "seller"
     t.index ["buy_order_id"], name: "index_trades_on_buy_order_id"
     t.index ["sell_order_id"], name: "index_trades_on_sell_order_id"
     t.index ["stock_id"], name: "index_trades_on_stock_id"
