@@ -32,8 +32,13 @@ class AdminPortalsController < ApplicationController
 
   def create_user
     @user = User.new(params.require(:user).permit(:username, :first_name, :last_name, :email, :password, :password_confirmation))
-    @user.save
-    redirect_to admins_home_path if @user.save
+    if @user.save && @user.update(status: 'approved')
+      CreateUserWallet.call(@user)
+      redirect_to admins_home_path
+    else
+      flash[:error] = @user.errors.full_messages.first
+      redirect_to admins_add_user_path
+    end
   end
 
   def show_pending_users
