@@ -111,4 +111,20 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.public_file_server.enabled = true
   config.serve_static_assets = true
+  
+  config.require_master_key = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  host = 'https://trading-app-avion.herokuapp.com/'
+  config.action_mailer.default_url_options = { host: host }
+
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :user_name => Rails.application.credentials[:gmail_user_name],
+    :password => Rails.application.credentials[:gmail_app_password],
+    :authentication => "plain",
+    :enable_starttls_auto => true
+  }
 end
