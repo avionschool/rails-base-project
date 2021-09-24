@@ -17,7 +17,7 @@
  */
 
  @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
-
+ 
  body{
      font-family: 'Jost', sans-serif;
      background: black;
@@ -74,4 +74,16 @@ input:-webkit-autofill:active
     background: rgb(248, 209, 47) !important;
     border: none !important;
     color: black;
+}
+
+.flash-position{
+    position: absolute;
+    width: 40%;
+    z-index: 1;
+    top: 10%;
+    right: 0%;
+}
+
+.flash-hide{
+    display: none;
 }

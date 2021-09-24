@@ -11,9 +11,7 @@
               <th scope="col">Sign In Count</th>
               <th scope="col">Last Sign In At</th>
               <th scope="col">Status</th>
-              <th scope="col">Role</th>
               <th scope="col">Action</th>
-              <th></th>
             </tr>
               </thead>
               <tbody>
@@ -22,20 +20,21 @@
                     <th scope="row"><%=user.username%></th>
                       <td><%=user.email%></td>
                       <td><%=user.sign_in_count%></td>
-                      <td><%=user.current_sign_in_at%></td>
+                      <%if user.current_sign_in_at%>
+                        <td><%=user.current_sign_in_at.strftime("%B %m %Y")%></td>
+                      <%else%>
+                        <td></td>
+                      <%end%>
                       <% if user.approved%>
                         <td><%= 'Approved'%></td>
                       <% else %>
                         <td><%= 'Unapproved'%></td>
                       <% end %>
-                      <% if user.roles[0] %>
-                        <td><%= user.roles[0].role%></td>
-                      <%else%>
-                        <td></td>
-                      <%end%>
                       <td>
-                        <%= link_to "Accept", admin_user_path(user.id), method: :patch %>
-                        <%= link_to "Delete", admin_user_path(user.id), method: :delete, data: {confirm: "Are you sure you want to remove this #{user.email}?"} %>
+                        <%if !user.approved?%>
+                          <%= link_to "Accept", admin_user_path(user.id), method: :patch, class: "admin_approve_btn" %>
+                          <%= link_to "Reject", admin_user_path(user.id), method: :delete, class: "admin_reject_btn", data: {confirm: "Are you sure you want to remove this #{user.email}?"} %>
+                        <%end%>
                       </td>
                   </tr>
                 <%end%>

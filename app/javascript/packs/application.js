@@ -3,12 +3,13 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+import "jquery"
+import "bootstrap"
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
-require("channels")
-require("bootstrap")
-require("@fortawesome/fontawesome-free/js/all")
+import "channels"
+import "@fortawesome/fontawesome-free/js/all"
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pac  k_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -17,4 +18,6 @@ require("@fortawesome/fontawesome-free/js/all")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-const Chart = require('chart.js/dist/chart.min.js')
+import Chart from 'chart.js/dist/chart.min.js'
+
+

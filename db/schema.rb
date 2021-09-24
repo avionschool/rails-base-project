@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2021_09_24_122920) do
   enable_extension "plpgsql"
 
   create_table "buy_orders", force: :cascade do |t|
-    t.string "indicator"
+    t.string "indicator", default: "BID"
     t.float "quantity"
     t.float "price"
     t.float "total_amount"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_09_24_122920) do
   end
 
   create_table "sell_orders", force: :cascade do |t|
-    t.string "indicator"
+    t.string "indicator", default: "SELL"
     t.float "quantity"
     t.float "price"
     t.float "total_amount"
@@ -114,10 +114,6 @@ ActiveRecord::Schema.define(version: 2021_09_24_122920) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "status"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
     t.boolean "approved"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

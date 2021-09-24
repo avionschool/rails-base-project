@@ -1,17 +1,17 @@
-<% if notice %>
-  <div class="alert alert-success">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-      <%= notice %>
-  </div>
-<% end %>
+<div class="container flash-position">
+  <% flash.each do |name,msg| %>
+    <% if name=='alert'%>
+      <div class="alert alert-danger alert-dismissible fade show">
+        <%= msg %>
+        <button type="button" class="btn-close flash-close" data-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <%else%>
+      <div class="alert alert-success alert-dismissible fade show">
+        <%= msg %>
+        <button type="button" class="btn-close flash-close" data-dismiss="alert" aria-label="Close"></button>
+      </div>    
+    <% end %>
+  <%end%>
+</div>
 
-<% if alert %>
-  <div class="alert alert-danger">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-      <%= alert %>
-  </div>
-<% end %>
+      

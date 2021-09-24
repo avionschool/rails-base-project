@@ -1,5 +1,19 @@
 .admin_approve_btn{
     width: 80%;
+    background: gold;
+    color: black !important;
+    padding: .5rem;
+    border-radius: 12px;
+    margin-right: .5rem;
+}
+
+.admin_reject_btn{
+    width: 80%;
+    background: rgb(160, 159, 156);
+    color: black !important;
+    padding: .5rem;
+    border-radius: 12px;
+    margin-right: .5rem;
 }
 
 .admin_table{
@@ -16,3 +30,5 @@
 .admin_button:hover{
     color: gray !important;
 }
+
+
