@@ -31,7 +31,8 @@ class Admin::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      @user.update(:status, 'Approved')
+      @user.approved = true
+      @user.save
       UserMailer.with(user: @user).new_trader_approved.deliver_later
       flash[:notice] = 'You have successfully update the user'
       redirect_to admin_users_path

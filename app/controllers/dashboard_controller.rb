@@ -14,12 +14,6 @@ class DashboardController < ApplicationController
 
   private
 
-  def current_user_not_approved
-    return unless current_user.status != 'Approved'
-
-    sign_out_and_redirect(root_path)
-  end
-
   def setup_portfolio
     @portfolio = []
     trades = Trade.all

@@ -42,6 +42,14 @@ class User < ApplicationRecord
     roles.exists?(trader)
   end
 
+  def active_for_authentication?
+    super && approved?
+  end
+
+  def inactive_message
+    approved? ? super : :not_approved
+  end
+
   private
 
   def set_default_role
