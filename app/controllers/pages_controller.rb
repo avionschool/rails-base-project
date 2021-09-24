@@ -5,6 +5,7 @@ class PagesController < ApplicationController
 
   def home
     @stocks = Stock.all
+    @most_active_stocks ||= IEX::Api::Client.new.stock_market_list(:mostactive)
   end
 
   def portfolio

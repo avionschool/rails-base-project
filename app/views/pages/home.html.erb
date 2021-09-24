@@ -1,20 +1,39 @@
-<div class="container">
+<div class="container mt-5">
   <% if current_user %>
-    <div>
-      <h1>Wallet</h1>
-      <h5><%= number_to_currency(current_user.wallet.try{running_balance}) %></h5>
+    <div class= "card text-center mb-5">
+      <div class="card-body">
+        <% if current_user.approved? %>
+          <h2 class="card-title">Wallet</h2>
+          <h2><%= number_to_currency(current_user.wallet.try{running_balance}) %></h2>
+        <% else %>
+          <h3>Your account is still pending for approval.</h3>
+          <h5>You can not buy or sell stocks yet, but you may navigate the pages.</h5>
+        <% end %>
+      </div>
     </div>
   <% end %>
-  
-    <div>
-      <h1>Stocks</h1>
-      <% @stocks.each do |stock| %>
-        <div>
-          <%= stock.code %>
-          <%= stock.current_price %>
-          <%= link_to 'Buy/Sell', new_stock_trade_path(stock) %>
-        </div>
+
+  <div class="container">
+    <h1>Most Active Stocks</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Company Name</th>
+          <th class= "text-center">Average Volume</th>
+          <th class= "text-center">Change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @most_active_stocks.each do |stock| %>
+        <tr>
+          <td><%= stock.symbol %></td>
+          <td><%= stock.company_name %></td>
+          <td class= "text-center"><%= number_to_currency(stock.avg_total_volume) %></td>
+          <td class= "text-center <%= stock.change_percent > 0 ? 'buy' : 'sell' %>"><%= number_to_percentage(stock.change_percent * 100, precision: 2) %></td>
+        </tr>
       <% end %>
-    </div>
-  
+      </tbody>
+    </table>
+  </div>
 </div>
