@@ -10,7 +10,5 @@ User.create(email: "chestergarett@gmail.com", password: "password", username: "c
 User.create(email: "chestergarett1@gmail.com", password: "password", username: "chestergarett1")
 User.create(email: "chestergarett2@gmail.com", password: "password", username: "chestergarett2")
 User.create(email: "chestergarett3@gmail.com", password: "password", username: "chestergarett3")
-admin = User.create(email: "admin@gmail.com", password: "password", username: "admin_user")
-admin.approved = true
-admin.save
+admin = User.create(email: "admin@gmail.com", password: "password", username: "admin_user", approved: true)
 admin.roles << [Role.find_by(role: "admin")]
