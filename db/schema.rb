@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_23_073211) do
+ActiveRecord::Schema.define(version: 2021_09_24_114333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,9 +62,11 @@ ActiveRecord::Schema.define(version: 2021_09_23_073211) do
   create_table "trades", force: :cascade do |t|
     t.integer "quantity"
     t.float "price"
-    t.bigint "buy_order_id", null: false
+    t.bigint "buy_order_id"
     t.bigint "sell_order_id"
     t.bigint "stock_id", null: false
+    t.string "buyer"
+    t.string "seller"
     t.index ["buy_order_id"], name: "index_trades_on_buy_order_id"
     t.index ["sell_order_id"], name: "index_trades_on_sell_order_id"
     t.index ["stock_id"], name: "index_trades_on_stock_id"
@@ -111,6 +113,7 @@ ActiveRecord::Schema.define(version: 2021_09_23_073211) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.string "status"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
