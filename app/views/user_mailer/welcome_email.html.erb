@@ -3,13 +3,17 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>Thank you for signing up! Kindly wait for the admin to approve your account!</p>
+    <strong>Thank you for registering for Bwinance! Your account is pending for approval!</strong>
+
+    <p>Good day, <%= @user.username%>!</p>
+    <p>For the meantime, you won't be allowed to access the application until the admin approves your account.</p>
+    <p>Kindly give us 1-2 business days to confirm your account. Below is your user details, if there is anything wrong please contact an admin immediately.</p>
     
     <p>Username: <%= @user.username %></p>
     <p>Email: <%= @user.email %></p>
     <p>
     <br>
-    Thank you for patiently waiting!
+    You will be updated through another email once your account is approved. Thank you for patiently waiting! 
     </p>
   </body>
 </html>
