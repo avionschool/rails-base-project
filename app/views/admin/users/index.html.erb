@@ -23,11 +23,15 @@
                       <td><%=user.email%></td>
                       <td><%=user.sign_in_count%></td>
                       <td><%=user.current_sign_in_at%></td>
-                      <td><%=user.status%></td>
+                      <% if user.approved%>
+                        <td><%= 'Approved'%></td>
+                      <% else %>
+                        <td><%= 'Unapproved'%></td>
+                      <% end %>
                       <% if user.roles[0] %>
-                      <td><%= user.roles[0].role%></td>
+                        <td><%= user.roles[0].role%></td>
                       <%else%>
-                      <td></td>
+                        <td></td>
                       <%end%>
                       <td>
                         <%= link_to "Accept", admin_user_path(user.id), method: :patch %>
