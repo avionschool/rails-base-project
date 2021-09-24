@@ -1,4 +1,5 @@
 class Trade < ApplicationRecord
+  paginates_per 15
   belongs_to :user
   belongs_to :stock, foreign_key: 'stock_code', inverse_of: :trades
 

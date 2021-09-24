@@ -12,9 +12,11 @@
     
     <div class="col-12 col-md-6 mb-5">
       <%= form_with scope: :trade, url: create_trade_path(@stock.code), local: true do |f| %>
-        <div class="field mb-3">
-          <%= f.label :transaction_type, "Buy/Sell", class: 'form-label' %>
-          <%= f.select :transaction_type, [["Buy", "buy", class: 'buy'], ["Sell", "sell", class: 'sell']], {}, class: 'selectTransaction buy form-control' %>
+        <div class="field mb-3 d-flex justify-content-between">
+          <%= f.radio_button :transaction_type, 'buy', checked: true, class: "btn-check" %>
+          <%= f.label :transaction_type_buy, "Buy", class: 'btn btn-secondary transaction_type_buy_button' %>
+          <%= f.radio_button :transaction_type, 'sell', class: "btn-check" %>
+          <%= f.label :transaction_type_sell, "Sell", class: 'btn btn-secondary transaction_type_sell_button' %>
         </div>
         <div class="field mb-3">
           <%= f.label :price, class: 'form-label' %>

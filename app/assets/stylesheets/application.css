@@ -12,14 +12,18 @@
   color: red;
 }
 
-.selectTransaction.buy {
-  border-color: green;
-  color: green !important;
+.transaction_type_buy_button {
+  border-color: green !important;
+  background-color: green !important;
+  color: white !important;
+  width: 45% !important;
 }
 
-.selectTransaction.sell {
+.transaction_type_sell_button {
   border-color: red;
-  color: red !important;
+  background-color: rgb(156, 4, 4) !important;
+  color: white !important;
+  width: 45% !important;
 }
 
 .submit__transaction {

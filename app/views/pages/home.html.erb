@@ -1,11 +1,10 @@
 <div class="container">
-  <h1>User Dashboard</h1>
-  
   <% if current_user %>
     <div>
       <h1>Wallet</h1>
-      <%= current_user.wallet.try{running_balance} %>
+      <h5><%= number_to_currency(current_user.wallet.try{running_balance}) %></h5>
     </div>
+  <% end %>
   
     <div>
       <h1>Stocks</h1>
@@ -17,5 +16,5 @@
         </div>
       <% end %>
     </div>
-  <% end %>
+  
 </div>

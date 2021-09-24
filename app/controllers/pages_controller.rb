@@ -12,6 +12,6 @@ class PagesController < ApplicationController
   end
 
   def transactions
-    @transactions = current_user.trades.order(:created_at).reverse
+    @transactions = current_user.trades.order('created_at DESC').page params[:page]
   end
 end
