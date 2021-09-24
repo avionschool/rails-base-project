@@ -27,7 +27,7 @@
           <tr>
             <td><%= user.email %>
             <td><%= user.approved %>
-            <td><%= link_to "Edit", edit_user_path(user) %>
+            <td><%= link_to "View", user_profile_path(user) %>
           </tr>
         <% end %>
       </table>

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     put '/admins/approvals', to: 'admins#approve_account' #acting to approve the account of user
     get '/admins/add_user', to: 'admins#add_user'
     post '/admins/add_user', to: 'admins#create_user'
-    get '/admins/user-portfolio/:id', to: 'admins#show_user', as: :user_profile
+    get '/admins/user-portfolio/:id', to: 'admins#view_user', as: :user_profile
     put '/admins/user-portfolio/:id', to: 'admins#modify_user'
     patch '/admins/user-portfolio/:id', to: 'admins#modify_user'
     get '/admins/user-portfolio/:id/edit', to: 'admins#edit_user', as: :edit_user_profile
