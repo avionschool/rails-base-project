@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :user_stocks
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
   
   authenticated :user do
     root 'dashboard#index', as: 'dashboard'
@@ -10,8 +10,10 @@ Rails.application.routes.draw do
     root 'pages#home'
   end
 
+  resources :users, :only=>[:edit, :update, :show, :index]
+
   namespace :admin do
-    resources :users, only: %i[index show edit update]
+    resources :users, only: %i[index show edit update destroy]
     patch 'users/:id/approve', to: 'users#approve', as: 'user_approve'
   end
 
