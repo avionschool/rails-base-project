@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_23_073211) do
+ActiveRecord::Schema.define(version: 2021_09_24_021509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 2021_09_23_073211) do
     t.bigint "buy_order_id", null: false
     t.bigint "sell_order_id"
     t.bigint "stock_id", null: false
+    t.string "buyer"
+    t.string "seller"
     t.index ["buy_order_id"], name: "index_trades_on_buy_order_id"
     t.index ["sell_order_id"], name: "index_trades_on_sell_order_id"
     t.index ["stock_id"], name: "index_trades_on_stock_id"
