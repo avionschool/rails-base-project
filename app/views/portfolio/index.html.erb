@@ -4,7 +4,7 @@
         <%=render 'shared/sidebar'%>
         <div class="dashboard_main">
             <div class="portfolio_main">
-                <%=render 'shared/portfolio', :fulfilled_orders => @fulfilled_orders%>
+                <%=render 'shared/portfolio', :portfolio => @portfolio%>
                 <div class="portfolio_side">
                     <%=render 'shared/most_active', :stocks => @gainers, :gain => true %>
                     <%=render 'shared/most_active', :stocks => @losers, :gain => false %>

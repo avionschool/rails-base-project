@@ -1,10 +1,9 @@
 class PortfolioController < ApplicationController
   before_action :user_signed_in?
-  before_action :setup_portfolio
+  before_action :setup_gainers_losers
+  before_action :setup_portfolio, only: [:index]
 
-  def index
-    @fulfilled_orders = BuyOrder.where(status: 1, user: current_user)
-  end
+  def index; end
 
   def transactions
     fulfilled_bids = BuyOrder.where(status: 1, user: current_user)
@@ -20,8 +19,18 @@ class PortfolioController < ApplicationController
 
   private
 
-  def setup_portfolio
+  def setup_gainers_losers
     @gainers = @client.stock_market_list(:gainers)
     @losers = @client.stock_market_list(:losers)
+  end
+
+  def setup_portfolio
+    @portfolio = []
+    trades = Trade.all
+    trades.each do |t|
+      if t.buyer == current_user.email && t.seller != current_user.email && t.buy_order.fulfilled?
+        @portfolio.push(t)
+      end
+    end
   end
 end

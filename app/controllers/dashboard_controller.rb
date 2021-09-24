@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
   before_action :user_signed_in?
+  before_action :setup_portfolio, only: [:index]
 
   def index
     @deposits = current_user.wallets.total_deposits
@@ -11,9 +12,21 @@ class DashboardController < ApplicationController
     @admin = current_user.admin?
   end
 
+  private
+
   def current_user_not_approved
     return unless current_user.status != 'Approved'
 
     sign_out_and_redirect(root_path)
+  end
+
+  def setup_portfolio
+    @portfolio = []
+    trades = Trade.all
+    trades.each do |t|
+      if t.buyer == current_user.email && t.seller.nil? && t.buy_order.fulfilled?
+        @portfolio.push(t)
+      end
+    end
   end
 end

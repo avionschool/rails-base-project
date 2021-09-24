@@ -24,7 +24,7 @@
             <div class="dashboard_market">
                 <div class="dashboard_market_left"> 
                     <%=render 'shared/balance', :deposits => @deposits, :withdrawals => @withdrawals, :balance => @balance%>
-                    <%=render 'shared/portfolio', :fulfilled_orders => @fulfilled_orders, :balance => @balance%>
+                    <%=render 'shared/portfolio', :portfolio => @portfolio, :balance => @balance%>
                 </div>
                 <div class="dashboard_market_right">
                     <%=render 'shared/most_active', :stocks => @gainers, :gain => true %>

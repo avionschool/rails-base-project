@@ -6,7 +6,7 @@ class Trade < ApplicationRecord
   validates :quantity, presence: true
   validates :price, presence: true
 
-  def amount
+  def total
     price * quantity
   end
   
