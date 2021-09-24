@@ -3,13 +3,17 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>YOUR ACCOUNT HAS BEEN APPROVED!</p>
-    
-    <p>Username: <%= @user.username %></p>
-    <p>Email: <%= @user.email %></p>
+    <strong>WELCOME TO BWINANCE! YOUR ACCOUNT HAS BEEN APPROVED!</strong>
+    <p class="fw-bold"> Good day, <%= @user.username %>!</p>
+    <p>Congratulations! Your account has been approved after meeting the requirements to access the application.</p>
+    <p>You'll find a summary of your user details below. If there is anything wrong with your details, kindly contact an admin to make the neccesary changes!</p>
+    <strong>Username: <%= @user.username %></strong>
+    <br>
+    <strong>Email: <%= @user.email %></strong>
+
     <p>
     <br>
-    Thank you for signing up!
+    What are you waiting for? Head on to our application and start investing wisely! Good luck!
     </p>
   </body>
 </html>
