@@ -10,10 +10,4 @@ class DashboardController < ApplicationController
     @fulfilled_orders = BuyOrder.where(status: 1, user: current_user)
     @admin = current_user.admin?
   end
-
-  def current_user_not_approved
-    return unless current_user.status != 'Approved'
-
-    sign_out_and_redirect(root_path)
-  end
 end
