@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
+
   devise_for :admins, path: 'admins', controllers: { sessions: "admins/sessions", registrations: "admins/registrations"}
+
+  resources :user_stocks, only: [:create]
+  
   devise_for :users, path: 'users', controllers: { sessions: "users/sessions" , registrations:  'users/registrations'}
 
   root 'home#index'
   
-  resources :users do
-    get 'homepage', to: 'portfolios#index'
-  end
-   
+  resources :users
+
+  get 'my_portfolio', to: 'users#my_portfolio'
   get 'search_stock', to: 'stocks#search'
+
+  resources :wallets
 
 
   #routes for admin only
