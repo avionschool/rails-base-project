@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   before_action :user_signed_in?
-  
+
   def index
     @deposits = current_user.wallets.total_deposits
     @withdrawals = current_user.wallets.total_withdrawals
