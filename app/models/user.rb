@@ -43,10 +43,10 @@ class User < ApplicationRecord
   end
 
   def active_for_authentication? 
-    super && approved? 
+    super && approved?
   end
 
-  def inactive_message 
+  def inactive_message
     approved? ? super : :not_approved
   end
 
