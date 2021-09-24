@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   def stock_already_tracked?(stock_symbol)
     stock = Stock.check_db(stock_symbol)
-    return dalse unless stock
+    return false unless stock
 
     stocks.exists?(id: stock.id)
   end
