@@ -12,7 +12,7 @@ class AdminsController < ApplicationController
     @user.update(approved: true)
     @user.save
     if @user.save
-      ApprovedMailer.approved_account_mailer(@user.email).deliver_now
+      ApproveMailer.approve_account_mailer(@user.email).deliver_now
       redirect_to admins_user_portfolio_path fallback_location: admins_add_user_path, success: 'User Approved'
     else
       redirect_to admins_user_portfolio_path fallback_location: admins_add_user_path, danger: 'Approval failed'
