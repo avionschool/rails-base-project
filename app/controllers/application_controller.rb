@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     if resource.instance_of?(Admin)
       admins_user_portfolio_path
     elsif resource.instance_of?(User)
-      user_homepage_path(current_user)
+      my_portfolio_path(current_user)
     end
   end
 

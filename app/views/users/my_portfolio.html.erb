@@ -11,6 +11,10 @@
             <div class="cd-port">
             <h6 class="card-subtitle mb-2 text-muted"><%= current_user.email%></h6>
             <p class="card-text">I am an aggressive buyer.</p>
+              <!--
+              <div><%= link_to "Wallet", class:"card-link" %></div>
+              <div><%= link_to "Transaction History", class:"card-link" %></div>
+              -->
               <a href="#" class="card-link">Wallet</a>
               <a href="#" class="card-link">Transaction History</a>
             </div>
@@ -36,6 +40,10 @@
    <div class="line4"></div>
 </div>
 
-<div id="results"></div>
+<div id="search">
 
-<%= render 'portfolios/search' %>
+</div>
+<%= render 'users/search' %>
+<% if !@tracked_stocks.empty? %>
+  <%= render 'stocks/list' %>
+<% end %>
