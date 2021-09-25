@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_many :user_stocks, dependent: :restrict_with_exception
   has_many :stocks, through: :user_stocks
 
-  validates :logo, :stock_symbol, :current_price, presence: true #have to make a rspec test for this
+  #validates :logo, :stock_symbol, :current_price, presence: true #have to make a rspec test for this
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
