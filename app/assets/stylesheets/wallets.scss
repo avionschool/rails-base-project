@@ -17,18 +17,18 @@ h4 {
   font-weight: 600 !important;
 }
 
-.deposit_card {
-  display: flex;
-  flex-direction: column;
-  margin-left: 2rem;
-  width: 70%;
-}
+// .deposit_card {
+//   display: flex;
+//   flex-direction: column;
+//   margin-left: 2rem;
+//   width: 70%;
+// }
 
 .form_item {
   display: flex;
   align-items: center;
   margin-top: 30%;
-  margin-left: 60%;
+  margin-left: -100%;
   margin-right: -70%;
 }
 
@@ -47,23 +47,23 @@ h4 {
 }
 
 .wallets_btn {
-  font-size: 20px;
+  font-size: 40px;
 }
 
-.withdraw_btn {
-  font-size: 20px;
-  background: rgb(165, 42, 42) !important;
-  border: none !important;
-  color: whitesmoke;
-}
+// .withdraw_btn {
+//   font-size: 20px;
+//   background: rgb(165, 42, 42) !important;
+//   border: none !important;
+//   color: whitesmoke;
+// }
 
-.withdraw_highlights {
-  color: rgb(165, 42, 42) !important;
-}
+// .withdraw_highlights {
+//   color: rgb(165, 42, 42) !important;
+// }
 
-.deposit_highlights {
-  color: green !important;
-}
+// .deposit_highlights {
+//   color: green !important;
+// }
 
 .deposits_account_balance {
   display: flex;
@@ -74,8 +74,8 @@ h4 {
   border-radius: 0.25rem;
   padding: 1rem;
   margin-top: 15%;
-  margin-left: 50%;
-  margin-right: -50%;
+  margin-left: -120%;
+  margin-right: 90%;
   border-radius: 10px;
   // box-shadow: -1px 9px 30px 0px rgba(85, 85, 85, 0.19);
 }

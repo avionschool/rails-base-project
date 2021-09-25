@@ -1,15 +1,21 @@
 class Wallet < ApplicationRecord
   belongs_to :user
 
-  # def self.total_deposits
-  #   sum(:deposit)
-  # if transaction_type == "credit"
-  #   @user.update!(balance: @user.balance + @amount)
-  #    elsif transaction_type == "debit"
-  #   @user.update!(balance: @user.balance - @amount)
-  # end
+  validates :deposit, :withdraw, :id, :user_id, :updated_at, :created_at, presence: true
 
-  # def self.total_balance
-  #   total_deposits - total_withdrawals
-  # end
+  def total_deposits
+     # balance += deposit
+    sum(:deposit)
+  if transaction_type == "deposit"
+    @user.update!(balance: @user.balance + @amount)
+     elsif transaction_type == "withdraw"
+    @user.update!(balance: @user.balance - @amount)
+     end
+  end
+
+  def total_balance
+    deposit - withdrawal
+    total_balance += deposit
+    # balance -= withdrawal
+  end
 end

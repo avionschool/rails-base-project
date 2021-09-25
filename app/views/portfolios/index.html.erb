@@ -1,5 +1,6 @@
 <%= csrf_meta_tags %>
 <div class="container">
+<%= link_to image_tag('name-logo.png', height: 120, width: 260), root_path, class: "navbar-brand"%>
   <div class="row">
     <div class="col-sm">
       <%# <div class="card" style="width: 18rem;" > %>
@@ -11,8 +12,8 @@
             <div class="cd-port">
             <h6 class="card-subtitle mb-2 text-muted"><%= current_user.email%></h6>
             <p class="card-text">I am an aggressive buyer.</p>
-              <a href="#" class="card-link">Wallet</a>
-              <a href="#" class="card-link">Transaction History</a>
+              <a href="/wallets/new" class="card-link">Wallet</a>
+              <a href="/wallets" class="card-link">Transaction History</a>
             </div>
     </div>
 

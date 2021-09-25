@@ -10,6 +10,17 @@ Rails.application.routes.draw do
    
   get 'search_stock', to: 'stocks#search'
 
+  # resources :wallets do
+  #   collection do
+  #     get 'deposit'
+  #     get 'withdraw'
+  #   end
+  # end
+
+  resources :wallets 
+  resources :transaction
+
+
 
   #routes for admin only
   authenticated :admin do
