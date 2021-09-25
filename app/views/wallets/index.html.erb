@@ -1,0 +1,9 @@
+<% @wallets.each do |wallet| %>
+   <p> ID: <%= wallet.id %> </p>
+   <p> User ID: <%= wallet.user_id %> </p>
+   <p> deposit: <%= wallet.deposit %> </p>
+   <p> withdraw: <%= wallet.withdraw %> </p>
+   <p> Created At: <%= wallet.created_at %> </p>
+   <p> Updated At: <%= wallet.updated_at %> </p>
+<% end %>
+<%= link_to 'deposit/withdraw', new_wallet_path, method: :get %>

@@ -1,0 +1,25 @@
+<div class="container wallets_container">
+	<div class="deposit_card">
+		<h4> WALLET </h4>
+		<%= form_with scope: :wallet, model: @wallet, locale: true do |form| %>
+			<div class="form-group form_item">
+				<div class="col-8">
+					<%= form.label :deposit, "Cash in:", class: "col-3 col-form-label wallets_label"%>
+					<%= form.number_field :deposit, class: "form-control shadow rounded", placeholder: "Deposit" %>
+				</div>
+				<div class="col-8">
+					<%= form.label :withdraw, "Cash out:", class: "col-3 col-form-label wallets_label"%>
+					<%= form.number_field :withdraw, class: "form-control shadow rounded", placeholder: "Withdraw" %>
+				</div>
+			</div>
+			<div class="form_credit_details_btn">
+				<%= form.submit class: "btn btn-secondary wallets_btn" %>
+			</div>
+	    <%end%>
+	<div class="deposits_account_balance">
+		<div class="deposits_account_balance_main">
+			<h2>$ <%= @total_balance %></h2>
+		</div>
+		</div>
+	</div>
+</div>
