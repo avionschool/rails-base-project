@@ -1,5 +1,5 @@
 class Stock < ApplicationRecord
-  has_many :user_stocks
+  has_many :user_stocks, dependent: :restrict_with_exception
   has_many :users, through: :user_stocks
 
   def self.new_lookup(stock_symbol)
