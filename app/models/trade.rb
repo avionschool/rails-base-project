@@ -1,6 +1,6 @@
 class Trade < ApplicationRecord
   belongs_to :stock
-  belongs_to :buy_order
+  belongs_to :buy_order, optional: true
   belongs_to :sell_order, optional: true
 
   validates :quantity, presence: true

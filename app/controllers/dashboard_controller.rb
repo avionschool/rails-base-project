@@ -18,7 +18,7 @@ class DashboardController < ApplicationController
     @portfolio = []
     trades = Trade.all
     trades.each do |t|
-      if t.buyer == current_user.email && t.seller.nil? && t.buy_order.fulfilled?
+      if t.buyer == current_user.email && t.seller != current_user.email && t.buy_order.fulfilled?
         @portfolio.push(t)
       end
     end
