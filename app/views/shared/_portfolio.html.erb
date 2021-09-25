@@ -38,9 +38,9 @@
                         <td><%=f.price%></td>
                         <td><%=f.quantity.to_i%></td>
                         <td><%=f.total%></td>
-                        <td><%=f.seller%></td>
-                        <td><%=f.id%></td>
-                        <td>21%</td>
+                        <td><%=f.stock.last_price * f.quantity%></td>
+                        <td><%=(f.stock.last_price * f.quantity)-f.total%></td>
+                        <td><%=number_to_percentage(((f.stock.last_price * f.quantity)-f.total)/f.total)%></td>
                     </tr>
                     <%end%>
                 <%end%>

@@ -8,13 +8,13 @@ class PortfolioController < ApplicationController
   def transactions
     fulfilled_bids = BuyOrder.where(status: 1, user: current_user)
     fullfilled_sells = SellOrder.where(status: 1, user: current_user)
-    @fullfilled_transactions = fulfilled_bids.union(fullfilled_sells).order("updated_at DESC")
+    @fullfilled_transactions = fulfilled_bids.union(fullfilled_sells).order('updated_at DESC')
   end
 
   def pending_orders
     pending_bids = BuyOrder.where(status: 0, user: current_user)
     pending_sells = SellOrder.where(status: 0, user: current_user)
-    @pending_orders = pending_bids.union(pending_sells).order("updated_at DESC")
+    @pending_orders = pending_bids.union(pending_sells).order('updated_at DESC')
   end
 
   private
@@ -28,9 +28,7 @@ class PortfolioController < ApplicationController
     @portfolio = []
     trades = Trade.all
     trades.each do |t|
-      if t.buyer == current_user.email && t.seller != current_user.email && t.buy_order.fulfilled?
-        @portfolio.push(t)
-      end
+      @portfolio.push(t) if t.buyer == current_user.email && t.seller != current_user.email && t.buy_order.fulfilled?
     end
   end
 end
