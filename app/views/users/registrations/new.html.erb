@@ -1,29 +1,53 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="col">
+  <div class="text-center">
+    <%= image_tag 'tradify-transparent', :class => "user_reg_img" %>
+    <h2>Smart move! Sign up here.</h2>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <%= form_for(resource, as: resource_name, id: "form1-usr-reg", url: registration_path(resource_name)) do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="form-outline mb-4">
+      <%= f.label :username, class: "form-label" %>
+      <%= f.text_field :username, autofocus: true, autocomplete: "username", id:"form3Example3", class: "form-control"  %>
+    </div>
+  
+    <div class="row mb=4">
+      <div class="col">
+        <div class="form-outline">
+          <%= f.label :first_name, class: "form-label" %>
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "first name", id: "form3Example1", class: "form-control" %>
+        </div>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+      <div class="col">
+        <div class="form-outline">
+          <%= f.label :last_name, class: "form-label" %>
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "last name", id: "form3Example2", class: "form-control" %></br>
+        </div>
+      </div>
+    </div>
 
-<%= render "users/shared/links" %>
+    <div class="form-outline mb-4">
+      <%= f.label :email, class: "form-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "form3Example3", class: "form-control" %>
+    </div>
+
+    <div class="form-outline mb-4">
+      <%= f.label :password, class: "form-label" %>
+      <%= f.password_field :password, autocomplete: "new-password", id: "form3Example4", class: "form-control" %>
+    </div>
+
+    <div class="form-ountline mb-4">
+      <%= f.label :password_confirmation, class: "form-label" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "form3Example4", class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up", class: "btn btn-warning" %>
+    </div>
+
+  <% end %>
+</div>
+
+

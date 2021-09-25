@@ -1,13 +1,33 @@
-<h2> Welcome Admin! </h2>
+<div class="col">
+  <div class="text-center">
+    <h2>Transactions</h2>
+  </div>
 
-<p> Transactions </p>
-<%= @trades.each do |trade| %>
-  <%= trade.user_id %>
-  <%= trade.stock_code %>
-  <%= trade.price %>
-  <%= trade.quantity %>
-  <%= trade.transaction_type %>
-  <%= trade.created_at %>
-  <%= trade.total_price %>
-<% end %>
+  <table class="table table-dark table-hover">
+
+    <thead>
+      <th scope="col">User ID</th>
+      <th scope="col">Stock ID</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Transaction Type</th>
+      <th scope="col">Date</th>
+      <th scope="col">Total Price</th>
+    </thead>
+
+    <tbody>
+      <tr>
+      <% @trades.each do |trade| %>
+          <td><%= trade.user_id %></td>
+          <td><%= trade.stock_id %></td>
+          <td><%= trade.price %></td>
+          <td><%= trade.quantity %></td>
+          <td><%= trade.transaction_type %></td>
+          <td><%= trade.created_at %></td>
+          <td><%= trade.total_price %></td> 
+      </tr>  
+      <% end %>   
+    </tbody>
+  </table>
+</div>
 

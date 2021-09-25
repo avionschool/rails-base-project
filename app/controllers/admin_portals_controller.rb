@@ -14,9 +14,10 @@ class AdminPortalsController < ApplicationController
     @user.update(status: 'approved')
     return unless @user.save
 
+    flash[:notice] = 'Successfully approved trader registration'
     ApprovedAccountMailer.with(email: @user.email).approve_email.deliver_now
     CreateUserWallet.call(@user)
-    redirect_to admins_home_path
+    redirect_to admins_show_pending_users_path
   end
 
   def edit_user
@@ -26,7 +27,8 @@ class AdminPortalsController < ApplicationController
   def update_user
     @user = User.find(params[:id])
     @user.update(params.require(:user).permit(:username, :first_name, :last_name, :email))
-    redirect_to admins_home_path if @user.update(params.require(:user).permit(:username, :first_name, :last_name, :email))
+    flash[:notice] = 'Sucessfully updated trader account'
+    redirect_to admins_show_registered_users_path if @user.update(params.require(:user).permit(:username, :first_name, :last_name, :email))
   end
 
   def add_user; end
@@ -36,6 +38,7 @@ class AdminPortalsController < ApplicationController
     if @user.save && @user.update(status: 'approved')
       ApprovedAccountMailer.with(email: @user.email).approve_email.deliver_now
       CreateUserWallet.call(@user)
+      flash[:notice] = 'Successfully created new trader account'
       redirect_to admins_home_path
     else
       flash[:error] = @user.errors.full_messages.first

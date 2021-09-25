@@ -169,6 +169,34 @@ body::-webkit-scrollbar {
 h1 {
   background: rgb(214, 138, 16);
   background-image: linear-gradient(90deg, rgb(247, 174, 73) 0%, rgb(214, 138, 16) 30%);
+}
+/* User/Admin forms */
+
+.user_reg_image {
+  width: 100%;
+}
+
+.user_reg_image img {
+  width: 35%;
+}
+
+form {
+  width: 30%;
+  margin-left: 35%;
+}
+
+.user_reg_img {
+  margin-top: -10vh;
+  margin-bottom: -20vh;
+}
+
+.col {
+  background-color: rgb(25,25,25) !important;
+}
+
+h2 {
+  background: rgb(214, 138, 16);
+  background-image: linear-gradient(90deg, rgb(247, 174, 73) 0%, rgb(214, 138, 16) 30%, rgba(255,0,142,1) 100%);
   background-size: max-content;
   background-clip: text;
   -webkit-background-clip: text;
@@ -176,7 +204,6 @@ h1 {
   -webkit-text-fill-color: transparent; 
   -moz-text-fill-color: transparent;
 }
-
 
 .landing__main__image {
   width: 100%;
@@ -218,3 +245,58 @@ h1 {
   align-self: flex-start !important;
   text-align: right;
 }
+.form-label {
+  color: rgb(214, 138, 16);
+}
+
+body {
+  background-color: rgb(25,25,25) !important;
+}
+
+.admin-edit, .admin-create {
+  margin-top: 8%;
+}
+
+.button_to {
+  margin: 0 !important;
+  padding: 0;
+}
+
+/* Admin tables */
+
+.table-hover {
+  width: 70% !important;
+  margin-left: 15% !important;
+  margin-top: 5% !important;
+}
+
+.table-dark {
+  --bs-table-bg: rgb(25,25,25) !important;
+}
+
+thead {
+  color:rgb(214, 138, 16) !important;
+}
+
+/* card */
+
+.card {
+  width: 60%;
+  background-color: #485063 !important;
+  margin-top: 10%;
+  margin-left: 20%;
+}
+
+.card-header {
+  color:rgb(214, 138, 16) !important;
+}
+
+.card-text, .card-title {
+  color: white;
+  margin-left: 1.5%;
+}
+
+.bck-btn {
+  margin-left: 48%;
+}
+

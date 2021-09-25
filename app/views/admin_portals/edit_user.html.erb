@@ -1,12 +1,35 @@
-<%= form_with model: @user, url: update_user_path, method: :patch, locale: true do |f| %>
-  <p> Create Trader Account </p>
-  <div class="field">
-    <%= f.text_field :username, placeholder: "Username" %>
-    <%= f.text_field :first_name, placeholder: "First Name" %>
-    <%= f.text_field :last_name, placeholder: "Last Name" %>
-    <%= f.email_field :email, placeholder: "Email" %>
+<div class="col">
+  <div class="text-center admin-edit">
+    <h2> Edit Trader Account </h2></br>
   </div>
-  <div class="submit-btn">
-    <%= f.submit "Save Changes" %>
-  </div>
-<% end %>
+
+  <%= form_with model: @user, url: update_user_path, method: :patch, locale: true do |f| %>
+  
+    <div class="form-outline mb-4">
+      <%= f.label :username, class: "form-label" %><br />
+      <%= f.text_field :username, id: "form2Example1", class: "form-control" %>
+    </div>
+
+    <div class="form-outline mb-4">
+      <%= f.label :first_name, class: "form-label" %><br />
+      <%= f.text_field :first_name, id: "form2Example1", class: "form-control" %>
+    </div>
+
+    <div class="form-outline mb-4">
+      <%= f.label :last_name, class: "form-label" %><br />
+      <%= f.text_field :last_name, id: "form2Example1", class: "form-control" %>
+    </div>
+
+    <div class="form-outline mb-4">
+      <%= f.label :email, class: "form-label" %><br />
+      <%= f.email_field :email, id: "form2Example1", class: "form-control" %>
+    </div>
+    
+    <div class="submit-btn">
+      <%= f.submit "Save Changes", class: "btn btn-warning" %>
+      <%= link_to "Cancel", admins_show_registered_users_path, class: "btn btn-secondary" %>
+    </div>
+
+  <% end %>
+
+</div>

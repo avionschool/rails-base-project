@@ -1,13 +1,30 @@
-<h1> Registered Users </h1>
+<div class="col">
+  <div class="text-center">
+    <h2>Registered Users</h2>
+  </div>
 
-<% @users.each do |user| %>
-  <% if user.status == 'approved' %>
-   <p> Username: <%= user.username %> </p>
-   <p> Email: <%= user.email %>  </p>
-    <%= link_to "View", admins_view_path(id: user.id), method: 'get' %>
-    <%= link_to "Edit User", edit_user_path(id: user.id), method: 'get' %> </br>
-  <% end %>
-  
-<% end %>
+  <table class="table table-dark table-hover">
+    
+    <thead>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Action</th>
+    </thead>
 
-<%= link_to "Back", admins_home_path %>
+    <tbody>
+      <tr>
+      <% @users.each do |user| %>
+        <% if user.status == 'approved' %>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td><%= link_to "View User", admins_view_path(id: user.id), method: 'get', class: "btn btn-success" %>
+          <%= link_to "Edit User", edit_user_path(id: user.id), method: 'get', class: "btn btn-warning" %> </td>
+      </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+
