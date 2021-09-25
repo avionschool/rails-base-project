@@ -1,0 +1,42 @@
+<%= csrf_meta_tags %>
+<div class="container">
+<%= link_to image_tag('name-logo.png', height: 120, width: 260), root_path, class: "navbar-brand"%>
+  <div class="row">
+    <div class="col-sm">
+      <%# <div class="card" style="width: 18rem;" > %>
+        <div class="card-body">
+            <h5 class="card-title"> Welcome, <%= current_user.first_name%> <%= current_user.last_name%></h5>
+            <div class="line"></div>
+             </div>
+      <%# </div> %>
+            <div class="cd-port">
+            <h6 class="card-subtitle mb-2 text-muted"><%= current_user.email%></h6>
+            <p class="card-text">I am an aggressive buyer.</p>
+              <a href="/wallets/new" class="card-link">Wallet</a>
+              <a href="/wallets" class="card-link">Transaction History</a>
+            </div>
+    </div>
+
+<div class="rectangle">
+    <div class="col-sm">
+     <div class="os-text">
+      <h2> Owned Stocks </h2>
+     </div>
+      <tr>
+      <div class='category'>
+         <div class="company"><td> Company </td></div>
+         <div class="price"><td> Price </td></div>
+         <div class="quantity"><td> Quantity </td></div>
+      </div>
+    </div>
+</div>
+  </div>
+   <div class="line1"></div>
+   <div class="line2"></div>
+   <div class="line3"></div>
+   <div class="line4"></div>
+</div>
+
+<div id="results"></div>
+
+<%= render 'portfolios/search' %>

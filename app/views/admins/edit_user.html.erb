@@ -1,0 +1,16 @@
+<div>
+  <%= form_with scope: :user, url: user_profile_path, method: :patch  do |f| %>
+    <div>
+      <%= f.email_field :email, autofocus: true, value: @user.email %>
+      <%= f.text_field :first_name, autofocus: true, value: @user.first_name %>
+      <%= f.text_field :last_name, autofocus: true, value: @user.last_name %>
+      <%= f.text_field :username, autofocus: true, value: @user.username %>
+    </div>
+    <div>
+      <%= f.submit "Edit User" %>
+      <%#= link_to %>
+    </div>
+    <div>
+    </div>
+  <% end %>
+</div>

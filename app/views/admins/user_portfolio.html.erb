@@ -1,0 +1,31 @@
+<%= csrf_meta_tags %>
+<h1> Admin Center <h1>
+
+<section>
+  <section>
+    <div>
+      <h1>User List</h1> 
+      <%= link_to 'Create User', admins_add_user_path %>
+    </div> 
+    <%# add user path should have views and controller %>
+     <%= link_to "Pending Approvals", admins_approvals_path, method: 'get'%>
+    <div>
+      <%# data headers %>
+      <%# if @users.empty? %>
+      <%# else %>
+
+      <%# loop all data here %>
+      <table>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.email %>
+            <td><%= user.approved %>
+            <td><%= link_to "View", user_profile_path(user) %>
+          </tr>
+        <% end %>
+      </table>
+       <%# end %>
+  </section>
+</section>
+
+<%= link_to "Sign out for Admin", destroy_admin_session_path, method: :delete%>

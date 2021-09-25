@@ -1,0 +1,39 @@
+.st-text {
+  position: absolute;
+  width: 180px;
+  height: 37px;
+  right: -3px;
+  top: 120px;
+  box-shadow: 5px 5px 5px 0px rgba(16, 16, 16, 0.75) !important;
+  background: #f98312;
+  border-radius: 5px;
+}
+
+.st-text h3 {
+  position: absolute;
+  //   width: 174px;
+  //   height: 41px;
+  left: 10px;
+  top: 5px;
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #ffffff;
+}
+.st-btn {
+  position: absolute;
+  right: -30%;
+  width: 20px;
+  height: 20px !important;
+}
+.card-st {
+  position: absolute;
+  right: 13%;
+  top: 25%;
+}

@@ -1,0 +1,22 @@
+<h3>User Account Information</h3>
+  <section>
+    <div >
+      <h3>Username: </h3>
+      <h5><%= @user.username %></h5>
+    </div>
+    <div>
+      <h3>Email: </h3>
+      <h5><%= @user.email %></h5>
+    </div>
+    <div>
+      <h3>Account Created: </h3>
+      <h5><%= @user.created_at %></h5>
+    </div>
+    <div>
+      <h3>Last Updated: </h3>
+      <h5><%= @user.updated_at %></h5>
+    </div>
+
+    <%= link_to "Edit", edit_user_profile_path(@user) %>
+    <%= link_to "Cancel and go back to admin home", admins_user_portfolio_path %>
+  </section>
