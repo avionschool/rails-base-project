@@ -3,7 +3,7 @@
     <div class= "card text-center mb-5">
       <div class="card-body">
         <% if current_user.approved? %>
-          <h2 class="card-title">Wallet</h2>
+          <h3 class="card-title">Wallet balance</h3>
           <h2><%= number_to_currency(current_user.wallet.try{running_balance}) %></h2>
         <% else %>
           <h3>Your account is still pending for approval.</h3>
@@ -13,7 +13,7 @@
     </div>
   <% end %>
 
-  <div class="container">
+  <div class="container mb-5">
     <h1>Most Active Stocks</h1>
     <table class="table">
       <thead>
@@ -25,13 +25,17 @@
         </tr>
       </thead>
       <tbody>
+        <% if @home.empty? %>
+          <span>Something went wrong.</span>
+        <% else %>
         <% @home.each do |stock| %>
-        <tr>
-          <td><%= stock.symbol %></td>
-          <td><%= stock.company_name %></td>
-          <td class= "text-center"><%= number_to_currency(stock.avg_total_volume) %></td>
-          <td class= "text-center <%= stock.change_percent > 0 ? 'buy' : 'sell' %>"><%= number_to_percentage(stock.change_percent * 100, precision: 2) %></td>
-        </tr>
+          <tr>
+            <td><%= stock.symbol %></td>
+            <td><%= stock.company_name %></td>
+            <td class= "text-center"><%= number_to_currency(stock.avg_total_volume) %></td>
+            <td class= "text-center <%= stock.change_percent > 0 ? 'buy' : 'sell' %>"><%= number_to_percentage(stock.change_percent * 100, precision: 2) %></td>
+          </tr>
+        <% end %>
       <% end %>
       </tbody>
     </table>
