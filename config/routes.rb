@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :admins, path: 'admins', controllers: { sessions: "admins/sessions", registrations: "admins/registrations"}
 
   resources :user_stocks, only: [:create]
-  
+
+  resources :user_stocks, only: [:create, :destroy]
+
   devise_for :users, path: 'users', controllers: { sessions: "users/sessions" , registrations:  'users/registrations'}
 
   root 'home#index'
