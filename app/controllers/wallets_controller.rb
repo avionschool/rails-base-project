@@ -15,8 +15,8 @@ class WalletsController < ApplicationController
   def create
     @wallet = Wallet.new(wallet_params)
     @wallet.user_id = 4
-    @wallet.created_at = Time.now
-    @wallet.updated_at = Time.now
+    @wallet.created_at = Time.current
+    @wallet.updated_at = Time.current
     if @wallet.save
       flash[:notice] = 'Transaction has been added.'
       redirect_to wallets_path
