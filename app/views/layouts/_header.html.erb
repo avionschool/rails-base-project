@@ -1,0 +1,7 @@
+<% if current_review_center %>
+  <%= link_to 'Home-RC', authenticated_rc_root_path %>
+  <%= link_to 'Signout Review Center', destroy_review_center_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Home', root_path %>
+  <%= link_to 'Review Center', new_review_center_session_path %>
+<% end %>
