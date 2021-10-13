@@ -28,3 +28,4 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   #   super(scope)
   # end
 end
+

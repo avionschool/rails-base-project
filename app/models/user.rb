@@ -8,3 +8,4 @@ class User < ApplicationRecord
 
   enum status: { free: 0, paid: 1 }
 end
+
