@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_10_13_141440) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   create_table "main_books", force: :cascade do |t|
     t.integer "user_id"
-    t.string "date_mainb"
+    t.datetime "date_mainb"
     t.string "mainbook_description"
     t.string "or_vat_reg_tin_mainb"
     t.float "debit_mainb"
