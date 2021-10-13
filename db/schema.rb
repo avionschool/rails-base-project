@@ -10,10 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_11_145507) do
+ActiveRecord::Schema.define(version: 2021_10_12_151140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "name"
+    t.string "details"
+    t.integer "teacher_subject_id"
+    t.integer "rc_course_id"
+    t.float "price"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rc_courses", force: :cascade do |t|
+    t.integer "review_center_id"
+    t.integer "course_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rc_teachers", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "review_center_id"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "review_centers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +61,21 @@ ActiveRecord::Schema.define(version: 2021_10_11_145507) do
     t.index ["email"], name: "index_review_centers_on_email", unique: true
     t.index ["name"], name: "index_review_centers_on_name", unique: true
     t.index ["reset_password_token"], name: "index_review_centers_on_reset_password_token", unique: true
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "name"
+    t.integer "course_id"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "teacher_subjects", force: :cascade do |t|
+    t.integer "rc_teacher_id"
+    t.integer "subject_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
