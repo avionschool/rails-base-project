@@ -3,8 +3,6 @@ require 'rails_helper'
 RSpec.describe Lesson, type: :model do
   context 'when validating presence' do
     it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_presence_of(:teacher_subject_id) }
-    it { is_expected.to validate_presence_of(:rc_course_id) }
     it { is_expected.to validate_presence_of(:price) }
   end
 
