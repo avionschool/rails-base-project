@@ -15,6 +15,5 @@ RSpec.describe Admin, type: :model do
 
       expect(admin2).not_to be_valid
     end
-    
   end
 end
