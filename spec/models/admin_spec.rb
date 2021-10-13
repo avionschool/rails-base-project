@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Admin, type: :model do
-  context with 'validation' do
+  context 'when validating admin' do
     it 'is not valid without username' do
       admin1 = described_class.new
       admin1.username = nil
