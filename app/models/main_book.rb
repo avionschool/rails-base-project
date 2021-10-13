@@ -1,0 +1,2 @@
+class MainBook < ApplicationRecord
+end

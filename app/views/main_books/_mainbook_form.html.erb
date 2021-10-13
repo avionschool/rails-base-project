@@ -1,0 +1,23 @@
+<%= form_with url: main_books_path, model: @mainbook :local => true do |f| %>
+
+<div>
+<div class="field">
+  <th><%= f.label :Category %></th>
+  <th><%= f.text_field :category_name %></th>
+</div>
+
+<div class="field">
+  <th><%= f.label :Description%></th>
+  <th><%= f.text_field :category_body %></th>
+</div>
+
+ <div class="field">
+
+</div>
+
+<div class = "form_button">
+  <button type="button" class="btn btn-outline-light"><%= f.submit :"Add" %></button>
+  <button type="button" class="btn btn-outline-light">back</button>
+</div>
+<% end %>
+</div>
