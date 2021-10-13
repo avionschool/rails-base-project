@@ -1,1 +1,174 @@
 @import 'bootstrap/dist/css/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+$color_darkblue: #222C3C;
+$color_mustard: #D8B26E;
+$color_brown: #B69B7D;
+$color_cream: #E2E0D5;
+$color_offwhite: #EDF2F4;
+$mainFont: 'Roboto Condensed', sans-serif;
+$subFont: 'Roboto', sans-serif;;
+
+$mobileS: 320px;
+$mobileM: 375px;
+$mobileL: 430px;
+$tablet: 770px;
+$laptop: 1024px;
+
+body {
+  background-color: $color_offwhite !important;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  }
+
+  .navbar-brand {
+    color: $color_mustard !important;
+    font: 150% $mainFont!important;
+}
+
+.navbar{
+  background-color:$color_darkblue !important;
+}
+
+.nav-item {
+  a {
+    color: $color_mustard !important;
+    font: 100% $subFont !important;
+    cursor: pointer;
+  }
+}
+
+#navbarNav {
+justify-content: flex-end !important;
+}
+
+.footer
+{
+  text-align: center;
+  font-size: 80%;
+  position:absolute;
+   bottom:0;
+   width:100vw;
+   height:40px;
+}
+
+
+//==============HOME PAGE===============
+
+.home_page_container {
+  margin-top: 8vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 200% $mainFont !important;
+}
+
+.home_page_greet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;    
+  align-items: baseline;
+  align-content: stretch;
+  color: $color_darkblue !important;
+  h1 {
+    font: 180% $mainFont !important;
+    margin-left: 10%;
+    margin-right: 15%;
+  }
+  h5 {
+    display: flex;
+    margin-left: 10%;
+    margin-right: 15%;
+    margin-bottom: 15%;
+  }
+}
+
+.home_page_image {
+  margin-right: 10%;
+  width: 35vw !important;
+  height: auto !important;
+}
+
+.btn {
+  color: $color_mustard;
+  background-color: $color_darkblue;
+  margin-top: -5%;
+  margin-left: 10%;
+  margin-right: 15%;
+  margin-bottom: 15%;
+}
+
+//==========MEDIA QUERY============
+
+
+/*=== TABLET AND LAPTOP ===*/
+
+@media only screen and (max-width: $tablet), (max-width: $laptop)
+{
+
+}
+
+/*=== S-M-L MOBILE ===*/
+
+@media only screen and (max-width: $mobileS), (max-width: $mobileM), (max-width: $mobileL) {
+
+.home_page_container {
+  width: 100vw;
+  height: 80vh;
+  margin-top: 5vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 200% $mainFont !important;
+  display: grid;
+  grid-template-rows: 10% 20% 15% 25% 10% 10% 10% ;
+  grid-template-columns: 10% 10% 20% 20% 20% 10% 10%;
+}
+
+.home_page_greet {
+  text-align: center;
+  color: $color_darkblue !important;
+  grid-column-start: 2;
+  grid-column-end: 7;
+  grid-row-start: 4;
+  grid-row-end: 7;
+  h1 {
+    font: 70% $mainFont !important;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  h5 {
+    margin-bottom: 15%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+.home_page_image, .g-col-6 {
+  grid-column-start: 3;
+  grid-column-end: 6;
+  grid-row-start: 2;
+  grid-row-end: 4;
+  margin: 0 auto;
+  width: 60vw !important;
+  height: auto !important;
+}
+
+.btn {
+  color: $color_mustard;
+  background-color: $color_darkblue;
+  margin: 0 auto;
+}
+
+.footer
+  {
+    text-align: center;
+    font-size: 40%;
+    position:absolute;
+    bottom:0;
+    width:100vw;
+    height:40px;
+  }
+}
