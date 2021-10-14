@@ -1,34 +1,68 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">JSBB-Acads</a>
+    <%= link_to image_tag('TopAcademy.png', id: "drag1") , root_path, class:"navbar-brand" %>
+    <form class="d-flex w-50">
+      <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
+    </form>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-evenly">
+      
         <% if current_review_center %>
           <li class="nav-item">
             <%= link_to 'Home-RC', authenticated_rc_root_path, class:"nav-link active" %>
           </li>
 
-          <%= link_to 'Signout Review Center', destroy_review_center_session_path, method: :delete %>
-        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Signout Review Center', destroy_review_center_session_path, method: :delete %>
+          </li>
+
+        <% elsif current_user %>
           <li class="nav-item">
             <%= link_to 'Home', root_path, class:"nav-link active" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to 'My Cart', root_path, class:"nav-link active" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to 'My Modules', root_path, class:"nav-link active" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to 'My Transactions', root_path, class:"nav-link active" %>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><%= link_to 'Edit Profile', edit_user_registration_path, class:"dropdown-item" %></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to 'Signout', destroy_user_session_path, method: :delete, class:"dropdown-item" %></a></li>
+            </ul>
+          </li>
+
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Login', new_user_session_path, class:"nav-link active btn btn-secondary" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign-up', new_user_registration_path, class:"nav-link active btn btn-secondary" %>
           </li>
           <li class="nav-item">
             <%= link_to 'Review Center', new_review_center_session_path, class:"nav-link" %>
           </li>
-           <li class="nav-item">
-            <%= link_to 'Become a Student', new_user_session_path, class:"nav-link" %>
-          </li>
+          
         <% end %>
+
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+
     </div>
   </div>
 </nav> 

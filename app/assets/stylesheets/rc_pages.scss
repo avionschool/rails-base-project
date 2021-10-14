@@ -1,3 +1,25 @@
 // Place all the styles related to the rc_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+// 
+
+.navbar-brand{
+  margin-right: 0 !important;
+  padding-left: 1rem !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  width: 15%;
+  #drag1{
+    padding: 0;
+    width: 55%;
+  }
+}
+
+.forgot-pass{
+  text-decoration: none !important;
+}
+
+a{
+  text-decoration: none !important;
+}
