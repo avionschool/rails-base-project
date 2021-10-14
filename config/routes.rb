@@ -8,11 +8,11 @@ Rails.application.routes.draw do
     registrations: 'review_centers/registrations'
   }
 
-  devise_scope :review_center do
-    authenticated do
-      root to: 'rc_pages#home', as: 'authenticated_rc_root'
-    end
+ 
+  authenticated :review_center do
+    root to: 'rc_pages#home', as: 'authenticated_rc_root'
   end
+  
 
 
   root 'public_pages#landing'
