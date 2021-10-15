@@ -1,5 +1,4 @@
 class AdminPagesController < ApplicationController
-  
   def index
     @users = User.all
   end
@@ -10,5 +9,4 @@ class AdminPagesController < ApplicationController
     flash[:notice] = 'Successfully approve user payment'
     redirect_to admins_home_path
   end
-
 end
