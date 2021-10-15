@@ -1,0 +1,39 @@
+<%= form_with scope: :main_book, url: mainbook_entry_path, model: @main_book, :local => true do |f| %>
+
+<div>
+<div class="field">
+  <th><%= f.label :"Date" %></th>
+  <th><%= f.date_field :date_mainb %></th>
+</div>
+
+<div class="field">
+  <th><%= f.label :"Description"%></th>
+  <th><%= f.text_field :mainbook_description %></th>
+</div>
+
+<div class="field">
+  <th><%= f.label :"or-vat-reg-tin"%></th>
+  <th><%= f.text_field :or_vat_reg_tin_mainb %></th>
+</div>
+
+<div class="field">
+  <th><%= f.label :"DEBIT (+)"%></th>
+  <th><%= f.text_field :debit_mainb %></th>
+</div>
+
+<div class="field">
+  <th><%= f.label :"CREDIT (-)"%></th>
+  <th><%= f.text_field :credit_mainb %></th>
+</div>
+
+<div class="field">
+  <th><%= f.label :"BALANCE=auto calcu dapat to"%></th>
+  <th><%= f.text_field :balance_mainb %></th>
+</div>
+
+<div class = "form_button">
+  <button type="button" class="btn btn-outline-light"><%= link_to "Back", mainbook_path %></button>
+  <button type="button" class="btn btn-outline-light"><%= f.submit :"Add" %></button>
+</div>
+<% end %>
+</div>
