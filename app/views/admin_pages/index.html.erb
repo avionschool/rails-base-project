@@ -1,1 +1,16 @@
+<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+
 <p> Hello Admin! </p>
+
+<% @users.each do |user| %>
+  <% if user.status == 'free' %>
+    <%= user.id %> </ br>
+    <%= user.email %> </ br>
+    <%= user.full_name %> </ br>
+    <%= user.username %> </ br>
+    <%= user.company %> </ br>
+    <%= button_to "Approve", admins_approve_path(id: user.id), method: 'put' %>
+  <% end %>
+<% end %>
+
+
