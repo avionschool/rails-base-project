@@ -10,14 +10,13 @@ Rails.application.routes.draw do
 
   root 'static_pages#home_page'
 
-
+  # Admin
+  put 'admins/approve' => 'admin_pages#approve_user_payment'
   get 'admins/home' => 'admin_pages#index'
 
   devise_for :admins, path: 'admins', controllers: { sessions: "admins/sessions" }, only: [:sessions]
   devise_for :users, path: 'users', controllers: { sessions: "users/sessions", registrations: "users/registrations" }, only: [:sessions, :registrations]
 
-
-
-
+  
   
 end
