@@ -3,4 +3,5 @@
 
 SeedsServices::CreateUsers.new.call
 SeedsServices::CreateMainbookEntries.new.call
+SeedsServices::CreateAdmin.new.call
 
