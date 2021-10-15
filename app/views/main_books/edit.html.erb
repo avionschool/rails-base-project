@@ -1,4 +1,4 @@
-<%= form_with scope: :main_book, url: main_books_path, model: @main_book, :local => true do |f| %>
+<%= form_with scope: :main_book, url: update_mainbook_path, model: @main_book, method: :put, :local => true do |f| %>
 
   <% if @main_book.errors.any? %>
     <ul>
@@ -40,7 +40,7 @@
 </div>
 
 <div class = "form_button">
-  <button type="button" class="btn btn-outline-light"><%= link_to "Back", root_path %></button>
+  <button type="button" class="btn btn-outline-light"><%= link_to "Back", mainbook_entries_path %></button>
   <button type="button" class="btn btn-outline-light"><%= f.submit :"Update" %></button>
 </div>
 <% end %>
