@@ -30,20 +30,15 @@ class MiniBooksController < ApplicationController
     end
   end
 
-  # def show; end
-
-  # def update
-  #   if @mini_book.update(mini_book_params)
-  #     redirect_to @mini_book, notice: 'Product was successfully updated.'
-  #   else
-  #     render :edit, status: :unprocessable_entity
-  #   end
-  # end
-
-  # def destroy
-  #   @mini_book.destroy
-  #   redirect_to mini_books_path, notice: 'Product was successfully destroyed.'
-  # end
+  def destroy
+    @mini_book = MiniBook.find(params[:id])
+    if @mini_book.destroy
+      flash[:notice] = 'Sucessfully deleted Mini Book'
+      redirect_to minibooks_path
+    else
+      render :minibooks_path
+    end
+  end
 
   private
 
