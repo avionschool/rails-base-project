@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/mainbook_entry' => 'main_books#create', as: 'mainbook_entry'
   get '/mainbook/:id/edit' => 'main_books#edit', as: 'edit_mainbook'
   put '/mainbook/:id/edit' => 'main_books#update', as: 'update_mainbook'
-  get '/mainbook/:id/delete' => 'main_books#destroy_entry', as: 'delete_entry'
+  post '/mainbook/:id/delete' => 'main_books#destroy_entry', as: 'delete_entry'
 
   # MiniBook
   get '/minibooks' => 'mini_books#index'
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post '/minibook_new' => 'mini_books#create', as: 'minibook_create'
   get '/minibook/:id/edit' => 'mini_books#edit', as: 'edit_minibook'
   put '/minibook/:id/edit' => 'mini_books#update', as: 'update_minibook'
+  post '/minibook/:id/delete' => 'mini_books#destroy', as: 'delete_minibook'
 
   # Admin
   put 'admins/approve' => 'admin_pages#approve_user_payment'
