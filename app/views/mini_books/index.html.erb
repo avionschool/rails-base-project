@@ -4,7 +4,7 @@
   <% @mini_books.each do |book| %>
     <h3><%= book.minibook_name %></h3>
     <p>Price: <%= book.minibook_price %></p>
-    <%= button_to 'BUY NOW', checkouts_create_path, params: {id: book.id} %>
+    <%= link_to 'BUY NOW', checkouts_create_path(id: book.id), remote: true, method: :post %>
 
   <% end %>
 

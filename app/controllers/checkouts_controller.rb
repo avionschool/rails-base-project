@@ -2,7 +2,7 @@ class CheckoutsController < ApplicationController
   def create
     @mini_book = MiniBook.all
     @mini_book = MiniBook.find(params[:id])
-    #Stripe.api_key = Rails.application.credentials.stripe[:secret]
+    Stripe.api_key = Rails.application.credentials.stripe[:secret]
     
     @session = Stripe::Checkout::Session.create({
     payment_method_types: ['card'],
