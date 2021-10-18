@@ -1,0 +1,26 @@
+<%= form_with scope: :mini_book, url: minibook_create_path, model: @mini_book, :local => true do |form| %>
+  
+<div>
+  <div class="field">
+    <th><%= form.label :"MiniBook Name" %></th>
+    <th><%= form.text_field :minibook_name %></th>
+  </div>
+
+  <div class="field">
+    <%= form.label :currency %>
+    <%= form.select :currency, ["usd", "eur", "pln", "uah"] %>
+  </div>
+
+  <div class="field">
+    <th><%= form.label :"MiniBook Price"%></th>
+    <th><%= form.text_field :minibook_price %></th>
+  </div>
+
+<%= form.hidden_field :id, :value => params[:id]%>
+
+  <div class = "form_button">
+    <button type="button" class="btn btn-outline-light"><%= link_to "Back", minibooks_path %></button>
+    <button type="button" class="btn btn-outline-light"><%= form.submit :"Add" %></button>
+  </div>
+  </div>
+<% end %>
