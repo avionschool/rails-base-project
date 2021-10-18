@@ -1,3 +1,3 @@
 class MiniBook < ApplicationRecord
-  has_many :checkouts, dependent: :destroy
+  # has_many :checkouts #, dependent: :destroy
 end
