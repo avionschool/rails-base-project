@@ -1,0 +1,12 @@
+<div class="product_list_container">
+  <h1>All Products</h1>
+
+  <% @mini_books.each do |book| %>
+    <h3><%= book.minibook_name %></h3>
+    <p>Price: <%= book.minibook_price %></p>
+    <%= button_to 'BUY NOW', checkouts_create_path, params: {id: book.id} %>
+
+  <% end %>
+
+  <%#= button_to 'BUY NOW', checkout_index_path, method: :post %>
+</div>

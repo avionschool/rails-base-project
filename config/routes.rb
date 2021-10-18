@@ -17,6 +17,18 @@ Rails.application.routes.draw do
   devise_for :admins, path: 'admins', controllers: { sessions: "admins/sessions" }, only: [:sessions]
   devise_for :users, path: 'users', controllers: { sessions: "users/sessions", registrations: "users/registrations" }, only: [:sessions, :registrations]
 
+  get 'admins/home' => 'admin_pages#index' 
   
-  
+
+
+  # scope '/checkout' do
+  #   post 'create', to: 'checkout#create', as: 'checkout_create'
+  #   get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
+  #   get 'success', to: 'checkout#success', as: 'checkout_success'
+  # end
+
+  #resources :checkout, only: [:create]
+  post "checkouts/create", to: "checkouts#create"
+
+  resources :mini_books
 end
