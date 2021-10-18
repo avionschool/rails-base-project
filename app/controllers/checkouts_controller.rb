@@ -5,7 +5,7 @@ class CheckoutsController < ApplicationController
     Stripe.api_key = Rails.application.credentials.stripe[:secret]
 
     @session = Stripe::Checkout::Session.create({
-    payment_method_types: ['card'],
+                                                  payment_method_types: ['card'],
     line_items: [{
       name: @mini_book.minibook_name,
         amount: (@mini_book.minibook_price * 100).to_i,
@@ -24,7 +24,7 @@ class CheckoutsController < ApplicationController
     mode: 'payment',
     success_url: root_url,
     cancel_url: root_url
-    })
+                                                })
     respond_to do |format|
       format.js
     end
