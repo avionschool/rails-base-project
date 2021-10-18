@@ -18,15 +18,15 @@ $laptop: 1024px;
 
 body {
   background-color: $color_offwhite !important;
-  overflow: hidden;
+  overflow: scroll; //scroll for testing only
   background-position: center;
   background-size: cover;
   }
 
-.navbar-brand {
-  color: $color_mustard !important;
-  font: 150% $mainFont!important;
-}
+  .navbar-brand {
+    color: $color_mustard !important;
+    font: 150% $mainFont!important;           
+  }
 
 .navbar{
   background-color: $color_darkblue !important;
@@ -178,3 +178,4 @@ justify-content: flex-end !important;
     height:40px;
   }
 }
+

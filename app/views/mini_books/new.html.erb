@@ -1,0 +1,23 @@
+<%= form_with scope: :mini_book, url: mini_books_path, model: @mini_book do |form| %>
+  
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :minibook_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :currency %>
+    <%= form.select :currency, ["usd", "eur", "pln", "uah"] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :minibook_price %>
+  </div>
+
+  <%= form.hidden_field :id, :value => params[:id]%>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
