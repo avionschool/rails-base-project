@@ -1,0 +1,28 @@
+<div class="product_list_container">
+  <h1>All MiniBooks </h1>
+<table class = "table">
+  <tr scope="column">
+    <td>MiniBook ID</td>
+    <td>Minibook Name</td>
+    <td>Minibook Price</td>
+  </tr>
+
+  <% @mini_books.each do |minibook| %>
+    <tr scope="column">  
+      <td><%= minibook.id %></td>
+      <td><h3><%= minibook.minibook_name %></h3></td>
+      <td> <p>Price: <%= minibook.minibook_price %></p></td>
+    <div>
+      <td>
+        <button type="button" class="btn btn-secondary"><%= link_to 'BUY NOW', checkouts_create_path(id: minibook.id), remote: true, method: :post %></button>
+        <button type="button" class="btn btn-secondary"><%= link_to "Edit", edit_minibook_path(minibook.id) %></button>
+        <button type="button" class="btn btn-danger"><%= link_to "Delete", delete_minibook_path(minibook.id), method: :destroy, :data => { :confirm => "Are you sure?" } %></button>
+      </td>
+    </div>
+  </tr>
+  <% end %>
+</table>
+  <button type="button" class="btn btn-outline-light"><%= link_to "Back", root_path %></button>
+  <button type="button" class="btn btn-outline-light"><%= link_to "Create New Mini Book", minibook_new_path %></button>
+</div>
+

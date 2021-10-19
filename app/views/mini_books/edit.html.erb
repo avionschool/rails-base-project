@@ -1,0 +1,34 @@
+<%= form_with scope: :mini_book, url: update_minibook_path, model: @mini_book, method: :put, :local => true do |form| %>
+
+  <% if @mini_book.errors.any? %>
+    <ul>
+      <% @mini_book.errors.full_messages.each do |error_message| %>
+        <li><%= error_message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+<div>
+  <div class="field">
+    <th><%= form.label :"MiniBook Name" %></th>
+    <th><%= form.text_field :minibook_name %></th>
+  </div>
+
+  <div class="field">
+    <%= form.label :currency %>
+    <%= form.select :currency, ["usd", "eur", "pln", "uah"] %>
+  </div>
+
+  <div class="field">
+    <th><%= form.label :"MiniBook Price"%></th>
+    <th><%= form.text_field :minibook_price %></th>
+  </div>
+
+<%= form.hidden_field :id, :value => params[:id]%>
+
+  <div class = "form_button">
+    <button type="button" class="btn btn-outline-light"><%= link_to "Back", minibooks_path %></button>
+    <button type="button" class="btn btn-outline-light"><%= form.submit :"Add" %></button>
+  </div>
+  </div>
+<% end %>
