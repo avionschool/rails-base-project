@@ -1,4 +1,4 @@
-var stripe = Stripe("pk_test_51Jfc8aE1nkI5RKr1BAgOQiqBOaMkIu1pNSciIPUmpLKbl7dtegwjYN5adSt2hhZCMXUIowJ3UzstHH4fCGdO4BAi00MhG8Py5N");
+var stripe = Stripe(" "); // stipe api key here, removed for the meantime... must be implemented via ENV
 
 stripe.redirectToCheckout({
   sessionId: '<%= @session.id %>'
