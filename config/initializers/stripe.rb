@@ -1,5 +1,5 @@
- require 'stripe'
- Stripe.api_key = Rails.application.credentials.stripe[:public]
+#  require 'stripe'
+#  Stripe.api_key = Rails.application.credentials.stripe[:public]
 
 # # list customers
 # Stripe::Customer.list()
