@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'admins/home' => 'admin_pages#index'
 
   devise_for :admins, path: 'admins', controllers: { sessions: "admins/sessions" }, only: [:sessions]
-  devise_for :users, path: 'users', controllers: { sessions: "users/sessions", registrations: "users/registrations" }, only: [:sessions, :registrations]
+  devise_for :users, path: 'users', controllers: { registrations: "users/registrations" }
 
   get 'admins/home' => 'admin_pages#index' 
   

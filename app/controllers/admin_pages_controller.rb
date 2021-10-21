@@ -5,7 +5,7 @@ class AdminPagesController < ApplicationController
 
   def approve_user_payment
     @user = User.find(params[:id])
-    @user.update(status: 'paid')
+    @user.update(status: 1)
     flash[:notice] = 'Successfully approve user payment'
     redirect_to admins_home_path
   end

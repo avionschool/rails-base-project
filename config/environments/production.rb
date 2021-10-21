@@ -111,5 +111,6 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   config.action_mailer.default_url_options = { host: 'https://phinance-io-abc-tech.herokuapp.com/' }
+  config.action_mailer.perform_deliveries = true
 
 end
