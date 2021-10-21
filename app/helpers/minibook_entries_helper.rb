@@ -1,0 +1,2 @@
+module MinibookEntriesHelper
+end

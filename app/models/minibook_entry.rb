@@ -1,0 +1,2 @@
+class MinibookEntry < ApplicationRecord
+end
