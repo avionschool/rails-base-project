@@ -6,8 +6,10 @@ module SeedsServices
       @logger.info 'Deleted all data from User model'
       user_count = 0
       10.times do
-        User.create(email: "dummy_user+#{user_count}@abc.com", password: "abc12345#{user_count}", full_name: "abc_user#{user_count}", username: "abctech_#{user_count}", company: "ABC Tech Corporation#{user_count}")
+        user = User.create(email: "dummy_user+#{user_count}@abc.com", password: "abc12345#{user_count}", full_name: "abc_user#{user_count}", username: "abctech_#{user_count}", company: "ABC Tech Corporation#{user_count}")
         user_count += 1
+        user.skip_confirmation!
+        user.save!
       end
       @logger.info '10 user data created'
     end
