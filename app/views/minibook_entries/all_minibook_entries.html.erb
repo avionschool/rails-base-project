@@ -1,0 +1,35 @@
+<table class = "table">
+<tr scope="column">
+  <td>Entry ID</td>
+  <td>Minibook_ID</td>
+  <td>Entry Date</td>
+  <td>Description</td>
+  <td>or-or_vat_reg_tin</td>
+  <td>DEBIT (+)</td>
+  <td>CREDIT (-)</td>
+  <td>Balance</td>
+  <td>Action</td>
+</tr>
+<% @minibook_entries.each do |minibook_entry| %>
+ <tr scope="column">  
+  <td><%= minibook_entry.id %></td>
+  <td><%= minibook_entry.mini_book_id %></td>
+  <td><%= minibook_entry.date_minib_entry %></td>
+  <td><%= minibook_entry.minibook_entry_description %></td>
+  <td><%= minibook_entry.or_vat_reg_tin_mainib %></td>
+  <td><%= minibook_entry.debit_minib %></td>
+  <td><%= minibook_entry.credit_minib %></td>
+  <td><%= minibook_entry.minibook_balance %></td>
+  <div>
+  <td>
+    <button type="button" class="btn btn-secondary"><%= link_to "Edit", edit_minibook_entry_path(minibook_entry.id) %></button>
+    <button type="button" class="btn btn-danger"><%= link_to "Delete", minibook_delete_entry_path(minibook_entry.id), method: :destroy, :data => { :confirm => "Are you sure?" } %></button>
+  </td>
+  </div>  
+</tr>
+<% end %>
+</table>
+
+<button type="button" class="btn btn-outline-light"><%= link_to "Back", minibook_entries_path %></button>
+<button type="button" class="btn btn-outline-light"><%= link_to "Add Entry", new_minibook_entry_path %></button>
+
