@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_10_21_112044) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +58,18 @@ ActiveRecord::Schema.define(version: 2021_10_21_112044) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "minibook_entries", force: :cascade do |t|
+    t.integer "mini_book_id"
+    t.datetime "date_minib_entry"
+    t.string "minibook_entry_description"
+    t.string "or_vat_reg_tin_mainib"
+    t.float "debit_minib"
+    t.float "credit_minib"
+    t.float "minibook_balance"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -73,10 +84,10 @@ ActiveRecord::Schema.define(version: 2021_10_21_112044) do
     t.integer "minibook_id"
     t.integer "status", default: 0
     t.string "company"
-    t.string "plan"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string "plan"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
