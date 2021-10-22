@@ -39,6 +39,7 @@ group :test do
   gem 'webmock'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'rails-controller-testing'
 end
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
