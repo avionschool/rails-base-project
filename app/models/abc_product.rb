@@ -3,5 +3,4 @@ class AbcProduct < ApplicationRecord
 
   scope :free, -> { where(user_status: 0) }
   scope :paid, -> { where(user_status: 1) }
-
 end

@@ -25,7 +25,7 @@ class CheckoutsController < ApplicationController
     cancel_url: root_url
                                                 })
     respond_to do |format|
-      format.js 
+      format.js
     end
   end
 end

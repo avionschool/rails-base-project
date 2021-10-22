@@ -1,17 +1,15 @@
 class AbcProductsController < ApplicationController
   def index
-    if current_user.status == "paid"
-      @abc_products = AbcProduct.all
-    else
-      @abc_products = AbcProduct.free
-    end
+    @abc_products = if current_user.status == 'paid'
+                      AbcProduct.all
+                    else
+                      AbcProduct.free
+                    end
   end
 
   def show
     @abc_product = AbcProduct.find(params[:id])
-    if @abc_product.user_status? && current_user.status != 1
-      redirect_to products_path, alert: "Only for Paid Subscribers"
-    end
+    redirect_to products_path, alert: 'Only for Paid Subscribers' if @abc_product.user_status? && current_user.status != 1
   end
 
   def new
