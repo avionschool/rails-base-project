@@ -1,0 +1,24 @@
+<%= form_with scope: :abc_product, url: abc_product_create_path, model: @abc_product, :local => true do |f| %>
+
+<div>
+<div class="field">
+  <th><%= f.label :"Product Name" %></th>
+  <th><%= f.text_field :product_name %></th>
+</div>
+
+<div class="field">
+  <th><%= f.label :"Product Price"%></th>
+  <th><%= f.text_field :product_price %></th>
+</div>
+
+<div class="field">
+  <th><%= f.label :"User Status"%></th>
+  <th><%= f.check_box :user_status %></th>
+</div>
+
+<div class = "form_button">
+  <button type="button" class="btn btn-outline-light"><%= link_to "Back", products_path %></button>
+  <button type="button" class="btn btn-outline-light"><%= f.submit :"Add" %></button>
+</div>
+<% end %>
+</div>

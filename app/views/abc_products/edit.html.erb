@@ -1,0 +1,35 @@
+<%= form_with scope: :abc_product, url: update_abc_product_path, model: @abc_product, method: :put, :local => true do |form| %>
+
+  <%# if @abc_product.errors.any? %>
+    <ul>
+      <%# @abc_product.errors.full_messages.each do |error_message| %>
+        <li><%#= error_message %></li>
+      <%# end %>
+    </ul>
+  <%# end %>
+
+<div>
+  <div class="field">
+    <th><%= form.label :"Product Name" %></th>
+    <th><%= form.text_field :product_name %></th>
+  </div>
+
+  <div class="field">
+    <th><%= form.label :"Product Price"%></th>
+    <th><%= form.text_field :product_price %></th>
+  </div>
+
+  <div class="field">
+    <th><%= form.label :"User Status"%></th>
+    <th><%= form.check_box :user_status %></th>
+  </div>
+
+
+<%= form.hidden_field :id, :value => params[:id]%>
+
+  <div class = "form_button">
+    <button type="button" class="btn btn-outline-light"><%= link_to "Back", products_path %></button>
+    <button type="button" class="btn btn-outline-light"><%= form.submit :"Add" %></button>
+  </div>
+  </div>
+<% end %>

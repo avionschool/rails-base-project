@@ -37,5 +37,12 @@ Rails.application.routes.draw do
   #resources :checkout, only: [:create]
   post "checkouts/create", to: "checkouts#create"
 
- # resources :mini_books
+  # Products
+  get '/products' => 'abc_products#index'
+  get '/product/:id/show' => 'abc_products#show', as: 'abc_product_show'
+  get '/product_new' => 'abc_products#new', as: 'abc_product_new'
+  post '/product_new' => 'abc_products#create', as: 'abc_product_create'
+  get '/product/:id/edit' => 'abc_products#edit', as: 'edit_abc_product'
+  put '/product/:id/edit' => 'abc_products#update', as: 'update_abc_product'
+  post '/product/:id/delete' => 'abc_products#destroy', as: 'delete_abc_product'
 end
