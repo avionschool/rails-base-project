@@ -34,6 +34,16 @@ class MinibookEntriesController < ApplicationController
     end
   end
 
+  def destroy_entry
+    @minibook_entry = MinibookEntry.find(params[:id])
+    if @minibook_entry.destroy
+      flash[:notice] = 'Sucessfully deleted Minibook Entry'
+      redirect_to all_minibook_entries_path
+    else
+      render :all_minibook_entries_path
+    end
+  end
+
   private
 
   def minibook_entries_params
