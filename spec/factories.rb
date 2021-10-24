@@ -16,6 +16,7 @@ FactoryBot.define do
     sequence(:full_name) { |fn| "abc_user#{fn}" }
     sequence(:username) { |un| "abctech_#{un}" }
     sequence(:company) { |comp| "ABC Tech Corporation #{comp}" }
+    confirmed_at { Time.zone.local(5000, 12, 8) }
   end
 
   factory :admin do
