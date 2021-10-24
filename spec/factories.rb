@@ -6,17 +6,6 @@ FactoryBot.define do
     sequence(:username) { |un| "abctech_#{un}" }
     sequence(:company) { |comp| "ABC Tech Corporation #{comp}" }
     confirmed_at { Time.zone.today }
-
-    # user.save!
-  end
-
-  factory :user_pending, class: 'User' do
-    sequence(:email) { |e| "dummy_user+#{e}@abc.com" }
-    sequence(:password) { |pw| "abc12345#{pw}" }
-    sequence(:full_name) { |fn| "abc_user#{fn}" }
-    sequence(:username) { |un| "abctech_#{un}" }
-    sequence(:company) { |comp| "ABC Tech Corporation #{comp}" }
-    confirmed_at { Time.zone.local(5000, 12, 8) }
   end
 
   factory :admin do
