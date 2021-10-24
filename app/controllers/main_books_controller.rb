@@ -1,5 +1,6 @@
 class MainBooksController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_user, only: %i[edit update destroy_entry]
 
   def index; end
 
@@ -8,11 +9,13 @@ class MainBooksController < ApplicationController
   end
 
   def new
-    @main_book = MainBook.new
+    # @main_book = MainBook.new
+    @main_book = current_user.main_books.build
   end
 
   def create
-    @main_book = MainBook.new(main_book_params)
+    # @main_book = MainBook.new(main_book_params)
+    @main_book = current_user.main_books.build(main_book_params)
     if @main_book.save
       redirect_to mainbook_entries_path
     else
@@ -42,6 +45,11 @@ class MainBooksController < ApplicationController
     else
       render :mainbook_entries_path
     end
+  end
+
+  def correct_user
+    @main_book = current_user.main_books.find_by(id: params[:id])
+    redirect_to mainbook_entries_path, notice: 'Not Authorized to access this page' if @main_book.nil?
   end
 
   private
