@@ -1,5 +1,13 @@
 <%= form_with scope: :main_book, url: mainbook_entry_path, model: @main_book, :local => true do |f| %>
 
+  <% if @main_book.errors.any? %>
+    <ul>
+      <% @main_book.errors.full_messages.each do |error_message| %>
+        <li><%= error_message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
 <div>
 <div class="field">
   <th><%= f.label :"Date" %></th>
@@ -29,6 +37,10 @@
 <div class="field">
   <th><%= f.label :"BALANCE=auto calcu dapat to"%></th>
   <th><%= f.text_field :balance_mainb %></th>
+</div>
+
+ <div class="field">
+  <th><%= f.number_field :user_id, id: :main_book_user_id, value: current_user.id, readonly: true %></th>
 </div>
 
 <div class = "form_button">

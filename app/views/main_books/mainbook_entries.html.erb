@@ -1,5 +1,6 @@
 <table class = "table">
 <tr scope="column">
+  <td>User ID</td>
   <td>Entry ID</td>
   <td>Date</td>
   <td>Description</td>
@@ -10,7 +11,9 @@
   <td>Action</td>
 </tr>
 <% @main_books.each do |mainbook| %>
- <tr scope="column">  
+<% if mainbook.user == current_user %>
+ <tr scope="column">
+  <td><%= mainbook.user_id%></td>  
   <td><%= mainbook.id %></td>
   <td><%= mainbook.date_mainb %></td>
   <td><%= mainbook.mainbook_description %></td>
@@ -26,7 +29,8 @@
   </div>  
 </tr>
 <% end %>
+<% end %>
 </table>
 
 <button type="button" class="btn btn-outline-light"><%= link_to "Back", mainbook_path %></button>
- <button type="button" class="btn btn-outline-light"><%= link_to "Add Entry", mainbook_new_path %></button>
+<button type="button" class="btn btn-outline-light"><%= link_to "Add Entry", mainbook_new_path %></button>
