@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+$color_darkblue: #222C3C;
+$color_mustard: #D8B26E;
+$color_brown: #B69B7D;
+$color_cream: #E2E0D5;
+$color_offwhite: #EDF2F4;
+$mainFont: 'Roboto Condensed', sans-serif;
+$subFont: 'Roboto', sans-serif;;
+
+$mobileS: 320px;
+$mobileM: 375px;
+$mobileL: 430px;
+$tablet: 770px;
+$laptop: 1024px;
+
+.navbar {
+	width: 250px;
+	height: 100vh;
+	position: fixed;
+	margin-left: -300px;
+	background-color: $color_darkblue;
+	transition: 0.4s;
+}
+
+.navbar{
+background-color: $color_darkblue !important;
+  a {
+	color: $color_mustard !important;
+	font: 90% $mainFont !important;
+	cursor: pointer;
+	text-decoration: none;
+    }
+}
+
+.navbar-nav, .nav-link {
+  a {
+  margin-left: 10%;
+  font: 150% $mainFont !important;
+  }
+}
+
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
+  background-color: $color_mustard;
+}
+
+.my-container {
+  transition: 0.4s;
+}
+
+/* for navbar */
+.active-nav {
+  margin-left: 0;
+}
+
+/* for main section */
+.active-cont {
+  margin-left: 250px;
+}
+
+// Sidebar toggler
+#menu-btn {
+	background-color: $color_darkblue !important;
+	color: $color_mustard !important;
+	font: 120% $mainFont;
+}
+
+#menu-btn:focus {
+  box-shadow: 0 0 0 0.25rem #7952b344;
+}

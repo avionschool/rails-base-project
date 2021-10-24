@@ -16,4 +16,5 @@ class User < ApplicationRecord
   #   customer = Stripe::Customer.create(email: email)
   #   update(stripe_customer_id: customer.id)
   # end
+  has_many :main_books, dependent: :destroy
 end
