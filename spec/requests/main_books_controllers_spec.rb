@@ -2,19 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'MainBooks', type: :request do
   let(:confirmed_user) { create(:confirmed_user) }
-  let(:user_pending) { create(:user_pending) }
   let(:mainbook_entries) { create(:mainbook_entries) }
-
-  describe 'user pending cannot access mainbook page' do
-    before do
-      sign_in user_pending
-    end
-
-    it 'returns to the index page' do
-      get root_path
-      expect(response).to have_http_status(:ok)
-    end
-  end
 
   describe 'confirmed user gets to access mainbook page' do
     before do
@@ -24,6 +12,11 @@ RSpec.describe 'MainBooks', type: :request do
     it 'returns the mainbook entries page' do
       get mainbook_entries_path
       expect(response).to have_http_status(:ok)
+    end
+
+    it 'renders the mainbook entries page' do
+      get mainbook_entries_path
+      expect(response).to render_template('mainbook_entries')
     end
   end
 
@@ -36,6 +29,11 @@ RSpec.describe 'MainBooks', type: :request do
     it 'direct users to main book entry form' do
       get mainbook_new_path
       expect(response).to have_http_status(:ok)
+    end
+
+    it 'renders main book entry form' do
+      get mainbook_new_path
+      expect(response).to render_template('new')
     end
   end
 end
