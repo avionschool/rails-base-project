@@ -1,11 +1,12 @@
 FactoryBot.define do
-  factory :user do
+  factory :confirmed_user, class: 'User' do
     sequence(:email) { |e| "dummy_user+#{e}@abc.com" }
     sequence(:password) { |pw| "abc12345#{pw}" }
     sequence(:full_name) { |fn| "abc_user#{fn}" }
     sequence(:username) { |un| "abctech_#{un}" }
     sequence(:company) { |comp| "ABC Tech Corporation #{comp}" }
-    # user.skip_confirmation!
+    confirmed_at { Time.zone.today }
+
     # user.save!
   end
 
