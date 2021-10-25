@@ -12,12 +12,13 @@ class WebhooksController < ApplicationController
         payload, sig_header, Rails.application.credentials.dig(:stripe, :webhook)
       )
     rescue JSON::ParserError => e
+      logger.error(e)
       status 400
       return
     rescue Stripe::SignatureVerificationError => e
       # Invalid signature
-      puts "Signature error"
-      p e
+      Rails.logger.debug 'Signature error'
+      Rails.logger.debug(e)
       return
     end
 
@@ -32,7 +33,7 @@ class WebhooksController < ApplicationController
       @user = User.find_by(stripe_customer_id: subscription.customer)
       @user.update(
         subscription_status: subscription.status,
-        plan: subscription.items.data[0].price.lookup_key,
+        plan: subscription.items.data[0].price.lookup_key
       )
     end
 
