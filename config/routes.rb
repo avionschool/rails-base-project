@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   # end
 
   #resources :checkout, only: [:create]
-  post "checkouts/create", to: "checkouts#create"
+  post "checkouts/create", to: "checkouts#create", as: "checkout_create"
 
   # Products
   get '/products' => 'abc_products#index'
@@ -54,4 +54,6 @@ Rails.application.routes.draw do
   get '/product/:id/edit' => 'abc_products#edit', as: 'edit_abc_product'
   put '/product/:id/edit' => 'abc_products#update', as: 'update_abc_product'
   post '/product/:id/delete' => 'abc_products#destroy', as: 'delete_abc_product'
+
+  get 'pricing', to: 'static_pages#pricing'
 end
