@@ -1,8 +1,5 @@
 class CheckoutsController < ApplicationController
   def create
-    # @abc_product = AbcProduct.all
-    # @abc_product = AbcProduct.find(params[:id])
-
     @session = Stripe::Checkout::Session.create({
                                                   customer: current_user.stripe_customer_id,
       success_url: root_url,
