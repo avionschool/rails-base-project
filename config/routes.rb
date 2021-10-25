@@ -56,4 +56,6 @@ Rails.application.routes.draw do
   post '/product/:id/delete' => 'abc_products#destroy', as: 'delete_abc_product'
 
   get 'pricing', to: 'static_pages#pricing'
+  post "billing_portal/create", to: "billing_portal#create", as: "billing_portal_create"
+  resources :webhooks, only: [:create]
 end
