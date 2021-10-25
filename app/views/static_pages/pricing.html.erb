@@ -1,0 +1,12 @@
+<h1>Pricing</h1>
+
+<% @pricing = Stripe::Price.list(lookup_keys: ["minibook_year", "minibook_month"], expand: ["data.product"]) %>
+<% @pricing.each do |price| %>
+<br>
+<%= price.product.name %>
+<%= price.id %>
+<%= price.unit_amount/100 %>
+<%= price.currency %>
+<%= price.recurring.interval %>
+<%= link_to "Checkout", checkout_create_path(price: price.id), method: :post, remote: true%>
+<% end %>

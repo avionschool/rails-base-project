@@ -1,5 +1,4 @@
-
-var stripe = Stripe("<%= ENV['STRIPE_PUBLIC'] %>"); // stipe api key here, removed for the meantime... must be implemented via ENV
+var stripe = Stripe("<%= Rails.application.credentials[:stripe][:public] %>"); // stipe api key here, removed for the meantime... must be implemented via ENV
 
 stripe.redirectToCheckout({
   sessionId: '<%= @session.id %>'

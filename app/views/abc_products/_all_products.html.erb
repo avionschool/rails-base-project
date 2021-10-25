@@ -16,7 +16,7 @@
       <td> <p>Status: <%= product.user_status %></p></td>
     <div>
       <td>
-        <button type="button" class="btn btn-secondary"><%= link_to 'BUY NOW', checkouts_create_path(id: product.id), remote: true, method: :post %></button>
+        <button type="button" class="btn btn-secondary"><%#= link_to 'BUY NOW', checkouts_create_path(id: product.id), remote: true, method: :post %></button>
         <button type="button" class="btn btn-secondary"><%= link_to "Show", abc_product_show_path(product.id) %></button>
         <button type="button" class="btn btn-secondary"><%= link_to "Edit", edit_abc_product_path(product.id) %></button>
         <button type="button" class="btn btn-danger"><%= link_to "Delete", delete_abc_product_path(product.id), method: :destroy, :data => { :confirm => "Are you sure?" } %></button>
