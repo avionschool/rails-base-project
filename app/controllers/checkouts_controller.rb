@@ -1,15 +1,13 @@
 class CheckoutsController < ApplicationController
   def create
-    @session = Stripe::Checkout::Session.create({
-                                                  customer: current_user.stripe_customer_id,
+    @session = Stripe::Checkout::Session.create({ customer: current_user.stripe_customer_id,
       success_url: root_url,
       cancel_url: pricing_url,
       payment_method_types: ['card'],
       line_items: [
         { price: params[:price], quantity: 1 }
       ],
-      mode: 'subscription'
-                                                })
+      mode: 'subscription' })
 
     respond_to do |format|
       format.js
