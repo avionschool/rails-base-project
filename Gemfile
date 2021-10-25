@@ -28,6 +28,7 @@ group :development do
   gem 'listen', '~> 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'pry-rails', '~> 0.3.9'
 end
 
 group :test do
@@ -39,6 +40,7 @@ group :test do
   gem 'webmock'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'rails-controller-testing'
 end
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
