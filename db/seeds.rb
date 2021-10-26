@@ -2,8 +2,10 @@
 # Use namespacing for a more readable code
 
 SeedsServices::CreateUsers.new.call
-SeedsServices::CreateMainbookEntries.new.call
 SeedsServices::CreateAdmin.new.call
+SeedsServices::CreateMainbookEntries.new.call
+SeedsServices::CreateMinibooks.new.call
+SeedsServices::CreateMinibookEntries.new.call
 
 # For Faker
 3.times do
