@@ -1,16 +1,10 @@
-<%= link_to "Product Pricing", products_path %> <%# For Testing Only%>
+<%= link_to "Products", products_path %> <%# For Testing Only%>
   <%= link_to "Pricing", pricing_path %>
-    <% if current_user %> <%# For Testing API SUBSCRIPTION ONLY%>
+  <% if current_user %> <%# For Testing API SUBSCRIPTION ONLY%>
+      <%= link_to "Billing Portal", billing_portal_create_path, method: :post %>
       <%= link_to current_user.email, edit_user_registration_path %>
       <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-      <br>
-      Plan:
-      <%= current_user.plan %>
-      <br>
-      Subscription Status:
-      <%= current_user.status %>
-    <% else %>
-      <%= link_to "Log in", new_user_session_path %>
-      <%= link_to "Register", new_user_registration_path %>
-    <% end %>
-    
+    <h6>Stripe Customer ID:<%= current_user.stripe_customer_id %></h6>
+    <h6>Plan:<%= current_user.plan %></h6>
+    <h6>Subscription Status:<%= current_user.status %> 
+  <%end %>

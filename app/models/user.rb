@@ -10,12 +10,12 @@ class User < ApplicationRecord
 
   has_many :main_books, dependent: :destroy
 
-  # def to_s
-  #   email
-  # end
+  def to_s
+    email
+  end
 
-  # after_create do
-  #   customer = Stripe::Customer.create(email: email)
-  #   update(stripe_customer_id: customer.id)
-  # end
+  after_create do
+    customer = Stripe::Customer.create(email: email)
+    update(stripe_customer_id: customer.id)
+  end
 end

@@ -1,5 +1,5 @@
 # require 'stripe'
-# Stripe.api_key = Rails.application.credentials[:stripe][:secret]
+Stripe.api_key = ENV["STRIPE_SECRET"]
 
 # # list customers
 # Stripe::Customer.list()
