@@ -16,7 +16,7 @@ $tablet: 770px;
 $laptop: 1024px;
 
 .navbar {
-	width: 250px;
+	width: 230px;
 	height: 100vh;
 	position: fixed;
 	margin-left: -300px;
@@ -28,7 +28,7 @@ $laptop: 1024px;
 background-color: $color_darkblue !important;
   a {
 	color: $color_mustard !important;
-	font: 90% $mainFont !important;
+	font: 80% $mainFont !important;
 	cursor: pointer;
 	text-decoration: none;
     }
@@ -37,7 +37,7 @@ background-color: $color_darkblue !important;
 .navbar-nav, .nav-link {
   a {
   margin-left: 10%;
-  font: 150% $mainFont !important;
+  font: 130% $mainFont !important;
   }
 }
 
@@ -63,6 +63,7 @@ background-color: $color_darkblue !important;
 
 // Sidebar toggler
 #menu-btn {
+	padding: 10px 10px;
 	background-color: $color_darkblue !important;
 	color: $color_mustard !important;
 	font: 120% $mainFont;

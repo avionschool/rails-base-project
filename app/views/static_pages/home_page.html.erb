@@ -1,11 +1,21 @@
-<div class = "home_page_container">
-  <div class = "home_page_greet">
-    <h1>Say something convincing here!</h1>
-    <h5>shimmynee shimmyyy cheneee</h5>
-    <button type="button" class="btn btn-dark" id = "homepage_button"><%= link_to 'TRY ME', new_user_registration_path %></button>
+<section id="hero" class="hero d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 d-flex flex-column justify-content-center">
+        <h1>Say something convincing here!</h1>
+        <h2>We are team of talented designers making websites with Bootstrap</h2>
+        <div>
+          <div class="text-center text-lg-start">
+            <a class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <span>TRY ME NOW</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 hero-img">
+          <%= image_tag("bg1.png", :alt => "PHinance.io header image", :class => "home_page_image") %>
+      </div>
+    </div>
   </div>
-  
-  <div class="g-col-6">
-    <%= image_tag("bg1.png", :alt => "PHinance.io header image", :class => "home_page_image") %>
-  </div>
-</div>
+</section>

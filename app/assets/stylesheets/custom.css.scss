@@ -1,4 +1,3 @@
-@import 'bootstrap/dist/css/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
@@ -17,165 +16,47 @@ $tablet: 770px;
 $laptop: 1024px;
 
 body {
-  background-color: $color_offwhite !important;
-  overflow: scroll; //scroll for testing only
+  width: 100vw;
+  height: 100%;
+  background-color: $color_offwhite;
+  overflow: hidden;
   background-position: center;
   background-size: cover;
   }
-
-  .navbar-brand {
-    color: $color_mustard !important;
-    font: 150% $mainFont!important;           
-  }
-
-.navbar{
-  background-color: $color_darkblue !important;
-}
-
-.nav-item, .nav-link {
-  a {
-    color: $color_mustard !important;
-    font: 100% $mainFont !important;
-    cursor: pointer;
-    text-decoration: none;
-  }
-}
-
-#navbarNav {
-justify-content: flex-end !important;
-}
-
-.footer
-{
-  text-align: center;
-  font-size: 80%;
-  position: absolute;
-   bottom: 0;
-   width: 100vw;
-   height: 40px;
-}
-
-//==============HOME PAGE===============
-
-.home_page_container {
-  margin-top: 8vh; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font: 200% $mainFont !important;
-}
-
-.home_page_greet {
-  display: flex;
-  flex-direction: column;
-  align-items: center;    
-  align-items: baseline;
-  align-content: stretch;
-  text-decoration: none;
-  color: $color_darkblue !important;
-  h1 {
-    font: 180% $mainFont !important;
-    margin-left: 10%;
-    margin-right: 15%;
-  }
-  h5 {
-    display: flex;
-    margin-left: 10%;
-    margin-right: 15%;
-    margin-bottom: 15%;
-  }
-}
-
-.home_page_image {
-  margin-right: 10%;
-  width: 35vw !important;
-  height: auto !important;
-}
-
-#homepage_button {
-  color: $color_mustard;
-  background-color: $color_darkblue;
-  margin-top: -5%;
-  margin-left: 10%;
-  margin-right: 15%;
-  margin-bottom: 15%;
-}
 
 .btn {
   text-decoration: none !important;  
 }
 
-//==========MEDIA QUERY============
+.my-container {
+  width: 100vw !important;
+  height: 100vh !important;
+}
 
+//==========FOOTER============//
 
-/*=== TABLET AND LAPTOP ===*/
-
-@media only screen and (max-width: $tablet), (max-width: $laptop)
+footer, .text-black
 {
-
-}
-
-/*=== S-M-L MOBILE ===*/
-
-@media only screen and (max-width: $mobileS), (max-width: $mobileM), (max-width: $mobileL) {
-
-.home_page_container {
-  width: 100vw;
-  height: 80vh;
-  margin-top: 5vh; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font: 200% $mainFont !important;
-  display: grid;
-  grid-template-rows: 10% 20% 15% 25% 10% 10% 10% ;
-  grid-template-columns: 10% 10% 20% 20% 20% 10% 10%;
-}
-
-.home_page_greet {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
   text-align: center;
-  color: $color_darkblue !important;
-  grid-column-start: 2;
-  grid-column-end: 7;
-  grid-row-start: 4;
-  grid-row-end: 7;
-  h1 {
-    font: 70% $mainFont !important;
-    margin-left: 10%;
-    margin-right: 10%;
+  font: 80% $subFont !important;
+}
+.text-center, a {
+    text-decoration: none !important;
   }
-  h5 {
-    margin-bottom: 15%;
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-}
 
-.home_page_image, .g-col-6 {
-  grid-column-start: 3;
-  grid-column-end: 6;
-  grid-row-start: 2;
-  grid-row-end: 4;
-  margin: 0 auto;
-  width: 60vw !important;
-  height: auto !important;
-}
+//=============MEDIA QUERY=================//
 
-.btn {
-  color: $color_mustard;
-  background-color: $color_darkblue;
-  margin: 0 auto;
-  text-decoration: none;
-}
-
-.footer
+@media only screen and (max-width: $mobileS), (max-width: $mobileM), (max-width: $mobileL), (max-width: $tablet) {
+.footer, .text-black
   {
-    text-align: center;
-    font-size: 40%;
-    position:absolute;
     bottom:0;
     width:100vw;
     height:40px;
+    text-align: center;
+    font: 40% $subFont !important;
   }
 }
-
