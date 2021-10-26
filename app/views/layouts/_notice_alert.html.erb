@@ -1,17 +1,2 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-
-<div class="alert alert-success d-flex align-items-center" role="alert">
-  <p class="notice"> <%= notice %> </p>
-</div>
-
-<div class="alert alert-warning d-flex align-items-center" role="alert">
-  ALERT <p class="alert"> <%= alert %> </p>
-</div>
-
-<script>
-var alertList = document.querySelectorAll('.alert')
-alertList.forEach(function (alert) {
-  new bootstrap.Alert(alert)
-})
-</script>

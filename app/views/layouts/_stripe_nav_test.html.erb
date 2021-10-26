@@ -1,4 +1,5 @@
 <%= link_to "Product Pricing", products_path %> <%# For Testing Only%>
+  <%= link_to "Pricing", pricing_path %>
     <% if current_user %> <%# For Testing API SUBSCRIPTION ONLY%>
       <%= link_to current_user.email, edit_user_registration_path %>
       <%= link_to "Log out", destroy_user_session_path, method: :delete %>
