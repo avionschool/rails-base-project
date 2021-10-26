@@ -9,12 +9,10 @@ class MainBooksController < ApplicationController
   end
 
   def new
-    # @main_book = MainBook.new
     @main_book = current_user.main_books.build
   end
 
   def create
-    # @main_book = MainBook.new(main_book_params)
     @main_book = current_user.main_books.build(main_book_params)
     if @main_book.save
       redirect_to mainbook_entries_path
