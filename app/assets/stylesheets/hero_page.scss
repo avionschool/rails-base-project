@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+$color_darkblue: #222C3C;
+$color_mustard: #D8B26E;
+$color_brown: #B69B7D;
+$color_cream: #E2E0D5;
+$color_offwhite: #EDF2F4;
+$mainFont: 'Roboto Condensed', sans-serif;
+$subFont: 'Roboto', sans-serif;;
+
+$mobileS: 320px;
+$mobileM: 375px;
+$mobileL: 430px;
+$tablet: 770px;
+$laptop: 1024px;
+
+//==============HOME PAGE===============
+
+.hero {
+  width: 100%;
+  height: 100%;
+  margin-top: -12%;
+}
+
+.hero {
+  h1 {
+      margin: 0;
+      font: 380% $mainFont;
+      color: $color_darkblue;
+      text-shadow: 2px 2px 10px $color_brown;
+    }
+
+  h2 {
+    margin: 20px 0 0 0;
+    font: 120% $subFont;
+    color: $color_darkblue;
+    font-weight: bold;
+    }
+
+  .btn-cta {
+    margin-top: 30px;
+    line-height: 0;
+    padding: 10px 30px;
+    border-radius: 4px;
+    transition: 0.5s;
+    color: $color_mustard;
+    background: $color_darkblue;
+    box-shadow: 0px 5px 30px rgba(65, 84, 241, 0.4);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .btn-cta span {
+    font: 130% $mainFont !important;
+  }
+}
+
+.home_page_image {
+  margin-right: 10%;
+  width: 45vw !important;
+  height: auto !important;
+}
+
+//=============MEDIA QUERY=================//
+
+@media only screen and (max-width: $tablet), (max-width: $laptop) {
+
+  .hero {
+    margin-top: -12%;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font: 150% $mainFont;
+  }
+
+  .hero h2 {
+    font: 100% $mainFont;
+  }
+  
+  .btn-cta {
+  padding: 5px 10px !important;
+  }
+
+  .btn-cta span {
+    font: 100% $mainFont !important;
+  }
+
+  .home_page_image {
+  text-align: center;
+  margin-right: 5%;
+  width: 45vw !important;
+  height: auto !important;
+  }
+}
+
+@media only screen and (max-width: $mobileS), (max-width: $mobileM), (max-width: $mobileL) {
+
+  .hero {
+    margin-top: -12%;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font: 190% $mainFont;
+  }
+
+  .hero h2 {
+    font: 80% $mainFont;
+  }
+  
+  .btn-cta {
+  padding: 5px 10px !important;
+  border-radius: 10px;
+  transition: 0.5s;
+  }
+
+  .btn-cta span, a {
+    font: 60% $mainFont !important;
+  }
+
+  .home_page_image {
+  text-align: center;
+  width: 60vw !important;
+  height: auto !important;
+  }
+}

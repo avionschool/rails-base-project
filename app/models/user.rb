@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   enum status: { free: 0, paid: 1 }
 
+  has_many :main_books, dependent: :destroy
+
   # def to_s
   #   email
   # end

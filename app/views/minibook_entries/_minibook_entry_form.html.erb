@@ -1,5 +1,12 @@
 <%= form_with scope: :minibook_entry, url: create_minibook_entry_path, model: @minibook_entry, :local => true do |f| %>
   <h1> Minibook entry</h1>
+    <% if @minibook_entry.errors.any? %>
+    <ul>
+      <% @minibook_entry.errors.full_messages.each do |error_message| %>
+        <li><%= error_message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 <div>
 <div class="field">
   <th><%= f.label :"Date" %></th>
@@ -13,7 +20,7 @@
 
 <div class="field">
   <th><%= f.label :"or-vat-reg-tin"%></th>
-  <th><%= f.text_field :or_vat_reg_tin_mainib %></th>
+  <th><%= f.text_field :or_vat_reg_tin_minib %></th>
 </div>
 
 <div class="field">
@@ -24,11 +31,6 @@
 <div class="field">
   <th><%= f.label :"CREDIT (-)"%></th>
   <th><%= f.text_field :credit_minib %></th>
-</div>
-
-<div class="field">
-  <th><%= f.label :"BALANCE=auto calcu dapat to"%></th>
-  <th><%= f.text_field :minibook_balance %></th>
 </div>
 
   <div class = "form_button">

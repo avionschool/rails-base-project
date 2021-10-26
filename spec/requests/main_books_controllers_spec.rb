@@ -23,7 +23,6 @@ RSpec.describe 'MainBooks', type: :request do
   describe 'User gets to create a mainbook entry' do
     before do
       sign_in confirmed_user
-      create(:mainbook_entries)
     end
 
     it 'direct users to main book entry form' do

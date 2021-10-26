@@ -1,9 +1,49 @@
-<h1> DASHBOARD </h1>
+<div class="container-fluid px-6">
+  <h1 class="mt-4">DASHBOARD</h1>
+  <ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">
+      <%= current_user.present? ? "" : "Stranger" %>
+      <h2>Welcome, <%= current_user.username %></h2>
+      <button type="button" class="btn btn-outline-light"><%= link_to "Add Entry", mainbook_new_path %></button>
+      <button type="button" class="btn btn-outline-light"><%= link_to "Show Main Book Entries", mainbook_entries_path %></button>
+    </li>
+</ol>
+<div class="row">
+    <div class="col-xl-3 col-sm-3">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body">Total Balance</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+              <a class="small text-white stretched-link">View Details</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-3">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body">Total Expenses</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+            <a class="small text-white stretched-link">View Details</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-3">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body">Total Entries</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+            <a class="small text-white stretched-link">View Details</a>
+                <div class="small text-white"></i></div>
+            </div>
+        </div>
+    </div>
+       <div class="col-xl-3 col-sm-3">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body">Total Entries</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+            <a class="small text-white stretched-link">View Details</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
 
- <button type="button" class="btn btn-outline-light">
-    <%= link_to "Add Entry", mainbook_new_path %>
-  </button>
-
-  <button type="button" class="btn btn-outline-light">
-    <%= link_to "Show Main Book Entries", mainbook_entries_path %>
-  </button>
