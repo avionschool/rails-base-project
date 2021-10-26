@@ -1,3 +1,5 @@
+require 'pry'
+
 FactoryBot.define do
   factory :confirmed_user, class: 'User' do
     sequence(:email) { |e| "dummy_user+#{e}@abc.com" }
