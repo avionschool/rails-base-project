@@ -40,5 +40,4 @@ group :test do
   gem 'rubocop-rspec', require: false
 end
 
-gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
