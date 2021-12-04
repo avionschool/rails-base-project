@@ -1,0 +1,28 @@
+= form_with model: @admin do |f|
+  = f.label :username
+  = f.text_field :username
+  
+  %br/
+  = f.label :fullname
+  = f.text_field :fullname
+
+  %br/
+
+  = f.label :email
+  = f.email_field :email
+
+  %br/
+
+  = f.label :password
+  = f.text_field :password
+
+  %br/
+  %br/
+
+  = f.submit
+
+  %br/
+  %br/
+  
+  = link_to "Back to Admins", admins_path
+ 

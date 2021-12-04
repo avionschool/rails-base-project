@@ -9,6 +9,11 @@ class AdminsController < ApplicationController
         @admin = Admin.new
     end
 
+    def show
+        @admins = @admin.where.not(id: nil)
+        
+    end
+
     def create
         @admin = Admin.new(admin_params)
 
