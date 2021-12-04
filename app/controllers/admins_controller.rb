@@ -34,6 +34,11 @@ class AdminsController < ApplicationController
         end
     end
 
+    def destroy
+        @admin.destroy
+        redirect_to admins_path, notice: "The admin was successfully deleted"
+    end
+
     private
 
     def set_admin
