@@ -10,7 +10,7 @@ class AdminsController < ApplicationController
     end
 
     def show
-        @admins = @admin.where.not(id: nil)
+        @admin = Admin.find(params[:id])
         
     end
 
