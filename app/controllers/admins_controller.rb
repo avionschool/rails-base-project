@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-    before_action :set_admin, only: [:edit, :update, :destroy]
+    before_action :set_admin, only: [:edit, :update, :destroy, :show]
 
     def index
         @admins = Admin.all
