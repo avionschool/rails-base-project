@@ -1,2 +1,12 @@
 <h1> This is our home page </h1>
 <p> henlo</p>
+
+  <% @users.each do |user| %>
+    <tr>
+    <td> <%= user.username %> </td></br>
+    <td> <%= user.email %> </td></br>
+    </tr></br>
+  <% end %>
+
+</br>
+<%= link_to 'Register', new_user_path %>
