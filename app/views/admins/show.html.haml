@@ -1,0 +1,20 @@
+%h1= @admin.username
+%p= @admin.email
+
+%table
+  %thead
+    %tr
+      %th Full Name 
+      %th Password
+      %th Actions
+  %tbody
+    %tr
+      %td{"data-label" => "Full Name"}
+        = @admin.fullname
+      %td{"data-label" => "Password"}
+        = @admin.password
+      %td{"data-label" => "Actions"} 
+        = link_to "Edit", edit_admin_path(@admin.id)
+
+%br
+= link_to "Back to Admins", admins_path

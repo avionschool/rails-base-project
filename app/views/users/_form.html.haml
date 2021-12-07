@@ -1,0 +1,41 @@
+= form_with model: @user do |f|
+  = f.label :fullname, 'Full Name'
+  %br
+  = f.text_field :fullname
+  - if f.object.errors[:fullname].present?
+    %span= f.object.errors[:fullname].to_sentence
+    %br
+  %br
+  
+  = f.label :email
+  %br
+  = f.text_field :email
+  - if f.object.errors[:email].present?
+    %span= f.object.errors[:email].to_sentence
+    %br
+  %br
+
+  = f.label :username
+  %br
+  = f.text_field :username
+  - if f.object.errors[:username].present?
+    %span= f.object.errors[:username].to_sentence
+    %br
+  %br
+
+  = f.label :password
+  %br
+  = f.password_field :password
+  - if f.object.errors[:password].present?
+    %span= f.object.errors[:password].to_sentence
+    %br
+  %br
+  %br
+
+  = f.submit
+
+  %br
+  %br
+
+= link_to users_path do
+  Back to Users Index
