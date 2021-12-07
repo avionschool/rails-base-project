@@ -17,6 +17,18 @@ ActiveRecord::Schema.define(version: 2021_12_04_040534) do
     t.string "email"
     t.string "fullname"
     t.string "password"
+
+ActiveRecord::Schema.define(version: 2021_12_04_031050) do
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password"
+    t.string "fullname"
+    t.string "email"
+    t.string "type"
+    t.boolean "verified", default: false
+    t.datetime "verified_at"
+
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

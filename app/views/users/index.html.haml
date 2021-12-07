@@ -1,0 +1,31 @@
+%h1 User Index Page
+
+%table
+  %thead
+    %tr
+      %th Full Name
+      %th Email
+      %th Username
+      %th Password
+      %th Actions
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.fullname
+        %td= user.email
+        %td= user.username
+        %td= user.password
+        %td
+          = link_to user_path(user.id) do
+            Show
+          |
+          = link_to edit_user_path(user.id) do
+            Edit
+          |
+          = link_to user_path(user.id), method: :delete, data: { confirm: 'Are you sure?' } do
+            Delete
+
+= link_to new_user_path do
+  Create New User
+
+
