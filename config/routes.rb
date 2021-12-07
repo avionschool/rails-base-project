@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
   get '/logout', to: 'sessions#destroy'
+
+  #for the search stock, underconstruction
+  post "/", to: 'home#index'
 end

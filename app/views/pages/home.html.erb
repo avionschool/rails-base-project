@@ -1,4 +1,5 @@
 <h1> This is our home page </h1>
+
 <p> henlo</p>
 
   <% @users.each do |user| %>
@@ -10,3 +11,10 @@
 
 </br>
 <%= link_to 'Register', new_user_path %>
+</br>
+
+<p> testing stockAPI rendering, the @api is yung API key para ma-access natin ung API. If hindi gumagana ung API key, yung error is 400.</p>
+<%= link_to 'Stock API docu', 'https://www.rubydoc.info/gems/stock_quote/3.0.0' %>
+<% stock = StockQuote::Stock.logo("tsla", @api) %>
+ <img src ="<%= stock.url %>">
+
