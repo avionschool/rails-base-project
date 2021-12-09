@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   #for the search stock, underconstruction
-  post "/", to: 'home#index'
+  post "/", to: 'pages#home'
 end

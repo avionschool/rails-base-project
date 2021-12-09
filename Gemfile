@@ -16,6 +16,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt', '~> 3.1.7'
 gem 'stock_quote', '~> 3.0'
 
+
 gem 'devise'
 gem 'hamlit-rails'
 

@@ -2,19 +2,21 @@
 
 <p> henlo</p>
 
-  <% @users.each do |user| %>
-    <tr>
-    <td> <%= user.username %> </td></br>
-    <td> <%= user.email %> </td></br>
-    </tr></br>
-  <% end %>
 
-</br>
-<%= link_to 'Register', new_user_path %>
-</br>
+<p> search bar function </p> </br> <p> Try TSLA, AAPL, FB </p>
+<%= form_tag root_path, :method => 'POST' do %>
+ <%= text_field_tag 'search_bar', nil, placeholder: "Enter the stock code name", size: 50 %>
+ <%= submit_tag 'Search' %>
+ <% end %>
 
-<p> testing stockAPI rendering, the @api is yung API key para ma-access natin ung API. If hindi gumagana ung API key, yung error is 400.</p>
-<%= link_to 'Stock API docu', 'https://www.rubydoc.info/gems/stock_quote/3.0.0' %>
-<% stock = StockQuote::Stock.logo("tsla", @api) %>
- <img src ="<%= stock.url %>">
+<% if @stock %>
+  <%= @stock.company_name %>
+<% end %>
 
+
+<div>
+  <ul>
+  <li><%= link_to "Sign up", new_user_registration_path %></li>
+  <li><%= link_to "Log In", new_user_session_path %></li>
+  </ul>
+</div>
