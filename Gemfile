@@ -17,6 +17,7 @@ gem 'devise'
 gem 'hamlit-rails'
 
 gem 'sqlite3'
+gem 'react-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
