@@ -4,8 +4,8 @@ class PagesController < ApplicationController
   end
 
   def home
-    if params[:ticker]
-        @stock = StockQuote::Stock.quote(params[:ticker], @api)
+    if params[:search_bar]
+        @stock = StockQuote::Stock.quote(params[:search_bar], @api)
     end
    
   end
