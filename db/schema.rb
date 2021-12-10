@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_09_071348) do
+ActiveRecord::Schema.define(version: 2021_12_10_090132) do
+
+  create_table "coins", force: :cascade do |t|
+    t.string "base"
+    t.string "target"
+    t.decimal "last_price"
+    t.decimal "volume"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal "price"
+    t.decimal "quantity"
+    t.boolean "filled", default: false
+    t.integer "wallet_id"
+    t.integer "coin_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coin_id"], name: "index_orders_on_coin_id"
+    t.index ["wallet_id"], name: "index_orders_on_wallet_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -21,8 +42,21 @@ ActiveRecord::Schema.define(version: 2021_12_09_071348) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin", default: false, null: false
+    t.string "kind"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "wallets", force: :cascade do |t|
+    t.decimal "money"
+    t.boolean "verified", default: false
+    t.datetime "verified_at"
+    t.decimal "pnl"
+    t.string "wallet_address"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_wallets_on_user_id"
   end
 
 end
