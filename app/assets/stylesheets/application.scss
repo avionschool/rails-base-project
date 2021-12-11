@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+ @import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&display=swap');
+
+ //Landing Page//
+
+ .app-name {
+     width: 13%;
+     font-size: 3rem;
+     padding: 5%;
+     padding-top: 1%;
+     font-family: 'Fascinate Inline', cursive;
+     background: -webkit-linear-gradient(rgb(124, 2, 124), rgb(2, 2, 250));
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     cursor: pointer;
+ }
+
