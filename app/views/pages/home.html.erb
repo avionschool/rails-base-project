@@ -11,8 +11,14 @@
 
 <% if @stock %>
   <%= @stock.company_name %>
+  $<%= @stock.latest_price %>
+<% elsif @blankSearch %>
+ <%= @blankSearch %>
 <% end %>
 
+<% if @stockErr %>
+  <%= @stockErr %>
+<% end %>
 
 <div>
   <ul>
