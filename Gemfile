@@ -18,6 +18,7 @@ gem 'hamlit-rails'
 
 gem 'sqlite3'
 gem 'react-rails'
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

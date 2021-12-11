@@ -1,0 +1,16 @@
+// Place all the styles related to the Trades controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.coinpair{
+    display:flex;
+    flex-flow:row;
+    &>.name{
+    }
+    &>.target{
+        color:gray;
+    }
+    &.price{
+        
+    }
+}
