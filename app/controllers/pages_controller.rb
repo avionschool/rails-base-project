@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     if params[:search_bar] == ""
       @blankSearch = "Please enter stock abbrv"
     elsif params[:search_bar]
-      StockQuote::Stock.new(api_key: 'pk_51093d06fb6d485ca164a3e61aa5324a')
+      StockQuote::Stock.new(api_key: Rails.application.credentials.config[:stocks_api_key] )
       @stock = StockQuote::Stock.quote(params[:search_bar])
       # if user entered random codes, UNDER CONSTRUCTION
       if !@stock
@@ -20,8 +20,4 @@ class PagesController < ApplicationController
   
   private
 
-  def set_api
-     # eto yung API key natin, if hindi gumagana, hanap ako loop hole
-     @api = StockQuote::Stock.new(api_key: 'pk_51093d06fb6d485ca164a3e61aa5324a')
-  end
 end
