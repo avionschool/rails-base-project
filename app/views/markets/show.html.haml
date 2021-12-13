@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Logo:
+  = @market.logo
+%p
+  %b Name:
+  = @market.name
+%p
+  %b Symbol:
+  = @market.symbol
+%p
+  %b Description:
+  = @market.description
+%p
+  %b Buying price:
+  = @market.buying_price
+%p
+  %b Selling price:
+  = @market.selling_price
+
+= link_to 'Edit', edit_market_path(@market)
+\|
+= link_to 'Back', markets_path

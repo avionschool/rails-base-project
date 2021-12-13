@@ -1,0 +1,31 @@
+%h1 Listing markets
+
+%table
+  %thead
+    %tr
+      %th Logo
+      %th Name
+      %th Symbol
+      %th Description
+      %th Buying price
+      %th Selling price
+      %th
+      %th
+      %th
+
+  %tbody
+    - @markets.each do |market|
+      %tr
+        %td= market.logo
+        %td= market.name
+        %td= market.symbol
+        %td= market.description
+        %td= market.buying_price
+        %td= market.selling_price
+        %td= link_to 'Show', market
+        %td= link_to 'Edit', edit_market_path(market)
+        %td= link_to 'Destroy', market, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Market', new_market_path
