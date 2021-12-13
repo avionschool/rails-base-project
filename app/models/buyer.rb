@@ -1,6 +1,7 @@
 class Buyer < ApplicationRecord
+  belongs_to :admin
+  validates :email, presence: true
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  # :confirmable, :lockable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,:recoverable, :rememberable, :validatable,, :timeoutable
 end
