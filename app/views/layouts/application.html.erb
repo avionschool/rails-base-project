@@ -10,6 +10,13 @@
   </head>
 
   <body>
+  <%= link_to "Home", root_path%> | 
+  <%= link_to "Sign in as Buyer", new_buyer_session_path%> | 
+  <%= link_to "Sign up as Buyer", new_buyer_registration_path %> |
+  <%= link_to "Sign in as Broker", new_broker_session_path %> |
+  <%= link_to "Sign up as Broker", new_broker_registration_path %> |
+  <%= link_to "Sign in as Admin", new_admin_session_path%>
+
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
     <%= yield %>
