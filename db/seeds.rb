@@ -38,16 +38,16 @@ users = User.create(
 coins = Coin.create(
     [
         {
-            base: 'USDT',
-            target: 'BTC'
+            target: 'USDT',
+            base: 'BTC'
         },
         {
-            base: 'USDT',
-            target: 'ETH'
+            target: 'USDT',
+            base: 'ETH'
         },
         {
-            base: 'USDT',
-            target: 'XRP'
+            target: 'USDT',
+            base: 'XRP'
         },
         {
             base: 'USDT',
