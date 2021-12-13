@@ -8,7 +8,7 @@
 
   .field
     = f.label :img
-    = f.text_field :img
+    = f.file_field :img
   .field
     = f.label :role
     = f.select :role, options_for_select(@roles, :selected => @account.role), {:required => "true"}
@@ -24,9 +24,6 @@
   .field
     = f.label :contact_number
     = f.text_field :contact_number
-  .field
-    = f.label :is_verified
-    = f.check_box :is_verified
   .field
     = f.fields_for :user do |u|
       = u.label :email
