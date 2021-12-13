@@ -11,7 +11,7 @@
     = f.text_field :img
   .field
     = f.label :role
-    = f.text_field :role
+    = f.select :role, options_for_select(@roles, :selected => @account.role), {:required => "true"}
   .field
     = f.label :firstname
     = f.text_field :firstname
@@ -30,9 +30,9 @@
   .field
     = f.fields_for :user do |u|
       = u.label :email
-      = u.text_field :email, value: "email@sample.com"
+      = u.email_field :email, value: "email@sample.com"
       = u.label :password
-      = u.text_field :password, value: "password"
+      = u.password_field :password, value: "password"
       = u.hidden_field :id, value: u.object.id
   .actions
     = f.submit 'Save'

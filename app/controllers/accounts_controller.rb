@@ -14,6 +14,7 @@ class AccountsController < ApplicationController
   def new
     @account = Account.new
     @account.build_user
+    @roles = Account.roles.reject{|x| x == 'admin'}
   end
 
   # GET /accounts/1/edit
