@@ -6,7 +6,25 @@ class User < ApplicationRecord
 
   has_one :wallet
   
+  after_create :create_wallet
+
   def username
     return self.email.split('@')[0].capitalize
   end
+  
+  def admin?
+    self.admin
+  end
+
+  def broker?
+    return true if self.kind == "broker"
+    false
+  end
+
+  private
+
+  def create_wallet
+    Wallet.create(user_id: self.id)
+  end
+
 end
