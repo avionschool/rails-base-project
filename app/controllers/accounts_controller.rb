@@ -13,6 +13,7 @@ class AccountsController < ApplicationController
   # GET /accounts/new
   def new
     @account = Account.new
+    @account.build_user
   end
 
   # GET /accounts/1/edit
@@ -64,6 +65,6 @@ class AccountsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def account_params
-      params.require(:account).permit(:img, :role, :firstname, :lastname, :address, :contact_number, :is_verified)
+      params.require(:account).permit(:img, :role, :firstname, :lastname, :address, :contact_number, :is_verified, user_attributes: [:id, :email, :password])
     end
 end

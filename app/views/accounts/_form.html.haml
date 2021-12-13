@@ -27,5 +27,12 @@
   .field
     = f.label :is_verified
     = f.check_box :is_verified
+  .field
+    = f.fields_for :user do |u|
+      = u.label :email
+      = u.text_field :email, value: "email@sample.com"
+      = u.label :password
+      = u.text_field :password, value: "password"
+      = u.hidden_field :id, value: u.object.id
   .actions
     = f.submit 'Save'
