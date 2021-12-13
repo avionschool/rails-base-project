@@ -18,7 +18,7 @@ class Coin < ApplicationRecord
     end
 
     def target_is_usdt
-      return true unless target == "USDT"
+      return true if target == "USDT"
       errors.add(:target, "should be only USDT for now")
     end
 end
