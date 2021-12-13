@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Img:
+  = @account.img
+%p
+  %b Role:
+  = @account.role
+%p
+  %b Firstname:
+  = @account.firstname
+%p
+  %b Lastname:
+  = @account.lastname
+%p
+  %b Address:
+  = @account.address
+%p
+  %b Contact number:
+  = @account.contact_number
+%p
+  %b Is verified:
+  = @account.is_verified
+
+= link_to 'Edit', edit_account_path(@account)
+\|
+= link_to 'Back', accounts_path

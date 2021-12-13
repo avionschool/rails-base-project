@@ -1,0 +1,35 @@
+= form_for @account do |f|
+  - if @account.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@account.errors.count, "error")} prohibited this account from being saved:"
+      %ul
+        - @account.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :img
+    = f.file_field :img
+  .field
+    = f.label :role
+    = f.select :role, options_for_select(@roles, :selected => @account.role), {:required => "true"}
+  .field
+    = f.label :firstname
+    = f.text_field :firstname
+  .field
+    = f.label :lastname
+    = f.text_field :lastname
+  .field
+    = f.label :address
+    = f.text_area :address
+  .field
+    = f.label :contact_number
+    = f.text_field :contact_number
+  .field
+    = f.fields_for :user do |u|
+      = u.label :email
+      = u.email_field :email, value: "email@sample.com"
+      = u.label :password
+      = u.password_field :password, value: "password"
+      = u.hidden_field :id, value: u.object.id
+  .actions
+    = f.submit 'Save'

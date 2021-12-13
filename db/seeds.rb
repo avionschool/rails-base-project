@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+admin = Account.create(role: 'admin', firstname: 'Admin', is_verified: true)
+admin.build_user(email: 'admin@example.com', password: "password")
+admin.save
