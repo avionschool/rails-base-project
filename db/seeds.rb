@@ -5,3 +5,57 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+admins = User.create(
+    [
+        {
+          email: 'pr@avion.com',
+          password: 'hesucrypto',
+          admin: true
+        },
+        {
+          email: 'cc@avion.com',
+          password: 'kristocurrency',
+          admin: true
+        }
+    ]
+)
+
+users = User.create(
+    [
+        {
+            email: 'asd@asd.com',
+            password: '123456'
+        },
+        {
+            email: 'stonks@asd.com',
+            password: '123456',
+            kind: 'broker'
+        }
+    ]
+)
+
+coins = Coin.create(
+    [
+        {
+            target: 'USDT',
+            base: 'BTC'
+        },
+        {
+            target: 'USDT',
+            base: 'ETH'
+        },
+        {
+            target: 'USDT',
+            base: 'XRP'
+        },
+        {
+            base: 'USDT',
+            target: 'AXS'
+        },
+        {
+            base: 'USDT',
+            target: 'BNB'
+        }
+    ]
+)
