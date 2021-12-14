@@ -1,5 +1,5 @@
 class StocksController < ApplicationController
-  before_action :set_stock, only: %i[ show edit update destroy ]
+  before_action :set_stock, :correct_user, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
   # GET /stocks or /stocks.json
@@ -55,6 +55,11 @@ class StocksController < ApplicationController
       format.html { redirect_to stocks_url, notice: "Stock was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def correct_user 
+    @ticker = current_user.stocks.find_by(id: params[:id])
+    redirect_to stocks_path, notice: "Not authorized to edit this stock" if @ticker.nil?
   end
 
   private
