@@ -5,7 +5,7 @@
 
 <p> search bar function </p> </br> <p> Try TSLA, AAPL, FB </p>
 <%= form_tag root_path, :method => 'POST' do %>
- <%= text_field_tag 'search_bar', nil, placeholder: "Enter the stock code name", size: 50 %>
+ <%= text_field_tag 'ticker', nil, placeholder: "Enter the stock code name", size: 50 %>
  <%= submit_tag 'Search' %>
  <% end %>
 
@@ -22,7 +22,7 @@
 
 <div>
   <ul>
-    <% if user_signed_in? %>
+    <% if user_signed_in?  %>
       <li><%= link_to "Edit Profile", edit_user_registration_path %> </li>
       <li><%= link_to "Log out", destroy_user_session_path, method: :delete %> </li>
       <li><%= link_to "Show stock", stocks_path %> </li>
