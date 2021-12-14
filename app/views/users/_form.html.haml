@@ -1,0 +1,21 @@
+= form_with model: @user do |f|
+
+  -# - if @user.errors.any?
+  -#   %h2 Errors: 
+  -#   %ul
+  -#     - @user.errors.full_messages.each do |message|
+  -#       %li= message
+
+  = f.label :email
+  = f.text_field :email
+  %br
+  = f.label :first_name
+  = f.text_field :first_name
+  -# %br
+  -# = f.label :encrypted_password
+  -# = f.password_field :encrypted_password
+  %br
+  = f.label :last_name
+  = f.text_field :last_name
+  %br
+  %button= f.submit
