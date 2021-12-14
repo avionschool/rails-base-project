@@ -1,0 +1,9 @@
+%div
+  %h1.text-lg.font-bold.text-4xl Home#index
+  %p Find me in app/views/home/index.html.erb
+
+  - if user_signed_in?
+    = link_to 'Sign Out', destroy_user_session_path, method: :delete
+  - else
+    = link_to 'Register', new_user_registration_path
+    = link_to 'Sign In', new_user_session_path
