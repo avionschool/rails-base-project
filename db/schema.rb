@@ -14,9 +14,8 @@ ActiveRecord::Schema.define(version: 2021_12_14_131652) do
 
   create_table "cryptocurrencies", force: :cascade do |t|
     t.string "name"
-    t.string "description"
     t.bigint "max_supply"
-    t.string "currency_symbol"
+    t.string "symbol"
     t.string "slug"
     t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
