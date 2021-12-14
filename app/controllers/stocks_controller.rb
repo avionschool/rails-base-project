@@ -1,5 +1,6 @@
 class StocksController < ApplicationController
-  before_action :set_stock, only: %i[ show edit update destroy ]
+  before_action :set_stock, :correct_user, only: %i[show edit update destroy]
+  before_action :authenticate_user!
 
   # GET /stocks or /stocks.json
   def index
@@ -25,7 +26,7 @@ class StocksController < ApplicationController
 
     respond_to do |format|
       if @stock.save
-        format.html { redirect_to @stock, notice: "Stock was successfully created." }
+        format.html { redirect_to @stock, notice: "Stock was successfully added." }
         format.json { render :show, status: :created, location: @stock }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -54,6 +55,11 @@ class StocksController < ApplicationController
       format.html { redirect_to stocks_url, notice: "Stock was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def correct_user 
+    @ticker = current_user.stocks.find_by(id: params[:id])
+    redirect_to stocks_path, notice: "Not authorized to edit this stock" if @ticker.nil?
   end
 
   private
