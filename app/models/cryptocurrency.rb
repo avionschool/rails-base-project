@@ -1,0 +1,2 @@
+class Cryptocurrency < ApplicationRecord
+end
