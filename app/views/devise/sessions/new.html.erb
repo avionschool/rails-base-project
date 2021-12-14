@@ -1,6 +1,7 @@
 <%# Main Css  %>
 <%= stylesheet_link_tag "/pages/sessions/main.scss" %>
 
+
 <div class=container> 
   <%# Navigation Bar %>
   <header>
@@ -37,7 +38,7 @@
       <% end %>
 
       <div class="actions">
-        <%= f.submit "Log in" %>
+        <%= f.submit "Login", :class => 'btn' %>
       </div>
     <% end %>
 

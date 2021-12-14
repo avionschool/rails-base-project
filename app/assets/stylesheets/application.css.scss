@@ -20,12 +20,13 @@
 @import './application/objects/variables';
 //Mixins
 @import './base/mixins/mixins';
+@import './application/objects/buttons';
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: $poppins;
   font-size: 16px;
   background-color: $backgroundColor;
   color: $textColor;
@@ -53,6 +54,7 @@ Navigation Bar
   align-items: flex-start;
   height: 2rem;
   margin-bottom: 10rem;
+  padding: 50px 50px;
 }
 
 // Logo
@@ -79,7 +81,7 @@ Navigation Bar
 .nav-links {
   @include horizontal-list();
   cursor: pointer;
-  padding-top: 0.2rem;
+  padding-top: 1rem;
   font-weight: 600;
   letter-spacing: 1.2px;
 }

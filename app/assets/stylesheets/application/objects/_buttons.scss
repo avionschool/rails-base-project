@@ -1,0 +1,31 @@
+//Variables
+@import './variables';
+
+@mixin button-bg($bg) {
+  background: $bg;
+  
+  &:hover {
+    background: darken($bg, 8%);
+    transition: all 0.3s ease;
+  }
+
+  &:active {
+    background: darken($bg, 25%);
+  }
+}
+
+.btn {
+  @include button-bg($primaryBtn);
+  color: $textColor;
+  text-decoration: none;
+  padding: 10px 100px;
+  border-radius: 3px;
+  font-size: 1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: $poppins;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
