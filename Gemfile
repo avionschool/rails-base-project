@@ -17,6 +17,7 @@ gem 'sqlite3'
 
 gem 'devise'
 gem 'hamlit-rails'
+gem "tailwindcss-rails", "~> 0.5.1"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
