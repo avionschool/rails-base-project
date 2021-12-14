@@ -1,12 +1,12 @@
--@response["tickers"].each do |coin|
-  -if coin["target"] == "USDT"
+-@coins.each do |coin|
+  -if coin.target == "USDT"
     .coinpair
-      %p.name=coin["base"]
-      %p.target=coin["target"]
-      %p.price=coin["last"]
-      =link_to "BTCUSDT", trade_path("BTCUSDT")
+      %p.name=coin.base
+      %p.target=coin.target
+      -# %p.price=coin["last"]
+      =link_to "#{coin.base}#{coin.target}", trade_path(base: coin.base, target: coin.target, id:coin.id)
 
--if current_user
+-unless current_user
   Please sign in to make trades
 -else
   Make link to order

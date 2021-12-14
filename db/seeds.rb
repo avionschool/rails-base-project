@@ -50,12 +50,12 @@ coins = Coin.create(
             base: 'XRP'
         },
         {
-            base: 'USDT',
-            target: 'AXS'
+            target: 'USDT',
+            base: 'AXS'
         },
         {
-            base: 'USDT',
-            target: 'BNB'
+            target: 'USDT',
+            base: 'BNB'
         }
     ]
 )
