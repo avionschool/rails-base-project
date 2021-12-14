@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_121628) do
+ActiveRecord::Schema.define(version: 2021_12_14_131652) do
 
-  create_table "crypto_currencies", force: :cascade do |t|
-    t.string "code", limit: 3
+  create_table "cryptocurrencies", force: :cascade do |t|
     t.string "name"
-    t.decimal "rate"
-    t.boolean "is_active", default: false
+    t.string "description"
+    t.bigint "max_supply"
+    t.string "currency_symbol"
+    t.string "slug"
+    t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
