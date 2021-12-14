@@ -22,13 +22,14 @@ ActiveRecord::Schema.define(version: 2021_12_07_121628) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.integer "role_id"
+    t.integer "country_id"
     t.string "firstname"
     t.string "lastname"
     t.string "username"
@@ -36,8 +37,10 @@ ActiveRecord::Schema.define(version: 2021_12_07_121628) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_users_on_country_id"
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "users", "countries"
   add_foreign_key "users", "roles"
 end
