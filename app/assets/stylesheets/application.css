@@ -17,6 +17,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'IBM Plex Sans Devanagari', sans-serif;
     }
     
 nav ul {
@@ -24,6 +25,7 @@ nav ul {
     padding: 0;
     list-style: none;
     padding-left: 16px;
+    font-weight: bold;
 }
 
 
@@ -40,7 +42,7 @@ nav a {
 }
 
 nav a:hover{
-    color: #000;
+    color: rgb(19, 185, 157);
 }
 
 img { 
