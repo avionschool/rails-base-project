@@ -1,0 +1,9 @@
+@mixin horizontal-list {
+  li {
+    display: inline-block;
+    margin: {
+      left: -2px;
+      right: 2em;
+    }
+  }
+}

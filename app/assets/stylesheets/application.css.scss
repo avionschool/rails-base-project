@@ -1,0 +1,85 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* Font: poppins */
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700;800&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Poppins:wght@400;600&display=swap');
+// Variables
+@import './application/objects/variables';
+//Mixins
+@import './base/mixins/mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  background-color: $backgroundColor;
+  color: $textColor;
+}
+
+.link {
+  text-decoration: none;
+  color: #fff;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+ul li a {
+  color: #fff;
+}
+
+/********************
+Navigation Bar
+********************/
+// Navbar
+.navbar {
+  display: flex;
+  align-items: flex-start;
+  height: 2rem;
+  margin-bottom: 10rem;
+}
+
+// Logo
+.nav-logo {
+  color: $textColor;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 100px;
+  margin-right: 2rem;
+
+  .dot {
+    height: 6px;
+    width: 6px;
+    background-color: $primaryBtn;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-left: 2px;
+  }
+}
+
+// Nav Links
+.nav-links {
+  @include horizontal-list();
+  cursor: pointer;
+  padding-top: 0.2rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+}

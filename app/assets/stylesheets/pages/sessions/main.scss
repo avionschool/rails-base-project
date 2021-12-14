@@ -1,0 +1,9 @@
+// Variables
+@import '../../application/objects/variables';
+//Mixins
+@import '../../base/mixins/mixins';
+
+body {
+  color: $textColor;
+}
+
