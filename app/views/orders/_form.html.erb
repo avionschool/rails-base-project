@@ -1,0 +1,21 @@
+<%= form_with model: @order do |f| %>
+
+<%= f.label :quantity %>
+<%= f.text_field :quantity %>
+
+
+
+<%= f.hidden_field :kind, value: 'buy' %>
+<%= f.submit 'Buy' %>
+<% end %>
+
+<%= form_with model: @order do |f| %>
+
+<%= f.label :quantity %>
+<%= f.text_field :quantity %>
+
+<%= f.hidden_field :kind, value: 'sell' %>
+
+<%= f.submit 'Sell' %>
+<% end %>
+    
