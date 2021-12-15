@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   root to: "pages#index"
   resources :trades
   resources :coins
-  
+  post '/trades/:id', to:'orders#create'
+
 end
