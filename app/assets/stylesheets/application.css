@@ -13,17 +13,25 @@
  *= require_tree .
  *= require_self
  */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'IBM Plex Sans Devanagari', sans-serif;
+    }
+    
 nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
+    padding-left: 16px;
+    font-weight: bold;
 }
 
 
 nav li {
     display: inline-block;
-    margin-left: 70px;
-    padding-top: 35px;
+    margin-left: 50px;
 }
 
 nav a {
@@ -34,5 +42,9 @@ nav a {
 }
 
 nav a:hover{
-    color: #000;
+    color: rgb(19, 185, 157);
+}
+
+img { 
+    width: 120px;
 }
