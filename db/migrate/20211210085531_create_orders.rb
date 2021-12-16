@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.decimal :price
       t.decimal :quantity
       t.boolean :filled, default: false
-
+      t.string :kind
       t.references :wallet
       t.references :coin
 
