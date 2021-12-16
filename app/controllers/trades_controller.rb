@@ -9,6 +9,9 @@ class TradesController < ApplicationController
   def show
     @coin = Coin.find_by(base: params[:base], target: params[:target], id: params[:id])
     @cp_str= "#{@coin.base}#{@coin.target}"
+    
+    @orders = @coin.orders
+    @order = @coin.orders.build
   end
   
   def create

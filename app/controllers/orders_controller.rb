@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 
   def create
     byebug
-    @coin = Coin.find(params[:id])
+    # @coin = Coin.find(params[:id])
     @order = @coin.orders.build(order_params)
     @order.wallet = current_user.wallet
 
