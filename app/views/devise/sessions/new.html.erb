@@ -1,26 +1,65 @@
-<h2>Log in</h2>
+<script
+  src ='https://kit.fontawesome.com/64d58efce2.js'
+  crossorigin='anonymous'>
+ </script>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class='buyer-signin-signup-container'>
+  <div class='forms-container'>
+    <div class='signin-signup'>
+    <h2 class='signin-title'>Log-in</h2>
+    <div class='sign-in-form'>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class='input-field'>
+        <i class='fas fa-user'></i>
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+    
+      <div class='input-field'>
+        <i class='fas fa-lock'></i>
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class='input-field'>
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+    
+      <div class='btn submit-btn'>
+        <%= f.submit "Log in" %>
+      </div>
+    <% end %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= render "devise/shared/links" %>
+    </div>
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+<div class='panels-container'>
+  <div class='panel left-panel'>
+    <div class='panel-content'>
+      <h3>Create an Account</h3>
+      <p>
+        Buy and sell stocks in minutes
+      </p>
+      <button class="btn transparent" id="sign-up-btn">
+      Sign-up
+      </button>
+    </div>
+    <%= image_tag('signup-img.svg', :alt => 'Charts', class:'app-signup') %>
+  </div>
+  <div class='panel right-panel'>
+    <div class='panel-content'>
+      <h3> One of us?</h3>
+      <p>
+        Get back on the charts
+      </p>
+      <button class="btn transparent" id="sign-in-btn">
+      Sign-in
+      </button>
+    </div>
+    <%= image_tag('signin-img.svg', :alt => 'Chart', class:'app-signin') %>
+  </div>
+</div>
