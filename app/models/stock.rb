@@ -4,6 +4,7 @@ class Stock < ApplicationRecord
     def render_stock(ticker)
         init_api
         return stock = StockQuote::Stock.quote(ticker)
+        
     end
 
     def init_api

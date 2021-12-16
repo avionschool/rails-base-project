@@ -10,7 +10,7 @@ class PagesController < ApplicationController
       @stock = Stock.new
       @stock = @stock.render_stock(params[:ticker])
       end
-   
+  
   end
   
   private
