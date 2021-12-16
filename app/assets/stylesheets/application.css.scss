@@ -15,7 +15,7 @@
  */
 
 /* Font: poppins */
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700;800&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Karla:wght@400;700;800&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Poppins:wght@400;600&display=swap');
 // Variables
 @import './application/objects/variables';
 //Mixins
@@ -26,15 +26,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: $poppins;
   font-size: 16px;
-  background-color: $backgroundColor;
   color: $textColor;
-}
-
-.link {
-  text-decoration: none;
-  color: #fff;
 }
 
 ul li {
@@ -50,11 +43,11 @@ Navigation Bar
 ********************/
 // Navbar
 .navbar {
+  font-family: $poppins;
   display: flex;
   align-items: flex-start;
-  height: 2rem;
-  margin-bottom: 10rem;
-  padding: 50px 50px;
+  height: 15vh;
+  padding: 30px 50px;
 }
 
 // Logo
@@ -84,4 +77,24 @@ Navigation Bar
   padding-top: 1rem;
   font-weight: 600;
   letter-spacing: 1.2px;
+}
+
+/********************
+Login
+********************/
+// Login Container 
+.login-container {
+  @include flexCenter();
+
+  height: 80vh;
+  width: 100%
+}
+
+.link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.sign-up {
+  color: #3f68af;
 }

@@ -1,3 +1,4 @@
+// Horizontal List 
 @mixin horizontal-list {
   li {
     display: inline-block;
@@ -6,4 +7,14 @@
       right: 2em;
     }
   }
+}
+
+// Center Content
+@mixin flexCenter {
+  height: 20vh;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:  column;
 }
