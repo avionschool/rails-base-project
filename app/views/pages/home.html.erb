@@ -5,12 +5,12 @@
 
 <p> search bar function </p> </br> <p> Try TSLA, AAPL, FB </p>
 <%= form_tag root_path, :method => 'POST' do %>
-  <%= text_field_tag 'ticker', nil, placeholder: "Enter the stock code name", size: 50 %>
-  <%= submit_tag 'Search' %>
-  <% end %>
+ <%= text_field_tag 'ticker', nil, placeholder: "Enter the stock code name", size: 50 %>
+ <%= submit_tag 'Search' %>
+ <% end %>
 
 <% if @stock %>
-  <%= @stock.company_name %>
+  <%= @stock.company_name %> 
   $<%= @stock.latest_price %>
   <% elsif @blankSearch %>
     <%= @blankSearch %>
