@@ -12,6 +12,7 @@
 <% if @stock %>
   <%= @stock.company_name %> 
   $<%= @stock.latest_price %>
+  <img src = "<%= @logo.url %>">
   <% elsif @blankSearch %>
     <%= @blankSearch %>
 <% end %>
