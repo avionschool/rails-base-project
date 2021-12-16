@@ -4,24 +4,21 @@ class OrdersController < ApplicationController
   end
 
   def create
-    # @coin = Coin.find(params[:id])
-    @order = @coin.orders.build(order_params)
-    @order.wallet = current_user.wallet
-
+    @wallet = Wallet.find(params[:wallet_id])
+    @order = @wallet.orders.build(order_params)
 
     if @order.save
       redirect_to @coin
     else
-      render :show
+      render 'trades/show'
     end
 
-    
   end
 
 
   private 
   
   def order_params
-    params.require(:order).permit(:price, :quantity, :kind).merge(wallet_id: current_wallet.id)
+    params.require(:order).permit(:price, :quantity, :kind).merge(wallet_id: current_user.wallet.id)
   end
 end

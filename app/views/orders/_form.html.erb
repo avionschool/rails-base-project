@@ -1,4 +1,4 @@
-<%= form_with model: @order do |f| %>
+<%= form_with model: [@wallet,@order] do |f| %>
 
 <%= f.label :quantity %>
 <%= f.text_field :quantity %>
@@ -9,7 +9,7 @@
 <%= f.submit 'Buy' %>
 <% end %>
 
-<%= form_with model: @order do |f| %>
+<%= form_with model: [@wallet,@order] do |f| %>
 
 <%= f.label :quantity %>
 <%= f.text_field :quantity %>

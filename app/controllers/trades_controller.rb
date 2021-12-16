@@ -10,20 +10,20 @@ class TradesController < ApplicationController
     @coin = Coin.find_by(base: params[:base], target: params[:target])
     @cp_str= "#{@coin.base}#{@coin.target}"
     
-    @orders = @coin.orders
+    @wallet = current_user.wallet
     @order = @coin.orders.build
   end
   
   def create
-    @coin = Coin.find(params[:coin_id])
-    @order = @coin.orders.build(order_params)
-    @order.wallet = current_user.wallet
+    # @coin = Coin.find(params[:coin_id])
+    # @order = @coin.orders.build(order_params)
+    # @order.wallet = current_user.wallet
 
-    if @order.save
-      redirect_to @coin
-    else
-      render :show
-    end
+    # if @order.save
+    #   redirect_to @coin
+    # else
+    #   render :show
+    # end
   end
 
 
