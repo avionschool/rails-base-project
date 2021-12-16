@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_11_031406) do
+ActiveRecord::Schema.define(version: 2021_12_16_033322) do
 
   create_table "stocks", force: :cascade do |t|
     t.string "ticker"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "current_price"
+    t.string "logo_url"
+    t.string "name"
     t.index ["user_id"], name: "index_stocks_on_user_id"
   end
 
