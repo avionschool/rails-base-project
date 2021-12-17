@@ -1,11 +1,11 @@
 <%= form_with model: [@wallet,@order] do |f| %>
 
+
 <%= f.label :quantity %>
 <%= f.text_field :quantity %>
-
-
-
+<%= f.hidden_field :coin_id, value: @coin.id%>
 <%= f.hidden_field :kind, value: 'buy' %>
+
 <%= f.submit 'Buy' %>
 <% end %>
 
@@ -15,6 +15,7 @@
 <%= f.text_field :quantity %>
 
 <%= f.hidden_field :kind, value: 'sell' %>
+<%= f.hidden_field :coin_id, value: @coin.id%>
 
 <%= f.submit 'Sell' %>
 <% end %>

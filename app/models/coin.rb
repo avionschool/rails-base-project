@@ -7,6 +7,8 @@ class Coin < ApplicationRecord
 
     private
 
+    base_uri = 'https://api.coingecko.com/api/v3'
+
     def coin_is_listed_in_binance
       res = HTTParty.get('https://api.coingecko.com/api/v3/exchanges/binance')
       res["tickers"].each do |coin|
@@ -20,5 +22,14 @@ class Coin < ApplicationRecord
     def target_is_usdt
       return true if target == "USDT"
       errors.add(:target, "should be only USDT for now")
+    end
+
+    def coins_list
+      list_uri = '/coins/list'
+      coins_list = HTTParty.get(base_uri + list_uri)
+    end
+
+    def coin_ids
+      coins_list
     end
 end

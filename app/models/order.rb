@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   belongs_to :wallet
   belongs_to :coin
 
-  validates :price, :quantity, :kind, presence:true
+  validates :quantity, :kind, presence:true
   validate :kind_is_buy_or_sell
 
   def kind_is_buy_or_sell
