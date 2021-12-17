@@ -1,11 +1,11 @@
-<h1>Listing stocks</h1>
+<h1>Listing stocks Top 10 blue chip companies</h1>
 <table>
   <thead>
     <tr>
       <th>Ticker</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
+      <th>Logo</th>
+      <th>Current Price</th>
+      <th>Company name</th>
       <th></th>
     </tr>
   </thead>
@@ -16,16 +16,16 @@
           <%= stock.ticker %>
         </td>
         <td>
-          <%= stock.user_id %>
+          <img src ="<%= stock.logo_url %>">
+        </td>
+        <td>
+          <%= stock.current_price %>
+        </td>
+        <td>
+          <%= stock.name %>
         </td>
         <td>
           <%= link_to 'Show', stock %>
-        </td>
-        <td>
-          <%= link_to 'Edit', edit_stock_path(stock) %>
-        </td>
-        <td>
-          <%= link_to 'Destroy', stock, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>
