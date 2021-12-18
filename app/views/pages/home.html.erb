@@ -1,39 +1,37 @@
 <%# Homepage CSS %>
 <%= stylesheet_link_tag '/pages/homepage/main.scss' %>
 
+<div class='container'>
+  <%# Navigation Bar %>
+  <header>
+    <nav class='navbar'>
+      <a class='nav-logo'>Investonks<span class='dot'></span></a>
+      <ul class='nav-links'>
+        <%# Login and SignIn %>
+        <div>
+          <ul>
+            <% if user_signed_in?  %>
+              <li><%= link_to "Edit Profile", edit_user_registration_path %> </li>
+              <li><%= link_to "Log out", destroy_user_session_path, method: :delete %> </li>
+              <li><%= link_to "Show stock", stocks_path %> </li>
+              <li><%= link_to "Add stocks", new_stock_path %> </li>
+            <% else %>
+              <li><%= link_to "Sign up", new_user_registration_path %></li> 
+              <li><%= link_to "Log In", new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </ul>
+    </nav>
+  </header>
 
-<h1>This is our home page </h1>
+  <main class='wrapper'>
+    <h1>Welcome little one!</h1>
+    <p>Stonks for dummies</p>
+    <%= link_to 'Get Started', new_user_registration_path, :class => 'btn' %>
+  </main>
 
-<p>henlo</p>
 
-
-<p> search bar function </p> </br> <p> Try TSLA, AAPL, FB </p>
-<%= form_tag root_path, :method => 'POST' do %>
-  <%= text_field_tag 'ticker', nil, placeholder: "Enter the stock code name", size: 50 %>
-  <%= submit_tag 'Search' %>
-  <% end %>
-
-<% if @stock %>
-  <%= @stock.company_name %>
-  $<%= @stock.latest_price %>
-  <% elsif @blankSearch %>
-    <%= @blankSearch %>
-<% end %>
-
-<% if @stockErr %>
-  <%= @stockErr %>
-<% end %>
-
-<div>
-  <ul>
-    <% if user_signed_in?  %>
-      <li><%= link_to "Edit Profile", edit_user_registration_path %> </li>
-      <li><%= link_to "Log out", destroy_user_session_path, method: :delete %> </li>
-      <li><%= link_to "Show stock", stocks_path %> </li>
-      <li><%= link_to "Add stocks", new_stock_path %> </li>
-    <% else %>
-      <li><%= link_to "Sign up", new_user_registration_path %></li>
-      <li><%= link_to "Log In", new_user_session_path %></li>
-    <% end %>
-  </ul>
 </div>
+
+

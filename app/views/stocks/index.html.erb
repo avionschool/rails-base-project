@@ -33,3 +33,21 @@
 </table>
 <br/>
 <%= link_to 'New Stock', new_stock_path %>
+
+<%# Search Box  %>
+  <%= form_tag root_path, :method => 'POST' do %>
+    <%= text_field_tag 'ticker', nil, placeholder: "Enter the stock code name", size: 50 %>
+    <%= submit_tag 'Search' %>
+    <% end %>
+
+  <% if @stock %>
+    <%= @stock.company_name %>
+    $<%= @stock.latest_price %>
+    <% elsif @blankSearch %>
+      <%= @blankSearch %>
+  <% end %>
+
+  <% if @stockErr %>
+    <%= @stockErr %>
+  <% end %>
+
