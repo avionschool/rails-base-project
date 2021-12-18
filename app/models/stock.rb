@@ -1,33 +1,29 @@
 class Stock < ApplicationRecord
-    API_KEY= Rails.application.credentials.config[:stocks_api_key]
-
-    def Stock.render_stock(ticker)
-        begin
-        self.init_api
-        stock = StockQuote::Stock.quote(ticker)
-        rescue
-        end
-    end
-
-    def Stock.render_logo(ticker)
-        begin
-            self.init_api
-            logo = StockQuote::Stock.logo(ticker)
-        rescue
-        end
-    end
-
-    def Stock.list_stocks
-        list = ['AAPL', 'GOOG', 'VOO', 'KO', 'AMZN', 'MSFT', 'FB', 'TSLA', 'DIS']
-        list.each do |ticks|
-            data = self.render_stock(ticks)
-            logo = self.render_logo(ticks)
-            create(ticker: ticks, logo_url: logo.url, name: data.company_name, current_price: data.latest_price)
-        end
-        
-    end
+    validates :ticker, :name, presence: true
+    validates :current_price, :logo_url, presence: true
 
     def Stock.init_api
-        StockQuote::Stock.new(api_key: API_KEY)
+        client = IEX::Api::Client.new(
+            publishable_token: Rails.application.credentials.config[:stocks_api_key],
+            secret_token: Rails.application.credentials.config[:secret_api_key],
+            endpoint: 'https://sandbox.iexapis.com/v1'
+        )
+
+        raw_list = File.open('app/assets/stock_list/blue_chips.txt')
+        list = raw_list.readlines.map(&:chomp)
+
+        
+        list.each do |data|
+        begin
+        self.create({
+            ticker: data, 
+            name: client.company(data).company_name,
+            current_price: client.price(data), 
+            logo_url: client.logo(data).url
+        })
+        rescue
+            p "none"
+        end
     end
+end
 end
