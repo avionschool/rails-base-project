@@ -25,7 +25,7 @@
           <%= stock.name %>
         </td>
         <td>
-          <%= link_to 'Show', stock %>
+          <%= link_to 'Show', stock_path(:id => stock.id, :ticker => stock.ticker)%>
         </td>
       </tr>
     <% end %>
