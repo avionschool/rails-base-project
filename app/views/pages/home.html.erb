@@ -9,17 +9,7 @@
  <%= submit_tag 'Search' %>
  <% end %>
 
-<% if @stock %>
-  <%= @stock.company_name %> 
-  $<%= @stock.latest_price %>
-  <img src = "<%= @logo.url %>">
-  <% elsif @blankSearch %>
-    <%= @blankSearch %>
-<% end %>
 
-<% if @stockErr %>
-  <%= @stockErr %>
-<% end %>
 
 <div>
   <ul>
