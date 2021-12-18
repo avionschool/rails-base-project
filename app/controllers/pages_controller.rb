@@ -4,18 +4,13 @@ class PagesController < ApplicationController
   end
 
   def home
-    if params[:ticker] == ""
-      @blankSearch = "Please enter stock abbrv"
-    elsif params[:ticker]
-      StockQuote::Stock.new(api_key: Rails.application.credentials.config[:stocks_api_key] )
-      @stock = StockQuote::Stock.quote(params[:ticker])
-      # if user entered random codes, UNDER CONSTRUCTION
-      if !@stock
-        @stockErr = "This stock doesnt exist"
-      end
-
-    end
-   
+    # if params[:ticker] == ""
+    #   flash[:notice] = "Please enter stock code"
+    # elsif params[:ticker]
+    #   @stock = Stock.new
+    #   @stock = Stock.render_stock(params[:ticker])
+    #   byebug
+    # end
   end
   
   private
