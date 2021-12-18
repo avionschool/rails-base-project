@@ -27,7 +27,8 @@
   padding: 0;
   box-sizing: border-box;
   font-size: 16px;
-  color: $textColor;
+  color: $black;
+  font-family: $poppins;
 }
 
 ul li {
@@ -35,7 +36,8 @@ ul li {
 }
 
 ul li a {
-  color: #fff;
+  color: $gray;
+  text-decoration: none;
 }
 
 /********************
@@ -43,7 +45,6 @@ Navigation Bar
 ********************/
 // Navbar
 .navbar {
-  font-family: $poppins;
   display: flex;
   align-items: flex-start;
   height: 15vh;
@@ -52,7 +53,7 @@ Navigation Bar
 
 // Logo
 .nav-logo {
-  color: $textColor;
+  color: $black;
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 100px;
@@ -61,7 +62,7 @@ Navigation Bar
   .dot {
     height: 6px;
     width: 6px;
-    background-color: $primaryBtn;
+    background-color: $lightGreen;
     border-radius: 50%;
     display: inline-block;
     font-size: 2rem;

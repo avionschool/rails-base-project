@@ -15,8 +15,8 @@
 }
 
 .btn {
-  @include button-bg($primaryBtn);
-  color: $textColor;
+  @include button-bg($lightGreen);
+  color: $black;
   text-decoration: none;
   padding: 10px 100px;
   border-radius: 3px;

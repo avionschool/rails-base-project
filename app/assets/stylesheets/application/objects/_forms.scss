@@ -3,11 +3,12 @@
 
 h1 {
   font-size: 2rem;
+  color: $black;
 }
 
 h5 {
   font-size: 0.8rem;
-  color: $secondaryText;
+  color: $black;
   margin: 5px 0 30px 0;
 }
 
@@ -44,7 +45,7 @@ h5 {
 }
 
 .text-field {
-  background-color: $secondaryText;
+  background-color: $black;
   outline: none;
   border: none;
   border-radius: 20px;
