@@ -10,6 +10,13 @@ body {
   display: block;
 }
 
+ul {
+  font-weight: 200;
+  
+  li {
+    color: $gray;
+  }
+}
 
 /********************
 Navigation Bar

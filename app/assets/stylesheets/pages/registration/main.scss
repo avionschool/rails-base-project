@@ -1,0 +1,43 @@
+// Objects
+@import '../../application/objects/variables';
+@import '../../application/objects/forms';
+@import '../../base/mixins/mixins';
+
+
+body {
+  height: 100vh;
+  width: 100%;
+  background: $white;
+}
+
+/********************
+Main 
+********************/
+// Row
+.row {
+  display: flex;
+}
+
+// Column
+.column {
+  float: left;
+  padding: 10px;
+}
+
+// Left Container 
+.left-container {
+  height: 100vh;
+  width: 30%;
+  background-color: #F1CDD7;
+  margin: 0;
+}
+
+// Right Container 
+.right-container {
+  @include flexCenter();
+
+  height: 100vh;
+  width: 70%;
+  color: $white;
+
+}
