@@ -4,7 +4,8 @@
     <tr>
       <th>Ticker</th>
       <th>Logo</th>
-      <th>Current Price</th>
+      <th>Buying Price</th>
+      <th>Selling Price</th>
       <th>Company name</th>
       <th></th>
     </tr>
@@ -19,7 +20,10 @@
           <img src ="<%= stock.logo_url %>">
         </td>
         <td>
-          <%= stock.current_price %>
+          <%= calc_value(stock.current_price, true) %>
+        </td>
+        <td>
+          <%= calc_value(stock.current_price, false) %>
         </td>
         <td>
           <%= stock.name %>
@@ -32,7 +36,6 @@
   </tbody>
 </table>
 <br/>
-<%= link_to 'New Stock', new_stock_path %>
 
 <%# Search Box  %>
   <%= form_tag root_path, :method => 'POST' do %>
