@@ -1,4 +1,8 @@
 #!/usr/bin/env ruby
 require_relative '../config/boot'
 require 'rake'
+require 'resque/tasks'
+
+task 'resque:setup' => :environment
+
 Rake.application.run

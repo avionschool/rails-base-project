@@ -1,0 +1,8 @@
+Update_stock_prices_job:
+  every:
+  - '10sec'
+  - :first_in: '5s'
+  class: "UpdateStockPricesJob"
+  args:
+  queue: high
+  description: Update stock prices every minute from UpdateStockPricesJob
