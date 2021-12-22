@@ -15,12 +15,7 @@ class Stock < ApplicationRecord
         
         list.each do |data|
         begin
-        self.create({
-            ticker: data, 
-            name: client.company(data).company_name,
-            current_price: client.price(data), 
-            logo_url: client.logo(data).url
-        })
+        self.where(:ticker == data).update(current_price: client.price(data))      
         rescue
             p "none"
         end
