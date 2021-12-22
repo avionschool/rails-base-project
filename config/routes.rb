@@ -1,3 +1,5 @@
+require 'resque/server'
+
 Rails.application.routes.draw do
   devise_for :admins, path: 'admins', skip: [:registrations, :passwords]
   devise_for :users
@@ -16,9 +18,13 @@ Rails.application.routes.draw do
   #for the search stock, underconstruction
   post "/", to: 'pages#home'
 
+
   #admin specific routes
   get '/admin/user-settings', to: 'admin#user_settings'
   get '/admin/confirmation', to: 'admin#confirmation'
   put '/admin/confirmation', to: 'admin#confirm_user'
+
+  #render price updates
+  mount Resque::Server.new, at: '/admin/jobs'
 
 end
