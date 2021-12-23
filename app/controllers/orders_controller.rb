@@ -17,7 +17,6 @@ class OrdersController < ApplicationController
 
   end
 
-
   private 
   
   def order_params
