@@ -4,7 +4,7 @@
       %p.name=coin.base
       %p.target=coin.target
       -# %p.price=coin["last"]
-      =link_to "#{coin.base}#{coin.target}", trade_path(base: coin.base, target: coin.target, id:coin.id)
+      =link_to "#{coin.base}#{coin.target}", trade_path(coin.base)
 
 -unless current_user
   Please sign in to make trades

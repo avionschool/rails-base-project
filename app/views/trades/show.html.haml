@@ -21,4 +21,5 @@
         })
 
 =render partial: "trades/list", collection: @coins
-=render partial: "orders/form"
+-if current_user
+  =render partial: "orders/form"

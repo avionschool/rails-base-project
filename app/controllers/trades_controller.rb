@@ -7,11 +7,14 @@ class TradesController < ApplicationController
   end
 
   def show
-    @coin = Coin.find_by(base: params[:base], target: params[:target])
+    # @coin = Coin.find_by(base: params[:base], target: params[:target])
+    @coin = Coin.find_by(base: params[:base])
     @cp_str= "#{@coin.base}#{@coin.target}"
-    
-    @wallet = current_user.wallet
-    @order = @coin.orders.build
+    # byebug
+    if current_user
+      @wallet = current_user.wallet
+      @order = @coin.orders.build
+    end
   end
   
   def create
