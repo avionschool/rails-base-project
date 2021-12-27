@@ -1,31 +1,43 @@
 //Variables
 @import './variables';
 
-@mixin button-bg($bg) {
-  background: $bg;
+@mixin button-bg($lightGreen) {
+  background: $lightGreen;
   
   &:hover {
-    background: darken($bg, 8%);
+    background: darken($lightGreen, 10%);
     transition: all 0.3s ease;
   }
 
   &:active {
-    background: darken($bg, 25%);
+    background: darken($lightGreen, 25%);
   }
 }
 
 .btn {
   @include button-bg($lightGreen);
-  color: $black;
+
+  color: $white;
   text-decoration: none;
-  padding: 10px 100px;
+  padding: 10px 50px;
   border-radius: 3px;
   font-size: 1em;
-  font-weight: 600;
-  text-transform: uppercase;
+  font-weight: 550;
   font-family: $poppins;
   border-radius: 8px;
+  margin-top: 20px;
   outline: none;
   border: none;
+  cursor: pointer;
+}
+
+.register-btn { 
+  @include button-bg($lightGreen);
+
+  color: $white;
+  background-color: $lightGreen;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
   cursor: pointer;
 }

@@ -1,38 +1,24 @@
 <%# Homepage CSS %>
 <%= stylesheet_link_tag '/pages/homepage/main.scss' %>
 
-<div class='container'>
+<div class='homepage-container'>
   <%# Navigation Bar %>
   <header>
-    <nav class='navbar'>
-      <a class='nav-logo'>Investonks<span class='dot'></span></a>
-      <ul class='nav-links'>
-        <%# Login and SignIn %>
-        <div>
-          <ul>
-            <% if user_signed_in?  %>
-              <li><%= link_to "Edit Profile", edit_user_registration_path %> </li>
-              <li><%= link_to "Log out", destroy_user_session_path, method: :delete %> </li>
-              <li><%= link_to "Show stock", stocks_path %> </li>
-              <li><%= link_to "Add stocks", new_stock_path %> </li>
-            <% else %>
-              <li><%= link_to "Sign up", new_user_registration_path %></li> 
-              <li>/</li>
-              <li><%= link_to "Log In", new_user_session_path %></li>
-            <% end %>
-          </ul>
-        </div>
-      </ul>
-    </nav>
+    <%= render 'devise/shared/navbar' %>
   </header>
-
-  <main class='wrapper'>
-    <h1>Welcome little one!</h1>
-    <p>Stonks for dummies</p>
-    <%= link_to 'Get Started', new_user_registration_path, :class => 'btn' %>
+  <%# Main Content %>
+  <main class='homepage-wrapper'>
+    <div class='left-container'>
+      <h1>Welcome</h1>
+      <h2>Little One</h2>
+      <p>Stonks for dummies</p>
+      <%= link_to 'Get Started', new_user_registration_path, :class => 'btn' %>
+    </div>
+    <div class='right-container'>
+      <img src='' alt=''>
+    </div>
   </main>
-
-
+  <%= render 'devise/shared/footer' %>
 </div>
 
 

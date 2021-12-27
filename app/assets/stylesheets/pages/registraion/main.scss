@@ -1,0 +1,24 @@
+@import '../../application/objects/variables';
+@import '../../base/mixins/mixins';
+
+.body {
+  height: 100vh;
+  width: 100%;
+  background: $white;
+}
+
+/********************
+Content
+********************/
+.container {
+  height: 100vh;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  padding: 10px;
+}

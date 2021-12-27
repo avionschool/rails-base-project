@@ -1,13 +1,10 @@
 @import '../../application/objects/variables';
 @import '../../base/mixins/mixins';
+@import '../../application/responsive/responsive.scss';
 
 body {
   color: #000;
-  height: 100vh;
-  width: 100%;
-  background: url(asset_path('homepageBG.png')) no-repeat center center fixed;
-  background-size: cover;
-  display: block;
+  background: $white;
 }
 
 ul {
@@ -19,43 +16,52 @@ ul {
 }
 
 /********************
-Navigation Bar
+Homepage Container
 ********************/
-.nav-logo {
-  color: #000;
-}
 
-.navbar {
-  justify-content: space-between;
-}
 
 /********************
 Content
 ********************/
-.wrapper {
-  @include flexCenter();
-
-  height: 80vh;
+.homepage-wrapper {
+  @include flexCenter(row);
   width: 100%;
-  
-  h1 {
+  height: 80vh;
+
+  h1, h2 {
     font-size: 5rem;
     font-weight: 900;
     color: $black;
-    padding-bottom: 50px;
-    
+    text-align: center;
+
+    @include respond-to('medium') {
+      font-size: 3rem;
+    }
+  }
+
+  h2 {
+    letter-spacing: 3px;
   }
   
   p {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: $gray;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
+    margin-top: 50px;
+
+    @include respond-to('medium') {
+
+    }
   }
 
   .btn {
     color: $white;
-    padding: 10px 50px;
+    padding: 20px 50px;
     background-color: $lightGreen;
     font-weight: 400;
+
+    @include respond-to('medium') {
+      padding: 10px 50px;
+    }
   }
 }

@@ -16,11 +16,10 @@
 
 /* Font: poppins */
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Karla:wght@400;700;800&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Poppins:wght@400;600&display=swap');
-// Variables
 @import './application/objects/variables';
-//Mixins
 @import './base/mixins/mixins';
 @import './application/objects/buttons';
+@import './application/responsive/responsive.scss';
 
 * {
   margin: 0;
@@ -29,6 +28,11 @@
   font-size: 16px;
   color: $black;
   font-family: $poppins;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
 }
 
 ul li {
@@ -47,55 +51,69 @@ Navigation Bar
 .navbar {
   display: flex;
   align-items: flex-start;
-  height: 15vh;
-  padding: 30px 50px;
-}
+  justify-content: space-between;
+  width: 100%;
+  height: 10vh;
+  padding: 25px;
 
-// Logo
-.nav-logo {
-  color: $black;
-  font-size: 2rem;
-  font-weight: 800;
-  margin-bottom: 100px;
-  margin-right: 2rem;
+  @include respond-to('medium') {
+    padding: 50px 100px;
+  } 
 
-  .dot {
-    height: 6px;
-    width: 6px;
-    background-color: $lightGreen;
-    border-radius: 50%;
-    display: inline-block;
-    font-size: 2rem;
+  // Logo
+  .nav-logo {
+    color: $black;
+    font-size: 1.5rem;
     font-weight: 800;
-    margin-left: 2px;
+    text-decoration: none;
+  
+    .dot {
+      height: 6px;
+      width: 6px;
+      background-color: $lightGreen;
+      border-radius: 50%;
+      display: inline-block;
+      font-size: 2rem;
+      font-weight: 800;
+      margin-left: 2px;
+    }
+  }
+
+  //Nav Links
+  .nav-links {
+    width: 150px;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 10px;
+
+      li {
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .nav-link{
+    font-size: 0.9rem;
   }
 }
 
-// Nav Links
-.nav-links {
-  @include horizontal-list();
-  cursor: pointer;
-  padding-top: 1rem;
-  font-weight: 600;
-  letter-spacing: 1.2px;
-}
 
 /********************
-Login
+Footer
 ********************/
-// Login Container 
-.login-container {
-  @include flexCenter();
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  padding: 3px;
+  color: $black;
 
-  height: 80vh;
-  width: 100%
-}
-
-.link {
-  text-decoration: none;
-  color: #fff;
-}
-
-.sign-up {
-  color: #3f68af;
+  p {
+    font-size: 0.9rem;
+  }
 }
