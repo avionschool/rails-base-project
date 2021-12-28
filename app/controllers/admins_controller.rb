@@ -1,6 +1,10 @@
 class AdminsController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy, :show]
 
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
