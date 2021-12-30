@@ -17,7 +17,7 @@
           = link_to edit_user_profile_path(user.id) do
             edit
         %td
-          = link_to user_path(user.id), method: :delete, data: {confirm: "Are you sure?"} do
+          = link_to user_path(user), method: :delete, data: {confirm: "Are you sure?"} do
             delete
 
 %br

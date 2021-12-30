@@ -11,16 +11,16 @@
         %td= user.first_name
         %td= user.last_name
         %td
-          = link_to 'show', user
+          -# = link_to 'show', user
         %td
-          = link_to edit_user_path(user.id) do
+          -# = link_to edit_user_path(user.id) do
             edit
         %td
-          = link_to user_path(user.id), method: :delete, data: {confirm: "Are you sure?"} do
+          -# = link_to user_path(user.id), method: :delete, data: {confirm: "Are you sure?"} do
             delete
 
 %br
 %br
 %button
-  = link_to new_user_path do
+  -# = link_to new_user_path do
     New User

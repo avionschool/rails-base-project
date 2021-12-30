@@ -39,8 +39,7 @@ class AdminsController < ApplicationController
 
   def destroy
     @user.destroy
-
-    redirect_to users_path, notice: "A user data was successfully destroyed"
+    redirect_to admin_root_path, notice: "A user data was successfully destroyed"
   end
 
   private
