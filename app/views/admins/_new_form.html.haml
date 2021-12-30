@@ -1,5 +1,5 @@
 -# = form_with model: @user do |f|
-= form_with scope: :user, url: admin_root_path, method: :post do |f|
+= form_with scope: :user, url: admins_new_user_path, method: :post do |f|
 
   - if @user.errors.any?
     %h2 Errors: 
@@ -18,9 +18,9 @@
   %br
   = f.label :password
   = f.password_field :password
-  %br
-  = f.label :password_confirmation
-  = f.password_field :password_confirmation
+  -# %br
+  -# = f.label :password_confirmation
+  -# = f.password_field :password_confirmation
   %br
   %button
     = f.submit "Create Account"

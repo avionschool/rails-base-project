@@ -5,27 +5,27 @@ class AdminsController < ApplicationController
     @users = User.all
   end
 
-  def new
+  def new_user
     @user = User.new
   end
 
-  def create
+  def create_user
     @user = User.new(user_params)
 
     if @user.save
       flash[:notice] = "A user data was successfully created"
-      redirect_to users_path
+      redirect_to admin_root_path
     else
       flash[:error] = "There are some errors encountered"
-      render :new
+      render :new_user
     end
 
   end
 
-  def edit
+  def edit_user
   end
 
-  def update
+  def update_user
     if @user.update(user_params)
       redirect_to users_path, notice: "A user data  was successfully updated"
     else
@@ -47,6 +47,6 @@ class AdminsController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation)
+    params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
 end
