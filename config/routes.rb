@@ -20,9 +20,10 @@ Rails.application.routes.draw do
   authenticated :admin do
     get '/admins/new_user', to: 'admins#new_user'
     post '/admins/new_user', to: 'admins#create_user'
+    get '/admins/user/:id', to: 'admins#show_user', as: :user_profile
     put '/admins/user/:id', to: 'admins#update_user'
     patch '/admins/user/:id', to: 'admins#update_user'
-    get '/admins/user/:id/edit', to: 'admins#edit_user'
+    get '/admins/user/:id/edit', to: 'admins#edit_user', as: :edit_user_profile
   end
   
   # get 'home/index'

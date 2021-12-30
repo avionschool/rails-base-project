@@ -1,8 +1,11 @@
 class AdminsController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :destroy, :show]
+  before_action :set_user, only: [:edit_user, :update_user, :destroy, :show_user]
 
   def index
     @users = User.all
+  end
+
+  def show_user
   end
 
   def new_user
@@ -27,10 +30,10 @@ class AdminsController < ApplicationController
 
   def update_user
     if @user.update(user_params)
-      redirect_to users_path, notice: "A user data  was successfully updated"
+      redirect_to admin_root_path, notice: "A user data  was successfully updated"
     else
       flash[:error] = "There are some errors encountered"
-      render :edit
+      render :edit_user
     end
   end
 
