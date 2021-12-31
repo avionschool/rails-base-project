@@ -1,0 +1,2 @@
+module StockHoldingsHelper
+end
