@@ -12,6 +12,19 @@
   </head>
 
   <body>
+    <div class="nav-bar bg-gray-700 text-gray-100">
+      <div class="nav-links">
+        <div class="nav-link">
+          <%= link_to "User", users_path %>
+        </div>
+        <div class="nav-link">
+          <%= link_to "Admin", admin_root_path %>
+        </div>
+        <div class="nav-link">
+          <%= link_to "Stocks", stocks_path %>
+        </div>
+      </div>
+    </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>

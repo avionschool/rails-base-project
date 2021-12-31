@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :admins, path: 'admins'#, skip: [:registrations, :passwords]
   devise_for :users, path: 'users'
 
+  resources :stocks, only: [:index]
 
   devise_scope :user do
     get 'users/sign_out' => 'devise/sessions#destroy'
