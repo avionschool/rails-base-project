@@ -11,7 +11,9 @@
         %td= user.email
         %td= user.first_name
         %td= user.last_name
-        %td= user.wallet
+        %td
+          - if user.wallet
+            = user.wallet.balance
         %td
           = link_to user_profile_path(user.id) do
             show
