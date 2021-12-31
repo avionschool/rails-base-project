@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-  before_action :set_user, only: [:edit_user, :update_user, :destroy, :show_user]
+  before_action :set_user, only: [:edit_user, :update_user, :show_user]
 
   def index
     @users = User.all
@@ -37,10 +37,10 @@ class AdminsController < ApplicationController
     end
   end
 
-  def destroy
-    @user.destroy
-    redirect_to admin_root_path, notice: "A user data was successfully destroyed"
-  end
+  # def destroy
+  #   @user.destroy
+  #   redirect_to admin_root_path, notice: "A user data was successfully destroyed"
+  # end
 
   private
 

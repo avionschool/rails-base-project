@@ -4,9 +4,11 @@
   %h1{ class: 'm-10 text-5xl font-bold' } Login Page
   %p Find me in app/views/home/index.html.erb
 
-  %h1 Welcome, #{name}
-
+  
   - if user_signed_in?
+    %h1 Welcome, #{name}
+    %h1 Balance is 
+    = @balance
     = link_to 'Sign Out', destroy_user_session_path, method: :delete
   - else
     = link_to 'Register', new_user_registration_path

@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    if user_signed_in?
+      @balance = current_user.wallet.balance
+    end
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
   end
 
   # def destroy

@@ -4,21 +4,23 @@
       %th Email
       %th First Name
       %th Last Name
+      %th Balance
   %tbody
     - @users.each do |user|
       %tr
         %td= user.email
         %td= user.first_name
         %td= user.last_name
+        %td= user.wallet
         %td
           = link_to user_profile_path(user.id) do
             show
         %td
           = link_to edit_user_profile_path(user.id) do
             edit
-        %td
-          = link_to user_path(user), method: :delete, data: {confirm: "Are you sure?"} do
-            delete
+        -# %td
+        -#   = link_to user_path(user.id), method: :delete, data: {confirm: "Are you sure?"} do
+        -#     delete
 
 %br
 %br
