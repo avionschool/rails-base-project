@@ -15,7 +15,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt', '~> 3.1.7'
 gem 'stock_quote', '~> 3.0'
-
+gem 'iex-ruby-client'
+gem 'resque', '~> 2.2'
+gem 'resque-scheduler', '~> 4.5'
 
 gem 'devise'
 gem 'hamlit-rails'

@@ -1,11 +1,12 @@
-<h1>Listing stocks</h1>
+<h1>Listing stocks Top 10 blue chip companies</h1>
 <table>
   <thead>
     <tr>
       <th>Ticker</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
+      <th>Logo</th>
+      <th>Buying Price</th>
+      <th>Selling Price</th>
+      <th>Company name</th>
       <th></th>
     </tr>
   </thead>
@@ -16,23 +17,25 @@
           <%= stock.ticker %>
         </td>
         <td>
-          <%= stock.user_id %>
+          <img src ="<%= stock.logo_url %>">
         </td>
         <td>
-          <%= link_to 'Show', stock %>
+          <%= calc_value(stock.current_price, true) %>
         </td>
         <td>
-          <%= link_to 'Edit', edit_stock_path(stock) %>
+          <%= calc_value(stock.current_price, false) %>
         </td>
         <td>
-          <%= link_to 'Destroy', stock, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+          <%= stock.name %>
+        </td>
+        <td>
+          <%= link_to 'Show', stock_path(:id => stock.id, :ticker => stock.ticker)%>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br/>
-<%= link_to 'New Stock', new_stock_path %>
 
 <%# Search Box  %>
   <%= form_tag root_path, :method => 'POST' do %>
