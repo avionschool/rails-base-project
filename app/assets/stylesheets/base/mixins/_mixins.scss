@@ -10,11 +10,24 @@
 }
 
 // Center Content
-@mixin flexCenter {
+@mixin flexCenter() {
   height: 20vh;
   width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction:  column;
+}
+
+//Button Background
+@mixin button-bg($lightGreen) {
+  background: linear-gradient(to right, $darkGreen, $lightGreen);
+
+  &:hover {
+    background: darken($lightGreen, 10%);
+    transition: all 0.3s ease;
+  }
+
+  &:active {
+    background: darken($lightGreen, 25%);
+  }
 }

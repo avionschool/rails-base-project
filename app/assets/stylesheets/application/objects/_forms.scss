@@ -2,7 +2,7 @@
 @import '../../base/mixins/mixins';
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: $black;
 }
 
@@ -12,11 +12,11 @@ h5 {
   margin: 5px 0 30px 0;
 }
 
+
 .form-container {
   @include flexCenter();
   
   font-family: $karla;
-  background-color: #2A2D35;
   border: none;
   border-radius: 8px;
   padding: 10px 20px; 
@@ -35,6 +35,12 @@ h5 {
   margin: 15px 0 25px 0;
 }
 
+.label {
+  font-family: $kanit;
+  font-weight: 700;
+  margin-bottom: 200px;
+}
+
 .field {
   text-align: left;
   padding: 10px;
@@ -45,11 +51,18 @@ h5 {
 }
 
 .text-field {
-  background-color: $black;
+  background-color: $lightGray;
   outline: none;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   margin-top: 8px;
   padding: 12px;
-  width: 250px;
+  width: 400px;
+}
+
+.google-btn {
+  width: 400px;
+  border: 2px solid #4285F4;
+  padding: 12px 70px;
+  margin: 0;
 }

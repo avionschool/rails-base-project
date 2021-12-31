@@ -7,11 +7,11 @@
     <h5>Login to continue</h5>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
-        <%= f.label :email %><br />
+        <%= f.label :email, :class => 'label' %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'text-field', :placeholder => 'Username' %>
       </div>
       <div class="field">
-        <%= f.label :password %><br />
+        <%= f.label :password, :class => 'label' %><br />
         <%= f.password_field :password, autocomplete: "current-password", :class => 'text-field', :placeholder => 'Password' %>
       </div>
         <% if devise_mapping.rememberable? %>

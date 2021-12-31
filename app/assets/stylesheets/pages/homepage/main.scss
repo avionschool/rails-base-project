@@ -1,54 +1,78 @@
 @import '../../application/objects/variables';
 @import '../../base/mixins/mixins';
+@import '../../application/responsive/responsive.scss';
 
 body {
   color: #000;
-  height: 100vh;
-  width: 100%;
-  background: url(asset_path('homepageBG.png')) no-repeat center center fixed;
-  background-size: cover;
-  display: block;
+  background: $white;
+  font-family: $poppins;
 }
 
-
-/********************
-Navigation Bar
-********************/
-.nav-logo {
-  color: #000;
+ul {
+  font-weight: 200;
+  
+  li {
+    color: $gray;
+  }
 }
 
-.navbar {
-  justify-content: space-between;
+//Button
+.btn {
+  color: $white;
+  padding: 20px 50px;
+  font-weight: 400;
+
+  @include respond-to('large') {
+    padding: 10px 50px;
+  }
 }
 
 /********************
 Content
 ********************/
-.wrapper {
-  @include flexCenter();
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 100px 0;
+  font-family: $lato;
+}
 
-  height: 80vh;
-  width: 100%;
-  
-  h1 {
-    font-size: 5rem;
-    font-weight: 900;
-    color: $black;
-    padding-bottom: 50px;
-    
-  }
-  
-  p {
-    font-size: 1.5rem;
-    color: $gray;
-    margin-bottom: 200px;
-  }
+.col-1 {
+  flex-basis: 40%;
+  position: relative;
+  margin-left: 50px;
 
-  .btn {
-    color: $white;
-    padding: 10px 50px;
-    background-color: $lightGreen;
-    font-weight: 400;
-  }
+    h2 {
+      font-size: 5rem;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-weight: 100;
+      color: #707070;
+      margin: 20px 0 80px 0;
+    }
+
+    &::after {
+      @include button-bg($lightGreen);
+      content: '';
+      width: 3px;
+      height: 50%;
+      position: absolute;
+      left: -40px;
+      top: 8px;
+    }
+}
+
+.col-2 {
+  position: relative;
+  flex-basis: 40%;
+  display: flex;
+  align-items: center;
+
+    .homepage-img {
+      width: 100%;
+    }
 }
