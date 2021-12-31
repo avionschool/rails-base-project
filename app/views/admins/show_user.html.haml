@@ -8,3 +8,7 @@
   %p
     %strong Formed at:
     = @user.last_name
+  - if @user.wallet
+    %p
+      %strong Balance:
+      = @user.wallet.balance

@@ -29,9 +29,11 @@ class AdminsController < ApplicationController
   end
 
   def update_user
-    @wallet = @user.wallet
-    @wallet.balance = params[:user][:balance]
-    @wallet.save
+    if @user.wallet
+      @wallet = @user.wallet
+      @wallet.balance = params[:user][:balance]
+      @wallet.save
+    end
     if @user.update(user_params)
       redirect_to admin_root_path, notice: "A user data  was successfully updated"
     else
