@@ -14,7 +14,7 @@ h5 {
 
 
 .form-container {
-  @include flexCenter(column);
+  @include flexCenter();
   
   font-family: $karla;
   border: none;

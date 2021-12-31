@@ -1,18 +1,8 @@
 //Variables
 @import './variables';
+@import '../../base/mixins/mixins';
 
-@mixin button-bg($lightGreen) {
-  background: $lightGreen;
-  
-  &:hover {
-    background: darken($lightGreen, 10%);
-    transition: all 0.3s ease;
-  }
 
-  &:active {
-    background: darken($lightGreen, 25%);
-  }
-}
 
 .btn {
   @include button-bg($lightGreen);
