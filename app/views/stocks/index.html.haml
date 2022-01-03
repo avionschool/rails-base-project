@@ -13,4 +13,4 @@
         %td{:class => "p-3"}= buy_price(stock.current_price)
         %td{:class => "p-3"}= sell_price(stock.current_price)
         %td{:class => "p-3"}
-          = link_to "View", new_user_stock_holding_path(user_id:current_user, stock_id:stocks.id)
+          = link_to "View", new_user_stock_holding_path(user_id:current_user, stock_id:stock.id)

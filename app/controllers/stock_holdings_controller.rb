@@ -44,9 +44,11 @@ class StockHoldingsController < ApplicationController
       # for saving user's balance
       if @user_wallet.balance.positive? && @holding.save
         @user_wallet.save
-        redirect_to users_path, success: "You successfully bought the stocks"
+        flash[:notice] = "You successfully bought the stock"
+        redirect_to users_path
       else
-        redirect_back fallback_location: users_path, danger: "Please double check all payment information and try again."
+        flash[:alert] = "Please double check all payment information and try again."
+        redirect_back fallback_location: users_path
       end
     else
       # Update if there's already a stock
@@ -65,13 +67,35 @@ class StockHoldingsController < ApplicationController
       # updating user's balance
       if @user_wallet.balance.positive? && @holding.save
         @user_wallet.save
-        redirect_to users_path, success: "You successfully bought the stocks"
+        flash[:notice] = "You successfully bought the stock"
+        redirect_to users_path
       else
-        redirect_back fallback_location: users_path, danger: "Please double check all payment information and try again."
+        flash[:alert] = "Please double check all payment information and try again."
+        redirect_back fallback_location: users_path
       end
     end
   end
 
   def sell_logic(stock_avail)
+    # if the user have the current stock in the user's stock holdings
+    if stock_avail.nil? || stock_avail.units < params[:stock_holding][:units].to_f
+      flash[:alert] = "Please double check if you have enough units and try again."
+      redirect_back fallback_location: users_path
+    else
+      @holding = stock_avail
+      # Current holdings units - to the amount of units the user entered/typed
+      @holding.units -= params[:stock_holding][:units].to_f
+      # if no more units available, remove it from the user's database
+      if @holding.units.zero?
+        @holding.destroy
+      else
+        @holding.save
+      end
+      # Stock units * stock price = stock amount which is added to the user's balance
+      @user_wallet.balance = current_user.wallet.balance + params[:stock_holding][:units].to_f * params[:stock_holding][:stock_price].to_f
+      @user_wallet.save
+      flash[:notice] = "You successfully sold the stock"
+      redirect_to users_path
+    end
   end
 end
