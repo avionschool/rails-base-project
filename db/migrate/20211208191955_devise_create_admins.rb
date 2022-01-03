@@ -3,7 +3,7 @@
 class DeviseCreateAdmins < ActiveRecord::Migration[6.0]
   def self.up
     create_table(:admins) do |t|
-      t.string :account_type, default: "buyer"
+      t.string :account_type, default: "admin"
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
       t.integer  :sign_in_count, :default => 0
