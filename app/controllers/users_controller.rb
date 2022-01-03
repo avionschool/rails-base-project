@@ -7,6 +7,7 @@ class UsersController < ApplicationController
         @balance = '0.00'
       end
     end
+    @portfolio = current_user.stock_holding.order('stock_symbol ASC')
   end
 
   def show

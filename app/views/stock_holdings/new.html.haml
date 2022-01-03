@@ -1,2 +1,30 @@
 This is new stock holdings
 %h1= @stock.stock_symbol
+%h1
+  = @balance
+  Balance
+%h1
+  = @current_stock.nil? ? 0.00 : @current_stock.units
+  Stocks
+%br
+%h1= @buy
+%br
+%h1= @sell
+
+= form_with scope: :stock_holding, model: [@holding.user, @holding] do |f|
+  = f.hidden_field :user_id, value: current_user.id
+  = f.hidden_field :stock_id, value: @stock.id
+  = f.hidden_field :stock_symbol, value: @stock.stock_symbol
+  = f.hidden_field :stock_price, value: @buy
+  = f.hidden_field :type, value: 'BUY'
+  = f.number_field :amount, autofocus: true, placeholder: "Price", step: :any, min: 0.1, :required => true
+  = f.submit "Buy", class: "", data: {confirm: "Confirm to buy this stock"}
+
+= form_with scope: :stock_holding, model: [@holding.user, @holding] do |f|
+  = f.hidden_field :user_id, value: current_user.id
+  = f.hidden_field :stock_id, value: @stock.id
+  = f.hidden_field :stock_symbol, value: @stock.stock_symbol
+  = f.hidden_field :stock_price, value: @sell
+  = f.hidden_field :type, value: 'SELL'
+  = f.number_field :amount, placeholder: "Sell in Units", step: :any, min: 0.0
+  = f.submit "Sell", class: "", data: {confirm: "Confirm to sell this stock"}
