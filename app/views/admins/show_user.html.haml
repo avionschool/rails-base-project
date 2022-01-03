@@ -1,0 +1,14 @@
+%div
+  %p
+    %strong Name:
+    = @user.email
+  %p
+    %strong Permalink:
+    = @user.first_name
+  %p
+    %strong Formed at:
+    = @user.last_name
+  - if @user.wallet
+    %p
+      %strong Balance:
+      = @user.wallet.balance
