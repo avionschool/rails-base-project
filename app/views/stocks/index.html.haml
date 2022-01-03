@@ -5,9 +5,12 @@
       %th{:class => "p-3 center"} Stock Name
       %th{:class => "p-3 center"} Buy
       %th{:class => "p-3 center"} Sell
+      %th{:class => "p-3 center"} Action
   %tbody
     - @stocks.each do |stock|
       %tr{:class => "bg-gray-800"}
         %td{:class => "p-3"}= stock.stock_symbol
         %td{:class => "p-3"}= buy_price(stock.current_price)
         %td{:class => "p-3"}= sell_price(stock.current_price)
+        %td{:class => "p-3"}
+          = link_to "View", new_user_stock_holding_path(user_id:current_user, stock_id:stock.id)

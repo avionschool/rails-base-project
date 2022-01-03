@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   def index
     if user_signed_in?
-      @balance = current_user.wallet.balance
+      if current_user.wallet
+        @balance = current_user.wallet.balance
+      else
+        @balance = '0.00'
+      end
     end
   end
 

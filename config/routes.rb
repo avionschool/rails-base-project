@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get 'users/sign_out' => 'devise/sessions#destroy'
-    get 'users', to: "home#index", as: :user_root
+    get 'users', to: "users#index", as: :user_root
     get "test", to: "test#index"
   end
 
@@ -22,7 +22,9 @@ Rails.application.routes.draw do
 
   authenticated :user do
     # root to: 'users#index', as: :user_root
-    resources :users
+    resources :users do 
+      resources :stock_holdings
+    end
   end
   
   authenticated :admin do
@@ -36,7 +38,7 @@ Rails.application.routes.draw do
   end
   
   # get 'home/index'
-  # root to: "home#index"
+  root to: "home#index"
   
   # resources :users
 end
