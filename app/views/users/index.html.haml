@@ -14,10 +14,11 @@
       - @portfolio.each do |sp|
         %tr{:class => ""}
           %td{:class => "p-3"}= sp.stock_symbol
-          %td{:class => "p-3"} 0.00 Units
-          %td{:class => "p-3"} 0.00 PHP
+          %td{:class => "p-3"}= sp.units.round(4)
           %td{:class => "p-3"}
-            = link_to "View", new_user_stock_holding_path(user_id:current_user, stock_id:stock.id)
+            PHP
+          %td{:class => "p-3"}
+            = link_to "View", new_user_stock_holding_path(user_id:current_user, stock_id:sp.stock_id)
 
 
 

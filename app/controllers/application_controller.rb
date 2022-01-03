@@ -26,5 +26,9 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :first_name, :last_name])
   end
+
+  def handle_error
+    redirect_to root_path#page_not_found_path
+  end
 end
 

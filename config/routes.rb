@@ -22,8 +22,9 @@ Rails.application.routes.draw do
 
   authenticated :user do
     # root to: 'users#index', as: :user_root
+    # resources :stock_holdings, only: [:new]
     resources :users do 
-      resources :stock_holdings
+      resources :stock_holdings#, only: [:new, :create]
     end
   end
   

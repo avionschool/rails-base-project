@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2022_01_03_023413) do
     t.integer "stock_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "type"
+    t.string "t_type"
     t.index ["stock_id"], name: "index_stock_holdings_on_stock_id"
     t.index ["user_id"], name: "index_stock_holdings_on_user_id"
   end
