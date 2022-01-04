@@ -1,6 +1,6 @@
 class Cryptocurrency < ApplicationRecord
   def current_price
-    api_key = "ce205881-4940-48a0-814e-3e4bb539eaeb"
+    api_key = ENV["COINMARKET_API_KEY"]
     url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest"
     symbol = self.symbol
     query = {
