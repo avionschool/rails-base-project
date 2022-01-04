@@ -2,23 +2,28 @@
 
 - if user_signed_in?
   %h1 This is the user's balance: 
-  = @balance
+  = @balance.round(4)
+  PHP
+  %h1 User's total revenue: 
+  = total_revenue(@holdings)
+  PHP
   %table{:class => ""}
     %thead
       %tr
         %th{:class => "p-3 center"} Stock Name
         %th{:class => "p-3 center"} Units
-        %th{:class => "p-3 center"} Total Revenue
+        %th{:class => "p-3 center"} Stock Revenue
         %th{:class => "p-3 center"} Action
     %tbody
-      - @portfolio.each do |sp|
+      - @holdings.each do |sh|
         %tr{:class => ""}
-          %td{:class => "p-3"}= sp.stock_symbol
-          %td{:class => "p-3"}= sp.units.round(4)
+          %td{:class => "p-3"}= sh.stock_symbol
+          %td{:class => "p-3"}= sh.units.round(4)
           %td{:class => "p-3"}
+            = user_stock_revenue(sh)
             PHP
           %td{:class => "p-3"}
-            = link_to "View", new_user_stock_holding_path(user_id:current_user, stock_id:sp.stock_id)
+            = link_to "View", new_user_stock_holding_path(user_id:current_user, stock_id:sh.stock_id)
 
 
 

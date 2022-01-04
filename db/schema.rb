@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2022_01_03_023413) do
 
   create_table "transactions", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "stock_holding_id", null: false
+    t.integer "stock_holding"
     t.string "transaction_type"
     t.string "stock_symbol"
     t.float "stock_price"
@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 2022_01_03_023413) do
     t.float "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["stock_holding_id"], name: "index_transactions_on_stock_holding_id"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
@@ -85,7 +84,6 @@ ActiveRecord::Schema.define(version: 2022_01_03_023413) do
 
   add_foreign_key "stock_holdings", "stocks"
   add_foreign_key "stock_holdings", "users"
-  add_foreign_key "transactions", "stock_holdings"
   add_foreign_key "transactions", "users"
   add_foreign_key "users", "wallets"
   add_foreign_key "wallets", "users"

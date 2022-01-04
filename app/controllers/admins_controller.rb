@@ -5,6 +5,10 @@ class AdminsController < ApplicationController
     @users = User.all
   end
 
+  def transactions
+    @transactions = Transaction.all
+  end
+
   def show_user
   end
 

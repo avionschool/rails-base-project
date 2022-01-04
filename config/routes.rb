@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'users/sign_out' => 'devise/sessions#destroy'
     get 'users', to: "users#index", as: :user_root
     get "test", to: "test#index"
+    resources :transactions, only: [:index]
   end
 
   devise_scope :admin do
@@ -36,10 +37,12 @@ Rails.application.routes.draw do
     put 'admins/user/:id', to: 'admins#update_user'
     patch 'admins/user/:id', to: 'admins#update_user'
     get 'admins/user/:id/edit', to: 'admins#edit_user', as: :edit_user_profile
+    get 'admins/transactions', to: 'admins#transactions', as: :transactions_list
   end
+
+  get '/page-not-found', action: :error_page, controller: 'home'
   
   # get 'home/index'
   root to: "home#index"
-  
-  # resources :users
+  get '*path', to: 'home#error_page'
 end

@@ -1,0 +1,15 @@
+%div
+  All User's Transaction Logs
+  - if @transactions.empty?
+    There's no transactions
+  - else
+    %div
+      %h1 Date
+      %h1 Log Message
+
+  - @transactions.each do |transaction|
+    %div
+      = transaction.created_at.strftime("%b %d, %Y, %H:%M:%S")
+      SGT
+      = transaction.user.email
+      = logs_format(transaction)
