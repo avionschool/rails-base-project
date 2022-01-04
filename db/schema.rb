@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2022_01_03_014838) do
 
   create_table "admins", force: :cascade do |t|
-    t.string "account_type", default: "buyer"
+    t.string "account_type", default: "admin"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.integer "sign_in_count", default: 0
