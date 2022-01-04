@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_113934) do
   end
 
   create_table "wallets", force: :cascade do |t|
+    t.string "cryptocurrency"
     t.float "balance"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
