@@ -45,7 +45,7 @@ class StockHoldingsController < ApplicationController
       if @user_wallet.balance.positive? && @holding.save
         @user_wallet.save
         # create buy transaction for the user
-        create_transaction_buy(holding.units)
+        create_transaction_buy(@holding.units)
         flash[:notice] = "You successfully bought the stock"
         redirect_to users_path
       else
