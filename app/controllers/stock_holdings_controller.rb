@@ -44,6 +44,8 @@ class StockHoldingsController < ApplicationController
       # for saving user's balance
       if @user_wallet.balance.positive? && @holding.save
         @user_wallet.save
+        # create buy transaction for the user
+        create_transaction_buy(holding.units)
         flash[:notice] = "You successfully bought the stock"
         redirect_to users_path
       else
@@ -67,6 +69,8 @@ class StockHoldingsController < ApplicationController
       # updating user's balance
       if @user_wallet.balance.positive? && @holding.save
         @user_wallet.save
+        # create buy transaction for the user
+        create_transaction_buy(units)
         flash[:notice] = "You successfully bought the stock"
         redirect_to users_path
       else
@@ -97,5 +101,9 @@ class StockHoldingsController < ApplicationController
       flash[:notice] = "You successfully sold the stock"
       redirect_to users_path
     end
+  end
+
+  def create_transaction_buy(units_added)
+    Transaction.create(user_id: current_user.id, transaction_type: params[:stock_holding][:t_type], stock_symbol: params[:stock_holding][:stock_symbol], stock_price: params[:stock_holding][:stock_price].to_f, units: units_added, amount: params[:stock_holding][:amount].to_f)
   end
 end
