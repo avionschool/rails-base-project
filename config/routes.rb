@@ -39,9 +39,10 @@ Rails.application.routes.draw do
     get 'admins/user/:id/edit', to: 'admins#edit_user', as: :edit_user_profile
     get 'admins/transactions', to: 'admins#transactions', as: :transactions_list
   end
+
+  get '/page-not-found', action: :error_page, controller: 'home'
   
   # get 'home/index'
   root to: "home#index"
-  
-  # resources :users
+  get '*path', to: 'home#error_page'
 end

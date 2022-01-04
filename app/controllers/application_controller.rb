@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def handle_error
-    redirect_to root_path#page_not_found_path
+    redirect_to page_not_found_path
   end
 end
 
