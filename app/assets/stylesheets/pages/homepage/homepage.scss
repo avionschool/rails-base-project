@@ -6,9 +6,6 @@ body {
   color: #000;
   background: $white;
   font-family: $poppins;
-  background-image: url(asset_path('homeBG.png'));
-  background-size: cover;
-  background-position: center;
   height: 100vh;
   width: 100%;
 }
@@ -19,6 +16,12 @@ ul {
   li {
     color: $gray;
   }
+}
+
+#homepage {
+  background-image: url(asset_path('homeBG.png'));
+  background-size: cover;
+  background-position: center;
 }
 
 //Button
