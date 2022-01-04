@@ -4,4 +4,7 @@
 .coins-index, .coins-header{
     display:grid;
     grid-template-columns: repeat(2,60px) repeat(2,100px) repeat(3,60px);
+    p {
+        text-overflow: ellipsis;
+    }
 }

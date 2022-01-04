@@ -28,7 +28,7 @@ class Coin < ApplicationRecord
 
     response.each do |key, val|
       db_ids << Coin.find_by(coingecko_id: key).id
-      att_arr << {:last_price => val["usd"], :usd_24_h => val["usd_24h_change"]}
+      att_arr << {:last_price => val["usd"], :volume => val["usd_24h_change"]}
     end
     Coin.update(db_ids, att_arr)
   end
