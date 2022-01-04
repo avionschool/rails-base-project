@@ -1,18 +1,8 @@
 //Variables
 @import './variables';
+@import '../../base/mixins/mixins';
+@import '../../application/responsive/responsive.scss';
 
-@mixin button-bg($lightGreen) {
-  background: $lightGreen;
-  
-  &:hover {
-    background: darken($lightGreen, 10%);
-    transition: all 0.3s ease;
-  }
-
-  &:active {
-    background: darken($lightGreen, 25%);
-  }
-}
 
 .btn {
   @include button-bg($lightGreen);
@@ -29,6 +19,11 @@
   outline: none;
   border: none;
   cursor: pointer;
+
+  @include respond-to('medium') {
+    padding: 10px 30px;
+    font-size: 0.8em;
+  }
 }
 
 .register-btn { 

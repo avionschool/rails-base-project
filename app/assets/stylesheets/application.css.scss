@@ -14,25 +14,19 @@
  *= require_self
  */
 
-/* Font: poppins */
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Karla:wght@400;700;800&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Karla:wght@400;700;800&family=Lato:wght@300;700&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Poppins:wght@400;600&display=swap');
 @import './application/objects/variables';
 @import './base/mixins/mixins';
 @import './application/objects/buttons';
 @import './application/responsive/responsive.scss';
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-size: 16px;
   color: $black;
-  font-family: $poppins;
-}
-
-body {
-  height: 100vh;
-  width: 100%;
+  font-size: 100%;
 }
 
 ul li {
@@ -45,6 +39,19 @@ ul li a {
 }
 
 /********************
+Container
+********************/
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 2%;
+  padding-left: 8%;
+  padding-right: 8%;
+  overflow: hidden;
+
+}
+
+/********************
 Navigation Bar
 ********************/
 // Navbar
@@ -54,11 +61,6 @@ Navigation Bar
   justify-content: space-between;
   width: 100%;
   height: 10vh;
-  padding: 25px;
-
-  @include respond-to('medium') {
-    padding: 50px 100px;
-  } 
 
   // Logo
   .nav-logo {
@@ -66,7 +68,7 @@ Navigation Bar
     font-size: 1.5rem;
     font-weight: 800;
     text-decoration: none;
-  
+
     .dot {
       height: 6px;
       width: 6px;
@@ -95,8 +97,26 @@ Navigation Bar
     }
   }
 
-  .nav-link{
+  .nav-link {
     font-size: 0.9rem;
+  }
+
+  @include respond-to('medium') {
+    .nav-logo {
+      font-size: 1rem;
+    }
+
+    .nav-links {
+      width: 100px;
+
+      ul {
+        padding-top: 5px;
+      }
+    }
+
+    .nav-link {
+      font-size: 0.5rem;
+    }
   }
 }
 
@@ -107,8 +127,9 @@ Footer
 .footer {
   position: absolute;
   bottom: 0;
+  right: 0;
   width: 100%;
-  height: 60px;
+  height: 40px;
   text-align: center;
   padding: 3px;
   color: $black;

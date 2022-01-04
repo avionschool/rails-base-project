@@ -18,3 +18,17 @@
   align-items: center;
   flex-direction:  $direction;
 }
+
+//button hover
+@mixin button-bg($lightGreen) {
+  background: $lightGreen;
+
+  &:hover {
+    background: darken($lightGreen, 10%);
+    transition: all 0.3s ease;
+  }
+
+  &:active {
+    background: darken($lightGreen, 25%);
+  }
+}
