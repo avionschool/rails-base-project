@@ -20,6 +20,6 @@
         "container_id": "tradingview_71d0f"
         })
 
-=render partial: "trades/list", collection: @coins
+=render partial: "trades/list", collection: @coins, as: :coin
 -if current_user
   =render partial: "orders/form"

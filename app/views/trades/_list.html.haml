@@ -1,5 +1,8 @@
--@coins.each do |coin|
-  %p= coin.base
-  %p= coin.target
-  %br/
-  HELLO IM WORKING
+-# -@coins.each do |coin|
+-#   %p= coin.base
+-#   %p= coin.target
+-#   %br
+=link_to trade_path(coin.base) do
+  %div.trades-list-item
+    %p.base="#{coin.base}#{coin.target}"
+    %p.price=coin.last_price

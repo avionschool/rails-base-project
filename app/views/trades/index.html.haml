@@ -5,8 +5,3 @@
       %p.target=coin.target
       -# %p.price=coin["last"]
       =link_to "#{coin.base}#{coin.target}", trade_path(coin.base)
-
--unless current_user
-  Please sign in to make trades
--else
-  Make link to order
