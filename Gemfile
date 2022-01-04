@@ -16,6 +16,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'hamlit-rails'
 
+gem 'coingecko_ruby'
 gem 'sqlite3'
 gem 'react-rails'
 gem 'httparty'

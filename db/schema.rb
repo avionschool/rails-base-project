@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_10_093221) do
+ActiveRecord::Schema.define(version: 2021_12_23_153141) do
 
   create_table "coins", force: :cascade do |t|
     t.string "base"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2021_12_10_093221) do
     t.decimal "volume"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "coingecko_id"
+    t.decimal "usd_24_h"
   end
 
   create_table "orders", force: :cascade do |t|

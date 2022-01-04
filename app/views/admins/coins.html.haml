@@ -1,0 +1,15 @@
+Admin#coins
+=link_to "Add coin", new_coin_path
+%div.coins-header
+  %p.base Base
+  %p.target Target
+  %p.price Price
+  %p.vol Volume
+-@coins.each do |coin|
+  %div.coins-index
+    %p.base=link_to "#{coin.base}", trade_path(coin.base)
+    %p.target=coin.target
+    %p.price=coin.last_price
+    %p.vol=coin.volume
+    %p.action=link_to "Remove", coin_path(coin.id), method: :destroy, data: {confirm: "Are you sure?"}
+    %p.action=link_to "Edit", edit_coin_path(coin.id)
