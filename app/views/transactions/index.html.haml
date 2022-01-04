@@ -7,6 +7,7 @@
       %h1 Log Message
 
   - @transactions.each do |transaction|
-    = transaction.created_at.strftime("%b %d, %Y, %H:%M:%S")
-    SGT
-    = logs_format(transaction)
+    %div
+      = transaction.created_at.strftime("%b %d, %Y, %H:%M:%S")
+      SGT
+      = logs_format(transaction)

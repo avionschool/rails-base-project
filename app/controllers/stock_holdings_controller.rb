@@ -95,6 +95,13 @@ class StockHoldingsController < ApplicationController
       else
         @holding.save
       end
+      # create sell transaction for the user
+      Transaction.create(user_id: current_user.id, 
+        transaction_type: params[:stock_holding][:t_type], 
+        stock_symbol: params[:stock_holding][:stock_symbol], 
+        stock_price: params[:stock_holding][:stock_price].to_f,
+        units: params[:stock_holding][:units].to_f, 
+        amount: params[:stock_holding][:units].to_f * params[:stock_holding][:stock_price].to_f)
       # Stock units * stock price = stock amount which is added to the user's balance
       @user_wallet.balance = current_user.wallet.balance + params[:stock_holding][:units].to_f * params[:stock_holding][:stock_price].to_f
       @user_wallet.save
@@ -104,6 +111,11 @@ class StockHoldingsController < ApplicationController
   end
 
   def create_transaction_buy(units_added)
-    Transaction.create(user_id: current_user.id, transaction_type: params[:stock_holding][:t_type], stock_symbol: params[:stock_holding][:stock_symbol], stock_price: params[:stock_holding][:stock_price].to_f, units: units_added, amount: params[:stock_holding][:amount].to_f)
+    Transaction.create(user_id: current_user.id, 
+      transaction_type: params[:stock_holding][:t_type], 
+      stock_symbol: params[:stock_holding][:stock_symbol], 
+      stock_price: params[:stock_holding][:stock_price].to_f,
+      units: units_added, 
+      amount: params[:stock_holding][:amount].to_f)
   end
 end
