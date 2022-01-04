@@ -37,9 +37,10 @@ Content
 ********************/
 .row {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 80px auto;
+  margin: 0 auto;
   font-family: $lato;
   max-width: 80%;
 
@@ -73,7 +74,7 @@ Content
 
   .col-2 {
     position: relative;
-    flex-basis: 40%;
+    flex-basis: 45%;
     display: flex;
     align-items: center;
 
