@@ -9,7 +9,9 @@
         <li><%= link_to "Edit Profile", edit_user_registration_path, :class => 'nav-link' %> </li>
         <li><%= link_to "Log out", destroy_user_session_path, method: :delete, :class => 'nav-link' %> </li>
         <li><%= link_to "Show stock", stocks_path, :class => 'nav-link' %> </li>
-        <li><%= link_to "Add stocks", new_stock_path, :class => 'nav-link' %> </li>
+        <%#  
+        <li><%= link_to "Add stocks", new_stock_path, :class => 'nav-link' </li> %>
+        %>
       <% else %>
         <li><%= link_to "Login", new_user_session_path, :class => 'nav-link' %></li>
         <li><%= link_to "Sign up", new_user_registration_path, :class => 'nav-link register-btn' %></li> 
