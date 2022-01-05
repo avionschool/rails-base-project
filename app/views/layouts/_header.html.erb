@@ -1,22 +1,72 @@
-<div class="nav-bar bg-gray-700 text-gray-100">
-  <div class="nav-links">
-    <div class="nav-link">
-      <%= link_to "Home", root_path %>
+<div class="absolute top-0 max-w-full flex flex-row p-4 w-full bg-gray-900 text-gray-100 font-bold text-3xl justify-end">
+
+<% unless request.fullpath.start_with?('/admins') %>
+  <%# Start of User Only Nav Links %>
+  <% if user_signed_in? %> 
+    <div class="flex flex-row w-full justify-between">
+      <h1>StockBro</h1>
+      <div class="flex flex-row gap-4">
+        <div class="flex flex-col items-center justify-center">
+          <%= link_to root_path do %>
+          <i class="fas fa-home"></i>
+          <% end %>
+          <h3 class="text-sm">Home</h3>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <%= link_to users_path do %>
+          <i class="fas fa-user"></i>
+          <% end %>
+          <h3 class="text-sm">User</h3>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <%= link_to stocks_path do %>
+          <i class="far fa-chart-bar"></i>
+          <% end %>
+          <h3 class="text-sm">Stocks</h3>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <%= link_to transactions_path do %>
+          <i class="fas fa-file-invoice-dollar"></i>
+          <% end %>
+          <h3 class="text-sm">Trans</h3>
+        </div>
+      </div>
+      <button class="font-bold text-base"><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></button>
     </div>
-    <div class="nav-link">
-      <%= link_to "User", users_path %>
+  <% else %>
+     <div class="flex flex-row absolute left-4 top-4">
+      <h1>StockBro</h1> 
     </div>
-    <div class="nav-link">
-      <%= link_to "Admin", admin_root_path %>
+      <div class="flex flex-row gap-4">
+        <button class="justify-end font-bold text-base"><%= link_to "LOGIN", new_user_session_path %></button>
+        <button class="justify-end font-bold text-base rounded bg-yellow-500 px-8 py-2"><%= link_to "SIGN UP", new_user_registration_path  %></button>
+      </div>
+  <% end %>
+<% else %>
+  <% if admin_signed_in? %> 
+    <%# Start of Admin Only Nav Links %>
+    <div class="flex flex-row w-full justify-between">
+      <div class="flex flex-row gap-4">
+        <div class="flex flex-col items-center justify-center">
+          <%= link_to admin_root_path do %>
+          <i class="fas fa-users-cog"></i>
+          <% end %>
+          <h3 class="text-sm">Admin</h3>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <%= link_to transactions_path do %>
+          <i class="fas fa-file-alt"></i>
+          <% end %>
+          <h3 class="text-sm">Trans Logs</h3>
+        </div>
+      </div>
+      <button class="font-bold text-base"><%= link_to "LOGOUT", destroy_admin_session_path, method: :delete %></button>
     </div>
-    <div class="nav-link">
-      <%= link_to "Stocks", stocks_path %>
+  <% else %>
+    <div class="flex flex-row absolute left-4 top-4">
+      <h1>StockBro</h1> 
     </div>
-    <div class="nav-link">
-      <%= link_to "User Logs", transactions_path %>
-    </div>
-    <div class="nav-link">
-      <%= link_to "All Users Logs", transactions_list_path %>
-    </div>
-  </div>
+    <button class="justify-end font-bold text-base"><%= link_to "LOGIN", new_admin_session_path %></button>
+  <% end %>
+<% end %>
 </div>
