@@ -72,162 +72,243 @@
 //End of Landing Page//
 
 //Buyer Log-in and Registration//
-.buyer-signin-signup-container {
-    font-family: 'Readex Pro',sans-serif;
-    position: relative;
+.buyerlogin-container {
+    font-family: 'Share Tech Mono', monospace;
     width: 100%;
-    background-color: #fff;
-    min-height: 100vh;
-    overflow: hidden;
-    .forms-container{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: -webkit-linear-gradient(left, #7579ff, #b224ef);
+    .app-logo {
+        height: 3em;
+        padding: 1em;
     }
-    .signin-signup {
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%,-50%);
-        left: 75%;
-        width: 50%;
-        transition: 1s 0.7s ease-in-out;
-        display: grid;
-        grid-template-columns: 1fr;
-        z-index: 5;
-    }
-    form {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        padding: 0rem 5rem;
-        transition: all 0.2s 0.7s;
-        overflow: hidden;
-        grid-column: 1 / 2;
-        grid-row: 1 / 2;
-    }
-    form.sign-up-form {
-        opacity: 0;
-        z-index: 1;
-    }
-    form.sign-in-form {
-        z-index: 2;
-    }
-    .input-field {
-        max-width: 380px;
-        width: 100%;
-        background-color: #f0f0f0;
-        margin: 10px 0;
-        height: 55px;
-        border-radius: 55px;
-        display: grid;
-        grid-template-columns: 15% 85%;
-        padding: 0 0.4rem;
-        position: relative;
-    }
-    .input-field i {
-        text-align: center;
-        line-height: 55px;
-        color: #acacac;
-        transition: 0.5s;
-        font-size: 1.1rem;
-    }
-    .input-field input {
+    input, button{
+        border:none;
+        outline: none;
         background: none;
-        outline: none;
-        border: none;
-        line-height: 1;
-        font-weight: 600;
-        font-size: 1.1rem;
-        color: #333;
     }
-    .btn {
-        width: 150px;
-        background-color: #5995fd;
-        border: none;
-        outline: none;
-        height: 49px;
-        border-radius: 49px;
+    .forms-cont {
+        overflow: hidden;
+        position: relative;
+        width: 900px;
+        height: 550px;
+        background: #fff;
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    }
+    .form {
+        position: relative;
+        width: 640px;
+        height: 100%;
+        padding: 50px 30px;
+        -webkit-transition:-webkit-transform 1.2s ease-in-out;
+        transition: -webkit-transform 1.2s ease-in-out;
+        transition: transform 1.2s ease-in-out;
+        transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+    }
+    h2 {
+        width: 100%;
+        font-size: 30px;
+        text-align: center;
+    }
+    label {
+        display: block;
+        width: 260px;
+        margin: 25px auto 0;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+        color: #505f75;
+        text-transform: uppercase;
+    }
+    input {
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+        font-size: 16px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid rgba(109, 93, 93, 0.4);
+        text-align: center;
+        font-family: 'Nunito', sans-serif;
+    }
+    button {
+        display: block;
+        margin: 0 auto;
+        width: 260px;
+        height: 36px;
+        border-radius: 30px;
         color: #fff;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    .submit {
+        margin-top: 40px;
+        margin-bottom: 30px;
         text-transform: uppercase;
         font-weight: 600;
-        margin: 10px 0;
-        cursor: pointer;
-        transition: 0.5s;
+        font-family: 'Nunito', sans-serif;
+        background: -webkit-linear-gradient(left, #7579ff, #b224ef);
     }
-    .btn:hover {
-        background-color: #4d84e2;
+    .submit:hover {
+        background: -webkit-linear-gradient(left, #b224ef, #7579ff);
     }
-    .panels-container {
+    .forms-subcont {
+        overflow: hidden;
         position: absolute;
-        height: 100%;
-        width: 100%;
+        left: 640px;
         top: 0;
-        left: 0;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-      }
-    .buyer-signin-signup-container::before {
-        content: "";
+        width: 900px;
+        height: 100%;
+        padding-left: 260px;
+        background: #fff;
+        -webkit-transition: -webkit-transform 1.2s ease-in-out;
+        transition: -webkit-transform 1.2s ease-in-out;
+        transition: transform 1.2s ease-in-out;
+    }
+    .forms-cont.s-signup .sub-cont {
+        -webkit-transform:translate3d(-640px, 0, 0);
+                transform:translate3d(-640px, 0, 0);
+    }
+    .img {
+        overflow: hidden;
+        z-index: 2;
         position: absolute;
-        height: 2000px;
-        width: 2000px;
-        top: -10%;
-        right: 48%;
-        transform: translateY(-50%);
-        background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
-        transition: 1.8s ease-in-out;
-        border-radius: 50%;
-        z-index: 6;
+        left: 0;
+        top: 0;
+        width: 260px;
+        height: 100%;
+        padding-top: 360px; 
     }
-    .app-signup .app-signin {
+    .img:before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 900px;
+        height: 100%;
+        background-image: url(images/bg.jpg);
+        background-size: cover;
+        transition: -webkit-transform 1.2s ease-in-out;
+        transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
+    }
+    .img:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
         width: 100%;
-        transition: transform 1.1s ease-in-out;
-        transition-delay: 0.4s;
+        height: 100%;
+        background: rgba(0,0,0,0.3);
     }
-    .panel {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        justify-content: space-around;
+    .forms-cont.s-signup .img:before {
+        -webkit-transform:translate3d(640px, 0, 0);
+                transform:translate3d(640px, 0, 0);
+    }
+    .img-text {
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        top: 50px;
+        width: 100%;
+        padding: 0 20px;
         text-align: center;
-        z-index: 6;
-    }
-    .left-panel {
-        pointer-events: all;
-        padding: 3rem 17% 2rem 12%;
-    }
-    .right-panel {
-        pointer-events: none;
-        padding: 3rem 12% 2rem 17%;
-    }
-    .panel .panel-content {
         color: #fff;
-        transition: transform 0.9s ease-in-out;
-        transition-delay: 0.6s;
+        -webkit-transition:-webkit-transform 1.2s ease-in-out;
+        transition: -webkit-transform 1.2s ease-in-out;
+        transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
     }
-    .panel h3 {
-        font-weight: 600;
-        line-height: 1;
-        font-size: 1.5rem;
+    .img-text h2 {
+        margin-bottom: 10px;
+        font-weight: normal;
     }
-    .panel p {
-        font-size: 0.95rem;
-        padding: 0.7rem 0;
+    .img-text p {
+        font-size: 14px;
+        line-height: 1.5;
     }
-    .btn.transparent {
-        margin: 0;
-        background: none;
+    .forms-cont.s-signup .img-text.m-up {
+        -webkit-transform:translateX(520px);
+                transform:translateX(520px);
+    }
+    .img-text.m-in {
+        -webkit-transform:translateX(-520px);
+                transform:translateX(-520px);
+    }
+    .forms-cont.s-signup .img-text.m-in{
+        -webkit-transform:translateX(0);
+                transform:translateX(0);
+    }
+    .sign-in{
+        padding-top: 65px;
+        -webkit-transition-timing-function:ease-out;
+                transition-timing-function:ease-out;
+    }
+    .forms-cont.s-signup .sign-in{
+        -webkit-transition-timing-function:ease-in-out;
+                transition-timing-function:ease-in-out;
+        -webkit-transition-duration:1.2s;
+                transition-duration:1.2s; 
+        -webkit-transform:translate3d(640px, 0, 0);
+                transform:translate3d(640px, 0, 0);
+    }
+    .img-btn{
+        overflow: hidden;
+        z-index: 2;
+        position: relative;
+        width: 100px;
+        height: 36px;
+        margin: 0 auto;
+        background: transparent;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    .img-btn:after{
+        content: '';
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
         border: 2px solid #fff;
-        width: 130px;
-        height: 41px;
-        font-weight: 600;
-        font-size: 0.8rem;
+        border-radius: 30px;
     }
-    .right-panel .image, .right-panel .content {
-        transform: translateX(800px);
+    .img-btn span{
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-pack:center;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        -webkit-transition:-webkit-transform 1.2s;
+        transition: -webkit-transform 1.2s;
+        transition: transform 1.2s;
+        transition: transform 1.2s, -webkit-transform 1.2s;;
+    }
+    .forms-cont.s-signup .img-btn span.m-in{
+        -webkit-transform:translateY(0);
+                transform:translateY(0);
+    }
+      
+    .forms-cont.s-signup .img-btn span.m-up{
+        -webkit-transform:translateY(72px);
+                transform:translateY(72px);
+    }
+      
+    .sign-up{
+        -webkit-transform:translate3d(-900px, 0, 0);
+                transform:translate3d(-900px, 0, 0);
+    }
+      
+    .forms-cont.s-signup .sign-up{
+        -webkit-transform:translate3d(0, 0, 0);
+                transform:translate3d(0, 0, 0);
     }
 }
 //End of Buyer Log-in and Registration//
