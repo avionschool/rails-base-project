@@ -30,15 +30,14 @@
             %div{ class: 'table-cell text-left py-4 px-4 text-xs text-gray-400 w-36' } BTC Value
             %div{ class: 'table-cell text-left py-4 px-4 text-xs text-gray-400' } Action
         %div{ class: 'table-row-group ' }
-          - for crypto in @response
+          - @cryptos.each do |crypto|
             %div{ class: 'table-row hover:bg-gray-100' }
               %div{ class: 'table-cell text-left py-6 px-4 text-gray-600 border-b' }
-                = crypto["name"]
+                = crypto.name
               %div{ class: 'table-cell text-left py-6 px-4 text-gray-600 border-b' } 0.00000000
               %div{ class: 'table-cell text-left py-6 px-4 text-gray-600 border-b' } 0.00000000
               %div{ class: 'table-cell text-left py-6 px-4 text-gray-600 border-b' } 0.00000000
               %div{ class: 'table-cell text-left py-6 px-4 text-gray-600 border-b' } 0.00000000
               %div{ class: 'table-cell text-left py-6 px-4 text-gray-600 border-b' } 
-                = link_to "Buy", nil, class: 'text-yellow-500 hover:underline'
-                = link_to "Convert", nil, class: 'ml-4 text-yellow-500 hover:underline'
+                = link_to "View", crypto, class: 'text-yellow-500 hover:underline'
           
