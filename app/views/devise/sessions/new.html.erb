@@ -1,80 +1,39 @@
 <div class='buyerlogin-container'>
-    <a href ='/'>
+    <div class='login-nav'>    
+        <a href ='/'>
         <%= image_tag('Swift.png', :alt => 'SWIFT Logo', class:'app-logo') %>
-    </a>
-    <div class='forms-cont'>
-        <div class='form sign-in'>
-            <h2 class='reg-title'>Log in</h2>
-
+        </a>
+    </div>
+    <div class='reg-forms'>
+        <div class='login-animation'>
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player src="https://assets2.lottiefiles.com/private_files/lf30_F3v2Nj.json"  background="transparent"  speed="1"  style="width: 450px; height: 450px;"  loop  autoplay></lottie-player>
+        </div>
+        <div class='login-form'>
+            <h2>SWIFT Account Login</h2>
+            <p> Welcome back to the trading floor! Login with your email.</p>
+            <br/>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class='input-field'>
                 <%= f.label :email %><br />
                 <%= f.email_field :email, autofocus: true, autocomplete: 'email' %>
             </div>
-
+            <br />
             <div class='input-field'>
                 <%= f.label :password %><br />
                 <%= f.password_field :password, autocomplete: 'current-password' %>
             </div>
-
+            <br />
             <% if devise_mapping.rememberable? %>
-            <div class='input-field'>
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
+            
+            <% end %>
+            <br />
+            <div class='submit-btn'>
+                <%= f.submit 'Login' %>
             </div>
             <% end %>
-
-            <div class='btn submit-btn'>
-                <%= f.submit 'Log in' %>
-            </div>
-            <% end %>
-
+            <br />
             <%= render "devise/shared/links" %>
-
-        <div class='forms-subcont'>
-            <div class='img'>
-                <div class='img-text m-up'>
-                    <h2> New Here? </h2>
-                    <p> Join us and have the most fun trading stocks. </p>
-                </div>
-                <div class='img-text m-in'>
-                    <h2>One of us?</h2>
-                    <p>Log in and get back on the trading floor.</p>
-                </div>
-                <div class='img-btn'>
-                    <span class='m-up'>Register</span>
-                    <span class='m-in'>Log In</span>
-                </div>
-            </div>
-            <div class='form sign-up'>
-                <h2 class='reg-title'>Register</h2>
-
-                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                <%= render "devise/shared/error_messages", resource: resource %>
-              
-                <div class='input-field'>
-                    <%= f.label :email %><br />
-                    <%= f.email_field :email, autofocus: true, autocomplete: 'email' %>
-                </div>
-              
-                <div class='input-field'>
-                    <%= f.label :password %>
-                    <% if @minimum_password_length %>
-                    <em>(<%= @minimum_password_length %> characters minimum)</em>
-                    <% end %><br />
-                    <%= f.password_field :password, autocomplete: 'new-password' %>
-                </div>
-              
-                <div class='input-field'>
-                    <%= f.label :password_confirmation %><br />
-                    <%= f.password_field :password_confirmation, autocomplete: 'new-password' %>
-                </div>
-              
-                <div class='btn submit-btn'>
-                    <%= f.submit 'Sign up' %>
-                </div>
-                <% end %>
-                </div>    
         </div>
     </div>
 </div>
