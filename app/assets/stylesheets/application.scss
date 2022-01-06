@@ -103,12 +103,30 @@
                 font-size: 2em;
             }
             p {
-                font-size: 1.2em;
+                font-size: 1.1em;
             }
             input {
                 padding: 5px;
                 font-size: 15px;
+                width: 16vw;
+                outline: none;
+                background-color: rgb(67, 206, 130);
+            }
+            input:focus,textarea:focus {
+                box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+                border: 3px solid turquoise;
+            }
+            a {
+                text-decoration: none;
+                color: rgb(10, 189, 49);
+            }
+            input#buyer_email {
                 width: 15vw;
+                background-color: white;
+            }
+            input#buyer_password {
+                width: 15vw;
+                background-color: white;
             }
         }
 
