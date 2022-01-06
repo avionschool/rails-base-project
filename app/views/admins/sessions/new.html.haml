@@ -1,0 +1,14 @@
+%div{ class: "pt-20 w-screen h-screen bg-gray-900 text-gray-50 flex flex-col gap-10 items-center justify-center" }
+  %div{ class: "max-w-80 bg-gray-500 flex flex-col gap-10 items-center justify-center py-20 px-12 rounded" }
+    %h2{ class: "text-3xl" } Admin Login
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'w-full' })  do |f|
+      .flex.flex-col.gap-4
+        = f.email_field :email, placeholder: 'Email' ,autofocus: true, autocomplete: "email", class: 'w-full h-10 py-2 px-4'
+        = f.password_field :password, placeholder: 'Password', autocomplete: "current-password", class: 'w-full h-10 py-2 px-4'
+        %button{ class: 'w-full max-w-80 py-2 px-4 bg-blue-500'}= f.submit "Log in"
+      - if devise_mapping.rememberable?
+        %div{class:'m-4 flex flex-row items-center justify-center gap-2'}
+          = f.check_box :remember_me
+          = f.label :remember_me
+    %div
+      = render "admins/shared/links"

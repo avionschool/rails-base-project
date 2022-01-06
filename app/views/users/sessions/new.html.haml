@@ -1,0 +1,13 @@
+%div{ class: 'w-screen h-screen max-w-full max-h-full text-gray-50 bg-no-repeat bg-cover flex flex-col items-center justify-center', 
+:style => "background-image: url(#{image_path "finance.jpg"})" }
+  %div{class:'bg-gray-200 flex flex-col items-center justify-center py-10 px-20 text-gray-900 rounded drop-shadow-2xl shadow-2xl'}
+    = form_for(resource, as: resource_name, url: session_path(resource_name),  html: {class: 'w-content flex flex-col items-center justify-center gap-8 content' }) do |f|
+      %h2{class:'text-3xl font-bold text-gray-700'} SIGN IN
+      .field
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: 'w-80 py-2 px-4 rounded'
+      .field
+        = f.password_field :password, autofocus: true, autocomplete: "current-password", placeholder: "Password", class: 'w-80 py-2 px-4 rounded'
+      %button{ class: ' px-8 py-2 text-xl font-bold bg-blue-500 rounded text-white w-80' }= f.submit "SIGN IN"
+      %button= link_to "Forgot your password?", new_password_path(resource_name) 
+      %div{class: 'flex flex-col items-center justify-center border-t-2 border-solid border-gray-400'}
+        %button{ class: ' mt-4 px-8 py-2 text-xl font-bold bg-yellow-500 rounded text-white w-80' }=link_to "Create New Account", new_user_registration_path
