@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_14_131652) do
+ActiveRecord::Schema.define(version: 2021_12_15_113934) do
 
   create_table "cryptocurrencies", force: :cascade do |t|
     t.string "name"
-    t.bigint "max_supply"
+    t.string "kind"
     t.string "symbol"
     t.string "slug"
     t.boolean "is_active"
@@ -23,14 +23,13 @@ ActiveRecord::Schema.define(version: 2021_12_14_131652) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "name"
+    t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.integer "role_id"
-    t.integer "country_id"
     t.string "firstname"
     t.string "lastname"
     t.string "username"
@@ -38,10 +37,16 @@ ActiveRecord::Schema.define(version: 2021_12_14_131652) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["country_id"], name: "index_users_on_country_id"
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "users", "countries"
+  create_table "wallets", force: :cascade do |t|
+    t.string "cryptocurrency"
+    t.float "balance"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "users", "roles"
 end
