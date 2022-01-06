@@ -44,6 +44,10 @@ class Order < ApplicationRecord
     coin = Coin.find(self.coin_id)
     wallet = Wallet.find(self.wallet_id)
     self.price = coin.last_price
+    Order.update(self.id, {
+      :price => coin.last_price,
+      :filled => true
+    })
     if self.kind == 'buy'
       Wallet.update(self.wallet_id, 
       {
@@ -53,5 +57,5 @@ class Order < ApplicationRecord
       {
       :money=> wallet.money + self.quantity * self.price})
     end
-  end 
+  end
 end
