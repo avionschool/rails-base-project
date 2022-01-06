@@ -5,7 +5,6 @@ class Coin < ApplicationRecord
   validate :coin_is_listed_in_binance, :target_is_usdt, :on => :create
   validates :target, uniqueness: { scope: :base }, :on => :create
 
-  after_create :add_coingecko_id
 
   @coin_ids = []
   @coin_id_relation = []
