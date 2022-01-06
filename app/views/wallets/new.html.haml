@@ -1,0 +1,7 @@
+%h1
+  = @crypto.name
+
+%p
+  1 #{@crypto.symbol} = #{number_to_currency(@crypto.current_price, unit: "USD", format: "%n %u")}
+  %br/
+  = @crypto_owned
