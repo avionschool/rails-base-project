@@ -2,9 +2,8 @@
 <%= stylesheet_link_tag "/objects/_forms.scss" %>
 
 <div class='form-container'>
+  <h2>Login</h2>
   <div class='form'>
-    <h1>Welcome Back</h1>
-    <h5>Login to continue</h5>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <%= f.label :email, :class => 'label' %><br />

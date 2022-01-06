@@ -1,68 +1,72 @@
 @import './variables';
 @import '../../base/mixins/mixins';
 
-h1 {
-  font-size: 1.8rem;
-  color: $black;
-}
-
-h5 {
-  font-size: 0.8rem;
-  color: $black;
-  margin: 5px 0 30px 0;
-}
-
-
 .form-container {
   @include flexCenter(column);
-  
-  font-family: $karla;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px; 
-  height: 550px;
-  width: 450px;
+
+  width: 700px;
+  height: 70vh;;
+  border-radius: 10px;
+  background-color: $white;
+  margin: 0 auto;
+  box-shadow: $shadow;
+
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 100px;
+  }
+
+  .field {
+    
+    .label {
+      font-size: 2rem;
+      letter-spacing: 3px;
+    }
+
+    .text-field {
+      border: 1px solid $gray;
+      border-radius: 5px;
+      font-size: 2rem;
+      padding: 15px;
+      width: 600px;
+      height: 100px;
+      margin: 20px 0 50px 0;
+      outline: none;
+    }
+  }
+
+  .checkbox {
+    font-size: 2rem;
+
+    #user_remember_me {
+      margin-right: 5px;
+      width: 24px;
+      height: 23px;
+    }
+  }
+
+  .btn {
+    font-size: 2rem;
+    margin: 50px auto;
+    padding: 20px 50px;
+  }
+
+  .sign-up,
+  .forgotPass {
+    font-size: 1.7rem;
+    margin: 5px 0;
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
 
-.form {
-  height: 500px;
-  text-align: center;
-  padding: 30px;
-  font-size: 0.8em;
+.login-container {
+  display: flex;
+  align-items: center;
+  height: 80vh;
+  width: 100%;
 }
 
 .form-btn {
-  margin: 15px 0 25px 0;
-}
-
-.label {
-  font-family: $kanit;
-  font-weight: 700;
-  margin-bottom: 200px;
-}
-
-.field {
-  text-align: left;
-  padding: 10px;
-}
-
-.checkbox {
-  margin: 8px 0;
-}
-
-.text-field {
-  background-color: $lightGray;
-  outline: none;
-  border: none;
-  border-radius: 10px;
-  margin-top: 8px;
-  padding: 12px;
-  width: 400px;
-}
-
-.google-btn {
-  width: 400px;
-  border: 2px solid #4285F4;
-  padding: 12px 70px;
-  margin: 0;
+  display: flex;
 }

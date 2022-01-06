@@ -3,4 +3,6 @@
 //Mixins
 @import '../../base/mixins/mixins';
 
-body {}
+#login {
+  background-color: $lightGray;
+}

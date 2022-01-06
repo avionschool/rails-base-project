@@ -116,7 +116,12 @@ Navigation Bar
     }
 
     .nav-logo {
-      font-size: 1.5rem;
+      font-size: 3rem;
+
+      .dot {
+        height: 8px;
+        width: 8px;
+      }
     }
 
     .nav-link {
@@ -147,16 +152,25 @@ Footer
   height: 30px;
   text-align: center;
 
-  p {
-    @include respond-to('small') {
+  @include respond-to('small') {
+
+    
+    p {
       font-size: 1rem;
     }
-  
-    @include respond-to('medium') {
-      font-size: 1rem;
+  }
+
+  @include respond-to('medium') {
+    margin-bottom: 10px;
+
+    p {
+      font-size: 1.8rem;
     }
-  
-    @include respond-to('xl') {
+  }
+
+  @include respond-to('xl') {
+
+    p {
       font-size: 1rem;
     }
   }
