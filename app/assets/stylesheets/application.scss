@@ -13,9 +13,14 @@
  *= require_tree .
  *= require_self
  */
+ /*
+ *= require font-awesome
+ */
 
+ @import "font-awesome";
  @import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Readex+Pro&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
  //Landing Page//
 .landing-container {
     .landing-navbar {
@@ -111,6 +116,8 @@
                 width: 16vw;
                 outline: none;
                 background-color: rgb(67, 206, 130);
+                border-radius: 3px;
+                position: relative;
             }
             input:focus,textarea:focus {
                 box-shadow: 0 0 5px rgba(81, 203, 238, 1);
@@ -124,9 +131,32 @@
                 width: 15vw;
                 background-color: white;
             }
+            input#admin_email {
+                background-color: white;
+                width: 15vw;
+            }
+            input#broker_email {
+                background-color: white;
+                width: 15vw;
+            }
+            input#admin_password {
+                background-color: white;
+                width: 15vw;
+            }
+            input#broker_password {
+                background-color: white;
+                width: 15vw;
+            }
             input#buyer_password {
                 width: 15vw;
                 background-color: white;
+            }
+            span {
+                color: #351b7e;
+                position: absolute;
+                right:650px;
+                transform: translateY(35%);
+                cursor: pointer;
             }
         }
 

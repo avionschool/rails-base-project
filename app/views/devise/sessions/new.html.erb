@@ -22,6 +22,9 @@
             <div class='input-field'>
                 <%= f.label :password %><br />
                 <%= f.password_field :password, autocomplete: 'current-password' %>
+                <span> 
+                    <i class='fa fa-eye' id='font' onclick='togglePW()' aria-hidden='true'></i>
+                </span>
             </div>
             <br />
             <% if devise_mapping.rememberable? %>

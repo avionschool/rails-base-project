@@ -16,8 +16,12 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-document.querySelector('.img-btn').addEventListener('click', function()
-	{
-		document.querySelector('.cont').classList.toggle('s-signup')
+var passField = document.querySelector('input');
+var btn = document.querySelector('span i');
+btn.onclick = function(){
+	if(passField.type==='password'){
+		passField.type ='text';
+	}else{
+		passField.type='password';
 	}
-);
+}
