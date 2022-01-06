@@ -6,7 +6,6 @@
                     <li><img src="/images/avstonks.png"/></li>
                     <li><%= link_to "Home", root_path %></li>
                     <li><%= link_to "Trade", trade_path("BTC") %></li>
-                    
                     <% if current_user&.admin? %>
                     <li><%= link_to "Administrator controls", admins_path %></li>
                     <% end %>

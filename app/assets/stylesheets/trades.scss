@@ -2,22 +2,76 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.coinpair{
-    display:flex;
-    flex-flow:row;
-    &>.name{
-    }
-    &>.target{
-        color:gray;
-    }
-    &.price{   
-    }
-}
 
+.trades-container{
+    width:1160px;
+    margin:auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr 320px;
+    grid-template-areas:
+        "widget widget index"
+        "buy sell ."
+}
+.tradingview-widget-container{
+    grid-area: widget;
+}
 .trades-list-item{
     display:grid;
     grid-template-columns: repeat(2, 100px) 100px 100px;
     :hover{
         background-color: gray;
+    }
+}
+
+.coin-link{
+    text-decoration: none;
+}
+
+.trades-index-container{
+    width: 320px;
+    padding: 10px;
+    height: 520px;
+    border: 1px solid black;
+    grid-area: index;
+}
+.trades-index-searchbar{
+    font-size: 0.8em;
+    color: #eeeeee;
+    // border: 1px solid #aaaaaa;
+    background-color: #555555;
+    display:flex;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    align-items: center;
+    input{
+        width: 100%;
+        color:inherit;
+        background-color:inherit;
+        font-size:1em;
+        outline:none;
+        border: none;
+        margin-left:5px;
+    }
+}
+.trades-index-items{
+    overflow-y:scroll;
+    height: 100%;
+}
+.coin-item{
+    display:grid;
+    grid-template-columns: repeat(2, 100px) 50px;
+    font-size: 0.8em;
+    :hover{
+        background-color: #aaaaaa;
+    }
+    .coin-item-name{
+
+    }
+    .coin-item-price{
+
+    }
+    .coin-item-change{
+
     }
 }
