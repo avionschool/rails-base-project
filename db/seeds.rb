@@ -39,23 +39,28 @@ coins = Coin.create(
     [
         {
             target: 'USDT',
-            base: 'BTC'
+            base: 'BTC',
+            coingecko_id: 'bitcoin'
         },
         {
             target: 'USDT',
-            base: 'ETH'
+            base: 'ETH',
+            coingecko_id: 'ethereum'
         },
         {
             target: 'USDT',
-            base: 'XRP'
+            base: 'XRP',
+            coingecko_id: 'ripple'
         },
         {
             target: 'USDT',
-            base: 'AXS'
+            base: 'AXS',
+            coingecko_id: 'axie-infinity'
         },
         {
             target: 'USDT',
-            base: 'BNB'
+            base: 'BNB',
+            coingecko_id: 'binancecoin'
         }
     ]
 )

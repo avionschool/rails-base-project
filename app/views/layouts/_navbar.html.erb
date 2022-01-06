@@ -7,7 +7,7 @@
                     <li><%= link_to "Home", root_path %></li>
                     <li><%= link_to "Trade", trade_path("BTC") %></li>
                     <li><%= link_to "Wallet", root_path %></li>
-                    <% if current_user.admin? %>
+                    <% if current_user&.admin? %>
                     <li><%= link_to "Administrator controls", admins_path %></li>
                     <% end %>
                     <% unless current_user %>
