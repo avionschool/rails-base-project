@@ -4,7 +4,7 @@ class Wallet < ApplicationRecord
   has_many :portfolios
   
   after_create :initialize_wallet
-  validates :money, numericality: true;
+  # validates :money, numericality: true;
   private
 
   def initialize_wallet

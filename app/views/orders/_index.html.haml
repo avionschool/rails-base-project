@@ -1,0 +1,13 @@
+-if @orders.count == 0
+  No orders to show.
+-else
+  -@orders.each do |o|
+    =Coin.find(o.coin_id).base
+    =o.quantity
+    =o.price
+    -if o.kind == "buy"
+      Buy
+    -elsif o.kind == "sell"
+      Sell
+    
+    =o.created_at

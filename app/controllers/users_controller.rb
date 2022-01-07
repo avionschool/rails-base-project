@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @wallet = @user.wallet
     @orders = @wallet.orders
     @coins = Coin.all
-    traded = @orders.group(:coin_id).group(:kind).sum(:quantity)
+    @portfolio = @wallet.portfolios
   end
 
   def new
