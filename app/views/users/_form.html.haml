@@ -22,5 +22,13 @@
     = f.label :password_confirmation
     %br/
     = f.password_field :password_confirmation, autocomplete: "off"
+  .field
+    = f.label :kind
+    %br/
+    = f.select :kind, [["User","user"], ["Broker","broker"], ["Administrator","admin"]]
+  .field
+    = f.fields_for :wallet do |f|
+      = f.label :money
+      = f.text_field :money
   .actions
     = f.submit

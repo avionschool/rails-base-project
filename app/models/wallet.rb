@@ -3,7 +3,7 @@ class Wallet < ApplicationRecord
   has_many :orders
   
   after_create :initialize_wallet
-
+  validates :money, numericality: true;
   private
 
   def initialize_wallet

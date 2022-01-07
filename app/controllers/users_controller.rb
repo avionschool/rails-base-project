@@ -6,6 +6,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @wallet = @user.wallet
+    @orders = @wallet.orders
+    @coins = Coin.all
   end
 
   def new
@@ -45,7 +48,9 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(
+      :email, :password, :password_confirmation, :kind,
+      wallet_attributes: [:id, :money])
   end
   
 end

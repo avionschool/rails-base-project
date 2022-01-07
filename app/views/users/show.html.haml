@@ -1,3 +1,7 @@
+-if current_user.admin?
+  =link_to "Users index", users_path
+-if current_user.admin?
+  =link_to "Edit user", edit_user_path(@user.id)
 Email
 %br/
 =@user.email
