@@ -1,0 +1,39 @@
+<div class="card-header-name"> 
+<%= current_user.present? ? "" : "" %>
+<h1>Account Information: <%= current_user.email %> </h1>
+</div>
+
+<div>
+<% @wallets.each do |wallet| %>
+<% if wallet.id == current_user.id %>
+<h3><%= wallet.balance %></h3>
+<h3>Balance</h3>
+<% end %>
+<% end %>
+</div>
+
+<div>
+    <h5>Market</h5>
+    <h5>Units</h5>
+    <h5>Hold value</h5>
+    <h5>P/L (%)</h5>
+    <h5>P/L (Php)</h5>
+    <h5>Value</h5>
+    <h5>Action</h5>
+</div>
+
+<div>
+<% @holdings.each do |holding| %>
+<% if holding.user == current_user %>
+<div>
+<h5 ><%= holding.ticker %></h5>
+<h5 >--</h5>
+<h5>--</h5>
+<h5>--</h5>
+<h5>--</h5>
+<h5>--</h5>
+<%= link_to "View", new_user_holding_path(user_id:current_user, stock_id:holding.ticker)%>
+</div>
+<% end %>
+<% end %>
+</div>
