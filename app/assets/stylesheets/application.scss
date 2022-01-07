@@ -75,7 +75,7 @@
 }
 //End of Landing Page//
 
-//Buyer Log-in and Registration//
+//Buyer Log-in//
 .buyerlogin-container {
     font-family: 'Share Tech Mono', monospace;
     width: 100%;
@@ -162,5 +162,68 @@
 
     }
 }
-//End of Buyer Log-in and Registration//
+//End of Buyer Log-in//
 
+//Buyer Registration//
+.buyerreg-container {
+    font-family: 'Share Tech Mono', monospace;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    .reg-nav {
+        .app-logo {
+            height: 3em;
+            padding: 1em;
+        }
+    }
+    .reg-forms {
+        background: #351b7e;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        .signup-form {
+            padding: 5em;
+            color: rgb(255, 255, 255);
+            border-color: solid 3px rgb(101, 86, 240);
+            h2 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1.1em;
+            }
+            a {
+                text-decoration: none;
+                color: rgb(10, 189, 49);
+            }
+            input {
+                width: 16vw;
+                padding: 5px;
+                font-size: 15px;
+                outline: none;
+                background-color: rgb(67, 206, 130);
+                border-radius: 3px;
+                position: relative;
+            }
+            input:focus,textarea:focus {
+                box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+                border: 3px solid turquoise;
+            }
+            input#buyer_email {
+                width: 15vw;
+                background-color: white;
+            }
+            input#buyer_password {
+                background-color: white;
+                width: 15vw;
+            }
+            input#buyer_password_confirmation {
+                background-color: white;
+                width: 15vw;
+            }
+        }
+    }
+}
+//End of Buyer Registration//
