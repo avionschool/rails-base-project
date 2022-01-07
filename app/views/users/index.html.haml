@@ -1,0 +1,7 @@
+%h1 Users#index
+%p Find me in app/views/users/index.html.haml
+=link_to "Add new user", new_user_path
+-@users.each do |user|
+  =user.email
+  =user.wallet.verified
+  =link_to "Edit user", edit_user_path(user.id)

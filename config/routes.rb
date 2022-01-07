@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     get "/sign_in" => "devise/sessions#new" # custom path to login/sign_in
     get "/sign_up" => "devise/registrations#new", as: "new_user_registration" # custom path to sign_up/registration
   end
+  scope '/admin' do
+    resources :users
+    resources :coins
+  end
 
   devise_for :users, controllers: {
     registrations: 'users/registrations'
