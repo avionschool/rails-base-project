@@ -1,14 +1,18 @@
 class UsersController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, except: :show
   def index
     @users = User.all
   end
 
   def show
+    unless current_user.id == params[:id] || current_user.admin?
+      return head :forbidden
+    end
     @user = User.find(params[:id])
     @wallet = @user.wallet
     @orders = @wallet.orders
     @coins = Coin.all
+    traded = @orders.group(:coin_id).group(:kind).sum(:quantity)
   end
 
   def new
