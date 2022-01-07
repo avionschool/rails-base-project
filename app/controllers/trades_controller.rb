@@ -14,6 +14,7 @@ class TradesController < ApplicationController
     if current_user
       @wallet = current_user.wallet
       @order = @coin.orders.build
+      @portfolio = @wallet.portfolios.where(symbol: params[:base]).first
     end
   end
   

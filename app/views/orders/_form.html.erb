@@ -1,6 +1,6 @@
 <%= form_with model: [@wallet,@order] do |f| %>
-
-
+AVBL
+<%= @wallet.money %>
 <%= f.label :quantity %>
 <%= f.text_field :quantity %>
 <%= f.hidden_field :coin_id, value: @coin.id%>
@@ -10,7 +10,12 @@
 <% end %>
 
 <%= form_with model: [@wallet,@order] do |f| %>
-
+AVBL
+<%if @portfolio.nil? %>
+    0
+<% else %>
+    <%= @portfolio.amount %>
+<% end %>
 <%= f.label :quantity %>
 <%= f.text_field :quantity %>
 
