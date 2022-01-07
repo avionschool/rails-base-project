@@ -29,7 +29,7 @@
           <%= stock.name %>
         </td>
         <td>
-          <%= link_to 'Show', stock_path(:id => stock.id, :ticker => stock.ticker)%>
+          <%= link_to 'Show', new_user_holding_path(:user_id => current_user, :stock_id => stock.id)%>
         </td>
       </tr>
     <% end %>
