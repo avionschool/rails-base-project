@@ -1,22 +1,22 @@
 <%= form_with model: [@wallet,@order] do |f| %>
 
 
-<%= f.label :quantity %>
-<%= f.text_field :quantity %>
+<%= f.label :quantity, :class => 'order-label'%>
+<%= f.text_field :quantity, :class => 'order-field' %>
 <%= f.hidden_field :coin_id, value: @coin.id%>
 <%= f.hidden_field :kind, value: 'buy' %>
 
-<%= f.submit 'Buy' %>
+<%= f.submit 'Buy', :class => 'buy-button' %>
 <% end %>
 
 <%= form_with model: [@wallet,@order] do |f| %>
 
-<%= f.label :quantity %>
-<%= f.text_field :quantity %>
+<%= f.label :quantity, :class => 'order-label' %>
+<%= f.text_field :quantity, :class => 'order-field' %>
 
 <%= f.hidden_field :kind, value: 'sell' %>
 <%= f.hidden_field :coin_id, value: @coin.id%>
 
-<%= f.submit 'Sell' %>
+<%= f.submit 'Sell', :class => 'sell-button' %>
 <% end %>
     
