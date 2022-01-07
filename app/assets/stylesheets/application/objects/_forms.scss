@@ -1,5 +1,6 @@
 @import './variables';
 @import '../../base/mixins/mixins';
+@import '../responsive/responsive.scss';
 
 .form-container {
   @include flexCenter(column);
@@ -58,6 +59,58 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+  @include respond-to('small') {
+    width: 25rem;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 50px;
+    }
+
+    .field {
+
+      .label {
+        font-size: 1rem;
+        letter-spacing: 3px;
+      }
+
+      .text-field {
+        font-size: 1rem;
+        padding: 15px;
+        width: 250px;
+        height: 10px;
+        margin: 10px 0 10px 0;
+      }
+    }
+
+    .checkbox {
+      font-size: 1rem;
+
+      #user_remember_me {
+        margin-right: 2px;
+        margin-top: 10px;
+        width: 13px;
+        height: 12px;
+      }
+    }
+
+    .btn {
+      font-size: 1rem;
+      margin: 30px auto;
+      padding: 10px 25px;
+    }
+
+    .sign-up,
+    .forgotPass {
+      font-size: 0.9rem;
+      margin: 0;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+  }
+
 }
 
 .login-container {
