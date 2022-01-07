@@ -1,0 +1,42 @@
+
+<p><%= @stocks.name %></p>
+<div>
+<h2><%= calc_price(@stocks.current_price, true) %></h2>
+<h3>BUY</h3>
+</div>
+
+<div>
+<h2><%= calc_price(@stocks.current_price, false) %></h2>
+<h3>SELL</h3>
+</div>
+
+<div>
+<% @wallets.each do |wallet| %>
+<% if wallet.id == current_user.id %>
+    <div>
+    <%= form_with scope: @holding, model:[@holding.user, @holding], local: true do |f| %>
+        <%= f.number_field :user_id, value: current_user.id, type: :hidden %>
+        <%= f.text_field :ticker, value: @stocks.ticker, type: :hidden %>
+        <%= f.number_field :log_price, autofocus: true, placeholder: "Price", step: :any, max: wallet.balance %>
+        <%= f.number_field :stock_id, value: @stocks.id, type: :hidden %>
+        <div>
+        <%= f.submit "Buy", class: 'transaction-buy' %>
+        </div>
+        <% end %>
+    </div>
+
+    <div>
+    <%= form_with scope: @holding, model:[@holding.user, @holding], local: true do |f| %>
+        <%= f.number_field :user_id, value: current_user.id, type: :hidden %>
+        <%= f.text_field :ticker, value: @stocks.ticker, type: :hidden %>
+        <%= f.number_field :log_price, autofocus: true, placeholder: "Price", step: :any, max: wallet.balance %>
+        <%= f.number_field :stock_id, value: @stocks.id, type: :hidden %>
+        <div>
+        <%= f.submit "Sell", class: 'transaction-sell' %>
+        </div>
+        <% end %>
+    </div>
+    <% end %>
+    <% end %>
+    </div>
+
