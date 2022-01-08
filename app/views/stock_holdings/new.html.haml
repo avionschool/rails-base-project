@@ -1,32 +1,40 @@
-This is new stock holdings
-%h1= @stock.stock_symbol
-%h1
-  = @balance
-  Balance
-%h1
-  = @current_stock.nil? ? 0.00 : @current_stock.units.round(6)
-  Stocks
-%br
-%h1= @buy
-%br
-%h1= @sell
+%div{ class: 'bg-gray-50 w-screen h-screen max-w-full max-h-full bg-no-repeat bg-cover flex flex-col items-center gap-10 text-gray-800 px-20 pt-32 ' }
+  
+  %div{ class: 'flex flex-col gap-4 absolute left-12 top-28'}
+    %div{ class: 'flex flex-row justify-center gap-4  '}
+      %h3{ class: 'text-2xl'} Available Balance: 
+      %h3{ class: 'text-3xl'}= "PHP #{@balance}"
 
-= form_with scope: :stock_holding, model: [@holding.user, @holding] do |f|
-  = f.hidden_field :user_id, value: current_user.id
-  = f.hidden_field :stock_id, value: @stock.id
-  = f.hidden_field :stock_symbol, value: @stock.stock_symbol
-  = f.hidden_field :stock_price, value: @buy
-  = f.hidden_field :t_type, value: 'BUY'
-  = f.number_field :amount, autofocus: true, placeholder: "Price", step: :any, min: 0.1, :required => true
-  = f.submit "Buy", class: "", data: {confirm: "Confirm to buy this stock"}
+  %h1{class: 'text-3xl' }= "#{@stock.stock_symbol}" + " - " + "Insert Stock Name"
+  %div{ class: 'items-center justify-center text-center w-full flex gap-40 py-10 pb-20 border-b border-solid border-gray-300 outline-none text-sm rounded bg-white rounded drop-shadow-2xl'}
+    %div{ class: 'flex flex-col gap-4'}
+      %h3{ class: 'text-3xl'} Owned Units
+      %h1{ class: 'text-4xl' }
+        = @current_stock.nil? ? 0.00 : @current_stock.units.round(6)
+     
+  %div{ class: 'flex flex-row items-center justify-center gap-32'}
+    %div{ class: 'flex flex-col items-center gap-4'}
+      %h1{ class: 'text-xl' }= "BUY PRICE - PHP #{@buy}"
+      = form_with scope: :stock_holding, model: [@holding.user, @holding] do |f|
+        = f.hidden_field :user_id, value: current_user.id
+        = f.hidden_field :stock_id, value: @stock.id
+        = f.hidden_field :stock_symbol, value: @stock.stock_symbol
+        = f.hidden_field :stock_price, value: @buy
+        = f.hidden_field :t_type, value: 'BUY'
+        %div{class: 'flex flex-col items-center gap-4 w-80' }
+          = f.number_field :amount, autofocus: true, class: 'text-gray-600 rounded w-full', placeholder: "Price", step: :any, min: 0.1, :required => true
+          %button{ class: 'font-bold text-white rounded py-2 w-full bg-green-500 transition-ease duration-200 hover:opacity-70' }= f.submit "Buy", class: "", data: {confirm: "Confirm to buy this stock"}
 
-= form_with scope: :stock_holding, model: [@holding.user, @holding] do |f|
-  = f.hidden_field :user_id, value: current_user.id
-  = f.hidden_field :stock_id, value: @stock.id
-  = f.hidden_field :stock_symbol, value: @stock.stock_symbol
-  = f.hidden_field :stock_price, value: @sell
-  = f.hidden_field :t_type, value: 'SELL'
-  = f.number_field :units, placeholder: "Sell in Units", step: :any, min: 0.0
-  = f.submit "Sell", class: "", data: {confirm: "Confirm to sell this stock"}
+    %div{ class: 'flex flex-col items-center gap-4 '}
+      %h1{ class: 'text-xl' }= "SELL PRICE - PHP #{@sell}"
+      = form_with scope: :stock_holding, model: [@holding.user, @holding] do |f|
+        = f.hidden_field :user_id, value: current_user.id
+        = f.hidden_field :stock_id, value: @stock.id
+        = f.hidden_field :stock_symbol, value: @stock.stock_symbol
+        = f.hidden_field :stock_price, value: @sell
+        = f.hidden_field :t_type, value: 'SELL'
+        %div{class: 'flex flex-col items-center gap-4 w-80' }
+          = f.number_field :units, class: 'text-gray-600 rounded w-full' ,placeholder: "Sell in Units", step: :any, min: 0.0
+          %button{ class: 'font-bold text-white rounded py-2 w-full bg-red-500 transition-ease duration-200 hover:opacity-70' }= f.submit "Sell", class: "", data: {confirm: "Confirm to sell this stock"}
 
--# ADD SELL ALL SO USER CAN DESTROY A STOCK HOLDING
+  -# ADD SELL ALL SO USER CAN DESTROY A STOCK HOLDING

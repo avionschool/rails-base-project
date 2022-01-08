@@ -1,9 +1,9 @@
-%div{ class: 'pt-32 bg-gray-50 w-screen h-screen max-w-full max-h-full bg-no-repeat bg-cover flex flex-col gap-10 items-center text-gray-800 px-20' }
+%div{ class: 'pt-20 bg-gray-50 w-screen h-screen max-w-full max-h-full bg-no-repeat bg-cover flex flex-col gap-10 items-center text-gray-800 px-20' }
   - if @transactions.empty?
     There's no transactions
   - else
     %div{class:'flex flex-col items-center'}
-      %h1{class:'text-2xl'} Transaction Logs
+      %h1{class:'text-3xl'} Transaction Logs
       %h1 #{DateTime.now.to_date}
 
   %div{class:'flex flex-col items-center w-full' }

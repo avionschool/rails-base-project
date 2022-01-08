@@ -1,7 +1,7 @@
 - if user_signed_in?
   %div{ class: 'bg-gray-50 w-screen h-screen max-w-full max-h-full bg-no-repeat bg-cover flex flex-col text-gray-800 px-20' }
     %div{ class: 'pt-20 w-full flex flex-col gap-20 flex flex-col items-center justify-center'}
-      %h1{ class: 'text-5xl' } Welcome, #{@name}
+      %h1{ class: 'text-3xl' } Welcome, #{@name}
       %div{ class: 'items-center justify-center text-center w-full flex gap-32 py-10 pb-20 border-b border-solid border-gray-300 outline-none text-sm rounded bg-white rounded drop-shadow-2xl'}
         %div{ class: 'flex flex-col gap-4'}
           %h3{ class: 'text-3xl'} Balance
@@ -27,7 +27,7 @@
               = user_stock_revenue(sh)
               PHP
             %td{:class => "text-base font-bold text-blue-500 text-center hover:cursor-pointer"}
-              = link_to "View", new_user_stock_holding_path(user_id:current_user, stock_id:sh.stock_id)
+              %button{class:'bg-blue-500 text-white px-8 py-1 rounded transition-ease duration-200 hover:opacity-75 '}= link_to "View", new_user_stock_holding_path(user_id:current_user, stock_id:sh.stock_id)
 - else  
   %div{ class: 'flex flex-col items-center justify-center h-full w-full max-w-full max-h-full bg-no-repeat bg-cover flex flex-col text-gray-800', 
   :style => "background-image: url(#{image_path "finance.jpg"})" }

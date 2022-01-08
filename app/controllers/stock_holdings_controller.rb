@@ -42,7 +42,7 @@ class StockHoldingsController < ApplicationController
       # only save if you have more than 0 balance
       @holding.save if @user_wallet.balance.positive?
       # for saving user's balance
-      if @user_wallet.balance.positive? && @holding.save
+      if @holding.save
         @user_wallet.save
         # create buy transaction for the user
         create_transaction_buy(@holding.units)
@@ -53,7 +53,7 @@ class StockHoldingsController < ApplicationController
         redirect_back fallback_location: users_path
       end
     else
-      # Update if there's already a stock
+      # Update if the stock is already owned by the current user
       @holding = stock_avail
       amount = params[:stock_holding][:amount].to_f
       stock_price = params[:stock_holding][:stock_price].to_f
@@ -67,7 +67,7 @@ class StockHoldingsController < ApplicationController
       # only save if you have more than 0 balance
       @holding.save if @user_wallet.balance.positive?
       # updating user's balance
-      if @user_wallet.balance.positive? && @holding.save
+      if @holding.save
         @user_wallet.save
         # create buy transaction for the user
         create_transaction_buy(units)
