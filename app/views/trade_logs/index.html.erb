@@ -21,7 +21,7 @@
             <td><%=trade_logger(log)[:date]%></td>
             <td><%=trade_logger(log)[:type]%></td>
             <td><%=trade_logger(log)[:stock]%></td>
-            <td><%=trade_logger(log)[:units]%></td>
+            <td><%=trade_logger(log)[:units].round(4)%></td>
             <td><%=trade_logger(log)[:value_per_stock]%></td>
             <td><%=trade_logger(log)[:total_amount]%></td>
         </tr>
