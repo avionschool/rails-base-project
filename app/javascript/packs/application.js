@@ -16,15 +16,16 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-
-
-document.getElementById('pw-toggle').addEventListener('click', togglePW, false);
-
-function togglePW(){
-    var passField = document.getElementById('buyer_password');
-        if(passField.type === 'password') {
-            passField.type = 'text';
-        } else {
-            passField.type = 'text';
+document.addEventListener('turbolinks:load', function () {
+    let pwToggle = document.getElementById('pw-toggle')
+    function togglePW(){
+        let passField = document.getElementById('buyer_password');
+            if(passField.type === 'password') {
+                passField.type = 'text';
+            } else {
+                passField.type = 'password';
         }
     }
+    pwToggle.addEventListener ('click', togglePW, false)
+})
+
