@@ -1,13 +1,13 @@
-<%= link_to "Home", root_path%> | 
+<%= link_to "HOME", root_path%> &nbsp; &nbsp; &nbsp;
 <% if buyer_signed_in? %>
-  <%= link_to "Sign Out", destroy_buyer_session_path, method: :delete%> | 
+  <%= link_to "Sign Out", destroy_buyer_session_path, method: :delete%> &nbsp; &nbsp; &nbsp; 
 <% elsif broker_signed_in? %>
-  <%= link_to "Sign Out", destroy_broker_session_path, method: :delete%> | 
+  <%= link_to "Sign Out", destroy_broker_session_path, method: :delete%> &nbsp; &nbsp; &nbsp; 
 <% elsif admin_signed_in? %>
-  <%= link_to "Sign Out", destroy_admin_session_path, method: :delete%> | 
+  <%= link_to "Sign Out", destroy_admin_session_path, method: :delete%> &nbsp; &nbsp; &nbsp; 
 <% else %>
-  <%= link_to "Buyer", new_buyer_session_path%> | 
-  <%= link_to "Broker", new_broker_session_path %> |
-  <%= link_to "Admin", new_admin_session_path%>
+  <%= link_to "BUYER", new_buyer_session_path%> &nbsp; &nbsp; &nbsp; 
+  <%= link_to "BROKER", new_broker_session_path %> &nbsp; &nbsp; &nbsp;
+  <%= link_to "ADMIN", new_admin_session_path%>
 <% end %>
   
