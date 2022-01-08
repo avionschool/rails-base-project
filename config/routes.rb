@@ -5,6 +5,20 @@ Rails.application.routes.draw do
   devise_for :users, path: 'users'
 
   resources :stocks, only: [:index]
+  
+  scope module: 'api', path: 'separate_path', as: 'different_prefix' do 
+    get '/today_quote', to: 'quotes#index'
+
+    # - In this scenario, v1 and v2 are folders within controllers
+    # namespace :v1 do
+    #   get '/today_quote', to: 'quotes#index'
+    # end
+
+    # namespace :v2 do
+    #   get '/today_quote', to: 'quotes#index'
+    # end
+    
+  end
 
   devise_scope :user do
     get 'users/sign_out' => 'devise/sessions#destroy'

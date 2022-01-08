@@ -15,7 +15,7 @@
     <%= render 'layouts/header' %>
     <p class="notice"><%= notice %></p>
     <% if alert %>
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded alert-div w-screen" role="alert">
       <strong class="font-bold">Alert!</strong>
       <span class="block sm:inline"><%= alert %></span>
       <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
@@ -23,6 +23,8 @@
       </span>
     </div>
     <% end %>
-    <%= yield %>
+    <div class="header-padding h-screen w-screen">
+      <%= yield %>
+    </div>
   </body>
 </html>

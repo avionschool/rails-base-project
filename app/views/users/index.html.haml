@@ -1,33 +1,18 @@
 
-
-- if user_signed_in?
-  %h1 This is the user's balance: 
-  = @balance.round(4)
-  PHP
-  %h1 User's total revenue: 
-  = total_revenue(@holdings)
-  PHP
-  %table{:class => ""}
-    %thead
-      %tr
-        %th{:class => "p-3 center"} Stock Name
-        %th{:class => "p-3 center"} Units
-        %th{:class => "p-3 center"} Stock Revenue
-        %th{:class => "p-3 center"} Action
-    %tbody
-      - @holdings.each do |sh|
-        %tr{:class => ""}
-          %td{:class => "p-3"}= sh.stock_symbol
-          %td{:class => "p-3"}= sh.units.round(4)
-          %td{:class => "p-3"}
-            = user_stock_revenue(sh)
-            PHP
-          %td{:class => "p-3"}
-            = link_to "View", new_user_stock_holding_path(user_id:current_user, stock_id:sh.stock_id)
-
-
-
-- else
-  %h1 You are signed out
-
+%div{ class: 'bg-gray-50 w-screen h-screen max-w-full max-h-full bg-no-repeat bg-cover flex flex-col text-gray-800 px-20' }
+  - if user_signed_in?
+    %div{ class: 'pt-20 w-full flex flex-col gap-10 flex flex-col items-center justify-center'}
+      %div{ class: 'flex flex-col gap-3 items-center'}
+        %h1{ class: 'text-5xl' } #{@name}
+        %h2{ class: 'text-xl' } Member since #{@join_date}
+      %div{ class: 'items-center justify-center text-center w-full flex gap-32 py-10 pb-20 border-b border-t border-solid border-gray-300 outline-none text-sm rounded bg-white rounded drop-shadow-2xl'}
+        %div{ class: 'flex flex-col gap-4'}
+          %h3{ class: 'text-3xl'} Balance
+          %h3{ class: 'text-4xl'}= "PHP #{@balance}"
+        %div{ class: 'flex flex-col gap-4' }
+          %h3{ class: 'text-3xl'} Revenue
+          %h3{ class: 'text-4xl'}= "PHP #{total_revenue(@holdings)}"
+      %button{ class: 'px-8 py-2 text-xl font-bold bg-gray-800 opacity-70 rounded text-white w-80 transition-ease duration-150 hover:cursor-pointer hover:opacity-100' }= link_to "Change Password", edit_user_registration_path    
+  - else
+    %h1 You are signed out
 

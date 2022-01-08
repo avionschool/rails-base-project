@@ -1,1 +1,14 @@
 
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url('/assets/Roboto-Regular.ttf')
+}
+
+.header-padding {
+  padding-top: 60px;
+}
+
+.alert-div {
+  position: absolute;
+  top: 72px;
+}

@@ -16,19 +16,19 @@
           <%= link_to users_path do %>
           <i class="fas fa-user"></i>
           <% end %>
-          <h3 class="text-sm">User</h3>
+          <h3 class="text-sm">Account</h3>
         </div>
         <div class="flex flex-col items-center justify-center">
           <%= link_to stocks_path do %>
           <i class="far fa-chart-bar"></i>
           <% end %>
-          <h3 class="text-sm">Stocks</h3>
+          <h3 class="text-sm">Market</h3>
         </div>
         <div class="flex flex-col items-center justify-center">
           <%= link_to transactions_path do %>
           <i class="fas fa-file-invoice-dollar"></i>
           <% end %>
-          <h3 class="text-sm">Trans</h3>
+          <h3 class="text-sm">Logs</h3>
         </div>
       </div>
       <button class="font-bold text-base"><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></button>
@@ -54,7 +54,7 @@
           <h3 class="text-sm">Admin</h3>
         </div>
         <div class="flex flex-col items-center justify-center">
-          <%= link_to transactions_path do %>
+          <%= link_to transactions_list_path do %>
           <i class="fas fa-file-alt"></i>
           <% end %>
           <h3 class="text-sm">Trans Logs</h3>

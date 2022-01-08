@@ -1,16 +1,17 @@
-%h1 Stock Market List
-%table{:class => "table text-gray-400 border-separate space-y-6 text-sm"}
-  %thead{:class => "bg-gray-800 text-gray-500"}
-    %tr
-      %th{:class => "p-3 center"} Stock Name
-      %th{:class => "p-3 center"} Buy
-      %th{:class => "p-3 center"} Sell
-      %th{:class => "p-3 center"} Action
-  %tbody
-    - @stocks.each do |stock|
-      %tr{:class => "bg-gray-800"}
-        %td{:class => "p-3"}= stock.stock_symbol
-        %td{:class => "p-3"}= buy_price(stock.current_price)
-        %td{:class => "p-3"}= sell_price(stock.current_price)
-        %td{:class => "p-3"}
-          = link_to "View", new_user_stock_holding_path(user_id:current_user, stock_id:stock.id)
+%div{class: 'px-8 w-screen flex flex-col items-center pt-24 bg-gray-50'}
+  %h1{class:'text-5xl m-10'} Stock Market List
+  %table{:class => "w-full py-22 table text-gray-900 text-sm"}
+    %thead{:class => "bg-gray-50 text-gray-500"}
+      %tr
+        %th{:class => "p-3 center"} Stock Name
+        %th{:class => "p-3 center"} Buy
+        %th{:class => "p-3 center"} Sell
+        %th{:class => "p-3 center"} Action
+    %tbody
+      - @stocks.each do |stock|
+        %tr{:class => "bg-white text-center border border-solid border-gray-300 outline-none shadow drop-shadow-xl"}
+          %td{:class => "p-3 text-xl font-bold"}= stock.stock_symbol
+          %td{:class => "p-3"}= "PHP #{buy_price(stock.current_price)}"
+          %td{:class => "p-3"}= "PHP #{sell_price(stock.current_price)}"
+          %td{:class => "p-3 text-blue-500 font-bold" }
+            = link_to "Action", new_user_stock_holding_path(user_id:current_user, stock_id:stock.id)

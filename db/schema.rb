@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2022_01_03_023413) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_admin"
     t.string "first_name"
     t.string "last_name"
     t.integer "wallet_id"

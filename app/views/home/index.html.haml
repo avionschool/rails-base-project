@@ -1,14 +1,38 @@
-#{name = current_user.present? ? current_user.email : ""}
-%div{ class: 'w-screen h-screen max-w-full max-h-full text-gray-50 bg-no-repeat bg-cover flex flex-col items-center justify-center', 
-:style => "background-image: url(#{image_path "finance.jpg"})" }
-
-  - if user_signed_in?
-    %div{ class: 'px-32 py-20 bg-gray-800 rounded'}
-      %h1{ class: 'm-10 text-3xl font-bold' } Welcome, #{name}
-      %div{ class: 'flex flex-col items-center gap-4' }
-        %h3{ class: 'text-5xl'} Balance
-        %h3{ class: 'text-4xl'}= @balance
-  - else
+- if user_signed_in?
+  %div{ class: 'bg-gray-50 w-screen h-screen max-w-full max-h-full bg-no-repeat bg-cover flex flex-col text-gray-800 px-20' }
+    %div{ class: 'pt-20 w-full flex flex-col gap-20 flex flex-col items-center justify-center'}
+      %h1{ class: 'text-5xl' } Welcome, #{@name}
+      %div{ class: 'items-center justify-center text-center w-full flex gap-32 py-10 pb-20 border-b border-solid border-gray-300 outline-none text-sm rounded bg-white rounded drop-shadow-2xl'}
+        %div{ class: 'flex flex-col gap-4'}
+          %h3{ class: 'text-3xl'} Balance
+          %h3{ class: 'text-4xl'}= "PHP #{@balance}"
+        %div{ class: 'flex flex-col gap-4' }
+          %h3{ class: 'text-3xl'} Revenue
+          %h3{ class: 'text-4xl'}= "PHP #{total_revenue(@holdings)}"
+      %div{ class: 'pb-10 flex flex-col items-center w-full'}
+        %h1{class: 'text-3xl' } Stock Portfolio
+    %table{:class => ""}
+      %thead
+        %tr
+          %th{:class => "p-3 text-center"} Stock Name
+          %th{:class => "p-3 text-center"} Units
+          %th{:class => "p-3 text-center"} Stock Revenue
+          %th{:class => "p-3 text-center"} Action
+      %tbody
+        - @holdings.each do |sh|
+          %tr{:class => "border border-solid border-gray-300 outline-none text-sm rounded bg-white rounded drop-shadow-2xl ease-linear duration-200"}
+            %td{:class => "p-8 text-center font-bold text-xl"}= sh.stock_symbol
+            %td{:class => "text-center text-lg"}= sh.units.round(4)
+            %td{:class => "text-center text-lg"}
+              = user_stock_revenue(sh)
+              PHP
+            %td{:class => "text-base font-bold text-blue-500 text-center hover:cursor-pointer"}
+              = link_to "View", new_user_stock_holding_path(user_id:current_user, stock_id:sh.stock_id)
+- else  
+  %div{ class: 'flex flex-col items-center justify-center h-full w-full max-w-full max-h-full bg-no-repeat bg-cover flex flex-col text-gray-800', 
+  :style => "background-image: url(#{image_path "finance.jpg"})" }
     %h1{ class: 'm-5 text-5xl font-bold text-white' } Welcome to StockBro
-    %h2{ class: 'mb-5 text-3xl' } Your market companion
-    %button{ class: 'mt-10 px-8 py-2 text-xl font-bold bg-yellow-500 rounded' }= link_to 'SIGN UP', new_user_registration_path 
+    %h2{ class: 'mb-5 text-3xl text-white' } Your market companion
+    %div{ class: 'flex flex-col items-center gap-4' }
+      %button{ class: 'mt-10 px-8 py-2 text-xl font-bold bg-yellow-500 rounded text-white w-80' }= link_to 'Create New Account', new_user_registration_path 
+      %button{ class: 'px-8 py-2 text-xl font-bold bg-gray-500 rounded text-white w-80' }= link_to 'SIGN IN', new_user_session_path 
