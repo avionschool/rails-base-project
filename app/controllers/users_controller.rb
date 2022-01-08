@@ -4,10 +4,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.all
-    @stocks = Stock.all
     @holdings = current_user.holdings
-    @wallets = Wallet.all
+    @wallet = current_user.wallet
   end
 
   def create

@@ -4,36 +4,36 @@
 </div>
 
 <div>
-<% @wallets.each do |wallet| %>
-<% if wallet.id == current_user.id %>
-<h3><%= wallet.balance %></h3>
+<h3><%= to_PHP(@wallet.balance) %></h3>
 <h3>Balance</h3>
-<% end %>
-<% end %>
 </div>
 
 <div>
-    <h5>Market</h5>
-    <h5>Units</h5>
-    <h5>Hold value</h5>
-    <h5>P/L (%)</h5>
-    <h5>P/L (Php)</h5>
-    <h5>Value</h5>
-    <h5>Action</h5>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Stock</th>
+            <th>Units</th>
+            <th>Hold value</th>
+            <th>P/L (%)</th>
+            <th>P/L (Php)</th>
+            <th>Value</th>
+            <th>Transaction</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @holdings.each do |holding| %>
+        <tr>
+            <td><%= holding.ticker %></td>
+            <td><%= holding.units.round(4)%></td>
+            <td><%= to_PHP(holding.amount)%></td>
+            <td><%= profit_or_loss(holding)[:profit_or_loss_pct]%></td>
+            <td><%= profit_or_loss(holding)[:profit_or_loss_peso] %></td>
+            <td><%= profit_or_loss(holding)[:profit_or_loss_gross]%></td>
+            <td><%= link_to "View", new_user_holding_path(user_id:current_user, stock_id:holding.stock_id)%></td>
+        </tr>
+    </tbody>
 
-<div>
-<% @holdings.each do |holding| %>
-<% if holding.user == current_user %>
-<div>
-<h5 ><%= holding.ticker %></h5>
-<h5 >--</h5>
-<h5>--</h5>
-<h5>--</h5>
-<h5>--</h5>
-<h5>--</h5>
-<%= link_to "View", new_user_holding_path(user_id:current_user, stock_id:holding.ticker)%>
-</div>
 <% end %>
-<% end %>
-</div>
+
