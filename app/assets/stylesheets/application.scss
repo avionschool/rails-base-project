@@ -23,16 +23,17 @@
 
  //Landing Page//
 .landing-container {
+    overflow: hidden;
     .landing-navbar {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         .app-logo {
             height: 3em;
-            padding: 1em;
+            padding: 0.5em;
         }
         .landing-cta {
-            padding-right: 5em;
+            padding-right: 1em;
             display: flex;
             align-items: center;
             justify-content:space-evenly;
@@ -44,6 +45,9 @@
         a {
             text-decoration: none;
         }
+        a#admin-navlink {
+            font-size: 0.6em;
+        }
     }
     .landing-body {
         margin: 0;
@@ -53,7 +57,7 @@
         background-size: cover;
         position: relative;
         width: 100%;
-        min-height: 100vh;
+        min-height: 88vh;
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -187,7 +191,7 @@
         .signup-form {
             padding: 5em;
             color: rgb(255, 255, 255);
-            border-color: solid 3px rgb(101, 86, 240);
+            border-color: rgb(101, 86, 240);
             h2 {
                 font-size: 2em;
             }
