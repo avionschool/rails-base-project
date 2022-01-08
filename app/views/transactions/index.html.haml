@@ -1,13 +1,14 @@
-%div
+%div{ class: 'pt-32 bg-gray-50 w-screen h-screen max-w-full max-h-full bg-no-repeat bg-cover flex flex-col gap-10 items-center text-gray-800 px-20' }
   - if @transactions.empty?
     There's no transactions
   - else
-    %div
-      %h1 Date
-      %h1 Log Message
+    %div{class:'flex flex-col items-center'}
+      %h1{class:'text-2xl'} Transaction Logs
+      %h1 #{DateTime.now.to_date}
 
-  - @transactions.each do |transaction|
-    %div
-      = transaction.created_at.strftime("%b %d, %Y, %H:%M:%S")
-      SGT
-      = logs_format(transaction)
+  %div{class:'flex flex-col items-center w-full' }
+    - @transactions.each do |transaction|
+      %div{ class: 'items-center justify-center text-center w-full flex gap-32 py-2 border-b border-t border-solid border-gray-300 outline-none text-sm rounded bg-white rounded drop-shadow-2xl'}
+        = transaction.created_at.strftime("%b %d, %Y, %H:%M:%S")
+        SGT
+        = logs_format(transaction)
