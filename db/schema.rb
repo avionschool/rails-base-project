@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_06_085811) do
+ActiveRecord::Schema.define(version: 2022_01_07_162229) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2022_01_06_085811) do
     t.string "transaction_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "units"
   end
 
   create_table "stocks", force: :cascade do |t|
@@ -48,7 +49,6 @@ ActiveRecord::Schema.define(version: 2022_01_06_085811) do
 
   create_table "trade_logs", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "accounts_id"
     t.string "ticker"
     t.float "amount"
     t.float "units"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2022_01_06_085811) do
     t.datetime "transaction_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "transaction_type"
   end
 
   create_table "users", force: :cascade do |t|
