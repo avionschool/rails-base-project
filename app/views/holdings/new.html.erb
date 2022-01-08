@@ -1,26 +1,35 @@
-
-<p><%= @stocks.name %></p>
 <div>
-<h2><%= calc_price(@stocks.current_price, true) %></h2>
+<h3><%= to_PHP(@wallet.balance) %></h3>
+<h3>Balance</h3>
+</div>
+<div>
+<h3><%= @current_stock.nil? ? 0.00 : @current_stock.units %></h3>
+<h3>Stocks</h3>
+</div>
+
+<p><%= @stock.name %></p>
+<div>
+<h2><%= number_to_currency(@buy_value, unit: "PHP ") %></h2>
 <h3>BUY</h3>
 </div>
 
 <div>
-<h2><%= calc_price(@stocks.current_price, false) %></h2>
+<h2><%= number_to_currency(@sell_value, unit: "PHP ") %></h2>
 <h3>SELL</h3>
 </div>
 
 <div>
-<% @wallets.each do |wallet| %>
-<% if wallet.id == current_user.id %>
+
     <div>
     <%= form_with scope: @holding, model:[@holding.user, @holding], local: true do |f| %>
         <%= f.number_field :user_id, value: current_user.id, type: :hidden %>
-        <%= f.text_field :ticker, value: @stocks.ticker, type: :hidden %>
-        <%= f.number_field :log_price, autofocus: true, placeholder: "Price", step: :any, max: wallet.balance %>
-        <%= f.number_field :stock_id, value: @stocks.id, type: :hidden %>
+        <%= f.text_field :ticker, value: @stock.ticker, type: :hidden %>
+        <%= f.number_field :amount, autofocus: true, placeholder: "Price", step: :any, min:0.01, :required => true %>
+        <%= f.number_field :log_price, value: @buy_value, type: :hidden  %>
+        <%= f.text_field :transaction_type, value: 'BUY', type: :hidden %>
+        <%= f.number_field :stock_id, value: @stock.id, type: :hidden %>
         <div>
-        <%= f.submit "Buy", class: 'transaction-buy' %>
+        <%= f.submit "Buy", data: { confirm: "PLEASE CONFIRM BUY TRANSACTION" } %>
         </div>
         <% end %>
     </div>
@@ -28,15 +37,15 @@
     <div>
     <%= form_with scope: @holding, model:[@holding.user, @holding], local: true do |f| %>
         <%= f.number_field :user_id, value: current_user.id, type: :hidden %>
-        <%= f.text_field :ticker, value: @stocks.ticker, type: :hidden %>
-        <%= f.number_field :log_price, autofocus: true, placeholder: "Price", step: :any, max: wallet.balance %>
-        <%= f.number_field :stock_id, value: @stocks.id, type: :hidden %>
+        <%= f.text_field :ticker, value: @stock.ticker, type: :hidden %>
+        <%= f.number_field :log_price, value: @sell_value, type: :hidden  %>
+        <%= f.number_field :units, autofocus: true, placeholder: "Sell in units", step: :any, :required => true %>
+        <%= f.text_field :transaction_type, value: 'SELL', type: :hidden %>
+        <%= f.number_field :stock_id, value: @stock.id, type: :hidden %>
         <div>
-        <%= f.submit "Sell", class: 'transaction-sell' %>
+        <%= f.submit "Sell", data: { confirm: "PLEASE CONFIRM SELL TRANSACTION" }%>
         </div>
         <% end %>
     </div>
-    <% end %>
-    <% end %>
     </div>
 
