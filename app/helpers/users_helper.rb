@@ -8,7 +8,7 @@ module UsersHelper
         pl_gross_value = holding.units + latest_stock_value
         pl_peso = holding.amount - pl_gross_value
         pl_pct = ((holding.amount - pl_gross_value) / holding.amount)
-        {profit_or_loss_pct: pl_pct, profit_or_loss_peso: pl_peso, profit_or_loss_gross: pl_gross_value}
+        {profit_or_loss_pct: pl_pct.round(4), profit_or_loss_peso: pl_peso.round(4), profit_or_loss_gross: pl_gross_value.round(4)}
     end
 
 end
