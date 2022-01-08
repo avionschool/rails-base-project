@@ -214,6 +214,30 @@
                 background-color: white;
                 width: 15vw;
             }
+            input#broker_email {
+                width: 15vw;
+                background-color: white;
+            }
+            input#broker_password {
+                background-color: white;
+                width: 15vw;
+            }
+            input#broker_password_confirmation {
+                background-color: white;
+                width: 15vw;
+            }
+            input#admin_email {
+                width: 15vw;
+                background-color: white;
+            }
+            input#admin_password {
+                background-color: white;
+                width: 15vw;
+            }
+            input#admin_password_confirmation {
+                background-color: white;
+                width: 15vw;
+            }
         }
     }
 }
