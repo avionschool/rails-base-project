@@ -1,3 +1,44 @@
 // Place all the styles related to the Orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.order-label {
+    color: rgb(19, 185, 157);
+}
+
+.order-field {
+    background-color: rgb(39, 46, 64);
+    border-radius: 5px;
+    outline:none;
+    border: none;
+    margin-left:5px;
+    color: white;
+}
+
+.buy-button {
+    width: 10%;
+    background-color: rgb(1, 8, 30);
+    color:#aaaaaa;
+    border-radius: 5px;
+    outline:none;
+    border: none;
+    margin-left:5px;
+}
+
+.sell-button {
+    width: 10%;
+    background-color: rgb(1, 8, 30);
+    color:#aaaaaa;
+    border-radius: 5px;
+    outline:none;
+    border: none;
+    margin-left:5px;
+}
+
+
+.buy-button:hover{
+    color: rgb(19, 185, 157);
+}
+
+.sell-button:hover{
+    color: rgb(19, 185, 157);
+}
