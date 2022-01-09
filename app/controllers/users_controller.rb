@@ -3,6 +3,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    @holdings = current_user.holdings
+    @wallet = current_user.wallet
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save 

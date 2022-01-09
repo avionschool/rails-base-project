@@ -2,12 +2,16 @@ require 'resque/server'
 
 Rails.application.routes.draw do
   devise_for :admins, path: 'admins', skip: [:registrations, :passwords]
-  devise_for :users
+  devise_for :users, path: 'users'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'pages#home'
 
-  resources :stocks, only: [:index, :show]
-  resources :accounts, only: [:new]
+  resources :users do
+    resources :holdings, only: [:new, :create]
+  end
+
+  resources :stocks, only: [:index]
+  resources :trade_logs, only: [:index]
 
   #Session routes
   get '/login', to: 'sessions#login'

@@ -10,18 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_20_161427) do
-
-  create_table "accounts", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "ticker"
-    t.float "prev_price"
-    t.float "amount"
-    t.float "units"
-    t.string "transaction_type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 2022_01_07_162229) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -35,6 +24,18 @@ ActiveRecord::Schema.define(version: 2021_12_20_161427) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "holdings", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "ticker"
+    t.float "log_price"
+    t.float "amount"
+    t.integer "stock_id"
+    t.string "transaction_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.float "units"
+  end
+
   create_table "stocks", force: :cascade do |t|
     t.string "ticker"
     t.integer "user_id"
@@ -44,6 +45,18 @@ ActiveRecord::Schema.define(version: 2021_12_20_161427) do
     t.string "logo_url"
     t.string "name"
     t.index ["user_id"], name: "index_stocks_on_user_id"
+  end
+
+  create_table "trade_logs", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "ticker"
+    t.float "amount"
+    t.float "units"
+    t.float "log_stock_price"
+    t.datetime "transaction_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "transaction_type"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,6 +72,13 @@ ActiveRecord::Schema.define(version: 2021_12_20_161427) do
     t.index ["confirmed"], name: "index_users_on_confirmed"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "wallets", force: :cascade do |t|
+    t.float "balance"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

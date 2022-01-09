@@ -1,6 +1,5 @@
 class Stock < ApplicationRecord
-    validates :ticker, :name, presence: true
-    validates :current_price, :logo_url, presence: true
+    validates :current_price, :logo_url, :ticker, :name, presence: true
 
     def Stock.init_api
         client = IEX::Api::Client.new(
