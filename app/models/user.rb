@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :wallet
+  accepts_nested_attributes_for :wallet
   
   after_create :create_wallet
 

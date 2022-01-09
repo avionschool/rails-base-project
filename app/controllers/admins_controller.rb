@@ -5,9 +5,6 @@ class AdminsController < ApplicationController
     def show
     end
 
-    def users
-        @users = User.all
-    end
     def coins
         @coins = Coin.all
     end
