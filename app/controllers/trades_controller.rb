@@ -14,8 +14,6 @@ class TradesController < ApplicationController
     if current_user
       @wallet = current_user.wallet
       @order = @coin.orders.build
-      @orders = @wallet.orders
-      @portfolio = Portfolio.find_by(coin_id: @coin.id)
     end
   end
   

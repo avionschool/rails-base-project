@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_07_114052) do
+ActiveRecord::Schema.define(version: 2021_12_23_153141) do
 
   create_table "coins", force: :cascade do |t|
     t.string "base"
@@ -34,17 +34,6 @@ ActiveRecord::Schema.define(version: 2022_01_07_114052) do
     t.string "kind"
     t.index ["coin_id"], name: "index_orders_on_coin_id"
     t.index ["wallet_id"], name: "index_orders_on_wallet_id"
-  end
-
-  create_table "portfolios", force: :cascade do |t|
-    t.string "symbol"
-    t.decimal "amount"
-    t.integer "wallet_id"
-    t.integer "coin_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["coin_id"], name: "index_portfolios_on_coin_id"
-    t.index ["wallet_id"], name: "index_portfolios_on_wallet_id"
   end
 
   create_table "users", force: :cascade do |t|

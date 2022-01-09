@@ -1,10 +1,9 @@
 class Wallet < ApplicationRecord
   belongs_to :user
   has_many :orders
-  has_many :portfolios
   
   after_create :initialize_wallet
-  # validates :money, numericality: true;
+
   private
 
   def initialize_wallet
