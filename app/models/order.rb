@@ -1,8 +1,9 @@
 class Order < ApplicationRecord
   belongs_to :wallet
   belongs_to :coin
+  
   before_save :pull_prices
-  after_create :update_wallet
+  after_create :update_wallet, :update_portfolio
 
   validates :quantity, :kind, presence:true
   validate :kind_is_buy_or_sell
@@ -14,8 +15,8 @@ class Order < ApplicationRecord
 
   def kind_is_buy_or_sell
     if kind == 'buy' or kind == 'sell'
-      else 
-        errors.add(:kind, "must be buy or sell")
+    else 
+      errors.add(:kind, "must be buy or sell")
     end
   end
 
@@ -28,10 +29,10 @@ class Order < ApplicationRecord
       end
     elsif self.kind == 'sell'
       orders = Order.where(coin_id: self.coin_id)
-      buys = orders.where(kind: 'buy').sum(:quantity)
-      sells = orders.where(kind: 'sell').sum(:quantity)
-
-      coin_bal = buys-sells
+      coin_bal = Portfolio.find_by(coin_id: self.coin_id).amount
+      # buys = orders.where(kind: 'buy').sum(:quantity)
+      # sells = orders.where(kind: 'sell').sum(:quantity)
+      # coin_bal = buys-sells
 
       # consolidate all coins buy and sell
       if coin_bal < self.quantity
@@ -57,5 +58,9 @@ class Order < ApplicationRecord
       {
       :money=> wallet.money + self.quantity * self.price})
     end
+  end
+
+  def update_portfolio
+    Portfolio.update_portfolio(self)
   end
 end
