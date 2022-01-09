@@ -1,5 +1,5 @@
 class CoinsController < ApplicationController
-    before_action :authenticate_admin!
+    before_action :authenticate_admin!, only[:edit, :create, :delete]
     def index
         @coins = Coin.all
     end
