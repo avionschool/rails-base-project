@@ -22,11 +22,11 @@
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
   font-size: 16px;
   color: $black;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 ul li {
@@ -75,7 +75,7 @@ Navigation Bar
   .nav-logo {
     color: $black;
     font-weight: 800;
-    font-size: 3rem;
+    font-size: 3.5rem;
     text-decoration: none;
 
 
@@ -111,36 +111,89 @@ Navigation Bar
   }
 
   //////////////////////////////////////////
-  /// Medium Devices (max-width: 768px)
+  /// Small Devices (min-width: 320px)
   /////////////////////////////////////////
-  @include respond-to('medium') {
-    .nav-links {
-      width: 180px;
-    }
+  // @include respond-to('small') {
+  //   .nav-logo {
+  //     color: pink;
+  //   }
+  // }
 
-    .nav-logo {
-      font-size: 1.5rem;
 
-      .dot {
-        height: 8px;
-        width: 8px;
-      }
-    }
+  //////////////////////////////////////////
+  /// Medium Devices (min-width: 768px)
+  /////////////////////////////////////////
+  // @include respond-to('medium') {
+  //   .nav-links {
+  //     width: 180px;
+  //   }
 
-    .nav-link {
-      font-size: 0.9rem;
-    }
-  }
+  //   .nav-logo {
+  //     font-size: 2rem;
+  //     color: red;
 
-  @include respond-to('xl') {
-    .nav-logo {
-      font-size: 2rem;
-    }
+  //     .dot {
+  //       height: 8px;
+  //       width: 8px;
+  //     }
+  //   }
 
-    .nav-link {
-      font-size: 1rem;
-    }
-  }
+  //   .nav-link {
+  //     font-size: 0.9rem;
+  //   }
+  // }
+
+  // @include respond-to('xl') {
+  //   .nav-logo {
+  //     font-size: 2rem;
+  //   }
+
+  //   .nav-link {
+  //     font-size: 1rem;
+  //   }
+  // }
+
+  //////////////////////////////////////////
+  /// Large Devices (max-width: 992px)
+  /////////////////////////////////////////
+  // @include respond-to('large') {
+  //   .nav-logo {
+  //     font-size: 2rem;
+  //     color: blue;
+
+  //     .dot {
+  //       height: 8px;
+  //       width: 8px;
+  //     }
+  //   }
+
+  //   .nav-link {
+  //     font-size: 0.9rem;
+  //   }
+  // }
+
+  // @include respond-to('xl') {
+  //   .nav-logo {
+  //     font-size: 2rem;
+  //   }
+
+  //   .nav-link {
+  //     font-size: 1rem;
+  //   }
+  // }
+
+  //////////////////////////////////////////
+  /// Extra Large Devices (min-width: 1200px)
+  /////////////////////////////////////////
+  // @include respond-to('xl') {
+  //   .nav-logo {
+  //     font-size: 2rem;
+  //   }
+
+  //   .nav-link {
+  //     font-size: 1rem;
+  //   }
+  // }
 }
 
 
@@ -158,29 +211,4 @@ Footer
   p {
     font-size: 2rem;
   }
-
-  @include respond-to('medium') {
-    height: 30px;
-
-    p {
-      font-size: 1rem;
-    }
-  }
-
-  @include respond-to('xl') {
-
-    p {
-      font-size: 1rem;
-    }
-  }
-
-  @include respond-to('large') {
-    margin-bottom: 0;
-    height: 20px;
-
-    p {
-      font-size: 0.8rem;
-    }
-  }
-
 }

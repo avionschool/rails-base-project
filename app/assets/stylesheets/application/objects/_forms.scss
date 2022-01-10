@@ -4,15 +4,12 @@
 
 .form-container {
   @include flexCenter(column);
-  width: 700px;
-  height: 70vh;;
-  border-radius: 10px;
-  background-color: $white;
-  margin: 0 auto;
-  box-shadow: $shadow;
+  width: 100%;
+  max-width: 800px;
+  height: 80vh;
 
   h2 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 100px;
   }
 
@@ -36,131 +33,145 @@
   }
 
   .checkbox {
-    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    font-size: 2.5rem;
 
     #user_remember_me {
-      margin-right: 5px;
-      width: 24px;
-      height: 23px;
+      margin-right: 20px;
+      width: 40px;
+      height: 40px;
     }
   }
 
   .btn {
-    font-size: 2rem;
+    @include flexCenter(row);
+    font-size: 2.5rem;
     margin: 50px auto;
-    padding: 20px 50px;
+    padding: 10px 50px;
+    height: 6rem;
+    width: 12rem;
   }
 
   .sign-up,
   .forgotPass {
-    font-size: 1.7rem;
+    font-size: 2rem;
     margin: 5px 0;
     text-decoration: none;
     cursor: pointer;
   }
 
+  @include respond-to('medium') {
+    background-color: pink;
+    border-radius: 10px;
+    background-color: $white;
+    margin: 0 auto;
+    box-shadow: $shadow;
+  }
+
   //////////////////////////////////////////
   /// Medium Devices (max-width: 768px)
   /////////////////////////////////////////
-  @include respond-to('medium') {
-    width: 700px;
-    height: 70vh;
-    margin: 0 auto;
+  // @include respond-to('medium') {
+  //   width: 100%;
+  //   max-width: 400px;
+  //   height: 70vh;
+  //   margin: 0 auto;
 
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 50px;
-    }
+  //   h2 {
+  //     font-size: 2rem;
+  //     margin-bottom: 50px;
+  //   }
 
-    .field {
-      margin: 20px auto;
+  //   .field {
+  //     margin: 20px auto;
 
-      .label {
-        font-size: 1rem;
-        letter-spacing: 2px;
-      }
+  //     .label {
+  //       font-size: 1rem;
+  //       letter-spacing: 2px;
+  //     }
 
-      .text-field {
-        font-size: 1rem;
-        padding: 15px;
-        width: 300px;
-        height: 25px;
-        margin: 10px 0 10px 0;
-      }
-    }
+  //     .text-field {
+  //       font-size: 1rem;
+  //       padding: 15px;
+  //       width: 300px;
+  //       height: 25px;
+  //       margin: 10px 0 10px 0;
+  //     }
+  //   }
 
-    .btn {
-      font-size: 1rem;
-      margin: 30px auto;
-      padding: 10px 20px;
-    }
+  //   .btn {
+  //     font-size: 1rem;
+  //     margin: 30px auto;
+  //     padding: 10px 20px;
+  //   }
 
-    .checkbox {
-      font-size: 1rem;
+  //   .checkbox {
+  //     font-size: 1rem;
 
-      #user_remember_me {
-        width: 20px;
-        height: 16px;
-      }
-    }
+  //     #user_remember_me {
+  //       width: 20px;
+  //       height: 16px;
+  //     }
+  //   }
 
-    .sign-up,
-    .forgotPass {
-      font-size: 1rem;
-      margin: 0;
-      text-decoration: none;
-      cursor: pointer;
-    }
-  }
+  //   .sign-up,
+  //   .forgotPass {
+  //     font-size: 1rem;
+  //     margin: 0;
+  //     text-decoration: none;
+  //     cursor: pointer;
+  //   }
+  // }
 
   //////////////////////////////////////////
   /// Large Devices (min-width: 992px)
   /////////////////////////////////////////
-  @include respond-to('large') {
-    width: 25rem;
-    height: 500px;
+  // @include respond-to('large') {
+  //   width: 25rem;
+  //   height: 70vh;
 
-    .checkbox {
-      font-size: 0.8rem;
+  //   .checkbox {
+  //     font-size: 0.8rem;
 
-      #user_remember_me {
-        margin-top: 10px;
-        width: 13px;
-        height: 12px;
-      }
-    }
+  //     #user_remember_me {
+  //       margin-top: 10px;
+  //       width: 13px;
+  //       height: 12px;
+  //     }
+  //   }
 
-    .btn {
-      font-size: 0.8rem;
-      margin: 30px auto;
-      padding: 10px 25px;
-    }
+  //   .btn {
+  //     font-size: 0.8rem;
+  //     margin: 30px auto;
+  //     padding: 10px 25px;
+  //   }
 
-    .sign-up,
-    .forgotPass {
-      font-size: 0.9rem;
-      text-decoration: none;
-      cursor: pointer;
-    }
+  //   .sign-up,
+  //   .forgotPass {
+  //     font-size: 0.9rem;
+  //     text-decoration: none;
+  //     cursor: pointer;
+  //   }
 
-  }
+  // }
   
   //////////////////////////////////////////
   /// Extra Large Devices (min-width: 1200px)
   /////////////////////////////////////////
-  @include respond-to('xl') {
-    width: 2rem;
-  }
+//   @include respond-to('xl') {
+//     width: 2rem;
+//   }
 
-}
+// }
 
-.login-container {
-  display: flex;
-  align-items: center;
-  height: 80vh;
-  width: 100%;
-}
+// .login-container {
+//   display: flex;
+//   align-items: center;
+//   height: 80vh;
+//   width: 100%;
+// }
 
-.form-btn {
-  display: flex;
+// .form-btn {
+//   display: flex;
 }

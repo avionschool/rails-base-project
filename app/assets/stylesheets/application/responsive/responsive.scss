@@ -1,22 +1,19 @@
-$breakpoints: (
-  'small': (min-width: 576px),
-  'medium': (max-width: 768px),
-  'large': (min-width: 992px),
-  'xl': (min-width: 1200px)
-) !default;
-
 @mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+  @if $breakpoint=="small" {
+    @media (min-width: 767px) {
       @content;
     }
   }
 
-  @else {
-    @warn 'Unfortunately, no value could be retrieved from `#{$breakpoint}`. '
-    + 'Available breakpoints are: #{map-keys($breakpoints)}.';
+  @else if $breakpoint=="medium" {
+    @media (min-width: 992px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint=="large" {
+    @media (min-width: 1200px) {
+      @content;
+    }
   }
 }
-
-
-

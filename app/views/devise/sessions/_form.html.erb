@@ -1,7 +1,7 @@
 <%# Form SCSS  %>
 <%= stylesheet_link_tag "/objects/_forms.scss" %>
 
-<div class='form-container wrapper'>
+<div class='form-container'>
   <h2>Login</h2>
   <div class='form'>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -16,7 +16,7 @@
         <% if devise_mapping.rememberable? %>
           <div class='checkbox'>
             <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
+            <%= f.label :remember_me%>
           </div>
         <% end %>
         <div class="actions form-btn">
