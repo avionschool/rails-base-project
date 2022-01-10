@@ -19,6 +19,7 @@ gem 'hamlit-rails'
 gem 'stock_quote', '~> 3.0'
 gem 'iex-ruby-client'
 gem "font-awesome-rails"
+gem 'honeypot-captcha'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
