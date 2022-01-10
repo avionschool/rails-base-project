@@ -16,7 +16,7 @@
   .field {
     
     .label {
-      font-size: 2rem;
+      font-size: 2.5rem;
       letter-spacing: 3px;
     }
 
@@ -25,7 +25,7 @@
       border-radius: 5px;
       font-size: 2rem;
       padding: 15px;
-      width: 600px;
+      width: 700px;
       height: 100px;
       margin: 20px 0 50px 0;
       outline: none;
@@ -47,7 +47,7 @@
   .btn {
     @include flexCenter(row);
     font-size: 2.5rem;
-    margin: 50px auto;
+    margin: 70px auto;
     padding: 10px 50px;
     height: 6rem;
     width: 12rem;
@@ -55,7 +55,7 @@
 
   .sign-up,
   .forgotPass {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin: 5px 0;
     text-decoration: none;
     cursor: pointer;
