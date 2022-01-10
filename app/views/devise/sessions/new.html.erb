@@ -7,7 +7,14 @@
             <lottie-player src="https://assets2.lottiefiles.com/private_files/lf30_F3v2Nj.json"  background="transparent"  speed="1"  style="width: 450px; height: 450px;"  loop  autoplay></lottie-player>
         </div>
         <div class='login-form'>
-            <h2>SWIFT Buyer Account Login</h2>
+            <% if current_page?(new_buyer_session_path) %>
+            <h2> SWIFT Buyer Account Login</h2>
+            <% elsif current_page?(new_broker_session_path) %>
+            <h2> SWIFT Broker Account Login</h2>
+            <% elsif current_page?(new_admin_session_path) %>
+            <h2> SWIFT Admin Account Login</h2>
+            <% end %>
+
             <p> Welcome back to the trading floor! Login with your email.</p>
             <br/>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
