@@ -18,6 +18,8 @@ class WalletsController < ApplicationController
         @orders = @wallet.orders
         @coins = Coin.all
         @portfolio = @wallet.portfolios
+
+        @pnl = calculate_pnl 
     end
 
     private
@@ -26,4 +28,13 @@ class WalletsController < ApplicationController
         @wallet = current_user.wallet
     end
 
+    def calculate_pnl
+        sum = @wallet.money
+        @portfolio.each do | port |
+            c = Coin.find(port.coin_id)
+            sum +=  c.last_price * port.amount 
+        end
+        pnl = (sum - 5000) / 5000 * 100
+        pnl.truncate(2).to_s + '%'
+    end
 end
