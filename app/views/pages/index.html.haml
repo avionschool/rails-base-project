@@ -1,6 +1,8 @@
 Pages#index
 
 =react_component("HelloWorld", { greeting: "ssss" })
+-@trending['coins'].each do |coin|
+  =coin['item']['name']
 
 -if current_user
   =current_user.username
