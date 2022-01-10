@@ -100,6 +100,7 @@ GEM
       hamlit (>= 1.2.0)
       railties (>= 4.0.1)
     hashdiff (1.0.1)
+    honeypot-captcha (1.0.1)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     i18n (1.8.10)
@@ -291,6 +292,7 @@ DEPENDENCIES
   factory_bot_rails
   font-awesome-rails
   hamlit-rails
+  honeypot-captcha
   jbuilder (~> 2.7)
   listen (~> 3.2)
   puma (~> 4.1)

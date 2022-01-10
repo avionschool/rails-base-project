@@ -1,10 +1,17 @@
 <div class='buyerreg-container'>
   <div class='reg-forms'>
     <div class='signup-form'>
-      <h2>Create Your Buyer Account</h2>
+    <% if current_page?(new_buyer_registration_path) %>
+    <h2>Create Your Buyer Account</h2>
+    <% elsif current_page?(new_broker_registration_path) %>
+    <h2>Create Your Broker Account</h2>
+    <% elsif current_page?(new_admin_registration_path) %>
+    <h2>Create Your Admin Account</h2>
+    <% end %>
+      
       <p> Join us and have the most fun trading stocks! </p>
       <br />
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :honeypot => true }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class='input-field'>

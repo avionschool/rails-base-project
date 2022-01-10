@@ -18,6 +18,7 @@ gem 'devise', '~> 4.8'
 gem 'hamlit-rails'
 gem 'stock_quote', '~> 3.0'
 gem "font-awesome-rails"
+gem 'honeypot-captcha'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
