@@ -1,0 +1,8 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+  select {
+    padding: 14px;
+    background-color: transparent;
+    width: 100%;
+  }
+@import "tailwindcss/utilities";

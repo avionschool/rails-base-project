@@ -1,0 +1,21 @@
+= form_with model: @user do |f|
+  %div{ class: 'w-full' }
+    = f.label :firstname, class: 'text-sm'
+    = f.text_field :firstname, class: "p-3 w-full rounded border mt-1 mb-3 hover:border-yellow-300"
+  %div{ class: 'w-full' }
+    = f.label :lastname, class: 'text-sm'
+    = f.text_field :lastname, class: "p-3 w-full rounded border mt-1 mb-3 hover:border-yellow-300"
+  %div{ class: 'w-full' }
+    = f.label :email, class: 'text-sm'
+    = f.text_field :email, class: "p-3 w-full rounded border mt-1 mb-3 hover:border-yellow-300"
+  %div{ class: 'w-full' }
+    = f.label :password, class: 'text-sm'
+    = f.text_field :password, class: "p-3 w-full rounded border mt-1 mb-3 hover:border-yellow-300"
+  %div{ class: 'w-full' }
+    = f.label :confirm_password, class: 'text-sm'
+    = f.text_field :confirm_password, class: "p-3 w-full rounded border mt-1 mb-3 hover:border-yellow-300"
+  %div{ class: 'w-full flex flex-col' }
+    = f.label 'Country / Area of Residence', class: 'text-sm'
+    %div{ class: 'border rounded mt-1' }
+      = f.select :country, ["Berlin", "Chicago", "Madrid"]
+  = f.submit 'Create Account', class: 'w-full bg-yellow-300 mt-8 p-4 rounded text-sm'
