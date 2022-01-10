@@ -1,6 +1,6 @@
 $breakpoints: (
-  'small': (max-width: 600px),
-  'medium': (min-width: 768px),
+  'small': (min-width: 576px),
+  'medium': (max-width: 768px),
   'large': (min-width: 992px),
   'xl': (min-width: 1200px)
 ) !default;

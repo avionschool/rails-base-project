@@ -4,7 +4,6 @@
 
 .form-container {
   @include flexCenter(column);
-
   width: 700px;
   height: 70vh;;
   border-radius: 10px;
@@ -60,8 +59,13 @@
     cursor: pointer;
   }
 
-  @include respond-to('small') {
-    width: 25rem;
+  //////////////////////////////////////////
+  /// Medium Devices (max-width: 768px)
+  /////////////////////////////////////////
+  @include respond-to('medium') {
+    width: 700px;
+    height: 70vh;
+    margin: 0 auto;
 
     h2 {
       font-size: 2rem;
@@ -69,26 +73,57 @@
     }
 
     .field {
+      margin: 20px auto;
 
       .label {
         font-size: 1rem;
-        letter-spacing: 3px;
+        letter-spacing: 2px;
       }
 
       .text-field {
         font-size: 1rem;
         padding: 15px;
-        width: 250px;
-        height: 10px;
+        width: 300px;
+        height: 25px;
         margin: 10px 0 10px 0;
       }
+    }
+
+    .btn {
+      font-size: 1rem;
+      margin: 30px auto;
+      padding: 10px 20px;
     }
 
     .checkbox {
       font-size: 1rem;
 
       #user_remember_me {
-        margin-right: 2px;
+        width: 20px;
+        height: 16px;
+      }
+    }
+
+    .sign-up,
+    .forgotPass {
+      font-size: 1rem;
+      margin: 0;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  //////////////////////////////////////////
+  /// Large Devices (min-width: 992px)
+  /////////////////////////////////////////
+  @include respond-to('large') {
+    width: 25rem;
+    height: 500px;
+
+    .checkbox {
+      font-size: 0.8rem;
+
+      #user_remember_me {
         margin-top: 10px;
         width: 13px;
         height: 12px;
@@ -96,7 +131,7 @@
     }
 
     .btn {
-      font-size: 1rem;
+      font-size: 0.8rem;
       margin: 30px auto;
       padding: 10px 25px;
     }
@@ -104,11 +139,17 @@
     .sign-up,
     .forgotPass {
       font-size: 0.9rem;
-      margin: 0;
       text-decoration: none;
       cursor: pointer;
     }
 
+  }
+  
+  //////////////////////////////////////////
+  /// Extra Large Devices (min-width: 1200px)
+  /////////////////////////////////////////
+  @include respond-to('xl') {
+    width: 2rem;
   }
 
 }

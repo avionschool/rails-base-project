@@ -1,7 +1,7 @@
 <%# Form SCSS  %>
 <%= stylesheet_link_tag "/objects/_forms.scss" %>
 
-<div class='form-container'>
+<div class='form-container wrapper'>
   <h2>Login</h2>
   <div class='form'>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
