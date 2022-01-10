@@ -17,6 +17,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.8'
 gem 'hamlit-rails'
 gem 'stock_quote', '~> 3.0'
+gem 'iex-ruby-client'
 gem "font-awesome-rails"
 
 group :development, :test do
