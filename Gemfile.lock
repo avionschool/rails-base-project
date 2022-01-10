@@ -77,6 +77,8 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.4.4)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
@@ -100,6 +102,9 @@ GEM
       hamlit (>= 1.2.0)
       railties (>= 4.0.1)
     hashdiff (1.0.1)
+    http-accept (1.7.0)
+    http-cookie (1.0.4)
+      domain_name (~> 0.5)
     httparty (0.20.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -124,6 +129,7 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     multi_xml (0.6.0)
+    netrc (0.11.0)
     nio4r (2.5.7)
     nokogiri (1.11.3-x86_64-linux)
       racc (~> 1.4)
@@ -176,6 +182,11 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rexml (3.2.5)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
@@ -246,6 +257,9 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.8)
     unicode-display_width (2.0.0)
     vcr (6.0.0)
     warden (1.2.9)
@@ -285,6 +299,7 @@ DEPENDENCIES
   pg
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
+  rest-client
   rspec-rails
   rubocop-rails
   rubocop-rspec
