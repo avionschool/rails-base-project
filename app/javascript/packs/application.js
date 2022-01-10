@@ -16,6 +16,7 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+//Password Toggle for Login
 document.addEventListener('turbolinks:load', function () {
     let pwToggle = document.getElementById('pw-toggle')
     function togglePW(){
@@ -29,3 +30,29 @@ document.addEventListener('turbolinks:load', function () {
     pwToggle.addEventListener ('click', togglePW, false)
 })
 
+document.addEventListener('turbolinks:load', function () {
+    let pwToggle = document.getElementById('pw-toggle')
+    function togglePW(){
+        let passField = document.getElementById('broker_password');
+            if(passField.type === 'password') {
+                passField.type = 'text';
+            } else {
+                passField.type = 'password';
+        }
+    }
+    pwToggle.addEventListener ('click', togglePW, false)
+})
+
+document.addEventListener('turbolinks:load', function () {
+    let pwToggle = document.getElementById('pw-toggle')
+    function togglePW(){
+        let passField = document.getElementById('admin_password');
+            if(passField.type === 'password') {
+                passField.type = 'text';
+            } else {
+                passField.type = 'password';
+        }
+    }
+    pwToggle.addEventListener ('click', togglePW, false)
+})
+//End of Password Toggle for Login
