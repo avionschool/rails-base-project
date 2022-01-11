@@ -59,6 +59,20 @@ ul {
       line-height: 25px;
       max-width: 350px;
     }
+
+    //////////////////////////////////////
+    /// Brealkpoints
+    //////////////////////////////////////
+    @include respond-to('small') {
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+        margin-bottom: 40px;
+      }
+    }
   }
 
   .col-2 {
@@ -70,6 +84,16 @@ ul {
       width: 250px;
       margin-left: 35px;
     }
+
+    //////////////////////////////////////
+    /// Brealkpoints
+    //////////////////////////////////////
+    @include respond-to('small') {
+      .homepage-img {
+        width: 270px;
+      }
+    }
+
   }
 
 }
