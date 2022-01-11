@@ -55,11 +55,19 @@
     width: 5rem;
   }
 
+  .link {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px 0;
+    height: 1px;
+    text-align: center;
+  }
+
   .sign-up,
   .forgotPass {
     color: $black;
     font-size: 0.9rem;
-    margin: 10px 0;
     text-decoration: none;
     cursor: pointer;
   }
