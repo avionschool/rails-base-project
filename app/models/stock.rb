@@ -12,6 +12,7 @@ class Stock < ApplicationRecord
 
       begin
         new(
+          logo: client.logo(ticker_symbol).url,
           ticker: ticker_symbol.upcase, 
           name: client.company(ticker_symbol).company_name, 
           last_price: client.quote(ticker_symbol).latest_price
@@ -21,8 +22,8 @@ class Stock < ApplicationRecord
       end
     end
 
-def self.check_db(ticker_symbol)
-  find_by(ticker: ticker_symbol)
+def self.check_db(ticker_symbol, broker_id)
+  find_by(ticker: ticker_symbol, added_by: broker_id)
 end		   
 
 end
