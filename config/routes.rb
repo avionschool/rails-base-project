@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   devise_for :brokers, :controllers => { :registrations => :registrations, :sessions => :sessions }
   devise_for :buyers, :controllers => { :registrations => :registrations, :sessions => :sessions }
   root 'home#index'
+  namespace :api do
+    get '/global_news' => 'news#index'
+    get '/exchange_news' => 'news#Index'
+  end
   get 'search_stock' => 'stocks#stock_search'
   
   get '/admin/index' => 'admin#index'
