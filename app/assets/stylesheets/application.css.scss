@@ -94,6 +94,19 @@ ul li a {
         width: 5px;
       }
     }
+
+    @include respond-to('medium') {
+      font-size: 1.5rem;
+    }
+
+    @include respond-to('large') {
+      font-size: 2rem;
+
+      .dot {
+        height: 6px;
+        width: 6px;
+      }
+    }
 }
 
   //Nav Links

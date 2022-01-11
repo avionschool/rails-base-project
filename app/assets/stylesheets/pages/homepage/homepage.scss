@@ -97,4 +97,11 @@ ul {
     }
   }
 
+  //////////////////////////////////////
+  /// Brealkpoints
+  //////////////////////////////////////
+  @include respond-to('large') {
+    flex-direction: row;
+    max-width: 800px;
+  }
 }
