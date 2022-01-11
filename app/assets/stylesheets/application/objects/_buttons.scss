@@ -9,9 +9,9 @@
 
   color: $white;
   text-decoration: none;
-  padding: 10px 50px;
+  padding: 8px 20px;
   border-radius: 3px;
-  font-size: 1em;
+  font-size: 0.8em;
   font-weight: 550;
   font-family: $poppins;
   border-radius: 8px;
@@ -20,10 +20,6 @@
   border: none;
   cursor: pointer;
 
-  @include respond-to('medium') {
-    padding: 10px 30px;
-    font-size: 0.8em;
-  }
 }
 
 .register-btn { 

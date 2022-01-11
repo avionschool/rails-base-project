@@ -22,14 +22,17 @@ ul {
   padding: 20px 50px;
   font-weight: 400;
 
+  //////////////////////////////////////
+  /// Breakpoints
+  //////////////////////////////////////
   @include respond-to('large') {
     padding: 10px 50px;
   }
 }
 
-/********************
-Content
-********************/
+//////////////////////////////////////
+/// Content
+//////////////////////////////////////
 .row {
   display: flex;
   flex-direction: column-reverse;
@@ -37,7 +40,8 @@ Content
   align-items: center;
   margin: 0 auto;
   font-family: $lato;
-  max-width: 80%;
+  width: 100%;
+  max-width: 500px;
   text-align: center;
 
   .col-1 {
@@ -48,7 +52,7 @@ Content
     }
 
     p {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 100;
       color: #707070;
       margin: 20px 0 30px 0;
@@ -63,7 +67,8 @@ Content
     align-items: center;
 
     .homepage-img {
-      width: 300px;
+      width: 250px;
+      margin-left: 35px;
     }
   }
 
