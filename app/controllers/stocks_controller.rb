@@ -9,13 +9,13 @@ class StocksController < ApplicationController
         end
       else
         respond_to do |format|
-          flash.now[:alert] = "Please enter a valid stock symbol"
+          flash[:notice] = "Please enter a valid stock symbol"
           format.js { render partial: 'broker/search_result' }
         end
       end
     else
       respond_to do |format|
-        flash.now[:alert] = "Please enter a stock symbol"
+        flash[:notice] = "Please enter a stock symbol"
         format.js { render partial: 'broker/search_result' }
       end
     end
