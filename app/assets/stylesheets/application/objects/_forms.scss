@@ -3,10 +3,11 @@
 @import '../responsive/responsive.scss';
 
 .form-container {
-  @include flexCenter(column);
+  position: fixed;
   width: 100%;
-  max-width: 800px;
-  height: 80vh;
+  height: 70vh;
+  background-color: green;
+
 
   h2 {
     font-size: 3.5rem;
@@ -59,14 +60,6 @@
     margin: 5px 0;
     text-decoration: none;
     cursor: pointer;
-  }
-
-  @include respond-to('medium') {
-    background-color: pink;
-    border-radius: 10px;
-    background-color: $white;
-    margin: 0 auto;
-    box-shadow: $shadow;
   }
 
   //////////////////////////////////////////

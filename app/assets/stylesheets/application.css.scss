@@ -22,11 +22,15 @@
 
 * {
   box-sizing: border-box;
-  font-size: 16px;
-  color: $black;
-  font-size: 100%;
   margin: 0;
   padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-size: 100%;
+  font-family: $poppins;
 }
 
 ul li {
@@ -51,16 +55,6 @@ Container
 }
 
 /********************
-Wrapper
-********************/
-.wrapper {
-  @include flexCenter(column);
-  width: 100%;
-  min-height: 70vh;
-}
-
-
-/********************
 Navigation Bar
 ********************/
 // Navbar
@@ -75,125 +69,63 @@ Navigation Bar
   .nav-logo {
     color: $black;
     font-weight: 800;
-    font-size: 3.5rem;
+    font-size: 1rem;
     text-decoration: none;
 
 
     .dot {
-      height: 10px;
-      width: 10px;
+      height: 3px;
+      width: 3px;
       background-color: $lightGreen;
       border-radius: 50%;
       display: inline-block;
       font-weight: 800;
       margin-left: 2px;
     }
+  
+    @include respond-to('small') {
+      font-size: 1.2rem;
+
+      .dot {
+        height: 5px;
+        width: 5px;
+      }
+    }
 }
 
   //Nav Links
   .nav-links {
-    width: 120px;
+    width: 100%;
+    max-width: 80px;
 
     ul {
       display: flex;
       justify-content: space-between;
-      padding-top: 12px;
+      padding-top: 3px;
 
       li {
-        font-size: 1rem;
         font-weight: 700;
       }
     }
+
+    .nav-link {
+      font-size: 0.5rem;
+    }
+    
+    @include respond-to('small') {
+      max-width: 110px;
+
+      ul {
+        padding-top: 6px;
+      }
+
+      .nav-link {
+        font-size: 0.7rem;
+      }
+    }
   }
+  
 
-  .nav-link {
-    font-size: 0.7rem;
-  }
-
-  //////////////////////////////////////////
-  /// Small Devices (min-width: 320px)
-  /////////////////////////////////////////
-  // @include respond-to('small') {
-  //   .nav-logo {
-  //     color: pink;
-  //   }
-  // }
-
-
-  //////////////////////////////////////////
-  /// Medium Devices (min-width: 768px)
-  /////////////////////////////////////////
-  // @include respond-to('medium') {
-  //   .nav-links {
-  //     width: 180px;
-  //   }
-
-  //   .nav-logo {
-  //     font-size: 2rem;
-  //     color: red;
-
-  //     .dot {
-  //       height: 8px;
-  //       width: 8px;
-  //     }
-  //   }
-
-  //   .nav-link {
-  //     font-size: 0.9rem;
-  //   }
-  // }
-
-  // @include respond-to('xl') {
-  //   .nav-logo {
-  //     font-size: 2rem;
-  //   }
-
-  //   .nav-link {
-  //     font-size: 1rem;
-  //   }
-  // }
-
-  //////////////////////////////////////////
-  /// Large Devices (max-width: 992px)
-  /////////////////////////////////////////
-  // @include respond-to('large') {
-  //   .nav-logo {
-  //     font-size: 2rem;
-  //     color: blue;
-
-  //     .dot {
-  //       height: 8px;
-  //       width: 8px;
-  //     }
-  //   }
-
-  //   .nav-link {
-  //     font-size: 0.9rem;
-  //   }
-  // }
-
-  // @include respond-to('xl') {
-  //   .nav-logo {
-  //     font-size: 2rem;
-  //   }
-
-  //   .nav-link {
-  //     font-size: 1rem;
-  //   }
-  // }
-
-  //////////////////////////////////////////
-  /// Extra Large Devices (min-width: 1200px)
-  /////////////////////////////////////////
-  // @include respond-to('xl') {
-  //   .nav-logo {
-  //     font-size: 2rem;
-  //   }
-
-  //   .nav-link {
-  //     font-size: 1rem;
-  //   }
-  // }
 }
 
 
@@ -205,10 +137,33 @@ Footer
   bottom: 0;
   right: 0;
   width: 100%;
-  height: 60px;
+  height: 20px;
   text-align: center;
 
   p {
-    font-size: 2.2rem;
+    font-size: 0.6rem;
+    color: blue;
+    
+    @include respond-to('small') {
+      font-size: 0.8rem;
+      color: green;
+    }
+
+    @include respond-to('medium') {
+      font-size: 1rem;
+      color: red;
+    }
+
+    @include respond-to('large') {
+      font-size: 1rem;
+      color: pink;
+    }
+
+    @include respond-to('xl') {
+      font-size: 1rem;
+      color: gray;
+    }
   }
+
+  
 }

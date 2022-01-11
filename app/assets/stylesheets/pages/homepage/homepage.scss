@@ -2,14 +2,6 @@
 @import '../../base/mixins/mixins';
 @import '../../application/responsive/responsive.scss';
 
-body {
-  color: #000;
-  background: $white;
-  font-family: $poppins;
-  height: 100vh;
-  width: 100%;
-}
-
 ul {
   font-weight: 200;
 
@@ -41,109 +33,37 @@ Content
 .row {
   display: flex;
   flex-direction: column-reverse;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin: 0 auto;
   font-family: $lato;
   max-width: 80%;
+  text-align: center;
 
   .col-1 {
-    flex-basis: 40%;
     position: relative;
 
     h2 {
-      font-size: 2.3rem;
       font-weight: 700;
     }
 
     p {
-      font-size: 1rem;
+      font-size: 0.8rem;
       font-weight: 100;
       color: #707070;
-      margin: 20px 0 80px 0;
+      margin: 20px 0 30px 0;
       line-height: 25px;
-      width: 400px;
+      max-width: 350px;
     }
   }
 
   .col-2 {
     position: relative;
-    flex-basis: 45%;
     display: flex;
     align-items: center;
 
     .homepage-img {
-      width: 380px;
-    }
-  }
-
-  @include respond-to('medium') {
-    flex-direction: column-reverse;
-    height: 500px;
-    margin: 0 auto;
-    margin-top: 70px;
-
-    .col-1 {
-      flex-basis: 100%;
-
-      h2 {
-        color: green;
-        font-size: 2.5rem;
-      }
-
-      p {
-        font-size: 1rem;
-        width: 400px;
-        margin: 20px 0 30px 0;
-      }
-    }
-
-    .col-2 {
-      display: flex;
-      justify-content: center;
-      flex-basis: 100%;
-      margin: 0 auto;
-
-      .homepage-img {
-        width: 400px;
-      }
-    }
-  }
-
-  @include respond-to('large') {
-    flex-direction: row; 
-    width: 80%;
-
-    .col-1 {
-      flex-basis: 100%;
-      max-width: 50%;
-
-      h2 {
-        color: blue;
-        font-size: 4rem;
-        width: 500px;
-      }
-
-      p  {
-        font-size: 1.2rem;
-        width: 500px;
-      }
-
-      &::after {
-        @include button-bg($lightGreen);
-        content: '';
-        width: 3px;
-        height: 45%;
-        position: absolute;
-        left: -40px;
-        top: 8px;
-      }
-    }
-
-    .col-2 {
-      .homepage-img {
-        width: 80%;
-      }
+      width: 300px;
     }
   }
 }
