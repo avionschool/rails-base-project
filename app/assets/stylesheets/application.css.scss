@@ -148,24 +148,29 @@ ul li a {
 
   p {
     font-size: 0.6rem;
+    color: blue;
 
     //////////////////////////////////////
     /// Breakpoints
     //////////////////////////////////////
     @include respond-to('small') {
       font-size: 0.8rem;
+      color: green;
     }
 
     @include respond-to('medium') {
       font-size: 1rem;
+      color: red;
     }
 
     @include respond-to('large') {
       font-size: 1rem;
+      color: pink;
     }
 
     @include respond-to('xl') {
       font-size: 1rem;
+      color: gray;
     }
   }
 

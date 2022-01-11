@@ -83,17 +83,18 @@ ul {
     .homepage-img {
       width: 250px;
       margin-left: 35px;
-    }
 
-    //////////////////////////////////////
-    /// Brealkpoints
-    //////////////////////////////////////
-    @include respond-to('small') {
-      .homepage-img {
+      //////////////////////////////////////
+      /// Brealkpoints
+      //////////////////////////////////////
+      @include respond-to('small') {
         width: 270px;
       }
-    }
 
+      @include respond-to('medium') {
+        width: 400px;
+      }
+    }
   }
 
 }
