@@ -17,7 +17,7 @@ class Portfolio < ApplicationRecord
                 :amount => por.amount + order.quantity * mult
             })
         else
-            Portfolio.create({
+            Portfolio.create!({
                 :symbol => Coin.find(order.coin_id).base,
                 :amount => order.quantity,
                 :wallet_id => order.wallet_id,

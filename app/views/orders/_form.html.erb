@@ -1,30 +1,41 @@
 <%= form_with model: [@wallet,@order] do |f| %>
-
-AVBL
-<%= @wallet.money %>
+<div class="order-form-container">
+    <div class="order-balance-container">
+      <p>AVBL</p>
+      <p><%= @wallet.money %></p>
+    </div>
 
 <%= f.label :quantity, :class => 'order-label'%>
 <%= f.text_field :quantity, :class => 'order-field' %>
 
 <%= f.hidden_field :coin_id, value: @coin.id%>
 <%= f.hidden_field :kind, value: 'buy' %>
-
-<%= f.submit 'Buy', :class => 'buy-button' %>
+    <div class="order-button-container">
+        <%= f.submit 'Buy', :class => 'order-button buy' %>
+    </div>
 <% end %>
+</div>
 
 <%= form_with model: [@wallet,@order] do |f| %>
-AVBL
-<%if @portfolio.nil? %>
-    0
-<% else %>
-    <%= @portfolio.amount %>
-<% end %>
+<div class="order-form-container">
+    <div class="order-balance-container">
+        <p>AVBL</p>
+        <%if @portfolio.nil? %>
+            <p>0</p>
+        <% else %>
+            <p>
+                <%= @portfolio.amount %>
+            </p>
+        <% end %>
+    </div>
 <%= f.label :quantity, :class => 'order-label' %>
 <%= f.text_field :quantity, :class => 'order-field' %>
 
 <%= f.hidden_field :kind, value: 'sell' %>
 <%= f.hidden_field :coin_id, value: @coin.id%>
-
-<%= f.submit 'Sell', :class => 'sell-button' %>
+    <div class="order-button-container">
+        <%= f.submit 'Sell', :class => 'order-button sell' %>
+    </div>
+</div>
 <% end %>
     

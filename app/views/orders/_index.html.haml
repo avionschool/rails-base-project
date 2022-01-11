@@ -1,13 +1,15 @@
+
 -if @orders.count == 0
   No orders to show.
 -else
-  -@orders.each do |o|
-    =Coin.find(o.coin_id).base
-    =o.quantity
-    =o.price
-    -if o.kind == "buy"
-      Buy
-    -elsif o.kind == "sell"
-      Sell
-    
-    =o.created_at
+  -@orders.order('created_at DESC').each do |o|
+    .order-item-container
+      %p.orders-index-data=Coin.find(o.coin_id).base
+      %p.orders-index-data=o.quantity
+      %p.orders-index-data=o.price
+      %p.orders-index-data
+        -if o.kind == "buy"
+          Buy
+        -elsif o.kind == "sell"
+          Sell
+      %p.orders-index-data=o.created_at

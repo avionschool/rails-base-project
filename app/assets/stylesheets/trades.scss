@@ -11,6 +11,7 @@
     grid-template-areas:
         "widget widget index"
         "buy sell ."
+        "orders orders orders"
 }
 .tradingview-widget-container{
     grid-area: widget;
@@ -68,8 +69,7 @@
     &:hover{
         background-color: #aaaaaa;
     }
-    // .coin-item-name{
-    // }
+    
     .coin-item-price, .coin-item-change{
         &.green{
             color: green;
@@ -87,4 +87,15 @@
     .coin-item-change{
         justify-self: flex-end;
     }
+}
+
+.trades-orders-container{
+    grid-area: orders;
+    margin-bottom: 100px;
+}
+
+.trades-orders-index{
+    height: 200px;
+    overflow-y: scroll;
+    
 }

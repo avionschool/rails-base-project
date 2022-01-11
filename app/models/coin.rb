@@ -10,10 +10,10 @@ class Coin < ApplicationRecord
   @coin_ids = []
   @coin_id_relation = []
   @coingecko_list = [] # contains all coins listed in gecko
-  @client = CoingeckoRuby::Client.new
+  @client = Coingecko::Client
 
   def self.update_price
-    @client = CoingeckoRuby::Client.new
+    @client = Coingecko::Client
 
     coingecko_ids = []
     
@@ -24,8 +24,8 @@ class Coin < ApplicationRecord
 
     db_ids = []  # ready id and attribute array
     att_arr = [] # para isang committan lang sa db
-    response = @client.prices(coingecko_ids, currency: 'usd', include_24hr_change: true, include_24hr_vol: true)
-
+    # response = @client.prices(coingecko_ids, currency: 'usd', include_24hr_change: true, include_24hr_vol: true)
+    response = @client.price(coingecko_ids)[:data]
     response.each do |key, val|
       db_ids << Coin.find_by(coingecko_id: key).id
       att_arr << {:last_price => val["usd"], :usd_24_h => val["usd_24h_change"], :volume => ["usd_24hr_vol"]}
