@@ -73,6 +73,28 @@ ul {
         margin-bottom: 40px;
       }
     }
+
+    @include respond-to('large') {
+      text-align: left;
+
+      h2 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+
+      &::after {
+        @include button-bg($lightGreen);
+        content: '';
+        width: 3px;
+        height: 60%;
+        position: absolute;
+        left: -40px;
+        top: 8px;
+      }
+    }
   }
 
   .col-2 {
@@ -94,6 +116,10 @@ ul {
       @include respond-to('medium') {
         width: 400px;
       }
+
+      @include respond-to('large') {
+        width: 500px;
+      }
     }
   }
 
@@ -102,6 +128,7 @@ ul {
   //////////////////////////////////////
   @include respond-to('large') {
     flex-direction: row;
-    max-width: 800px;
+    justify-content: space-between;
+    max-width: 1000px;
   }
 }
