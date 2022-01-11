@@ -46,7 +46,7 @@
   }
 
   .btn {
-    @include flexCenter(row);
+    @include flexCenter();
     font-size: 2.5rem;
     margin: 70px auto;
     padding: 10px 50px;

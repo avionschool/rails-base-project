@@ -1,13 +1,8 @@
 //Variables
 @import './variables';
 @import '../../base/mixins/mixins';
-<<<<<<< HEAD
 @import '../../application/responsive/responsive.scss';
 
-=======
-
-
->>>>>>> 9dd218210259a1f53d6f3f82b7aef771b3a946e9
 
 .btn {
   @include button-bg($lightGreen);
