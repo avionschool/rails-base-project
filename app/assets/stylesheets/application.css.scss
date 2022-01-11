@@ -142,6 +142,26 @@ ul li a {
         font-size: 0.7rem;
       }
     }
+
+    @include respond-to('medium') {
+      max-width: 150px;
+
+      ul {
+        padding-top: 15px;
+      }
+
+      .nav-link {
+        font-size: 0.9rem;
+      }
+    }
+
+    @include respond-to('large') {
+      max-width: 160px;
+
+      .nav-link {
+        font-size: 1rem;
+      }
+    }
   }
   
 
