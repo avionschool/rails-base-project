@@ -5,30 +5,31 @@
 .form-container {
   position: fixed;
   width: 100%;
+  max-width: 200px;
   height: 70vh;
-  background-color: green;
+  margin: 0 auto;
 
 
   h2 {
-    font-size: 3.5rem;
+    font-size: 2rem;
     margin-bottom: 100px;
   }
 
   .field {
     
     .label {
-      font-size: 2.5rem;
+      font-size: 1rem;
       letter-spacing: 3px;
     }
 
     .text-field {
       border: 1px solid $gray;
       border-radius: 5px;
-      font-size: 2rem;
-      padding: 15px;
-      width: 700px;
-      height: 100px;
-      margin: 20px 0 50px 0;
+      font-size: 1rem;
+      padding: 5px;
+      width: 200px;
+      height: 30px;
+      margin: 10px 0 30px 0;
       outline: none;
     }
   }
@@ -36,135 +37,30 @@
   .checkbox {
     display: flex;
     align-items: center;
-    font-size: 2.5rem;
+    font-size: 1rem;
 
     #user_remember_me {
-      margin-right: 20px;
-      width: 40px;
-      height: 40px;
+      margin-right: 5px;
+      width: 10px;
+      height: 10px;
     }
   }
 
   .btn {
     @include flexCenter();
-    font-size: 2.5rem;
-    margin: 70px auto;
-    padding: 10px 50px;
-    height: 6rem;
-    width: 12rem;
+    font-size: 1rem;
+    margin: 20px auto;
+    padding: 5px 8px;
+    height: 2rem;
+    width: 5rem;
   }
 
   .sign-up,
   .forgotPass {
-    font-size: 2.5rem;
-    margin: 5px 0;
+    color: $black;
+    font-size: 0.9rem;
+    margin: 10px 0;
     text-decoration: none;
     cursor: pointer;
   }
-
-  //////////////////////////////////////////
-  /// Medium Devices (max-width: 768px)
-  /////////////////////////////////////////
-  // @include respond-to('medium') {
-  //   width: 100%;
-  //   max-width: 400px;
-  //   height: 70vh;
-  //   margin: 0 auto;
-
-  //   h2 {
-  //     font-size: 2rem;
-  //     margin-bottom: 50px;
-  //   }
-
-  //   .field {
-  //     margin: 20px auto;
-
-  //     .label {
-  //       font-size: 1rem;
-  //       letter-spacing: 2px;
-  //     }
-
-  //     .text-field {
-  //       font-size: 1rem;
-  //       padding: 15px;
-  //       width: 300px;
-  //       height: 25px;
-  //       margin: 10px 0 10px 0;
-  //     }
-  //   }
-
-  //   .btn {
-  //     font-size: 1rem;
-  //     margin: 30px auto;
-  //     padding: 10px 20px;
-  //   }
-
-  //   .checkbox {
-  //     font-size: 1rem;
-
-  //     #user_remember_me {
-  //       width: 20px;
-  //       height: 16px;
-  //     }
-  //   }
-
-  //   .sign-up,
-  //   .forgotPass {
-  //     font-size: 1rem;
-  //     margin: 0;
-  //     text-decoration: none;
-  //     cursor: pointer;
-  //   }
-  // }
-
-  //////////////////////////////////////////
-  /// Large Devices (min-width: 992px)
-  /////////////////////////////////////////
-  // @include respond-to('large') {
-  //   width: 25rem;
-  //   height: 70vh;
-
-  //   .checkbox {
-  //     font-size: 0.8rem;
-
-  //     #user_remember_me {
-  //       margin-top: 10px;
-  //       width: 13px;
-  //       height: 12px;
-  //     }
-  //   }
-
-  //   .btn {
-  //     font-size: 0.8rem;
-  //     margin: 30px auto;
-  //     padding: 10px 25px;
-  //   }
-
-  //   .sign-up,
-  //   .forgotPass {
-  //     font-size: 0.9rem;
-  //     text-decoration: none;
-  //     cursor: pointer;
-  //   }
-
-  // }
-  
-  //////////////////////////////////////////
-  /// Extra Large Devices (min-width: 1200px)
-  /////////////////////////////////////////
-//   @include respond-to('xl') {
-//     width: 2rem;
-//   }
-
-// }
-
-// .login-container {
-//   display: flex;
-//   align-items: center;
-//   height: 80vh;
-//   width: 100%;
-// }
-
-// .form-btn {
-//   display: flex;
 }
