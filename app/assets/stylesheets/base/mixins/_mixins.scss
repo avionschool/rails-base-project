@@ -10,18 +10,23 @@
 }
 
 // Center Content
-@mixin flexCenter($direction) {
+@mixin flexCenter() {
   height: 20vh;
   width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction:  $direction;
 }
 
+<<<<<<< HEAD
 //button hover
 @mixin button-bg($lightGreen) {
   background: $lightGreen;
+=======
+//Button Background
+@mixin button-bg($lightGreen) {
+  background: linear-gradient(to right, $darkGreen, $lightGreen);
+>>>>>>> 9dd218210259a1f53d6f3f82b7aef771b3a946e9
 
   &:hover {
     background: darken($lightGreen, 10%);
@@ -31,4 +36,8 @@
   &:active {
     background: darken($lightGreen, 25%);
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 9dd218210259a1f53d6f3f82b7aef771b3a946e9

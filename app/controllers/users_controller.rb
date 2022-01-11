@@ -3,6 +3,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    @holdings = current_user.holdings
+    @wallet = current_user.wallet
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save 
@@ -20,7 +25,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password_digest, :email)
+    params.require(:user).permit(:username, :password_digest, :email, :username)
   end
 
 end

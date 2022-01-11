@@ -1,0 +1,15 @@
+<h1> List for confirmed users </h1>
+<% if @users.blank? %>
+<h2> No confirmed users</h2>
+<% end %>
+
+<% @users.each do |user| %>
+<%= user.id %>
+<%= user.email %>
+<%= user.username %>
+<% end %>
+
+<%= link_to 'Users Setting', admin_user_settings_path %>
+<%= link_to 'Confirmations', admin_confirmation_path %>
+
+<%= link_to 'Logout', destroy_admin_session_path, method: :delete %>

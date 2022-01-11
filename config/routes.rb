@@ -1,9 +1,17 @@
+require 'resque/server'
+
 Rails.application.routes.draw do
-  resources :stocks
-  devise_for :users
+  devise_for :admins, path: 'admins', skip: [:registrations, :passwords]
+  devise_for :users, path: 'users'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'pages#home'
 
+  resources :users do
+    resources :holdings, only: [:new, :create]
+  end
+
+  resources :stocks, only: [:index]
+  resources :trade_logs, only: [:index]
 
   #Session routes
   get '/login', to: 'sessions#login'
@@ -13,5 +21,14 @@ Rails.application.routes.draw do
 
   #for the search stock, underconstruction
   post "/", to: 'pages#home'
+
+
+  #admin specific routes
+  get '/admin/user-settings', to: 'admin#user_settings'
+  get '/admin/confirmation', to: 'admin#confirmation'
+  put '/admin/confirmation', to: 'admin#confirm_user'
+
+  #render price updates
+  mount Resque::Server.new, at: '/admin/jobs'
 
 end
