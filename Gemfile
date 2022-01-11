@@ -20,11 +20,12 @@ gem 'stock_quote', '~> 3.0'
 gem 'iex-ruby-client'
 gem "font-awesome-rails"
 gem 'honeypot-captcha'
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop'
-
+  gem 'rest-client'
 end
 
 group :development do

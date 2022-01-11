@@ -115,6 +115,9 @@ GEM
     honeypot-captcha (1.0.1)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
+    httparty (0.20.0)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     iex-ruby-client (1.4.0)
@@ -146,6 +149,7 @@ GEM
       activesupport
       money (~> 6.5)
     msgpack (1.4.2)
+    multi_xml (0.6.0)
     multipart-post (2.1.1)
     netrc (0.11.0)
     nio4r (2.5.7)
@@ -317,11 +321,13 @@ DEPENDENCIES
   font-awesome-rails
   hamlit-rails
   honeypot-captcha
+  httparty
   iex-ruby-client
   jbuilder (~> 2.7)
   listen (~> 3.2)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
+  rest-client
   rspec-rails
   rubocop
   rubocop-rails
