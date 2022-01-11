@@ -83,6 +83,9 @@ Navigation Bar
       margin-left: 2px;
     }
   
+    //////////////////////////////////////
+    /// Breakpoints
+    //////////////////////////////////////
     @include respond-to('small') {
       font-size: 1.2rem;
 
@@ -111,7 +114,10 @@ Navigation Bar
     .nav-link {
       font-size: 0.5rem;
     }
-    
+
+    //////////////////////////////////////
+    /// Breakpoints
+    //////////////////////////////////////
     @include respond-to('small') {
       max-width: 110px;
 
@@ -142,26 +148,24 @@ Footer
 
   p {
     font-size: 0.6rem;
-    color: blue;
-    
+
+    //////////////////////////////////////
+    /// Breakpoints
+    //////////////////////////////////////
     @include respond-to('small') {
       font-size: 0.8rem;
-      color: green;
     }
 
     @include respond-to('medium') {
       font-size: 1rem;
-      color: red;
     }
 
     @include respond-to('large') {
       font-size: 1rem;
-      color: pink;
     }
 
     @include respond-to('xl') {
       font-size: 1rem;
-      color: gray;
     }
   }
 
