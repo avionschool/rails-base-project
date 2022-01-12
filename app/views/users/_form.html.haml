@@ -25,7 +25,11 @@
   .field
     = f.label :kind
     %br/
-    = f.select :kind, [["User","user"], ["Broker","broker"], ["Administrator","admin"]]
+    = f.select :kind, [["User","user"], ["Broker","broker"]]
+  .field
+    = f.label :admin
+    %br/
+    = f.check_box :admin
   .field
     = f.fields_for :wallet do |f|
       = f.label :money
