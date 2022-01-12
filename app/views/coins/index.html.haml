@@ -1,4 +1,3 @@
-COINS # INDEX
 .coins-container
   = link_to "Back", admins_path
   %br/
@@ -14,5 +13,6 @@ COINS # INDEX
     .coin-conatiner
       %p="#{coin.base} #{coin.target}"
       %p=coin.last_price
-      =coin.target
       %br/
+      %p=link_to "Edit", edit_coin_path(coin.id)
+      %p=link_to "Destroy", coin_path(coin.id), method: :destroy, data: {confirm: "Are you sure?"}

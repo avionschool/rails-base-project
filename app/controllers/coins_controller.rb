@@ -1,6 +1,6 @@
 class CoinsController < ApplicationController
     before_action :authenticate_admin!
-    before_action :set_list, only: [:create, :edit]
+    before_action :set_list, only: [:new, :edit]
     before_action :set_coin, only: [:edit, :update, :destroy]
     def index
         Coin.update_price

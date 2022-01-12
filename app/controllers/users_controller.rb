@@ -27,7 +27,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      byebug
       redirect_to @user, :flash => { :success => 'User was successfully created.' }
     else
       render :action => 'new'
@@ -36,7 +35,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    byebug
     if @user.update_attributes(user_params)
       sign_in(@user, :bypass => true) if @user == current_user
       redirect_to @user, :flash => { :success => 'User was successfully updated.' }

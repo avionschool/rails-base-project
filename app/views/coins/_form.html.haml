@@ -1,0 +1,30 @@
+%h3 Currently only accepts coins with USDT as target
+%h3 Also, TradingWidget will not work unless the coin is listed in Binance
+%br/
+=link_to "Back", coins_path
+%br/
+=form_for @coin do |f|
+  -if @coin.errors.any?
+    .error_explanation
+      %h2
+        = pluralize(@coin.errors.count, "error")
+        prohibited this coin from being saved:
+      %ul
+        - @coin.errors.full_messages.each do |msg|
+          %li= msg
+
+    
+  
+  %h4 Find its symbol (base) and coingecko id from the search bar below
+  .field
+    =f.hidden_field :target, value: "USDT"
+    =f.label :base, 'Symbol'
+    %br/
+    =f.text_field :base
+  .field
+    =f.label :coingecko_id
+    %br/
+    =f.text_field :coingecko_id
+  .submit
+    =f.submit
+  =react_component('CoingeckoList', coinsList: @coins_list)

@@ -8,3 +8,27 @@
         text-overflow: ellipsis;
     }
 }
+
+.coins-container{
+    width: clamp(600px, 100%, 1000px);
+    margin: 60px auto;
+}
+
+.coinslist-searchbar{
+    display:flex;
+    align-items: center;
+    margin-top: 50px;
+}
+.coinslist-items{
+    height: 700px;
+    margin-bottom: 50px;
+    overflow-y: scroll;
+}
+.coinslist-item{
+    display:grid;
+    grid-template-columns: 1fr 1fr 2fr;
+
+    p{
+        margin: 2px 4px;
+    }
+}
