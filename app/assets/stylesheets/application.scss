@@ -277,9 +277,13 @@
 //Broker Home//
 .broker-container{
     .broker-body {
-        height:89vh;
-        width: 100vw;
-        background: #351b7e;
+        font-family: 'Public Sans','sans-serif';
+        display: flex;
+        flex-direction: column;
+        .stock-chart {
+            display: flex;
+            float: left;
+        }
     }
 }
 //End of Broker Home//
