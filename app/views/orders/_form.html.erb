@@ -2,7 +2,7 @@
 <div class="order-form-container">
     <div class="order-balance-container">
       <p>AVBL</p>
-      <p><%= @wallet.money %></p>
+      <p><%= "#{@wallet.money} USD" %></p>
     </div>
 
 <%= f.label :quantity, :class => 'order-label'%>
@@ -24,7 +24,7 @@
             <p>0</p>
         <% else %>
             <p>
-                <%= @portfolio.amount %>
+                <%= "#{@portfolio.amount} #{Coin.find(@portfolio.coin_id).base}" %>
             </p>
         <% end %>
     </div>

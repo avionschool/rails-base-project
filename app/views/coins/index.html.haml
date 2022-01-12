@@ -1,5 +1,18 @@
 COINS # INDEX
-
--@coins.each do |coin|
-  =coin.base
-  =coin.target
+.coins-container
+  = link_to "Back", admins_path
+  %br/
+  %br/
+  =link_to "Add new coin", new_coin_path
+  %br/
+  %br/
+  .coin-container.header
+    %p Coin pair
+    %p Price
+    %p Actions
+  -@coins.each do |coin|
+    .coin-conatiner
+      %p="#{coin.base} #{coin.target}"
+      %p=coin.last_price
+      =coin.target
+      %br/
