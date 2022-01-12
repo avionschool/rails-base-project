@@ -3,14 +3,28 @@
     <h2> No accounts for confirmation </h2>
 <% end %>
 
-<% @users.each do |user|%>
-<%= user.id %>
-<%= user.email %>
-<%= user.username %>
-<%= link_to "Confirm", admin_confirmation_path(id: user.id, confirmed: true), method: :put %>
-<% end %>
 
-<%= link_to 'Users Setting', admin_user_settings_path %>
-<%= link_to 'Confirmations', admin_confirmation_path %>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+<% @users.each do |user| %>
+    <tbody>
+        <tr>
+            <td><%= user.id %></td>
+            <td><%= user.username %></td>
+            <td><%= user.email %></td>
+            <td><%= link_to "Confirm", admin_confirmation_path(id: user.id, confirmed: true), method: :put %>
+        </tr>
+    </tbody>
+    <% end %>
+</table>
 
+<%= link_to 'Log Book', admin_log_book_path%>
+<%= link_to 'Client List', admin_client_list_path %>
 <%= link_to 'Logout', destroy_admin_session_path, method: :delete %>
