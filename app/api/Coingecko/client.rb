@@ -16,13 +16,31 @@ module Coingecko
                 include_24hr_vol: 'true'
                 }
             }
-            # byebug
             res = HTTParty.get("#{base_uri}/simple/price", options)
             self.process_res(res)
         end
 
         def self.list
             res = HTTParty.get("#{base_uri}/coins/list")
+            self.process_res(res)
+        end
+        
+        def self.ping
+          res = HTTParty.get("#{base_uri}/ping")
+          self.process_res(res)
+        end
+
+        def self.trending_coins
+            res = HTTParty.get("#{base_uri}/search/trending")
+            self.process_res(res)
+        end
+
+        def self.volume_chart(id, days = 1)
+        options = { query: {
+            days: days
+            }
+        }
+            res =  HTTParty.get("#{base_uri}/exchanges/#{id}/volume_chart", options)
             self.process_res(res)
         end
 

@@ -1,3 +1,39 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.main-container{
+    width:1160px;
+    margin:auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr 320px;
+    grid-template-areas:
+        "welcome welcome trending"
+        "buy sell."
+}
+
+.trending-container{
+    grid-area: trending;
+    display: grid;
+    color: rgb(19, 185, 157);
+}
+
+.trending-header{
+    display: grid;
+    grid-template-columns: repeat(2, 100px) 50px;
+    color: rgb(19, 185, 157);
+}
+
+h3 {
+    color: rgb(19, 185, 157);
+
+}
+
+.trending-coin-item{
+  
+    display: grid;
+    grid-template-columns: repeat(2, 100px) 50px;
+    :hover{
+        background-color: gray;
+    }
+    
+}
