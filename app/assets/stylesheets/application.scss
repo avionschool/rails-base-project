@@ -257,21 +257,18 @@
             background-image: url(buyerdivbg.jpeg);
             height: 89vh;
             background-repeat: no-repeat;
-            background-size: contain;
-        }
-        h1 {
-        font-family: 'Public Sans','sans-serif';
-        font-size: 4em;
-        color: #eceaf1;
-        text-shadow: 
-        3px 3px 0 #351b7e, 0 4px 0 #351b7e,
-        0 10px 15px black;
-        padding-top: 2em;
-        padding-right: 3em;
-        display: flex;
-        float: right;
-        justify-content: center;
-        align-items: center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            .headline {
+                font-family: 'Public Sans','sans-serif';
+                color: white;
+                background: #351b7e;
+                width: 20vw;
+                display: flex;
+                justify-content: center;
+                margin-top: 6em;
+            }
         }
     }
 }
