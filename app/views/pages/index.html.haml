@@ -1,13 +1,22 @@
-Pages#index
+.main-container
+  -if current_user
+    =current_user.username
+    =link_to "Sign out", destroy_user_session_path, method: :delete
+  -else
+    =link_to "Sign up", new_user_registration_path
+    =link_to "Sign in", new_user_session_path
 
-=react_component("HelloWorld", { greeting: "ssss" })
--@trending['coins'].each do |coin|
-  =coin['item']['name']
+  .trending-container
+    %h1.trending-title="Trending Coins"
+    .trending-header
+      %h3.coin-name-label="Name"
+      %h3.coin-symbol-label="Symbol"
+      %h3.coin-rank-label="Rank"
+    
+    -@trending['coins'].each do |coin|
+      .trending-coin-item
+        %p.coin-name=coin['item']['name']
+        %p.coin-symbol=coin['item']['symbol']
+        %p.coin-rank=coin['item']['market_cap_rank']
 
--if current_user
-  =current_user.username
-  =link_to "Sign out", destroy_user_session_path, method: :delete
--else
-  =link_to "Sign up", new_user_registration_path
-  =link_to "Sign in", new_user_session_path
 
