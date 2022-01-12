@@ -3,6 +3,8 @@ class BuyerController < ApplicationController
 
   def index
     @all_stocks = Stock.all
+    @globalNews = News::Client.global
+    @exchangeNews = News::Client.exchange
   end
 
   def portfolio
