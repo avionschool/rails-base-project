@@ -1,5 +1,55 @@
 <div class='buyer-container'>
     <div class='buyer-body'>
-        <%= @globalNews[:data]['text'] %>
+      <div class='welcome-buyer'>
+      <div class="tradingview-widget-container">
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+        {
+          "description": "",
+          "proName": "NASDAQ:AAPL"
+        },
+        {
+          "description": "",
+          "proName": "AMEX:SPY"
+        },
+        {
+          "description": "",
+          "proName": "NASDAQ:TSLA"
+        },
+        {
+          "description": "",
+          "proName": "NASDAQ:AMZN"
+        },
+        {
+          "description": "",
+          "proName": "NASDAQ:MSFT"
+        },
+        {
+          "description": "",
+          "proName": "NYSE:GME"
+        },
+        {
+          "description": "",
+          "proName": "NASDAQ:PYPL"
+        },
+        {
+          "description": "",
+          "proName": "NYSE:BABA"
+        }
+          ],
+        "showSymbolLogo": true,
+        "colorTheme": "light",
+        "isTransparent": false,
+        "displayMode": "adaptive",
+        "locale": "en"
+        }
+      </script>
+      </div>
+        <div class='headline'>
+          <h1> Welcome back.</h1>
+        </div>
+      </div>
     </div>
 </div>
+    
