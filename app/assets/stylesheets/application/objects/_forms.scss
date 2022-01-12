@@ -4,6 +4,7 @@
 
 .form-container {
   @include flexCenter();
+  flex-direction: column;
   width: 100%;
   max-width: 200px;
   height: 70vh;
@@ -23,12 +24,13 @@
     }
 
     .text-field {
-      border: 1px solid $gray;
+      border: none;
+      background-color: $lightGray;
       border-radius: 5px;
       font-size: 1rem;
-      padding: 5px;
-      width: 200px;
-      height: 30px;
+      padding: 15px;
+      width: 215px;
+      height: 40px;
       margin: 10px 0 30px 0;
       outline: none;
     }
@@ -78,7 +80,7 @@
     position: relative;
     align-items: center;
     margin: 0 auto;
-    background-color: $white;
+    background-color: $lightGray;
     border: none;
     border-radius: 5px;
     box-shadow: $shadow;
@@ -100,7 +102,45 @@
     height: 75vh;
   }
 
-  @include respond-to('large') {
-    
+}
+
+@include respond-to('medium') {
+  .row-login {
+    .col-2-login {
+      display: none;
+    }
+  }
+}
+
+@include respond-to('large') {
+  .row-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .col-1-login {
+      width: 100%;
+      max-width: 600px; 
+
+      
+    } 
+
+    .col-2-login {
+      display: block;
+
+      .login-img {
+        width: 400px;
+        height: 400px;
+      }
+    }
+  }
+}
+
+@include respond-to('xl') {
+  .row-login {
+    .col-2-login {
+      
+    }
   }
 }
