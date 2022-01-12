@@ -3,32 +3,35 @@
 @import '../responsive/responsive.scss';
 
 .form-container {
-  position: fixed;
+  @include flexCenter();
+  flex-direction: column;
   width: 100%;
+  max-width: 200px;
   height: 70vh;
-  background-color: green;
+  margin: 0 auto;
 
 
   h2 {
-    font-size: 3.5rem;
+    font-size: 2rem;
     margin-bottom: 100px;
   }
 
   .field {
     
     .label {
-      font-size: 2.5rem;
+      font-size: 1rem;
       letter-spacing: 3px;
     }
 
     .text-field {
-      border: 1px solid $gray;
-      border-radius: 5px;
-      font-size: 2rem;
+      border: none;
+      background-color: transparent;
+      border-bottom: 1px solid #000;
+      font-size: 1rem;
       padding: 15px;
-      width: 700px;
-      height: 100px;
-      margin: 20px 0 50px 0;
+      width: 215px;
+      height: 40px;
+      margin: 10px 0 30px 0;
       outline: none;
     }
   }
@@ -36,135 +39,126 @@
   .checkbox {
     display: flex;
     align-items: center;
-    font-size: 2.5rem;
+    font-size: 1rem;
 
     #user_remember_me {
-      margin-right: 20px;
-      width: 40px;
-      height: 40px;
+      margin-right: 5px;
+      width: 10px;
+      height: 10px;
     }
   }
 
   .btn {
     @include flexCenter();
-    font-size: 2.5rem;
-    margin: 70px auto;
-    padding: 10px 50px;
-    height: 6rem;
-    width: 12rem;
+    background-color: #20BEAD;
+    font-size: 1rem;
+    margin: 20px auto;
+    padding: 5px 8px;
+    height: 2rem;
+    width: 13rem;
+  }
+
+  .link {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px 0;
+    height: 1px;
+    text-align: center;
   }
 
   .sign-up,
   .forgotPass {
-    font-size: 2.5rem;
-    margin: 5px 0;
+    color: $black;
+    font-size: 0.9rem;
     text-decoration: none;
     cursor: pointer;
   }
 
-  //////////////////////////////////////////
-  /// Medium Devices (max-width: 768px)
-  /////////////////////////////////////////
-  // @include respond-to('medium') {
-  //   width: 100%;
-  //   max-width: 400px;
-  //   height: 70vh;
-  //   margin: 0 auto;
+  @include respond-to('small') {
+    @include flexCenter();
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    margin: 0 auto;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 350px;
+    height: 75vh;
 
-  //   h2 {
-  //     font-size: 2rem;
-  //     margin-bottom: 50px;
-  //   }
+    h2 {
+      text-align: center;
+      margin-bottom: 50px;
+    }
 
-  //   .field {
-  //     margin: 20px auto;
+    .field {
+      margin: 0 auto;
 
-  //     .label {
-  //       font-size: 1rem;
-  //       letter-spacing: 2px;
-  //     }
+    .text-field {
+      padding: 15px;
+      width: 270px;
+      height: 40px;
+      margin: 10px 0 30px 0;
+      outline: none;
+    }
+  }
 
-  //     .text-field {
-  //       font-size: 1rem;
-  //       padding: 15px;
-  //       width: 300px;
-  //       height: 25px;
-  //       margin: 10px 0 10px 0;
-  //     }
-  //   }
+  .btn {
+    width: 16rem;
+  }
+  }
 
-  //   .btn {
-  //     font-size: 1rem;
-  //     margin: 30px auto;
-  //     padding: 10px 20px;
-  //   }
+  @include respond-to('medium') {
+    height: 75vh;
+    max-width: 350px;
 
-  //   .checkbox {
-  //     font-size: 1rem;
+    .field {
+      .text-field {
+        width: 300px;
+      }
+    }
 
-  //     #user_remember_me {
-  //       width: 20px;
-  //       height: 16px;
-  //     }
-  //   }
+    .btn {
+      @include flexCenter();
+      font-size: 1rem;
+      margin: 30px auto;
+      padding: 5px 8px;
+      height: 2.5rem;
+      width: 8rem;
+      border-radius: 20px;
+    }
+  }
 
-  //   .sign-up,
-  //   .forgotPass {
-  //     font-size: 1rem;
-  //     margin: 0;
-  //     text-decoration: none;
-  //     cursor: pointer;
-  //   }
-  // }
+  @include respond-to('large') {
+    width: 350px;
+  }
 
-  //////////////////////////////////////////
-  /// Large Devices (min-width: 992px)
-  /////////////////////////////////////////
-  // @include respond-to('large') {
-  //   width: 25rem;
-  //   height: 70vh;
+}
 
-  //   .checkbox {
-  //     font-size: 0.8rem;
+@include respond-to('medium') {
+  .col-1-login {
+    background-color: $lightGray;
+    height: 632px;
+    width: 400px;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+}
 
-  //     #user_remember_me {
-  //       margin-top: 10px;
-  //       width: 13px;
-  //       height: 12px;
-  //     }
-  //   }
+@include respond-to('large') {
+  .row-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
 
-  //   .btn {
-  //     font-size: 0.8rem;
-  //     margin: 30px auto;
-  //     padding: 10px 25px;
-  //   }
+}
 
-  //   .sign-up,
-  //   .forgotPass {
-  //     font-size: 0.9rem;
-  //     text-decoration: none;
-  //     cursor: pointer;
-  //   }
+@include respond-to('xl') {
+  .row-login {
 
-  // }
-  
-  //////////////////////////////////////////
-  /// Extra Large Devices (min-width: 1200px)
-  /////////////////////////////////////////
-//   @include respond-to('xl') {
-//     width: 2rem;
-//   }
-
-// }
-
-// .login-container {
-//   display: flex;
-//   align-items: center;
-//   height: 80vh;
-//   width: 100%;
-// }
-
-// .form-btn {
-//   display: flex;
+  }
 }

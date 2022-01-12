@@ -69,13 +69,13 @@ ul li a {
   .nav-logo {
     color: $black;
     font-weight: 800;
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-decoration: none;
 
 
     .dot {
-      height: 3px;
-      width: 3px;
+      height: 4px;
+      width: 4px;
       background-color: $lightGreen;
       border-radius: 50%;
       display: inline-block;
@@ -178,9 +178,10 @@ ul li a {
   width: 100%;
   height: 20px;
   text-align: center;
+  z-index: 10;
 
   p {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     color: blue;
 
     //////////////////////////////////////
