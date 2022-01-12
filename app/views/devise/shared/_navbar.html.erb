@@ -7,10 +7,15 @@
     <ul>
       <% if user_signed_in?  %>
         <li><%= link_to "Edit Profile", edit_user_registration_path, :class => 'nav-link' %> </li>
-        <li><%= link_to "Log out", destroy_user_session_path, method: :delete, :class => 'nav-link' %> </li>
-        <li><%= link_to "Show stock", stocks_path, :class => 'nav-link' %> </li>
+        <li><%= link_to "Market List", stocks_path, :class => 'nav-link' %> </li>
         <li><%= link_to "Holding", users_path, :class => 'nav-link' %> </li>
         <li><%= link_to "Trade Logs", trade_logs_path, :class => 'nav-link' %> </li>
+        <li><%= link_to "Log out", destroy_user_session_path, method: :delete, :class => 'nav-link' %> </li>
+      <% elsif admin_signed_in? %>
+          <li><%= link_to 'Log Book', admin_log_book_path%></li>
+          <li><%= link_to 'Client lists', admin_client_list_path %></li>
+          <li><%= link_to 'Pending clients', admin_confirmation_path %></li>
+          <li><%= link_to "Log out", destroy_admin_session_path, method: :delete, :class => 'nav-link' %> </li>
       <% else %>
         <li><%= link_to "Login", new_user_session_path, :class => 'nav-link' %></li>
         <li><%= link_to "Sign up", new_user_registration_path, :class => 'nav-link register-btn' %></li> 
