@@ -1,7 +1,25 @@
-%h1 Users#index
-%p Find me in app/views/users/index.html.haml
-=link_to "Add new user", new_user_path
--@users.each do |user|
-  =link_to "#{user.email}", user_path(user.id)
-  =user.wallet.verified
-  =link_to "Edit user", edit_user_path(user.id)
+.users-container
+  =link_to "Back", admins_path
+  %br/
+  %br/
+  =link_to "Add new user", new_user_path
+  %br/
+  %br/
+  .user-container.header
+    %p Email/page
+    %p Verified
+    %p Role
+    %p Actions
+  -@users.each do |user|
+    .user-container
+      %p=link_to "#{user.email}", user_path(user.id)
+      %p=user.wallet.verified
+      %p
+        -if user.admin?
+          Admin
+        -elsif user.kind == "broker"
+          Broker
+        -else
+          User
+      %p=link_to "Edit", edit_user_path(user.id)
+      %p=link_to "Destroy", user_path(user.id), method: :destroy, data: {confirm: "Are you sure?"}

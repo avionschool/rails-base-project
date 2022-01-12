@@ -3,17 +3,17 @@ require 'httparty'
 class Coin < ApplicationRecord
   has_many :orders
   has_many :portfolios
-  validate :coin_is_listed_in_binance, :target_is_usdt, :on => :create
-  validates :target, uniqueness: { scope: :base }, :on => :create
+  validate :coin_is_listed_in_binance, :target_is_usdt
+  validates :target, uniqueness: { scope: :base }
 
 
   @coin_ids = []
   @coin_id_relation = []
   @coingecko_list = [] # contains all coins listed in gecko
-  @client = CoingeckoRuby::Client.new
+  @client = Coingecko::Client
 
   def self.update_price
-    @client = CoingeckoRuby::Client.new
+    @client = Coingecko::Client
 
     coingecko_ids = []
     
@@ -24,8 +24,8 @@ class Coin < ApplicationRecord
 
     db_ids = []  # ready id and attribute array
     att_arr = [] # para isang committan lang sa db
-    response = @client.prices(coingecko_ids, currency: 'usd', include_24hr_change: true, include_24hr_vol: true)
-
+    # response = @client.prices(coingecko_ids, currency: 'usd', include_24hr_change: true, include_24hr_vol: true)
+    response = @client.price(coingecko_ids)[:data]
     response.each do |key, val|
       db_ids << Coin.find_by(coingecko_id: key).id
       att_arr << {:last_price => val["usd"], :usd_24_h => val["usd_24h_change"], :volume => ["usd_24hr_vol"]}
@@ -95,13 +95,13 @@ class Coin < ApplicationRecord
     # res = HTTParty.get('https://api.coingecko.com/api/v3/exchanges/binance')
     @client = CoingeckoRuby::Client.new
     res = @client.exchange('binance')
+    self.base&.upcase!
+    self.target&.upcase!
+    self.coingecko_id&.downcase!
+    listed = res["tickers"].select{|coin| coin["base"] == base && coin["target"] == target}
 
-    res["tickers"].each do |coin|
-      if coin["base"] == base && coin["target"] == target
-        return true
-      end
-    end
-    errors.add(:target, ": coin-pair may not be listed on binance")
+    return errors.add(:base, ": coin-pair may not be listed on binance") unless listed.length > 0
+  
   end
 
   def target_is_usdt

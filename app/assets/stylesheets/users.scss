@@ -1,3 +1,20 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.users-container{
+  // display:grid;
+  // grid-template-columns: repeat(4,200px);
+  width: clamp(600px, 100%, 1000px);
+  margin:50px auto 80px;
+  .header{
+    p{
+      font-size: 1.5em;
+    }
+  }
+  .user-container{
+    display:grid;
+    grid-template-columns: 200px 200px 150px 100px 100px;
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+}

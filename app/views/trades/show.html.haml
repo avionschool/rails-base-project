@@ -27,4 +27,13 @@
 
   -if current_user
     =render partial: "orders/form"
-    =render partial: "orders/index"
+
+    .trades-orders-container
+      .order-item-container
+        %p.orders-index-data.header Symbol
+        %p.orders-index-data.header Quantity
+        %p.orders-index-data.header Price
+        %p.orders-index-data.header Order type
+        %p.orders-index-data.header Created at
+      .trades-orders-index
+        =render partial: "orders/index"

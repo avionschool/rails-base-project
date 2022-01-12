@@ -21,6 +21,10 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :kind %><br />
+    <%= f.select :kind, [["User", "user"], ["Broker", "broker"]] %>
+  </div>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

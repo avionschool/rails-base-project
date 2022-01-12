@@ -35,7 +35,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
     if @user.update_attributes(user_params)
       sign_in(@user, :bypass => true) if @user == current_user
       redirect_to @user, :flash => { :success => 'User was successfully updated.' }
@@ -53,7 +52,7 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(
-      :email, :password, :password_confirmation, :kind,
+      :email, :password, :password_confirmation, :kind, :admin,
       wallet_attributes: [:id, :money])
   end
   

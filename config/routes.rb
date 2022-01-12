@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     get "/sign_in" => "devise/sessions#new" # custom path to login/sign_in
     get "/sign_up" => "devise/registrations#new", as: "new_user_registration" # custom path to sign_up/registration
   end
-  scope '/admin' do
+  scope '/admins' do
     resources :users
     resources :coins
   end
@@ -15,8 +15,10 @@ Rails.application.routes.draw do
   root to: "pages#index"
   
   get "/admins/users", to: "admins#users"
-  get "admins/coins", to: "admins#coins"
+  get "/admins/coins", to: "admins#coins"
+  post "/admins/coins/:id", to: "coins#destroy"
   get "/admins", to: "admins#index"
+
   resources :trades, param: :base
   resources :coins
   resources :wallets do

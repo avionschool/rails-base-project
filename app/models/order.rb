@@ -6,6 +6,7 @@ class Order < ApplicationRecord
   after_create :update_wallet, :update_portfolio
 
   validates :quantity, :kind, presence:true
+  validates :quantity, numericality:true
   validate :kind_is_buy_or_sell
   validate :sufficient_balance
   
