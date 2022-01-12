@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :holdings, dependent: :destroy
   has_many :trade_logs, dependent: :destroy
 
+  after_create :create_user_wallet
+
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
