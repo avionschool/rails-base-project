@@ -10,20 +10,20 @@ class Stock < ApplicationRecord
       # endpoint: 'https://sandbox.iexapis.com/v1'
       )
 
-      # begin
-        # logo = client.stock_logo(ticker_symbol)
+      begin
         new(
-          ticker: ticker_symbol, 
+          logo: client.logo(ticker_symbol).url,
+          ticker: ticker_symbol.upcase, 
           name: client.company(ticker_symbol).company_name, 
-          last_price: client.price(ticker_symbol)
+          last_price: client.quote(ticker_symbol).latest_price
         )
-      # rescue StandardError
-      #   nil
-      # end
+      rescue StandardError
+        nil
+      end
     end
 
-def self.check_db(ticker_symbol)
-  find_by(ticker: ticker_symbol)
+def self.check_db(ticker_symbol, broker_id)
+  find_by(ticker: ticker_symbol, added_by: broker_id)
 end		   
 
 end

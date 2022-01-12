@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :buyer_stocks
+  resources :broker_stocks, only: [:create, :destroy, :show]
   devise_for :admins, :controllers => { :sessions => :sessions }
   devise_for :brokers, :controllers => { :registrations => :registrations, :sessions => :sessions }
   devise_for :buyers, :controllers => { :registrations => :registrations, :sessions => :sessions }

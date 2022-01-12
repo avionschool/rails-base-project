@@ -7,13 +7,13 @@ class Broker < ApplicationRecord
   # :confirmable, :lockable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :timeoutable
   
-  def stock_already_added?(ticker_symbol)
-    stock = Stock.check_db(ticker_symbol)
+  def stock_already_added?(ticker_symbol, broker_id)
+    stock = Stock.check_db(ticker_symbol, broker_id)
     return false unless stock
     stocks.where(id: stock.id).exists?
   end
 
-  def can_add_stock?(ticker_symbol)
-    !stock_already_added?(ticker_symbol)
+  def can_add_stock?(ticker_symbol, broker_id)
+    !stock_already_added?(ticker_symbol, broker_id)
   end
 end
