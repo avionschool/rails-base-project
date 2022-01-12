@@ -60,7 +60,10 @@ class AdminController < ApplicationController
     def modify_user 
         @user = User.find(params[:id])
         @user.update(params.require(:user).permit(:email, :username))
-        if @user.update(params.require(:user).permit(:email, :username))
+        @wallet = @user.wallet
+        @wallet.balance = params[:user][:balance]
+        @wallet.save
+        if @user.update(params.require(:user).permit(:email, :username)) && @wallet.save
             redirect_to admin_confirmation_path,
             notice: "User successfully modified"
         else
