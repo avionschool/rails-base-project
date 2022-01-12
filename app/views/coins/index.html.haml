@@ -10,9 +10,8 @@
     %p Price
     %p Actions
   -@coins.each do |coin|
-    .coin-conatiner
-      %p="#{coin.base} #{coin.target}"
+    .coin-container
+      %p="#{coin.base}/#{coin.target}"
       %p=coin.last_price
-      %br/
       %p=link_to "Edit", edit_coin_path(coin.id)
       %p=link_to "Destroy", coin_path(coin.id), method: :destroy, data: {confirm: "Are you sure?"}

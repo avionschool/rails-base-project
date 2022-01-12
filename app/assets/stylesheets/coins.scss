@@ -13,6 +13,10 @@
     width: clamp(600px, 100%, 1000px);
     margin: 60px auto;
 }
+.coin-container{
+    display:grid;
+    grid-template-columns: repeat(5,100px);
+}
 
 .coinslist-searchbar{
     display:flex;
