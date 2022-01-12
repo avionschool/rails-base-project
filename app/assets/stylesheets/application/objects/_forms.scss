@@ -3,7 +3,7 @@
 @import '../responsive/responsive.scss';
 
 .form-container {
-  position: fixed;
+  @include flexCenter();
   width: 100%;
   max-width: 200px;
   height: 70vh;
@@ -70,5 +70,37 @@
     font-size: 0.9rem;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  @include respond-to('small') {
+    @include flexCenter();
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    margin: 0 auto;
+    background-color: $white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: $shadow;
+    width: 100%;
+    max-width: 350px;
+    height: 75vh;
+
+    h2 {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .field {
+      margin: 0 auto;
+    }
+  }
+
+  @include respond-to('medium') {
+    height: 75vh;
+  }
+
+  @include respond-to('large') {
+    
   }
 }
