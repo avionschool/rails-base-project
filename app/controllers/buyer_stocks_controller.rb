@@ -1,5 +1,5 @@
 class BuyerStocksController < ApplicationController
-  before_action :set_buyer_stock, only: [ :show :destroy ]
+  before_action :set_buyer_stock, only: [ :show, :destroy ]
   def create
     existing_stock = BuyerStock.check_db(params[:stock][:stock_id], current_buyer.id)
     if existing_stock
