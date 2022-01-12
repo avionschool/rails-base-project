@@ -20,7 +20,7 @@
  @import "font-awesome";
  @import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Readex+Pro&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-
+ @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&display=swap');
  //Landing Page//
 .landing-container {
     overflow: hidden;
@@ -253,6 +253,26 @@
         height:89vh;
         width: 100vw;
         background: #351b7e;
+        .welcome-buyer {
+            background-image: url(buyerdivbg.jpeg);
+            height: 89vh;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        h1 {
+        font-family: 'Public Sans','sans-serif';
+        font-size: 4em;
+        color: #eceaf1;
+        text-shadow: 
+        3px 3px 0 #351b7e, 0 4px 0 #351b7e,
+        0 10px 15px black;
+        padding-top: 2em;
+        padding-right: 3em;
+        display: flex;
+        float: right;
+        justify-content: center;
+        align-items: center;
+        }
     }
 }
 //End of Buyer Home//
