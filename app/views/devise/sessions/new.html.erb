@@ -1,22 +1,21 @@
 <%# Main Css  %>
-<%= stylesheet_link_tag "/pages/sessions/main.scss" %>
+<%= stylesheet_link_tag "/pages/sessions/login.scss" %>
 
 
-<div class=container> 
+<div id='login' class='container'> 
   <%# Navigation Bar %>
   <header>
     <nav class='navbar'>
-      <a class='nav-logo'>Investonks<span class='dot'></span></a>
-      <ul class='nav-links'>
-        <li><a>Portfolio</a></li>
-        <li><a>Market</a></li>
-        <li><a>Transactions</a></li>
-        <li><a>Logout</a></li>
-      </ul>
+      <%= link_to root_path, :class => 'nav-logo' do %>
+      Investonks<span class='dot'></span>
+      <% end %>
     </nav>
   </header>
   <%# Content %>
   <main class='login-container'>
     <%= render 'form' %>
   </main>
+  <footer>
+    <%= render 'devise/shared/footer' %>
+  </footer>
 </div>

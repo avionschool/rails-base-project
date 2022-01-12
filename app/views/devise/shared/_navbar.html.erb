@@ -9,8 +9,14 @@
         <li><%= link_to "Edit Profile", edit_user_registration_path, :class => 'nav-link' %> </li>
         <li><%= link_to "Log out", destroy_user_session_path, method: :delete, :class => 'nav-link' %> </li>
         <li><%= link_to "Show stock", stocks_path, :class => 'nav-link' %> </li>
+<<<<<<< HEAD
+        <%#  
+        <li><%= link_to "Add stocks", new_stock_path, :class => 'nav-link' </li> %>
+        %>
+=======
         <li><%= link_to "Holding", users_path, :class => 'nav-link' %> </li>
         <li><%= link_to "Trade Logs", trade_logs_path, :class => 'nav-link' %> </li>
+>>>>>>> 9dd218210259a1f53d6f3f82b7aef771b3a946e9
       <% else %>
         <li><%= link_to "Login", new_user_session_path, :class => 'nav-link' %></li>
         <li><%= link_to "Sign up", new_user_registration_path, :class => 'nav-link register-btn' %></li> 

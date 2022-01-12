@@ -24,9 +24,13 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-size: 16px;
-  color: $black;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
   font-size: 100%;
+  font-family: $poppins;
 }
 
 ul li {
@@ -38,20 +42,21 @@ ul li a {
   text-decoration: none;
 }
 
-/********************
-Container
-********************/
+//////////////////////////////////////
+/// Container
+//////////////////////////////////////
 .container {
   width: 100%;
   min-height: 100vh;
+  padding-top: 2%;
   padding-left: 8%;
   padding-right: 8%;
   overflow: hidden;
 }
 
-/********************
-Navigation Bar
-********************/
+//////////////////////////////////////
+/// Navigation Bar
+//////////////////////////////////////
 // Navbar
 .navbar {
   display: flex;
@@ -60,65 +65,146 @@ Navigation Bar
   width: 100%;
   height: 10vh;
 
-  @include respond-to('medium') {
-    padding: 20px;
-  } 
-
   // Logo
   .nav-logo {
     color: $black;
-    font-size: 1.5rem;
     font-weight: 800;
+    font-size: 1rem;
     text-decoration: none;
-  
+
+
     .dot {
-      height: 6px;
-      width: 6px;
+      height: 3px;
+      width: 3px;
       background-color: $lightGreen;
       border-radius: 50%;
       display: inline-block;
-      font-size: 2rem;
       font-weight: 800;
       margin-left: 2px;
     }
-  }
+  
+    //////////////////////////////////////
+    /// Breakpoints
+    //////////////////////////////////////
+    @include respond-to('small') {
+      font-size: 1.2rem;
+
+      .dot {
+        height: 5px;
+        width: 5px;
+      }
+    }
+
+    @include respond-to('medium') {
+      font-size: 1.5rem;
+    }
+
+    @include respond-to('large') {
+      font-size: 2rem;
+
+      .dot {
+        height: 6px;
+        width: 6px;
+      }
+    }
+}
 
   //Nav Links
   .nav-links {
-    width: 150px;
+    width: 100%;
+    max-width: 80px;
 
     ul {
       display: flex;
       justify-content: space-between;
-      padding-top: 10px;
+      padding-top: 3px;
 
       li {
-        font-size: 0.9rem;
         font-weight: 700;
       }
     }
-  }
 
-  .nav-link{
-    font-size: 0.9rem;
+    .nav-link {
+      font-size: 0.5rem;
+    }
+
+    //////////////////////////////////////
+    /// Breakpoints
+    //////////////////////////////////////
+    @include respond-to('small') {
+      max-width: 110px;
+
+      ul {
+        padding-top: 6px;
+      }
+
+      .nav-link {
+        font-size: 0.7rem;
+      }
+    }
+
+    @include respond-to('medium') {
+      max-width: 150px;
+
+      ul {
+        padding-top: 15px;
+      }
+
+      .nav-link {
+        font-size: 0.9rem;
+      }
+    }
+
+    @include respond-to('large') {
+      max-width: 160px;
+
+      .nav-link {
+        font-size: 1rem;
+      }
+    }
   }
+  
+
 }
 
 
-/********************
-Footer
-********************/
+//////////////////////////////////////
+/// Footer
+//////////////////////////////////////
 .footer {
   position: absolute;
   bottom: 0;
   right: 0;
   width: 100%;
-  height: 40px;
+  height: 20px;
   text-align: center;
-  padding: 3px;
-  color: $black;
 
   p {
-    font-size: 0.9rem;
+    font-size: 0.6rem;
+    color: blue;
+
+    //////////////////////////////////////
+    /// Breakpoints
+    //////////////////////////////////////
+    @include respond-to('small') {
+      font-size: 0.8rem;
+      color: green;
+    }
+
+    @include respond-to('medium') {
+      font-size: 1rem;
+      color: red;
+    }
+
+    @include respond-to('large') {
+      font-size: 1rem;
+      color: pink;
+    }
+
+    @include respond-to('xl') {
+      font-size: 1rem;
+      color: gray;
+    }
   }
+
 }

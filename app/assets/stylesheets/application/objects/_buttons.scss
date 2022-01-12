@@ -1,7 +1,7 @@
 //Variables
 @import './variables';
 @import '../../base/mixins/mixins';
-
+@import '../../application/responsive/responsive.scss';
 
 
 .btn {
@@ -9,9 +9,9 @@
 
   color: $white;
   text-decoration: none;
-  padding: 10px 50px;
+  padding: 8px 20px;
   border-radius: 3px;
-  font-size: 1em;
+  font-size: 0.8em;
   font-weight: 550;
   font-family: $poppins;
   border-radius: 8px;
@@ -19,6 +19,7 @@
   outline: none;
   border: none;
   cursor: pointer;
+
 }
 
 .register-btn { 
@@ -28,6 +29,6 @@
   background-color: $lightGreen;
   border: none;
   border-radius: 20px;
-  padding: 8px 15px;
+  padding: 5px 10px;
   cursor: pointer;
 }

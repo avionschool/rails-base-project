@@ -18,9 +18,9 @@
   align-items: center;
 }
 
-//Button Background
+//button hover
 @mixin button-bg($lightGreen) {
-  background: linear-gradient(to right, $darkGreen, $lightGreen);
+  background: $lightGreen;
 
   &:hover {
     background: darken($lightGreen, 10%);
