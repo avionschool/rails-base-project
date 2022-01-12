@@ -1,0 +1,43 @@
+<% if @tradelogs.empty? %>
+<h1>No Transactions yet</h1>
+
+<% else %>
+
+<h1> Trade logs user </h1>
+
+<div>
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Type</th>
+            <th>Stock</th>
+            <th>Units</th>
+            <th>Value per stock</th>
+            <th>Total Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+<% @tradelogs.each do |log| %>
+        <tr>
+            <td><%=trade_logger(log)[:date]%></td>
+            <td><%=trade_logger(log)[:username]%></td>
+            <td><%=trade_logger(log)[:email]%></td>
+            <td><%=trade_logger(log)[:type]%></td>
+            <td><%=trade_logger(log)[:stock]%></td>
+            <td><%=trade_logger(log)[:units].round(4)%></td>
+            <td><%=trade_logger(log)[:value_per_stock]%></td>
+            <td><%=trade_logger(log)[:total_amount]%></td>
+        </tr>
+        <%end%>
+        <%end%>
+    </tbody>
+</table>
+</div>
+<%= link_to 'Client List', admin_client_list_path %>
+<%= link_to 'Pending clients', admin_confirmation_path %>
+<%= link_to 'Create user', admin_add_user_path %>
+
+<%= link_to 'Logout', destroy_admin_session_path, method: :delete %>
