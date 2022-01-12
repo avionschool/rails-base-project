@@ -8,5 +8,6 @@ class BuyerController < ApplicationController
   end
 
   def portfolio
-    @bought_stocks = current_buyer.stock
+    @bought_stocks = current_buyer.stocks
+  end
 end
