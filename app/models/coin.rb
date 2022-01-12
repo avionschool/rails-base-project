@@ -95,8 +95,9 @@ class Coin < ApplicationRecord
     # res = HTTParty.get('https://api.coingecko.com/api/v3/exchanges/binance')
     @client = CoingeckoRuby::Client.new
     res = @client.exchange('binance')
-    self.base.upcase!
-    self.target.upcase!
+    self.base&.upcase!
+    self.target&.upcase!
+    self.coingecko_id&.downcase!
     listed = res["tickers"].select{|coin| coin["base"] == base && coin["target"] == target}
 
     return errors.add(:base, ": coin-pair may not be listed on binance") unless listed.length > 0

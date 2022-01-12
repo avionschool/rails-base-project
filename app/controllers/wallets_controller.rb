@@ -34,7 +34,7 @@ class WalletsController < ApplicationController
             c = Coin.find(port.coin_id)
             sum +=  c.last_price * port.amount 
         end
-        pnl = (sum - 5000) / 5000 * 100
+        pnl = (sum) / 5000 * 100
         pnl.truncate(2).to_s + '%'
     end
 end
