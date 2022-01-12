@@ -25,8 +25,8 @@
 
     .text-field {
       border: none;
-      background-color: $lightGray;
-      border-radius: 20px;
+      background-color: transparent;
+      border-bottom: 1px solid #000;
       font-size: 1rem;
       padding: 15px;
       width: 215px;
@@ -50,11 +50,12 @@
 
   .btn {
     @include flexCenter();
+    background-color: #20BEAD;
     font-size: 1rem;
     margin: 20px auto;
     padding: 5px 8px;
     height: 2rem;
-    width: 5rem;
+    width: 13rem;
   }
 
   .link {
@@ -101,11 +102,16 @@
       margin: 10px 0 30px 0;
       outline: none;
     }
-    }
+  }
+
+  .btn {
+    width: 16rem;
+  }
   }
 
   @include respond-to('medium') {
     height: 75vh;
+    max-width: 350px;
 
     .field {
       .text-field {
@@ -124,13 +130,19 @@
     }
   }
 
+  @include respond-to('large') {
+    width: 350px;
+  }
+
 }
 
 @include respond-to('medium') {
-  .row-login {
-    .col-2-login {
-      display: none;
-    }
+  .col-1-login {
+    background-color: $lightGray;
+    height: 632px;
+    width: 400px;
+    margin: 0 auto;
+    border-radius: 10px;
   }
 }
 
@@ -140,29 +152,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
-    .col-1-login {
-      width: 100%;
-      max-width: 600px; 
-
-      
-    } 
-
-    .col-2-login {
-      display: block;
-
-      .login-img {
-        width: 400px;
-        height: 400px;
-      }
-    }
+    width: 100%;
   }
+
 }
 
 @include respond-to('xl') {
   .row-login {
-    .col-2-login {
-      
-    }
+
   }
 }
