@@ -1,5 +1,5 @@
-<h1>BROKER'S INDEX</h1>
-
+<div class='broker-container'>
+    <div class='broker-body'>
 <h3>Search Stock</h3>
 <%= form_tag search_stock_path, remote: true, method: :get do %>
     <%= text_field_tag :stock, params[:stock], placeholder: 'Enter stock ticker...' %>
@@ -11,3 +11,5 @@
 </div>
 
 <h3><%= link_to "Broker Portfolio", broker_portfolio_path %></h3>
+    </div>
+</div>
