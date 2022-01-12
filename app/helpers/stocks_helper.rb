@@ -3,5 +3,6 @@ module StocksHelper
         usd_to_php = 50
         converted_rate = usd_price * usd_to_php
         with_interest_total = buy ? converted_rate + (converted_rate * 0.093) : converted_rate - (converted_rate * 0.093)
+        number_to_currency(with_interest_total, unit: "PHP ")
     end
 end
