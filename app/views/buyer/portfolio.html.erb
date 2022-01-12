@@ -1,0 +1,33 @@
+<h1>Buyer Portfolio</h1>
+<% if @bought_stocks.empty? %>
+    <p>You have not bought any stocks yet.</p>
+<% else %>
+    <table>
+        <thead>
+            <tr>
+            <th>Ticker</th>
+            <th>Name</th>
+            <th>Last Price</th>
+            <th>Quantity</th>
+            <th>Broker</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @bought_stocks.each do |stock| %>
+            <tr>
+                <td><%= stock.ticker %></td>
+                <td><%= stock.name %></td>
+                <td>$<%= stock.last_price %></td>
+                <td><%= stock.buyer_stocks.first.quantity %></td>
+                <td><%= stock.added_by %></td>
+                <td><%= (stock.buyer_stocks.first.quantity * stock.buyer_stocks.first.stock_price).to_f %></td>
+                <td><%= link_to "Sell Stock", buyer_stock_path(stock), method: :delete, data: { confirm: "Are you sure you want to sell all quantity of this stock?"} %>            </tr>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% end %>
+<%= link_to "Back", buyer_index_path %>

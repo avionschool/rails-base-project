@@ -1,9 +1,10 @@
 # require 'rest-client'
 
-# module News
-#     class Request
-#         BASE_URL = 'https://api.marketaux.com/v1'
-#         TOKEN = 'Rvzw0WhdZ9EXjG6AhEFjGV5oqpdR2AtQbALy4sNN'
+module News
+    class Request
+        BASE_URL = 'https://api.marketaux.com/v1'
+        TOKEN = 'K2GiBbcezEDuGk5FNtVYAgZovI3boGGQmXRs4KvM'
+
 
 #         def self.call(http_method:, endpoint:)
 #             result = RestClient::Request.execute(

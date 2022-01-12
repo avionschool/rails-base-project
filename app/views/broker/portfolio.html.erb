@@ -17,7 +17,7 @@
             <tr>
                 <td><%= stock.ticker %></td>
                 <td><%= stock.name %></td>
-                <td><%= stock.last_price %></td>
+                <td>$<%= stock.last_price %></td>
                 <td><%= link_to "Delete", broker_stock_path(stock), method: :delete, data: { confirm: "Are you sure?"} %></td>
             </tr>
             <% end %>
