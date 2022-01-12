@@ -3,8 +3,8 @@ require 'httparty'
 class Coin < ApplicationRecord
   has_many :orders
   has_many :portfolios
-  validate :coin_is_listed_in_binance, :target_is_usdt, :on => :create
-  validates :target, uniqueness: { scope: :base }, :on => :create
+  validate :coin_is_listed_in_binance, :target_is_usdt
+  validates :target, uniqueness: { scope: :base }
 
 
   @coin_ids = []
@@ -95,13 +95,12 @@ class Coin < ApplicationRecord
     # res = HTTParty.get('https://api.coingecko.com/api/v3/exchanges/binance')
     @client = CoingeckoRuby::Client.new
     res = @client.exchange('binance')
+    self.base.upcase!
+    self.target.upcase!
+    listed = res["tickers"].select{|coin| coin["base"] == base && coin["target"] == target}
 
-    res["tickers"].each do |coin|
-      if coin["base"] == base && coin["target"] == target
-        return true
-      end
-    end
-    errors.add(:target, ": coin-pair may not be listed on binance")
+    return errors.add(:base, ": coin-pair may not be listed on binance") unless listed.length > 0
+  
   end
 
   def target_is_usdt
