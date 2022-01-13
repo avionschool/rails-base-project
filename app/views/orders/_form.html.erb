@@ -1,4 +1,4 @@
-<%= form_with model: [@wallet,@order] do |f| %>
+<%= form_with model: [@wallet,@order], namespace: 'buy' do |f| %>
 <div class="order-form-container">
     <div class="order-balance-container">
       <p>AVBL</p>
@@ -6,7 +6,7 @@
     </div>
 
 <%= f.label :quantity, :class => 'order-label'%>
-<%= f.text_field :quantity, :class => 'order-field' %>
+<%= f.text_field :quantity, :class => 'order-field'%>
 
 <%= f.hidden_field :coin_id, value: @coin.id%>
 <%= f.hidden_field :kind, value: 'buy' %>
@@ -16,7 +16,7 @@
 <% end %>
 </div>
 
-<%= form_with model: [@wallet,@order] do |f| %>
+<%= form_with model: [@wallet,@order], namespace: 'sell' do |f| %>
 <div class="order-form-container">
     <div class="order-balance-container">
         <p>AVBL</p>
@@ -28,8 +28,8 @@
             </p>
         <% end %>
     </div>
-<%= f.label :quantity, :class => 'order-label' %>
-<%= f.text_field :quantity, :class => 'order-field' %>
+<%= f.label :quantity, :class => 'order-label sell' %>
+<%= f.text_field :quantity, :class => 'order-field sell' %>
 
 <%= f.hidden_field :kind, value: 'sell' %>
 <%= f.hidden_field :coin_id, value: @coin.id%>

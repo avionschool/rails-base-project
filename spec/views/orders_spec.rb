@@ -39,6 +39,11 @@ RSpec.describe "Orders", type: :feature do
     click_button('Log in')
   end
 
+  def fill_order(type, quantity)
+    fill_in "#{type}_order_quantity", with: "#{quantity}"
+    click_button("#{type.capitalize}")
+  end
+
   describe "on visit" do
     before {seed_users}
     before {seed_coins}
@@ -48,6 +53,34 @@ RSpec.describe "Orders", type: :feature do
     it "shows coins index" do
       expect(find('div.trades-index-container')).to be_truthy
     end
+    
+    it "shows initial money" do
+      expect(page).to have_content("5000")
+    end
+  end
+  
 
+  describe "On creation of order" do
+    before {seed_users}
+    before {seed_coins}
+    before {admin_log_in}
+    before {visit trade_path("BTC")}
+
+
+    it "shows a buy order created" do 
+      fill_order("buy", 0.01)
+      expect(page).to have_selector('.order-item-container', count: 2)
+    end
+
+    it "shows a sell order created" do
+      fill_order("buy", 0.01)
+      fill_order("sell", 0.01)
+      expect(page).to have_selector('.order-item-container', count: 3)
+    end
+
+    it "shows error message" do
+      fill_order("buy", 1)
+      expect(page).to have_content("insufficient balance")
+    end
   end
 end

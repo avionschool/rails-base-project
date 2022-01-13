@@ -13,8 +13,8 @@ class OrdersController < ApplicationController
       # redirect_to trade_path(@coin)
       redirect_to trade_path(base: @coin.base, target: @coin.target, id:@coin.id)
     else
-      flash.now[:notice] = "insufficient balance"
-      render 'trades/show'
+      redirect_to trade_path(base: @coin.base)
+      flash[:notice] = "insufficient balance"
     end
 
   end
