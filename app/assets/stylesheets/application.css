@@ -13,16 +13,25 @@
  *= require_tree .
  *= require_self
  */
- * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'IBM Plex Sans Devanagari', sans-serif;
-    background-color: rgb(1, 8, 30);
-    color: white;
+    color: black;
     }
 
-nav ul {
+.navbar-container{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar{ 
+    background-color: rgb(1, 8, 30);
+}
+
+.navbar ul {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -31,24 +40,25 @@ nav ul {
 }
 
 
-nav li {
+.navbar li {
     display: inline-block;
     margin-left: 50px;
 }
 
-nav a {
+.navbar a {
     color: #444;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 14px;
 }
 
-nav a:hover{
+.navbar a:hover{
     color: rgb(19, 185, 157);
 }
 
-img { 
+.img-logo { 
     width: 120px;
+
 }
 
 .footer-container{
@@ -68,3 +78,4 @@ img {
     width: 600px;
     color: rgba(255,255,255,0.6);
 }
+

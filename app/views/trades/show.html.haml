@@ -6,6 +6,7 @@
     %ul
       - @user.errors.full_messages.each do |msg|
         %li= msg
+
 #data-selector.hidden{"data-coin" => "#{@cp_str}"}
 .trades-container
   .tradingview-widget-container
