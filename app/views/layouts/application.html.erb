@@ -10,6 +10,17 @@
   </head>
 
   <body>
+<div class='landing-container'>
+    <div class='landing-navbar'>
+        <a href ='/'>
+            <%= image_tag('Swift.png', :alt => 'SWIFT Logo', class:'app-logo') %>
+        </a>
+        <div class='landing-cta'>
+            <%= render 'layouts/navbar'%>
+        </div>
+    </div>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

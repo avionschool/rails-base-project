@@ -1,0 +1,52 @@
+<div class='buyerlogin-container'>
+    <div class='login-nav'>    
+    </div>
+    <div class='reg-forms'>
+        <div class='login-animation'>
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player src="https://assets2.lottiefiles.com/private_files/lf30_F3v2Nj.json"  background="transparent"  speed="1"  style="width: 450px; height: 450px;"  loop  autoplay></lottie-player>
+        </div>
+        <div class='login-form'>
+            <% if resource.account_type == "buyer"%>
+            <h2> SWIFT Buyer Account Login</h2>
+            <% elsif resource.account_type == "broker"%>
+            <h2> SWIFT Broker Account Login</h2>
+            <% elsif resource.account_type == "admin"%>
+            <h2> SWIFT Admin Account Login</h2>
+            <% end %>
+
+            <p> Welcome back to the trading floor! Login with your email.</p>
+            <br/>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <% if resource.account_type == "broker" %>
+                <div class="input-field">
+                    <%= f.label :broker_name %><br />
+                    <%= f.text_field :broker_name, autocomplete: "broker name"%>
+                </div>
+                <% end %>
+            <div class='input-field'>
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: 'email' %>
+            </div>
+            <br />
+            <div class='input-field'>
+                <%= f.label :password %><br />
+                <%= f.password_field :password, autocomplete: 'current-password' %>
+                <span> 
+                    <i class='fa fa-eye' id='pw-toggle'></i>
+                </span>
+            </div>
+            <br />
+            <% if devise_mapping.rememberable? %>
+            
+            <% end %>
+            <br />
+            <div class='btn submit-btn'>
+                <%= f.submit 'Login' %>
+            </div>
+            <% end %>
+            <br />
+            <%= render "devise/shared/links" %>
+        </div>
+    </div>
+</div>

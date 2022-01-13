@@ -1,0 +1,21 @@
+<% if buyer_signed_in? %>
+  <%= link_to "HOME", buyer_index_path%> &nbsp; &nbsp; &nbsp;
+  <%= link_to "TRANSACTIONS", buyer_transactions_path%> &nbsp; &nbsp; &nbsp;
+  <%= link_to "PORTFOLIO", buyer_portfolio_path%> &nbsp; &nbsp; &nbsp;
+  <%= link_to "PROFILE", edit_buyer_registration_path%> &nbsp; &nbsp; &nbsp; 
+  <%= link_to "SIGN OUT", destroy_buyer_session_path, method: :delete%> &nbsp; &nbsp; &nbsp; 
+<% elsif broker_signed_in? %>
+  <%= link_to "HOME", broker_index_path%> &nbsp; &nbsp; &nbsp;
+  <%= link_to "Transactions", broker_transactions_path%> &nbsp; &nbsp; &nbsp;
+  <%= link_to "Portfolio", broker_portfolio_path%> &nbsp; &nbsp; &nbsp;
+  <%= link_to "Edit", edit_broker_registration_path%> &nbsp; &nbsp; &nbsp; 
+  <%= link_to "Sign Out", destroy_broker_session_path, method: :delete%> &nbsp; &nbsp; &nbsp; 
+<% elsif admin_signed_in? %>
+  <%= link_to "HOME", admin_index_path%> &nbsp; &nbsp; &nbsp;
+  <%= link_to "Sign Out", destroy_admin_session_path, method: :delete%> &nbsp; &nbsp; &nbsp; 
+<% else %>
+  <%= link_to "BUYER", new_buyer_session_path%> &nbsp; &nbsp; &nbsp; 
+  <%= link_to "BROKER", new_broker_session_path %> &nbsp; &nbsp; &nbsp;
+  <%= link_to "ADMIN", new_admin_session_path, id:'admin-cta'%>
+<% end %>
+  

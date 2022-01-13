@@ -1,0 +1,10 @@
+<% if buyer_signed_in? %>
+    <%= render "home/buyers_home" %>
+<% elsif broker_signed_in? %>
+    <%= render "home/brokers_home" %>
+<% elsif admin_signed_in? %>
+    <%= render "home/admin_home" %>
+<% else %>
+    <%= render "home/landing_page" %>
+<% end %>
+

@@ -1,0 +1,98 @@
+<div class='buyer-container'>
+    <div class='buyer-body'>
+      <div class='welcome-buyer'>
+      <div class="tradingview-widget-container">
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+        {
+          "description": "",
+          "proName": "NASDAQ:AAPL"
+        },
+        {
+          "description": "",
+          "proName": "AMEX:SPY"
+        },
+        {
+          "description": "",
+          "proName": "NASDAQ:TSLA"
+        },
+        {
+          "description": "",
+          "proName": "NASDAQ:AMZN"
+        },
+        {
+          "description": "",
+          "proName": "NASDAQ:MSFT"
+        },
+        {
+          "description": "",
+          "proName": "NYSE:GME"
+        },
+        {
+          "description": "",
+          "proName": "NASDAQ:PYPL"
+        },
+        {
+          "description": "",
+          "proName": "NYSE:BABA"
+        }
+          ],
+        "showSymbolLogo": true,
+        "colorTheme": "light",
+        "isTransparent": false,
+        "displayMode": "adaptive",
+        "locale": "en"
+        }
+      </script>
+      </div>
+        <div class='headline'>
+          <div class='welcome'>
+            <h1 class='welcome-tag'> Welcome back.</h1>
+            <h3>
+            <%= link_to 'PORTFOLIO', buyer_portfolio_path,class:'link-portfolio' %>
+            </h3>
+            <h3>
+            <%= link_to 'TRANSACTIONS', buyer_transactions_path,class:'link-transactions' %>
+            </h3>
+            <h3>
+            <%= link_to "PROFILE", edit_buyer_registration_path,class:'link-profile' %>
+            </h3>
+          </div>
+          <div class='stock-list'>
+            <% if @all_stocks.empty? %>
+              <h1> STOCK LIST </h1>
+                <p>There are no stocks available.</p>
+            <% else %>
+              <h1>STOCK LIST</h1>
+              <table>
+                  <thead class='stocklist-head'>
+                      <tr>
+                      <th>Ticker</th><td></td><td></td>
+                      <th>Name</th><td></td><td></td>
+                      <th>Last Price</th><td></td><td></td>
+                      <th>Broker</th><td></td>
+                      <th>Action</th>
+                      </tr>
+                  </thead>
+          
+                  <tbody>
+                      <% @all_stocks.each do |stock| %>
+                      <tr>
+                          <td><%= stock.ticker %></td><td></td><td></td>
+                          <td><%= stock.name %></td><td></td><td></td>
+                          <td>$<%= stock.last_price %></td><td></td><td></td>
+                          <td><%= stock.added_by %></td><td></td>
+                          <td><%= link_to 'Buy Stock', buyer_stock_path(stock, broker_id: stock.added_by, stock_id: stock.id), class:'buy-stock', method: :get %></span></td>
+                      </tr>
+                      <% end %>
+                  </tbody>
+              </table>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+    
+
