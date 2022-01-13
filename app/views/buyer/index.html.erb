@@ -22,7 +22,7 @@
                 <td><%= stock.ticker %></td>
                 <td><%= stock.name %></td>
                 <td>$<%= stock.last_price %></td>
-                <td><%= stock.added_by %></td>
+                <td><%= stock.brokers.first.broker_name %></td>
                 <td><%= link_to 'Buy Stock', buyer_stock_path(stock, broker_id: stock.added_by, stock_id: stock.id), method: :get %></span></td>
             </tr>
             <% end %>

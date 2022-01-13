@@ -22,7 +22,7 @@
                 <td><%= stock.name %></td>
                 <td>$<%= stock.last_price %></td>
                 <td><%= stock.buyer_stocks.first.quantity %></td>
-                <td><%= stock.added_by %></td>
+                <td><%= stock.brokers.first.broker_name%></td>
                 <td><%= (stock.buyer_stocks.first.quantity * stock.buyer_stocks.first.stock_price).to_f %></td>
                 <td><%= link_to "Sell Stock", buyer_stock_path(stock), method: :delete, data: { confirm: "Are you sure you want to sell all quantity of this stock?"} %>            </tr>
             </tr>
