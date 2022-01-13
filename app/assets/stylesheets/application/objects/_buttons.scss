@@ -1,0 +1,34 @@
+//Variables
+@import './variables';
+@import '../../base/mixins/mixins';
+@import '../../application/responsive/responsive.scss';
+
+
+.btn {
+  @include button-bg($lightGreen);
+
+  color: $white;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 3px;
+  font-size: 0.8em;
+  font-weight: 550;
+  font-family: $poppins;
+  border-radius: 8px;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+}
+
+.register-btn { 
+  @include button-bg($lightGreen);
+
+  color: $white;
+  background-color: $lightGreen;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+}

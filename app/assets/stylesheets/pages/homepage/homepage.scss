@@ -1,0 +1,135 @@
+@import '../../application/objects/variables';
+@import '../../base/mixins/mixins';
+@import '../../application/responsive/responsive.scss';
+
+ul {
+  font-weight: 200;
+
+  li {
+    color: $gray;
+  }
+}
+
+#homepage {
+  background-image: url(asset_path('homeBG.png'));
+  background-size: cover;
+  background-position: center;
+}
+
+//Button
+.btn {
+  color: $white;
+  padding: 20px 50px;
+  font-weight: 400;
+
+  //////////////////////////////////////
+  /// Breakpoints
+  //////////////////////////////////////
+  @include respond-to('large') {
+    padding: 10px 50px;
+  }
+}
+
+//////////////////////////////////////
+/// Content
+//////////////////////////////////////
+.row {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  font-family: $lato;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+
+  .col-1 {
+    position: relative;
+
+    h2 {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    p {
+      font-size: 0.75rem;
+      font-weight: 100;
+      color: #707070;
+      margin: 20px 0 30px 0;
+      line-height: 25px;
+      max-width: 350px;
+    }
+
+    //////////////////////////////////////
+    /// Brealkpoints
+    //////////////////////////////////////
+    @include respond-to('small') {
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+        margin-bottom: 40px;
+      }
+    }
+
+    @include respond-to('large') {
+      text-align: left;
+
+      h2 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+
+      &::after {
+        @include button-bg($lightGreen);
+        content: '';
+        width: 3px;
+        height: 60%;
+        position: absolute;
+        left: -40px;
+        top: 8px;
+      }
+    }
+  }
+
+  .col-2 {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .homepage-img {
+      width: 250px;
+      margin-left: 35px;
+
+      //////////////////////////////////////
+      /// Brealkpoints
+      //////////////////////////////////////
+      @include respond-to('small') {
+        width: 270px;
+      }
+
+      @include respond-to('medium') {
+        width: 400px;
+      }
+
+      @include respond-to('large') {
+        width: 500px;
+      }
+    }
+  }
+
+  //////////////////////////////////////
+  /// Brealkpoints
+  //////////////////////////////////////
+  @include respond-to('large') {
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1000px;
+  }
+}

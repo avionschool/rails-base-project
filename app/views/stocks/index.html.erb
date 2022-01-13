@@ -1,0 +1,56 @@
+<h1>Listing stocks Top 10 blue chip companies</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Ticker</th>
+      <th>Logo</th>
+      <th>Buying Price</th>
+      <th>Selling Price</th>
+      <th>Company name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stocks.each do |stock| %>
+      <tr>
+        <td>
+          <%= stock.ticker %>
+        </td>
+        <td>
+          <img src ="<%= stock.logo_url %>">
+        </td>
+        <td>
+          <%= calc_value(stock.current_price, true) %>
+        </td>
+        <td>
+          <%= calc_value(stock.current_price, false) %>
+        </td>
+        <td>
+          <%= stock.name %>
+        </td>
+        <td>
+          <%= link_to 'Show', new_user_holding_path(:user_id => current_user, :stock_id => stock.id)%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br/>
+
+<%# Search Box  %>
+  <%= form_tag root_path, :method => 'POST' do %>
+    <%= text_field_tag 'ticker', nil, placeholder: "Enter the stock code name", size: 50 %>
+    <%= submit_tag 'Search' %>
+    <% end %>
+
+  <% if @stock %>
+    <%= @stock.company_name %>
+    $<%= @stock.latest_price %>
+    <% elsif @blankSearch %>
+      <%= @blankSearch %>
+  <% end %>
+
+  <% if @stockErr %>
+    <%= @stockErr %>
+  <% end %>
+

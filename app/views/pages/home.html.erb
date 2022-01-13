@@ -1,0 +1,30 @@
+<%# Homepage CSS %>
+<%= stylesheet_link_tag '/pages/homepage/homepage.scss' %>
+
+<div id='homepage' class='container'>
+  <%# Navigation Bar %>
+  <header>
+
+    <%= render 'devise/shared/navbar' %>
+
+  </header>
+  <%# Main Content %>
+  <main class='row'>
+    <div class='col-1'>
+      <h2>Buy & Sell crypto</h2>
+      <p>Trade Bitcoin, Etherium, and the top altcoins on the legendary crypto asset exchange.</p>
+      <%= link_to 'Get Started', new_user_registration_path, :class => 'btn' %>
+    </div>
+    <div class='col-2'>
+      <%= image_tag 'homepage-img.png', :class => 'homepage-img' %>
+      <div class='color-box'></div>
+    </div>
+  </main>
+
+  <%= render 'devise/shared/footer' %>
+
+</div>
+
+
+
+

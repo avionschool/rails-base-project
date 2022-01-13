@@ -1,0 +1,25 @@
+@mixin respond-to($breakpoint) {
+  @if $breakpoint=="small" {
+    @media (min-width: 320px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint=="medium" {
+    @media (min-width: 720px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint=="large" {
+    @media (min-width: 992px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint=="xl" {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}

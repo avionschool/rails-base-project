@@ -1,0 +1,26 @@
+<%# Main SASS %>
+<%= stylesheet_link_tag '/pages/registration/main.scss'%>
+
+<div class='container'>
+  <header>
+    <nav class='navbar'>
+      <%= link_to root_path, :class => 'nav-logo' do %>
+      Investonks<span class='dot'></span>
+      <% end %>
+    </nav>
+  </header>
+  <main class='row-register'> 
+    <%# Right Container %>
+    <div class='right-container column'>
+      <h1>Sign up</h1>  
+      <%= render 'form'%>
+    </div>
+  <div>
+  Already a member? 
+  <%= link_to 'Sign In', new_user_session_path, :class => 'link'%>
+  </div>
+  </main>
+  <footer>
+    <%= render 'devise/shared/footer' %>
+  </footer>
+</>

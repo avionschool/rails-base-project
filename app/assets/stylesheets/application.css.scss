@@ -1,0 +1,211 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Karla:wght@400;700;800&family=Lato:wght@300;700&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Poppins:wght@400;600&display=swap');
+@import './application/objects/variables';
+@import './base/mixins/mixins';
+@import './application/objects/buttons';
+@import './application/responsive/responsive.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-size: 100%;
+  font-family: $poppins;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+ul li a {
+  color: $gray;
+  text-decoration: none;
+}
+
+//////////////////////////////////////
+/// Container
+//////////////////////////////////////
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 2%;
+  padding-left: 8%;
+  padding-right: 8%;
+  overflow: hidden;
+}
+
+//////////////////////////////////////
+/// Navigation Bar
+//////////////////////////////////////
+// Navbar
+.navbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  height: 10vh;
+
+  // Logo
+  .nav-logo {
+    color: $black;
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-decoration: none;
+
+
+    .dot {
+      height: 4px;
+      width: 4px;
+      background-color: $lightGreen;
+      border-radius: 50%;
+      display: inline-block;
+      font-weight: 800;
+      margin-left: 2px;
+    }
+  
+    //////////////////////////////////////
+    /// Breakpoints
+    //////////////////////////////////////
+    @include respond-to('small') {
+      font-size: 1.2rem;
+
+      .dot {
+        height: 5px;
+        width: 5px;
+      }
+    }
+
+    @include respond-to('medium') {
+      font-size: 1.5rem;
+    }
+
+    @include respond-to('large') {
+      font-size: 2rem;
+
+      .dot {
+        height: 6px;
+        width: 6px;
+      }
+    }
+}
+
+  //Nav Links
+  .nav-links {
+    width: 100%;
+    max-width: 80px;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 3px;
+
+      li {
+        font-weight: 700;
+      }
+    }
+
+    .nav-link {
+      font-size: 0.5rem;
+    }
+
+    //////////////////////////////////////
+    /// Breakpoints
+    //////////////////////////////////////
+    @include respond-to('small') {
+      max-width: 110px;
+
+      ul {
+        padding-top: 6px;
+      }
+
+      .nav-link {
+        font-size: 0.7rem;
+      }
+    }
+
+    @include respond-to('medium') {
+      max-width: 150px;
+
+      ul {
+        padding-top: 15px;
+      }
+
+      .nav-link {
+        font-size: 0.9rem;
+      }
+    }
+
+    @include respond-to('large') {
+      max-width: 160px;
+
+      .nav-link {
+        font-size: 1rem;
+      }
+    }
+  }
+  
+
+}
+
+
+//////////////////////////////////////
+/// Footer
+//////////////////////////////////////
+.footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  z-index: 10;
+
+  p {
+    font-size: 0.7rem;
+    color: blue;
+
+    //////////////////////////////////////
+    /// Breakpoints
+    //////////////////////////////////////
+    @include respond-to('small') {
+      font-size: 0.8rem;
+      color: green;
+    }
+
+    @include respond-to('medium') {
+      font-size: 1rem;
+      color: red;
+    }
+
+    @include respond-to('large') {
+      font-size: 1rem;
+      color: pink;
+    }
+
+    @include respond-to('xl') {
+      font-size: 1rem;
+      color: gray;
+    }
+  }
+
+}

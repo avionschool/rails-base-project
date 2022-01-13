@@ -1,0 +1,33 @@
+// Horizontal List 
+@mixin horizontal-list {
+  li {
+    display: inline-block;
+    margin: {
+      left: -2px;
+      right: 2em;
+    }
+  }
+}
+
+// Center Content
+@mixin flexCenter() {
+  height: 20vh;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//button hover
+@mixin button-bg($lightGreen) {
+  background: $lightGreen;
+
+  &:hover {
+    background: darken($lightGreen, 10%);
+    transition: all 0.3s ease;
+  }
+
+  &:active {
+    background: darken($lightGreen, 25%);
+  }
+}

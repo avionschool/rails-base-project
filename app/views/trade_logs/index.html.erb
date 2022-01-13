@@ -1,0 +1,32 @@
+<h1> Trade logs </h1>
+
+<div>
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Stock</th>
+            <th>Units</th>
+            <th>Value per stock</th>
+            <th>Total Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% if @trades.empty? %>
+    <h1>No Transactions yet</h1>
+    <% else %>
+    <% @trades.each do |log| %>
+        <tr>
+            <td><%=trade_logger(log)[:date]%></td>
+            <td><%=trade_logger(log)[:type]%></td>
+            <td><%=trade_logger(log)[:stock]%></td>
+            <td><%=trade_logger(log)[:units].round(4)%></td>
+            <td><%=trade_logger(log)[:value_per_stock]%></td>
+            <td><%=trade_logger(log)[:total_amount]%></td>
+        </tr>
+        <%end%>
+        <%end%>
+    </tbody>
+</table>
+</div>
