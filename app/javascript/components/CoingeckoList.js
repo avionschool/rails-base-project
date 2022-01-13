@@ -18,7 +18,7 @@ function CoingeckoList({coinsList}) {
     setItems(result);
   }, [searchInput]);
 
-  const list = items.map((coin) => {
+  const list = items.slice(0,30).map((coin) => {
     return(
       <>
         <div className="coinslist-item">
