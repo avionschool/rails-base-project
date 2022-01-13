@@ -1,7 +1,8 @@
 class Broker < ApplicationRecord
-  has_many :broker_stocks
+  has_many :broker_stocks, :dependent => :destroy
   has_many :stocks, through: :broker_stocks
   belongs_to :admin
+  validates :broker_name, presence: true
   validates :email, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :trackable and :omniauthable

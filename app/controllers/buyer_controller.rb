@@ -10,4 +10,8 @@ class BuyerController < ApplicationController
   def portfolio
     @bought_stocks = current_buyer.stocks
   end
+
+  def transactions
+    @transactions = Transaction.where(buyer_id: current_buyer.id)
+  end
 end

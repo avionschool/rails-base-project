@@ -1,0 +1,33 @@
+<h1>Buyer Transactions Page</h1>
+
+<% if @transactions.empty? %>
+    <p>You have not bought any stocks yet.</p>
+<% else %>
+    <table>
+        <thead>
+            <tr>
+            <th>Date Purchased</th>
+            <th>Ticker</th>
+            <th>Company</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total Cost</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @transactions.each do |stock| %>
+            <tr>
+                <td><%= stock.created_at %></td>
+                <td><%= stock.ticker %></td>
+                <td><%= stock.company_name %></td>
+                <td><%= stock.broker_name %></td>
+                <td>$<%= stock.stock_price %></td>
+                <td><%= stock.quantity %></td>
+                <td>$<%= ((stock.quantity).to_i * (stock.stock_price).to_f).to_f %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% end %>
+<%= link_to "Back", buyer_index_path %>
