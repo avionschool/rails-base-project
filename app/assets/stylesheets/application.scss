@@ -21,6 +21,9 @@
  @import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Readex+Pro&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
  //Landing Page//
 .landing-container {
     overflow: hidden;
@@ -58,7 +61,7 @@
         border-radius: 3px;
         position: relative;
         width: 100%;
-        min-height: 89vh;
+        min-height: 100vh;
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -90,7 +93,7 @@
     background: #351b7e;
     border-radius: 3px;
     width: 100%;
-    min-height: 89vh;
+    min-height: 100vh;
     overflow: hidden;
     display: flex;
     flex-direction: row;
@@ -135,6 +138,10 @@
                 background-color: white;
                 width: 15vw;
             }
+            input#broker_broker_name {
+                background-color: white;
+                width: 15vw;
+            }
             input#broker_email {
                 background-color: white;
                 width: 15vw;
@@ -174,7 +181,7 @@
         background: #351b7e;
         border-radius: 3px;
         width: 100%;
-        min-height: 89vh;
+        min-height: 100vh;
         overflow: hidden;
         display: flex;
         flex-direction: row;
@@ -218,6 +225,10 @@
                 background-color: white;
                 width: 15vw;
             }
+            input#broker_broker_name {
+                width: 15vw;
+                background-color: white;
+            }
             input#broker_email {
                 width: 15vw;
                 background-color: white;
@@ -250,12 +261,12 @@
 //Buyer Home//
 .buyer-container {
     .buyer-body {
-        height:89vh;
+        // height:89vh;
         width: 100vw;
         background: #351b7e;
         .welcome-buyer {
             background-image: url(buyerdivbg.jpeg);
-            height: 89vh;
+            height: 100vh;
             background-repeat: no-repeat;
             background-size: cover;
             display: flex;
@@ -275,15 +286,15 @@
                     width: 17vw;
                     height: 12vh;
                 }
-                .link-portfolio {
+                .link-portfolio, .link-transactions, .link-profile {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    font-family: 'Public Sans','sans-serif';
+                    font-family: 'Ubuntu','sans-serif';
                     color: white;
                     background: #351b7e;
                     text-decoration: none;
-                    font-size: 1em;
+                    font-size: 0.9em;
                     padding: 0.5em;
                 }
                 .stock-list {
@@ -291,6 +302,7 @@
                     background: white;
                     padding: 1.5em;
                     padding-top: 0.7em;
+                    padding-bottom: 0;
                     color: #351b7e;
                     font-family: 'Public Sans','sans-serif';
                     .stocklist-head {
@@ -308,6 +320,54 @@
     }
 }
 //End of Buyer Home//
+
+//Buyer Portfolio//
+.buyerportfolio-container {
+    .buyerportfolio-body {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        .headtag {
+            display: flex;
+            float: left;
+            font-family: 'Poppins',sans-serif;
+        }
+        .table {
+            display: flex;
+            .stock-table {
+                background: #351b7e;
+                width:60vw;
+                color: white;
+                padding:2em;
+                font-family: 'Public Sans',sans-serif;
+                font-size: 1em;
+                .table-head {
+                    font-size: 1.3em;
+                    th {
+                        padding: 10px;
+                    }
+                }
+                .table-body {
+                    background: white;
+                    color: black;
+                    td {
+                    padding: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+//End of Buyer Portfolio//
+
+//Buyer Transactions//
+//End of Buyer Transactions//
+
+//Buyer Profile//
+//End of Buyer Profile//
+
+//Buy and Sell Stock//
+//End of Buy and Sell Stock//
 
 //Broker Home//
 .broker-container{

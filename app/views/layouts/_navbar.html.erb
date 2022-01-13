@@ -1,9 +1,9 @@
 <% if buyer_signed_in? %>
   <%= link_to "HOME", buyer_index_path%> &nbsp; &nbsp; &nbsp;
-  <%= link_to "Transactions", buyer_transactions_path%> &nbsp; &nbsp; &nbsp;
-  <%= link_to "Portfolio", buyer_portfolio_path%> &nbsp; &nbsp; &nbsp;
-  <%= link_to "Edit", edit_buyer_registration_path%> &nbsp; &nbsp; &nbsp; 
-  <%= link_to "Sign Out", destroy_buyer_session_path, method: :delete%> &nbsp; &nbsp; &nbsp; 
+  <%= link_to "TRANSACTIONS", buyer_transactions_path%> &nbsp; &nbsp; &nbsp;
+  <%= link_to "PORTFOLIO", buyer_portfolio_path%> &nbsp; &nbsp; &nbsp;
+  <%= link_to "PROFILE", edit_buyer_registration_path%> &nbsp; &nbsp; &nbsp; 
+  <%= link_to "SIGN OUT", destroy_buyer_session_path, method: :delete%> &nbsp; &nbsp; &nbsp; 
 <% elsif broker_signed_in? %>
   <%= link_to "HOME", broker_index_path%> &nbsp; &nbsp; &nbsp;
   <%= link_to "Transactions", broker_transactions_path%> &nbsp; &nbsp; &nbsp;
