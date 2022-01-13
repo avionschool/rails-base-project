@@ -47,8 +47,11 @@
       </script>
       </div>
         <div class='headline'>
-          <div class='welcome-tag'>
-            <h1> Welcome back.</h1>
+          <div class='welcome'>
+            <h1 class='welcome-tag'> Welcome back.</h1>
+            <h3>
+            <%= link_to 'PORTFOLIO', buyer_portfolio_path,class:'link-portfolio' %>
+            </h3>
           </div>
           <div class='stock-list'>
             <% if @all_stocks.empty? %>
