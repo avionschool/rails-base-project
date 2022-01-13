@@ -1,0 +1,14 @@
+<%if @stock %>
+    <div>
+    <br>
+        <img src="<%= @stock.logo%>"> 
+        <p><strong>Ticker:</strong> <%= @stock.ticker %></p>
+        <p><strong>Name:</strong> <%= @stock.name %></p>
+        <p><strong>Last Price:</strong> $<%=@stock.last_price %></p>
+        <% if current_broker.can_add_stock?(@stock.ticker, current_broker.id) %>
+            <%= link_to 'Add stock', broker_stocks_path(broker: current_broker, ticker: @stock.ticker), method: :post %>
+        <% else %>
+            <p>Stock already added.</p>
+        <% end %>
+    </div>
+<% end %>

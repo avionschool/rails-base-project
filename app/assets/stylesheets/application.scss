@@ -1,0 +1,288 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ /*
+ *= require font-awesome
+ */
+
+ @import "font-awesome";
+ @import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Readex+Pro&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&display=swap');
+ //Landing Page//
+.landing-container {
+    overflow: hidden;
+    .landing-navbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .app-logo {
+            height: 3em;
+        }
+        .landing-cta {
+            padding-right: 1em;
+            display: flex;
+            align-items: center;
+            justify-content:space-evenly;
+            position: relative;
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: 800;
+            font-size: 1.3em;
+        }
+        a {
+            text-decoration: none;
+        }
+        #admin-cta {
+            background: rgb(247, 206, 23);
+            border-radius: 10px;
+        }
+    }
+    .landing-body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background: #351b7e;
+        background-size: cover;
+        border-radius: 3px;
+        position: relative;
+        width: 100%;
+        min-height: 89vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        .landing-headline {
+            font-family: 'Readex Pro', sans-serif;
+            color: white;
+            line-height: 0.5;
+        }
+        .tagline {
+            font-size: 3.5em;
+            text-shadow:
+                0 0 4px rgb(107, 90, 182);
+        }
+        .tagsupport {
+            font-size: 2em;
+        }
+    }
+}
+//End of Landing Page//
+
+//Buyer Log-in//
+.buyerlogin-container {
+    font-family: 'Share Tech Mono', monospace;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    .reg-forms {
+    background: #351b7e;
+    border-radius: 3px;
+    width: 100%;
+    min-height: 89vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+        .login-animation {
+            padding-top: 10em;
+        }
+        .login-form {
+            float: right;
+            padding-top: 10em;
+            padding-right: 15em;
+            color: white;
+            font-size: 1em;
+            h2 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1.1em;
+            }
+            input {
+                padding: 5px;
+                font-size: 15px;
+                width: 16vw;
+                outline: none;
+                background-color: rgb(67, 206, 130);
+                border-radius: 3px;
+                position: relative;
+            }
+            input:focus,textarea:focus {
+                box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+                border: 3px solid turquoise;
+            }
+            a {
+                text-decoration: none;
+                color: rgb(10, 189, 49);
+            }
+            input#buyer_email {
+                width: 15vw;
+                background-color: white;
+            }
+            input#admin_email {
+                background-color: white;
+                width: 15vw;
+            }
+            input#broker_email {
+                background-color: white;
+                width: 15vw;
+            }
+            input#admin_password {
+                background-color: white;
+                width: 15vw;
+            }
+            input#broker_password {
+                background-color: white;
+                width: 15vw;
+            }
+            input#buyer_password {
+                width: 15vw;
+                background-color: white;
+            }
+            span {
+                color: #351b7e;
+                position: absolute;
+                right:650px;
+                transform: translateY(35%);
+                cursor: pointer;
+            }
+        }
+
+    }
+}
+//End of Buyer Log-in//
+
+//Buyer Registration//
+.buyerreg-container {
+    font-family: 'Share Tech Mono', monospace;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    .reg-forms {
+        background: #351b7e;
+        border-radius: 3px;
+        width: 100%;
+        min-height: 89vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        .signup-form {
+            padding: 5em;
+            color: rgb(255, 255, 255);
+            border-color: rgb(101, 86, 240);
+            h2 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1.1em;
+            }
+            a {
+                text-decoration: none;
+                color: rgb(10, 189, 49);
+            }
+            input {
+                width: 16vw;
+                padding: 5px;
+                font-size: 15px;
+                outline: none;
+                background-color: rgb(67, 206, 130);
+                border-radius: 3px;
+                position: relative;
+            }
+            input:focus,textarea:focus {
+                box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+                border: 3px solid turquoise;
+            }
+            input#buyer_email {
+                width: 15vw;
+                background-color: white;
+            }
+            input#buyer_password {
+                background-color: white;
+                width: 15vw;
+            }
+            input#buyer_password_confirmation {
+                background-color: white;
+                width: 15vw;
+            }
+            input#broker_email {
+                width: 15vw;
+                background-color: white;
+            }
+            input#broker_password {
+                background-color: white;
+                width: 15vw;
+            }
+            input#broker_password_confirmation {
+                background-color: white;
+                width: 15vw;
+            }
+            input#admin_email {
+                width: 15vw;
+                background-color: white;
+            }
+            input#admin_password {
+                background-color: white;
+                width: 15vw;
+            }
+            input#admin_password_confirmation {
+                background-color: white;
+                width: 15vw;
+            }
+        }
+    }
+}
+//End of Buyer Registration//
+
+//Buyer Home//
+.buyer-container {
+    .buyer-body {
+        height:89vh;
+        width: 100vw;
+        background: #351b7e;
+        .welcome-buyer {
+            background-image: url(buyerdivbg.jpeg);
+            height: 89vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            .headline {
+                font-family: 'Public Sans','sans-serif';
+                color: white;
+                background: #351b7e;
+                width: 20vw;
+                display: flex;
+                justify-content: center;
+                margin-top: 6em;
+            }
+        }
+    }
+}
+//End of Buyer Home//
+
+//Broker Home//
+.broker-container{
+    .broker-body {
+        height:89vh;
+        width: 100vw;
+        background: #351b7e;
+    }
+}
+//End of Broker Home//
+
+//Admin Home//
+//End of Admin Home//

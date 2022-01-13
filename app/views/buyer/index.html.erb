@@ -1,0 +1,90 @@
+
+<h1>Buyer's Index</h1>
+
+<% if @all_stocks.empty? %>
+    <p>There are no stocks available.</p>
+<% else %>
+    <h1>All stocks</h1>
+    <table>
+        <thead>
+            <tr>
+            <th>Ticker</th>
+            <th>Name</th>
+            <th>Last Price</th>
+            <th>Broker</th>
+            <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @all_stocks.each do |stock| %>
+            <tr>
+                <td><%= stock.ticker %></td>
+                <td><%= stock.name %></td>
+                <td>$<%= stock.last_price %></td>
+                <td><%= stock.added_by %></td>
+                <td><%= link_to 'Buy Stock', buyer_stock_path(stock, broker_id: stock.added_by, stock_id: stock.id), method: :get %></span></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% end %>
+
+<%# <h3><%= link_to "Buyer Portfolio", buyer_portfolio_path %></h3>
+
+<div class='buyer-container'>
+    <div class='buyer-body'>
+      <div class='welcome-buyer'>
+      <div class="tradingview-widget-container">
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+        {
+          "description": "",
+          "proName": "NASDAQ:AAPL"
+        },
+        {
+          "description": "",
+          "proName": "AMEX:SPY"
+        },
+        {
+          "description": "",
+          "proName": "NASDAQ:TSLA"
+        },
+        {
+          "description": "",
+          "proName": "NASDAQ:AMZN"
+        },
+        {
+          "description": "",
+          "proName": "NASDAQ:MSFT"
+        },
+        {
+          "description": "",
+          "proName": "NYSE:GME"
+        },
+        {
+          "description": "",
+          "proName": "NASDAQ:PYPL"
+        },
+        {
+          "description": "",
+          "proName": "NYSE:BABA"
+        }
+          ],
+        "showSymbolLogo": true,
+        "colorTheme": "light",
+        "isTransparent": false,
+        "displayMode": "adaptive",
+        "locale": "en"
+        }
+      </script>
+      </div>
+        <div class='headline'>
+          <h1> Welcome back.</h1>
+        </div>
+      </div>
+    </div>
+</div>
+    
+

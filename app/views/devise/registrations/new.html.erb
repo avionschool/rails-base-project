@@ -1,0 +1,51 @@
+<div class='buyerreg-container'>
+  <div class='reg-forms'>
+    <div class='signup-form'>
+    <% if current_page?(new_buyer_registration_path) %>
+    <h2>Create Your Buyer Account</h2>
+    <% elsif current_page?(new_broker_registration_path) %>
+    <h2>Create Your Broker Account</h2>
+    <% elsif current_page?(new_admin_registration_path) %>
+    <h2>Create Your Admin Account</h2>
+    <% end %>
+      
+      <p> Join us and have the most fun trading stocks! </p>
+      <br />
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :honeypot => true }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <% if resource.account_type == "broker" %>  
+        <div class="input-field">
+        <%= f.label :broker_name %><br />
+        <%= f.text_field :broker_name, autocomplete: "broker name" %>
+        </div>
+      <% end %>
+
+      <div class='input-field'>
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: 'email' %>
+      </div>
+      <br />
+      <div class='input-field'>
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: 'new-password' %>
+      </div>
+      <br />
+      <div class='input-field'>
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: 'new-password' %>
+      </div>
+      <br />
+      <div class='btn submit-btn'>
+      <%= f.submit 'Sign up' %>
+      <% end %>
+      </div>
+      
+      <br />
+      One of us? <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
