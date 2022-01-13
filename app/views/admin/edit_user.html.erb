@@ -1,0 +1,26 @@
+<h1> Edit user account </h1>
+
+<%= form_with scope: :user, url: user_profile_path, method: :patch  do |f| %>
+    <div>
+
+    <div>
+    <%= f.label :email, :class => 'label' %> <br/>
+    <%= f.email_field :email, autofocus: true, value: @user.email %>
+    </div>
+
+    <div>
+    <%= f.label :username, :class => 'label' %> <br/>
+    <%= f.text_field :username, autofocus: true, value: @user.username %>
+    </div>
+
+    <div>
+    <%= f.label :balance, :class => 'label' %> <br/>
+    <%= f.text_field :balance, autofocus: true, value: @user.wallet.balance %>
+    </div>
+    </div>
+    <div>
+    <%= f.submit "Edit Account" %>
+    </div>
+
+
+<% end %>

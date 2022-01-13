@@ -12,7 +12,15 @@
             <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'text-field', :placeholder => "Email" %>
           </div>
           <div class="field">
-            <%= f.password_field :password, autocomplete: "new-password", :class => 'text-field', :placeholder => "Password" %>
+            <%= f.label :username, :class => 'label' %><br />
+            <%= f.text_field :username, autofocus: true, autocomplete: "Username", :class => 'text-field' %>
+          </div>
+          <div class="field">
+            <%= f.label :password, :class => 'label' %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", :class => 'text-field' %>
           </div>
           <div class="field">
             <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => 'text-field', :placeholder => "Password Confirmation" %>

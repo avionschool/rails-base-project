@@ -2,6 +2,8 @@
   <%= link_to "Log in", new_session_path(resource_name), :class => 'link ' %><br />
 <% end %>
 
+<% if resource_name == :user %>
+
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <%= link_to "Sign Up", new_registration_path(resource_name), :class => 'link sign-up' %><br />
 <% end %>
@@ -22,4 +24,8 @@
   <%- resource_class.omniauth_providers.each do |provider| %>
     <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post, :class => 'link' %><br />
   <% end %>
+<% end %>
+
+<% else %>
+  <%= link_to "Log in as Trader?", new_user_session_path, :class => 'nav-link'%>
 <% end %>

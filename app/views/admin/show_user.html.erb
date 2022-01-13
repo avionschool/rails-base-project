@@ -1,0 +1,54 @@
+<h3> Account information </h3>
+<h3> Username: </h3>
+<h5> <%= @user.username %> </h5>
+
+<h3> Email: </h3>
+<h5> <%= @user.email %> </h5>
+
+<h3> Account registration date: </h3>
+<h5> <%= @user.created_at %> </h5>
+
+<h3> Last Update: </h3>
+<h5> <%= @user.updated_at %> </h5>
+
+<h3> Wallet code: </h3>
+<h5> <%= @user.wallet.id %> </h5>
+
+<h3> Wallet balance: </h3>
+<h5> <%= to_PHP(@user.wallet.balance) %> </h5>
+
+<% if @tradelogs.empty? %>
+<h1>No Transactions yet</h1>
+
+<% else %>
+
+
+<h1> Trade logs user </h1>
+
+<div>
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Stock</th>
+            <th>Units</th>
+            <th>Value per stock</th>
+            <th>Total Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <% @tradelogs.each do |log| %>
+            <td><%=trade_logger(log)[:date]%></td>
+            <td><%=trade_logger(log)[:type]%></td>
+            <td><%=trade_logger(log)[:stock]%></td>
+            <td><%=trade_logger(log)[:units].round(4)%></td>
+            <td><%=trade_logger(log)[:value_per_stock]%></td>
+            <td><%=trade_logger(log)[:total_amount]%></td>
+        </tr>
+        <%end%>
+        <%end%>
+    </tbody>
+</table>
+</div>
