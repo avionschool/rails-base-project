@@ -1,0 +1,55 @@
+<h1>Showing All Registered Users</h1>
+<br>
+<% if !@all_brokers.empty? %>
+<h4>All Brokers</h4>
+  <table class="table mt-3">
+    <thead class="thead-dark">
+      <tr>
+      <th>Broker ID</th>
+      <th>Broker Name</th>
+      <th>Broker Email</th>
+      <th>View</th>
+      <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody class="text-white" style="font-size: 16px;">
+      <% @all_brokers.each do |broker| %>
+      <tr>
+        <td><%= broker.id %></td>
+        <td><%= broker.broker_name %></td>
+        <td><%= broker.email %></td>
+        <td><%= link_to 'View Broker', show_broker_path(broker), method: :get, class: "btn btn-dark" %></td>
+        <td><%= link_to 'Edit Broker', edit_broker_path(broker), method: :get, class: "btn btn-dark" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>There are no registered Brokers yet.</p>
+<% end %>
+<br>
+<% if !@all_buyers.empty? %>
+<h4>All Buyers</h4>
+  <table class="table mt-3">
+    <thead class="thead-dark">
+      <tr>
+      <th>Buyer ID</th>
+      <th>Buyer Email</th>
+      <th>View</th>
+      <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody class="text-white" style="font-size: 16px;">
+      <% @all_buyers.each do |buyer| %>
+      <tr>
+        <td><%= buyer.id %></td>
+        <td><%= buyer.email %></td>
+        <td><%= link_to 'View Buyer', show_buyer_path(buyer), method: :get, class: "btn btn-dark" %></td>
+        <td><%= link_to 'Edit Buyer', edit_buyer_path(buyer), method: :get, class: "btn btn-dark" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>There are no registered buyers yet.</p>
+<% end %>

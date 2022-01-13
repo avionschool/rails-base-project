@@ -1,0 +1,11 @@
+<h1>Edit Broker</h1>
+
+<%= form_for @broker, :url => {:action => "edit_broker"} do |f| %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <%= f.label :broker_name %>
+    <%= f.text_field :broker_name %>
+    <%= f.submit %>
+<% end %>
+
+<%= link_to "Back to Users", admin_users_path %>
