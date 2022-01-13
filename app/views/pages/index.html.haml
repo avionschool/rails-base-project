@@ -1,11 +1,8 @@
 .main-container
-  -if current_user
-    =current_user.username
-    =link_to "Sign out", destroy_user_session_path, method: :delete
-  -else
-    =link_to "Sign up", new_user_registration_path
-    =link_to "Sign in", new_user_session_path
-
+  .image-container
+    =image_tag ('Homepage.png'), class: "img-homepage", width: 840
+ 
+  
   .trending-container
     %h1.trending-title="Trending Coins"
     .trending-header
@@ -18,5 +15,10 @@
         %p.coin-name=coin['item']['name']
         %p.coin-symbol=coin['item']['symbol']
         %p.coin-rank=coin['item']['market_cap_rank']
+    -if current_user
+      =link_to "Sign out", destroy_user_session_path, method: :delete
+    -else
+      =link_to "Sign up", new_user_registration_path
+      =link_to "Sign in", new_user_session_path
 
 

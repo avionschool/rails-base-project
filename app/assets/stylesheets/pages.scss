@@ -8,13 +8,20 @@
     grid-template-columns: 1fr 1fr 320px;
     grid-template-areas:
         "welcome welcome trending"
-        "buy sell."
 }
 
 .trending-container{
     grid-area: trending;
     display: grid;
     color: rgb(19, 185, 157);
+}
+
+.img-container{
+    grid-area: welcome;
+    .img-homepage {
+        height: 100%;
+        width: 100%;
+    }
 }
 
 .trending-header{
@@ -29,11 +36,6 @@ h3 {
 }
 
 .trending-coin-item{
-  
     display: grid;
     grid-template-columns: repeat(2, 100px) 50px;
-    :hover{
-        background-color: gray;
-    }
-    
 }

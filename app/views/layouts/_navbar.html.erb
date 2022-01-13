@@ -1,9 +1,8 @@
 <header>
-        <div class='container'>
-
-            <nav>
+        <div class='navbar-container'>
+            <div class='navbar'>
                 <ul>
-                    <li><img src="/images/avstonks.png"/></li>
+                    <li><img class = "img-logo" src="/images/avstonks.png"/></li>
                     <li><%= link_to "Home", root_path %></li>
                     <li><%= link_to "Trade", trade_path("BTC") %></li>
                     <% if current_user&.admin? %>
@@ -18,7 +17,7 @@
                     <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
                     <% end %>
                 </ul>
-            </nav>
+            </div>
 
         </div>
 </header>
