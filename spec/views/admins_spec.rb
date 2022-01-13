@@ -48,6 +48,11 @@ RSpec.describe "Admin controls", type: :feature do
     click_button('Log in')
   end
 
+  def fill_coins(base: ,coingecko_id: )
+    fill_in "coin[base]", with: base
+    fill_in "coin[coingecko_id]", with: coingecko_id
+  end
+
   before {seed_users}
   before {seed_coins}
 
@@ -77,5 +82,30 @@ RSpec.describe "Admin controls", type: :feature do
       expect(page).to have_content('cc@avion.com')
     end
 
+  end
+
+  describe "on admin ADD coins" do
+    before {admin_log_in}
+    before {visit admins_path}
+    before {click_link('Coins')}
+    before {click_link('Add new coin')}
+
+    it "fails to add on blank params" do
+      fill_coins(base: "", coingecko_id: "")
+      click_button('Create Coin')
+      expect(page).to have_content("prohibited this coin from being saved")
+    end
+
+    it "fails to add on non-binance coins" do
+      fill_coins(base: "POOCOIN", coingecko_id: "poocoin")
+      click_button('Create Coin')
+      expect(page).to have_content("may not be listed on binance")
+    end
+
+    it "adds a proper coin" do
+      fill_coins(base: "MANA", coingecko_id: "decentraland")
+      click_button('Create Coin')
+      expect(page).to have_content("successfully added")
+    end
   end
 end
