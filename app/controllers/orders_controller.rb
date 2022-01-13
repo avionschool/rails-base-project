@@ -6,9 +6,11 @@ class OrdersController < ApplicationController
 
   def create
     @coin = Coin.find(params[:order][:coin_id])
-    @wallet = Wallet.find(params[:wallet_id])
-    @order = @wallet.orders.build(order_params)
-    @portfolio = Portfolio.find_by(coin_id: @coin.id)
+    if current_user
+      @wallet = Wallet.find(params[:wallet_id])
+      @order = @wallet.orders.build(order_params)
+      @portfolio = Portfolio.find_by(coin_id: @coin.id)
+    end
     if @order.save
       # redirect_to trade_path(@coin)
       redirect_to trade_path(base: @coin.base, target: @coin.target, id:@coin.id)
