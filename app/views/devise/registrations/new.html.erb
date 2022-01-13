@@ -1,28 +1,26 @@
 <%# Main SASS %>
 <%= stylesheet_link_tag '/pages/registration/main.scss'%>
 
-
-
 <div class='container'>
-  <main class='row'> 
-    <%# Left Container %>
-    <div class='left-container column'>
-      <div class='left-header'>
-        <a class='nav-logo'>Investonks<span class='dot'></span></a>
-      </div>
-<<<<<<< HEAD
-=======
-      <%= image_tag('', :class => 'register-img') %>
->>>>>>> 9dd218210259a1f53d6f3f82b7aef771b3a946e9
-    </div>
+  <header>
+    <nav class='navbar'>
+      <%= link_to root_path, :class => 'nav-logo' do %>
+      Investonks<span class='dot'></span>
+      <% end %>
+    </nav>
+  </header>
+  <main class='row-register'> 
     <%# Right Container %>
     <div class='right-container column'>
-      <header>
-      Already a member? 
-      <%= link_to 'Sign In', new_user_session_path, :class => 'link'%>
-      </header>
       <h1>Sign up</h1>  
       <%= render 'form'%>
     </div>
+  <div>
+  Already a member? 
+  <%= link_to 'Sign In', new_user_session_path, :class => 'link'%>
+  </div>
   </main>
-</div>
+  <footer>
+    <%= render 'devise/shared/footer' %>
+  </footer>
+</>

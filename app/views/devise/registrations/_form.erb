@@ -4,33 +4,23 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <div class='form-container'>
-    <div class='row'>
-      <div class='col-1'>
+    <div class='row-register'>
+      <div class='col-1-register'>
         <div class='form'>
           <%= render "devise/shared/error_messages", resource: resource %>
           <div class="field">
-            <%= f.label :email, :class => 'label' %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'text-field' %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'text-field', :placeholder => "Email" %>
           </div>
           <div class="field">
-            <%= f.label :password, :class => 'label' %>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password", :class => 'text-field' %>
+            <%= f.password_field :password, autocomplete: "new-password", :class => 'text-field', :placeholder => "Password" %>
           </div>
           <div class="field">
-            <%= f.label :password_confirmation, :class => 'label' %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => 'text-field' %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => 'text-field', :placeholder => "Password Confirmation" %>
           </div>
           <div class="actions">
             <%= f.submit "Create Account", :class => 'btn' %>
           </div>
         </div>
-      </div>
-
-      <div class='col-2'>
-        <%= image_tag 'homepage-img.png', :class => 'homepage-img' %>
       </div>
       </div>
     </div>

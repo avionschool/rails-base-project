@@ -2,6 +2,10 @@
 @import '../../base/mixins/mixins';
 @import '../responsive/responsive.scss';
 
+
+/********************
+Form Login
+********************/
 .form-container {
   @include flexCenter();
   flex-direction: column;
@@ -157,8 +161,21 @@
 
 }
 
-@include respond-to('xl') {
-  .row-login {
+/********************
+Form Register
+********************/
+.row-register {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  margin: 0 auto;
+  text-align: center;
+}
 
+@include respond-to('medium') {
+  .row-register {
+    background-color: $lightGray;
+    max-width: 350px;
+    border-radius: 10px;
   }
 }

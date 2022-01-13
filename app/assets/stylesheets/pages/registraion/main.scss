@@ -13,12 +13,23 @@ Content
 .container {
   height: 100vh;
   width: 100%;
+  text-align: center;
+
+  .form-container {
+    height: 60vh;
+  }
 }
 
 .row {
   display: flex;
+
 }
 
 .column {
   padding: 10px;
+}
+
+.link {
+  text-decoration: none;
+  font-weight: 400;
 }
