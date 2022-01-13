@@ -4,7 +4,8 @@
         <div class='table'>
             <div class='stock-table'>
                 <% if @bought_stocks.empty? %>
-                <p>You have not bought any stocks.</p>
+                <h2>You have not bought any stocks.</h2>
+                <%= link_to "Go to Stock List.", buyer_index_path, class:'buy-stock'%>
                 <% else %>
                     <table class='data'>
                         <thead class='table-head'>
@@ -27,7 +28,7 @@
                                 <td colspan='2'><%= stock.buyer_stocks.first.quantity %></td>
                                 <td colspan='2'><%= stock.brokers.first.broker_name%></td> 
                                 <td colspan='2'><%= (stock.buyer_stocks.first.quantity * stock.buyer_stocks.first.stock_price).to_f %>
-                                <td colspan='2'><%= link_to "Sell Stock", buyer_stock_path(stock), method: :delete, data: { confirm: "Are you sure you want to sell all quantity of this stock?"} %>
+                                <td colspan='2'><%= link_to "Sell Stock", buyer_stock_path(stock), class:'sell-stock',method: :delete, data: { confirm: "Are you sure you want to sell all quantity of this stock?"} %>
                             </tr>
                             </tr>
                         <% end %>
