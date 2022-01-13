@@ -4,6 +4,12 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <% if resource.account_type == "broker" %>
+      <div class="input-field">
+          <%= f.label :broker_name %><br />
+          <%= f.text_field :broker_name, autocomplete: "broker name"%>
+      </div>
+    <% end %>
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
