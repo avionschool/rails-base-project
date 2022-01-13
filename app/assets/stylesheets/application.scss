@@ -275,7 +275,7 @@
                     width: 17vw;
                     height: 12vh;
                 }
-                .link-portfolio {
+                .link-portfolio, .link-transactions, .link-profile {
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -283,7 +283,7 @@
                     color: white;
                     background: #351b7e;
                     text-decoration: none;
-                    font-size: 1em;
+                    font-size: 0.9em;
                     padding: 0.5em;
                 }
                 .stock-list {
@@ -291,6 +291,7 @@
                     background: white;
                     padding: 1.5em;
                     padding-top: 0.7em;
+                    padding-bottom: 0;
                     color: #351b7e;
                     font-family: 'Public Sans','sans-serif';
                     .stocklist-head {

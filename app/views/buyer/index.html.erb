@@ -52,6 +52,12 @@
             <h3>
             <%= link_to 'PORTFOLIO', buyer_portfolio_path,class:'link-portfolio' %>
             </h3>
+            <h3>
+            <%= link_to 'TRANSACTIONS', buyer_transactions_path,class:'link-transactions' %>
+            </h3>
+            <h3>
+            <%= link_to "PROFILE", edit_buyer_registration_path,class:'link-profile' %>
+            </h3>
           </div>
           <div class='stock-list'>
             <% if @all_stocks.empty? %>
