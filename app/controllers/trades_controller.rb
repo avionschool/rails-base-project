@@ -8,12 +8,13 @@ class TradesController < ApplicationController
 
   def show
     # @coin = Coin.find_by(base: params[:base], target: params[:target])
+    Coin.update_price
     @coins = Coin.all
     @coin = Coin.find_by(base: params[:base])
     @cp_str= "#{@coin.base}#{@coin.target}"
     if current_user
       @wallet = current_user.wallet
-      @order = @coin.orders.build
+      @order = @wallet.orders.build
       @orders = @wallet.orders
       @portfolio = Portfolio.find_by(coin_id: @coin.id)
     end
@@ -35,6 +36,6 @@ class TradesController < ApplicationController
   private 
   
   def order_params
-    params.require(:order).permit(:price, :quantity, :kind).merge(wallet_id: current_wallet.id)
+    params.require(:order).permit(:price, :quantity, :kind).merge(wallet_id: current_user.wallet.id)
   end
 end

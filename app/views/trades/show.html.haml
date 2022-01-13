@@ -1,4 +1,4 @@
-- if @order.errors.any?
+- if current_user && @order.errors.any?
   .error_explanation
     %h2
       = pluralize(@order.errors.count, "error")
