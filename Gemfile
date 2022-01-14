@@ -5,7 +5,6 @@ ruby '3.0.2'
 
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # gem 'pg'
-gem 'sqlite3'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
@@ -26,6 +25,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop'
   gem 'rest-client'
+  gem 'sqlite3'
 end
 
 group :development do
@@ -44,4 +44,8 @@ group :test do
   gem 'webmock'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+end
+
+group :production do 
+  gem 'pg'
 end
