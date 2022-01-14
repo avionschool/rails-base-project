@@ -392,13 +392,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: bisque;
+            background: lightcyan;
             color: black;
             border-radius:3px;
             font-size: 1em;
             margin: 3em;
             tr {
-                background: blanchedalmond;
+                background: white;
             }
             th {
                 background: white;
@@ -601,13 +601,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: bisque;
+            background: lightcyan;
             color: black;
             border-radius:3px;
             font-size: 1em;
             margin: 3em;
             tr {
-                background: blanchedalmond;
+                background: white;
             }
             th {
                 background: white;
@@ -689,8 +689,11 @@
             flex-direction: row;
             align-items: center;
             justify-content: space-evenly;
+            p {
+                color: lavenderblush;
+            }
             .brokers-table {
-                border-top: 2px dotted rebeccapurple;
+                border-top: 3px solid lightcyan;
                 h3 {
                     text-decoration: underline;
                     color: white;
@@ -839,19 +842,22 @@
             flex-direction: row;
             align-items: center;
             background: white;
-            color: black;
+            color: #351b7e;
+            h1 {
+                color: black;
+            }
         }
         .transactions-table {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: bisque;
+            background: lightcyan;
             color: black;
             border-radius:3px;
             font-size: 1em;
             margin: 3em;
             tr {
-                background: blanchedalmond;
+                background: white;
             }
             th {
                 background: white;
@@ -863,3 +869,77 @@
     }
 }
 //End of Admin Transactions//
+
+//Admin Pending//
+.adminpending-container {
+    .adminpending-body {
+        font-family: 'Poppins','sans-serif';
+        background: #351b7e;
+        height: 100vh;
+        border-radius: 3px;
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding-left: 3em;
+            color: black;
+            background: white;
+            font-family: 'Public Sans','sans-serif';
+        }
+        .tables {
+            padding: 1em;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            p {
+                color: lavenderblush;
+            }
+            .brokers-table {
+                border-top: 3px solid lightcyan;
+                h3 {
+                    text-decoration: underline;
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+                th {
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+                td {
+                    background: lavender;
+                    font-size: 0.85em;
+                    padding-left: 0.5em;
+                    padding-right: 0.5em;
+                }
+                .btn-success {
+                    text-decoration: none;
+                    color: rebeccapurple;
+                }
+            }
+            .users-table {
+                h3 {
+                    text-decoration: underline;
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+                th {
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+
+                td {
+                    background: lavender;
+                    font-size: 0.85em;
+                    padding-left: 0.5em;
+                    padding-right: 0.5em;
+                }
+                .btn-success {
+                    text-decoration: none;
+                    color: rebeccapurple;
+                }
+            }
+        }
+    }
+}
+//End of Admin Pending//
