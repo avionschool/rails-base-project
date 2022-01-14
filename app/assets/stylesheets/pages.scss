@@ -43,9 +43,13 @@ h3 {
 }
 
 .trending-coin-item{
+    color: black;
     display: grid;
     grid-template-columns: repeat(2, 100px) 50px;
 }
+
+.trending-title{
+    color:black;
 
 .sign-in-containers{
     display: flex;

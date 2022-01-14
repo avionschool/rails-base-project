@@ -2,45 +2,47 @@
   .error_explanation
     %h2
       = pluralize(@order.errors.count, "error")
-      prohibited this user from being saved:
+      prohibited this order from being saved:
     %ul
-      - @user.errors.full_messages.each do |msg|
+      - @order.errors.full_messages.each do |msg|
         %li= msg
 
 #data-selector.hidden{"data-coin" => "#{@cp_str}"}
-.trades-container
-  .tradingview-widget-container
-    #tradingview_71d0f
-      %script(type="text/javascript" src="https://s3.tradingview.com/tv.js")
-      :javascript
-        var cp_str = document.getElementById("data-selector").dataset.coin
-        new TradingView.widget(
-          {
-          "width": 840,
-          "height": 520,
-          "symbol": `BINANCE:${cp_str}`,
-          "interval": "D",
-          "timezone": "Etc/UTC",
-          "theme": "dark",
-          "style": "1",
-          "locale": "en",
-          "toolbar_bg": "#f1f3f6",
-          "enable_publishing": false,
-          "container_id": "tradingview_71d0f"
-          })
+.trades-body-container
+  .trades-container
+    %h2.trades-title= @cp_str
+    .tradingview-widget-container
+      #tradingview_71d0f
+        %script(type="text/javascript" src="https://s3.tradingview.com/tv.js")
+        :javascript
+          var cp_str = document.getElementById("data-selector").dataset.coin
+          new TradingView.widget(
+            {
+            "width": 840,
+            "height": 520,
+            "symbol": `BINANCE:${cp_str}`,
+            "interval": "D",
+            "timezone": "Etc/UTC",
+            "theme": "dark",
+            "style": "1",
+            "locale": "en",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "container_id": "tradingview_71d0f"
+            })
 
-  .trades-index-container
-    =react_component('TradesIndex', coins: @coins)
+    .trades-index-container
+      =react_component('TradesIndex', coins: @coins)
 
-  -if current_user
-    =render partial: "orders/form"
+    -if current_user
+      =render partial: "orders/form"
 
-    .trades-orders-container
-      .order-item-container
-        %p.orders-index-data.header Symbol
-        %p.orders-index-data.header Quantity
-        %p.orders-index-data.header Price
-        %p.orders-index-data.header Order type
-        %p.orders-index-data.header Created at
-      .trades-orders-index
-        =render partial: "orders/index"
+      .trades-orders-container
+        .order-item-container
+          %p.orders-index-data.header Symbol
+          %p.orders-index-data.header Quantity
+          %p.orders-index-data.header Price
+          %p.orders-index-data.header Order type
+          %p.orders-index-data.header Created at
+        .trades-orders-index
+          =render partial: "orders/index"
