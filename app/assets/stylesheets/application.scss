@@ -673,8 +673,9 @@
             flex-direction: row;
             align-items: center;
             padding-left: 3em;
-            color: #351b7e;
+            color: black;
             background: white;
+            font-family: 'Public Sans','sans-serif';
         }
         .tables {
             padding: 1em;
@@ -728,3 +729,91 @@
     }
 }
 //End of Admin Users//
+
+//Admin Add Broker//
+.newbroker-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .newbroker-body {
+        font-family: 'Poppins','sans-serif';
+        background: #351b7e;
+        height: 100vh;
+        width: 50vw;
+        border-radius: 3px;
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: black;
+            background: white;
+            font-family: 'Public Sans','sans-serif';
+        }
+        .form {
+            background: rgb(197, 197, 243);
+            border-radius: 3px;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            padding: 2em;
+            display: flex;
+            align-items: center;
+            input {
+                border: none;
+                border-bottom: 3px solid lightcyan;
+                width: 20vw;
+                background: none;
+            }
+            .submit {
+                font-family: 'Public Sans', 'sans-serif';
+                background: lavender;
+            }
+        }
+    }
+}
+//End of Admin Add Broker//
+
+//Admin Add Buyer//
+.newbuyer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .newbuyer-body {
+        font-family: 'Poppins','sans-serif';
+        background: #351b7e;
+        height: 100vh;
+        width: 50vw;
+        border-radius: 3px;
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: black;
+            background: white;
+            font-family: 'Public Sans','sans-serif';
+        }
+        .form {
+            background: rgb(197, 197, 243);
+            border-radius: 3px;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            padding: 2em;
+            display: flex;
+            align-items: center;
+            input {
+                border: none;
+                border-bottom: 3px solid lightcyan;
+                width: 20vw;
+                background: none;
+            }
+            .submit {
+                font-family: 'Public Sans', 'sans-serif';
+                background: lavender;
+            }
+        }
+    }
+}
+//End of Admin Add Buyer//
