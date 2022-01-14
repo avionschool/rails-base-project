@@ -1,42 +1,77 @@
 <div class='broker-container'>
     <div class='broker-body'>
-        <div class='stock-chart'>
-            
-            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-            <script type="text/javascript">
-        new TradingView.widget(
-        {
-        "width": 1200,
-        "height": 650,
-        "symbol": "NASDAQ:TSLA",
-        "interval": "D",
-        "timezone": "Etc/UTC",
-        "theme": "light",
-        "style": "1",
-        "locale": "en",
-        "toolbar_bg": "#f1f3f6",
-        "enable_publishing": false,
-        "withdateranges": true,
-        "hide_side_toolbar": false,
-        "allow_symbol_change": true,
-        "details": true,
-        "hotlist": true,
-        "calendar": true,
-        "container_id": "tradingview_8359a"
-        }
-        );
-            </script>
-        </div>
-        <div class='search-stock'>
+      <div class='welcome-broker'>
+      <div class='tradingview-widget-container'>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+      {
+      "symbol": "NASDAQ:AAPL",
+      "width": 350,
+      "colorTheme": "light",
+      "isTransparent": false,
+      "locale": "en"
+      }
+      </script>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+      {
+      "symbol": "NASDAQ:TSLA",
+      "width": 350,
+      "colorTheme": "light",
+      "isTransparent": false,
+      "locale": "en"
+      }
+      </script>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+      {
+      "symbol": "NASDAQ:MSFT",
+      "width": 350,
+      "colorTheme": "light",
+      "isTransparent": false,
+      "locale": "en"
+      }
+      </script>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+      {
+      "symbol": "NYSE:BABA",
+      "width": 350,
+      "colorTheme": "light",
+      "isTransparent": false,
+      "locale": "en"
+      }
+      </script>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+      {
+      "symbol": "NASDAQ:COIN",
+      "width": 350,
+      "colorTheme": "light",
+      "isTransparent": false,
+      "locale": "en"
+      }
+      </script>
+      </div>
+        <div class='headline'>
+          <div class='welcome'>
+            <h1 class='welcome-tag'> Welcome back.</h1>
+            <h3>
+            <%= link_to 'PORTFOLIO', broker_portfolio_path,class:'link-portfolio' %>
+            </h3>
+            <h3>
+            <%= link_to 'TRANSACTIONS', broker_transactions_path,class:'link-transactions' %>
+            </h3>
+            <h3>
+            <%= link_to "PROFILE", edit_broker_registration_path,class:'link-profile' %>
+            </h3>
+          </div>
+          <div class='search-stock'>
             <h3>Search Stock</h3>
                 <%= form_tag search_stock_path, remote: true, method: :get do %>
                 <%= text_field_tag :stock, params[:stock], placeholder: 'Enter stock ticker...' %>
-                <%= submit_tag "Submit", type: :submit%>
+                <%= submit_tag 'SEARCH',class:'btn', type: :submit%>
                 <% end %>
             <div id='search_result'>
                 <%= render 'broker/search_result' %>
             </div>
-            <h3><%= link_to "Broker Portfolio", broker_portfolio_path %></h3>
+          </div>
         </div>
+      </div>
     </div>
 </div>

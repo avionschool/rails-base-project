@@ -32,17 +32,17 @@
         flex-direction: row;
         justify-content: space-between;
         .app-logo {
-            height: 3em;
+            height: 2.6em;
         }
         .landing-cta {
-            padding-right: 1em;
+            padding-right: 0.5em;
             display: flex;
             align-items: center;
             justify-content:space-evenly;
             position: relative;
             font-family: 'Share Tech Mono', monospace;
             font-weight: 800;
-            font-size: 1.3em;
+            font-size: 1.2em;
         }
         a {
             text-decoration: none;
@@ -336,6 +336,7 @@
             display: flex;
             .stock-table {
                 background: #351b7e;
+                border-radius:3px;
                 width:60vw;
                 color: white;
                 padding:2em;
@@ -391,15 +392,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: bisque;
+            background: lightcyan;
             color: black;
-            font-size: 1.1em;
+            border-radius:3px;
+            font-size: 1em;
             margin: 3em;
             tr {
-                background: blanchedalmond;
+                background: white;
             }
             th {
                 background: white;
+            }
+            td {
+                border-bottom: 3px solid gray;
             }
         }
     }
@@ -412,6 +417,7 @@
         height: 100vh;
         width: 100vw;
         display: flex;
+        margin-left: 4%;
         flex-direction: column;
         font-family: 'Poppins','sans-serif';
         .header {
@@ -419,8 +425,8 @@
             flex-direction: row;
             align-items: center;
             padding: 1em;
-            padding-left: 2em;
-            padding-bottom: 2em;
+            padding-left: 4.5em;
+            padding-bottom: 1em;
             color: #351b7e;
             h2 {
                 font-size: 1.5em;
@@ -465,21 +471,569 @@
 //End of Buyer Profile//
 
 //Buy and Sell Stock//
+.showstock-container {
+    .showstock-body {
+        display: flex;
+        flex-direction: row;
+        align-items: left;
+        justify-content: right;
+        font-family: 'Public Sans','sans-serif';
+        height: 100vh;
+        margin: 5%;
+        .stock-head {
+            display: flex;
+            flex-direction: column;
+            padding: 2em;
+            background: #351b7e;
+            color: white;
+            height: 547px;
+            .img {
+                padding-left: 1em;
+            }
+        }
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            h1 {
+                text-decoration: underline;
+            }
+            .buy {
+                font-family: 'Poppins','sans-serif';
+                background: lavender;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-left: 70px;
+                font-size: 1em;
+            }
+        }
+    }
+}
 //End of Buy and Sell Stock//
 
 //Broker Home//
-.broker-container{
+.broker-container {
     .broker-body {
-        font-family: 'Public Sans','sans-serif';
-        display: flex;
-        flex-direction: column;
-        .stock-chart {
+        width: 100vw;
+        .welcome-broker {
+            background: white;
+            height: 100vh;
+            border-radius: 3px;
             display: flex;
-            float: left;
+            flex-direction: column;
+            .tradingview-widget-container {
+                display: flex;
+                flex-direction: row;
+            }
+            .headline {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+                margin-top: 6em;
+                .welcome-tag {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-family: 'Public Sans','sans-serif';
+                    color: white;
+                    background: #351b7e;
+                    border-radius: 3px;
+                    width: 17vw;
+                    height: 12vh;
+                }
+                .link-portfolio, .link-transactions, .link-profile {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-family: 'Poppins','sans-serif';
+                    color: white;
+                    background: #351b7e;
+                    border-radius: 3px;
+                    text-decoration: none;
+                    font-size: 0.9em;
+                    padding: 0.5em;
+                }
+                .search-stock {
+                    margin-right: 15em;
+                    background: #351b7e;
+                    padding: 1.5em;
+                    border-radius: 3px;
+                    padding-top: 0.7em;
+                    padding-bottom: 0;
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                    .btn {
+                        font-family: 'Poppins','sans-serif';
+                    }
+                    input::placeholder {
+                        font-family: 'Poppins','sans-serif';
+                    }
+                }
+            }
         }
     }
 }
 //End of Broker Home//
 
-//Admin Home//
-//End of Admin Home//
+//Broker Transactions//
+.brokertransactions-container {
+    .brokertransactions-body{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Public Sans','sans-serif';
+        background: #351b7e;
+        .header {
+            font-family: 'Poppins','sans-serif';
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background: white;
+            color: #351b7e;
+            h1 {
+                color: black;
+            }
+        }
+        .transactions-table {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: lightcyan;
+            color: black;
+            border-radius:3px;
+            font-size: 1em;
+            margin: 3em;
+            tr {
+                background: white;
+            }
+            th {
+                background: white;
+            }
+            td {
+                border-bottom: 3px solid gray;
+            }
+        }
+    }
+}
+//End of Broker Transactions//
+
+//Broker Portfolio//
+.brokerportfolio-container {
+    .brokerportfolio-body {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        .headtag {
+            display: flex;
+            float: left;
+            font-family: 'Poppins',sans-serif;
+        }
+        .table {
+            display: flex;
+            .stock-table {
+                background: #351b7e;
+                border-radius:3px;
+                width:60vw;
+                color: white;
+                padding:2em;
+                font-family: 'Public Sans',sans-serif;
+                font-size: 1em;
+                .buy-stock {
+                    text-decoration: underline;
+                    color: white;
+                }
+                .table-head {
+                    font-size: 1.3em;
+                    th {
+                        padding: 10px;
+                    }
+                }
+                .table-body {
+                    background: white;
+                    color: black;
+                    td {
+                    padding: 10px;
+                    .sell-stock {
+                        text-decoration: none;
+                    }
+                    }
+                }
+            }
+        }
+    }
+}
+//End of Broker Portfolio//
+
+//Admin Users//
+.adminusers-container {
+    .adminusers-body {
+        font-family: 'Poppins','sans-serif';
+        background: #351b7e;
+        height: 100vh;
+        border-radius: 3px;
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding-left: 3em;
+            color: black;
+            background: white;
+            font-family: 'Public Sans','sans-serif';
+        }
+        .tables {
+            padding: 1em;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            p {
+                color: lavenderblush;
+            }
+            .brokers-table {
+                border-top: 3px solid lightcyan;
+                h3 {
+                    text-decoration: underline;
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+                th {
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+                td {
+                    background: lavender;
+                    padding-left: 0.5em;
+                    padding-right: 0.5em;
+                }
+                .btn-dark {
+                    text-decoration: none;
+                    color: rebeccapurple;
+                }
+            }
+            .users-table {
+                h3 {
+                    text-decoration: underline;
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+                th {
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+
+                td {
+                    background: lavender;
+                    padding-left: 0.5em;
+                    padding-right: 0.5em;
+                }
+                .btn-dark {
+                    text-decoration: none;
+                    color: rebeccapurple;
+                }
+            }
+        }
+    }
+}
+//End of Admin Users//
+
+//Admin Add Broker//
+.newbroker-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .newbroker-body {
+        font-family: 'Poppins','sans-serif';
+        background: #351b7e;
+        height: 100vh;
+        width: 50vw;
+        border-radius: 3px;
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: black;
+            background: white;
+            font-family: 'Public Sans','sans-serif';
+        }
+        .form {
+            background: rgb(197, 197, 243);
+            border-radius: 3px;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            padding: 2em;
+            display: flex;
+            align-items: center;
+            input {
+                border: none;
+                border-bottom: 3px solid lightcyan;
+                width: 20vw;
+                background: none;
+            }
+            .submit {
+                font-family: 'Public Sans', 'sans-serif';
+                background: lavender;
+                font-size: 1em;
+            }
+        }
+    }
+}
+//End of Admin Add Broker//
+
+//Admin Add Buyer//
+.newbuyer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .newbuyer-body {
+        font-family: 'Poppins','sans-serif';
+        background: #351b7e;
+        height: 100vh;
+        width: 50vw;
+        border-radius: 3px;
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: black;
+            background: white;
+            font-family: 'Public Sans','sans-serif';
+        }
+        .form {
+            background: rgb(197, 197, 243);
+            border-radius: 3px;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            padding: 2em;
+            display: flex;
+            align-items: center;
+            input {
+                border: none;
+                border-bottom: 3px solid lightcyan;
+                width: 20vw;
+                background: none;
+            }
+            .submit {
+                font-family: 'Public Sans', 'sans-serif';
+                background: lavender;
+                font-size: 1em;
+            }
+        }
+    }
+}
+//End of Admin Add Buyer//
+
+//Admin Transactions//
+.admintransactions-container {
+    .admintransactions-body{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Public Sans','sans-serif';
+        background: #351b7e;
+        .header {
+            font-family: 'Poppins','sans-serif';
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background: white;
+            color: #351b7e;
+            h1 {
+                color: black;
+            }
+        }
+        .transactions-table {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: lightcyan;
+            color: black;
+            border-radius:3px;
+            font-size: 1em;
+            margin: 3em;
+            tr {
+                background: white;
+            }
+            th {
+                background: white;
+            }
+            td {
+                border-bottom: 3px solid gray;
+            }
+        }
+    }
+}
+//End of Admin Transactions//
+
+//Admin Pending//
+.adminpending-container {
+    .adminpending-body {
+        font-family: 'Poppins','sans-serif';
+        background: #351b7e;
+        height: 100vh;
+        border-radius: 3px;
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding-left: 3em;
+            color: black;
+            background: white;
+            font-family: 'Public Sans','sans-serif';
+        }
+        .tables {
+            padding: 1em;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            p {
+                color: lavenderblush;
+            }
+            .brokers-table {
+                border-top: 3px solid lightcyan;
+                h3 {
+                    text-decoration: underline;
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+                th {
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+                td {
+                    background: lavender;
+                    font-size: 0.85em;
+                    padding-left: 0.5em;
+                    padding-right: 0.5em;
+                }
+                .btn-success {
+                    text-decoration: none;
+                    color: rebeccapurple;
+                }
+            }
+            .users-table {
+                h3 {
+                    text-decoration: underline;
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+                th {
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+
+                td {
+                    background: lavender;
+                    font-size: 0.85em;
+                    padding-left: 0.5em;
+                    padding-right: 0.5em;
+                }
+                .btn-success {
+                    text-decoration: none;
+                    color: rebeccapurple;
+                }
+            }
+        }
+    }
+}
+//End of Admin Pending//
+
+//Admin Edit Buyer//
+.editbuyer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .editbuyer-body {
+        font-family: 'Poppins','sans-serif';
+        background: #351b7e;
+        height: 100vh;
+        width: 50vw;
+        border-radius: 3px;
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: black;
+            background: white;
+            font-family: 'Public Sans','sans-serif';
+        }
+        .form {
+            background: rgb(197, 197, 243);
+            border-radius: 3px;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            padding: 2em;
+            display: flex;
+            align-items: center;
+            input {
+                border: none;
+                border-bottom: 3px solid lightcyan;
+                width: 15vw;
+                background: none;
+                font-size: 1em;
+            }
+            .submit {
+                font-family: 'Public Sans', 'sans-serif';
+                background: lavender;
+                font-size: 1em;
+            }
+        }
+    }
+}
+//End of Admin Edit Buyer//
+
+//Admin Admin Edit Broker//
+.editbroker-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .editbroker-body {
+        font-family: 'Poppins','sans-serif';
+        background: #351b7e;
+        height: 100vh;
+        width: 50vw;
+        border-radius: 3px;
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: black;
+            background: white;
+            font-family: 'Public Sans','sans-serif';
+        }
+        .form {
+            background: rgb(197, 197, 243);
+            border-radius: 3px;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            padding: 2em;
+            display: flex;
+            align-items: center;
+            input {
+                border: none;
+                border-bottom: 3px solid lightcyan;
+                width: 15vw;
+                background: none;
+                font-size: 1em;
+            }
+            .submit {
+                font-family: 'Public Sans', 'sans-serif';
+                background: lavender;
+                font-size: 1em;
+            }
+        }
+    }
+}
+//End of Admin Edit Broker//

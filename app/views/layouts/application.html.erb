@@ -12,9 +12,23 @@
   <body>
 <div class='landing-container'>
     <div class='landing-navbar'>
+        <% if buyer_signed_in? %>
+        <a href ='/buyer/index'>
+            <%= image_tag('Swift.png', :alt => 'SWIFT Logo', class:'app-logo') %>
+        </a>
+        <% elsif broker_signed_in? %>
+        <a href ='/broker/index'>
+            <%= image_tag('Swift.png', :alt => 'SWIFT Logo', class:'app-logo') %>
+        </a>
+        <% elsif admin_signed_in? %>
+        <a href ='/admin/users'>
+            <%= image_tag('Swift.png', :alt => 'SWIFT Logo', class:'app-logo') %>
+        </a>
+        <% else %>
         <a href ='/'>
             <%= image_tag('Swift.png', :alt => 'SWIFT Logo', class:'app-logo') %>
         </a>
+        <% end %>
         <div class='landing-cta'>
             <%= render 'layouts/navbar'%>
         </div>
