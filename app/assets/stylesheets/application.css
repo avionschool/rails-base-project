@@ -100,5 +100,19 @@ body{
     color: rgba(255,255,255,0.6);
 }
 
+.notice {
+    background-color: rgb(19, 185, 157);
+}
+
+.alert, .notice {
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    place-items: center;
+}
+.alert {
+    background-color: rgba(252, 125, 125, 0.883);
+}
+
 @import "login.scss";
 @import "sign-up.scss"
