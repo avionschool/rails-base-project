@@ -4,7 +4,8 @@
  
   
   .trending-container
-    %h1.trending-title="Trending Coins"
+    .title-container
+      %h1.trending-title="Trending Coins"
     .trending-header
       %h3.coin-name-label="Name"
       %h3.coin-symbol-label="Symbol"
@@ -15,10 +16,11 @@
         %p.coin-name=coin['item']['name']
         %p.coin-symbol=coin['item']['symbol']
         %p.coin-rank=coin['item']['market_cap_rank']
-    -if current_user
-      =link_to "Sign out", destroy_user_session_path, method: :delete
-    -else
-      =link_to "Sign up", new_user_registration_path
-      =link_to "Sign in", new_user_session_path
+    .sign-in-containers
+      -if current_user
+        =link_to "Sign out", destroy_user_session_path, method: :delete
+      -else
+        .sign-up-btn=link_to "Get Started", new_user_registration_path
+        .sign-in-btn=link_to "Sign in", new_user_session_path
 
 
