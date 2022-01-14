@@ -1,6 +1,10 @@
-<h1>Broker Transactions Page</h1>
-
-<% if @transactions.empty? %>
+<div class='brokertransactions-container'>
+  <div class='brokertransactions-body'>
+    <div class='header'>
+        <h1> Transactions </h1>
+    </div>
+    <div class='transactions-table'>
+    <% if @transactions.empty? %>
     <p>None of your stocks have been purchased yet.</p>
 <% else %>
     <table>
@@ -31,4 +35,6 @@
         </tbody>
     </table>
 <% end %>
-<%= link_to "Back", broker_index_path %>
+    </div>
+  </div>
+</div>

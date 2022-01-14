@@ -553,7 +553,7 @@
                     padding: 0.5em;
                 }
                 .search-stock {
-                    margin-right: 10em;
+                    margin-right: 15em;
                     background: #351b7e;
                     padding: 1.5em;
                     border-radius: 3px;
@@ -573,6 +573,46 @@
     }
 }
 //End of Broker Home//
+
+//Broker Transactions//
+.brokertransactions-container {
+    .brokertransactions-body{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Public Sans','sans-serif';
+        background: #351b7e;
+        .header {
+            font-family: 'Poppins','sans-serif';
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background: white;
+            color: #351b7e;
+            h1 {
+                color: black;
+            }
+        }
+        .transactions-table {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: lavender;
+            color: black;
+            border-radius:3px;
+            font-size: 1em;
+            margin: 3em;
+            tr {
+                background: white;
+            }
+            th {
+                background: white;
+            }
+        }
+    }
+}
+//End of Broker Transactions//
 
 //Admin Home//
 //End of Admin Home//
