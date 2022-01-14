@@ -661,5 +661,70 @@
 }
 //End of Broker Portfolio//
 
-//Admin Home//
-//End of Admin Home//
+//Admin Users//
+.adminusers-container {
+    .adminusers-body {
+        font-family: 'Poppins','sans-serif';
+        background: #351b7e;
+        height: 100vh;
+        border-radius: 3px;
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding-left: 3em;
+            color: #351b7e;
+            background: white;
+        }
+        .tables {
+            padding: 1em;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            .brokers-table {
+                border-top: 2px dotted rebeccapurple;
+                h3 {
+                    text-decoration: underline;
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+                th {
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+                td {
+                    background: lavender;
+                    padding-left: 0.5em;
+                    padding-right: 0.5em;
+                }
+                .btn-dark {
+                    text-decoration: none;
+                    color: rebeccapurple;
+                }
+            }
+            .users-table {
+                h3 {
+                    text-decoration: underline;
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+                th {
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                }
+
+                td {
+                    background: lavender;
+                    padding-left: 0.5em;
+                    padding-right: 0.5em;
+                }
+                .btn-dark {
+                    text-decoration: none;
+                    color: rebeccapurple;
+                }
+            }
+        }
+    }
+}
+//End of Admin Users//
