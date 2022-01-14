@@ -1,4 +1,4 @@
-module QuoteRandomizer
+module Freenews
   class Errors
       def self.map(code)
           case code
