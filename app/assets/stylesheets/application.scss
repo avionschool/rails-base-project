@@ -614,5 +614,52 @@
 }
 //End of Broker Transactions//
 
+//Broker Portfolio//
+.brokerportfolio-container {
+    .brokerportfolio-body {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        .headtag {
+            display: flex;
+            float: left;
+            font-family: 'Poppins',sans-serif;
+        }
+        .table {
+            display: flex;
+            .stock-table {
+                background: #351b7e;
+                border-radius:3px;
+                width:60vw;
+                color: white;
+                padding:2em;
+                font-family: 'Public Sans',sans-serif;
+                font-size: 1em;
+                .buy-stock {
+                    text-decoration: underline;
+                    color: white;
+                }
+                .table-head {
+                    font-size: 1.3em;
+                    th {
+                        padding: 10px;
+                    }
+                }
+                .table-body {
+                    background: white;
+                    color: black;
+                    td {
+                    padding: 10px;
+                    .sell-stock {
+                        text-decoration: none;
+                    }
+                    }
+                }
+            }
+        }
+    }
+}
+//End of Broker Portfolio//
+
 //Admin Home//
 //End of Admin Home//
