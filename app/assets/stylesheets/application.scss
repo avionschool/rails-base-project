@@ -336,6 +336,7 @@
             display: flex;
             .stock-table {
                 background: #351b7e;
+                border-radius:3px;
                 width:60vw;
                 color: white;
                 padding:2em;
@@ -393,6 +394,7 @@
             justify-content: center;
             background: bisque;
             color: black;
+            border-radius:3px;
             font-size: 1.1em;
             margin: 3em;
             tr {
@@ -509,14 +511,48 @@
 //End of Buy and Sell Stock//
 
 //Broker Home//
-.broker-container{
+.broker-container {
     .broker-body {
-        font-family: 'Public Sans','sans-serif';
-        display: flex;
-        flex-direction: column;
-        .stock-chart {
+        width: 100vw;
+        .welcome-broker {
+            background: white;
+            height: 100vh;
+            border-radius: 3px;
             display: flex;
-            float: left;
+            flex-direction: column;
+            .headline {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+                margin-top: 6em;
+                .welcome-tag {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-family: 'Public Sans','sans-serif';
+                    color: white;
+                    background: #351b7e;
+                    border-radius: 3px;
+                    width: 17vw;
+                    height: 12vh;
+                }
+                .link-portfolio, .link-transactions, .link-profile {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-family: 'Poppins','sans-serif';
+                    color: white;
+                    background: #351b7e;
+                    border-radius: 3px;
+                    text-decoration: none;
+                    font-size: 0.9em;
+                    padding: 0.5em;
+                }
+            }
+            .tradingview-widget-container {
+                display: flex;
+                flex-direction: row;
+            }
         }
     }
 }
