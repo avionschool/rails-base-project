@@ -777,6 +777,7 @@
             .submit {
                 font-family: 'Public Sans', 'sans-serif';
                 background: lavender;
+                font-size: 1em;
             }
         }
     }
@@ -821,6 +822,7 @@
             .submit {
                 font-family: 'Public Sans', 'sans-serif';
                 background: lavender;
+                font-size: 1em;
             }
         }
     }
@@ -943,3 +945,95 @@
     }
 }
 //End of Admin Pending//
+
+//Admin Edit Buyer//
+.editbuyer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .editbuyer-body {
+        font-family: 'Poppins','sans-serif';
+        background: #351b7e;
+        height: 100vh;
+        width: 50vw;
+        border-radius: 3px;
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: black;
+            background: white;
+            font-family: 'Public Sans','sans-serif';
+        }
+        .form {
+            background: rgb(197, 197, 243);
+            border-radius: 3px;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            padding: 2em;
+            display: flex;
+            align-items: center;
+            input {
+                border: none;
+                border-bottom: 3px solid lightcyan;
+                width: 15vw;
+                background: none;
+                font-size: 1em;
+            }
+            .submit {
+                font-family: 'Public Sans', 'sans-serif';
+                background: lavender;
+                font-size: 1em;
+            }
+        }
+    }
+}
+//End of Admin Edit Buyer//
+
+//Admin Admin Edit Broker//
+.editbroker-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .editbroker-body {
+        font-family: 'Poppins','sans-serif';
+        background: #351b7e;
+        height: 100vh;
+        width: 50vw;
+        border-radius: 3px;
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: black;
+            background: white;
+            font-family: 'Public Sans','sans-serif';
+        }
+        .form {
+            background: rgb(197, 197, 243);
+            border-radius: 3px;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            padding: 2em;
+            display: flex;
+            align-items: center;
+            input {
+                border: none;
+                border-bottom: 3px solid lightcyan;
+                width: 15vw;
+                background: none;
+                font-size: 1em;
+            }
+            .submit {
+                font-family: 'Public Sans', 'sans-serif';
+                background: lavender;
+                font-size: 1em;
+            }
+        }
+    }
+}
+//End of Admin Edit Broker//
