@@ -30,9 +30,10 @@
     %h3=@user.wallet.wallet_address
 
   .user-portfolio
-    -if !@portfolio
-      No coins bought yet.
-      =link_to "Start now!", trade_path("BTC")
+    -if @portfolio.count == 0
+      .user-portfolio-item.header
+        No coins bought yet.
+        =link_to "Start now!", trade_path("BTC")
     -else
       .user-portfolio-item.header
         %h3 Symbol
