@@ -10,10 +10,17 @@
         "welcome welcome trending"
 }
 
+.title-container{
+   justify-content: center;
+   justify-self: center;
+}
+
 .trending-container{
     grid-area: trending;
     display: grid;
     color: rgb(19, 185, 157);
+    border: 1px solid black;
+    padding: 0 10px;
 }
 
 .img-container{
@@ -43,4 +50,49 @@ h3 {
 
 .trending-title{
     color:black;
+
+.sign-in-containers{
+    display: flex;
+    justify-content: space-evenly;
+}
+.sign-in-btn {
+        display: inline-flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        box-sizing: border-box;
+        color: rgb(255, 255, 255);
+        font-weight: normal;
+        text-align: center;
+        background: rgb(36, 174, 143);
+        border-radius: 0.25rem;
+        height: 3rem;
+        padding: 0px 1.5rem;
+        margin-top: 1.875rem;
+    a{
+        text-decoration: none;
+        justify-self: center;
+    }
+}
+
+.sign-up-btn {
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    font-weight: normal;
+    text-align: center;
+    background: rgb(36, 174, 143);
+    border-radius: 0.25rem;
+    height: 3rem;
+    padding: 0px 2.5rem;
+    margin-top: 1.875rem;
+    
+    a{
+        text-decoration: none;
+    }
 }
