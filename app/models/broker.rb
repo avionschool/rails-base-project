@@ -1,5 +1,5 @@
 class Broker < ApplicationRecord
-  has_many :broker_stocks, :dependent => :destroy
+  has_many :broker_stocks, dependent: :destroy
   has_many :stocks, through: :broker_stocks
   belongs_to :admin
   validates :broker_name, presence: true
@@ -7,7 +7,7 @@ class Broker < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :timeoutable
-  
+
   def stock_already_added?(ticker_symbol, broker_id)
     stock = Stock.check_db(ticker_symbol, broker_id)
     return false unless stock

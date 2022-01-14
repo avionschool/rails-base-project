@@ -12,6 +12,11 @@
   <%= link_to "Sign Out", destroy_broker_session_path, method: :delete%> &nbsp; &nbsp; &nbsp; 
 <% elsif admin_signed_in? %>
   <%= link_to "HOME", admin_index_path%> &nbsp; &nbsp; &nbsp;
+  <%= link_to "All Users", admin_users_path %>&nbsp; &nbsp; &nbsp;
+  <%= link_to "New Broker", admin_new_broker_path %>&nbsp; &nbsp; &nbsp;
+  <%= link_to "New Buyer", admin_new_buyer_path %>&nbsp; &nbsp; &nbsp;
+  <%= link_to "Transactions", admin_transactions_path %>&nbsp; &nbsp; &nbsp;
+  <%= link_to "Pending", admin_pending_accounts_path %>&nbsp; &nbsp; &nbsp;
   <%= link_to "Sign Out", destroy_admin_session_path, method: :delete%> &nbsp; &nbsp; &nbsp; 
 <% else %>
   <%= link_to "BUYER", new_buyer_session_path%> &nbsp; &nbsp; &nbsp; 

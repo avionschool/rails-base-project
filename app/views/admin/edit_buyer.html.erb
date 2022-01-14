@@ -1,0 +1,8 @@
+<h1>Edit Buyer</h1>
+
+<%= form_for @buyer, :url => {:action => "edit_buyer"} do |f| %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <%= f.submit %>
+<% end %>
+<%= link_to "Back to Users", admin_users_path %>

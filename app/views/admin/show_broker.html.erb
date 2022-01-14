@@ -1,0 +1,26 @@
+<h1>Viewing Broker</h1>
+
+<table class="table mt-3">
+    <thead class="thead-dark">
+        <tr>
+        <th>Broker ID</th>
+        <th>Broker Name</th>
+        <th>Broker Email</th>
+        <th>Broker Created At</th>
+        <th>Number of Stocks Added</th>
+        <th>Action</th>
+        </tr>
+    </thead>
+    <tbody class="text-white" style="font-size: 16px;">
+        <tr>
+        <td><%= @broker.id %></td>
+        <td><%= @broker.broker_name %></td>
+        <td><%= @broker.email %></td>
+        <td><%= @broker.created_at %></td>
+        <td><%= @broker.stocks.count %></td>
+        <td><%= link_to "Edit Broker", edit_broker_path(@broker), class: "btn btn-dark" %></td>
+        </tr>
+    </tbody>
+</table>
+
+<%= link_to "Back to Users", admin_users_path%>

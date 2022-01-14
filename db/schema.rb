@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_09_155434) do
+ActiveRecord::Schema.define(version: 2022_01_13_105034) do
 
   create_table "admins", force: :cascade do |t|
     t.string "account_type", default: "admin"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2022_01_09_155434) do
     t.datetime "locked_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "remember_created_at"
   end
 
   create_table "broker_stocks", force: :cascade do |t|

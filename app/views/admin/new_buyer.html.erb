@@ -1,0 +1,11 @@
+<h1>Create a new Buyer</h1>
+
+<%= form_for @buyer, :url => {:action => "new_buyer"} do |f| %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+    <%= f.submit %>
+<% end %>
