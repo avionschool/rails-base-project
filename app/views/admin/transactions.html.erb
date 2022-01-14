@@ -19,7 +19,7 @@
         <tbody>
             <% @transactions.each do |stock| %>
             <tr>
-                <td><%= stock.created_at %></td>
+                <td><%= stock.created_at.to_formatted_s(:long) %></td>
                 <td><%= stock.ticker %></td>
                 <td><%= stock.company_name %></td>
                 <td><%= stock.broker_name %></td>
