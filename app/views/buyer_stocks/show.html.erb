@@ -1,18 +1,48 @@
-<h1>Showing Stock</h1>
-
-<%= form_for @broker_stock, url: :buyer_stocks, method: :post do |f| %>
-    <%= f.hidden_field :broker_id, :value => @broker %>
-    <%= f.hidden_field :broker_id, :value => @broker %>
-    <%= f.hidden_field :stock_id, :value => params[:stock_id] %>
-    <%= f.label :last_price %>
-    $<%= @broker_stock.last_price %>
-    <%= f.label :quantity %>
-    <%= f.number_field :quantity, min: 1 %>
-    <%= f.submit "Buy Stock" %>
-<% end %>
-<div>
-    <%= @broker_stock.ticker %>
-    <%= @broker_stock.name %>
+<div class='showstock-container'>
+    <div class='showstock-body'>
+        <div class="tradingview-widget-container">
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+        new TradingView.widget(
+        {
+        "width": 980,
+        "height": 610,
+        "symbol": "NASDAQ:TSLA",
+        "interval": "D",
+        "timezone": "Etc/UTC",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "container_id": "tradingview_01511"
+        }
+        );
+        </script>
+        </div>
+        <div class='stock-head'>
+            <img src="<%= @broker_stock.logo%>" class='img'>
+        <div class='form'>
+            <h1>
+            <%= @broker_stock.ticker %>
+            <%= @broker_stock.name %>
+            </h1>
+            <%= form_for @broker_stock, url: :buyer_stocks, method: :post do |f| %>
+            <%= f.hidden_field :broker_id, :value => @broker %>
+            <%= f.hidden_field :broker_id, :value => @broker %>
+            <%= f.hidden_field :stock_id, :value => params[:stock_id] %>
+            <%= f.label :last_price %>
+            $<%= @broker_stock.last_price %>
+            <br/>
+            <%= f.label :quantity %>
+            <%= f.number_field :quantity, min: 1 %>
+            <div class='btn'>
+            <br/>
+            <%= f.submit 'BUY STOCK', class:'buy' %>
+            </div>
+            <% end %>
+        </div>
+        </div>
+    </div>
 </div>
-
-<p><%= link_to "Back", buyer_index_path %></p>
