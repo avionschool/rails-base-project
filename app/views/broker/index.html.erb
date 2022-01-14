@@ -47,8 +47,6 @@
       "locale": "en"
       }
       </script>
-
-
       </div>
         <div class='headline'>
           <div class='welcome'>
@@ -67,7 +65,7 @@
             <h3>Search Stock</h3>
                 <%= form_tag search_stock_path, remote: true, method: :get do %>
                 <%= text_field_tag :stock, params[:stock], placeholder: 'Enter stock ticker...' %>
-                <%= submit_tag "Submit", type: :submit%>
+                <%= submit_tag 'SEARCH',class:'btn', type: :submit%>
                 <% end %>
             <div id='search_result'>
                 <%= render 'broker/search_result' %>

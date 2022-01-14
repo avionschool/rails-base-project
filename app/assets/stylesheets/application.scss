@@ -520,6 +520,10 @@
             border-radius: 3px;
             display: flex;
             flex-direction: column;
+            .tradingview-widget-container {
+                display: flex;
+                flex-direction: row;
+            }
             .headline {
                 display: flex;
                 justify-content: space-between;
@@ -548,10 +552,22 @@
                     font-size: 0.9em;
                     padding: 0.5em;
                 }
-            }
-            .tradingview-widget-container {
-                display: flex;
-                flex-direction: row;
+                .search-stock {
+                    margin-right: 10em;
+                    background: #351b7e;
+                    padding: 1.5em;
+                    border-radius: 3px;
+                    padding-top: 0.7em;
+                    padding-bottom: 0;
+                    color: white;
+                    font-family: 'Public Sans','sans-serif';
+                    .btn {
+                        font-family: 'Poppins','sans-serif';
+                    }
+                    input::placeholder {
+                        font-family: 'Poppins','sans-serif';
+                    }
+                }
             }
         }
     }
