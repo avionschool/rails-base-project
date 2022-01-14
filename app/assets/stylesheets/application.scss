@@ -395,13 +395,16 @@
             background: bisque;
             color: black;
             border-radius:3px;
-            font-size: 1.1em;
+            font-size: 1em;
             margin: 3em;
             tr {
                 background: blanchedalmond;
             }
             th {
                 background: white;
+            }
+            td {
+                border-bottom: 3px solid gray;
             }
         }
     }
@@ -598,16 +601,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: lavender;
+            background: bisque;
             color: black;
             border-radius:3px;
             font-size: 1em;
             margin: 3em;
             tr {
-                background: white;
+                background: blanchedalmond;
             }
             th {
                 background: white;
+            }
+            td {
+                border-bottom: 3px solid gray;
             }
         }
     }
@@ -817,3 +823,43 @@
     }
 }
 //End of Admin Add Buyer//
+
+//Admin Transactions//
+.admintransactions-container {
+    .admintransactions-body{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Public Sans','sans-serif';
+        background: #351b7e;
+        .header {
+            font-family: 'Poppins','sans-serif';
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background: white;
+            color: black;
+        }
+        .transactions-table {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: bisque;
+            color: black;
+            border-radius:3px;
+            font-size: 1em;
+            margin: 3em;
+            tr {
+                background: blanchedalmond;
+            }
+            th {
+                background: white;
+            }
+            td {
+                border-bottom: 3px solid gray;
+            }
+        }
+    }
+}
+//End of Admin Transactions//
