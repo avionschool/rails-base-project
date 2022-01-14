@@ -73,6 +73,8 @@ h3 {
     a{
         text-decoration: none;
         justify-self: center;
+        text-transform: uppercase;
+
     }
 }
 
@@ -93,5 +95,29 @@ h3 {
     margin-top: 1.875rem;
     a{
         text-decoration: none;
+        text-transform: uppercase;
+
+    }
+}
+
+.sign-out-btn{
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    font-weight: normal;
+    text-align: center;
+    background: rgb(36, 174, 143);
+    border-radius: 0.25rem;
+    height: 3rem;
+    padding: 0px 2.5rem;
+    margin-top: 1.875rem;
+    a{
+        text-decoration: none;
+        text-transform: uppercase;
+
     }
 }
