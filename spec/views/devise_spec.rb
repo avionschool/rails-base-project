@@ -10,7 +10,7 @@ RSpec.describe "Devise", type: :feature do
   end
 
   def sign_up
-    click_link('Sign up')
+    click_link('Sign Up')
     fill_in "user[email]", with: "new69@new.com"
     fill_in "user[password]", with: "123456"
     fill_in "user[password_confirmation]", with: "123456"
@@ -32,12 +32,12 @@ RSpec.describe "Devise", type: :feature do
     before {visit root_path}
 
     it "shows sign up and sign in on navbar without credentials" do
-      expect(page).to have_content("Sign up")
-      expect(page).to have_content("Sign in")
+      expect(page).to have_content("Sign Up")
+      expect(page).to have_content("Sign In")
     end
 
     it "fails on signing up with mismatched passwords" do
-      click_link('Sign up')
+      click_link('Sign Up')
       fill_in "user[email]", with: "new69@new.com"
       fill_in "user[password]", with: "123456"
       fill_in "user[password_confirmation]", with: "6543221"
