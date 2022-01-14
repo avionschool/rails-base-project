@@ -2,16 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.trades-body-container{
+    background-color: rgb(1, 8, 30);
+    height: 100%;
+    width: 100%;
+    padding-top: 20px;
+    border-top: 2px solid rgb(19, 185,157);
+}
+
 
 .trades-container{
+    background-color: rgba( 1,8,30,1);
     width:1160px;
     margin:auto;
     display:grid;
     grid-template-columns: 1fr 1fr 320px;
     grid-template-areas:
+        "title title title"
         "widget widget index"
         "buy sell ."
         "orders orders orders"
+}
+
+.trades-title{
+    color: #aaaaaa;
+    grid-area: title;
+    margin-bottom: 20px;
 }
 .tradingview-widget-container{
     grid-area: widget;
@@ -58,7 +74,7 @@
     height: 440px;
 }
 .coin-item-header, .coin-item{
-    color: black;
+    color: white;
     padding: 0 10px;
     width: 100%;
     display:grid;
@@ -67,7 +83,7 @@
 }
 .coin-item{
     &:hover{
-        background-color: #aaaaaa;
+        background-color: #555555;
     }
     
     .coin-item-price, .coin-item-change{
@@ -95,6 +111,7 @@
 }
 
 .trades-orders-index{
+    color: #cccccc;
     height: 200px;
     overflow-y: scroll;
     

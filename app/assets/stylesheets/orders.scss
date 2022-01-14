@@ -8,6 +8,7 @@
     place-items:center;
     padding: 2px;
     border-bottom: 1px solid rgba(255,255,255, 0.25);
+    color: #cccccc;
 }
 
 .orders-index-data.header{
@@ -19,6 +20,7 @@
     padding: 10px 10px 80px;
     height: 240px;
     .order-balance-container{
+        color: #aaaaaa;
         display:flex;
         flex-flow: row;
         justify-content: space-between;
