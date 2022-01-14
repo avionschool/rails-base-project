@@ -80,6 +80,9 @@
             font-size: 2em;
         }
     }
+    .notice {
+        font-family: 'Public Sans','sans-serif';
+    }
 }
 //End of Landing Page//
 
@@ -666,6 +669,29 @@
     }
 }
 //End of Broker Portfolio//
+
+//Admin Home//
+.admin-container {
+    .admin-body {
+        height: 100vh;
+        background: #351b7e;
+        border-radius: 3px;
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins','sans-serif';
+            background: #351b7e;
+            color: white;
+            font-size: 2em;
+            .image {
+                height: 40vh;
+            }
+        }
+    }
+}
+//End of Admin Home//
 
 //Admin Users//
 .adminusers-container {
