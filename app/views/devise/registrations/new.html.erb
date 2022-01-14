@@ -1,3 +1,5 @@
+<div class="main-container-signup">
+<div class="content-container-signup">
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -25,9 +27,11 @@
     <%= f.label :kind %><br />
     <%= f.select :kind, [["User", "user"], ["Broker", "broker"]] %>
   </div>
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="actions-signup">
+    <%= f.submit "Sign up", :class => "button" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+</div>

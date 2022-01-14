@@ -18,7 +18,7 @@
         %p.coin-rank=coin['item']['market_cap_rank']
     .sign-in-containers
       -if current_user
-        =link_to "Sign out", destroy_user_session_path, method: :delete
+        .sign-out-btn=link_to "Sign out", destroy_user_session_path, method: :delete
       -else
         .sign-up-btn=link_to "Get Started", new_user_registration_path
         .sign-in-btn=link_to "Sign in", new_user_session_path
