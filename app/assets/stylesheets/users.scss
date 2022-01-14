@@ -22,3 +22,61 @@
 .main-login-container{
   justify-content: center;
 }
+
+.user-details-container{
+  display: grid;
+  margin:50px auto;
+  width: clamp(600px, 100%, 1000px);
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "admin-l admin-l admin-l ."
+    "email money pnl equity"
+    "address address address address"
+    "portfolio portfolio portfolio portfolio";
+
+  h3{
+    color:black;
+  }
+}
+.admin-l{
+  grid-area: admin-l;
+}
+.user-money{
+  grid-area: money;
+}
+.user-email{
+  grid-area: email;
+}
+.user-pnl{
+  grid-area: pnl;
+}
+.user-address{
+  border-bottom: 1px solid #aaaaaa;
+  border-right: 1px solid #aaaaaa;
+  grid-area: address;
+}
+.user-equity{
+  border-right: 1px solid #aaaaaa;
+  grid-area: equity;
+}
+.user-portfolio{
+  grid-area: portfolio;
+  padding-top: 30px;
+}
+.user-detail-container{
+  border-top: 1px solid #aaaaaa;
+  padding: 10px;
+  border-left: 1px solid #aaaaaa;
+}
+.user-portfolio-item{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  p{
+    padding: 10px;
+    border-bottom: 1px solid #aaaaaa;
+  }
+  h3{
+    border-bottom: 1px solid #aaaaaa;
+    padding: 10px;
+  }
+}

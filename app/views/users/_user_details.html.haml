@@ -1,27 +1,52 @@
 .user-details-container
   -if current_user.admin?
-    =link_to "Users index", users_path
-    =link_to "Edit user", edit_user_path(@user.id)
-  Email
-  %br/
-  =@user.email
-  %br/
+    .admin-l
+      =link_to "Users index", users_path
+      =link_to "Edit user", edit_user_path(@user.id)
+  
+  .user-email.user-detail-container
+    Email
+    %br/
+    %h3=@user.email
 
-  MONEY
-  %br/
-  =@user.wallet.money
-  %br/
+  .user-money.user-detail-container
+    Remaining balance
+    %br/
+    %h3="$ #{@user.wallet.money.truncate(2)}"
 
-  WALLET ADDRESS
-  %br/
-  =@user.wallet.wallet_address
+  .user-pnl.user-detail-container
+    Portfolio balance
+    %br/
+    %h3="$ #{@pnl}"
+  
+  .user-equity.user-detail-container
+    Total Equity
+    %br/
+    %h3="$ #{(@pnl.to_f + @user.wallet.money.truncate(2)).truncate(2)}"
 
-  -if !@portfolio
-    No coins bought yet.
-    =link_to "Start now!", trade_path("BTC")
-  -else
-    -@portfolio.each do |p|
-      =p.symbol
-      =p.amount
+  .user-address.user-detail-container
+    WALLET ADDRESS
+    %br/
+    %h3=@user.wallet.wallet_address
 
-  =@pnl
+  .user-portfolio
+    -if @portfolio.count == 0
+      .user-portfolio-item.header
+        No coins bought yet.
+        =link_to "Start now!", trade_path("BTC")
+    -else
+      .user-portfolio-item.header
+        %h3 Symbol
+        %h3 Owned
+        %h3 Current Price
+        %h3 Total balance
+        %h3 Link
+      -@portfolio.each do |p|
+        .user-portfolio-item
+          %p=p.symbol
+          %p=p.amount
+          %p=Coin.find(p.coin_id).last_price.truncate(2)
+          %p=(Coin.find(p.coin_id).last_price * p.amount).truncate(2)
+          %p=link_to "Trade", trade_path(base: Coin.find(p.coin_id).base)
+  
+  

@@ -17,12 +17,16 @@ gem 'devise'
 gem 'hamlit-rails'
 
 gem 'coingecko_ruby'
-gem 'sqlite3'
 gem 'react-rails'
 gem 'httparty'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
 end
 
 group :development do
