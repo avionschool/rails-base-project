@@ -1,28 +1,60 @@
-<h1>Broker Portfolio</h1>
-<% if @added_stocks.empty? %>
-    <p>You do not have any stocks yet.</p>
-<% else %>
-    <table>
-        <thead>
-            <tr>
-            <th>Ticker</th>
-            <th>Name</th>
-            <th>Last Price</th>
-            <th>Action</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <% @added_stocks.each do |stock| %>
-            <tr>
-                <td><%= stock.ticker %></td>
-                <td><%= stock.name %></td>
-                <td>$<%= stock.last_price %></td>
-                <td><%= link_to "Delete", broker_stock_path(stock), method: :delete, data: { confirm: "Are you sure?"} %></td>
-            </tr>
+<div class='brokerportfolio-container'>
+    <div class='brokerportfolio-body'>
+        <h1 class='headtag'>Broker Portfolio</h1>
+        <div class='table'>
+            <div class='stock-table'>
+            <% if @added_stocks.empty? %>
+            <p>You do not have any stocks yet.</p>
+            <% else %>
+            <table class='data'>
+                <thead class='table-head'>
+                    <tr>
+                    <th>Ticker</th>
+                    <th>Name</th>
+                    <th>Last Price</th>
+                    <th>Action</th>
+                    </tr>
+                </thead>
+        
+                <tbody class='table-body'>
+                    <% @added_stocks.each do |stock| %>
+                    <tr>
+                        <td><%= stock.ticker %></td>
+                        <td><%= stock.name %></td>
+                        <td>$<%= stock.last_price %></td>
+                        <td><%= link_to "Delete", broker_stock_path(stock), method: :delete, data: { confirm: "Are you sure?"} %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
             <% end %>
-        </tbody>
-    </table>
-<% end %>
-
-<%= link_to "Back", broker_index_path %>
+            </div>
+            <div class="tradingview-widget-container">
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js" async>
+                    {
+                    "colorTheme": "light",
+                    "dateRange": "12M",
+                    "exchange": "US",
+                    "showChart": true,
+                    "locale": "en",
+                    "largeChartUrl": "",
+                    "isTransparent": false,
+                    "showSymbolLogo": false,
+                    "showFloatingTooltip": false,
+                    "width": "500",
+                    "height": "600",
+                    "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+                    "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+                    "gridLineColor": "rgba(240, 243, 250, 0)",
+                    "scaleFontColor": "rgba(120, 123, 134, 1)",
+                    "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+                    "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+                    "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+                    "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+                    "symbolActiveColor": "rgba(41, 98, 255, 0.12)"
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
