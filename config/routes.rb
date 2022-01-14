@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   namespace :api do
     get '/global_news' => 'news#index'
     get '/exchange_news' => 'news#index'
+    get '/businessNews' => 'freenews#index'
+    get '/healthNews' => 'freenews#healthNews'
   end
   get 'search_stock' => 'stocks#stock_search'
 
