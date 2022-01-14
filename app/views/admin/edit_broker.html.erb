@@ -1,11 +1,21 @@
-<h1>Edit Broker</h1>
-
-<%= form_for @broker, :url => {:action => "edit_broker"} do |f| %>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-    <%= f.label :broker_name %>
-    <%= f.text_field :broker_name %>
-    <%= f.submit %>
-<% end %>
-
-<%= link_to "Back to Users", admin_users_path %>
+<div class='editbroker-container'>
+  <div class='editbroker-body'>
+    <div class='header'>
+      <i class='fa fa-square'></i> &nbsp;
+      <h2>
+        Edit Broker
+      </h2>
+    </div>
+    <br>
+    <div class='form'>
+    <%= form_for @broker, :url => {:action => "edit_broker"} do |f| %>
+        <%= f.label :email %><br/>
+        <%= f.email_field :email %><br/><br/>
+        <%= f.label :broker_name %><br/>
+        <%= f.text_field :broker_name %><br/><br/><br/>
+        <%= f.submit class:'submit' %><br/><br/>
+    <% end %>
+    <%= link_to "Back to Users", admin_users_path %>
+    </div>
+  </div
+</div>
