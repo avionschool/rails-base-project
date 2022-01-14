@@ -9,7 +9,7 @@ class Wallet < ApplicationRecord
 
   def initialize_wallet
     Wallet.update(self.id, 
-      {:wallet_address=> "0x"+SecureRandom.hex(32),
+      {:wallet_address=> "0x"+SecureRandom.hex(20),
       :pnl=> 0,
       :money=> 5000}
     )
