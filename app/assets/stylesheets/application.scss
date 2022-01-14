@@ -82,7 +82,6 @@
     }
     .notice {
         font-family: 'Public Sans','sans-serif';
-        float: right;
     }
 }
 //End of Landing Page//
@@ -289,6 +288,7 @@
                     background: #351b7e;
                     width: 17vw;
                     height: 12vh;
+                    border-radius: 3px;
                 }
                 .link-portfolio, .link-transactions, .link-profile {
                     display: flex;
@@ -297,6 +297,7 @@
                     font-family: 'Poppins','sans-serif';
                     color: white;
                     background: #351b7e;
+                    border-radius: 3px;
                     text-decoration: none;
                     font-size: 0.9em;
                     padding: 0.5em;

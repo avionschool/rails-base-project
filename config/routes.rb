@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'home#index'
   namespace :api do
     get '/global_news' => 'news#index'
-    get '/exchange_news' => 'news#index'
+    get '/exchange_news' => 'news#exchangeNews'
   end
   get 'search_stock' => 'stocks#stock_search'
 
