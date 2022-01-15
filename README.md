@@ -58,6 +58,7 @@ Then, clone your forked repo to your machine
 # API
 <hr/>
 2 NEWS API's were used in this application:
+
 ###### 1. From [https://saurav.tech/]
 
 This API is free and no token is required.
