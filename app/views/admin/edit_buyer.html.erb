@@ -1,0 +1,19 @@
+<div class='editbuyer-container'>
+  <div class='editbuyer-body'>
+    <div class='header'>
+      <i class='fa fa-square'></i> &nbsp;
+      <h2>
+        Edit Broker
+      </h2>
+    </div>
+    <br>
+    <div class='form'>
+    <%= form_for @buyer, :url => {:action => "edit_buyer"} do |f| %>
+        <%= f.label :email %><br/>
+        <%= f.email_field :email %><br/><br/><br/>
+        <%= f.submit class:'submit' %><br/><br/><br/>
+    <% end %>
+    <%= link_to "Back to Users", admin_users_path %>
+    </div>
+  </div
+</div>

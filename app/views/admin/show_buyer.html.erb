@@ -1,0 +1,24 @@
+<h1>Viewing Buyer</h1>
+
+<table class="table mt-3">
+    <thead class="thead-dark">
+        <tr>
+        <th>Buyer ID</th>
+        <th>Buyer Email</th>
+        <th>Buyer Created At</th>
+        <th>Number of Stocks Bought</th>
+        <th>Action</th>
+        </tr>
+    </thead>
+    <tbody class="text-white" style="font-size: 16px;">
+        <tr>
+        <td><%= @buyer.id %></td>
+        <td><%= @buyer.email %></td>
+        <td><%= @buyer.created_at %></td>
+        <td><%= @buyer.stocks.count %></td>
+        <td><%= link_to 'Edit Buyer', edit_buyer_path(@buyer), method: :get, class: "btn btn-dark" %></td>
+        </tr>
+    </tbody>
+</table>
+
+<%= link_to "Back to Users", admin_users_path%>

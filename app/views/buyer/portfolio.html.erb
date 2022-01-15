@@ -1,0 +1,67 @@
+<div class='buyerportfolio-container'>
+    <div class='buyerportfolio-body'>
+        <h1 class='headtag'>Investment Portfolio</h1>
+        <div class='table'>
+            <div class='stock-table'>
+                <% if @bought_stocks.empty? %>
+                <h2>You have not bought any stocks.</h2>
+                <%= link_to "Go to Stock List.", buyer_index_path, class:'buy-stock'%>
+                <% else %>
+                    <table class='data'>
+                        <thead class='table-head'>
+                            <tr>
+                                <th colspan='2'>Ticker</th> 
+                                <th colspan='2'>Name</th> 
+                                <th colspan='2'>Last Price</th> 
+                                <th colspan='2'>Quantity</th> 
+                                <th colspan='2'>Broker</th> 
+                                <th colspan='2'>Quantity</th>
+                                <th colspan='2'>Actions</th> 
+                            </tr>
+                        </thead>
+                        <tbody class='table-body'>
+                        <% @bought_stocks.each do |stock| %>
+                            <tr>
+                                <td colspan='2'><%= stock.ticker %></td> 
+                                <td colspan='2'><%= stock.name %></td> 
+                                <td colspan='2'>$<%= stock.last_price %></td> 
+                                <td colspan='2'><%= stock.buyer_stocks.first.quantity %></td>
+                                <td colspan='2'><%= stock.brokers.first.broker_name%></td> 
+                                <td colspan='2'><%= (stock.buyer_stocks.first.quantity * stock.buyer_stocks.first.stock_price).to_f %>
+                                <td colspan='2'><%= link_to "Sell Stock", buyer_stock_path(stock), class:'sell-stock',method: :delete, data: { confirm: "Are you sure you want to sell all quantity of this stock?"} %>
+                            </tr>
+                            </tr>
+                        <% end %>
+                        </tbody>
+                    </table>
+                <% end %>
+            </div>
+            <div class="tradingview-widget-container">
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js" async>
+                    {
+                    "colorTheme": "light",
+                    "dateRange": "12M",
+                    "exchange": "US",
+                    "showChart": true,
+                    "locale": "en",
+                    "largeChartUrl": "",
+                    "isTransparent": false,
+                    "showSymbolLogo": false,
+                    "showFloatingTooltip": false,
+                    "width": "500",
+                    "height": "600",
+                    "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+                    "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+                    "gridLineColor": "rgba(240, 243, 250, 0)",
+                    "scaleFontColor": "rgba(120, 123, 134, 1)",
+                    "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+                    "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+                    "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+                    "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+                    "symbolActiveColor": "rgba(41, 98, 255, 0.12)"
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

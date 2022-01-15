@@ -1,0 +1,24 @@
+<div class='newbroker-container'>
+  <div class='newbroker-body'>
+    <div class='header'>
+      <i class='fa fa-square'></i> &nbsp;
+      <h2>
+        Create New Broker
+      </h2>
+    </div>
+    <br>
+    <div class='form'>
+    <%= form_for @broker, :url => {:action => "new_broker"} do |f| %>
+        <%= f.label :email %><br/>
+        <%= f.email_field :email %><br/><br/>
+        <%= f.label :broker_name %><br/>
+        <%= f.text_field :broker_name %><br/><br/>
+        <%= f.label :password %><br/>
+        <%= f.password_field :password %><br/><br/>
+        <%= f.label :password_confirmation %><br/>
+        <%= f.password_field :password_confirmation %><br/><br/>
+        <%= f.submit class:'submit' %>
+    <% end %>
+    </div>
+  </div
+</div>
