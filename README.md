@@ -131,9 +131,10 @@ K2GiBbcezEDuGk5FNtVYAgZovI3boGGQmXRs4KvM
             rescue RestClient::ExceptionWithResponse => error
             {code: error.http_code, status: error.message, data:Errors.map(error.http_code)}
         end
-    end
-  end
-```
+      end
+     end
+
+    ```
   - In *client.rb*: Here the endpoints are used to specify data wished to be called
 
     ```
@@ -148,6 +149,7 @@ K2GiBbcezEDuGk5FNtVYAgZovI3boGGQmXRs4KvM
         end
       end
     end
+
     ```
 
   - In *errors.rb*
