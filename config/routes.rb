@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  devise_for :users, controllers: { sessions: 'users/sessions'}
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
   devise_for :admins, :skip => [:registrations]
 
   authenticated :admin do
@@ -22,5 +26,6 @@ Rails.application.routes.draw do
     get '/admins/view-transactions', to: 'admins#view_transactions' # put alias when there is a trader's transactions list
 
   end
+
 
 end
