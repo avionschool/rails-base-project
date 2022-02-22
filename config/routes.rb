@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :users, controllers: { sessions: 'users/sessions'}
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-
+    get '/user-info', to: 'users#index', as: 'user_info'
   end
 
 
