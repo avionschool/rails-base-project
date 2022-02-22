@@ -1,12 +1,11 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
-
-  before_action :configure_permitted_parameters, if: :devise_controller?
+	before_action :configure_permitted_parameters, if: :devise_controller?
 
 
 	def after_sign_in_path_for(resource)
 		if resource.instance_of?(Admin)
-				admins_view_traders_path
+			admins_view_traders_path
 		end
 
 		if resource.instance_of?(User)
@@ -23,12 +22,12 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	protected
+protected
 
 	def configure_permitted_parameters
-		devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:fullname, :email, :password)}
+		devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:fullname, :email, :password) }
 
-		devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:fullname, :email, :password, :current_password)}
+		devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:fullname, :email, :password, :current_password) }
 	end
 
 	

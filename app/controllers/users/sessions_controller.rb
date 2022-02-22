@@ -1,16 +1,12 @@
 module Users
   class SessionsController < Devise::SessionsController
-
-    def new
-        super 
-    end
     
     def create
       self.resource = warden.authenticate!(auth_options)
       if current_user.approved?
         set_flash_message(:notice, :signed_in) if is_navigational_format?
         sign_in(resource_name, resource)
-        if !session[:return_to].blank?
+        if session[:return_to].present?
           redirect_to session[:return_to]
           session[:return_to] = nil
         else
@@ -19,7 +15,7 @@ module Users
       else
         sign_out current_user
         
-        redirect_to "/"
+        redirect_to '/'
       end
     end
   end
