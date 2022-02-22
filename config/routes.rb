@@ -27,5 +27,9 @@ Rails.application.routes.draw do
 
   end
 
+  authenticated :user do
+
+  end
+
 
 end

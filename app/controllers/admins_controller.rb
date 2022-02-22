@@ -4,7 +4,7 @@ class AdminsController < ApplicationController
     end
 
     def approvals
-        @users.where(approved: false)
+        @users = User.where(approved: false)
     end
 
     def approve_trader_account

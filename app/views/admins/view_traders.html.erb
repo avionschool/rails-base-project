@@ -1,1 +1,17 @@
 All Traders
+
+<br/><br/>
+
+<% if @users.empty? %>
+    
+    No Approved Traders Yet
+
+    <% else %>
+
+    <% @users.each do |user| %>
+        ID: <%= user.id %><br/>
+        Email: <%= user.email %>
+        <%= link_to 'View' %>    <br/><br/>
+    <% end %>
+
+<% end %>
