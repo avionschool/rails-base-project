@@ -1,6 +1,5 @@
 module Users
   class SessionsController < Devise::SessionsController
-    
     def create
       self.resource = warden.authenticate!(auth_options)
       if current_user.approved?
@@ -10,11 +9,11 @@ module Users
           redirect_to session[:return_to]
           session[:return_to] = nil
         else
-          respond_with resource, :location => after_sign_in_path_for(resource)
+          respond_with resource, location: after_sign_in_path_for(resource)
         end
       else
         sign_out current_user
-        
+
         redirect_to '/'
       end
     end

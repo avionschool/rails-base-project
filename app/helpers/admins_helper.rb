@@ -1,3 +1,2 @@
 module AdminsHelper
-  
 end
