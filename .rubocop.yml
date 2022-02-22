@@ -22,7 +22,13 @@ Layout/LineLength:
 Layout/HashAlignment:
   Enabled: false
 
+Layout/EndOfLine:
+   Enabled: False
+
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Layout/IndentationWidth:
   Enabled: false
 
 Metrics/BlockLength:
@@ -52,4 +58,43 @@ Rails/ApplicationController:
   Enabled: false
 
 Rails/HasAndBelongsToMany:
+  Enabled: false
+
+RSpec/ExampleWording:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NotToNot:
+  Enabled: false
+
+RSpec/DescribedClass:
+  Enabled: false
+
+RSpec/EmptyLineAfterFinalLet:
+  Enabled: false
+
+Layout/TrailingWhitespace:
+  Enabled: false
+
+Style/HashSyntax:
+  Enabled: false
+
+Rails/Present:
+  Enabled: false
+
+Style/NegatedIfElseCondition:
+  Enabled: false
+
+Lint/UselessMethodDefinition:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/GuardClause:
   Enabled: false

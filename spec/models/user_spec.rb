@@ -15,15 +15,15 @@ RSpec.describe User, type: :model do
         user.email = 'user@example.com'
         user.password = nil
 
-        expect(user).to_not be_valid
+        expect(user).not_to be_valid
         user.password = 'password'
         expect(user).to be_valid
     end
 
-    it "should have a default approved of false" do
-        user.email = 'user@example.com'
-        user.password = 'password'
+    it 'have a default approved of false' do
+      user.email = 'user@example.com'
+      user.password = 'password'
 
-        expect(user.approved).to eq(false)
+      expect(user.approved).to eq(false)
     end
 end

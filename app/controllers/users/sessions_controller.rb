@@ -1,8 +1,7 @@
 module Users
   class SessionsController < Devise::SessionsController
-
     def new
-        super 
+      super 
     end
     
     def create

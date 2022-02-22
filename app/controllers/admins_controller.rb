@@ -17,16 +17,11 @@ class AdminsController < ApplicationController
         else
             admins_view_traders_path fallback_location: admin_view_traders_path, danger: 'Trader Approval Failed'
         end
-
     end
 
-    def add_trader
+    def add_trader; end
 
-    end
-
-    def create_trader
-
-    end
+    def create_trader; end
 
     def show_trader
         @user = User.find(params[:id])
@@ -40,7 +35,5 @@ class AdminsController < ApplicationController
         @user = User.find(params[:id])
     end
 
-    def view_transactions
-        
-    end
+    def view_transactions; end
 end
