@@ -1,3 +1,17 @@
 <h1>
     This is admin page!
 </h1>
+
+<h1>
+    List of all Traders
+</h1>
+
+<% if @traders.empty? %>
+    <p>No Approved Traders Yet</p>
+
+<% else %>
+    <% @traders.each do |trader| %>
+        <%=traders.username%>
+        <%=traders.email%>
+    <% end %>
+<% end %>
