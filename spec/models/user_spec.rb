@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let!(:user) { User.new }
+  let!(:user) { described_class.new }
 
   it '1. email must be valid' do
     user.fullname = 'Stonks'
