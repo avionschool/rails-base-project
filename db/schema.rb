@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_22_054015) do
+ActiveRecord::Schema.define(version: 2022_02_23_010900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(version: 2022_02_22_054015) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "portfolios", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "market_symbol"
+    t.float "hist_price"
+    t.float "amount"
+    t.integer "market_id"
+    t.float "units"
+    t.string "transaction_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -35,6 +47,13 @@ ActiveRecord::Schema.define(version: 2022_02_22_054015) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "wallets", force: :cascade do |t|
+    t.float "balance"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
