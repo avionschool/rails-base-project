@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { sessions: 'users/sessions'}
+  devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   devise_for :admins, :skip => [:registrations]
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-
+    get '/users', to: 'users#index', as: 'user_portfolio'
   end
 
 
