@@ -13,6 +13,7 @@ class AdminsController < ApplicationController
     @user.save
 
     if @user.save
+      ApproveMailer.approve_account(@user.email).deliver_now
       redirect_to admins_view_traders_path fallback_location: admins_view_traders_path, success: 'Trader Approved'
     else
       admins_view_traders_path fallback_location: admin_view_traders_path, danger: 'Trader Approval Failed'
