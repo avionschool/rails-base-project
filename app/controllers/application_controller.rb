@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
-    admin_dashboard_path if resource.instance_of?(Admin)
+    # admin_dashboard_path if resource.instance_of?(Admin)
+    if resource.instance_of?(Admin)
+      admin_dashboard_path
+    elsif resource.instance_of?(Trader)
+      trader_portfolio_path
+    end
   end
 
   protect_from_forgery with: :exception
