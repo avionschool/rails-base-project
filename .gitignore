@@ -41,3 +41,7 @@ yarn-debug.log*
 .yarn-integrity
 
 config/database.yml
+
+# Ignore Procfile
+Procfile
+Procfile.dev
