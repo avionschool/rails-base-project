@@ -1,1 +1,14 @@
 Add Trader
+
+<br/> <br/>
+
+<%= form_with scope: :user, url: '/admins/add-trader', method: :post  do |f| %>
+    <div class="field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %><br/>
+        <%= f.text_field :fullname, autofocus: true, autocomplete: :off, placeholder: "Full Name" %><br/>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password (6 characters minimum)" %>
+    </div>
+    <div class="actions">
+        <%= f.submit "Create Account" %>
+    </div>
+<% end %>
