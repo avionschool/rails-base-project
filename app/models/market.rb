@@ -1,6 +1,5 @@
 class Market < ApplicationRecord
-
-  def self.get_stocks
+  def self.fetch_stocks
     client = IEX::Api::Client.new(
       publishable_token: Rails.application.credentials.iex[:api_token],
       secret_token: Rails.application.credentials.iex[:secret_token],
@@ -13,8 +12,9 @@ class Market < ApplicationRecord
 
     file_data.each do |symbol|
       create(name: symbol, current_price: client.price(symbol))
-    end
 
-  
+    rescue StandardError
+      nil
+    end
   end
 end
