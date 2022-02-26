@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get '/admins/add-trader', to: 'admins#add_trader'
 
     # create trader manually
-    post '/admin/add-trader', to: 'admins#create_trader'
+    post '/admins/add-trader', to: 'admins#create_trader'
 
     get '/admins/trader-profile/:id', to: 'admins#show_trader' # put alias when there is a trader profile
 

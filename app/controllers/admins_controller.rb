@@ -20,9 +20,20 @@ class AdminsController < ApplicationController
     end
   end
 
-  def add_trader; end
+  def add_trader
+    @user = User.new
+  end
 
-  def create_trader; end
+  def create_trader
+    @user = User.new(params.require(:user).permit(:email, :password, :fullname))
+    @user.approved = true
+
+    if @user.save
+      redirect_to fallback_location: admins_add_trader_path, success: 'Trader Created Successfully'
+    else
+      redirect_to fallback_location: admins_add_trader_path, danger: 'Trader Creatation Failed'
+    end
+  end
 
   def show_trader
     @user = User.find(params[:id])
