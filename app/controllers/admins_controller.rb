@@ -32,7 +32,7 @@ class AdminsController < ApplicationController
       redirect_to admin_dashboard_path, notice: 'success'
     else
       Rails.logger.debug 'failed ba?'
-      render :new_trader, notice: 'failed'
+      render :new_trader, notice: 'failed', status: :unprocessable_entity
     end
   end
 
