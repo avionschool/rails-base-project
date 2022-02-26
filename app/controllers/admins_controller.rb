@@ -11,9 +11,9 @@ class AdminsController < ApplicationController
     @trader = Trader.find(params[:id])
     @trader.is_approved = true
     if @trader.save
-      redirect_to admin_dashboard_path, notice:"success"
+      redirect_to admin_dashboard_path, notice: 'success'
     else
-      render :for_approval, notice:"failed"
+      render :for_approval, notice: 'failed'
     end
   end
 
@@ -28,16 +28,17 @@ class AdminsController < ApplicationController
     @trader.is_approved = true
 
     if @trader.save
-      puts "nagwork ba?"
-      redirect_to admin_dashboard_path, notice:"success"
+      Rails.logger.debug 'nagwork ba?'
+      redirect_to admin_dashboard_path, notice: 'success'
     else
-      puts "failed ba?"
-      render :new_trader, notice:"failed"
+      Rails.logger.debug 'failed ba?'
+      render :new_trader, notice: 'failed'
     end
   end
 
   private
-    def trader_params
-      params.require(:trader).permit(:username, :fullname, :email, :password)
-    end
+
+  def trader_params
+    params.require(:trader).permit(:username, :fullname, :email, :password)
+  end
 end
