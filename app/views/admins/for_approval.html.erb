@@ -3,15 +3,16 @@
 </h1>
 
 <h1>
-    List of all Traders
+    List of Pending Traders
 </h1>
 
 <% if @traders.empty? %>
-    <p>No Approved Traders Yet</p>
+    <p>No For Approval</p>
 
 <% else %>
     <% @traders.each do |trader| %>
         <%=trader.username%>
         <%=trader.email%>
+        <%= link_to 'Approve', for_pending_path(id:trader.id), method: :put %>
     <% end %>
 <% end %>

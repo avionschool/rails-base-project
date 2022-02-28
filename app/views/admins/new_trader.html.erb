@@ -1,0 +1,43 @@
+<h2>Create New Trader</h2>
+
+<%= form_with scope: :trader, url: '/admin/create-new-trader', method: :post, local: true do |f| %>
+
+    <% if @trader.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@trader.errors.count, "error") %> prohibited
+          this trader from being saved:
+        </h2>
+        <ul>
+          <% @trader.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fullname %><br />
+    <%= f.text_field :fullname, autofocus: true %>
+  </div>
+  
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
