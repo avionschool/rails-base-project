@@ -1,0 +1,13 @@
+Edit Trader
+
+<%= form_with scope: :user, url: trader_profile_path, method: :put  do |f| %>
+    <div class="field">
+        <%= f.email_field :email, autofocus: true, value: @user.email, placeholder: "Email" %> <br/>
+        <%= f.text_field :fullname, autofocus: true, value: @user.fullname, placeholder: "Full Name" %> <br/>
+        <%= f.number_field :balance, autofocus: true, value: @user.wallet.balance , placeholder: "Balance" %> <br/>
+    </div>
+    <div class="actions">
+        <%= f.submit "Edit Trader Account" %>
+    </div>
+<% end %>
+

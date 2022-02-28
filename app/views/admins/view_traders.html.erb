@@ -11,7 +11,8 @@ All Traders
     <% @users.each do |user| %>
         ID: <%= user.id %><br/>
         Email: <%= user.email %>
-        <%= link_to 'View' %>    <br/><br/>
+        <%= link_to 'View', trader_profile_path(user.id) %>    <br/><br/>
     <% end %>
 
 <% end %>
+
