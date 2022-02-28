@@ -1,3 +1,7 @@
 class UsersController < ApplicationController
-  def index; end
+  def index
+    @wallet = current_user.wallet
+  end
+
+  def show; end
 end

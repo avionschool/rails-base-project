@@ -1,1 +1,19 @@
 Trader Profile
+
+<br/><br/>
+
+Basic Details: <br/><br/>
+Full Name: <%= @user.fullname %> <br/>
+Email: <%= @user.email %> <br/>
+Registered at: <%= @user.created_at.strftime("%b %d, %Y, %H:%M:%S") %> <br/>
+Updated at: <%= @user.updated_at.strftime("%b %d, %Y, %H:%M:%S") %> <br/>
+
+<br/>
+
+Profile Details: <br/><br/>
+Wallet ID: <%= @user.wallet.id %> <br/>
+Ballance: <%= @user.wallet.balance %>0 <br/>
+
+<br/>
+
+<%= link_to 'Edit Trader Account', edit_trader_profile_path(id: @user.id) %>

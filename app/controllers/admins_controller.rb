@@ -45,6 +45,16 @@ class AdminsController < ApplicationController
 
   def update_trader
     @user = User.find(params[:id])
+    @user.update(params.require(:user).permit(:email, :fullname))
+    @wallet = @user.wallet
+    @wallet.balance = params[:user][:balance]
+    @wallet.save
+
+    if @user.update(params.require(:user).permit(:email, :fullname)) && @wallet.save
+      redirect_back fallback_location: admins_add_trader_path, success: 'Trader Updated Successfully'
+    else
+      redirect_back fallback_location: admins_add_trader_path, danger: 'Kindly double check all information before updating'
+    end
   end
 
   def view_transactions; end
