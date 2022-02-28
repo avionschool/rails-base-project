@@ -28,10 +28,10 @@ class AdminsController < ApplicationController
     @trader.is_approved = true
 
     if @trader.save
-     
+
       redirect_to admin_dashboard_path, notice: 'success'
     else
-      
+
       render :new_trader, notice: 'failed', status: :unprocessable_entity
     end
   end
