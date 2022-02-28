@@ -28,10 +28,10 @@ class AdminsController < ApplicationController
     @trader.is_approved = true
 
     if @trader.save
-      Rails.logger.debug 'nagwork ba?'
+      # Rails.logger.debug 'nagwork ba?'
       redirect_to admin_dashboard_path, notice: 'success'
     else
-      Rails.logger.debug 'failed ba?'
+      # Rails.logger.debug 'failed ba?'
       render :new_trader, notice: 'failed', status: :unprocessable_entity
     end
   end
