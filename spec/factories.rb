@@ -6,4 +6,9 @@ FactoryBot.define do
     username { 'test_123' }
     fullname { 'Testing ony' }
   end
+
+  factory :admin do
+    email { 'admin@email.com' }
+    password { 'admin123' }
+  end
 end
