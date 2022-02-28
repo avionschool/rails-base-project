@@ -22,10 +22,10 @@ Rails.application.routes.draw do
     # create trader manually
     post '/admins/add-trader', to: 'admins#create_trader'
 
-    get '/admins/trader-profile/:id', to: 'admins#show_trader' # put alias when there is a trader profile
+    get '/admins/trader-profile/:id', to: 'admins#show_trader', as: :trader_profile
 
     # edit and update trader
-    get '/admins/trader-profile/:id', to: 'admins#edit_trader' # put alias when there is a trader profile
+    get '/admins/trader-profile/:id/edit', to: 'admins#edit_trader', as: :edit_trader_profile
     put '/admins/trader-profile/:id', to: 'admins#update_trader'
 
     get '/admins/view-transactions', to: 'admins#view_transactions' # put alias when there is a trader's transactions list
@@ -34,7 +34,9 @@ Rails.application.routes.draw do
 
   authenticated :user do
     get '/users', to: 'users#index', as: 'user_portfolio'
+    get '/users/markets', to: 'markets#index', as: 'stock_markets'
   end
 
 
 end
+

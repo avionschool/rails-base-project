@@ -1,0 +1,16 @@
+<h1>Stock Market</h1>
+
+<table>
+<tr>
+  <th>Symbol</th>
+  <th>Price</th>
+  <th>Actions</th>
+</tr>
+<% @markets.each do |market| %>
+<tr>
+  <td><%= market.name %></td>
+  <td>$<%= market.current_price %></td>
+  <td>buttons here.</td>
+</tr>
+<% end %>
+</table>
