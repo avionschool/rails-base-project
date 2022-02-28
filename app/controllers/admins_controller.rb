@@ -18,12 +18,10 @@ class AdminsController < ApplicationController
   end
 
   def new_trader
-    # create new trader but hindi pa sinesave
     @trader = Trader.new
   end
 
   def create_new_trader
-    # sinesave yung nacreate na new trader
     @trader = Trader.new(trader_params)
     @trader.is_approved = true
 
