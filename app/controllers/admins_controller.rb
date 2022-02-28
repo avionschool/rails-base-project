@@ -51,9 +51,9 @@ class AdminsController < ApplicationController
     @wallet.save
 
     if @user.update(params.require(:user).permit(:email, :fullname)) && @wallet.save
-      redirect_back fallback_location: admins_add_trader_path, success: 'Trader Updated Successfully'
+      redirect_to fallback_location: trader_profile_path, success: 'Trader Updated Successfully'
     else
-      redirect_back fallback_location: admins_add_trader_path, danger: 'Kindly double check all information before updating'
+      redirect_to fallback_location: trader_profile_path, danger: 'Kindly double check all information before updating'
     end
   end
 
