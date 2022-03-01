@@ -13,10 +13,10 @@ client = IEX::Api::Client.new(
     endpoint: 'https://sandbox.iexapis.com/v1'
 )
 
-    Market.destroy_all
-    file = File.open('app/api/stock_lists/market_symbol.txt')
-    file_data = file.readlines.map(&:chomp)
+Market.destroy_all
+file = File.open('app/api/stock_lists/market_symbol.txt')
+file_data = file.readlines.map(&:chomp)
     
-    file_data.each do |data|
-        Market.create( name: client.company(data).company_name, market_symbol: data, curr_price: client.price(data))
-    end
+file_data.each do |data|
+    Market.create( name: client.company(data).company_name, market_symbol: data, curr_price: client.price(data))
+end
