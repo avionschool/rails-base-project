@@ -21,7 +21,7 @@ file = File.open('app/files/market_symbols.txt')
 file_data = file.readlines.map(&:chomp)
 
 file_data.each do |symbol|
-  Market.create(name: symbol, current_price: client.price(symbol))
+  Market.create(name: symbol, company_name: client.company(symbol).company_name, current_price: client.price(symbol))
 rescue StandardError
   nil
 end

@@ -3,12 +3,14 @@
 <table>
 <tr>
   <th>Symbol</th>
+  <th>Company Name</th>
   <th>Price</th>
   <th>Actions</th>
 </tr>
 <% @markets.each do |market| %>
 <tr>
   <td><%= market.name %></td>
+  <td><%= market.company_name %></td>
   <td>$<%= market.current_price %></td>
   <td>buttons here.</td>
 </tr>
