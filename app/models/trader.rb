@@ -15,7 +15,7 @@ class Trader < ApplicationRecord
   end
 
   def send_email
-    if is_approved? 
+    if is_approved?
       UserMailer.welcome_email(email).deliver_now
     else
       UserMailer.registration(email).deliver_now
