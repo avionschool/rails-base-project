@@ -12,8 +12,19 @@
  *
  *= require_tree .
  *= require_self
+ *= require main
  */
 
- .profiler-results {
-     display: none;
- }
+.profiler-results {
+    display: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow: hidden;
+}
