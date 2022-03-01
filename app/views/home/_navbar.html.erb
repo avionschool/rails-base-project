@@ -1,9 +1,21 @@
-<header>
-    <a href="#">noFomo STA</a>
-    <nav>
-        <ul>
-            <li><%= link_to 'Login', new_user_session_path %></li>
-        </ul>
-    </nav>
+<%= javascript_pack_tag 'navbar' %>
+
+<header class="header">
+    <div class="header-container">
+        <div class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-space-between">
+            <div class="logo">
+                <a href="#">noFomo STA</a>
+            </div>
+            <button type="button" class="nav-toggler">
+                <span></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav-ul">
+                    <li><%= link_to 'Log In', new_user_session_path, class: 'login-btn' %></li>
+                    <li><%= link_to 'Try Now', new_user_registration_path, class: 'register-btn' %></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </header>
 
