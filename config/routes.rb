@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   
   authenticated :trader do
       get '/traders/dashboard', to: "traders#index", as: "trader_portfolio"
+      get '/traders/markets', to: "markets#index" , as: "stock_market"
   end
   root to: 'traders#index'
 

@@ -14,6 +14,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'rails-controller-testing'
+gem 'iex-ruby-client'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'hamlit-rails'
@@ -48,5 +50,3 @@ group :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
 end
-
-gem 'rails-controller-testing'
