@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: ENV['USERNAME']
+  default from: 'iStack.wallet@gmail.com'
   layout 'mailer'
 end
