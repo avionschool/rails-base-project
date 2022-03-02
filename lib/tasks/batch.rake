@@ -9,8 +9,8 @@ namespace :batch do
     file = File.open('app/files/market_symbols.txt')
 
     file_data = file.readlines.map(&:chomp)
-    logger = Logger.new(STDOUT)
-    logger = Log4r::Logger.new("Application Log")
+    logger = Logger.new($stdout)
+
     file_data.each do |symbol|
       market = Market.find_by(name: symbol)
       logger.debug "Updating #{market.company_name}"
