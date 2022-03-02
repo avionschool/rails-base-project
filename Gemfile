@@ -50,3 +50,4 @@ end
 
 gem 'rails-controller-testing'
 gem 'iex-ruby-client'
+gem 'whenever', require: false
