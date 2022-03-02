@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :request do
+RSpec.describe 'Users', type: :request do
   let(:user) { create(:user) }
   let(:pending_user) { create(:pending_user) }
-  
+
   it 'sign in user' do
     sign_in user
     get stock_markets_path

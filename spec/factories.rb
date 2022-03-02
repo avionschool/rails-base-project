@@ -10,7 +10,7 @@ FactoryBot.define do
     password { 'test123' }
     approved { true }
   end
-  
+
   factory :pending_user, class: 'User' do
     fullname { 'pending stonks' }
     email { 'pending@example.com' }
