@@ -1,6 +1,7 @@
 
 
 Rails.application.routes.draw do
+  get 'home/index'
   devise_for :traders
   devise_for :admins, :skip => [:registrations]
 
@@ -16,12 +17,10 @@ Rails.application.routes.draw do
     post '/admin/create-new-trader' => "admins#create_new_trader", as: "admin_create_trader"
   end
   
-  
   authenticated :trader do
-      get '/traders/dashboard', to: "traders#index", as: "trader_portfolio"
-      get '/traders/markets', to: "markets#index" , as: "stock_market"
+    get '/markets', to: "markets#index" , as: "stock_market"
+    root to: 'traders#index', as: "trader_portfolio"
   end
-  root to: 'traders#index'
-
+    root to: 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

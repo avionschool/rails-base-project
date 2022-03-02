@@ -476,6 +476,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: inline;
 }
 
+.table {
+  display: table;
+}
+
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
