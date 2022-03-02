@@ -11,6 +11,7 @@ class AdminsController < ApplicationController
     @trader = Trader.find(params[:id])
     @trader.is_approved = true
     if @trader.save
+      UserMailer.welcome_email(@trader.email).deliver_now
       redirect_to admin_dashboard_path, notice: 'success'
     else
       render :for_approval, notice: 'failed'
