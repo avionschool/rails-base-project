@@ -2,7 +2,7 @@ class Trader < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :lockable, :trackable
+         :recoverable, :rememberable, :validatable
   validates :fullname, presence: true
   validates :username, presence: true
   after_create :send_email
