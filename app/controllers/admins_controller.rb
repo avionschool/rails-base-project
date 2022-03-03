@@ -45,13 +45,13 @@ class AdminsController < ApplicationController
 
   def update_trader
     @trader = Trader.find(params[:id])
-     
-      if @trader.update(params.require(:trader).permit(:username, :fullname))
-        redirect_to admin_show_trader_path(id:@trader.id)
-      else
-        render :edit_trader
-      end
-  end 
+
+    if @trader.update(params.require(:trader).permit(:username, :fullname))
+      redirect_to admin_show_trader_path(id: @trader.id)
+    else
+      render :edit_trader
+    end
+  end
 
   private
 
