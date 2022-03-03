@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     put '/admin/pending/:id' => "admins#approved", as: "for_pending"
     get '/admin/create-new-trader' => "admins#new_trader"
     post '/admin/create-new-trader' => "admins#create_new_trader", as: "admin_create_trader"
+    get '/admin/trader/:id' => "admins#show_trader", as: "admin_show_trader"
+    get '/admin/trader/:id/edit' => "admins#edit_trader", as:"admin_edit_trader"
+    put '/admin/trader/:id' => "admins#update_trader"
   end
   
   

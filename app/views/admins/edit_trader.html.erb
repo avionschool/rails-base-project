@@ -1,0 +1,32 @@
+<h2>Edit New Trader</h2>
+
+<%= form_with scope: :trader, url: admin_show_trader_path, method: :put, local: true do |f| %>
+
+    <% if @trader.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@trader.errors.count, "error") %> prohibited
+          this trader from being saved:
+        </h2>
+        <ul>
+          <% @trader.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fullname %><br />
+    <%= f.text_field :fullname, autofocus: true %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "update" %>
+  </div>
+<% end %>

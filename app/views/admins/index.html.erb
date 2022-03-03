@@ -13,5 +13,6 @@
     <% @traders.each do |trader| %>
         <%=trader.username%>
         <%=trader.email%>
+         <%= link_to 'View', admin_show_trader_path(id:trader.id)%>
     <% end %>
 <% end %>
