@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_one :wallet, dependent: :destroy
   has_many :portfolios, dependent: :destroy
+  has_many :transactions, dependent: :destroy
 
   validates :fullname, presence: true, length: { minimum: 4 }
   # Include default devise modules. Others available are:
