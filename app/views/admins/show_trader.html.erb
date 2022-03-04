@@ -1,0 +1,8 @@
+<h1>Trader View</h1>
+
+
+<p> UserName:<%=@trader.username%></p>
+<p> Email: <%=@trader.email%></p>
+<p> Balance: <%=@trader.wallet.balance%></p>
+
+<%= link_to 'edit', admin_edit_trader_path(id:@trader.id)%>
