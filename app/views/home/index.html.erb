@@ -1,0 +1,45 @@
+<div class="home h-screen bg-[url('background.jpg')] bg-no-repeat bg-cover bg-center flex items-center md:justify-center items-center">
+    <div class="text-white pl-20 flex flex-col">
+        <div class="text-7xl font-bold flex md:text-8xl">
+            <div class="logo"><%= image_tag("logo.jpg", {:style => "width:80px;"}) %></div>&nbsp;
+            <div class="i">i</div>
+            <div class="S text-indigo-800"><span>S</span></div>
+            <div class="t text-orange-600"><span>t</span></div>
+            <div class="a text-orange-600"><span>a</span></div>
+            <div class="c text-orange-600"><span>c</span></div>
+            <div class="k text-orange-600"><span>k</span></div>
+        </div>
+        <div class="pl-48 text-2xl font-bold flex">
+            <div class="W"><span class="text-yellow-200">W</span></div>
+            <div class="A"><span class="text-yellow-200">A</span></div>
+            <div class="L"><span class="text-yellow-200">L</span></div>
+            <div class="L2"><span class="text-yellow-200">L</span></div>
+            <div class="E"><span class="text-yellow-200">E</span></div>
+            <div class="T"><span class="text-yellow-200">T</span></div>
+        </div> <br /> <br />
+        <div class="text-2xl font-bold">
+            <p>Our simple, intuitive platform provides you with a</p>
+            <p>simplified trading experience</p> <br />
+        </div>
+        <div class="text-base text-gray-100">
+            <p>Trade indices, commodities and more on our proprietary platform. Stay</p>
+            <p>on top of the game with our latest market news, instant price updates,</p>
+            <p>and advanced risk management tools.</p>            
+        </div>
+        <br /><br />
+        <div class="btn flex justify-center">
+            <a href="/traders/sign_up" class="relative px-44 py-3 overflow-hidden font-medium text-indigo-600 bg-gray-100 border border-gray-100 rounded-lg shadow-inner group">
+                <span class="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-indigo-600 group-hover:w-full ease"></span>
+                <span class="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-indigo-600 group-hover:w-full ease"></span>
+                <span class="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-indigo-600 group-hover:h-full ease"></span>
+                <span class="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-indigo-600 group-hover:h-full ease"></span>
+                <span class="absolute inset-0 w-full h-full duration-300 delay-300 bg-indigo-900 opacity-0 group-hover:opacity-100"></span>
+                <span class="relative transition-colors duration-300 delay-200 group-hover:text-white ease text-xl">TRY IT FOR FREE</span>
+            </a>
+        </div>
+        <div class="sign_in flex justify-center pt-2">
+            <span>Already have an account?</span>&nbsp;<span><%= link_to 'Sign in', new_trader_session_path, class: "text-orange-400 font-bold md:text-orange-400"%></span>
+        </div>
+    </div>
+</div>
+

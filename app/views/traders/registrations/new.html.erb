@@ -1,41 +1,55 @@
-<h2>Sign up</h2>
+<div class="h-screen text-white bg-[url('background.jpg')] bg-no-repeat bg-cover bg-center flex justify-center items-center">
+  <div class="bg-gray-800 w-1/2 h-screen flex flex-col justify-center items-center">
+      <div class="logo"><a href="/"><%= image_tag("logo.jpg", {:style => "width:80px;"}) %></a></div>
+      <div class="text-5xl font-bold">
+        i<span class="text-indigo-800">S</span><span class="text-orange-600">tack</span>&nbsp;<span class="text-xl text-yellow-200">wallet</span>
+      </div>
+      <div class="text-2xl font-serif">Ready for margin trading</div>
+      <div class="sign_in flex justify-center">
+            <span>Already have an account?</span>&nbsp;
+            <span><%= link_to 'Sign in', new_trader_session_path, class: "text-orange-400 font-bold md:text-orange-400"%></span>
+      </div>
+      
+      <div class="text-black flex flex-col justify-center w-5/6 p-4">
+          <%= form_for(resource, as: resource_name, url: traders_sign_up_path) do |f| %>
+            <%= render "traders/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: traders_sign_up_path) do |f| %>
-  <%= render "traders/shared/error_messages", resource: resource %>
 
+            <div class="field">
+            <label class="text-white text-base">Username:<label><br />
+              <%= f.text_field :username, autofocus: true, class: "w-full p-2 text-black text-sm rounded" %>
+            </div>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true %>
+            <div class="field">
+              <label class="text-white text-base">Full name:<label><br />
+              <%= f.text_field :fullname, autofocus: true, class: "w-full p-2 text-black text-sm rounded" %>
+            </div>
+            
+
+            <div class="field">
+              <label class="text-white text-base">Email:<label><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full p-2 text-black text-sm rounded" %>
+            </div>
+
+            <div class="field">
+            <label class="text-white text-base">Password:<label>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "new-password", class: "w-full p-2 text-black text-sm rounded" %>
+            </div>
+
+            <div class="field">
+            <label class="text-white text-base">Password confirmation:<label><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full p-2 text-black text-sm rounded"%>
+            </div>
+            <br />
+            <div class="actions flex justify-center">
+              <%= f.submit "Sign Up", class: "w-full bg-violet-700 hover:bg-violet-600 text-white font-bold py-1 px-4 border-b-4 border-violet-900 hover:border-violet-700 rounded" %>
+            </div>
+          <% end %>
+
+      </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :fullname %><br />
-    <%= f.text_field :fullname, autofocus: true %>
-  </div>
-  
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "traders/shared/links" %>
