@@ -1,0 +1,18 @@
+<header class="header sessions">
+    <div class="header-container">
+        <div class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-space-between">
+            <div class="logo logo-sessions">
+                <a href="/">noFomo STA</a>
+            </div>
+            <button type="button" class="nav-toggler tog-sessions">
+                <span></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav-ul">
+                    <li><%= link_to 'Log In', new_user_session_path, class: 'login-btn log-sessions' %></li>
+                    <li><%= link_to 'Register', new_user_registration_path, class: 'register-btn reg-sessions' %></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

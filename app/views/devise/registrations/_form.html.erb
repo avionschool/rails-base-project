@@ -1,0 +1,43 @@
+<%= form_for(resource, as: resource_name, url: users_sign_up_path, html: {class: 'registration-session-form is-flex is-flex-direction-column is-align-items-center'}) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="registration-form is-flex is-flex-direction-row is-align-items-center is-justify-content-center">
+
+    <div class="left-form">
+
+      <div class="field">
+        <%= f.text_field :fullname, autofocus: true, autocomplete: "fullname", placeholder: '👤 Fullname' %>
+      </div>
+
+      <div class="field">
+        <%= f.email_field :email, autocomplete: "email", placeholder: '✉️ Email' %>
+      </div>
+
+    </div>
+
+    <div class="center-form">
+      <span class="reg-line">/</span>
+    </div>
+
+    <div class="right-form">
+
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: '🔒 Password' %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: '🔒 Confirm Password' %>
+      </div>
+
+    </div>
+
+  </div>
+
+  <br/>
+
+  <div class="actions">
+    <%= f.button "Register Now →", class: 'register-btn' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
