@@ -4,6 +4,8 @@ module.exports = {
     extend: {
         
         screens: {
+          'costom' : {'max': '639px'},
+
           'sm': {'min': '640px', 'max': '767px'},
           // => @media (min-width: 640px and max-width: 767px) { ... }
     
@@ -20,7 +22,6 @@ module.exports = {
           // => @media (min-width: 1536px) { ... }
     
         }
-
 
     },
   },

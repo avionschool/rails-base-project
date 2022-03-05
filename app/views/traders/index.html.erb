@@ -1,6 +1,73 @@
-<div  class="py.5 px-5 mb-4 bg-green-100 text-green-900 text-sm rounded-md border border-green-200" role="alert">
+<div class="h-auto bg-black text-white text-center p-4 flex justify-between">
+    <div class="flex">
+        <div class="logo"><%= image_tag("logo.jpg", {:style => "width:40px;"}) %></div> &nbsp;
+        <div class="text-4xl font-bold">
+            i<span class="text-indigo-800">S</span><span class="text-orange-600">tack</span>&nbsp;<span class="text-xl text-yellow-200">wallet</span>
+        </div>
+    </div>
+    <div class="pt-1 flex gap-8">
+        <div><%= link_to 'Add balance', new_balancerequest_path %></div>
+        <div><%= link_to 'Transactions', "#" %></div>
+        <div><%= link_to 'Market List', stock_market_path %></div>
+    </div>
+    <div class="pt-1">
+        <%= link_to 'Sign-out', destroy_trader_session_path, method: 'delete' %>
+    </div>
+</div>
+
+<div  class="py-2 px-5 mb-4 bg-green-100 text-green-900 text-sm rounded-md border border-green-200" role="alert">
     <p class="notice text-center"><%= notice %></p>
 </div>
-This is trader page <br />
-<%= link_to 'Sign-out', destroy_trader_session_path, method: 'delete' %>
+<br />
+
+<div class="flex flex-col items-center justify-center">
+    <h1 class="text-2xl font-bold"><%= current_trader.fullname %></h1>
+    <h1 class="text-base"><%= "(#{current_trader.username})" %></h1> <br />
+    <div class="flex gap-12 flex-wrap sm:flex-col costom:flex-col md:flex-col">
+        <div class="text-white max-w-sm rounded overflow-hidden shadow-lg bg-gradient-to-bl from-slate-900 via-purple-900 to-slate-900">
+            <div class="px-6 py-4">
+                <div class="flex justify-between">
+                    <div class="flex">
+                        <div class="font-bold text-xl mb-2"><%= image_tag("logo.jpg", {:style => "width:40px;"}) %></div>&nbsp;&nbsp;
+                        <div class="text-2xl font-bold">
+                            i<span class="text-indigo-800">S</span><span class="text-orange-600">tack</span>
+                        </div>
+                    </div>
+                    <div>
+                        <%= image_tag("peso.jpg", {:style => "width:50px;"}) %>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center px-24">
+                    <span class="text-3xl"><%= number_to_currency(@trader.balance, precision: 2, unit: "") %></span><br /><br />
+                    <p class="text-base font-bold">BALANCE(PHP)</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-white max-w-sm rounded overflow-hidden shadow-lg bg-gradient-to-bl from-slate-900 via-purple-900 to-slate-900">
+            <div class="px-6 py-4">
+                <div class="flex justify-between">
+                    <div class="flex">
+                        <div class="font-bold text-xl mb-2"><%= image_tag("logo.jpg", {:style => "width:40px;"}) %></div>&nbsp;&nbsp;
+                        <div class="text-2xl font-bold">
+                            i<span class="text-indigo-800">S</span><span class="text-orange-600">tack</span>
+                        </div>
+                    </div>
+                    <div>
+                        <%= image_tag("peso.jpg", {:style => "width:50px;"}) %>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center px-24">
+                    <span class="text-3xl">99,999.00</span><br /><br />
+                    <p class="text-base font-bold">TOTAL REVENUE</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="table">
+        Table goes here!
+    </div>
+</div>
+
+
 

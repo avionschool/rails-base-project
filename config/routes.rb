@@ -1,5 +1,3 @@
-
-
 Rails.application.routes.draw do
   get 'home/index'
   devise_for :traders
@@ -22,6 +20,7 @@ Rails.application.routes.draw do
   
   authenticated :trader do
     get '/markets', to: "markets#index" , as: "stock_market"
+    resources :balancerequests, only: [:new, :create]
     root to: 'traders#index', as: "trader_portfolio"
   end
     root to: 'home#index'
