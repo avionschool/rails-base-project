@@ -1,20 +1,6 @@
-<h3>All Traders</h3>
+<%= javascript_pack_tag 'sidebar' %>
 
-<%= link_to 'See Pending Approval Traders', admins_approvals_path %>
-
-<br/><br/>
-
-<% if @users.empty? %>
-    
-    No Approved Traders Yet
-
-    <% else %>
-
-    <% @users.each do |user| %>
-        ID: <%= user.id %><br/>
-        Email: <%= user.email %>
-        <%= link_to 'View', trader_profile_path(user.id) %>    <br/><br/>
-    <% end %>
-
-<% end %>
-
+<div class="admin-container">
+    <%= render 'sidebar' %>
+    <%= render 'dashboard' %>
+</div>
