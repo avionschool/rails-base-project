@@ -35,8 +35,8 @@ Rails.application.routes.draw do
   authenticated :user do
     get '/users', to: 'users#index', as: 'user_portfolio'
     get '/users/markets', to: 'markets#index', as: 'stock_markets'
+    get '/users/transactions', to: 'transactions#index', as: 'user_transaction_path'
   end
 
 
 end
-
