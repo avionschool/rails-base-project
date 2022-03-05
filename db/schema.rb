@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_01_103847) do
+ActiveRecord::Schema.define(version: 2022_03_04_142409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,19 @@ ActiveRecord::Schema.define(version: 2022_03_01_103847) do
     t.integer "market_id"
     t.float "units"
     t.string "transaction_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "portfolio_id"
+    t.string "market_symbol"
+    t.float "hist_price"
+    t.float "amount"
+    t.float "units"
+    t.string "transaction_type"
+    t.datetime "transaction_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

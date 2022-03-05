@@ -1,34 +1,34 @@
-<h2>Sign up</h2>
+<div class="register-session">
 
-<%= form_for(resource, as: resource_name, url: users_sign_up_path) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render 'navbar' %>
 
-  <div class="field">
-    <%= f.label :fullname %><br />
-    <%= f.text_field :fullname, autofocus: true, autocomplete: "fullname" %>
-  </div>
+  <main>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+    <%# left vector %>
+    <svg class="register-session-svg" viewBox="0 0 134 201" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-40.1443 123.372C99.2936 54.7505 9.34962 46.5305 -53.0521 50.9982" stroke="black" stroke-width="2"/>
+      <path d="M-83.7784 186.593C231.064 27.8056 29.8511 12.5954 -110.111 24.8387" stroke="black" stroke-width="2"/>
+      <path d="M-2.97669 199.58C286.37 -29.3304 44.661 -13.6066 -112.362 22.869" stroke="black" stroke-width="2"/>
+    </svg>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <%# Text %>
+    <br/><br/>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="registration-sessions-text is-flex is-flex-direction-column is-justify-content-center is-align-items-center">
+      <h1 class="registration-session-h1">Register Now and Trade</h1>
+      <br/>
+      <span class="register-session-span">Everybody deserves to be rich. Choose from different company</span>
+      <span class="register-session-span">share count to trade now!</span>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+    <%# Form %>
+    <br/><br/>
+
+    <%= render 'form' %>
+
+    <%= render 'footer' %>
+
+  </main>
+
+</div>

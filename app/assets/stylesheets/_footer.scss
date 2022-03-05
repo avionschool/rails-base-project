@@ -1,0 +1,19 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.footer {
+    background-color: transparent !important;
+    margin-top: 10rem;
+    padding: 0 10% !important;
+    max-width: 100%;
+    gap: 75%;
+    bottom: 0;
+    white-space: nowrap;
+}
+
+.footer span {
+    color: #000;
+    font-weight: 600;
+    font-size: 1.25rem;
+}

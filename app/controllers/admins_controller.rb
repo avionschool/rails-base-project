@@ -29,6 +29,7 @@ class AdminsController < ApplicationController
     @user.approved = true
 
     if @user.save
+      ApproveMailer.approve_account(@user.email).deliver_now
       redirect_to fallback_location: admins_add_trader_path, success: 'Trader Created Successfully'
     else
       redirect_to fallback_location: admins_add_trader_path, danger: 'Trader Creatation Failed'
@@ -57,5 +58,7 @@ class AdminsController < ApplicationController
     end
   end
 
-  def view_transactions; end
+  def view_transactions
+    @transactions = Transaction.all
+  end
 end
