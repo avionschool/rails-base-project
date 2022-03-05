@@ -2,6 +2,8 @@
 
 @import 'traders.css';
 
+@import 'markets.css';
+
 /*
 ! tailwindcss v3.0.23 | MIT License | https://tailwindcss.com
 */
@@ -472,10 +474,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
-.invisible{
-  visibility: hidden;
-}
-
 .static{
   position: static;
 }
@@ -523,6 +521,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0.5rem;
 }
 
+.mt-6{
+  margin-top: 1.5rem;
+}
+
+.mr-5{
+  margin-right: 1.25rem;
+}
+
 .block{
   display: block;
 }
@@ -559,6 +565,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: auto;
 }
 
+.h-5{
+  height: 1.25rem;
+}
+
 .w-auto{
   width: auto;
 }
@@ -575,6 +585,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 0px;
 }
 
+.w-5{
+  width: 1.25rem;
+}
+
 .w-5\/6{
   width: 83.333333%;
 }
@@ -585,6 +599,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .max-w-sm{
   max-width: 24rem;
+}
+
+.table-auto{
+  table-layout: auto;
+}
+
+.border-collapse{
+  border-collapse: collapse;
 }
 
 .flex-col{
@@ -617,6 +639,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .overflow-hidden{
   overflow: hidden;
+}
+
+.overflow-x-auto{
+  overflow-x: auto;
 }
 
 .rounded-md{
@@ -671,6 +697,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(79 70 229 / var(--tw-border-opacity));
 }
 
+.border-gray-200{
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+
 .border-violet-900{
   --tw-border-opacity: 1;
   border-color: rgb(76 29 149 / var(--tw-border-opacity));
@@ -709,6 +740,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-black{
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.bg-gray-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
 .bg-violet-700{
@@ -793,6 +829,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-repeat: no-repeat;
 }
 
+.fill-current{
+  fill: currentColor;
+}
+
 .p-6{
   padding: 1.5rem;
 }
@@ -840,14 +880,19 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 11rem;
 }
 
-.px-6{
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+.py-10{
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .py-4{
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.px-6{
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .px-24{
@@ -858,6 +903,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-1{
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+.px-8{
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .pl-20{
@@ -874,6 +924,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pt-1{
   padding-top: 0.25rem;
+}
+
+.pb-4{
+  padding-bottom: 1rem;
 }
 
 .text-left{
@@ -934,6 +988,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .font-medium{
   font-weight: 500;
+}
+
+.font-normal{
+  font-weight: 400;
 }
 
 .text-green-900{
@@ -1056,6 +1114,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(109 40 217 / var(--tw-border-opacity));
 }
 
+.hover\:bg-gray-100:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-violet-600:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(124 58 237 / var(--tw-bg-opacity));
@@ -1127,10 +1190,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 @media (min-width: 640px) and (max-width: 767px){
-  .sm\:visible{
-    visibility: visible;
-  }
-
   .sm\:mx-12{
     margin-left: 3rem;
     margin-right: 3rem;
@@ -1148,10 +1207,6 @@ Ensure the default browser behavior of the `hidden` attribute.
     flex-direction: column;
   }
 
-  .sm\:justify-center{
-    justify-content: center;
-  }
-
   .sm\:justify-between{
     justify-content: space-between;
   }
@@ -1160,18 +1215,9 @@ Ensure the default browser behavior of the `hidden` attribute.
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
-
-  .sm\:text-xs{
-    font-size: 0.75rem;
-    line-height: 1rem;
-  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px){
-  .md\:visible{
-    visibility: visible;
-  }
-
   .md\:mx-12{
     margin-left: 3rem;
     margin-right: 3rem;
@@ -1197,19 +1243,14 @@ Ensure the default browser behavior of the `hidden` attribute.
     justify-content: space-between;
   }
 
-  .md\:text-8xl{
-    font-size: 6rem;
-    line-height: 1;
-  }
-
   .md\:text-sm{
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
 
-  .md\:text-xs{
-    font-size: 0.75rem;
-    line-height: 1rem;
+  .md\:text-8xl{
+    font-size: 6rem;
+    line-height: 1;
   }
 
   .md\:text-orange-400{
@@ -1219,10 +1260,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 @media (max-width: 639px){
-  .costom\:visible{
-    visibility: visible;
-  }
-
   .costom\:mx-12{
     margin-left: 3rem;
     margin-right: 3rem;
@@ -1240,26 +1277,12 @@ Ensure the default browser behavior of the `hidden` attribute.
     flex-direction: column;
   }
 
-  .costom\:justify-center{
-    justify-content: center;
-  }
-
   .costom\:justify-between{
     justify-content: space-between;
-  }
-
-  .costom\:text-base{
-    font-size: 1rem;
-    line-height: 1.5rem;
   }
 
   .costom\:text-sm{
     font-size: 0.875rem;
     line-height: 1.25rem;
-  }
-
-  .costom\:text-xs{
-    font-size: 0.75rem;
-    line-height: 1rem;
   }
 }
