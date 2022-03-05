@@ -1,3 +1,6 @@
+<div  class="py.5 px-5 mb-4 bg-green-100 text-green-900 text-sm rounded-md border border-green-200" role="alert">
+    <p class="notice text-center"><%= notice %></p>
+</div>
 <h1>
     This is admin page!
 </h1>
@@ -13,6 +16,8 @@
     <% @traders.each do |trader| %>
         <%=trader.username%>
         <%=trader.email%>
-         <%= link_to 'View', admin_show_trader_path(id:trader.id)%>
+        <%= link_to 'View', admin_show_trader_path(id:trader.id)%>
     <% end %>
 <% end %>
+<br />
+<%= link_to 'Sign-out', destroy_admin_session_path, method: 'delete' %>

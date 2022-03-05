@@ -8,12 +8,20 @@
     <div class="text-white flex flex-col justify-center w-full">
       
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            
+            
+              <div class="mb-4 bg-red-100 text-red-900 rounded-md border border-red-200 flex flex-col" role="alert">
+                <div class="px-5 text-sm text-center">
+                      <p class="alert"><%= alert %></p>
+                </div>
+              </div>
+          
             <div class="field">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full p-2 text-black text-sm rounded", placeholder: "username" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full p-2 text-black text-sm rounded", placeholder: "👤 username" %>
             </div>
             <br />
             <div class="field">
-              <%= f.password_field :password, autocomplete: "current-password", class: "w-full p-2 text-black text-sm rounded", placeholder: "username" %>
+              <%= f.password_field :password, autocomplete: "current-password", class: "w-full p-2 text-black text-sm rounded", placeholder: "🔒 password" %>
             </div>
 
             <% if devise_mapping.rememberable? %>
