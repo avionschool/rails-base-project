@@ -42,5 +42,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/page-not-found', action: :error404, controller: 'static_pages'
+  get "*path" => 'static_pages#error404'
 
 end
