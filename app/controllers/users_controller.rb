@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_traders, only: %i[show]
 
   def index
     @wallet = current_user.wallet
@@ -7,4 +8,14 @@ class UsersController < ApplicationController
   end
 
   def show; end
+
+  private
+
+  def set_traders
+    @user = current_user.find(params[:id])
+  end
+
+  def traders_params
+    params.require(:user).permit(:email)
+  end
 end
