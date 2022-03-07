@@ -1,5 +1,6 @@
 @import 'home.css';
 @import 'traders.css';
+@import 'markets.css';
 
 @tailwind base;
 @tailwind components;
