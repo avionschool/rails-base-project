@@ -19,7 +19,7 @@ module SeedsServices
       @logger.info 'Fetching data from API...'
       # Loop through each market to update data
       file_data.each do |data|
-        Market.create(name: client.company(data).company_name, market_symbol: data, curr_price: client.price(data))
+        Market.create(name: client.company(data).company_name, market_symbol: data, curr_price: client.price(data) * 52.25)
         @logger.info "#{data} market data updated."
       end
       @logger.info 'Fetching data from API completed'
