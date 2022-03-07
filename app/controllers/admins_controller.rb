@@ -1,5 +1,4 @@
 class AdminsController < ApplicationController
-
   def view_traders
     @users = User.where(approved: true)
   end

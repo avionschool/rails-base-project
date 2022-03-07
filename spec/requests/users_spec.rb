@@ -7,13 +7,13 @@ RSpec.describe 'Users', type: :request do
   it 'sign in user' do
     sign_in user
     get stock_markets_path
-    expect(response).to have_http_status(:ok)
+    expect(response).to have_http_status(:found)
   end
 
   it 'signs out user' do
     sign_out user
     get root_path
-    expect(response).to have_http_status(:ok)
+    expect(response).to have_http_status(:found)
   end
 
   it 'cant sign in pending users' do
