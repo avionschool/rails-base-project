@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_traders, only: %i[show]
 
   def index
