@@ -1,6 +1,4 @@
 class PortfoliosController < ApplicationController
-  before_action :authenticate_user!
-
   def new
     @market = Market.find(params[:market_id])
     @wallet = current_user.wallet
