@@ -1,0 +1,13 @@
+<% unless request.fullpath.start_with?('/admins/') %>
+  <div>
+    <h1>Oops! This page doesn't exist!</h1>
+    <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+    <%= link_to 'Go back to homepage', root_path %>
+  </div>
+  <% else %>
+  <div>
+    <h1>Oops! This page doesn't exist!</h1>
+    <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+    <%= link_to 'Go back to homepage', root_path %>
+  </div>
+<% end %>
