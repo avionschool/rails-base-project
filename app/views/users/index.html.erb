@@ -1,6 +1,7 @@
 <h1>Welcome to noFomo STA <%= current_user.email %></h1>
 <br/>
 <h2>Balance: $<%= current_user.wallet.balance %></h2>
+<h2>Profit and loss: $<%= @profit_and_loss %></h2>
 <%= link_to 'Markets', stock_markets_path %>
 
 <br />
@@ -12,14 +13,14 @@
     <table>
 <tr>
   <th>Symbol</th>
-  <th>Amount</th>
+  <th>Value</th>
   <th>Units</th>
   <th>Actions</th>
 </tr>
   <% @portfolios.each do |portfolio| %>
 <tr>
   <td><%= portfolio.market_symbol %></td>
-  <td>$<%= portfolio.amount %></td>
+  <td>$<%= get_current_value(portfolio) %></td>
   <td><%= portfolio.units %></td>
   <td><%= link_to 'View', new_user_portfolio_path(user_id:current_user.id, market_id:portfolio.market_id) %></td>
 </tr>
