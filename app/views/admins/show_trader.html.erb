@@ -1,13 +1,13 @@
 <h1>Trader View</h1>
 <div class="flex flex-col justify-center items-center mt-5 mb-5">
-<div class="bg-blue-200 w-fit p-5 rounded-xl mb-5">
-<p class="lg:text-xl"> <span class="font-bold">UserName: </span><%=@trader.username%></p>
-<p class="lg:text-xl"> <span class="font-bold">Email: </span><%=@trader.email%></p>
-<p class="lg:text-xl"> <span class="font-bold">FullName: </span><%=@trader.fullname%></p>
-<p class="lg:text-xl"> <span class="font-bold">Balance: </span><%=@trader.wallet.balance%></p>
-<%= link_to 'edit', admin_edit_trader_path(id:@trader.id), class:"text-blue-500 font-bold"%>
-</div>
-<%= link_to '--Back', '/admin/dashboard', class:"mb-5 italic" %>
+    <div class="bg-blue-200 w-fit p-5 rounded-xl mb-5">
+        <p class="lg:text-xl"> <span class="font-bold">UserName: </span><%=@trader.username%></p>
+        <p class="lg:text-xl"> <span class="font-bold">Email: </span><%=@trader.email%></p>
+        <p class="lg:text-xl"> <span class="font-bold">FullName: </span><%=@trader.fullname%></p>
+        <p class="lg:text-xl"> <span class="font-bold">Balance: </span><%=@trader.wallet.balance%></p>
+        <%= link_to 'edit', admin_edit_trader_path(id:@trader.id), class:"text-blue-500 font-bold"%>
+    </div>
+    <%= link_to '--Back', '/admin/dashboard', class:"mb-5 italic" %>
 
-<div>transaction history goes here:</div>
+    <div>transaction history goes here:</div>
 </div>

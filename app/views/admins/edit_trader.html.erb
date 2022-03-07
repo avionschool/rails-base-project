@@ -1,40 +1,39 @@
 <div class="flex flex-col justify-center items-center mt-5">
 <h1 class="text-3xl">Edit New Trader</h1>
-<div class="p-5 bg-blue-200 w-1/3 rounded-xl">
 
+  <div class="p-5 bg-blue-200 w-1/3 rounded-xl">
+  <%= form_with scope: :trader, url: admin_show_trader_path, method: :put, local: true do |f| %>
 
-<%= form_with scope: :trader, url: admin_show_trader_path, method: :put, local: true do |f| %>
+      <% if @trader.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@trader.errors.count, "error") %> prohibited
+            this trader from being saved:
+          </h2>
+          <ul>
+            <% @trader.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-    <% if @trader.errors.any? %>
-      <div id="error_explanation">
-        <h2>
-          <%= pluralize(@trader.errors.count, "error") %> prohibited
-          this trader from being saved:
-        </h2>
-        <ul>
-          <% @trader.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <div class="field mb-5">
+      <%= f.label :username, class:"font-bold" %><br />
+      <%= f.text_field :username, autofocus: true, class: "w-full p-2 text-black text-sm rounded", placeholder: "👤 username" %>
+    </div>
 
-  <div class="field mb-5">
-    <%= f.label :username, class:"font-bold" %><br />
-    <%= f.text_field :username, autofocus: true, class: "w-full p-2 text-black text-sm rounded", placeholder: "👤 username" %>
+    <div class="field mb-5">
+      <%= f.label :fullname, class:"font-bold" %><br />
+      <%= f.text_field :fullname, autofocus: true, class: "w-full p-2 text-black text-sm rounded", placeholder: "email" %>
+    </div>
+    
+    <div class="actions mb-3">
+      <%= f.submit "update", class: "w-fit bg-violet-700 hover:bg-violet-600 text-white font-bold py-1 px-4 border-b-4 border-violet-900 hover:border-violet-700 rounded" %>
+    </div>
+
+    <%= link_to '--Back', :back, class:"mb-5 italic" %>
+  <% end %>
+
   </div>
-
-  <div class="field mb-5">
-    <%= f.label :fullname, class:"font-bold" %><br />
-    <%= f.text_field :fullname, autofocus: true, class: "w-full p-2 text-black text-sm rounded", placeholder: "email" %>
-  </div>
-  
-  <div class="actions mb-3">
-    <%= f.submit "update", class: "w-fit bg-violet-700 hover:bg-violet-600 text-white font-bold py-1 px-4 border-b-4 border-violet-900 hover:border-violet-700 rounded" %>
-  </div>
-
-  <%= link_to '--Back', :back, class:"mb-5 italic" %>
-<% end %>
-
-</div>
 </div>

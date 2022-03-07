@@ -18,12 +18,12 @@
     This is admin page!
 </h1> %>
 <div class="mx-5">
-<div class="flex flex-row justify-center">
-<%= link_to 'Dashboard', '/admin/dashboard', class: "bg-indigo-800 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black" %>
-<%= link_to 'Transaction History', '#', class: "bg-orange-600 text-black px-4 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black" %>
-<%= link_to 'Pending Request', '/admin/approvals', class: "bg-yellow-200 text-black px-4 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black" %>
-</div>
-<h1 class="mt-4 mb-4 text-4xl font-black">List of All Pending Requests</h1>
+    <div class="flex flex-row justify-center">
+        <%= link_to 'Dashboard', '/admin/dashboard', class: "bg-indigo-800 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black" %>
+        <%= link_to 'Transaction History', '#', class: "bg-orange-600 text-black px-4 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black" %>
+        <%= link_to 'Pending Request', '/admin/approvals', class: "bg-yellow-200 text-black px-4 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black" %>
+    </div>
+    <h1 class="mt-4 mb-4 text-4xl font-black">List of All Pending Requests</h1>
 
 <% if @traders.empty? %>
     <p class="italic">None For Approval</p>
