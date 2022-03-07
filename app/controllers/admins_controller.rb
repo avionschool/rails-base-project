@@ -1,5 +1,4 @@
 class AdminsController < ApplicationController
-  before_action :authenticate_admin!
 
   def view_traders
     @users = User.where(approved: true)
