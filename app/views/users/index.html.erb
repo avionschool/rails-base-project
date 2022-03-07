@@ -1,6 +1,29 @@
 <h1>Welcome to noFomo STA <%= current_user.email %></h1>
-
 <br/>
-
+<h2>Balance: $<%= current_user.wallet.balance %></h2>
 <%= link_to 'Markets', stock_markets_path %>
 
+<br />
+
+
+<% if @portfolios.empty? %>
+  <h1>No portfolios yet.</h1>
+  <% else %>
+    <table>
+<tr>
+  <th>Symbol</th>
+  <th>Amount</th>
+  <th>Units</th>
+  <th>Actions</th>
+</tr>
+  <% @portfolios.each do |portfolio| %>
+<tr>
+  <td><%= portfolio.market_symbol %></td>
+  <td>$<%= portfolio.amount %></td>
+  <td><%= portfolio.units %></td>
+  <td><%= link_to 'View', new_user_portfolio_path(user_id:current_user.id, market_id:portfolio.market_id) %></td>
+</tr>
+  <% end %>
+
+</table>
+<% end %>
