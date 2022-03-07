@@ -12,7 +12,7 @@
   <td><%= market.name %></td>
   <td><%= market.company_name %></td>
   <td>$<%= market.current_price %></td>
-  <td>buttons here.</td>
+  <td><%= link_to 'View', new_user_portfolio_path(user_id:current_user.id, market_id:market.id) %></td>
 </tr>
 <% end %>
 </table>
