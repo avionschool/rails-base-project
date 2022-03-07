@@ -1,0 +1,15 @@
+<%= form_for @balancereq, url: balancerequests_path do |f| %>        
+    <% if  @balancereq.errors.any? %>
+        <ul classs="validation-message">
+            <%  @balancereq.errors.full_messages.each do |message| %>
+                <li style="list-style-type:none; color:#ff2e46;"><%= message.downcase %></li>
+            <% end %>
+        </ul>
+    <% end %>
+    <label>amount:</label><br />
+        <%= f.number_field :amount, min: 1000, autocomplete: :off %>
+        <div class="actions">
+            <%= f.submit 'submit', data: {confirm: 'Are you sure?'} %>
+        </div>
+<% end %>
+
