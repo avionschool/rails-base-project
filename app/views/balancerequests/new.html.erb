@@ -1,15 +1,30 @@
-<%= form_for @balancereq, url: balancerequests_path do |f| %>        
-    <% if  @balancereq.errors.any? %>
-        <ul classs="validation-message">
-            <%  @balancereq.errors.full_messages.each do |message| %>
-                <li style="list-style-type:none; color:#ff2e46;"><%= message.downcase %></li>
-            <% end %>
-        </ul>
+<% if  @balancereq.errors.any? %>
+    <ul class="validation-message">
+    <%  @balancereq.errors.full_messages.each do |message| %>
+        <li style="list-style-type:none; color:#ff2e46;"><%= message.downcase %></li>
     <% end %>
-    <label>amount:</label><br />
-        <%= f.number_field :amount, min: 1000, autocomplete: :off %>
-        <div class="actions">
-            <%= f.submit 'submit', data: {confirm: 'Are you sure?'} %>
-        </div>
+    </ul>
 <% end %>
+
+<div class="h-screen flex flex-col items-center justify-center bg-gradient-to-bl from-gray-900 via-purple-900 to-violet-600">
+<%= form_for @balancereq, url: balancerequests_path do |f| %>         
+<div class="flex justify-center">
+    <div class="block rounded-lg shadow-lg bg-white w-auto text-center costom:mx-12 sm:mx-12 md:mx-12 ">
+        <div class="py-3 px-40 border-b border-gray-300 text-2xl font-bold costom:text-sm sm:text-sm md:text-sm">
+            Add balance request:
+        </div>
+        <div class="p-6">
+            <p class="text-gray-700 text-base mb-4">
+                <%= f.number_field :amount, min: 1000, autocomplete: :off, placeholder: "minimum of 1000", class: "p-2 w-full px-4 rounded" %>
+                <div class="actions flex justify-between">
+                <%= f.submit '✔ OK', data: {confirm: 'Are you sure?'}, class:"w-1/2 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" %>
+                <%= link_to '❌ Exit', trader_portfolio_path,  class:"w-1/2 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" %>
+                </div>
+            </p>
+        </div>
+    </div>
+</div>
+<% end %>
+</div>
+
 
