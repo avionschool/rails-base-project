@@ -1,0 +1,22 @@
+<h1>Your Transactions</h1>
+
+<% if @transactions.empty? %>
+  <h1>No transactions yet.</h1>
+<% else %>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Transaction Log</th>
+  </tr>
+  
+  <% @transactions.each do |transaction| %>
+  <tr>
+  <td><%= transaction.transaction_date %></td>
+  <td><%= render_transaction(transaction) %></td>
+  </tr>
+        
+  <% end %>
+  
+</table>
+<% end %>

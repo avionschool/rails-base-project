@@ -12,4 +12,20 @@
  *
  *= require_tree .
  *= require_self
+ *= require main
  */
+
+.profiler-results {
+    display: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: #f6f6f9;
+}

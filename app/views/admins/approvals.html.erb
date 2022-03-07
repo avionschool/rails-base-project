@@ -1,0 +1,17 @@
+Approvals Section
+
+<br/><br/>
+
+<% if @users.empty? %>
+
+    No Pending Approvals
+
+    <% else %>
+
+    <% @users.each do |user| %>
+        ID: <%= user.id %><br/>
+        Email: <%= user.email %>
+        <%= link_to 'Approve Trader Account', admin_approvals_path(id: user.id, approve: true), method: :put %>
+    <% end %>
+
+<% end %>

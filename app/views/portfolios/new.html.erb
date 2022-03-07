@@ -1,0 +1,37 @@
+<h1><%= @market.company_name %></h1>
+<h1>Price: $<%= @market.current_price %></h1>
+
+<h1>Account Information</h1>
+Balance: $<%= @wallet.balance %>
+Stock: <%= @current_stock.nil? ? 0.0 : @current_stock.units %>
+
+<h1>Buy</h1>
+  <%= form_with scope: :portfolio, model: [@portfolio.user, @portfolio], local: true do |f| %>
+          <div class="field">
+            <%= f.number_field :user_id, value: current_user.id, type: :hidden%>
+            <%= f.text_field :market_symbol, value: @market.name, type: :hidden  %>
+            <%= f.number_field :amount, autofocus: true, placeholder: "Price", step: :any, min: 0.1, :required => true %>
+            <%= f.number_field :hist_price, value: @market.current_price, type: :hidden  %>
+            <%= f.text_field :transaction_type, value: 'BUY', type: :hidden %>
+            <%= f.number_field :market_id, value: @market.id, type: :hidden %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Buy", data: { confirm: "Kindly confirm buy transaction" } %>
+          </div>
+  <% end %>
+<br/>
+
+<h1>Sell</h1>
+ <%= form_with scope: :portfolio, model: [@portfolio.user, @portfolio], local: true do |f| %>
+          <div class="field">
+            <%= f.number_field :user_id, value: current_user.id, type: :hidden%>
+            <%= f.text_field :market_symbol, value: @market.name, type: :hidden  %>
+            <%= f.number_field :hist_price, value: @market.current_price, type: :hidden  %>
+            <%= f.number_field :units, placeholder: "Sell in Unit", step: :any %> 
+            <%= f.text_field :transaction_type, value: 'SELL', type: :hidden %>
+            <%= f.number_field :market_id, value: @market.id, type: :hidden %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Sell", data: { confirm: "Kindly confirm sell transaction" } %>
+          </div>
+  <% end %>
