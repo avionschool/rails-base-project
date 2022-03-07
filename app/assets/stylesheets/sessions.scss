@@ -2,43 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.scale-up-ver-top {
-    -webkit-animation: scale-up-ver-top 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-    animation: scale-up-ver-top 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-}
-
-@-webkit-keyframes scale-up-ver-top {
-    0% {
-        -webkit-transform: scaleY(0.4);
-        transform: scaleY(0.4);
-        -webkit-transform-origin: 100% 0%;
-        transform-origin: 100% 0%;
-    }
-
-    100% {
-        -webkit-transform: scaleY(1);
-        transform: scaleY(1);
-        -webkit-transform-origin: 100% 0%;
-        transform-origin: 100% 0%;
-    }
-}
-
-@keyframes scale-up-ver-top {
-    0% {
-        -webkit-transform: scaleY(0.4);
-        transform: scaleY(0.4);
-        -webkit-transform-origin: 100% 0%;
-        transform-origin: 100% 0%;
-    }
-
-    100% {
-        -webkit-transform: scaleY(1);
-        transform: scaleY(1);
-        -webkit-transform-origin: 100% 0%;
-        transform-origin: 100% 0%;
-    }
-}
-
 .new-session,
 .register-session {
     position: relative;
@@ -96,12 +59,16 @@
 }
 
 .field input {
-    width: 19rem;
+    width: 17rem;
     height: 3rem;
     padding: 1rem;
     font-size: 1.25rem;
     font-weight: 600;
     // border-radius: 5px;
+}
+
+.sessions-input {
+    width: 16.5rem;
 }
 
 .actions .login-btn {
@@ -173,5 +140,99 @@
 @keyframes line-animation {
     to {
         stroke-dashoffset: 0;
+    }
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 1400px) {
+    .new-session-h1,
+    .registration-session-h1 {
+        font-size: 2rem;
+    }
+
+    .new-session-span,
+    .register-session-span {
+        font-size: 1rem;
+    }
+
+    .field input {
+        width: 15rem;
+        height: 1rem;
+        font-size: 0.75rem;
+    }
+
+    .actions .register-btn {
+        font-size: 1.25rem;
+        padding: 1rem 3rem;    
+    }
+
+    .actions .login-btn {
+        font-size: 1.25rem;
+    }
+
+    .forgot-btn, .to-login-btn {
+        font-size: 1.25rem;
+    }
+
+    .footer {
+        margin-top: 0rem;
+        gap: 50%;
+    }
+
+    .footer span {
+        font-size: 1rem;
+    }
+
+    .session-svg,
+    .register-session-svg {
+        width: 100px;
+        height: 150px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .new-session-h1,
+    .registration-session-h1 {
+        font-size: 1rem;
+    }
+
+    .new-session-span,
+    .register-session-span {
+        font-size: 0.75rem;
+    }
+
+    .field input {
+        width: 10rem;
+        height: 1rem;
+        font-size: 0.75rem;
+    }
+
+    .actions .register-btn {
+        font-size: 1rem;
+        padding: 1rem 3rem;    
+    }
+
+    .actions .login-btn {
+        font-size: 1rem;
+    }
+
+    .forgot-btn, .to-login-btn {
+        font-size: 1rem;
+    }
+
+    .footer {
+        margin-top: 0rem;
+        gap: 5%;
+    }
+
+    .footer span {
+        font-size: 0.5rem;
+    }
+
+    .session-svg,
+    .register-session-svg {
+        width: 50px;
+        height: 150px;
     }
 }

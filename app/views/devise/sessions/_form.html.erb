@@ -1,9 +1,9 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'new-session-form is-flex is-flex-direction-column is-align-items-center'}) do |f| %>
-  <div class="field">
+  <div class="field sessions-input">
     <%= f.email_field :email, autocomplete: "email", placeholder: '✉️ Email' %>
   </div>
 
-  <div class="field">
+  <div class="field sessions-input">
     <%= f.password_field :password, autocomplete: "current-password", placeholder: '🔒 Password'%>
   </div>
 
