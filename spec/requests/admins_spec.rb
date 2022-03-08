@@ -30,7 +30,7 @@ RSpec.describe 'Admins', type: :request do
 
   it 'goes to view all transactions page' do
     sign_in admin
-    get admins_view_transactions_path
+    get view_trader_transactions_path
     expect(response).to be_successful
   end
 

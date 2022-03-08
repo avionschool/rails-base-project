@@ -17,6 +17,10 @@
 
 @import 'bulma/bulma';
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .profiler-results {
     display: none;
 }

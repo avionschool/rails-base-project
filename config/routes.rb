@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     get '/admins/trader_profile/:id/edit', to: 'admins#edit_trader', as: :edit_trader_profile
     put '/admins/trader_profile/:id', to: 'admins#update_trader'
 
-    get '/admins/view_transactions', to: 'admins#view_transactions' # put alias when there is a trader's transactions list
+    get '/admins/view_transactions', to: 'admins#view_transactions', as: :view_trader_transactions
 
   end
 

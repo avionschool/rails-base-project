@@ -1,5 +1,17 @@
 View All Trader's Transactions
 
+<br/><br/>
+
 <% if @transactions.empty? %>
+    
     <h1>No Transactions Yet</h1>
+    
+    <% else %>
+
+    <% @transactions.each do |transaction| %>
+        <%= transaction.transaction_date.strftime("%b %d, %Y, %H:%M:%S") %> <br/>
+        <%= transaction.user.email %><br/>
+        <%= render_transaction(transaction) %><br/><br/>
+    <% end %>
+
 <% end %>

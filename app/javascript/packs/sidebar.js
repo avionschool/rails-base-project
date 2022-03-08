@@ -53,10 +53,6 @@ window.onload = function() {
 
     const themeToggler = document.querySelector(".theme-toggler");
 
-    window.setTimeout( function() {
-        window.location.reload();
-    }, 30000);
-
     menuBtn.addEventListener("click", () => {
         console.log('menu button clicked');
         sideMenu.setAttribute('style', 'display: block !important');
