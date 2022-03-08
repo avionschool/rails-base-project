@@ -113,10 +113,11 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   host = 'https://nofomo-sta.herokuapp.com/'
   config.action_mailer.default_url_options = { host: host }
-
+  
   config.action_mailer.smtp_settings = {
     user_name:      ENV['USERNAME'],
     password:       ENV['PASSWORD'],
+    domain:         "gmail.com",
     address:       'smtp.gmail.com',
     port:          587,
     authentication: :plain,
