@@ -1,0 +1,20 @@
+<% unless request.fullpath.start_with?('/admins/') %>
+  <div class="error404">
+    
+    <main>
+      <%= render 'e' %>
+    </main>
+    
+  </div>
+
+  <% else %>
+
+  <div>
+
+    <main>
+      <%= render 'e' %>
+    </main>
+    
+  </div>
+
+<% end %>

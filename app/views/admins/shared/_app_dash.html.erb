@@ -1,0 +1,121 @@
+<main>
+
+    <h1>Approve Newly Registered Traders</h1>
+
+    <div class="date">
+        <h1><%= Time.now.strftime('%Y-%m-%d %H:%M:%S') %></h1>
+    </div>
+
+    <%# Insights %>
+
+    <div class="insights trans-list">
+
+        <%# Approval Section Lists %>
+        <div class="traders">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: white;"><path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg>
+            <div class="middle">
+                <div class="left">
+                    <h3>Approval Section</h3><hr/>
+                    <% if @users.empty? %>
+
+                        <h3>No Pending Approvals</h3>
+
+                    <% else %>
+
+                    <% @users.each do |user| %>
+                        <h1 class="user-id-h1">ID: <%= user.id %></h1><br/>
+                        <h1 class="user-email-h1">Email: <%= user.email %></h1>
+                        <%= link_to 'Approve Trader Account', admin_approvals_path(id: user.id, approve: true), method: :put, class: 'approve-btn' %>
+                        <br/><hr/>
+                    <% end %>
+
+                <% end %>
+                </div>
+            </div>
+            <br/>
+            <small class="text-muted">Last 24 Hours</small>
+        </div>
+
+    </div>
+
+</main>
+
+<%# Right %>
+
+<div class="right">
+
+    <%# Top %>
+
+    <div class="top">
+        <button id="menu-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg>
+        </button>
+        <div class="theme-toggler">
+            <svg class="sun active" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6.993 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007S14.761 6.993 12 6.993 6.993 9.239 6.993 12zM12 8.993c1.658 0 3.007 1.349 3.007 3.007S13.658 15.007 12 15.007 8.993 13.658 8.993 12 10.342 8.993 12 8.993zM10.998 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2h-3zm17 0h3v2h-3zM4.219 18.363l2.12-2.122 1.415 1.414-2.12 2.122zM16.24 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.342 7.759 4.22 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path></svg>
+            <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path></svg>
+        </div>
+        <div class="profile">
+            <div class="info">
+                <p>Admin</p>
+            </div>
+            <div class="profile-photo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg>
+            </div>
+        </div>
+    </div>
+
+    <%# Recent Transactions %>
+
+    <div class="recent-transactions">
+        <div class="updates">
+            <h2>Recent Transactions</h2>
+            <div class="update">
+                <div class="profile-photo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg>
+                </div>
+                <%# To be Continued %>
+                <div class="message">
+                    <p><b>Trader 01</b> Bought from company A</p>
+                    <small class="text-muted">0 minutes ago</small>
+                </div>
+            </div>
+            <div class="update">
+                <div class="profile-photo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg>
+                </div>
+                <%# To be Continued %>
+                <div class="message">
+                    <p><b>Trader 02</b> Bought from company A</p>
+                    <small class="text-muted">0 minutes ago</small>
+                </div>
+            </div><div class="update">
+                <div class="profile-photo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg>
+                </div>
+                <%# To be Continued %>
+                <div class="message">
+                    <p><b>Trader 03</b> Bought from company A</p>
+                    <small class="text-muted">0 minutes ago</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <%# Search %>
+
+    <div class="search">
+        <h2>Search for Trader/s</h2>
+        <div class="search-item">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg>
+            </div>
+            <div class="right">
+                <div class="info">
+                    <%# Search Input Field %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
