@@ -1,17 +1,8 @@
-View All Trader's Transactions
+<%= javascript_pack_tag 'sidebar', 'data-turbolinks': 'false' %>
 
-<br/><br/>
+<div class="admin-container">
 
-<% if @transactions.empty? %>
-    
-    <h1>No Transactions Yet</h1>
-    
-    <% else %>
+    <%= render 'admins/shared/sidebar_trans' %>
+    <%= render 'admins/shared/trans_dash' %>
 
-    <% @transactions.each do |transaction| %>
-        <%= transaction.transaction_date.strftime("%b %d, %Y, %H:%M:%S") %> <br/>
-        <%= transaction.user.email %><br/>
-        <%= render_transaction(transaction) %><br/><br/>
-    <% end %>
-
-<% end %>
+</div>

@@ -1,20 +1,8 @@
-Trader Profile
+<%= javascript_pack_tag 'sidebar', 'data-turbolinks': 'false' %>
 
-<br/><br/>
+<div class="admin-container">
 
-Basic Details: <br/><br/>
-Full Name: <%= @user.fullname %> <br/>
-Email: <%= @user.email %> <br/>
-Registered at: <%= @user.created_at.strftime("%b %d, %Y, %H:%M:%S") %> <br/>
-Updated at: <%= @user.updated_at.strftime("%b %d, %Y, %H:%M:%S") %> <br/>
+    <%= render 'admins/shared/sidebar' %>
+    <%= render 'admins/shared/view_dash' %>
 
-<br/>
-
-Profile Details: <br/><br/>
-Wallet ID: <%= @user.wallet.id %> <br/>
-Ballance: <%= @user.wallet.balance %>0 <br/>
-
-<br/>
-
-<%= link_to 'Edit Trader Account', edit_trader_profile_path(id: @user.id) %>
-
+</div>

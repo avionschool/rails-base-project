@@ -33,6 +33,11 @@ main .insights {
     gap: 1.6rem;
 }
 
+main .trans-list {
+    display: grid;
+    grid-template-columns: repeat(1, 3fr);
+}
+
 .insights>div {
     background-color: #fff;
     padding: 1.8rem;
@@ -297,6 +302,22 @@ main table {
 
 .t-hr-dark {
     background-color: rgba(255, 255, 255, 0.411);
+}
+
+.user-id-h1,
+.user-email-h1,
+.trans-h1,
+.view-h1 {
+    font-size: 1rem !important;
+}
+
+.approve-btn,
+.edit-trader-btn {
+    color: rgb(36, 167, 36) !important;
+}
+
+.cr-trader {
+    padding: 1rem 3.75rem !important;
 }
 
 /* Media Queries */
