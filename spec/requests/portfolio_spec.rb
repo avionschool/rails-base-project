@@ -31,7 +31,7 @@ RSpec.describe 'Portfolios', type: :request do
 
     it 'allow user to make a buy/sell' do
       market = create(:market)
-      get new_user_portfolio_path(user_id: user.id ,market_id: market.id)
+      get new_user_portfolio_path(user_id: user.id, market_id: market.id)
       expect(response).to have_http_status(:ok)
     end
   end

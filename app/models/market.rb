@@ -1,3 +1,2 @@
 class Market < ApplicationRecord
-  
 end
