@@ -61,6 +61,6 @@ class AdminsController < ApplicationController
   end
 
   def view_transactions
-    @transactions = Transaction.all
+    @transactions = Transaction.all.order(transaction_date: :desc)
   end
 end
