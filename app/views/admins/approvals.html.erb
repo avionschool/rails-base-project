@@ -1,17 +1,8 @@
-Approvals Section
+<%= javascript_pack_tag 'sidebar', 'data-turbolinks': 'false' %>
 
-<br/><br/>
+<div class="admin-container">
 
-<% if @users.empty? %>
+    <%= render 'admins/shared/sidebar_app' %>
+    <%= render 'admins/shared/app_dash' %>
 
-    No Pending Approvals
-
-    <% else %>
-
-    <% @users.each do |user| %>
-        ID: <%= user.id %><br/>
-        Email: <%= user.email %>
-        <%= link_to 'Approve Trader Account', admin_approvals_path(id: user.id, approve: true), method: :put %>
-    <% end %>
-
-<% end %>
+</div>

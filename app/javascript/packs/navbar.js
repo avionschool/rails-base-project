@@ -1,4 +1,5 @@
-window.onload = function() {
+document.addEventListener('turbolinks:load', function (){
+
     const navToggler = document.querySelector(".nav-toggler");
     navToggler.addEventListener("click", navToggle);
     
@@ -14,4 +15,4 @@ window.onload = function() {
            nav.removeAttribute("style");
        }
     } 
-}
+})

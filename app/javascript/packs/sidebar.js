@@ -1,4 +1,5 @@
-window.onload = function() {
+document.addEventListener('turbolinks:load', function (){
+
     const sideMenu = document.querySelector(".aside");
     const menuBtn = document.querySelector("#menu-btn");
     const closeBtn = document.querySelector("#close-btn");
@@ -161,4 +162,4 @@ window.onload = function() {
         })
 
     })
-}
+})
