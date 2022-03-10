@@ -1,0 +1,41 @@
+<main>
+
+    <div class="is-flex is-align-items-center is-justify-content-space-between is-flex-wrap-wrap user-title">
+        <h1 class="user-dash-title">Companies Available</h1>
+        <div class="is-flex is-align-items-center user-prof">
+            <small><%= current_user.email %></small>
+            <div class="profile-photo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="date">
+        <h1><%= Time.now.strftime('%Y-%m-%d %H:%M:%S') %></h1>
+    </div>
+
+    <div class="profile-table market-table">
+
+        <table>
+
+            <tr>
+            <th>Symbol</th>
+            <th>Company Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+            </tr>
+
+            <% @markets.each do |market| %>
+                <tr>
+                <td><%= market.name %></td>
+                <td><%= market.company_name %></td>
+                <td>$<%= market.current_price %></td>
+                <td><%= link_to 'View', new_user_portfolio_path(user_id:current_user.id, market_id:market.id) %></td>
+                </tr>
+            <% end %>
+
+        </table>
+
+    </div>
+
+</main>
