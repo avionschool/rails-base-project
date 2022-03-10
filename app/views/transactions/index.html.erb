@@ -1,22 +1,6 @@
-<h1>Your Transactions</h1>
+<div class="user-container">
 
-<% if @transactions.empty? %>
-  <h1>No transactions yet.</h1>
-<% else %>
+  <%= render 'shared/navbar' %>
+  <%= render 'shared/trans_dash' %>
 
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Transaction Log</th>
-  </tr>
-  
-  <% @transactions.each do |transaction| %>
-  <tr>
-  <td><%= transaction.transaction_date %></td>
-  <td><%= render_transaction(transaction) %></td>
-  </tr>
-        
-  <% end %>
-  
-</table>
-<% end %>
+</div>

@@ -1,0 +1,79 @@
+<main>
+
+    <div class="is-flex is-align-items-center is-justify-content-space-between is-flex-wrap-wrap user-title">
+        <h1 class="user-dash-title">New Profie Transaction</h1>
+        <div class="is-flex is-align-items-center user-prof">
+            <small><%= current_user.email %></small>
+            <div class="profile-photo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="date">
+        <h1><%= Time.now.strftime('%Y-%m-%d %H:%M:%S') %></h1>
+    </div>
+
+    <div class="user-profile-container">
+        <div class="is-flex is-align-items-center user-profile-card company-name">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: black;transform: ;msFilter:;"><path d="M19 2H9c-1.103 0-2 .897-2 2v6H5c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4c0-1.103-.897-2-2-2zM5 12h6v8H5v-8zm14 8h-6v-8c0-1.103-.897-2-2-2H9V4h10v16z"></path><path d="M11 6h2v2h-2zm4 0h2v2h-2zm0 4.031h2V12h-2zM15 14h2v2h-2zm-8 .001h2v2H7z"></path></svg>
+            <div class="is-flex is-flex-direction-column">
+                <h2><%= @market.company_name %></h2>
+                <h2 class="price">Price: <span>$<%= @market.current_price %></span></h2>
+            </div>
+        </div>
+        
+        <div class="is-flex is-align-items-center user-profile-card company-name">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: darkblue;transform: ;msFilter:;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path></svg>
+            <div class="is-flex is-flex-direction-column">
+                <h2>Account Information</h2>
+                <h2 class="price">Balance: <span>$<%= @wallet.balance %></span></h2>
+            </div>
+        </div>
+        
+        <div class="is-flex is-align-items-center user-profile-card company-name">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 21c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14zM9.553 9.658l4 2 1.553-3.105 1.789.895-2.447 4.895-4-2-1.553 3.105-1.789-.895 2.447-4.895z"></path></svg>
+            <div class="is-flex is-flex-direction-column">
+                <h2>Your Stocks</h2>
+                <h2 class="price"><span><%= @current_stock.nil? ? 0.0 : @current_stock.units %></span></h2>
+            </div>
+        </div>
+    </div>
+
+    <br/><br/>
+
+    <div class="is-flex is-flex-wrap-wrap is-justify-content-center trans-form">
+        <%# Buy Form %> 
+        <%= form_with scope: :portfolio, model: [@portfolio.user, @portfolio], local: true do |f| %>
+            <div class="field">
+            <%= f.number_field :user_id, value: current_user.id, type: :hidden%>
+            <%= f.text_field :market_symbol, value: @market.name, type: :hidden  %>
+            <%= f.number_field :amount, autofocus: true, placeholder: "BUY in Price", step: :any, min: 0.1, :required => true %>
+            <%= f.number_field :hist_price, value: @market.current_price, type: :hidden  %>
+            <%= f.text_field :transaction_type, value: 'BUY', type: :hidden %>
+            <%= f.number_field :market_id, value: @market.id, type: :hidden %>
+            </div>
+            <div class="actions">
+            <%= f.button "Buy", data: { confirm: "Kindly confirm buy transaction" } %>
+            </div>
+        <% end %>
+
+        <h1>/</h1>
+
+        <%# Sell Form %>
+        <%= form_with scope: :portfolio, model: [@portfolio.user, @portfolio], local: true do |f| %>
+            <div class="field">
+              <%= f.number_field :user_id, value: current_user.id, type: :hidden%>
+              <%= f.text_field :market_symbol, value: @market.name, type: :hidden  %>
+              <%= f.number_field :hist_price, value: @market.current_price, type: :hidden  %>
+              <%= f.number_field :units, placeholder: "SELL in Unit", step: :any, min: 0 %> 
+              <%= f.text_field :transaction_type, value: 'SELL', type: :hidden %>
+              <%= f.number_field :market_id, value: @market.id, type: :hidden %>
+            </div>
+            <div class="actions">
+              <%= f.button "Sell", data: { confirm: "Kindly confirm sell transaction" } %>
+            </div>
+        <% end %>
+    </div>
+
+</main>

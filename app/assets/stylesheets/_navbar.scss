@@ -51,6 +51,10 @@
     transition: all 0.5s ease;
 }
 
+.out-btn {
+    font-size: 1.25rem;
+}
+
 .login-btn {
     background-color: rgb(255, 255, 255);
     padding: 1rem 3rem !important;
@@ -157,6 +161,14 @@
 
 .nav-toggler.active span::after {
     transform: rotate(135deg);
+}
+
+.user-nav {
+    color: #fff;
+}
+
+.user-nav:hover {
+    color: #E0B389;
 }
 
 @media(max-width:991px) {

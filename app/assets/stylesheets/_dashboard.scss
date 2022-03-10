@@ -10,7 +10,8 @@
     // overflow-y: hidden;
 }
 
-.admin-container main h1 {
+.admin-container main h1,
+.user-container main h1 {
     color: #000;
     font-size: 1.5rem;
     font-weight: 600;
@@ -320,6 +321,133 @@ main table {
     padding: 1rem 3.75rem !important;
 }
 
+/* User Dashboard */
+
+.user-container main {
+    margin-top: 1.4rem;
+}
+
+.user-dash-title {
+    margin-left: 5rem;
+}
+
+.user-container main .date {
+    margin-left: 5rem;
+    margin-bottom: 2rem;
+}
+
+.user-title .user-prof {
+    gap: 1rem;
+    margin-right: 5rem;
+}
+
+.user-profile-container {
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    margin: 0 auto;
+}
+
+.user-profile-card {
+    background: #fff;
+    border-radius: 15px;
+    gap: 1rem;
+    padding: 1.8rem;
+    box-shadow: 0 1rem 1rem rgba(132, 139, 200, 0.18);
+    transition: all 300ms ease;
+}
+
+.user-profile-card:hover {
+    box-shadow: none;
+}
+
+.user-profile-card svg {
+    width: 30px;
+    height: 30px;
+}
+
+.user-profile-card h2 {
+    color: #000;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.user-profile-card a {
+    color: rgb(36, 167, 36);
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.user-profile-card a:hover {
+    color: rgba(36, 167, 36, 0.748);
+}
+
+.profile-table {
+    display: grid;
+    place-items: center;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.profile-table table {
+    width: 75%;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1rem 1rem rgba(132, 139, 200, 0.18);
+    transition: all 300ms ease;
+}
+
+.profile-table table:hover {
+    box-shadow: none;
+}
+
+.profile-table table tr th {
+    color: #000;
+    border-bottom: 1px solid #0b0b0b51;
+}
+
+.profile-table table tr td a{
+    color: rgba(36, 167, 36, 0.748);
+    font-weight: 600;
+}
+
+.profile-table table tr td {
+    border-bottom: 1px solid #0b0b0b20;
+}
+
+.company-name h2 {
+    font-size: 1rem;
+}
+
+.company-name a {
+    font-size: 1rem;
+}
+
+.price span {
+    color: rgba(23, 99, 23, 0.748) !important;
+}
+
+.trans-form {
+    gap: 1.5rem;
+}
+
+.trans-form form .actions button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 1rem 2.5rem;
+    background-color: #00E99E;
+    color: #000;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.trans-form form .actions button:hover {
+    background-color: #08cf90;
+}
+
 /* Media Queries */
 
 @media screen and (max-width: 1200px) {
@@ -397,5 +525,79 @@ main table {
         left: 1rem;
         border: none;
         outline: none;
+    }
+
+    .user-profile-container {
+        gap: 1rem;
+    }
+    
+    .user-profile-card {
+        margin-top: 1rem;
+    }
+
+    .user-profile-card h2 {
+        font-size: 1rem;
+    }
+
+    .user-profile-card a {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .user-title {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .user-dash-title {
+        margin-left: 0rem;
+    }
+
+    .user-title .user-prof {
+        gap: 1rem;
+        margin-right: 0rem;
+    }
+
+    .user-container main .date {
+        margin-left: 0rem;
+        margin-top: 1rem;
+        display: grid;
+        place-content: center;
+        width: 75%;
+        margin: 0 auto;
+    }
+
+    .user-profile-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .user-profile-card {
+        margin-top: 1rem;
+    }
+
+    .user-trans-table tr td {
+        border-bottom: 1px solid #0b0b0b20;
+        font-size: 0.75rem;
+    }
+
+    .profile-table table tr td {
+        font-size: 0.75rem;
+    }
+
+    .market-table table tr th {
+        font-size: 0.75rem;
+    }
+
+    .market-table table tr td {
+        font-size: 0.65rem;
+    }
+
+    .trans-form {
+        text-align: center;
+    }
+
+    .trans-form h1 {
+        display: none;
     }
 }
