@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.e-mobile {
+    display: none;
+}
+
 .error404 {
     position: relative;
     max-height: 100vh;
@@ -109,5 +113,17 @@
 
     100% {
         transform: translateX(0px);
+    }
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 768px) {
+    .e-pc {
+        display: none;
+    }
+
+    .e-mobile {
+        display: initial;
     }
 }
