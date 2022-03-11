@@ -43,7 +43,7 @@
             </svg>
             <h3>Transactions</h3>
         </a>
-        <a href="#">
+        <%= link_to destroy_admin_session_path, method: :delete, data: { confirm: 'Are you sure you want to log out? '} do %>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M16 13v-2H7V8l-5 4 5 4v-3z">
                 </path>
@@ -51,6 +51,6 @@
                 </path>
             </svg>
             <h3>Log Out</h3>
-        </a>
+        <% end %>
     </div>
 </aside>
