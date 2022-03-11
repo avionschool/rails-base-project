@@ -1,0 +1,119 @@
+<main>
+
+    <h1>Add Traders Manually</h1>
+
+    <div class="date">
+        <h1><%= Time.now.strftime('%Y-%m-%d %H:%M:%S') %></h1>
+    </div>
+
+    <%# Insights %>
+
+    <div class="insights trans-list">
+
+        <%# Add Trader Form %>
+        <div class="companies">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                <path d="M19 8h-2v3h-3v2h3v3h2v-3h3v-2h-3zM4 8a3.91 3.91 0 0 0 4 4 3.91 3.91 0 0 0 4-4 3.91 3.91 0 0 0-4-4 3.91 3.91 0 0 0-4 4zm6 0a1.91 1.91 0 0 1-2 2 1.91 1.91 0 0 1-2-2 1.91 1.91 0 0 1 2-2 1.91 1.91 0 0 1 2 2zM4 18a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v1h2v-1a5 5 0 0 0-5-5H7a5 5 0 0 0-5 5v1h2z">
+                </path>
+            </svg>
+            <div class="middle">
+                <div class="left">
+                    <h3>Add Trader</h3><hr/>
+                    <%= form_with scope: :user, model: @user, url: '/admins/add_trader', method: :post, local: true do |f| %>
+                        <div class="field admin-field">
+                            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "✉️ Email" %><br/>
+                            <% @user.errors.full_messages_for(:email).each do |message| %>
+                            <div class="error-message"><%= message %></div>
+                            <% end %>
+                            <br/>
+                            <%= f.text_field :fullname, autofocus: true, autocomplete: :off, placeholder: "👤 Fullname" %><br/>
+                            <% @user.errors.full_messages_for(:fullname).each do |message| %>
+                            <div class="error-message"><%= message %></div>
+                            <% end %>
+                            <br/>
+                            <%= f.password_field :password, autocomplete: "new-password", placeholder: "🔒 Password (6 characters minimum)" %><br/>
+                            <% @user.errors.full_messages_for(:password).each do |message| %>
+                            <div class="error-message"><%= message %></div>
+                            <% end %>
+                        </div>
+                        <div class="actions">
+                            <%= f.button "Create Trader", class: 'register-btn cr-trader' %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+<%# Right %>
+
+<div class="right">
+
+    <%# Top %>
+
+    <div class="top">
+        <button id="menu-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg>
+        </button>
+        <div class="theme-toggler">
+            <svg class="sun active" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6.993 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007S14.761 6.993 12 6.993 6.993 9.239 6.993 12zM12 8.993c1.658 0 3.007 1.349 3.007 3.007S13.658 15.007 12 15.007 8.993 13.658 8.993 12 10.342 8.993 12 8.993zM10.998 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2h-3zm17 0h3v2h-3zM4.219 18.363l2.12-2.122 1.415 1.414-2.12 2.122zM16.24 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.342 7.759 4.22 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path></svg>
+            <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path></svg>
+        </div>
+        <div class="profile">
+            <div class="info">
+                <p>Admin</p>
+            </div>
+            <div class="profile-photo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg>
+            </div>
+        </div>
+    </div>
+
+    <%# Recent Transactions %>
+
+    <div class="recent-transactions">
+        <div class="updates">
+            <h2>Recent Transactions</h2>
+            <div class="update">
+                <div class="profile-photo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg>
+                </div>
+                <div class="message">
+                    <p><b>Trader <%= Transaction.last.user_id %></b><br/>
+                    Company: <%= Transaction.last.market_symbol %><br/>
+                    Transaction Type: <%= Transaction.last.transaction_type %>
+                    </p>
+                    <small class="text-muted">$<%= Transaction.last.amount %></small>
+                </div>
+            </div>
+            <div class="update">
+                <div class="profile-photo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg>
+                </div>
+                <div class="message">
+                    <p><b>Trader <%= Transaction.second_to_last.user_id %></b></p>
+                    Company: <%= Transaction.second_to_last.market_symbol %><br/>
+                    Transaction Type: <%= Transaction.second_to_last.transaction_type %>
+                    </p>
+                    <small class="text-muted">$<%= Transaction.second_to_last.amount %></small>
+                </div>
+            </div><div class="update">
+                <div class="profile-photo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg>
+                </div>
+                <div class="message">
+                    <p><b>Trader <%= Transaction.third_to_last.user_id %></b></p>
+                    Company: <%= Transaction.third_to_last.market_symbol %><br/>
+                    Transaction Type: <%= Transaction.third_to_last.transaction_type %>
+                    </p>
+                    <small class="text-muted">$<%= Transaction.third_to_last.amount %></small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

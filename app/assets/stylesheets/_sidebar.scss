@@ -1,0 +1,204 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.admin-container {
+    background-color: #f6f6f9;
+    width: 100%;
+    height: 100vh;
+    user-select: none;
+    overflow-x: hidden;
+
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 23rem;
+}
+
+aside h2 {
+    font-size: 2rem;
+    color: #000;
+}
+
+aside h3 {
+    font-size: 1.25rem;
+    font-weight: 550;
+}
+
+small {
+    font-size: 1rem;
+}
+
+.profile-photo {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+aside {
+    height: 100vh;
+    //background-color: gray; // remove after debugging
+}
+
+aside .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.4rem;
+}
+
+aside .logo {
+    display: flex;
+    gap: 0.8rem;
+}
+
+aside .close {
+    display: none;
+}
+
+/* Main Sidebar */
+
+aside .sidebar {
+    background-color: #f6f6f9;
+    display: flex;
+    flex-direction: column;
+    height: 86vh;
+    position: relative;
+    top: 3rem;
+}
+
+aside .sidebar a {
+    color: #000;
+    display: flex;
+    margin-left: 2rem;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    height: 3.7rem;
+    transition: all 300ms ease;
+}
+
+aside .sidebar a svg {
+    width: 30px;
+    height: 30px;
+    transition: all 300ms ease;
+}
+
+aside .sidebar a:last-child {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+}
+
+aside .sidebar a.active {
+    background-color: rgb(202, 184, 206);
+    color: #000;
+    margin-left: 0;
+}
+
+aside .sidebar a.active:before {
+    content: '';
+    width: 6px;
+    height: 100%;
+    background-color: rgb(111, 54, 124);
+}
+
+aside .sidebar a.active svg {
+    margin-left: calc(1rem - 3px);
+}
+
+aside .sidebar a:hover {
+    color: rgb(129, 112, 133);
+}
+
+aside .sidebar a:hover svg {
+    margin-left: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+    .admin-container {
+        width: 94%;
+        grid-template-columns: 7rem auto 23rem;
+    }
+
+    aside .logo h2 {
+        display: none;
+    }
+
+    aside .sidebar h3 {
+        display: none;
+    }
+
+    aside .sidebar a {
+        width: 5.6rem;
+    }
+
+    aside .sidebar a:last-child {
+        position: relative;
+        margin-top: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .admin-container {
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    aside {
+        position: fixed;
+        left: -100%;
+        background-color: #fff;
+        width: 18rem;
+        z-index: 3;
+        height: 100vh;
+        padding-right: 1.8rem;
+        box-shadow: 0 2rem 3rem rgba(132, 139, 200, 0.18);
+        display: none !important;
+        animation: showMenu 400ms ease forwards;
+    }
+
+    @keyframes showMenu {
+        to {
+            left: 0;
+        }
+    }
+
+    aside .sidebar {
+        background-color: #fff;
+    }
+
+    aside .logo {
+        margin-left: 1rem;
+    }
+
+    aside .logo h2 {
+        display: inline;
+    }
+
+    aside .sidebar h3 {
+        display: inline;
+    }
+
+    aside .sidebar a {
+        width: 100%;
+        height: 3.4rem;
+    }
+
+    aside .sidebar a:last-child {
+        position: absolute;
+        bottom: 5rem;
+    }
+
+    aside .close {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .close-icon {
+        width: 24px;
+        height: 24px;
+    }
+}

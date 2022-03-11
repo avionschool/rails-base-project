@@ -1,0 +1,109 @@
+<main>
+
+    <h1>View Trader Profile</h1>
+
+    <div class="date">
+        <h1><%= Time.now.strftime('%Y-%m-%d %H:%M:%S') %></h1>
+    </div>
+
+    <%# Insights %>
+
+    <div class="insights trans-list">
+
+        <%# View Profile %>
+        <div class="companies">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path></svg>
+            <div class="middle">
+                <div class="left">
+                    <h3>Basic Details:</h3> <br/>
+                    <h1 class="view-h1">Full Name: <%= @user.fullname %></h1> <br/>
+                    <h1 class="view-h1">Email: <%= @user.email %></h1> <br/>
+                    <h1 class="view-h1">Registered at: <%= @user.created_at.strftime("%b %d, %Y, %H:%M:%S") %></h1> <br/>
+                    <h1 class="view-h1">Updated at: <%= @user.updated_at.strftime("%b %d, %Y, %H:%M:%S") %></h1> <br/>
+                
+                    <br/>
+                
+                    <h3>Profile Details:</h3> <br/>
+                    <h1 class="view-h1">Wallet ID: <%= @user.wallet.id %></h1> <br/>
+                    <h1 class="view-h1">Ballance: <%= @user.wallet.balance %>0</h1> <br/>
+                
+                    <br/>
+                
+                    <%= link_to 'Edit Trader Account', edit_trader_profile_path(id: @user.id), class: 'edit-trader-btn' %>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+<%# Right %>
+
+<div class="right">
+
+    <%# Top %>
+
+    <div class="top">
+        <button id="menu-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg>
+        </button>
+        <div class="theme-toggler">
+            <svg class="sun active" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6.993 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007S14.761 6.993 12 6.993 6.993 9.239 6.993 12zM12 8.993c1.658 0 3.007 1.349 3.007 3.007S13.658 15.007 12 15.007 8.993 13.658 8.993 12 10.342 8.993 12 8.993zM10.998 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2h-3zm17 0h3v2h-3zM4.219 18.363l2.12-2.122 1.415 1.414-2.12 2.122zM16.24 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.342 7.759 4.22 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path></svg>
+            <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path></svg>
+        </div>
+        <div class="profile">
+            <div class="info">
+                <p>Admin</p>
+            </div>
+            <div class="profile-photo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg>
+            </div>
+        </div>
+    </div>
+
+    <%# Recent Transactions %>
+
+    <div class="recent-transactions">
+        <div class="updates">
+            <h2>Recent Transactions</h2>
+            <div class="update">
+                <div class="profile-photo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg>
+                </div>
+                <div class="message">
+                    <p><b>Trader <%= Transaction.last.user_id %></b><br/>
+                    Company: <%= Transaction.last.market_symbol %><br/>
+                    Transaction Type: <%= Transaction.last.transaction_type %>
+                    </p>
+                    <small class="text-muted">$<%= Transaction.last.amount %></small>
+                </div>
+            </div>
+            <div class="update">
+                <div class="profile-photo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg>
+                </div>
+                <div class="message">
+                    <p><b>Trader <%= Transaction.second_to_last.user_id %></b></p>
+                    Company: <%= Transaction.second_to_last.market_symbol %><br/>
+                    Transaction Type: <%= Transaction.second_to_last.transaction_type %>
+                    </p>
+                    <small class="text-muted">$<%= Transaction.second_to_last.amount %></small>
+                </div>
+            </div><div class="update">
+                <div class="profile-photo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg>
+                </div>
+                <div class="message">
+                    <p><b>Trader <%= Transaction.third_to_last.user_id %></b></p>
+                    Company: <%= Transaction.third_to_last.market_symbol %><br/>
+                    Transaction Type: <%= Transaction.third_to_last.transaction_type %>
+                    </p>
+                    <small class="text-muted">$<%= Transaction.third_to_last.amount %></small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

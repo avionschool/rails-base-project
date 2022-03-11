@@ -1,0 +1,22 @@
+<% unless request.fullpath.start_with?('/admins/') || request.fullpath.start_with?('/users/') %>
+  <div class="error404">
+    
+    <main>
+      <%= render 'e' %>
+      <%= render 'e_mobile' %>
+    </main>
+    
+  </div>
+
+  <% else %>
+
+  <div class="error404">
+
+    <main>
+      <%= render 'e' %>
+      <%= render 'e_mobile' %>
+    </main>
+    
+  </div>
+
+<% end %>
