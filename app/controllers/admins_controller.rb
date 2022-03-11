@@ -32,9 +32,9 @@ class AdminsController < ApplicationController
 
     if @user.save
       ApproveMailer.approve_account(@user.email).deliver_now
-      redirect_to fallback_location: admins_add_trader_path, success: 'Trader Created Successfully'
+      redirect_to admins_add_trader_path, success: 'Trader Created Successfully'
     else
-      redirect_to fallback_location: admins_add_trader_path, danger: 'Trader Creatation Failed'
+      render :add_trader, status: :unprocessable_entity, danger: 'Error processing your request.'
     end
   end
 
@@ -54,9 +54,9 @@ class AdminsController < ApplicationController
     @wallet.save
 
     if @user.update(params.require(:user).permit(:email, :fullname)) && @wallet.save
-      redirect_to fallback_location: trader_profile_path, success: 'Trader Updated Successfully'
+      redirect_to trader_profile_path, success: 'Trader Updated Successfully'
     else
-      redirect_to fallback_location: trader_profile_path, danger: 'Kindly double check all information before updating'
+      render :edit_trader, status: :unprocessable_entity, dancer: 'Error updating user account'
     end
   end
 
