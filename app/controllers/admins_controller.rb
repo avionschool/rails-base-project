@@ -2,7 +2,9 @@ class AdminsController < ApplicationController
   before_action :authenticate_admin!
 
   def view_traders
+    @q = User.ransack(params[:q])
     @users = User.where(approved: true)
+    @users = @q.result(distinct: true)
   end
 
   def approvals
