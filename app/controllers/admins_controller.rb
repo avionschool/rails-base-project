@@ -56,7 +56,7 @@ class AdminsController < ApplicationController
     if @user.update(params.require(:user).permit(:email, :fullname)) && @wallet.save
       redirect_to trader_profile_path, success: 'Trader Updated Successfully'
     else
-      render :edit_trader, status: :unprocessable_entity, dancer: 'Error updating user account'
+      render :edit_trader, status: :unprocessable_entity, danger: 'Error updating user account'
     end
   end
 
