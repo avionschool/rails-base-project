@@ -17,6 +17,9 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'hamlit-rails'
 
+gem 'ransack'
+gem 'faker'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

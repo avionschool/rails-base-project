@@ -235,14 +235,18 @@ main table {
 
 .right .search .search-item {
     background-color: #fff;
-    display: flex;
-    align-items: center;
     gap: 1rem;
     margin-bottom: 0.7rem;
     padding: 1.4rem 1.8rem;
     border-radius: 1.2rem;
     box-shadow: 0 1rem 1rem rgba(132, 139, 200, 0.18);
     transition: all 300ms ease;
+}
+
+.icon {
+    align-items: center;
+    justify-content: center;
+    width: auto !important;
 }
 
 .right .search .search-item:hover {
@@ -315,6 +319,28 @@ main table {
 .approve-btn,
 .edit-trader-btn {
     color: rgb(36, 167, 36) !important;
+}
+
+.search-input {
+    border: 1px solid #181717;
+    outline: none;
+}
+
+.search-btn {
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem !important;
+    // width: 100%;
+    border: none;
+    outline: none;
+    background-color: #00E99E;
+    border-radius: 5px;
+    color: #000 !important;
+    font-weight: 600 !important;
+}
+
+.search-btn:hover {
+    background-color: #08cf90;
 }
 
 .cr-trader {
