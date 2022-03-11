@@ -20,21 +20,20 @@
                 <div class="left">
                     <h3>Add Trader</h3><hr/>
                     <%= form_with scope: :user, model: @user, url: '/admins/add_trader', method: :post, local: true do |f| %>
-                        <div class="field">
-                            
+                        <div class="field admin-field">
                             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "✉️ Email" %><br/>
                             <% @user.errors.full_messages_for(:email).each do |message| %>
-                            <div><%= message %></div>
+                            <div class="error-message"><%= message %></div>
                             <% end %>
                             <br/>
                             <%= f.text_field :fullname, autofocus: true, autocomplete: :off, placeholder: "👤 Fullname" %><br/>
                             <% @user.errors.full_messages_for(:fullname).each do |message| %>
-                            <div><%= message %></div>
+                            <div class="error-message"><%= message %></div>
                             <% end %>
                             <br/>
-                            <%= f.password_field :password, autocomplete: "new-password", placeholder: "🔒 Password (6 characters minimum)" %>
+                            <%= f.password_field :password, autocomplete: "new-password", placeholder: "🔒 Password (6 characters minimum)" %><br/>
                             <% @user.errors.full_messages_for(:password).each do |message| %>
-                            <div><%= message %></div>
+                            <div class="error-message"><%= message %></div>
                             <% end %>
                         </div>
                         <div class="actions">

@@ -2,6 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.notice {
+    font-size: 1rem;
+    color: rgba(28, 129, 28, 0.748);
+    font-weight: 600;
+    background-color: transparent;
+    z-index: 1;
+}
+
+.alert {
+    font-size: 1rem;
+    color: rgb(207, 15, 15);
+    font-weight: 600;
+    background-color: transparent;
+    z-index: 1;
+}
+
+#error_explanation {
+    font-size: 1rem;
+    color: rgb(207, 15, 15);
+    font-weight: 600;
+    background-color: transparent;
+    z-index: 1;
+}
+
+#error_explanation h2:nth-child(1) {
+    display: none;
+}
+
 .new-session,
 .register-session {
     position: relative;
@@ -48,7 +76,7 @@
 
 .registration-form {
     max-width: 100%;
-    gap: 10%;
+    gap: 5%;
     margin: 0 auto;
 }
 
@@ -69,6 +97,11 @@
 
 .sessions-input {
     width: 16.5rem;
+    // height: 3rem;
+}
+
+.sessions-input input {
+    width: 100% !important;
 }
 
 .actions .login-btn {
@@ -157,9 +190,25 @@
     }
 
     .field input {
-        width: 15rem;
+        width: 100%;
         height: 1rem;
         font-size: 0.75rem;
+        border: 1px solid #181717;
+        outline: none;
+    }
+
+    #user_email,
+    #user_password {
+        width: 17rem;
+    }
+
+    .admin-field input {
+        width: 75%;
+    }
+
+    .admin-field #user_email,
+    .admin-field #user_password {
+        width: 75%;
     }
 
     .actions .register-btn {
@@ -191,7 +240,36 @@
     }
 }
 
+@media screen and (max-width: 1024px){
+    .field input {
+        height: 3rem;
+    }
+}
+
 @media screen and (max-width: 768px) {
+    .registration-form {
+        flex-direction: column;
+    }
+
+    #user_email,
+    #user_password {
+        width: 12rem;
+        height: 1rem;
+        font-size: 0.75rem;
+        margin: 0 auto;
+        left: 10rem;
+        // transform: translateX(3.5rem);
+    }
+
+    .admin-field input {
+        width: 75% !important;
+    }
+
+    .admin-field #user_email,
+    .admin-field #user_password {
+        width: 75%;
+    }
+
     .new-session-h1,
     .registration-session-h1 {
         font-size: 1rem;
@@ -218,7 +296,7 @@
     }
 
     .forgot-btn, .to-login-btn {
-        font-size: 1rem;
+        font-size: 0.75rem;
     }
 
     .footer {
@@ -234,5 +312,17 @@
     .register-session-svg {
         width: 50px;
         height: 150px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .new-session-span, .register-session-span {
+        font-size: 0.75rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .new-session-span, .register-session-span {
+        font-size: 0.69rem;
     }
 }
