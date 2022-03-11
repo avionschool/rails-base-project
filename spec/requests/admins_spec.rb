@@ -11,25 +11,25 @@ RSpec.describe 'Admins', type: :request do
   end
 
   it 'signs in admin' do
-    sign_in admin
+    # sign_in admin
     get admins_view_traders_path
     expect(response).to be_successful
   end
 
   it 'goes to approval section page' do
-    sign_in admin
+    # sign_in admin
     get admins_approvals_path
     expect(response).to be_successful
   end
 
   it 'goes to adds a trader/user account page' do
-    sign_in admin
+    # sign_in admin
     get admins_add_trader_path
     expect(response).to be_successful
   end
 
   it 'goes to view all transactions page' do
-    sign_in admin
+    # sign_in admin
     get view_trader_transactions_path
     expect(response).to be_successful
   end
